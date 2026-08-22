@@ -1,0 +1,58 @@
+\usepackage[a4paper,top=2.7cm,bottom=2.7cm,inner=2.8cm,outer=2.4cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx,longtable}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\usepackage{makeidx}
+\usepackage[backend=biber,style=authoryear,sorting=nyt,maxcitenames=2,maxbibnames=99,
+  uniquename=false,giveninits=true,date=year]{biblatex}
+
+\makeindex
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=blue!45!black,urlcolor=blue!55!black,
+  pdftitle={我们如何知道？——问题驱动的认识论},pdfauthor={}}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.22em}
+\emergencystretch=2em
+\setlist{nosep,leftmargin=2.2em}
+\renewcommand{\arraystretch}{1.25}
+\definecolor{caseblue}{RGB}{236,244,250}
+\definecolor{arggray}{RGB}{245,245,242}
+\definecolor{comparegreen}{RGB}{238,247,240}
+\definecolor{exerciseorange}{RGB}{253,246,234}
+
+\newtcolorbox{openingcase}{breakable,colback=caseblue,colframe=blue!35!black,
+  title={开篇案例},fonttitle=\bfseries}
+\newtcolorbox{argumentbox}[1][]{breakable,colback=arggray,colframe=black!45,
+  title={论证重构 #1},fonttitle=\bfseries}
+\newtcolorbox{comparison}{breakable,colback=comparegreen,colframe=green!35!black,
+  title={比较视角},fonttitle=\bfseries}
+\newtcolorbox{checkpoint}{breakable,colback=white,colframe=black!35,
+  title={自测小结},fonttitle=\bfseries}
+\newtcolorbox{exercises}{breakable,colback=exerciseorange,colframe=orange!55!black,
+  title={章末练习},fonttitle=\bfseries}
+\newcommand{\term}[2]{\textbf{#1}（\textit{#2}）\index{#1}}
+% 段内问题提示：保留论证路标，但不再把每个细分点切成独立小节。
+\newcommand{\minitopic}[1]{\par\medskip\noindent\textbf{#1}\enspace\ignorespaces}
+\newcommand{\keyreading}[1]{\par\smallskip\noindent\textbf{核心阅读：}#1}
+\newcommand{\furtherreading}[1]{\par\noindent\textbf{延伸阅读：}#1}
+\newtcolorbox{readingmap}{breakable,colback=white,colframe=blue!28!black,
+  title={分层阅读地图},fonttitle=\bfseries,before skip=1em,after skip=.5em}
+\newcommand{\readingstrand}[3]{%
+  \par\noindent\textbf{#1：}#2\space\parencite{#3}\par\smallskip}
+\newcommand{\chaptergoals}[1]{\begin{tcolorbox}[breakable,colback=white,colframe=blue!30!black,
+  title={学习目标},fonttitle=\bfseries]#1\end{tcolorbox}}
+
+\ctexset{
+  part={format=\centering\Huge\bfseries,name={第,部},number=\chinese{part}},
+  chapter={format=\raggedright\Huge\bfseries,name={第,章},number=\chinese{chapter}},
+  section={format=\Large\bfseries},
+  subsection={format=\large\bfseries}
+}

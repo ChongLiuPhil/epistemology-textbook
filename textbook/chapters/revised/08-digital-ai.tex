@@ -1,0 +1,51 @@
+\chapter{数字环境与人工智能怎样重塑认识}
+\chaptergoals{分析排序、推荐、检索和生成对证据链的改变；区分内容真实性与来源溯源；理解自动化偏差、分布性失败和有效人机监督；建立可复现的AI核验流程。}
+
+\begin{openingcase}
+生成式搜索助手回答“某市已经宣布停课”，并给出两个链接：一条只报道邻市，另一条无法打开。回答语言流畅，截图带有官方标识，多个账号又互相转引。问题不是简单判断“AI会不会犯错”，而是恢复一条被界面压缩的认识链：命题从哪里来，检索是否真正支持它，模型做了哪些综合，谁有能力发现冲突，错误发生后系统能否留下可审计记录。
+\end{openingcase}
+
+\section{数字工具怎样改变证据环境}
+\input{chapters/13-digital-ai}
+
+\section{排序、偏差、生成与责任}
+\input{chapters/extensions/13-digital-ai}
+
+\section{从输出核验到来源重建}
+\input{chapters/readings/13-digital-lab}
+
+\section{人机系统中的监督与溯源}
+\input{chapters/seminars/13-ai-provenance}
+\input{chapters/deepening/08-digital-ai-deepening}
+
+\section{界面便利与认识摩擦}
+\input{chapters/syntheses/08-digital-ai-a}
+\input{chapters/deepening/08-digital-temporal}
+
+\section{怎样设计可纠错的人机认识制度}
+\input{chapters/syntheses/08-digital-ai-b}
+
+\minitopic{研究定位}数字认识论不能只讨论内容真假。\textcite{fallis2015}澄清虚假信息的概念结构，\textcite{noble2018}和\textcite{selbst2019}把排序、抽象与社会权力带入分析，\textcite{gebru2021}与\textcite{raji2020}进一步把可追溯文档和组织审计转化为可执行的纠错条件。
+
+\begin{checkpoint}
+AI输出不是孤立句子，而是数据、检索、模型、界面和使用者组成的认识系统产物。核验必须区分来源存在、来源支持、综合正确和行动许可；有效监督则要求人拥有信息、时间、能力和否决权。
+\end{checkpoint}
+
+\begin{exercises}
+\begin{enumerate}
+  \item 对一段AI回答执行六步核验：固定命题、打开来源、检查元数据、核对支持关系、寻找独立证据、保存版本。
+  \item 分析一个推荐系统如何通过排序改变主体可见证据，而不直接改变任何单条内容真假。
+  \item 构造两个总准确率相同但分组误差不同的系统，并加入误报与漏报后果评价公正性。
+  \item 从信息、时间、专业能力和否决权四项检查一个“人工审核”流程是否真实有效。
+  \item 比较内容溯源、数字签名、事实核查和来源可信度；说明其中任何一项为何不能单独保证真理。
+  \item 选择可靠主义、能力论或责任主义，论证机器本身、人机团队或部署机构中谁最有资格被归属知识。
+\end{enumerate}
+\end{exercises}
+
+\clearpage
+\begin{readingmap}
+\readingstrand{第一层：数字信息认识论}{研究百科协作、虚假信息、党派认识论与横向阅读。}{fallis2008,fallis2015,wardle2017,rini2017,wineburg2019,lynch2016,pennycook2019,pennycook2021}
+\readingstrand{第二层：排序与可见性}{理解搜索、推荐、过滤泡和平台结构怎样重塑可见证据。}{gillespie2014,floridi2011,pariser2011,sunstein2017,oconnor2019,longino1990}
+\readingstrand{第三层：算法权力与公正}{从不透明性、社会技术抽象和生命周期危害评估系统，而非只看总体准确率。}{noble2018,pasquale2015,burrell2016,mittelstadt2016,selbst2019,buolamwini2018,suresh2021}
+\readingstrand{第四层：生成式AI治理}{追踪数据、模型报告、风险分类、内部审计、人的控制、来源溯源与监管框架。}{bender2018,gebru2021,bender2021,mitchell2019,weidinger2022,raji2020,shneiderman2022,nist2024,c2pa2025}
+\end{readingmap}

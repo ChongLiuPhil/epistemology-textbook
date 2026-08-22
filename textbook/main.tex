@@ -1,0 +1,44 @@
+% !TEX program = xelatex
+\documentclass[UTF8,openany,11pt]{ctexbook}
+\input{style}
+\addbibresource{references.bib}
+
+\title{\Huge 我们如何知道？\\[0.8em]\Large 问题驱动的认识论}
+\author{}
+\date{2026年7月}
+
+\begin{document}
+\frontmatter
+\maketitle
+\thispagestyle{empty}
+\clearpage
+\input{frontmatter}
+\tableofcontents
+
+\mainmatter
+\part{知识、怀疑与理由}
+\include{chapters/revised/01-knowledge}
+\include{chapters/revised/02-skepticism-luck}
+\include{chapters/revised/03-justification-context}
+
+\part{认识来源、社会系统与理性模型}
+\include{chapters/revised/04-sources}
+\include{chapters/revised/05-social-knowledge}
+\include{chapters/revised/06-formal}
+
+\part{认识价值、技术环境与比较方法}
+\include{chapters/revised/07-value}
+\include{chapters/revised/08-digital-ai}
+\include{chapters/revised/09-comparative}
+
+\backmatter
+% 后置材料各章不再沿用第九章的节编号；目录层级与页眉仍保留。
+\setcounter{secnumdepth}{0}
+\include{backmatter/study-guide}
+\include{backmatter/research-studio}
+\include{backmatter/exercise-hints}
+\include{backmatter/glossary}
+\printbibliography[heading=bibintoc,title={参考文献}]
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+\end{document}

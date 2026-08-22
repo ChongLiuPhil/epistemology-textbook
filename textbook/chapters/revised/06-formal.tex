@@ -1,0 +1,51 @@
+\chapter{概率、模型与理性决策}
+\chaptergoals{掌握置信度、条件概率、似然、校准和期望效用；理解概率模型的认识论地位；能够识别基础率忽视、证据重复计算、选择性报告和模型误设。}
+
+\begin{openingcase}
+一种疾病患病率为1\%，检测对患者有90\%概率呈阳性，对健康者有5\%概率误报。阳性结果把患病概率提高到多少？若第二次检测使用同一设备和样本，能否把两个结果当作独立证据？即使后验概率很高，它是否足以支持诊断、隔离或手术？形式工具能澄清推理，却不会自行确定模型、数据来源与行动代价。
+\end{openingcase}
+
+\section{从相信到置信度}
+\input{chapters/10-formal}
+
+\section{贝叶斯更新及其限制}
+\input{chapters/extensions/10-formal}
+
+\section{计算、校准与证据审计}
+\input{chapters/readings/10-formal-lab}
+
+\section{模型选择与决策实践}
+\input{chapters/seminars/10-models-decisions}
+\input{chapters/deepening/06-formal-deepening}
+
+\section{数字不会替我们选择问题}
+\input{chapters/syntheses/06-formal-a}
+\input{chapters/deepening/06-formal-practice}
+
+\section{从概率判断到可问责行动}
+\input{chapters/syntheses/06-formal-b}
+
+\minitopic{研究定位}形式化不是单一路线：\textcite{ramsey1931}与\textcite{pettigrew2016}代表置信度规范的不同论证资源，\textcite{mayo2018}对贝叶斯主导叙事形成方法压力，\textcite{pearl2009}引入干预性的因果结构，\textcite{douglas2009}则说明模型进入公共决策后为何不能假定价值中立。
+
+\begin{checkpoint}
+概率模型约束置信度如何一致更新，但其结论取决于假设空间、基础率、似然和独立性。理性行动还需加入效用、信息价值、角色责任和模型不确定性，不能把一个数字直接翻译成知识或决策。
+\end{checkpoint}
+
+\begin{exercises}
+\begin{enumerate}
+  \item 用一万人自然频率表重算开篇检测案例，并解释为什么90\%不是阳性后的患病概率。
+  \item 把患病率改为20\%，比较后验变化并说明基础率在推理中的作用。
+  \item 构造两项共享污染、设备或数据来源的检测，说明条件独立为何失败。
+  \item 为一个天气或信用模型同时检查校准、分辨力和分组表现；解释三者不能互相替代。
+  \item 制作一个包含误报、漏报、复核成本和等待损失的决策矩阵，判断新检测的信息价值。
+  \item 选择一个高概率却不宜称为知识的案例，分别用安全性、个案联系和行动门槛解释原因。
+\end{enumerate}
+\end{exercises}
+
+\clearpage
+\begin{readingmap}
+\readingstrand{第一层：概率基础}{从逻辑概率、主观概率到公理化概率，理解同一公式背后的不同解释。}{keynes1921,ramsey1931,definetti1937,carnap1950,kolmogorov1950,savage1954,cox1961,jaynes2003}
+\readingstrand{第二层：置信度规范}{研究条件化、准确性、概率一致性和概率性知识。}{jeffrey1983,joyce1998,hajek2003,pettigrew2016,leitgeb2010a,leitgeb2010b,williamson2010,moss2018}
+\readingstrand{第三层：决策与因果}{区分信念更新、偏好选择、理论下注与干预因果。}{gilboa2009,levi1980,maher1993,pearl2009,skyrms1980}
+\readingstrand{第四层：科学推断与价值}{把贝叶斯推断、严厉检验、归纳基础、模型理想化和政策价值放在一起比较。}{howson2006,mayo2018,salmon1967,sprenger2019,cartwright1983,douglas2009,kelly2005}
+\end{readingmap}

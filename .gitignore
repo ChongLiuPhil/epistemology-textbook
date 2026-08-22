@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# LaTeX / 构建产物（构建统一输出到项目外临时目录，见 textbook/Makefile）
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.xdv
+*.pdf
+!reference/*.pdf
+
+# 编辑器
+*~
