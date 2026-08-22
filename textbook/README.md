@@ -5,15 +5,32 @@
 从本目录构建（编译产物写入项目外的临时目录）：
 
 ```sh
+make            # 等价于下方三步：latexmk → makeindex → latexmk
+```
+
+或手动执行三步流程：
+
+```sh
 mkdir -p /tmp/epistemology-build
 latexmk -norc -xelatex -interaction=nonstopmode -halt-on-error -outdir=/tmp/epistemology-build main.tex
-makeindex -o /tmp/epistemology-build/main.ind /tmp/epistemology-build/main.idx
+(cd /tmp/epistemology-build && makeindex -o main.ind main.idx)
 latexmk -norc -xelatex -interaction=nonstopmode -halt-on-error -outdir=/tmp/epistemology-build main.tex
 ```
+
+注意：makeindex 需在构建目录内运行；直接以绝对路径向 `/tmp` 写 `.ind` 会被 TeX 的
+openout 安全策略（`openout_any = p`）拒绝。
 
 第二步必须在正文索引记录生成后执行；否则首次构建可能得到空索引。
 
 项目目录只保留可继续编辑的源稿；编译缓存、PDF 和历史版本不纳入工作树。需要交付 PDF 时，可将临时目录中的 `main.pdf` 另行复制到项目外部。
+
+## 工具链与版本控制
+
+- `Makefile`：`make` 全量构建，`make check` 源稿校验，`make clean` 清理构建目录；构建目录可用 `BUILD_DIR=` 覆盖。
+- `tools/check_consistency.py`：不依赖 LaTeX 的源稿一致性校验——章文件 `\input` 图谱完整性、54 道章末练习与 54 条练习提示逐章配对、正文引用键与 `references.bib` 双向对账（含 `\readingstrand` 阅读地图键）、统计快照。任何修改后建议先跑 `make check` 再构建。
+- 各内容模块（基础正文、extensions、readings、seminars、syntheses、deepening）文件首行均有归属注释，标明所属章与引入它的编排器文件；调整章节结构时同步更新注释头。
+- 项目根目录已纳入 git 版本控制：定稿基线打有 `v1.0-baseline` 标签。`.gitignore` 排除一切 LaTeX 编译产物与 PDF（`reference/` 下外部参考资料除外）。
+- 出版前待办：补齐 `main.tex` 的 `\author` 与 `style.tex` 的 `pdfauthor`（源码中已有 TODO 标注），并确认封面日期。
 
 ## 三部九章结构
 
