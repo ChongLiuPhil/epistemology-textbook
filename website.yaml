@@ -2,16 +2,16 @@ schema_version: 1
 publish: false
 
 title:
-  zh: 认识论教材
-  en: Epistemology Textbook
+  zh: "我们如何知道？——问题驱动的认识论"
+  en: "How Do We Know? A Problem-Driven Epistemology"
 
 summary:
-  zh: ""
-  en: ""
+  zh: "一本以问题为中心组织的中文认识论教材，涵盖知识、怀疑、证成、认识来源、社会与形式认识论、认识价值、数字与 AI 环境以及比较认识论。"
+  en: "A problem-driven Chinese-language epistemology textbook covering knowledge, skepticism, justification, sources of knowledge, social and formal epistemology, epistemic value, digital and AI environments, and comparative epistemology."
 
 status:
-  zh: ""
-  en: ""
+  zh: "三部九章主稿已形成稳定基线，正在持续审校与出版准备。"
+  en: "The three-part, nine-chapter manuscript has a stable baseline and remains under editorial review and publication preparation."
 
 featured: false
 links: []
