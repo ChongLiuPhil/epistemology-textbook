@@ -3,8 +3,8 @@ id: epistemology-textbook
 repository: ChongLiuPhil/epistemology-textbook
 
 title:
-  zh: 认识论教材
-  en: Epistemology Textbook
+  zh: "我们如何知道？——问题驱动的认识论"
+  en: "How Do We Know? A Problem-Driven Epistemology"
 
 kind: book-project
 status: active
@@ -14,13 +14,21 @@ areas:
 
 topics:
   - knowledge
+  - skepticism
+  - epistemic-luck
   - justification
-  - rational-belief
+  - sources-of-knowledge
+  - testimony
+  - social-epistemology
+  - formal-epistemology
+  - epistemic-value
+  - ai-epistemology
+  - comparative-epistemology
 
 source_of_truth:
   overview: README.md
-  manuscript: null
-  bibliography: null
+  manuscript: textbook/main.tex
+  bibliography: textbook/references.bib
 
 website:
   metadata: website.yaml
@@ -28,5 +36,6 @@ website:
 
 notes: >
   Private project metadata for organizing the academic knowledge system.
-  Update source_of_truth paths after the repository's manuscript structure is finalized.
-  Public website content must be explicitly approved through website.yaml.
+  The repository overview, canonical manuscript entry point, and bibliography
+  are explicitly recorded above. Public website content must still be
+  explicitly approved through website.yaml.
