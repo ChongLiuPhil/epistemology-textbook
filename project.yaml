@@ -1,0 +1,32 @@
+schema_version: 1
+id: epistemology-textbook
+repository: ChongLiuPhil/epistemology-textbook
+
+title:
+  zh: 认识论教材
+  en: Epistemology Textbook
+
+kind: book-project
+status: active
+
+areas:
+  - epistemology
+
+topics:
+  - knowledge
+  - justification
+  - rational-belief
+
+source_of_truth:
+  overview: README.md
+  manuscript: null
+  bibliography: null
+
+website:
+  metadata: website.yaml
+  default_publish: false
+
+notes: >
+  Private project metadata for organizing the academic knowledge system.
+  Update source_of_truth paths after the repository's manuscript structure is finalized.
+  Public website content must be explicitly approved through website.yaml.
