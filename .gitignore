@@ -1,5 +1,6 @@
-# macOS
+# macOS / Windows
 .DS_Store
+Thumbs.db
 
 # LaTeX / 构建产物（构建统一输出到项目外临时目录，见 textbook/Makefile）
 *.aux
@@ -24,5 +25,23 @@
 *.pdf
 !reference/*.pdf
 
-# 编辑器
+# 编辑器 / 本地工作区
+.vscode/
+.idea/
 *~
+*.swp
+*.swo
+
+# 凭据与本地环境
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Microsoft Office 临时文件
+~$*.docx
+~$*.xlsx
+~$*.pptx
