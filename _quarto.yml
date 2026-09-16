@@ -26,13 +26,13 @@ book:
       - icon: github
         href: "https://github.com/ChongLiuPhil/epistemology-textbook"
     footer: |
-      [开放阅读与支持](manuscript/00-open-access-and-support.qmd) · [报告问题](https://github.com/ChongLiuPhil/epistemology-textbook/issues/new/choose)
+      [开放阅读与支持](https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html) · [报告问题](https://github.com/ChongLiuPhil/epistemology-textbook/issues/new/choose)
   page-footer:
     border: true
     left: "《我们如何知道？》开放 Web Edition · 持续修订"
     right:
       - text: "开放阅读与支持"
-        href: manuscript/00-open-access-and-support.qmd
+        href: "https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html"
       - text: "报告问题"
         href: "https://github.com/ChongLiuPhil/epistemology-textbook/issues/new/choose"
   chapters:
