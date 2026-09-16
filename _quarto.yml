@@ -8,7 +8,6 @@ book:
   output-file: "how-do-we-know"
   page-navigation: true
   search: true
-  downloads: [epub]
   sidebar:
     style: docked
     collapse-level: 1
@@ -50,8 +49,5 @@ format:
     footnotes-hover: true
     code-copy: false
     css: book.css
-  epub:
-    toc: true
-    css: epub.css
 
 lang: zh-CN
