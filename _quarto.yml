@@ -9,10 +9,12 @@ book:
   page-navigation: true
   search: true
   sidebar:
+    header: "**本书目录**"
     style: docked
     collapse-level: 1
   chapters:
     - index.qmd
+    - manuscript/00-open-access-and-support.qmd
     - manuscript/00-preface.qmd
     - part: "第一部　知识、怀疑与理由"
       chapters:
@@ -43,6 +45,7 @@ format:
   html:
     theme: cosmo
     toc: true
+    toc-title: "本章目录"
     toc-depth: 3
     number-sections: true
     citations-hover: true
