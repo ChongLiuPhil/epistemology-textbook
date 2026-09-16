@@ -54,6 +54,30 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+      - name: Promote Quarto sources to canonical manuscript
+        if: github.ref == 'refs/heads/refactor/quarto-source-of-truth' && github.event_name == 'push'
+        run: |
+          mkdir -p manuscript
+          cp website/generated/*.qmd manuscript/
+          cp textbook/references.bib references.bib
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          for path in Path('manuscript').glob('*.qmd'):
+              text = path.read_text(encoding='utf-8')
+              text = re.sub(r'^source-file:.*\n', '', text, flags=re.M)
+              text = text.replace('<div class="source-note">本页由 LaTeX 主稿自动生成；请勿直接编辑生成文件。</div>\n', '')
+              text = text.replace('以下条目由全书引文自动汇总。', '以下条目由本书 Quarto 引文自动汇总。')
+              path.write_text(text, encoding='utf-8')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manuscript references.bib
+          if ! git diff --cached --quiet; then
+            git commit -m "content: promote Quarto manuscript as canonical source"
+            git push
+          fi
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
