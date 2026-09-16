@@ -5,6 +5,11 @@
   --reader-text: #252525;
   --reader-muted: #6b7280;
   --reader-rule: #e5e7eb;
+  --reader-focus: #0b57d0;
+}
+
+html {
+  scroll-padding-top: 4.5rem;
 }
 
 body {
@@ -27,9 +32,12 @@ main.content blockquote {
 main.content h1,
 main.content h2,
 main.content h3,
-main.content h4 {
+main.content h4,
+main.content h5,
+main.content h6 {
   line-height: 1.35;
   letter-spacing: 0;
+  scroll-margin-top: 5rem;
 }
 
 main.content h2 {
@@ -67,8 +75,9 @@ blockquote {
   font-family: ui-sans-serif, system-ui, -apple-system, "Noto Sans SC", "Microsoft YaHei", sans-serif;
 }
 
-.sidebar-title {
-  line-height: 1.4;
+.sidebar-title,
+.sidebar-navigation .sidebar-item-text {
+  line-height: 1.45;
 }
 
 /* Keep all reader-facing blocks inside the reading column. */
@@ -78,7 +87,10 @@ main.content figure,
 main.content .quarto-figure,
 main.content .cell,
 main.content .cell-output,
-main.content .cell-output-display {
+main.content .cell-output-display,
+main.content .callout,
+main.content .footnotes,
+main.content #refs {
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
@@ -107,7 +119,9 @@ main.content h6,
 
 main.content strong,
 main.content em,
-main.content a {
+main.content a,
+main.content .citation,
+main.content .footnote-ref {
   overflow-wrap: anywhere;
 }
 
@@ -151,11 +165,32 @@ main.content .table-responsive,
 main.content .cell-output-display:has(table) {
   max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+main.content pre {
+  white-space: pre;
 }
 
 main.content table {
   font-size: 0.94rem;
   line-height: 1.6;
+}
+
+main.content .footnotes,
+main.content #refs {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+main.content a:focus-visible,
+#quarto-sidebar a:focus-visible,
+.page-navigation a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--reader-focus);
+  outline-offset: 3px;
+  border-radius: 0.15rem;
 }
 
 @media (min-width: 992px) {
@@ -165,6 +200,10 @@ main.content table {
 }
 
 @media (max-width: 767.98px) {
+  html {
+    scroll-padding-top: 3.75rem;
+  }
+
   main.content {
     line-height: 1.8;
   }
@@ -173,5 +212,29 @@ main.content table {
   main.content li,
   main.content blockquote {
     font-size: 1rem;
+  }
+
+  main.content h1,
+  main.content h2,
+  main.content h3,
+  main.content h4,
+  main.content h5,
+  main.content h6 {
+    scroll-margin-top: 4.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
