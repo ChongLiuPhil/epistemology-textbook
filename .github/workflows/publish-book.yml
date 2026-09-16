@@ -1,0 +1,78 @@
+name: Validate and Publish Quarto Book
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "textbook/**"
+      - "website/**"
+      - "scripts/build_web.py"
+      - "book.css"
+      - "_quarto.yml"
+      - "index.qmd"
+      - "Makefile"
+      - ".github/workflows/publish-book.yml"
+  push:
+    paths:
+      - "textbook/**"
+      - "website/**"
+      - "scripts/build_web.py"
+      - "book.css"
+      - "_quarto.yml"
+      - "index.qmd"
+      - "Makefile"
+      - ".github/workflows/publish-book.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quarto-book-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate and validate reading sources
+        run: python3 scripts/build_web.py --check
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render HTML book
+        run: quarto render --to html
+
+      - name: Validate rendered book
+        run: |
+          test -f _book/index.html
+          test -f _book/website/generated/01-knowledge.html
+          test -f _book/website/generated/09-comparative.html
+          test -f _book/website/generated/glossary.html
+          test -f _book/website/generated/references.html
+
+      - name: Upload HTML preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: epistemology-reading-site
+          path: _book/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publish validated HTML to GitHub Pages branch
+        if: github.ref == 'refs/heads/main'
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+          render: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
