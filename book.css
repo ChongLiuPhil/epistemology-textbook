@@ -1,0 +1,177 @@
+/* Reading layer for the Quarto book. The manuscript remains authoritative. */
+
+:root {
+  --reader-max: 820px;
+  --reader-text: #252525;
+  --reader-muted: #6b7280;
+  --reader-rule: #e5e7eb;
+}
+
+body {
+  color: var(--reader-text);
+  font-family: ui-serif, "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, serif;
+  text-rendering: optimizeLegibility;
+}
+
+main.content {
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+}
+
+main.content p,
+main.content li,
+main.content blockquote {
+  font-size: 1.02rem;
+}
+
+main.content h1,
+main.content h2,
+main.content h3,
+main.content h4 {
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+main.content h2 {
+  margin-top: 2.6rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--reader-rule);
+}
+
+main.content h3 {
+  margin-top: 2rem;
+}
+
+.source-note {
+  margin: -0.4rem 0 2rem;
+  color: var(--reader-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.callout {
+  margin-top: 1.6rem;
+  margin-bottom: 1.8rem;
+  border-radius: 0.45rem;
+}
+
+.callout .callout-title-container {
+  font-weight: 650;
+}
+
+blockquote {
+  border-left-width: 3px;
+}
+
+#quarto-sidebar {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+
+.sidebar-title {
+  line-height: 1.4;
+}
+
+/* Keep all reader-facing blocks inside the reading column. */
+main.content,
+main.content > *,
+main.content figure,
+main.content .quarto-figure,
+main.content .cell,
+main.content .cell-output,
+main.content .cell-output-display {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+main.content p,
+main.content li,
+main.content blockquote,
+main.content figcaption,
+main.content .figure-caption,
+main.content caption,
+main.content h1,
+main.content h2,
+main.content h3,
+main.content h4,
+main.content h5,
+main.content h6,
+.quarto-title-block .title,
+.quarto-title-block .subtitle,
+.quarto-title-block .quarto-title-meta {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+main.content strong,
+main.content em,
+main.content a {
+  overflow-wrap: anywhere;
+}
+
+/* Do not apply prose-breaking rules inside MathJax/KaTeX internals. */
+main.content .math,
+main.content .math *,
+main.content mjx-container,
+main.content mjx-container *,
+main.content .katex,
+main.content .katex * {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+main.content .math,
+main.content mjx-container,
+main.content .katex {
+  white-space: nowrap;
+}
+
+.math.display,
+span.math.display,
+div.math.display,
+mjx-container[display="true"],
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+main.content img,
+main.content svg,
+main.content canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+main.content pre,
+main.content .table-responsive,
+main.content .cell-output-display:has(table) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+main.content table {
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 992px) {
+  main.content {
+    max-width: var(--reader-max);
+  }
+}
+
+@media (max-width: 767.98px) {
+  main.content {
+    line-height: 1.8;
+  }
+
+  main.content p,
+  main.content li,
+  main.content blockquote {
+    font-size: 1rem;
+  }
+}

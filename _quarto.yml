@@ -1,0 +1,53 @@
+project:
+  type: book
+  output-dir: _book
+  pre-render: python3 scripts/build_web.py
+
+book:
+  title: "我们如何知道？"
+  subtitle: "问题驱动的认识论"
+  page-navigation: true
+  search: true
+  sidebar:
+    style: docked
+    collapse-level: 1
+  chapters:
+    - index.qmd
+    - website/generated/00-preface.qmd
+    - part: "第一部　知识、怀疑与理由"
+      chapters:
+        - website/generated/01-knowledge.qmd
+        - website/generated/02-skepticism-luck.qmd
+        - website/generated/03-justification-context.qmd
+    - part: "第二部　认识来源、社会系统与理性模型"
+      chapters:
+        - website/generated/04-sources.qmd
+        - website/generated/05-social-knowledge.qmd
+        - website/generated/06-formal.qmd
+    - part: "第三部　认识价值、技术环境与比较方法"
+      chapters:
+        - website/generated/07-value.qmd
+        - website/generated/08-digital-ai.qmd
+        - website/generated/09-comparative.qmd
+    - part: "学习与研究"
+      chapters:
+        - website/generated/study-guide.qmd
+        - website/generated/research-studio.qmd
+        - website/generated/exercise-hints.qmd
+        - website/generated/glossary.qmd
+        - website/generated/references.qmd
+
+bibliography: textbook/references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    citations-hover: true
+    footnotes-hover: true
+    code-copy: false
+    css: book.css
+
+lang: zh-CN
