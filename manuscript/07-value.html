@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; 知识、理解与智慧为什么有价值 – 我们如何知道？</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../manuscript/08-digital-ai.html" rel="next">
+<link href="../manuscript/06-formal.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d36f34d314bee33b330446342baae240.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../book.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/07-value.html">第三部　认识价值、技术环境与比较方法</a></li><li class="breadcrumb-item"><a href="../manuscript/07-value.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">我们如何知道？</a> 
+        <div class="sidebar-tools-main">
+    <a href="../how-do-we-know.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="搜索"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">我们如何知道？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/00-preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">写在前面</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">第一部　知识、怀疑与理由</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/01-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">知识是什么，我们为什么需要它</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/02-skepticism-luck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">怀疑、运气与知识的边界</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/03-justification-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">理由如何支持信念</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">第二部　认识来源、社会系统与理性模型</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/04-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">经验、记忆与先验怎样成为知识来源</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/05-social-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">他人、专家与制度如何共同生产知识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/06-formal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">第三部　认识价值、技术环境与比较方法</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/07-value.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/08-digital-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">数字环境与人工智能怎样重塑认识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/09-comparative.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">比较认识论如何改变我们的问题</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">学习与研究</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/study-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">自学、讨论与论文写作指南</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/research-studio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">全书综合研究工坊</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/exercise-hints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">练习提示</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">核心术语表</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#知识的附加价值问题" id="toc-知识的附加价值问题" class="nav-link active" data-scroll-target="#知识的附加价值问题"><span class="header-section-number">7.1</span> 知识的附加价值问题</a>
+  <ul class="collapse">
+  <li><a href="#价值问题的三个层次" id="toc-价值问题的三个层次" class="nav-link" data-scroll-target="#价值问题的三个层次"><span class="header-section-number">7.1.1</span> 价值问题的三个层次</a></li>
+  <li><a href="#成就与归功" id="toc-成就与归功" class="nav-link" data-scroll-target="#成就与归功"><span class="header-section-number">7.1.2</span> 成就与归功</a></li>
+  <li><a href="#理解不同于知道很多事实" id="toc-理解不同于知道很多事实" class="nav-link" data-scroll-target="#理解不同于知道很多事实"><span class="header-section-number">7.1.3</span> 理解不同于知道很多事实</a></li>
+  <li><a href="#智慧与认识目标多元性" id="toc-智慧与认识目标多元性" class="nav-link" data-scroll-target="#智慧与认识目标多元性"><span class="header-section-number">7.1.4</span> 智慧与认识目标多元性</a></li>
+  <li><a href="#真理价值是否足够" id="toc-真理价值是否足够" class="nav-link" data-scroll-target="#真理价值是否足够"><span class="header-section-number">7.1.5</span> 真理价值是否足够</a></li>
+  <li><a href="#理解的测试" id="toc-理解的测试" class="nav-link" data-scroll-target="#理解的测试"><span class="header-section-number">7.1.6</span> 理解的测试</a></li>
+  <li><a href="#案例工作坊会做题但不理解" id="toc-案例工作坊会做题但不理解" class="nav-link" data-scroll-target="#案例工作坊会做题但不理解"><span class="header-section-number">7.1.7</span> 案例工作坊：会做题但不理解</a></li>
+  <li><a href="#价值问题需要最小对照而非抽象赞美" id="toc-价值问题需要最小对照而非抽象赞美" class="nav-link" data-scroll-target="#价值问题需要最小对照而非抽象赞美"><span class="header-section-number">7.1.8</span> 价值问题需要最小对照而非抽象赞美</a></li>
+  </ul></li>
+  <li><a href="#成就真理与目标多元性" id="toc-成就真理与目标多元性" class="nav-link" data-scroll-target="#成就真理与目标多元性"><span class="header-section-number">7.2</span> 成就、真理与目标多元性</a>
+  <ul class="collapse">
+  <li><a href="#美诺篇问题" id="toc-美诺篇问题" class="nav-link" data-scroll-target="#美诺篇问题"><span class="header-section-number">7.2.1</span> 《美诺篇》问题</a></li>
+  <li><a href="#一级二级与三级价值问题" id="toc-一级二级与三级价值问题" class="nav-link" data-scroll-target="#一级二级与三级价值问题"><span class="header-section-number">7.2.2</span> 一级、二级与三级价值问题</a></li>
+  <li><a href="#沼泽化论证的结构" id="toc-沼泽化论证的结构" class="nav-link" data-scroll-target="#沼泽化论证的结构"><span class="header-section-number">7.2.3</span> 沼泽化论证的结构</a></li>
+  <li><a href="#功劳理论与协作难题" id="toc-功劳理论与协作难题" class="nav-link" data-scroll-target="#功劳理论与协作难题"><span class="header-section-number">7.2.4</span> 功劳理论与协作难题</a></li>
+  <li><a href="#理解的对象" id="toc-理解的对象" class="nav-link" data-scroll-target="#理解的对象"><span class="header-section-number">7.2.5</span> 理解的对象</a></li>
+  <li><a href="#理解能容忍假吗" id="toc-理解能容忍假吗" class="nav-link" data-scroll-target="#理解能容忍假吗"><span class="header-section-number">7.2.6</span> 理解能容忍假吗</a></li>
+  <li><a href="#解释因果与统一" id="toc-解释因果与统一" class="nav-link" data-scroll-target="#解释因果与统一"><span class="header-section-number">7.2.7</span> 解释、因果与统一</a></li>
+  <li><a href="#智慧重要性与有限注意" id="toc-智慧重要性与有限注意" class="nav-link" data-scroll-target="#智慧重要性与有限注意"><span class="header-section-number">7.2.8</span> 智慧、重要性与有限注意</a></li>
+  <li><a href="#教育评价的认识论" id="toc-教育评价的认识论" class="nav-link" data-scroll-target="#教育评价的认识论"><span class="header-section-number">7.2.9</span> 教育评价的认识论</a></li>
+  <li><a href="#综合案例地图与实地理解" id="toc-综合案例地图与实地理解" class="nav-link" data-scroll-target="#综合案例地图与实地理解"><span class="header-section-number">7.2.10</span> 综合案例：地图与实地理解</a></li>
+  </ul></li>
+  <li><a href="#理解的结构与检验" id="toc-理解的结构与检验" class="nav-link" data-scroll-target="#理解的结构与检验"><span class="header-section-number">7.3</span> 理解的结构与检验</a>
+  <ul class="collapse">
+  <li><a href="#研读实验室为什么真信念还不够" id="toc-研读实验室为什么真信念还不够" class="nav-link" data-scroll-target="#研读实验室为什么真信念还不够"><span class="header-section-number">7.3.1</span> 研读实验室：为什么真信念还不够</a></li>
+  <li><a href="#沼泽化与可靠过程" id="toc-沼泽化与可靠过程" class="nav-link" data-scroll-target="#沼泽化与可靠过程"><span class="header-section-number">7.3.2</span> 沼泽化与可靠过程</a></li>
+  <li><a href="#理解关系解释与反事实" id="toc-理解关系解释与反事实" class="nav-link" data-scroll-target="#理解关系解释与反事实"><span class="header-section-number">7.3.3</span> 理解：关系、解释与反事实</a></li>
+  <li><a href="#探究价值与认识能动性" id="toc-探究价值与认识能动性" class="nav-link" data-scroll-target="#探究价值与认识能动性"><span class="header-section-number">7.3.4</span> 探究价值与认识能动性</a></li>
+  <li><a href="#智慧知道什么重要以及怎样行动" id="toc-智慧知道什么重要以及怎样行动" class="nav-link" data-scroll-target="#智慧知道什么重要以及怎样行动"><span class="header-section-number">7.3.5</span> 智慧：知道什么重要以及怎样行动</a></li>
+  <li><a href="#比较视角学知与行" id="toc-比较视角学知与行" class="nav-link" data-scroll-target="#比较视角学知与行"><span class="header-section-number">7.3.6</span> 比较视角：学、知与行</a></li>
+  <li><a href="#综合案例气候模型的理解" id="toc-综合案例气候模型的理解" class="nav-link" data-scroll-target="#综合案例气候模型的理解"><span class="header-section-number">7.3.7</span> 综合案例：气候模型的理解</a></li>
+  </ul></li>
+  <li><a href="#智慧修正与认识能动性" id="toc-智慧修正与认识能动性" class="nav-link" data-scroll-target="#智慧修正与认识能动性"><span class="header-section-number">7.4</span> 智慧、修正与认识能动性</a>
+  <ul class="collapse">
+  <li><a href="#专题研讨从真信念到理解与智慧" id="toc-专题研讨从真信念到理解与智慧" class="nav-link" data-scroll-target="#专题研讨从真信念到理解与智慧"><span class="header-section-number">7.4.1</span> 专题研讨：从真信念到理解与智慧</a></li>
+  <li><a href="#沼泽化问题与价值层次" id="toc-沼泽化问题与价值层次" class="nav-link" data-scroll-target="#沼泽化问题与价值层次"><span class="header-section-number">7.4.2</span> 沼泽化问题与价值层次</a></li>
+  <li><a href="#能力成就是否排斥运气" id="toc-能力成就是否排斥运气" class="nav-link" data-scroll-target="#能力成就是否排斥运气"><span class="header-section-number">7.4.3</span> 能力成就是否排斥运气</a></li>
+  <li><a href="#理解是否要求全部真信念" id="toc-理解是否要求全部真信念" class="nav-link" data-scroll-target="#理解是否要求全部真信念"><span class="header-section-number">7.4.4</span> 理解是否要求全部真信念</a></li>
+  <li><a href="#解释压缩与多元模型" id="toc-解释压缩与多元模型" class="nav-link" data-scroll-target="#解释压缩与多元模型"><span class="header-section-number">7.4.5</span> 解释、压缩与多元模型</a></li>
+  <li><a href="#智慧重要性价值与恰当行动" id="toc-智慧重要性价值与恰当行动" class="nav-link" data-scroll-target="#智慧重要性价值与恰当行动"><span class="header-section-number">7.4.6</span> 智慧：重要性、价值与恰当行动</a></li>
+  <li><a href="#教育评价答案过程与迁移" id="toc-教育评价答案过程与迁移" class="nav-link" data-scroll-target="#教育评价答案过程与迁移"><span class="header-section-number">7.4.7</span> 教育评价：答案、过程与迁移</a></li>
+  <li><a href="#比较视野知行与成德" id="toc-比较视野知行与成德" class="nav-link" data-scroll-target="#比较视野知行与成德"><span class="header-section-number">7.4.8</span> 比较视野：知、行与成德</a></li>
+  <li><a href="#综合案例能解释但算错的团队" id="toc-综合案例能解释但算错的团队" class="nav-link" data-scroll-target="#综合案例能解释但算错的团队"><span class="header-section-number">7.4.9</span> 综合案例：能解释但算错的团队</a></li>
+  <li><a href="#有价值至少包含四个不同问题" id="toc-有价值至少包含四个不同问题" class="nav-link" data-scroll-target="#有价值至少包含四个不同问题"><span class="header-section-number">7.4.10</span> “有价值”至少包含四个不同问题</a></li>
+  <li><a href="#次级价值与更高阶价值" id="toc-次级价值与更高阶价值" class="nav-link" data-scroll-target="#次级价值与更高阶价值"><span class="header-section-number">7.4.11</span> 次级价值与更高阶价值</a></li>
+  <li><a href="#理解是否必须完全无误" id="toc-理解是否必须完全无误" class="nav-link" data-scroll-target="#理解是否必须完全无误"><span class="header-section-number">7.4.12</span> 理解是否必须完全无误</a></li>
+  <li><a href="#个人成就与共同认识善可能冲突" id="toc-个人成就与共同认识善可能冲突" class="nav-link" data-scroll-target="#个人成就与共同认识善可能冲突"><span class="header-section-number">7.4.13</span> 个人成就与共同认识善可能冲突</a></li>
+  </ul></li>
+  <li><a href="#知道事实与把握关系" id="toc-知道事实与把握关系" class="nav-link" data-scroll-target="#知道事实与把握关系"><span class="header-section-number">7.5</span> 知道事实与把握关系</a>
+  <ul class="collapse">
+  <li><a href="#价值问题有三个强度" id="toc-价值问题有三个强度" class="nav-link" data-scroll-target="#价值问题有三个强度"><span class="header-section-number">7.5.1</span> 价值问题有三个强度</a></li>
+  <li><a href="#可靠性提供的不是第二份真理" id="toc-可靠性提供的不是第二份真理" class="nav-link" data-scroll-target="#可靠性提供的不是第二份真理"><span class="header-section-number">7.5.2</span> 可靠性提供的不是第二份真理</a></li>
+  <li><a href="#成就理论把成功与能力连接" id="toc-成就理论把成功与能力连接" class="nav-link" data-scroll-target="#成就理论把成功与能力连接"><span class="header-section-number">7.5.3</span> 成就理论把成功与能力连接</a></li>
+  <li><a href="#理解的对象是关系而非答案集合" id="toc-理解的对象是关系而非答案集合" class="nav-link" data-scroll-target="#理解的对象是关系而非答案集合"><span class="header-section-number">7.5.4</span> 理解的对象是关系而非答案集合</a></li>
+  <li><a href="#理想化不必摧毁理解" id="toc-理想化不必摧毁理解" class="nav-link" data-scroll-target="#理想化不必摧毁理解"><span class="header-section-number">7.5.5</span> 理想化不必摧毁理解</a></li>
+  <li><a href="#知识与理解可能相互分离但并不敌对" id="toc-知识与理解可能相互分离但并不敌对" class="nav-link" data-scroll-target="#知识与理解可能相互分离但并不敌对"><span class="header-section-number">7.5.6</span> 知识与理解可能相互分离但并不敌对</a></li>
+  <li><a href="#价值载体必须先被说清" id="toc-价值载体必须先被说清" class="nav-link" data-scroll-target="#价值载体必须先被说清"><span class="header-section-number">7.5.7</span> 价值载体必须先被说清</a></li>
+  <li><a href="#附加价值不必表现为可相加的第二份好处" id="toc-附加价值不必表现为可相加的第二份好处" class="nav-link" data-scroll-target="#附加价值不必表现为可相加的第二份好处"><span class="header-section-number">7.5.8</span> 附加价值不必表现为可相加的第二份好处</a></li>
+  <li><a href="#容易取得不等于没有认识价值" id="toc-容易取得不等于没有认识价值" class="nav-link" data-scroll-target="#容易取得不等于没有认识价值"><span class="header-section-number">7.5.9</span> 容易取得不等于没有认识价值</a></li>
+  <li><a href="#真知识也可能具有负面或有限价值" id="toc-真知识也可能具有负面或有限价值" class="nav-link" data-scroll-target="#真知识也可能具有负面或有限价值"><span class="header-section-number">7.5.10</span> 真知识也可能具有负面或有限价值</a></li>
+  <li><a href="#多元认识善之间可能真实冲突" id="toc-多元认识善之间可能真实冲突" class="nav-link" data-scroll-target="#多元认识善之间可能真实冲突"><span class="header-section-number">7.5.11</span> 多元认识善之间可能真实冲突</a></li>
+  <li><a href="#阶段性结论" id="toc-阶段性结论" class="nav-link" data-scroll-target="#阶段性结论"><span class="header-section-number">7.5.12</span> 阶段性结论</a></li>
+  <li><a href="#探究过程为何具有不可替代的价值" id="toc-探究过程为何具有不可替代的价值" class="nav-link" data-scroll-target="#探究过程为何具有不可替代的价值"><span class="header-section-number">7.5.13</span> 探究过程为何具有不可替代的价值</a></li>
+  <li><a href="#好奇心需要由问题价值约束" id="toc-好奇心需要由问题价值约束" class="nav-link" data-scroll-target="#好奇心需要由问题价值约束"><span class="header-section-number">7.5.14</span> 好奇心需要由问题价值约束</a></li>
+  <li><a href="#承认无知是一项有内容的成就" id="toc-承认无知是一项有内容的成就" class="nav-link" data-scroll-target="#承认无知是一项有内容的成就"><span class="header-section-number">7.5.15</span> 承认无知是一项有内容的成就</a></li>
+  <li><a href="#把价值理论转成可观察的评价" id="toc-把价值理论转成可观察的评价" class="nav-link" data-scroll-target="#把价值理论转成可观察的评价"><span class="header-section-number">7.5.16</span> 把价值理论转成可观察的评价</a></li>
+  </ul></li>
+  <li><a href="#从个人成就到共同的认识善" id="toc-从个人成就到共同的认识善" class="nav-link" data-scroll-target="#从个人成就到共同的认识善"><span class="header-section-number">7.6</span> 从个人成就到共同的认识善</a>
+  <ul class="collapse">
+  <li><a href="#智慧首先关心问题选择" id="toc-智慧首先关心问题选择" class="nav-link" data-scroll-target="#智慧首先关心问题选择"><span class="header-section-number">7.6.1</span> 智慧首先关心问题选择</a></li>
+  <li><a href="#认识能动性包括修正自己" id="toc-认识能动性包括修正自己" class="nav-link" data-scroll-target="#认识能动性包括修正自己"><span class="header-section-number">7.6.2</span> 认识能动性包括修正自己</a></li>
+  <li><a href="#证言知识重新分配成就" id="toc-证言知识重新分配成就" class="nav-link" data-scroll-target="#证言知识重新分配成就"><span class="header-section-number">7.6.3</span> 证言知识重新分配成就</a></li>
+  <li><a href="#共同理解需要可共享的模型" id="toc-共同理解需要可共享的模型" class="nav-link" data-scroll-target="#共同理解需要可共享的模型"><span class="header-section-number">7.6.4</span> 共同理解需要可共享的模型</a></li>
+  <li><a href="#教育评价会塑造学生追求的认识善" id="toc-教育评价会塑造学生追求的认识善" class="nav-link" data-scroll-target="#教育评价会塑造学生追求的认识善"><span class="header-section-number">7.6.5</span> 教育评价会塑造学生追求的认识善</a></li>
+  <li><a href="#认识价值也受分配影响" id="toc-认识价值也受分配影响" class="nav-link" data-scroll-target="#认识价值也受分配影响"><span class="header-section-number">7.6.6</span> 认识价值也受分配影响</a></li>
+  <li><a href="#在不确定中行动是智慧的试金石" id="toc-在不确定中行动是智慧的试金石" class="nav-link" data-scroll-target="#在不确定中行动是智慧的试金石"><span class="header-section-number">7.6.7</span> 在不确定中行动是智慧的试金石</a></li>
+  <li><a href="#好奇心需要方向而不只是强度" id="toc-好奇心需要方向而不只是强度" class="nav-link" data-scroll-target="#好奇心需要方向而不只是强度"><span class="header-section-number">7.6.8</span> 好奇心需要方向而不只是强度</a></li>
+  <li><a href="#注意是一种有限且可分配的认识资源" id="toc-注意是一种有限且可分配的认识资源" class="nav-link" data-scroll-target="#注意是一种有限且可分配的认识资源"><span class="header-section-number">7.6.9</span> 注意是一种有限且可分配的认识资源</a></li>
+  <li><a href="#有时保存未知比扩大知识更负责任" id="toc-有时保存未知比扩大知识更负责任" class="nav-link" data-scroll-target="#有时保存未知比扩大知识更负责任"><span class="header-section-number">7.6.10</span> 有时保存未知比扩大知识更负责任</a></li>
+  <li><a href="#共同认识善需要维护而非一次生产" id="toc-共同认识善需要维护而非一次生产" class="nav-link" data-scroll-target="#共同认识善需要维护而非一次生产"><span class="header-section-number">7.6.11</span> 共同认识善需要维护而非一次生产</a></li>
+  <li><a href="#认识评价指标也会反过来塑造行为" id="toc-认识评价指标也会反过来塑造行为" class="nav-link" data-scroll-target="#认识评价指标也会反过来塑造行为"><span class="header-section-number">7.6.12</span> 认识评价指标也会反过来塑造行为</a></li>
+  <li><a href="#智慧不能由外部顺从替代" id="toc-智慧不能由外部顺从替代" class="nav-link" data-scroll-target="#智慧不能由外部顺从替代"><span class="header-section-number">7.6.13</span> 智慧不能由外部顺从替代</a></li>
+  <li><a href="#阶段性结论-1" id="toc-阶段性结论-1" class="nav-link" data-scroll-target="#阶段性结论-1"><span class="header-section-number">7.6.14</span> 阶段性结论</a></li>
+  <li><a href="#研究定位" id="toc-研究定位" class="nav-link" data-scroll-target="#研究定位"><span class="header-section-number">7.6.15</span> 研究定位</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/07-value.html">第三部　认识价值、技术环境与比较方法</a></li><li class="breadcrumb-item"><a href="../manuscript/07-value.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="学习目标">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>学习目标
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>区分真信念价值、知识附加价值和能力成就；理解知识与理解的差异；分析智慧、认识能动性和目标冲突；能够设计不只奖励答案的评价方案。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="开篇案例">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">提示</span>开篇案例
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>学生背熟了气候系统的所有结论，却无法解释变量改变会带来什么后果；另一位学生使用含有理想化假设的模型，能够说明主要依赖关系，也知道模型会在哪里失效。谁拥有更多知识，谁拥有更深理解？若可靠过程只把同一个真答案送到手中，它增加了什么价值？这些问题要求我们从“是否为真”转向认识成就的结构与用途。</p>
+</div>
+</div>
+<section id="知识的附加价值问题" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="知识的附加价值问题"><span class="header-section-number">7.1</span> 知识的附加价值问题</h2>
+<section id="价值问题的三个层次" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="价值问题的三个层次"><span class="header-section-number">7.1.1</span> 价值问题的三个层次</h3>
+<p>第一层问知识为何比假信念有价值，答案相对容易：真信念通常更好地指导行动。第二层问知识为何比单纯真信念更有价值。第三层问知识是否具有超过各组成部分价值总和的独特价值。可靠主义若只说可靠过程更可能产生真信念，就必须解释：在某个信念已经为真的情况下，可靠来源还增加什么。 这被称为<strong>沼泽化问题</strong>（<em>swamping problem</em>）：若真理是唯一最终认识价值，真值一旦到手，过程价值似乎被淹没<span class="citation" data-cites="kvanvig2003">(<a href="references.html#ref-kvanvig2003" role="doc-biblioref">Kvanvig 2003年</a>)</span>。回应可把可靠性视为工具价值、能力表现视为成就价值，或否认真理是唯一终极价值。</p>
+</section>
+<section id="成就与归功" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="成就与归功"><span class="header-section-number">7.1.2</span> 成就与归功</h3>
+<p>德性认识论认为，知识是因认知能力而取得的成功。成功与能力连接形成<strong>成就</strong>（<em>achievement</em>），像靠技艺完成攀登比被风吹上山顶更值得赞赏。这解释了知识何以优于猜中。 但知识不总是高度成就。询问路人得知车站方向很容易，也似乎是知识；一个能力很强的人在恶劣环境中合理却错误，也值得认识赞许。于是价值可能分布于真、理性、能力和责任多个维度，而不是全部压在知识标签上。</p>
+</section>
+<section id="理解不同于知道很多事实" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="理解不同于知道很多事实"><span class="header-section-number">7.1.3</span> 理解不同于知道很多事实</h3>
+<p><strong>理解</strong>（<em>understanding</em>）通常涉及把握各要素之间的解释、因果或依赖关系。一个人可以背诵气候事实，却不理解系统为何如此变化；也可能借助略有理想化的模型获得理解，即使模型中的个别命题并非严格真实<span class="citation" data-cites="grimm2006 riggs2003">(<a href="references.html#ref-grimm2006" role="doc-biblioref">Grimm 2006年</a>; <a href="references.html#ref-riggs2003" role="doc-biblioref">Riggs 2003年</a>)</span>。这类案例并不直接解决“理解是否事实性”的争论：一种路线认为，假理想化可以只是帮助主体把握真实依赖关系的表征工具，因此理解的核心对象仍受真理约束；另一种路线则允许受控的失真更深地进入理解本身，只要它没有破坏目标解释并且主体掌握适用边界<span class="citation" data-cites="elgin2017 khalifa2017">(<a href="references.html#ref-elgin2017" role="doc-biblioref">Elgin 2017年</a>; <a href="references.html#ref-khalifa2017" role="doc-biblioref">Khalifa 2017年</a>)</span>。 理解是否是一种知识？若“理解为什么<span class="math inline">\(p\)</span>”包含知道解释，就有紧密联系；但理解具有整体性、程度性和认知把握要求。它似乎比孤立命题知识更能容忍近似，却更要求主体能回答反事实问题、重新组织材料和作出解释。</p>
+</section>
+<section id="智慧与认识目标多元性" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="智慧与认识目标多元性"><span class="header-section-number">7.1.4</span> 智慧与认识目标多元性</h3>
+<p>智慧不仅是拥有更多真信念，还涉及判断何者重要、承认限制、协调价值并在情境中行动。一个数据库可以储存大量事实，却不因此智慧。认识生活可能追求真理、避免错误、理解、好奇满足、自主、公正与智慧；这些目标有时冲突。过度避免错误会使人什么都不信，过度追求新奇会增加轻信。 因此，认识规范需要权衡而非单一最大化。教育若只奖励答对，会鼓励猜测和短期记忆；若重视解释与错误修正，才能培养持续能力。</p>
+<div class="callout callout-style-default callout-important callout-titled" title="比较视角">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">重要</span>比较视角
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>儒家“智”与“知”常处于伦理实践和关系判断中，庄子则警惕以有限区分穷尽世界<span class="citation" data-cites="analects2003 zhuangzi2009">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年</a>; <a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>)</span>。它们提示我们区分信息占有与恰当把握。但若把智慧直接等同于当代“理解”理论，会丢失修身和生命取向。较好的比较问题是：何种认知成就值得追求，价值由真理、能力还是生活实践赋予？</p>
+</div>
+</div>
+</section>
+<section id="真理价值是否足够" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="真理价值是否足够"><span class="header-section-number">7.1.5</span> 真理价值是否足够</h3>
+<p>如果每个真信念都有同等价值，记住一串无关尘埃数目似乎与理解疾病原因一样重要。价值真理一元论可以回答：真理本身都有基本价值，但相关性、行动需要和系统联系赋予额外工具价值。多元论则把理解、好奇、自主和公正视为不可完全还原的认识价值。 多元价值会冲突。为了快速行动，我们可能接受较粗模型；为了深刻理解，则容忍暂时不确定。公共数据库最大化信息可得，却可能伤害隐私。认识论评价因此需要说明目标和约束，不能只说“更多知识总是更好”。</p>
+</section>
+<section id="理解的测试" class="level3" data-number="7.1.6">
+<h3 data-number="7.1.6" class="anchored" data-anchor-id="理解的测试"><span class="header-section-number">7.1.6</span> 理解的测试</h3>
+<p>主体若理解一个系统，通常能解释为何发生、预测干预后变化、识别哪些因素无关，并把解释迁移到新案例。复述教科书句子不足以证明理解。反事实提问特别有用：“若氧气减少，会怎样？”“若证据不再独立，结论如何变？” 理解具有程度。新手掌握简化模型，专家掌握适用边界和异常。理想化不必摧毁理解，只要主体知道哪些方面被省略、模型在目标问题上保留何种依赖。把近似模型当作字面完整真相才会误导。</p>
+</section>
+<section id="案例工作坊会做题但不理解" class="level3" data-number="7.1.7">
+<h3 data-number="7.1.7" class="anchored" data-anchor-id="案例工作坊会做题但不理解"><span class="header-section-number">7.1.7</span> 案例工作坊：会做题但不理解</h3>
+<p>学生记住贝叶斯公式并代入正确，却无法解释为何基础率进入分母；另一学生算术出错，但能画出自然频率树并指出条件概率方向。前者拥有某种程序能力和正确答案，后者拥有部分结构理解。教学评价若只看最终数字，会错配认识价值。 较好的评分把答案、推理、解释和错误诊断分开。允许学生修正也有认识意义：一次答对可能幸运，能够定位错误并迁移到新题更能显示稳定能力。</p>
+</section>
+<section id="价值问题需要最小对照而非抽象赞美" class="level3" data-number="7.1.8">
+<h3 data-number="7.1.8" class="anchored" data-anchor-id="价值问题需要最小对照而非抽象赞美"><span class="header-section-number">7.1.8</span> 价值问题需要最小对照而非抽象赞美</h3>
+<p>要判断知识比真信念多出什么，应构造两位主体对同一命题都相信且为真，只让一位具有可靠根据、能力成就或理解。随后分别比较他们抵抗反证、迁移到新问题、获得他人信任与合理行动的表现。若所有优势都来自新增事实而非认识方式，对照就失败；若差异只在道德赞许，也尚未说明认识价值。最小对照迫使理论指出附加价值的具体位置与可观察后果。</p>
+</section>
+</section>
+<section id="成就真理与目标多元性" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="成就真理与目标多元性"><span class="header-section-number">7.2</span> 成就、真理与目标多元性</h2>
+<section id="美诺篇问题" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="美诺篇问题"><span class="header-section-number">7.2.1</span> 《美诺篇》问题</h3>
+<p>柏拉图借通往拉里萨的道路提出：真意见与知识都能成功引路，为何知识更有价值？回答是，真意见会逃走，知识因“原因的说明”被系牢。这个古老问题已包含稳定性与解释的直觉：一次真指导行动不等于可重复认知成就。 稳定性答案说，知识比偶然真信念更可能在未来保持并指导行动。但对已经完成的一次行动，额外价值是否消失？若问题只问工具效果，当前真信念已经足够。知识价值理论因此要说明过程、主体能力或理解本身为何值得，而不只是未来更多真理。 《美诺篇》也提醒，知识价值问题不等于知识定义问题。即使无法给知识必要充分条件，我们仍可比较知识与真信念的功能。反之，一个定义准确，也未必解释为何该状态值得教育与追求。</p>
+</section>
+<section id="一级二级与三级价值问题" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="一级二级与三级价值问题"><span class="header-section-number">7.2.2</span> 一级、二级与三级价值问题</h3>
+<p>一级问题问知识为何比假信念有价值；二级问题问为何比单纯真信念更有价值；三级问题问知识是否有一种独特价值，不能还原为真、确证、可靠等成分价值。许多理论只回答其中一层。 可靠主义容易回答一般工具价值：可靠过程长期产生更多真信念。但二级问题固定当前信念已真，可靠来源增加什么？可以答，它给主体未来稳定性、可依赖资格或成功成就。三级问题则追问这些价值之和是否只是组成价值，而非知识作为整体的特殊价值。 不必假定知识在所有情形都比每个真信念更有价值。一个救命的偶然真信念可能比无关琐事知识更重要。比较应固定内容与情境：关于同一命题，知识状态是否在认识意义上优于幸运真信念。</p>
+</section>
+<section id="沼泽化论证的结构" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="沼泽化论证的结构"><span class="header-section-number">7.2.3</span> 沼泽化论证的结构</h3>
+<p>若可靠性只有产生真理的工具价值，一旦信念已真，工具价值似乎完成使命，像一杯已好喝的咖啡不会因机器昂贵而更好。这是沼泽化。反驳可否认真理是唯一最终认识价值，或否认过程价值在结果出现后消失。 一种回应把正确因能力而来视为成就。命中靶心因技艺而非运气，比两种因风抵消的命中更有价值，即使落点相同。认识成功的归功结构不是外加装饰，而改变主体与真理的关系。 另一回应诉诸适当性或值得信赖。可靠形成的真信念可被主体和他人合理用于进一步推理；偶然真信念缺少这种许可。其价值体现在认识网络中，而非孤立命题的真值。</p>
+</section>
+<section id="功劳理论与协作难题" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="功劳理论与协作难题"><span class="header-section-number">7.2.4</span> 功劳理论与协作难题</h3>
+<p>若知识要求真主要归功于主体能力，向可靠路人问路似乎功劳在说话者；使用仪器和团队科学更把成功分散。过强个人功劳论会把大量显然知识排除。 可以把功劳条件弱化为主体能力是成功的重要组成，而非主要原因。选择合适专家、理解回答并对击败者敏感，也是一种能力。知识功劳可分布在主体、来源和制度之间；个体仍需满足自己的角色条件。 分布功劳不表示责任无人承担。实验团队可通过作者贡献、数据管理和复核流程明确谁保证哪一步。认识价值来自协调能力的系统，而非神秘群体心灵。</p>
+</section>
+<section id="理解的对象" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="理解的对象"><span class="header-section-number">7.2.5</span> 理解的对象</h3>
+<p>我们可以理解一个主题、一个人、为什么事件发生或某理论如何工作。“理解为什么<span class="math inline">\(p\)</span>”常要求掌握解释；“理解量子力学”则是程度性的广域能力。把所有理解都分析成知道一组命题，会遗漏组织与把握。 理解包含依赖关系：哪些因素改变结果，哪些只是背景。主体应能回答反事实、压缩信息并迁移。单纯背诵十个真命题不保证看到联系；一张适当因果图可能比更多孤立事实产生更深理解。 理解也可能是部分的。知道发动机主要机制却不知道每个零件，仍有理解。评价需说明范围：对何种问题、精度和干预有效。没有范围声明的“我理解了”容易把局部模型绝对化。</p>
+</section>
+<section id="理解能容忍假吗" class="level3" data-number="7.2.6">
+<h3 data-number="7.2.6" class="anchored" data-anchor-id="理解能容忍假吗"><span class="header-section-number">7.2.6</span> 理解能容忍假吗</h3>
+<p>科学模型常理想化无摩擦平面、完全理性行为者或无限种群。字面上假，却能揭示依赖。若理解要求所有构成信念为真，这些案例困难。容错论认为，只要失真不破坏目标解释并被主体适当把握，模型可产生理解。 容忍并非无限。若模型因错误原因给出正确预测，或主体不知道理想化边界，就可能是假理解。关键是主体能说明哪些假设是工具性、放松后结果怎样变化。 知识论者可以回应，理解依赖关于模型—目标关系的真知识；假命题只是表征工具，不是被相信为字面真。双方争点在理解是否本质上是一种知识，还是独立认识成就。</p>
+</section>
+<section id="解释因果与统一" class="level3" data-number="7.2.7">
+<h3 data-number="7.2.7" class="anchored" data-anchor-id="解释因果与统一"><span class="header-section-number">7.2.7</span> 解释、因果与统一</h3>
+<p>因果理解让主体看到干预关系；统一论强调用少量原则整合大量现象；机制解释描述部分如何共同产生结果。不同学科重视不同形式。历史理解可能依赖行动理由和制度背景，数学理解则不以因果为中心。 没有单一解释形式覆盖所有理解。教材应教学生识别问题类型：“为什么发生”可能问原因、理由、功能、构成或证据。给出不匹配的真信息仍未回答问题。 解释还受听者背景影响。专家需要机制细节，初学者需要结构图。相对听者不等于真理相对；解释的可理解性依赖已有概念，而所述关系仍可客观评价。</p>
+</section>
+<section id="智慧重要性与有限注意" class="level3" data-number="7.2.8">
+<h3 data-number="7.2.8" class="anchored" data-anchor-id="智慧重要性与有限注意"><span class="header-section-number">7.2.8</span> 智慧、重要性与有限注意</h3>
+<p>真理无限，而人的时间有限。智慧的一项功能是识别何者值得知道。只追求信念总数会被琐事淹没；只追求立即有用又会忽略基础研究和好奇价值。重要性判断本身受价值与情境影响。 认识谦逊不是低估自己，而是准确把握能力边界、对反证开放。过度谦逊会不当地让位，特别是弱势说话者面对偏见时；认识勇气则在有根据时维持立场。德性需相互校正。 智慧还包括在不可消除不确定性下行动。等待绝对知识可能错过时机，过早确信又增加错误。能够表达置信、设置可逆步骤和预留修正，是实践智慧的认识面向。</p>
+</section>
+<section id="教育评价的认识论" class="level3" data-number="7.2.9">
+<h3 data-number="7.2.9" class="anchored" data-anchor-id="教育评价的认识论"><span class="header-section-number">7.2.9</span> 教育评价的认识论</h3>
+<p>考试若只奖励最终答案，会把幸运猜中与能力成功混同。过程评分、口头解释、迁移题和允许修订能分别测试理由、理解与学习。任何单一形式也会产生偏差：口头表达能力不等于全部理解，开放项目难比较，标准题易训练套路。 良好评价使用多种证据并明确目标。若目标是记忆基本概念，快速测验适合；若目标是论证能力，应要求重构和反驳；若目标是理解，应测试新情境迁移。评价工具与目标错配，会塑造错误学习策略。 反馈价值不只在给正确答案，而在指出错误类型：概念混淆、遗漏前提、证据不足或计算失误。学生能诊断错误，形成比一次得分更稳定的认识能力。</p>
+</section>
+<section id="综合案例地图与实地理解" class="level3" data-number="7.2.10">
+<h3 data-number="7.2.10" class="anchored" data-anchor-id="综合案例地图与实地理解"><span class="header-section-number">7.2.10</span> 综合案例：地图与实地理解</h3>
+<p>旅行者A背熟地图所有道路名称；B不知道部分名称，却理解地形、交通流和道路连接，能在封路时改道。A拥有更多命题知识，B可能有更强理解。若B的模型包含一条已废弃道路，但不影响当前路线，他的理解是否被局部假信念摧毁？ 评价应看任务范围、反事实能力和错误重要性。A在标准问答中优秀，却可能无法行动；B能解释和迁移，但需要更新细节。理想认识成就结合准确事实、结构理解与修正能力，而非迫使我们在知识和理解之间二选一。 比较中国工夫论时，这一案例也显示“知”可与熟练行动联系。但不能从B能行动直接推出所有命题知识都要求行为表现。不同认识成就可互相支持而不相互定义。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="认识价值分析表">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>认识价值分析表
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>固定同一内容，比较真信念与知识；说明价值是工具、成就、稳定、信任还是独特价值；检查功劳是否分布；对理解写出对象、范围、依赖和反事实能力；说明理想化失真是否受控；最后识别教育或行动真正需要哪种成就。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="理解的结构与检验" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="理解的结构与检验"><span class="header-section-number">7.3</span> 理解的结构与检验</h2>
+<section id="研读实验室为什么真信念还不够" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="研读实验室为什么真信念还不够"><span class="header-section-number">7.3.1</span> 研读实验室：为什么真信念还不够</h3>
+<p>若认识论只追求真信念，碰巧猜中似乎与知识同样好；若只计算真信念数量，记住大量琐碎事实可能优于理解一个重要机制。价值问题迫使我们说明：可靠、知识、理解、智慧和认识自主分别增加什么，而不是把所有优点都归入“更真”。 《美诺篇》中的路标例子把真判断与知识的行动效果并列：二者都能把人带到拉里萨，但知识因被理由“系牢”而更稳定。这个起点提出一级问题——知识为何比单纯真信念更好——也预示稳定性、可传递性和成就可能是附加价值的来源。 价值还可按强度区分。一级价值要求知识比相应真信念更好；二级价值要求知识各组成部分的整体价值超过简单相加；三级价值要求知识具有某种独特价值，而非只是许多好状态之一。一个理论解决一级问题，不等于证明知识比理解、智慧或可靠探究更有价值。</p>
+</section>
+<section id="沼泽化与可靠过程" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="沼泽化与可靠过程"><span class="header-section-number">7.3.2</span> 沼泽化与可靠过程</h3>
+<p>粗略可靠主义说，真信念有基本价值，可靠过程有工具价值，因为它倾向产生真信念。一旦特定信念已经为真，可靠过程的工具价值似乎被结果“沼泽化”：一杯好咖啡由可靠机器还是偶然故障产出，若味道完全相同，机器可靠性是否让这杯咖啡更好？ 回应之一是把过程价值理解为未来稳定性。可靠形成的信念更可能在新证据下维持或适当修正，也更能指导相似问题。回应之二是成就价值：成功因能力而来，本身比偶然成功好。回应之三是性质转化：知识作为整体具有价值，不是“真信念加工具”的简单和。 这些回应面对证言难题。读者从权威手册轻松获得知识，成功主要归功作者和制度，是否缺少成就价值？若回答“仍有知识但价值较低”，知识内部出现程度或不同价值来源；若坚持所有知识同等成就，就会夸大接受者功劳。 还有坏消息知识。知道自己患重病会带来痛苦，却可支持自主选择；知道无关紧要的随机数字几乎没有工具价值。认识价值不能等于即时愉悦，也不能假定每项真理价值相同。重要性、主体目标和可行动性会影响总体价值，但不改变命题真值。</p>
+</section>
+<section id="理解关系解释与反事实" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="理解关系解释与反事实"><span class="header-section-number">7.3.3</span> 理解：关系、解释与反事实</h3>
+<p>知道许多孤立命题不保证理解。主体可以背出所有行星位置，却不知道轨道为何呈现规律；也可以知道每一步公式，却不能说明改变参数后结果。理解要求把事实置于依赖结构中，掌握什么解释什么、哪些因素可改变结果。 理解的测试包括四项：能否给出适当解释；能否回答“若……会怎样”的反事实问题；能否把结构迁移到新案例；能否识别模型边界。仅流利复述可能通过第一项表面形式，却在后三项暴露缺失。教育评价应设计变式题而非只测原句。 理解允许理想化。理想气体、完全理性行动者和无摩擦平面都不字面真实，却能揭示某些依赖。理想化带来理解的条件是：模型在目标问题上保留相关结构，主体知道省略什么，并能说明何时失效。把模型当全貌才产生误解。 理解能否包含假命题有争议。一套解释可能使用小幅错误近似，却正确把握主要关系；若要求每个组成命题都真，会排除大量科学理解。较弱事实性要求是，核心依赖大体正确且错误不主导解释。宽容不能无限，因为纯虚构若偶然产生正确预测，仍未必构成对象理解<span class="citation" data-cites="grimm2006">(<a href="references.html#ref-grimm2006" role="doc-biblioref">Grimm 2006年</a>)</span>。 理解也具有对象差异。理解一个命题为何真、理解一个事件为何发生、理解一套理论和理解一个人不是同一任务。人的理解涉及意义、理由和关系，不能完全还原为因果变量；但同理心也不能替代事实校验。说明对象能防止把统一标准强加所有领域。</p>
+</section>
+<section id="探究价值与认识能动性" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="探究价值与认识能动性"><span class="header-section-number">7.3.4</span> 探究价值与认识能动性</h3>
+<p>只看最终信念会忽略探究过程。两个学生都答对，一人复制答案，一人提出假说、检验证据并修正错误；结果真值相同，后者表现更强认识能动性。过程价值包括提出问题、选择证据、承认不确定性、响应反例和把知识用于新情境。 能动性不等于独立完成。成熟探究者知道何时依赖专家、何时请求复核，并能说明信任结构。拒绝帮助可能只是低效自负；盲从权威则放弃监控。自主是对依赖有适当控制，而非没有依赖。 失败的探究也可能有价值。一个合理假说被实验反驳，可以排除机制、改进仪器和训练方法。若评价只奖励正结果，研究者会隐藏失败，群体也失去纠错信息。认识制度应让可说明的失败留下公共价值。 好奇心需要重要性约束。主体注意有限，追求所有真相不可能。智慧的一部分是判断什么值得问、何时证据足够、何时应停止并行动。选择不研究私人八卦可能是道德克制，不是认识缺陷；研究公共风险则可能具有认识义务。</p>
+</section>
+<section id="智慧知道什么重要以及怎样行动" class="level3" data-number="7.3.5">
+<h3 data-number="7.3.5" class="anchored" data-anchor-id="智慧知道什么重要以及怎样行动"><span class="header-section-number">7.3.5</span> 智慧：知道什么重要以及怎样行动</h3>
+<p>智慧不只是知识总量。一个人可掌握大量事实，却不能识别最相关证据、不能权衡长期后果或承认能力边界。智慧通常结合重要性判断、视角整合、情绪调节、经验与行动选择。它的评价因此跨越认识和实践领域。 谦逊是智慧的一部分，但谦逊不是一律降低信心。专家若在有强证据时假装“谁都说不准”，会制造虚假对称；新手若对明显错误保持坚定，也不是勇气。适当谦逊是信心与能力、证据和不确定性相称。 智慧还要求看见价值冲突。公开一个真相可能伤害隐私；立即行动可能牺牲进一步了解；等待完整证据可能错过救援。智慧不把道德理由伪装成证据，也不把真理追求绝对化，而是保持理由种类并作透明权衡。 教育可以培养智慧，却难用单次标准化测试测量。长期项目、错误反思、跨情境判断和理由说明比事实选择题更接近目标。评价本身应允许修订，因为能够根据反馈改善判断正是智慧迹象。</p>
+</section>
+<section id="比较视角学知与行" class="level3" data-number="7.3.6">
+<h3 data-number="7.3.6" class="anchored" data-anchor-id="比较视角学知与行"><span class="header-section-number">7.3.6</span> 比较视角：学、知与行</h3>
+<p>《论语》把学、思、问、习与行动反复联结；认识成就并非只以拥有命题为终点<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年</a>)</span>。这可与当代探究价值和认识德性对话：学习是否改变判断与实践，主体是否能在关系中受教，知识是否形成稳定能力。 但“知行合一”作为后世命题不能无区分投射到所有早期文本，也不能简单等同知识的行动规范<span class="citation" data-cites="tiwald2014">(<a href="references.html#ref-tiwald2014" role="doc-biblioref">Tiwald 和 Van Norden 2014年</a>)</span>。一个人知道吸烟有害却继续吸烟，可能是意志失败，不证明从未拥有命题知识。古典修养论对“知”的要求可能本来就比当代命题知识更厚。 《庄子》中的技艺故事常呈现熟练行动超出显式规则的情形，也反复质疑固定视角自以为穷尽事物<span class="citation" data-cites="zhuangzi2009">(<a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>)</span>。它可帮助区分会说规则、会做与知道边界；但将其直接称为德性认识论或默会知识理论，会抹平文本的生命实践和语言批判。 比较的实质收益是扩大价值问题：知识价值是否只在真信念，还是在改变注意、能力、关系与生活取向？当代理论提供真理、成就、理解的分析工具；古典材料使这些工具面对修养与行动的厚语境。二者可以互相检验而不相互吞并。</p>
+</section>
+<section id="综合案例气候模型的理解" class="level3" data-number="7.3.7">
+<h3 data-number="7.3.7" class="anchored" data-anchor-id="综合案例气候模型的理解"><span class="header-section-number">7.3.7</span> 综合案例：气候模型的理解</h3>
+<p>学生记得“二氧化碳增加导致变暖”，也能引用权威报告。另一学生使用简化能量平衡模型，能解释辐射强迫、反馈与时间滞后，却不掌握所有区域预测。谁更理解？前者可能拥有可靠证言知识，后者掌握部分结构；二者认识成就不同。 若第二位学生把云反馈设成固定常数，模型包含理想化。他应说明该简化适合全球方向判断，却不足以预测某城市十年降雨。能标明边界是理解的一部分。若他用简化模型否定所有复杂模拟，原有理解反而产生过度自信。 教师可用干预题测试：“若反照率上升，其他条件不变会怎样？”“为什么短期温度波动不直接反驳长期趋势？”“模型在哪些区域最不确定？”正确迁移比背诵结论更能显示关系把握。 认识价值还涉及行动。政策制定者不必成为气候模型专家，却需理解主要风险、共识来源和不确定性类型；模型专家也不凭专业知识单独决定代际公平。智慧要求不同角色共享足够理解，同时保持事实判断与价值选择的边界。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="本章研读任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>本章研读任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>选择一项自己“知道但不理解”的内容，画出要获得理解所需的因果或解释关系；设计一个反事实题和迁移题；列出模型理想化与边界；最后说明该认识成就的真理价值、成就价值、工具价值和对行动的意义。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="智慧修正与认识能动性" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="智慧修正与认识能动性"><span class="header-section-number">7.4</span> 智慧、修正与认识能动性</h2>
+<section id="专题研讨从真信念到理解与智慧" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="专题研讨从真信念到理解与智慧"><span class="header-section-number">7.4.1</span> 专题研讨：从真信念到理解与智慧</h3>
+<p>如果知识只是可靠形成的真信念，为什么知识比同样为真的幸运信念更好？如果一个可靠过程只负责把真值送达，真值似乎已经包含全部结果价值。价值问题迫使我们区分至少四类好处：命题为真、信念形成得当、主体取得成就、主体把握关系并能据此行动。它也检验一种知识理论是否只会排除反例，却不能解释我们为何追求知识。</p>
+</section>
+<section id="沼泽化问题与价值层次" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="沼泽化问题与价值层次"><span class="header-section-number">7.4.2</span> 沼泽化问题与价值层次</h3>
+<p>设一杯咖啡已经很美味，再加入一种不会改善味道的优质甜味剂，整体价值没有增加。类似地，若真信念已经让行动成功，可靠过程似乎只是“淹没”在真值价值中。可靠主义若说可靠过程只因倾向产生更多真信念而有工具价值，就能解释过程类型为何有用，却未必解释这一个已经为真的信念为何更好。 回应之一把适当形成视为独立规范价值：诚实研究得出真结论，比伪造数据碰巧得到同一结论更值得认可。回应之二诉诸成就：成功通过主体能力而来时，真值可归功于主体。<span class="citation" data-cites="sosa2007 pritchard2012">(<a href="references.html#ref-sosa2007" role="doc-biblioref">Sosa 2007年</a>; <a href="references.html#ref-pritchard2012" role="doc-biblioref">Pritchard 2012年</a>)</span> 回应之三否认知识必须有统一附加价值，认为不同知识在实践、关系和成就上价值不同。价值论不必预设所有知识比每个真信念都以同一种方式更好。 评价还要区分价值承载者。信念状态、探究过程、认识主体和制度可以分别好或坏。一个患者轻易从可靠医生处获知诊断，信念本身可能没有强成就价值，却对患者极有实践价值；医生团队的集体过程则可能体现重大认识成就。若只看个体信念，会错误贬低依赖他人的知识。</p>
+</section>
+<section id="能力成就是否排斥运气" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="能力成就是否排斥运气"><span class="header-section-number">7.4.3</span> 能力成就是否排斥运气</h3>
+<p>射箭成功若主要归功于射手能力，而非一阵恰好吹正箭的风，构成成就。知识的德性方案同样要求信念之真在适当程度上归功于认识能力。困难是“适当程度”随任务变化。幼儿接受照料者证言获得知识，患者依赖实验室链条知道结果，都不由个人独立能力完成。 解决方向是把能力放在生态中。主体的能力可包括选择可信来源、识别异常、提出问题与响应反证；制度能力包括校准、分工和纠错。归功无需排他：真值可共同归功于说者、听者与系统。这样既保留成就直觉，也不把所有证言知识降为低级。 不过扩大生态会产生边界问题。若任何可靠环境都算主体能力，自动提款机给出的余额也可被说成用户的认识成就。应保留反事实参与标准：主体或制度中的哪些稳定能力对成功有差异制造作用？若替换主体而结果不变，个体归功较少；若取消审计机制结果常错，制度归功较大。</p>
+</section>
+<section id="理解是否要求全部真信念" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="理解是否要求全部真信念"><span class="header-section-number">7.4.4</span> 理解是否要求全部真信念</h3>
+<p>理解通常表现为把握关系：为什么现象发生、因素怎样共同作用、改变一个条件会怎样。它不是收集更多孤立真句。一个学生能背出行星位置，却不能说明轨道关系；另一学生用简化模型解释季节变化，虽忽略扰动，却拥有更强结构把握。<span class="citation" data-cites="kvanvig2003 grimm2006">(<a href="references.html#ref-kvanvig2003" role="doc-biblioref">Kvanvig 2003年</a>; <a href="references.html#ref-grimm2006" role="doc-biblioref">Grimm 2006年</a>)</span> 理解是否事实性有争议。若一个理论核心完全错误，却组织得很漂亮，我们不愿说它理解了对象；但理想化模型包含严格说来为假的假设，仍可带来真实理解。关键或许不是每个命题都真，而是模型保留目标问题中相关依赖，并且使用者知道理想化边界。错误若正好承担解释工作，就会损害理解；无害简化则未必。 理解有对象与问题相对性。牛顿模型可充分理解低速工程问题，不足以理解强引力；一个历史叙述可解释制度变化，却不回答个体动机。说“我理解了”必须补问理解什么、达到何种深度、能完成哪些推断。程度性不等于任意性，可由解释、预测、反事实操控和迁移能力测试。</p>
+</section>
+<section id="解释压缩与多元模型" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="解释压缩与多元模型"><span class="header-section-number">7.4.5</span> 解释、压缩与多元模型</h3>
+<p>好解释在减少偶然列表的同时保留关键结构。压缩过少，只是重述数据；压缩过度，则把差异抹平。因果解释、机制解释、统计解释与目的解释回答不同“为什么”。同一现象可以需要多层说明：疫情扩散有病毒机制、接触网络、政策激励和个体行为，任何单层都可能真实而不完备。 解释多元不表示矛盾理论都同样好。不同模型若在对象尺度、问题目标和适用条件上互补，可以并存；若在同一条件下给出相反预测，就需证据区分。成熟理解包括知道模型之间怎样连接、在哪里冲突、哪些变量被各自省略。 可视化和类比能提高理解，也容易制造虚假流畅。漂亮图形让关系显得直观，但坐标截断、聚合层级与颜色编码可能隐藏不确定性。判断理解不能只问读者是否“感觉懂了”，还要让其解释新案例、发现反例、重建因果方向并指出表示限制。</p>
+</section>
+<section id="智慧重要性价值与恰当行动" class="level3" data-number="7.4.6">
+<h3 data-number="7.4.6" class="anchored" data-anchor-id="智慧重要性价值与恰当行动"><span class="header-section-number">7.4.6</span> 智慧：重要性、价值与恰当行动</h3>
+<p>智慧不只是知道更多，也不只是更聪明地解题。它涉及辨认什么值得关注、在冲突价值中保持分寸、承认不可控因素，并使判断进入行动。一个专家能精准预测市场波动，却不理解建议给脆弱家庭带来的风险，可以有知识而缺少智慧。 实践智慧也不是跳过证据的直觉。它应能整合一般规则与个案差异，知道何时规则适用、何时例外需要理由。经验丰富的医生可能在多个可行方案间权衡患者目标，但仍须说明证据、听取患者并接受结果审查。若“我凭经验”使判断免于问责，它就成了权威修辞。 智慧包含认识谦逊。谦逊不是普遍降低自信，而是准确识别能力边界、依赖关系和未知后果。过度自信与虚假谦卑都可能妨碍行动。合宜态度可以是：对已充分检验的局部结论坚定，对模型外推保留，对价值选择公开，并预设修正机制。</p>
+</section>
+<section id="教育评价答案过程与迁移" class="level3" data-number="7.4.7">
+<h3 data-number="7.4.7" class="anchored" data-anchor-id="教育评价答案过程与迁移"><span class="header-section-number">7.4.7</span> 教育评价：答案、过程与迁移</h3>
+<p>只奖励正确答案会把幸运、背诵与理解混在一起。问题驱动教材应分别评价命题正确、论证有效、证据选择、反例诊断、比较解释和修正能力。允许学生提交一次修订，可观察其是否真正回应反馈；让其把理论应用到结构不同的新案例，可测试迁移。 评分也不应把“写得复杂”误当理解。一个清晰区分关键变量的短答案，可能优于堆叠术语。量规应给出可观察指标：是否准确重建对手最强论证，是否说明例子打击哪一前提，是否标注不确定性，是否能提出区分竞争理论的新测试。 合作学习中的价值分配更复杂。团队可以产生无人独立拥有的理解，成员贡献包括提问、整合、检错与解释。评价若只奖励最后发言者，会破坏集体探究。合理方案结合共同产物、过程记录和个人反思，让知识的社会生产不隐去责任。</p>
+</section>
+<section id="比较视野知行与成德" class="level3" data-number="7.4.8">
+<h3 data-number="7.4.8" class="anchored" data-anchor-id="比较视野知行与成德"><span class="header-section-number">7.4.8</span> 比较视野：知、行与成德</h3>
+<p>儒家传统常把学习、反思与实行置于人格养成中，认识好处不只是真命题数量，而是成为能在关系中恰当判断的人。<span class="citation" data-cites="analects2003 xunzi2014">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年</a>; <a href="references.html#ref-xunzi2014" role="doc-biblioref">Xunzi 2014年</a>)</span> 这可补充当代知识价值讨论：为何形成某种主体本身具有价值？不过“知行关系”包含多种历史解释，不能被压缩成德性认识论的现成版本。 庄子对固执成见与有限视角的反思，则提醒理解可能包括知道自己的解释何处失效。<span class="citation" data-cites="zhuangzi2009">(<a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>)</span> 这不要求取消判断，而要求把边界意识写入智慧。比较的检验点是：一个传统如何连接真、能力、人格和共同生活；这些连接是概念条件、因果培养，还是伦理理想？只有区分后，跨传统对话才不会把近似词汇误作同义。</p>
+</section>
+<section id="综合案例能解释但算错的团队" class="level3" data-number="7.4.9">
+<h3 data-number="7.4.9" class="anchored" data-anchor-id="综合案例能解释但算错的团队"><span class="header-section-number">7.4.9</span> 综合案例：能解释但算错的团队</h3>
+<p>两个气候风险团队向城市提交报告。甲团队预测数字非常准确，却使用外部商业模型，不能说明模型在沿海新区为何有效；乙团队低估了某一指标，但清楚展示海平面、排水和人口暴露的因果关系，发现错误后能迅速修正并预测新情景。决策者应如何比较其认识价值？ 不能简单说甲有知识、乙有理解。先问甲的准确是否稳定、团队是否能识别模型失效；再问乙的结构把握是否依赖严重错误、修正后是否保留解释。短期预警可更看重校准准确，长期规划需迁移与反事实能力。城市还可组合两者：用甲检验预测，用乙审计机制与边界。 评价表应至少包含真值表现、来源可靠、解释结构、迁移能力、错误修正、透明度与行动适配。不同目的可以赋不同权重，但权重需公开。案例由此显示，知识价值不是一场抽象排名，而是把多种认识好处与探究目标对应起来。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="专题研读任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>专题研读任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>为一个课程项目设计七维认识评价量规，必须分别覆盖真值、理由、能力、理解、修正、合作与行动。用该量规比较“偶然答对”“可靠照做”“能够解释但犯局部错误”三个样本。</p>
+</div>
+</div>
+</section>
+<section id="有价值至少包含四个不同问题" class="level3" data-number="7.4.10">
+<h3 data-number="7.4.10" class="anchored" data-anchor-id="有价值至少包含四个不同问题"><span class="header-section-number">7.4.10</span> “有价值”至少包含四个不同问题</h3>
+<p>讨论知识的价值时，首先要固定比较对象。第一，真信念是否比假信念更有工具价值，例如帮助我们到达目的地？第二，知识是否比同内容的偶然真信念更好？第三，获得知识的过程是否表现了主体能力，因而值得把成功归功于主体？第四，一种认识成就是否还能支持新的探究、解释和共同信任？如果不区分这些问题，“知识当然有用”和“知识具有独特价值”会被误当作同一结论。</p>
+<p>淹没问题集中攻击第二问：若真值已经带来全部结果价值，可靠过程似乎像一杯好咖啡由一台可靠机器冲出一样，不会让成品更好。可靠主义可以回答，可靠来源使真信念更稳定、更容易在相似场景中保持，也让他人有理由继续信任该来源；德性认识论则强调成功因能力而成，具有成就价值<span class="citation" data-cites="zagzebski1996 sosa2007">(<a href="references.html#ref-zagzebski1996" role="doc-biblioref">Zagzebski 1996年</a>; <a href="references.html#ref-sosa2007" role="doc-biblioref">Sosa 2007年</a>)</span>。但二者不能只换一个赞美词。稳定性需要说明跨哪些变化，成就需要说明主体贡献为何足够显著；否则一个完全依赖他人的听者或自动系统会使功劳归属再次成为问题。</p>
+</section>
+<section id="次级价值与更高阶价值" class="level3" data-number="7.4.11">
+<h3 data-number="7.4.11" class="anchored" data-anchor-id="次级价值与更高阶价值"><span class="header-section-number">7.4.11</span> 次级价值与更高阶价值</h3>
+<p>知识不仅可以作为一个已经完成的状态被评价，还可以从“值得追求”和“形成更大结构”两个层面评价。可靠探究值得选择，即使一次偶然猜测恰好更快得到真相；一组彼此连接的知识又可能形成理解，使主体能够回答为什么、预测变化并发现异常。后一种价值不能简单还原为更多真命题，因为同样数量的孤立事实未必让人把握依赖关系<span class="citation" data-cites="kvanvig2003 grimm2006">(<a href="references.html#ref-kvanvig2003" role="doc-biblioref">Kvanvig 2003年</a>; <a href="references.html#ref-grimm2006" role="doc-biblioref">Grimm 2006年</a>)</span>。</p>
+<p>这也解释为什么教育不能只按正确答案评分。若学生知道标准答案，却不知道哪些证据支持它、条件改变后结论是否保留，他拥有的认识成果十分脆弱。反过来，一个学生使用有意简化的模型，却能指出理想化位置、推出反事实后果并在预测失败时修订，可能具有更深理解。评价不应因此放弃真理约束，而应检查局部失真是否服务于更准确的关系把握。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>表现</th>
+<th>知道事实</th>
+<th>理解关系</th>
+<th>表现智慧</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>背诵者</td>
+<td>可复述结论</td>
+<td>不能迁移或解释</td>
+<td>不知何时暂停判断</td>
+</tr>
+<tr class="even">
+<td>模型使用者</td>
+<td>掌握主要事实</td>
+<td>能作反事实推演</td>
+<td>知道模型边界并寻求复核</td>
+</tr>
+<tr class="odd">
+<td>成熟探究者</td>
+<td>能追踪证据</td>
+<td>能整合多种解释</td>
+<td>能选择值得追问的问题并修订目标</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="理解是否必须完全无误" class="level3" data-number="7.4.12">
+<h3 data-number="7.4.12" class="anchored" data-anchor-id="理解是否必须完全无误"><span class="header-section-number">7.4.12</span> 理解是否必须完全无误</h3>
+<p>有些科学模型包含理想化假设，例如无摩擦平面或完全理性行动者，却仍能带来理解。这似乎支持“理解可以建立在假命题上”。但从局部理想化直接推出理解无需真理约束过快。应区分三件事：模型字面描述是否完全真实，模型保留的依赖关系是否大体正确，主体是否知道理想化会在哪里失效。一个模型可以在第一层为假，在后二层仍可靠；若主体把理想化当作现实全部结构，理解就会崩溃。</p>
+<p>因此，理解的检验不只是要求主体讲出一个流畅故事。至少还要看它能否支持新情境迁移、反事实推演、解释比较和错误定位；竞争解释产生不同预测时，主体能否说明什么证据会区分它们。叙事连贯本身很廉价，阴谋论也能连贯。理解需要让世界对解释施加摩擦。</p>
+</section>
+<section id="个人成就与共同认识善可能冲突" class="level3" data-number="7.4.13">
+<h3 data-number="7.4.13" class="anchored" data-anchor-id="个人成就与共同认识善可能冲突"><span class="header-section-number">7.4.13</span> 个人成就与共同认识善可能冲突</h3>
+<p>以个人功劳评价认识成就，容易低估证言、实验团队、数据库和公共机构的贡献；只评价系统总准确率，又可能容忍少数人的发言被系统性忽略。共同认识善至少包含真信息的生产、错误的公开纠正、解释资源的可获得、异议者的参与机会以及信用的合理分配。它们可能冲突：快速形成共识有利于行动，却可能压低异议；开放全部材料有利于复核，却可能损害隐私。</p>
+<p>智慧并不是把这些价值加成一个总分，而是在具体角色中决定哪些问题值得优先、哪些损失不能被平均收益抵消，以及何时需要修改目标。个人可以拥有大量知识而在问题选择上十分愚蠢；机构也可以平均准确却反复把错误成本转嫁给同一群体。认识价值理论若不能进入教育、专家制度和公共决策，就没有完成从“好答案”到“好的认识生活”的解释。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>评价一项认识成果时依次追问：它是否为真；是否来自能抵抗相关错误的方法；成功能否合理归功于主体或团队；能否支持解释、迁移和继续探究；成果及其成本如何在人群中分配。任何单一层面的高分都不能自动替代其余层面。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="知道事实与把握关系" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="知道事实与把握关系"><span class="header-section-number">7.5</span> 知道事实与把握关系</h2>
+<section id="价值问题有三个强度" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="价值问题有三个强度"><span class="header-section-number">7.5.1</span> 价值问题有三个强度</h3>
+<p>弱问题问真信念是否比假信念有价值；中等问题问知识为何比仅仅真信念更好；强问题问知识是否具有一种使其他认识状态无法替代的独特价值。三个问题不能用同一答案。真信念通常帮助行动和解释，却可能在无关领域没有实际价值；可靠过程能提高未来成功，却似乎在目标信念已经为真后被“沼泽化”；知识若比理解、智慧更有价值，还需要说明这种优势是否适用于所有任务。</p>
+</section>
+<section id="可靠性提供的不是第二份真理" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="可靠性提供的不是第二份真理"><span class="header-section-number">7.5.2</span> 可靠性提供的不是第二份真理</h3>
+<p>若一杯咖啡已经好喝，可靠机器似乎不能使同一杯更好；这就是沼泽化类比的力量。但信念不是一次消费品。可靠来源使真信念更稳定、可复制、可在反证下适当更新，也使他人有理由信任主体。附加价值可能不位于当前真值内部，而位于信念的模态性质、未来表现和社会资格。反对者会问：这些只是过程工具价值，是否足以说明知识本身更好？回答必须明确“知识价值”指状态价值、获得过程价值还是主体成就价值。</p>
+</section>
+<section id="成就理论把成功与能力连接" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="成就理论把成功与能力连接"><span class="header-section-number">7.5.3</span> 成就理论把成功与能力连接</h3>
+<p>一次投篮命中若源于稳定技巧，通常比闭眼乱投碰巧命中更有成就价值。德性认识论把类似结构用于知识：成功因为认知能力而取得<span class="citation" data-cites="sosa2007 zagzebski1996">(<a href="references.html#ref-sosa2007" role="doc-biblioref">Sosa 2007年</a>; <a href="references.html#ref-zagzebski1996" role="doc-biblioref">Zagzebski 1996年</a>)</span>。该方案解释了为何Gettier成功缺乏价值，也把主体能动性带回知识。但能力归功具有程度，并受环境支持。一名医生依赖团队数据和仪器得出正确诊断，成就既非她独占，也非与她无关。理论需要允许分布式贡献，同时防止任何参与者都因系统成功自动获得同等功劳。</p>
+</section>
+<section id="理解的对象是关系而非答案集合" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="理解的对象是关系而非答案集合"><span class="header-section-number">7.5.4</span> 理解的对象是关系而非答案集合</h3>
+<p>知道许多孤立事实仍可能无法解释为何、如果改变会怎样以及模型在哪里失效。理解通常要求把握因果、组成、依赖或理由关系，并能在新情境中使用这种把握。它因此表现为压缩、迁移和反事实推演：主体能从较少原则组织多个事实，能预测变量改变，能区分核心机制与偶然细节。单纯复述解释不够，因为背诵者也能输出同样句子；主体必须在一定范围内重新生成和修正关系结构。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>检验理解可使用四项任务：解释一个已知结果；预测最小变量改变；把同一结构迁移到新案例；指出模型在何种条件下失败。四项都比“能否复述定义”更接近关系把握，也允许理解具有程度而非全有全无。</p>
+</div>
+</div>
+</section>
+<section id="理想化不必摧毁理解" class="level3" data-number="7.5.5">
+<h3 data-number="7.5.5" class="anchored" data-anchor-id="理想化不必摧毁理解"><span class="header-section-number">7.5.5</span> 理想化不必摧毁理解</h3>
+<p>模型可能假设无摩擦、完全竞争或理性行动者，这些前提字面上为假，却保留目标依赖并揭示主要机制。是否产生理解，取决于理想化是否受控制：使用者知道省略了什么，能说明失真为何不破坏当前解释，并能在失真变得重要时修正模型。任意虚构故事不会因“帮助理解”而免责。理想化必须与事实世界保持可追踪联系，并在目标问题上提高预测、解释或干预能力<span class="citation" data-cites="grimm2006">(<a href="references.html#ref-grimm2006" role="doc-biblioref">Grimm 2006年</a>)</span>。</p>
+</section>
+<section id="知识与理解可能相互分离但并不敌对" class="level3" data-number="7.5.6">
+<h3 data-number="7.5.6" class="anchored" data-anchor-id="知识与理解可能相互分离但并不敌对"><span class="header-section-number">7.5.6</span> 知识与理解可能相互分离但并不敌对</h3>
+<p>证言可以让听者轻易知道某事实，却没有足够材料理解机制；反过来，一个理想化模型使用者可能把握主要关系，却包含少量已知失真。由此不能推出知识无价值或理解容许任意错误。更合理的看法是二者回答不同评价：知识要求特定命题以适当方式为真，理解评价主体对关系网络的把握。成熟探究通常需要两者合作，先以知识约束模型，再以理解组织和扩展知识。</p>
+</section>
+<section id="价值载体必须先被说清" class="level3" data-number="7.5.7">
+<h3 data-number="7.5.7" class="anchored" data-anchor-id="价值载体必须先被说清"><span class="header-section-number">7.5.7</span> 价值载体必须先被说清</h3>
+<p>问“知识有什么价值”时，可能评价一个信念状态、获得它的探究过程、拥有相应能力的主体，或由知识支持的共同实践。可靠调查可能耗费资源，却形成以后可复用的能力；偶然得到的真答案作为状态有用，却没有过程成就；一个主体因知识变得可信赖，又是人格和关系层面的价值。若把这些载体混在一起，反对者针对当前真信念的沼泽化批评，会被未来工具价值悄悄回答。好的理论应逐层说明价值位于哪里以及怎样从一层传到另一层。</p>
+</section>
+<section id="附加价值不必表现为可相加的第二份好处" class="level3" data-number="7.5.8">
+<h3 data-number="7.5.8" class="anchored" data-anchor-id="附加价值不必表现为可相加的第二份好处"><span class="header-section-number">7.5.8</span> 附加价值不必表现为可相加的第二份好处</h3>
+<p>知识若由真信念和适当方式构成，其价值可能来自整体结构，而非真值价值再加一个固定数额。一次恰当的成功使主体的判断与世界形成可依赖关系，类似一场因技巧获胜的比赛不能被拆成“获胜价值”与“技巧价值”后简单相加。这种整体论能回应沼泽化，却需接受检验：若过程非常可靠而目标微不足道，整体是否仍有显著价值；若主体毫不费力地继承可靠证言，成就是否足够厚。答案应允许知识价值随对象与贡献程度变化。</p>
+</section>
+<section id="容易取得不等于没有认识价值" class="level3" data-number="7.5.9">
+<h3 data-number="7.5.9" class="anchored" data-anchor-id="容易取得不等于没有认识价值"><span class="header-section-number">7.5.9</span> 容易取得不等于没有认识价值</h3>
+<p>查阅可靠地图、词典或数据库往往几秒就获得知识。若理论要求艰苦个人成就，便会错误贬低基础设施降低认识成本的成功。容易可以来自前人调查、标准化、编辑与持续纠错，使用者只需具备识别适用来源和响应异常的能力。这里的价值分布在系统中：个体功劳较少，不表示知识状态无价值；制度使大量主体低成本获得真理，本身就是可评价的集体成就。关键是容易是否来自可靠设计，而非随机迎合。</p>
+</section>
+<section id="真知识也可能具有负面或有限价值" class="level3" data-number="7.5.10">
+<h3 data-number="7.5.10" class="anchored" data-anchor-id="真知识也可能具有负面或有限价值"><span class="header-section-number">7.5.10</span> 真知识也可能具有负面或有限价值</h3>
+<p>关于他人隐私的真信息、帮助实施伤害的技术细节，或使主体沉溺无关琐事的事实，都提醒我们，认识价值不自动压倒伦理与实践价值。承认这一点不等于真理没有内在价值，而是区分“作为认识成就值得肯定”与“在此情境中值得追求、传播或使用”。探究议程必须考虑对象、受益者、风险与机会成本。知识论若完全不问哪些问题值得追求，会把有限注意当成无限资源。</p>
+</section>
+<section id="多元认识善之间可能真实冲突" class="level3" data-number="7.5.11">
+<h3 data-number="7.5.11" class="anchored" data-anchor-id="多元认识善之间可能真实冲突"><span class="header-section-number">7.5.11</span> 多元认识善之间可能真实冲突</h3>
+<p>快速行动需要简化模型，深度理解要求保留复杂性；公开理由改善审计，却可能损害隐私；广泛收集数据增加预测知识，也可能削弱当事者自主。不能假定真理、理解、速度、公平和可解释性总能共同最大化。成熟评价先说明当前任务的优先次序，再列出被牺牲的善与补偿措施。价值多元论若只罗列清单而不处理冲突，同样无法指导选择；它需要可争论的排序、底线和复核条件。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>讨论认识价值时依次固定四项：价值的载体是什么，价值归属于谁，在哪个时间尺度和任务中评价，与哪些非认识价值发生冲突。四项固定后，才可判断可靠、理解、成就或智慧是否真正解释了附加价值。</p>
+</div>
+</div>
+</section>
+<section id="阶段性结论" class="level3" data-number="7.5.12">
+<h3 data-number="7.5.12" class="anchored" data-anchor-id="阶段性结论"><span class="header-section-number">7.5.12</span> 阶段性结论</h3>
+<p>认识价值具有多元结构：真理提供基本方向，可靠性带来稳定与可信赖，能力使成功成为成就，理解组织关系并支持迁移。寻找唯一价值可能简化理论，却会遮蔽不同任务。评价一项认识成果时应问它对谁、在什么时间、为哪种探究或行动增加了什么，而不是只给“知识比真信念更好”一句抽象口号。</p>
+</section>
+<section id="探究过程为何具有不可替代的价值" class="level3" data-number="7.5.13">
+<h3 data-number="7.5.13" class="anchored" data-anchor-id="探究过程为何具有不可替代的价值"><span class="header-section-number">7.5.13</span> 探究过程为何具有不可替代的价值</h3>
+<p>《美诺》式问题可以被推广：若一个人已经拥有真答案，为什么还要追求知识、理解或更好的方法？因为认识生活不只评价某一时刻手中有什么，还评价主体能否继续到达真相、辨认反证并向他人说明路线。偶然得到的正确地图可能带人到达一次目的地，却不能在道路变化后指导选择；掌握路线关系的人能够修正。探究过程的价值表现为可重复、可迁移和可纠错，而不只是为结果增加装饰。</p>
+<p>但“亲自探究”不是绝对价值。病人没有必要独立重做临床试验，学生也不必重新发现全部数学。证言可以高效传递知识，把个人精力留给真正需要判断的部分。关键不是所有结论都由自己生产，而是主体知道依赖谁、凭什么信任、何时需要越过摘要查原始证据。成熟的认识能动性是一种管理依赖的能力，而不是拒绝依赖。</p>
+</section>
+<section id="好奇心需要由问题价值约束" class="level3" data-number="7.5.14">
+<h3 data-number="7.5.14" class="anchored" data-anchor-id="好奇心需要由问题价值约束"><span class="header-section-number">7.5.14</span> 好奇心需要由问题价值约束</h3>
+<p>好奇心常被列为认识德性，因为它推动主体寻找新证据。然而对任何信息都想知道，并不自动值得赞美。窥探隐私、追逐猎奇细节或不断刷新无关消息可以满足好奇，却挤占注意、伤害他人并破坏长期理解。问题选择本身具有规范结构：这项信息与什么目标相关，谁承担搜集成本，知道之后能够改进什么，是否存在不应越过的边界？</p>
+<p>智慧由此不等于拥有最多答案。它还包括识别伪问题、把宽问题缩成可研究争点、在证据不足时暂停、在调查成本过高时选择代理，以及发现原目标值得修改。一个研究团队若精确回答了错误问题，技术成功也可能是认识失败。教育若只奖励快速解题，学生会学会在既定问题内优化，却不会检查题目是否遗漏重要对象。</p>
+</section>
+<section id="承认无知是一项有内容的成就" class="level3" data-number="7.5.15">
+<h3 data-number="7.5.15" class="anchored" data-anchor-id="承认无知是一项有内容的成就"><span class="header-section-number">7.5.15</span> 承认无知是一项有内容的成就</h3>
+<p>“我不知道”可能只是放弃，也可能是高度校准的判断。后者至少说明未知发生在哪里：缺少数据、概念含混、竞争模型无法区分，还是主体不具备相关能力；还说明什么证据可能推进问题。能定位无知的人已经掌握问题边界，能够安排下一步探究。相反，以谦逊为名拒绝判断所有事项，会逃避应承担的认识责任。</p>
+<p>制度也需要表达有结构的无知。公共机构不能只在报告末尾写“仍有不确定性”，而应列出不确定的来源、可能后果、正在采取的监测和触发修订的条件。这样做会暂时降低权威形象，却提高长期可信度。持续把确定语气当作专业标志，会迫使专家在证据改变后把正常修订伪装成从未犯错。</p>
+</section>
+<section id="把价值理论转成可观察的评价" class="level3" data-number="7.5.16">
+<h3 data-number="7.5.16" class="anchored" data-anchor-id="把价值理论转成可观察的评价"><span class="header-section-number">7.5.16</span> 把价值理论转成可观察的评价</h3>
+<p>认识价值若只能在抽象层面赞美真理、理解和智慧，就难以指导教学。课程可以要求学生提交答案之外的产物：证据路径显示知识根据，最小反例检验概念掌握，反事实预测检验理解，修订说明检验对错误的响应，问题说明检验探究选择。同一作品可以在这些维度分别评分，避免用流畅表达遮蔽证据缺口。</p>
+<p>评价还要允许失败留下价值。一个假设最终被反驳，若研究者事先明确预测、保存数据、诚实报告并由失败排除一类解释，仍产生认识收益；一个碰巧成功却删除失败记录的项目则不应得高分。奖励结构会反过来塑造探究行为。好的制度不只选出已经正确的人，还让参与者有理由暴露不确定、寻找反例和修正自己。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“知道更多”不是单一尺度。评价个人或机构时，至少分别记录：真结论的数量与重要性；获得方法的可靠和透明；对关系的理解与迁移；承认并定位无知的能力；问题选择和注意分配；错误被发现后的修订。把这些维度保持可区分，才能看见价值冲突而不是制造一个虚假的总分。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="从个人成就到共同的认识善" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="从个人成就到共同的认识善"><span class="header-section-number">7.6</span> 从个人成就到共同的认识善</h2>
+<section id="智慧首先关心问题选择" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="智慧首先关心问题选择"><span class="header-section-number">7.6.1</span> 智慧首先关心问题选择</h3>
+<p>一个人可以拥有大量真信念，却把全部精力用于无关细节，忽视最重要风险。智慧要求判断什么值得知道、何时继续调查、何时承认未知以及知识怎样进入行动。它不等于更高智商，也不等于道德完美；其认识成分包括尺度感、目标排序、边界意识和对后果的敏感。庄子关于有限视角与固执成见的反思，能够提示我们把“知道自己的解释在哪里失效”纳入认识成熟，而不必把古典概念直接等同现代智慧理论<span class="citation" data-cites="zhuangzi2009">(<a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>)</span>。</p>
+</section>
+<section id="认识能动性包括修正自己" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="认识能动性包括修正自己"><span class="header-section-number">7.6.2</span> 认识能动性包括修正自己</h3>
+<p>把自主理解为独立地产生全部理由，会贬低合理信任和共同学习。更重要的能动性是提出问题、选择信息、分配注意、判断依赖、响应反证并修改信念。承认错误不是认识失败后的附属礼仪，而是能力表现：主体能够定位错误来自数据、推理、概念还是价值设定，并改变相应环节。一个永远给出正确答案但无法说明失败条件的系统，在能动性上可能不如一个会识别不确定并请求帮助的主体。</p>
+</section>
+<section id="证言知识重新分配成就" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="证言知识重新分配成就"><span class="header-section-number">7.6.3</span> 证言知识重新分配成就</h3>
+<p>听者依据可信专家轻易获得知识，并不因“太容易”而失去价值。真理、行动资格和可传递性仍然存在，只是认识功劳分布于说话者、听者和制度。说话者完成一阶调查，听者正确识别并依赖来源，制度保存认证与纠错记录。若听者无视明显反证，仅因专家头衔接受，他对成功的贡献较少；若制度可靠地降低非专家核查成本，这种容易恰是认识基础设施的成就。价值理论不应把所有值得拥有的知识都塑造成孤独英雄的个人发现。</p>
+</section>
+<section id="共同理解需要可共享的模型" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="共同理解需要可共享的模型"><span class="header-section-number">7.6.4</span> 共同理解需要可共享的模型</h3>
+<p>群体可能各自掌握局部事实，却没有任何成员或公共文档表示整体依赖。事故调查中，工程师理解材料疲劳，管理者理解排班压力，现场人员理解操作习惯；若组织不能把这些关系连接起来，就只有分散知识而没有共同理解。建立因果图、假设记录和反事实情景，可以使局部模型彼此约束。共同理解不要求人人掌握全部细节，却要求关键关系在群体中可访问、可质疑并能影响决定。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>评价认识成果时分别记录五种价值：命题是否真实；获得过程是否可靠；成功是否体现相关能力；主体是否把握关系并能迁移；成果是否改善值得追求的行动或共同实践。五栏允许价值冲突显现，也避免用单一分数假装一切可通约。</p>
+</div>
+</div>
+</section>
+<section id="教育评价会塑造学生追求的认识善" class="level3" data-number="7.6.5">
+<h3 data-number="7.6.5" class="anchored" data-anchor-id="教育评价会塑造学生追求的认识善"><span class="header-section-number">7.6.5</span> 教育评价会塑造学生追求的认识善</h3>
+<p>若考试只奖励最终答案，学生会把不确定性、解释和修正视为无关成本。更完整的评价将正确、论证、迁移、校准和错误修正分开：答案检查真值，论证检查理由结构，迁移检查理解，校准检查信心水平，修订说明检查能动性。必须防止同一表现重复计分，也要为高风险错误设置底线。允许修订不是取消标准，而是把学习过程中的诊断与改进变成可见成果。</p>
+</section>
+<section id="认识价值也受分配影响" class="level3" data-number="7.6.6">
+<h3 data-number="7.6.6" class="anchored" data-anchor-id="认识价值也受分配影响"><span class="header-section-number">7.6.6</span> 认识价值也受分配影响</h3>
+<p>一个数据库极大提高总体效率，却只对少数机构开放；一套专家制度产生可靠结论，却系统排除受影响群体的经验。即使成果为真，价值分配仍可能不公，并损害长期纠错。认识善不仅包括个体拥有知识，还包括谁能提出问题、访问理由、挑战结论和从知识中受益。把分配纳入评价并不意味着真理相对化，而是承认真理生产和使用发生在权力结构中。</p>
+</section>
+<section id="在不确定中行动是智慧的试金石" class="level3" data-number="7.6.7">
+<h3 data-number="7.6.7" class="anchored" data-anchor-id="在不确定中行动是智慧的试金石"><span class="header-section-number">7.6.7</span> 在不确定中行动是智慧的试金石</h3>
+<p>实践很少等待全部问题解决。主体需要区分可逆与不可逆决定，为不同错误设置不对称防护，说明何种新证据会改变选择，并保留复盘机制。过度自信会把暂时结论固化，过度谨慎则可能以“尚不确定”为由逃避必要行动。智慧不是在二者中取固定中点，而是使信心、证据、后果与可修正性相称。</p>
+</section>
+<section id="好奇心需要方向而不只是强度" class="level3" data-number="7.6.8">
+<h3 data-number="7.6.8" class="anchored" data-anchor-id="好奇心需要方向而不只是强度"><span class="header-section-number">7.6.8</span> 好奇心需要方向而不只是强度</h3>
+<p>强烈求知欲可能推动发现，也可能让主体不断追逐新奇而不完成核验。作为认识德性，好奇心要与问题重要性、现有证据缺口和受影响者需要相连。提出好问题包含否定工作：拒绝被醒目但次要的指标牵引，识别谁没有机会定义问题，并判断继续搜索的边际收益。教育若只奖励答案数量，会培养信息收集而非探究判断；若允许学生说明为何放弃一个坏问题，反而能显示更成熟的能动性。</p>
+</section>
+<section id="注意是一种有限且可分配的认识资源" class="level3" data-number="7.6.9">
+<h3 data-number="7.6.9" class="anchored" data-anchor-id="注意是一种有限且可分配的认识资源"><span class="header-section-number">7.6.9</span> 注意是一种有限且可分配的认识资源</h3>
+<p>主体不能同时处理全部证据，机构也不能审查所有风险。把注意投向何处会影响什么成为已知、哪些异常长期不可见。个人层面需建立优先级和停止规则，制度层面则要检查资源是否只响应有权者的议题。注意分配不决定命题真假，却决定真理能否被发现并进入行动。智慧因此包含对注意结构的反思：眼前最显著的问题是否也是最重要的问题，长期沉默是否来自没有事实还是没有观察。</p>
+</section>
+<section id="有时保存未知比扩大知识更负责任" class="level3" data-number="7.6.10">
+<h3 data-number="7.6.10" class="anchored" data-anchor-id="有时保存未知比扩大知识更负责任"><span class="header-section-number">7.6.10</span> 有时保存未知比扩大知识更负责任</h3>
+<p>匿名、隐私和被遗忘权会限制谁可以知道什么。一个机构即使能更准确预测个人行为，也未必有权收集全部数据；研究者可能应删除身份信息，使某些重新识别问题保持不可回答。这里的“无知”并非认识失败，而是由权利与风险支持的制度选择。重要区分是被压迫者无法获得关键知识的强制无知，与为防止监控伤害而设计的保护性未知。智慧要求说明谁不知道、为何不知道以及谁从边界中受益。</p>
+</section>
+<section id="共同认识善需要维护而非一次生产" class="level3" data-number="7.6.11">
+<h3 data-number="7.6.11" class="anchored" data-anchor-id="共同认识善需要维护而非一次生产"><span class="header-section-number">7.6.11</span> 共同认识善需要维护而非一次生产</h3>
+<p>数据库、标准和公共记录在建立时可靠，不会因而永久可靠。版本过期、分类改变、维护资金消失或纠错渠道关闭，都能使过去的认识基础设施变成误导来源。共同体必须为更新、撤回、争议标注和历史版本安排责任。价值评价因此不只问一个知识库收录多少真句，还问它能否发现自己过时、是否让使用者理解适用边界，以及受影响者能否提出修正。</p>
+</section>
+<section id="认识评价指标也会反过来塑造行为" class="level3" data-number="7.6.12">
+<h3 data-number="7.6.12" class="anchored" data-anchor-id="认识评价指标也会反过来塑造行为"><span class="header-section-number">7.6.12</span> 认识评价指标也会反过来塑造行为</h3>
+<p>一旦引用数、正确率或答题速度成为唯一目标，研究者与学生会优化可计量表现，忽略难以量化的理解、复核和问题选择。指标不是中性窗口，而是制度性激励。设计时应组合结果与过程证据，保留质性审查，定期寻找被指标遮蔽的失败，并允许目标随任务改变。尤其要防止把代理指标上升误作认识质量必然提高；衡量工具本身也应接受反例和修订。</p>
+</section>
+<section id="智慧不能由外部顺从替代" class="level3" data-number="7.6.13">
+<h3 data-number="7.6.13" class="anchored" data-anchor-id="智慧不能由外部顺从替代"><span class="header-section-number">7.6.13</span> 智慧不能由外部顺从替代</h3>
+<p>一个人总是听从可靠导师，可能长期作出正确决定，却尚未形成判断何时依赖、何时质疑的能力。反过来，要求人人独立验证所有知识又不现实。智慧位于盲从与孤立之间：能识别自己的限度，选择合适权威，理解授权范围，并在异常出现时提高审查。依赖关系若禁止提问，产生的是受控正确；若逐步让学习者掌握理由、边界和纠错入口，才促进认识自主。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>一套促进智慧的教育制度，不只问学生是否答对，还问他为何选择这个问题、如何分配注意、何时依赖他人、怎样报告未知、是否能因反证修订，以及其知识使用对他人造成什么影响。智慧通过这些可观察实践显现，但不能被任何单一量表耗尽。</p>
+</div>
+</div>
+</section>
+<section id="阶段性结论-1" class="level3" data-number="7.6.14">
+<h3 data-number="7.6.14" class="anchored" data-anchor-id="阶段性结论-1"><span class="header-section-number">7.6.14</span> 阶段性结论</h3>
+<p>知识、理解和智慧形成递进而非排斥关系：知识约束我们对具体命题的承诺，理解组织这些承诺并揭示依赖，智慧选择值得追问的目标并在限制中行动。价值因此不是教材最后附加的一章，而是贯穿全部认识评价的尺度。我们研究知识，不只为给信念贴资格标签，也为建设更可靠、更可理解、更能修正且分配更公正的探究实践。</p>
+</section>
+<section id="研究定位" class="level3" data-number="7.6.15">
+<h3 data-number="7.6.15" class="anchored" data-anchor-id="研究定位"><span class="header-section-number">7.6.15</span> 研究定位</h3>
+<p>价值问题已从“知识是否比真信念更好”扩展为理解、品格和共同探究的多元评价。<span class="citation" data-cites="pritchard2010整理知识价值争论">(<a href="references.html#ref-pritchard2010整理知识价值争论" role="doc-biblioref"><strong>pritchard2010整理知识价值争论?</strong></a>)</span>，<span class="citation" data-cites="elgin2017与">(<a href="references.html#ref-elgin2017与" role="doc-biblioref"><strong>elgin2017与?</strong></a>)</span><span class="citation" data-cites="khalifa2017给出不同的理解模型">(<a href="references.html#ref-khalifa2017给出不同的理解模型" role="doc-biblioref"><strong>khalifa2017给出不同的理解模型?</strong></a>)</span>，<span class="citation" data-cites="whitcomb2017则把承认限度本身作为可分析的智识品格">(<a href="references.html#ref-whitcomb2017则把承认限度本身作为可分析的智识品格" role="doc-biblioref"><strong>whitcomb2017则把承认限度本身作为可分析的智识品格?</strong></a>)</span>。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="自测小结">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>自测小结
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>知识的价值不能只由已经得到的真值解释；可靠性、能力成就、稳定性和信任资格分别提供候选答案。理解要求把握关系并能迁移、反事实推演和定位失败，智慧还要求选择值得追问的问题并承认边界。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="章末练习">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">警告</span>章末练习
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>固定一个信念已经为真，分别说明可靠来源可能增加稳定性、成就、可传递性或行动资格中的哪项价值。</p></li>
+<li><p>比较沼泽化问题与Gettier问题：二者都涉及真理和过程，但攻击目标有何不同？</p></li>
+<li><p>各构造一个“知道却不理解”和“使用理想化模型但有理解”的案例。</p></li>
+<li><p>为理解提出三项可观察测试，并用机械背诵者与模型使用者检验。</p></li>
+<li><p>分析一项容易获得的证言知识：成就功劳应如何分配给听者、说话者和制度？</p></li>
+<li><p>设计一套课程评价方案，同时奖励正确、解释、迁移、校准与错误修正，并防止重复计分。</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="分层阅读地图">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">提示</span>分层阅读地图
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>第一层：知识价值：</strong> 从沼泽化问题、真信念价值与能力归功进入价值难题。 <span class="citation" data-cites="kvanvig2003 zagzebski1996 pritchard2007 pritchard2010 greco2003 sosa2007 sosa2009">(<a href="references.html#ref-kvanvig2003" role="doc-biblioref">Kvanvig 2003年</a>; <a href="references.html#ref-zagzebski1996" role="doc-biblioref">Zagzebski 1996年</a>; <a href="references.html#ref-pritchard2007" role="doc-biblioref">Pritchard 2007年</a>; <a href="references.html#ref-pritchard2010" role="doc-biblioref">Pritchard 等 2010年</a>; <a href="references.html#ref-greco2003" role="doc-biblioref">Greco 2003年</a>; <a href="references.html#ref-sosa2007" role="doc-biblioref">Sosa 2007年</a>, <a href="references.html#ref-sosa2009" role="doc-biblioref">2009年</a>)</span></p>
+<p><strong>第二层：理解：</strong> 比较理解之对象、结构、解释力、反事实能力与科学理解。 <span class="citation" data-cites="riggs2003 grimm2006 grimm2012 hills2016 kelp2015 khalifa2017 baumberger2017 carter2014 elgin2017 dereg2017">(<a href="references.html#ref-riggs2003" role="doc-biblioref">Riggs 2003年</a>; <a href="references.html#ref-grimm2006" role="doc-biblioref">Grimm 2006年</a>, <a href="references.html#ref-grimm2012" role="doc-biblioref">2012年</a>; <a href="references.html#ref-hills2016" role="doc-biblioref">Hills 2016年</a>; <a href="references.html#ref-kelp2015" role="doc-biblioref">Kelp 2015年</a>; <a href="references.html#ref-khalifa2017" role="doc-biblioref">Khalifa 2017年</a>; <a href="references.html#ref-baumberger2017" role="doc-biblioref">Baumberger 等 2017年</a>; <a href="references.html#ref-carter2014" role="doc-biblioref">Carter 和 Gordon 2014年</a>; <a href="references.html#ref-elgin2017" role="doc-biblioref">Elgin 2017年</a>; <a href="references.html#ref-dereg2017" role="doc-biblioref">Regt 2017年</a>)</span></p>
+<p><strong>第三层：认识德性：</strong> 研究求真动机、探究品格、责任和智识谦逊。 <span class="citation" data-cites="baehr2011 roberts2007 hookway2003 zagzebski2003 battaly2008 code1987 montmarquet1993 whitcomb2017">(<a href="references.html#ref-baehr2011" role="doc-biblioref">Baehr 2011年</a>; <a href="references.html#ref-roberts2007" role="doc-biblioref">Roberts 和 Wood 2007年</a>; <a href="references.html#ref-hookway2003" role="doc-biblioref">Hookway 2003年</a>; <a href="references.html#ref-zagzebski2003" role="doc-biblioref">Zagzebski 2003年</a>; <a href="references.html#ref-battaly2008" role="doc-biblioref">Battaly 2008年</a>; <a href="references.html#ref-code1987" role="doc-biblioref">Code 1987年</a>; <a href="references.html#ref-montmarquet1993" role="doc-biblioref">Montmarquet 1993年</a>; <a href="references.html#ref-whitcomb2017" role="doc-biblioref">Whitcomb 等 2017年</a>)</span></p>
+<p><strong>第四层：智慧与共同善：</strong> 用儒道资源检验个人成就模型是否遗漏问题选择、限度意识与共同实践。 <span class="citation" data-cites="analects2003 xunzi2014 zhuangzi2009 tiwald2014">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年</a>; <a href="references.html#ref-xunzi2014" role="doc-biblioref">Xunzi 2014年</a>; <a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>; <a href="references.html#ref-tiwald2014" role="doc-biblioref">Tiwald 和 Van Norden 2014年</a>)</span></p>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-baehr2011" class="csl-entry" role="listitem">
+Baehr, Jason. 2011年. <em>The Inquiring Mind: On Intellectual Virtues and Virtue Epistemology</em>. Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780199604074.001.0001">https://doi.org/10.1093/acprof:oso/9780199604074.001.0001</a>.
+</div>
+<div id="ref-battaly2008" class="csl-entry" role="listitem">
+Battaly, Heather. 2008年. <span>《Virtue Epistemology》</span>. <em>Philosophy Compass</em> 3 (4): 639～63. <a href="https://doi.org/10.1111/j.1747-9991.2008.00146.x">https://doi.org/10.1111/j.1747-9991.2008.00146.x</a>.
+</div>
+<div id="ref-baumberger2017" class="csl-entry" role="listitem">
+Baumberger, Christoph, Claus Beisbart, 和 Georg Brun. 2017年. <span>《What Is Understanding? An Overview of Recent Debates in Epistemology and Philosophy of Science》</span>. 收入 <em>Explaining Understanding: New Perspectives from Epistemology and Philosophy of Science</em>, 编辑 Stephen R. Grimm, Christoph Baumberger, 和 Sabine Ammon. Routledge.
+</div>
+<div id="ref-carter2014" class="csl-entry" role="listitem">
+Carter, J. Adam, 和 Emma C. Gordon. 2014年. <span>《Objectual Understanding and the Value Problem》</span>. <em>American Philosophical Quarterly</em> 51 (1): 1～13.
+</div>
+<div id="ref-code1987" class="csl-entry" role="listitem">
+Code, Lorraine. 1987年. <em>Epistemic Responsibility</em>. Brown University Press.
+</div>
+<div id="ref-analects2003" class="csl-entry" role="listitem">
+Confucius. 2003年. <em>Confucius: Analects</em>. 翻译 Edward Slingerland. Hackett.
+</div>
+<div id="ref-elgin2017" class="csl-entry" role="listitem">
+Elgin, Catherine Z. 2017年. <em>True Enough</em>. MIT Press. <a href="https://doi.org/10.7551/mitpress/9780262036535.001.0001">https://doi.org/10.7551/mitpress/9780262036535.001.0001</a>.
+</div>
+<div id="ref-greco2003" class="csl-entry" role="listitem">
+Greco, John. 2003年. <span>《Knowledge as Credit for True Belief》</span>. 收入 <em>Intellectual Virtue: Perspectives from Ethics and Epistemology</em>, 编辑 Michael DePaul 和 Linda Zagzebski. Oxford University Press.
+</div>
+<div id="ref-grimm2006" class="csl-entry" role="listitem">
+Grimm, Stephen R. 2006年. <span>《Is Understanding a Species of Knowledge?》</span> <em>The British Journal for the Philosophy of Science</em> 57 (3): 515～35. <a href="https://doi.org/10.1093/bjps/axl015">https://doi.org/10.1093/bjps/axl015</a>.
+</div>
+<div id="ref-grimm2012" class="csl-entry" role="listitem">
+Grimm, Stephen R. 2012年. <span>《The Value of Understanding》</span>. <em>Philosophy Compass</em> 7 (2): 103～17. <a href="https://doi.org/10.1111/j.1747-9991.2011.00460.x">https://doi.org/10.1111/j.1747-9991.2011.00460.x</a>.
+</div>
+<div id="ref-hills2016" class="csl-entry" role="listitem">
+Hills, Alison. 2016年. <span>《Understanding Why》</span>. <em>Noûs</em> 50 (4): 661～88. <a href="https://doi.org/10.1111/nous.12092">https://doi.org/10.1111/nous.12092</a>.
+</div>
+<div id="ref-hookway2003" class="csl-entry" role="listitem">
+Hookway, Christopher. 2003年. <span>《How to Be a Virtue Epistemologist》</span>. 收入 <em>Intellectual Virtue: Perspectives from Ethics and Epistemology</em>, 编辑 Michael DePaul 和 Linda Zagzebski. Oxford University Press.
+</div>
+<div id="ref-kelp2015" class="csl-entry" role="listitem">
+Kelp, Christoph. 2015年. <span>《Understanding Phenomena》</span>. <em>Synthese</em> 192 (12): 3799～816. <a href="https://doi.org/10.1007/s11229-014-0616-x">https://doi.org/10.1007/s11229-014-0616-x</a>.
+</div>
+<div id="ref-khalifa2017" class="csl-entry" role="listitem">
+Khalifa, Kareem. 2017年. <em>Understanding, Explanation, and Scientific Knowledge</em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781108164276">https://doi.org/10.1017/9781108164276</a>.
+</div>
+<div id="ref-kvanvig2003" class="csl-entry" role="listitem">
+Kvanvig, Jonathan L. 2003年. <em>The Value of Knowledge and the Pursuit of Understanding</em>. Cambridge University Press.
+</div>
+<div id="ref-montmarquet1993" class="csl-entry" role="listitem">
+Montmarquet, James A. 1993年. <em>Epistemic Virtue and Doxastic Responsibility</em>. Rowman &amp; Littlefield.
+</div>
+<div id="ref-pritchard2007" class="csl-entry" role="listitem">
+Pritchard, Duncan. 2007年. <span>《Recent Work on Epistemic Value》</span>. <em>American Philosophical Quarterly</em> 44 (2): 85～110.
+</div>
+<div id="ref-pritchard2012" class="csl-entry" role="listitem">
+Pritchard, Duncan. 2012年. <span>《Anti-Luck Virtue Epistemology》</span>. <em>The Journal of Philosophy</em> 109 (3): 247～79. <a href="https://doi.org/10.5840/jphil201210939">https://doi.org/10.5840/jphil201210939</a>.
+</div>
+<div id="ref-pritchard2010" class="csl-entry" role="listitem">
+Pritchard, Duncan, Alan Millar, 和 Adrian Haddock. 2010年. <em>The Nature and Value of Knowledge: Three Investigations</em>. Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780199586264.001.0001">https://doi.org/10.1093/acprof:oso/9780199586264.001.0001</a>.
+</div>
+<div id="ref-dereg2017" class="csl-entry" role="listitem">
+Regt, Henk W. de. 2017年. <em>Understanding Scientific Understanding</em>. Oxford University Press. <a href="https://doi.org/10.1093/oso/9780190652913.001.0001">https://doi.org/10.1093/oso/9780190652913.001.0001</a>.
+</div>
+<div id="ref-riggs2003" class="csl-entry" role="listitem">
+Riggs, Wayne D. 2003年. <span>《Understanding Virtue and the Virtue of Understanding》</span>. 收入 <em>Intellectual Virtue</em>, 编辑 Michael DePaul 和 Linda Zagzebski. Oxford University Press.
+</div>
+<div id="ref-roberts2007" class="csl-entry" role="listitem">
+Roberts, Robert C., 和 W. Jay Wood. 2007年. <em>Intellectual Virtues: An Essay in Regulative Epistemology</em>. Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780199283675.001.0001">https://doi.org/10.1093/acprof:oso/9780199283675.001.0001</a>.
+</div>
+<div id="ref-sosa2007" class="csl-entry" role="listitem">
+Sosa, Ernest. 2007年. <em>A Virtue Epistemology: Apt Belief and Reflective Knowledge</em>. Oxford University Press.
+</div>
+<div id="ref-sosa2009" class="csl-entry" role="listitem">
+Sosa, Ernest. 2009年. <em>Reflective Knowledge: Apt Belief and Reflective Knowledge</em>. 卷 2. Oxford University Press.
+</div>
+<div id="ref-tiwald2014" class="csl-entry" role="listitem">
+Tiwald, Justin, 和 Bryan W. Van Norden, 编. 2014年. <em>Readings in Later Chinese Philosophy: Han Dynasty to the Twentieth Century</em>. Hackett.
+</div>
+<div id="ref-whitcomb2017" class="csl-entry" role="listitem">
+Whitcomb, Dennis, Heather Battaly, Jason Baehr, 和 Daniel Howard-Snyder. 2017年. <span>《Intellectual Humility: Owning Our Limitations》</span>. <em>Philosophy and Phenomenological Research</em> 94 (3): 509～39. <a href="https://doi.org/10.1111/phpr.12228">https://doi.org/10.1111/phpr.12228</a>.
+</div>
+<div id="ref-xunzi2014" class="csl-entry" role="listitem">
+Xunzi. 2014年. <em>Xunzi: The Complete Text</em>. 翻译 Eric L. Hutton. Princeton University Press.
+</div>
+<div id="ref-zagzebski2003" class="csl-entry" role="listitem">
+Zagzebski, Linda. 2003年. <span>《Intellectual Motivation and the Good of Truth》</span>. 收入 <em>Intellectual Virtue: Perspectives from Ethics and Epistemology</em>, 编辑 Michael DePaul 和 Linda Zagzebski. Oxford University Press.
+</div>
+<div id="ref-zagzebski1996" class="csl-entry" role="listitem">
+Zagzebski, Linda Trinkaus. 1996年. <em>Virtues of the Mind</em>. Cambridge University Press.
+</div>
+<div id="ref-zhuangzi2009" class="csl-entry" role="listitem">
+Zhuangzi. 2009年. <em>Zhuangzi: The Essential Writings</em>. 翻译 Brook Ziporyn. Hackett.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../manuscript/06-formal.html" class="pagination-link" aria-label="概率、模型与理性决策">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../manuscript/08-digital-ai.html" class="pagination-link" aria-label="数字环境与人工智能怎样重塑认识">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">数字环境与人工智能怎样重塑认识</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

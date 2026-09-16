@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>核心术语表 – 我们如何知道？</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../manuscript/references.html" rel="next">
+<link href="../manuscript/exercise-hints.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d36f34d314bee33b330446342baae240.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../book.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/study-guide.html">学习与研究</a></li><li class="breadcrumb-item"><a href="../manuscript/glossary.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">核心术语表</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">我们如何知道？</a> 
+        <div class="sidebar-tools-main">
+    <a href="../how-do-we-know.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="搜索"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">我们如何知道？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/00-preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">写在前面</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">第一部　知识、怀疑与理由</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/01-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">知识是什么，我们为什么需要它</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/02-skepticism-luck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">怀疑、运气与知识的边界</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/03-justification-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">理由如何支持信念</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">第二部　认识来源、社会系统与理性模型</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/04-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">经验、记忆与先验怎样成为知识来源</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/05-social-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">他人、专家与制度如何共同生产知识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/06-formal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">第三部　认识价值、技术环境与比较方法</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/07-value.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/08-digital-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">数字环境与人工智能怎样重塑认识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/09-comparative.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">比较认识论如何改变我们的问题</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">学习与研究</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/study-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">自学、讨论与论文写作指南</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/research-studio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">全书综合研究工坊</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/exercise-hints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">练习提示</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/glossary.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">核心术语表</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/study-guide.html">学习与研究</a></li><li class="breadcrumb-item"><a href="../manuscript/glossary.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">核心术语表</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">核心术语表</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>术语</th>
+<th>简释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>知识、分析与方法</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>事实性</td>
+<td>若主体知道命题，则命题为真；这不等于主体永不犯错。</td>
+</tr>
+<tr class="odd">
+<td>命题知识</td>
+<td>以“主体知道命题<span class="math inline">\(p\)</span>”表达的知识，与亲知和能力之知相区分。</td>
+</tr>
+<tr class="even">
+<td>亲知</td>
+<td>对人、地点或对象的熟悉性认识；其能否还原为命题知识有争议。</td>
+</tr>
+<tr class="odd">
+<td>能力之知</td>
+<td>知道怎样完成某项活动；能否仅由关于规则的命题知识构成有争议。</td>
+</tr>
+<tr class="even">
+<td>得到确证的真信念</td>
+<td>由真、信念和确证三条件构成的知识分析，通常缩写为JTB。</td>
+</tr>
+<tr class="odd">
+<td>必要条件</td>
+<td>目标状态成立时必须满足的条件；反例要显示目标成立而条件不成立。</td>
+</tr>
+<tr class="even">
+<td>充分条件</td>
+<td>条件满足便保证目标成立的条件；反例要显示条件满足而目标不成立。</td>
+</tr>
+<tr class="odd">
+<td>反例</td>
+<td>满足理论前提却不满足结论，或满足分析条件却不属于目标概念的案例。</td>
+</tr>
+<tr class="even">
+<td>最小对比</td>
+<td>只改变一个认识上相关变量的成对案例，用来定位判断变化来源。</td>
+</tr>
+<tr class="odd">
+<td>概念分析</td>
+<td>研究概念的条件、结构和推论关系，可有描述、解释或改良目标。</td>
+</tr>
+<tr class="even">
+<td>概念工程</td>
+<td>为解释或实践目标评估并改造现有概念，而非只描述日常用法。</td>
+</tr>
+<tr class="odd">
+<td>知识优先</td>
+<td>把知识视为基本认识状态，再用它解释证据、断言或行动的方案。</td>
+</tr>
+<tr class="even">
+<td><strong>怀疑论与认识运气</strong></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>怀疑论</td>
+<td>对某类或几乎全部知识、确证或理性提出系统挑战的立场或方法。</td>
+</tr>
+<tr class="even">
+<td>局部怀疑论</td>
+<td>只针对记忆、道德或某特定来源的怀疑，不直接推广到全部领域。</td>
+</tr>
+<tr class="odd">
+<td>全局怀疑论</td>
+<td>试图挑战几乎全部经验知识的怀疑方案，如完美模拟情景。</td>
+</tr>
+<tr class="even">
+<td>可错论</td>
+<td>知识允许主体在相同类型根据下存在某些错误可能，不要求绝对确定。</td>
+</tr>
+<tr class="odd">
+<td>不可错论</td>
+<td>把排除相关错误可能或不可犯错性作为知识条件的强立场。</td>
+</tr>
+<tr class="even">
+<td>闭合原则</td>
+<td>知识在主体掌握并完成的已知蕴涵推理下扩展的原则。</td>
+</tr>
+<tr class="odd">
+<td>相关替代</td>
+<td>在当前背景、证据或语境中必须排除的错误可能，而非所有逻辑可能。</td>
+</tr>
+<tr class="even">
+<td>摩尔式回应</td>
+<td>以普通外部世界知识为前提，反向否定怀疑前提的论证策略。</td>
+</tr>
+<tr class="odd">
+<td>语境主义</td>
+<td>“知道”归属句的适用标准随归属语境变化。</td>
+</tr>
+<tr class="even">
+<td>铰链命题</td>
+<td>使怀疑、证据和求证实践得以运作的背景承诺或规则性命题。</td>
+</tr>
+<tr class="odd">
+<td>判断悬置</td>
+<td>在势均力敌或证据不足时暂不肯定也不否定，常以希腊词epoché指称。</td>
+</tr>
+<tr class="even">
+<td>欠决定</td>
+<td>同一证据与多个竞争理论相容，证据本身不足以唯一选择其一。</td>
+</tr>
+<tr class="odd">
+<td>标准问题</td>
+<td>如何在“哪些信念是知识”与“什么标准能判定知识”之间避免循环的问题。</td>
+</tr>
+<tr class="even">
+<td>认识运气</td>
+<td>信念以当前方式形成时很容易为假，真值与认识路径偶然相交。</td>
+</tr>
+<tr class="odd">
+<td>介入运气</td>
+<td>干扰因素进入信念形成链，并因另一因素抵消而碰巧成功。</td>
+</tr>
+<tr class="even">
+<td>环境运气</td>
+<td>实际形成过程正常，但周围充满相似错误机会，如假谷仓环境。</td>
+</tr>
+<tr class="odd">
+<td>可能世界</td>
+<td>表示事情本可怎样的反事实模型；理论须说明哪些世界与实际世界相关或邻近。</td>
+</tr>
+<tr class="even">
+<td>敏感性</td>
+<td>若命题为假，主体不会以相关方式相信它。</td>
+</tr>
+<tr class="odd">
+<td>安全性</td>
+<td>主体以相关方式相信时，在近邻情形中不容易为假。</td>
+</tr>
+<tr class="even">
+<td>因果偏离</td>
+<td>事实虽进入信念的因果链，但其作用方式偶然或不适当，因而不足以构成知识。</td>
+</tr>
+<tr class="odd">
+<td>认知德性</td>
+<td>稳定导向真理的能力，或开放、认真、谦逊等认识人格品质。</td>
+</tr>
+<tr class="even">
+<td>成就</td>
+<td>成功因为主体或系统的相关能力而取得，而非能力仅偶然参与。</td>
+</tr>
+<tr class="odd">
+<td><strong>确证、理由与结构</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>确证</td>
+<td>使相信在认识意义上得到支持或合宜的地位。</td>
+</tr>
+<tr class="odd">
+<td>命题确证</td>
+<td>主体拥有支持命题的根据，不要求实际基于它相信。</td>
+</tr>
+<tr class="even">
+<td>信念确证</td>
+<td>信念以适当方式基于主体拥有的根据。</td>
+</tr>
+<tr class="odd">
+<td>基于关系</td>
+<td>理由在信念产生或维持中实际发挥认识作用的因果、反事实或规范联系。</td>
+</tr>
+<tr class="even">
+<td>击败</td>
+<td>新信息或事实撤销、削弱原有证据支持或信念认识地位的作用。</td>
+</tr>
+<tr class="odd">
+<td>击败者</td>
+<td>撤销或削弱原有支持的信息或事实。</td>
+</tr>
+<tr class="even">
+<td>反驳型击败者</td>
+<td>提供非<span class="math inline">\(p\)</span>证据、与原信念方向相反的击败信息。</td>
+</tr>
+<tr class="odd">
+<td>削弱型击败者</td>
+<td>不直接支持非<span class="math inline">\(p\)</span>，却破坏原证据与<span class="math inline">\(p\)</span>之间联系的信息。</td>
+</tr>
+<tr class="even">
+<td>误导性击败者</td>
+<td>内容虽假，却因当时可信而合理地降低主体信心的信息。</td>
+</tr>
+<tr class="odd">
+<td>高阶证据</td>
+<td>不直接支持<span class="math inline">\(p\)</span>或非<span class="math inline">\(p\)</span>，而评价主体能力或证据处理质量的证据。</td>
+</tr>
+<tr class="even">
+<td>基础主义</td>
+<td>某些非推论信念提供无需其他信念传递的初始确证。</td>
+</tr>
+<tr class="odd">
+<td>融贯主义</td>
+<td>确证来自信念系统的一致、解释联系和相互支持。</td>
+</tr>
+<tr class="even">
+<td>无限主义</td>
+<td>认为理由链可以非循环地无限延伸，不以基础信念或循环终止。</td>
+</tr>
+<tr class="odd">
+<td>内在主义</td>
+<td>确证的决定因素必须以适当方式对主体反思可及。</td>
+</tr>
+<tr class="even">
+<td>外在主义</td>
+<td>确证或知识可部分取决于主体无法反思把握的可靠关系。</td>
+</tr>
+<tr class="odd">
+<td>可靠主义</td>
+<td>信念的认识地位取决于产生或维持它的可靠过程。</td>
+</tr>
+<tr class="even">
+<td>证据主义</td>
+<td>主体的信念态度应与其证据相称，争点包括什么构成主体证据。</td>
+</tr>
+<tr class="odd">
+<td>一般性问题</td>
+<td>同一信念形成事件属于多个过程类型，可靠主义需说明评价哪一类型。</td>
+</tr>
+<tr class="even">
+<td>实践侵入</td>
+<td>实践利害或错误成本影响知识或确证门槛。</td>
+</tr>
+<tr class="odd">
+<td><strong>认识来源</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>知觉</td>
+<td>通过感官和相关处理与对象、性质或事件发生认识联系的来源。</td>
+</tr>
+<tr class="odd">
+<td>直接实在论</td>
+<td>正常知觉直接呈现世界对象和性质，不以内部对象作为首要中介。</td>
+</tr>
+<tr class="even">
+<td>间接实在论</td>
+<td>主体直接把握经验或感觉材料，再由其推知外部对象的立场。</td>
+</tr>
+<tr class="odd">
+<td>意向论</td>
+<td>把知觉经验理解为以表征内容呈现世界、具有准确条件的状态。</td>
+</tr>
+<tr class="even">
+<td>析取论</td>
+<td>真知觉与不可区分幻觉不属于决定认识地位的同一根本种类。</td>
+</tr>
+<tr class="odd">
+<td>认知渗透</td>
+<td>信念、愿望或期望影响知觉经验内容，而非只影响后续判断。</td>
+</tr>
+<tr class="even">
+<td>知觉学习</td>
+<td>训练与反馈使主体获得新的辨别、注意或分类能力。</td>
+</tr>
+<tr class="odd">
+<td>记忆保存论</td>
+<td>记忆主要保存先前获得的知识或确证，本身不通常创造新根据。</td>
+</tr>
+<tr class="even">
+<td>记忆生成论</td>
+<td>当前记忆状态可整合痕迹并产生新的认识支持，而非仅机械保存。</td>
+</tr>
+<tr class="odd">
+<td>来源监控</td>
+<td>区分某内容来自亲历、证言、想象或后来阅读的记忆能力。</td>
+</tr>
+<tr class="even">
+<td>内省</td>
+<td>主体获得自己当前体验、态度或心理状态认识的方式。</td>
+</tr>
+<tr class="odd">
+<td>先验确证</td>
+<td>最终确证不依赖特定感官经验；仍可需要经验来学习概念和语言。</td>
+</tr>
+<tr class="even">
+<td>归纳</td>
+<td>从已观察样本或过去规律支持未观察实例和未来情况的可错推理。</td>
+</tr>
+<tr class="odd">
+<td>证言</td>
+<td>通过沟通把某内容呈现为真，并使他人可能据此形成信念。</td>
+</tr>
+<tr class="even">
+<td>证言还原论</td>
+<td>证言权利最终需由知觉、记忆、归纳等非证言来源支持。</td>
+</tr>
+<tr class="odd">
+<td>证言非还原论</td>
+<td>理解看似真诚断言可给予可被击败的初步接受权利。</td>
+</tr>
+<tr class="even">
+<td>认识同侪</td>
+<td>在相关证据、能力和认真程度上大致相当的分歧者。</td>
+</tr>
+<tr class="odd">
+<td>专家元证据</td>
+<td>非专家用来评估专家的领域训练、记录、透明度、利益和纠错表现。</td>
+</tr>
+<tr class="even">
+<td>来源谱系</td>
+<td>信息从原始接触、记录、编辑、转述到听者的生成和传播结构。</td>
+</tr>
+<tr class="odd">
+<td><strong>形式认识论与决策</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>置信度</td>
+<td>主体对命题为真的程度性信心，常用概率表示。</td>
+</tr>
+<tr class="odd">
+<td>条件概率</td>
+<td>在条件<span class="math inline">\(B\)</span>成立时<span class="math inline">\(A\)</span>的概率，记作<span class="math inline">\(P(A\mid B)\)</span>；方向不可任意交换。</td>
+</tr>
+<tr class="even">
+<td>基础率</td>
+<td>在获得个案证据前，目标状态在相关人群或参照类中的比例。</td>
+</tr>
+<tr class="odd">
+<td>似然</td>
+<td>假设成立时观察到某证据的概率，用来衡量证据区分假设的能力。</td>
+</tr>
+<tr class="even">
+<td>贝叶斯因子</td>
+<td>两个假设对同一证据似然之比；与先验赔率结合得到后验赔率。</td>
+</tr>
+<tr class="odd">
+<td>校准</td>
+<td>某置信档位的长期发生频率与报告概率相匹配的性质。</td>
+</tr>
+<tr class="even">
+<td>分辨力</td>
+<td>预测系统能给实际发生与未发生事件不同概率，而非总报基础率。</td>
+</tr>
+<tr class="odd">
+<td>条件独立</td>
+<td>给定假设后，两项证据的出现概率不再相互影响。</td>
+</tr>
+<tr class="even">
+<td>恰当评分规则</td>
+<td>使主体按真实置信报告能最小化期望损失的概率评分方式。</td>
+</tr>
+<tr class="odd">
+<td>期望效用</td>
+<td>将行动在各可能状态的效用按状态概率加权后的总评价。</td>
+</tr>
+<tr class="even">
+<td>信息价值</td>
+<td>新信息因可能改变更好行动而带来的期望收益，需扣除获取成本。</td>
+</tr>
+<tr class="odd">
+<td><strong>认识价值、社会与数字环境</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>理解</td>
+<td>对解释、因果或依赖关系的把握，而非孤立事实的累积。</td>
+</tr>
+<tr class="odd">
+<td>沼泽化问题</td>
+<td>若真理是唯一最终价值，真信念到手后可靠过程的价值似乎被淹没。</td>
+</tr>
+<tr class="even">
+<td>智慧</td>
+<td>识别什么值得知道、整合理由、承认边界并在不确定中适当行动的能力。</td>
+</tr>
+<tr class="odd">
+<td>认识能动性</td>
+<td>主体提出问题、选择证据、更新信念和塑造认识环境的能力。</td>
+</tr>
+<tr class="even">
+<td>社会认识论</td>
+<td>研究个人的社会依赖以及群体、制度和网络认识表现的领域。</td>
+</tr>
+<tr class="odd">
+<td>群体知识</td>
+<td>由聚合、共同接受或功能结构构成、不能简单等同成员知识总和的知识。</td>
+</tr>
+<tr class="even">
+<td>联合承诺</td>
+<td>成员通过程序共同接受并据此行动的一种群体态度结构。</td>
+</tr>
+<tr class="odd">
+<td>认识不正义</td>
+<td>主体作为知识提供者或理解者的地位因权力和偏见受损。</td>
+</tr>
+<tr class="even">
+<td>证言不正义</td>
+<td>身份偏见使说话者获得不当的可信度亏欠。</td>
+</tr>
+<tr class="odd">
+<td>诠释不正义</td>
+<td>共同解释资源的结构性缺口使某些经验难以理解和表达。</td>
+</tr>
+<tr class="even">
+<td>制度客观性</td>
+<td>通过公开标准、异质批评、复现和可修订程序降低个体偏差。</td>
+</tr>
+<tr class="odd">
+<td>信息气泡</td>
+<td>网络结构使主体遗漏相关来源，不必包含对外部来源的主动贬低。</td>
+</tr>
+<tr class="even">
+<td>回音室</td>
+<td>内部网络同时削弱外部来源可信度，使反证被重新解释为敌对证明。</td>
+</tr>
+<tr class="odd">
+<td>认识自主</td>
+<td>识别根据、分配信任、响应反证并管理认识依赖的能力。</td>
+</tr>
+<tr class="even">
+<td>关系性自主</td>
+<td>把自主理解为在支持或支配关系中形成并管理依赖的能力与条件。</td>
+</tr>
+<tr class="odd">
+<td>自动化偏差</td>
+<td>人过度接受自动系统输出、忽略相反信息或放弃独立判断的倾向。</td>
+</tr>
+<tr class="even">
+<td>算法厌恶</td>
+<td>因一次显眼机器错误而拒绝总体表现较好的工具，未按任务校准依赖。</td>
+</tr>
+<tr class="odd">
+<td>虚构</td>
+<td>生成系统自信产生无来源支持或错误内容的风险；不预设故意欺骗。</td>
+</tr>
+<tr class="even">
+<td>检索增强生成</td>
+<td>将外部文档提供给生成模型的流程，可改善来源但不保证综合正确。</td>
+</tr>
+<tr class="odd">
+<td>内容溯源</td>
+<td>记录文件创建、编辑、签名和传播历史的机制；不等于内容事实为真。</td>
+</tr>
+<tr class="even">
+<td>人机监督</td>
+<td>人对系统输出进行审查、覆写和升级的安排，须有信息、时间与权限。</td>
+</tr>
+<tr class="odd">
+<td><strong>比较认识论</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>内部解释</td>
+<td>在比较前依文本语境说明概念、论证与实践功能，不预设现代对应物。</td>
+</tr>
+<tr class="odd">
+<td>结构比较</td>
+<td>选择明确问题轴比较推论关系、错误机制或规范角色，而非只比较词形。</td>
+</tr>
+<tr class="even">
+<td>规范建构</td>
+<td>研究者借多种传统资源提出新方案，并明确为自己的理论责任。</td>
+</tr>
+<tr class="odd">
+<td>平行关系</td>
+<td>不主张历史传播，只说明不同传统独立出现可比较的问题或结构。</td>
+</tr>
+<tr class="even">
+<td>历史同源</td>
+<td>由传播、共同文本或接触证据支持的思想关联，不由年代先后单独证明。</td>
+</tr>
+<tr class="odd">
+<td>概念簇</td>
+<td>用对象、推论、反例和实践后果描述一组相关用法，避免一对一翻译。</td>
+</tr>
+<tr class="even">
+<td>厚概念</td>
+<td>同时包含描述与评价、能力或实践要求的概念，不能轻易还原为薄命题状态。</td>
+</tr>
+<tr class="odd">
+<td>不可通约</td>
+<td>两种框架缺少无损共同尺度；它可揭示边界，不等于完全无法比较。</td>
+</tr>
+<tr class="even">
+<td>双向批评</td>
+<td>比较双方都可改变问题并接受对方压力，而非一方提供唯一裁判标准。</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../manuscript/exercise-hints.html" class="pagination-link" aria-label="练习提示">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">练习提示</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../manuscript/references.html" class="pagination-link" aria-label="参考文献">
+        <span class="nav-page-text">参考文献</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

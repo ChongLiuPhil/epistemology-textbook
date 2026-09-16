@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; 比较认识论如何改变我们的问题 – 我们如何知道？</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../manuscript/study-guide.html" rel="next">
+<link href="../manuscript/08-digital-ai.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d36f34d314bee33b330446342baae240.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../book.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/07-value.html">第三部　认识价值、技术环境与比较方法</a></li><li class="breadcrumb-item"><a href="../manuscript/09-comparative.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">比较认识论如何改变我们的问题</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">我们如何知道？</a> 
+        <div class="sidebar-tools-main">
+    <a href="../how-do-we-know.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="搜索"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">我们如何知道？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/00-preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">写在前面</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">第一部　知识、怀疑与理由</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/01-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">知识是什么，我们为什么需要它</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/02-skepticism-luck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">怀疑、运气与知识的边界</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/03-justification-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">理由如何支持信念</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">第二部　认识来源、社会系统与理性模型</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/04-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">经验、记忆与先验怎样成为知识来源</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/05-social-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">他人、专家与制度如何共同生产知识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/06-formal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">第三部　认识价值、技术环境与比较方法</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/07-value.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/08-digital-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">数字环境与人工智能怎样重塑认识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/09-comparative.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">比较认识论如何改变我们的问题</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">学习与研究</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/study-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">自学、讨论与论文写作指南</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/research-studio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">全书综合研究工坊</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/exercise-hints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">练习提示</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">核心术语表</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#为什么比较以及比较什么" id="toc-为什么比较以及比较什么" class="nav-link active" data-scroll-target="#为什么比较以及比较什么"><span class="header-section-number">9.1</span> 为什么比较以及比较什么</a>
+  <ul class="collapse">
+  <li><a href="#对应问题" id="toc-对应问题" class="nav-link" data-scroll-target="#对应问题"><span class="header-section-number">9.1.1</span> 对应问题</a></li>
+  <li><a href="#比较的四项检验" id="toc-比较的四项检验" class="nav-link" data-scroll-target="#比较的四项检验"><span class="header-section-number">9.1.2</span> 比较的四项检验</a></li>
+  <li><a href="#四组问题的重新打开" id="toc-四组问题的重新打开" class="nav-link" data-scroll-target="#四组问题的重新打开"><span class="header-section-number">9.1.3</span> 四组问题的重新打开</a></li>
+  <li><a href="#知与行" id="toc-知与行" class="nav-link" data-scroll-target="#知与行"><span class="header-section-number">9.1.4</span> 知与行</a></li>
+  <li><a href="#蔽与视角" id="toc-蔽与视角" class="nav-link" data-scroll-target="#蔽与视角"><span class="header-section-number">9.1.5</span> 蔽与视角</a></li>
+  <li><a href="#名实与公共理由" id="toc-名实与公共理由" class="nav-link" data-scroll-target="#名实与公共理由"><span class="header-section-number">9.1.6</span> 名、实与公共理由</a></li>
+  <li><a href="#工夫与认知能力" id="toc-工夫与认知能力" class="nav-link" data-scroll-target="#工夫与认知能力"><span class="header-section-number">9.1.7</span> 工夫与认知能力</a></li>
+  <li><a href="#一套问题驱动的方法" id="toc-一套问题驱动的方法" class="nav-link" data-scroll-target="#一套问题驱动的方法"><span class="header-section-number">9.1.8</span> 一套问题驱动的方法</a></li>
+  <li><a href="#结语知道如何继续追问" id="toc-结语知道如何继续追问" class="nav-link" data-scroll-target="#结语知道如何继续追问"><span class="header-section-number">9.1.9</span> 结语：知道如何继续追问</a></li>
+  <li><a href="#翻译是一项理论选择" id="toc-翻译是一项理论选择" class="nav-link" data-scroll-target="#翻译是一项理论选择"><span class="header-section-number">9.1.10</span> 翻译是一项理论选择</a></li>
+  <li><a href="#避免两种中心主义" id="toc-避免两种中心主义" class="nav-link" data-scroll-target="#避免两种中心主义"><span class="header-section-number">9.1.11</span> 避免两种中心主义</a></li>
+  <li><a href="#案例工作坊知行合一" id="toc-案例工作坊知行合一" class="nav-link" data-scroll-target="#案例工作坊知行合一"><span class="header-section-number">9.1.12</span> 案例工作坊：知行合一</a></li>
+  </ul></li>
+  <li><a href="#内部解释结构比较与规范建构" id="toc-内部解释结构比较与规范建构" class="nav-link" data-scroll-target="#内部解释结构比较与规范建构"><span class="header-section-number">9.2</span> 内部解释、结构比较与规范建构</a>
+  <ul class="collapse">
+  <li><a href="#比较不是寻找相同词" id="toc-比较不是寻找相同词" class="nav-link" data-scroll-target="#比较不是寻找相同词"><span class="header-section-number">9.2.1</span> 比较不是寻找相同词</a></li>
+  <li><a href="#三层写作规范" id="toc-三层写作规范" class="nav-link" data-scroll-target="#三层写作规范"><span class="header-section-number">9.2.2</span> 三层写作规范</a></li>
+  <li><a href="#论语中的知不知与学习" id="toc-论语中的知不知与学习" class="nav-link" data-scroll-target="#论语中的知不知与学习"><span class="header-section-number">9.2.3</span> 《论语》中的知、不知与学习</a></li>
+  <li><a href="#孟子的反身认识" id="toc-孟子的反身认识" class="nav-link" data-scroll-target="#孟子的反身认识"><span class="header-section-number">9.2.4</span> 孟子的反身认识</a></li>
+  <li><a href="#荀子的解蔽与学习" id="toc-荀子的解蔽与学习" class="nav-link" data-scroll-target="#荀子的解蔽与学习"><span class="header-section-number">9.2.5</span> 荀子的解蔽与学习</a></li>
+  <li><a href="#庄子的视角与相对主义" id="toc-庄子的视角与相对主义" class="nav-link" data-scroll-target="#庄子的视角与相对主义"><span class="header-section-number">9.2.6</span> 庄子的视角与相对主义</a></li>
+  <li><a href="#墨家名辩与理由规范" id="toc-墨家名辩与理由规范" class="nav-link" data-scroll-target="#墨家名辩与理由规范"><span class="header-section-number">9.2.7</span> 墨家、名辩与理由规范</a></li>
+  <li><a href="#佛教量论与二谛的比较边界" id="toc-佛教量论与二谛的比较边界" class="nav-link" data-scroll-target="#佛教量论与二谛的比较边界"><span class="header-section-number">9.2.8</span> 佛教量论与二谛的比较边界</a></li>
+  <li><a href="#工夫论对德性认识论的挑战" id="toc-工夫论对德性认识论的挑战" class="nav-link" data-scroll-target="#工夫论对德性认识论的挑战"><span class="header-section-number">9.2.9</span> 工夫论对德性认识论的挑战</a></li>
+  <li><a href="#关系性认识自主" id="toc-关系性认识自主" class="nav-link" data-scroll-target="#关系性认识自主"><span class="header-section-number">9.2.10</span> 关系性认识自主</a></li>
+  <li><a href="#去中心化与共同标准" id="toc-去中心化与共同标准" class="nav-link" data-scroll-target="#去中心化与共同标准"><span class="header-section-number">9.2.11</span> 去中心化与共同标准</a></li>
+  <li><a href="#综合案例如何比较知行合一" id="toc-综合案例如何比较知行合一" class="nav-link" data-scroll-target="#综合案例如何比较知行合一"><span class="header-section-number">9.2.12</span> 综合案例：如何比较“知行合一”</a></li>
+  </ul></li>
+  <li><a href="#文本证据与比较实验" id="toc-文本证据与比较实验" class="nav-link" data-scroll-target="#文本证据与比较实验"><span class="header-section-number">9.3</span> 文本证据与比较实验</a>
+  <ul class="collapse">
+  <li><a href="#研读实验室比较是一种受约束的重构" id="toc-研读实验室比较是一种受约束的重构" class="nav-link" data-scroll-target="#研读实验室比较是一种受约束的重构"><span class="header-section-number">9.3.1</span> 研读实验室：比较是一种受约束的重构</a></li>
+  <li><a href="#文本证据的四层" id="toc-文本证据的四层" class="nav-link" data-scroll-target="#文本证据的四层"><span class="header-section-number">9.3.2</span> 文本证据的四层</a></li>
+  <li><a href="#六种比较关系" id="toc-六种比较关系" class="nav-link" data-scroll-target="#六种比较关系"><span class="header-section-number">9.3.3</span> 六种比较关系</a></li>
+  <li><a href="#概念簇而非一对一词典" id="toc-概念簇而非一对一词典" class="nav-link" data-scroll-target="#概念簇而非一对一词典"><span class="header-section-number">9.3.4</span> 概念簇而非一对一词典</a></li>
+  <li><a href="#案例一庄周梦蝶与梦论证" id="toc-案例一庄周梦蝶与梦论证" class="nav-link" data-scroll-target="#案例一庄周梦蝶与梦论证"><span class="header-section-number">9.3.5</span> 案例一：庄周梦蝶与梦论证</a></li>
+  <li><a href="#案例二荀子解蔽与认识偏差" id="toc-案例二荀子解蔽与认识偏差" class="nav-link" data-scroll-target="#案例二荀子解蔽与认识偏差"><span class="header-section-number">9.3.6</span> 案例二：荀子解蔽与认识偏差</a></li>
+  <li><a href="#案例三知行与厚知识" id="toc-案例三知行与厚知识" class="nav-link" data-scroll-target="#案例三知行与厚知识"><span class="header-section-number">9.3.7</span> 案例三：知行与厚知识</a></li>
+  <li><a href="#案例四佛教量论与当代证据" id="toc-案例四佛教量论与当代证据" class="nav-link" data-scroll-target="#案例四佛教量论与当代证据"><span class="header-section-number">9.3.8</span> 案例四：佛教量论与当代证据</a></li>
+  <li><a href="#案例五认识自主与关系" id="toc-案例五认识自主与关系" class="nav-link" data-scroll-target="#案例五认识自主与关系"><span class="header-section-number">9.3.9</span> 案例五：认识自主与关系</a></li>
+  <li><a href="#研究者位置与中心主义" id="toc-研究者位置与中心主义" class="nav-link" data-scroll-target="#研究者位置与中心主义"><span class="header-section-number">9.3.10</span> 研究者位置与中心主义</a></li>
+  <li><a href="#结课综合建立自己的认识论地图" id="toc-结课综合建立自己的认识论地图" class="nav-link" data-scroll-target="#结课综合建立自己的认识论地图"><span class="header-section-number">9.3.11</span> 结课综合：建立自己的认识论地图</a></li>
+  </ul></li>
+  <li><a href="#双向批评与方法边界" id="toc-双向批评与方法边界" class="nav-link" data-scroll-target="#双向批评与方法边界"><span class="header-section-number">9.4</span> 双向批评与方法边界</a>
+  <ul class="collapse">
+  <li><a href="#专题研讨比较认识论的方法限度与共同问题" id="toc-专题研讨比较认识论的方法限度与共同问题" class="nav-link" data-scroll-target="#专题研讨比较认识论的方法限度与共同问题"><span class="header-section-number">9.4.1</span> 专题研讨：比较认识论的方法、限度与共同问题</a></li>
+  <li><a href="#先确定比较单位" id="toc-先确定比较单位" class="nav-link" data-scroll-target="#先确定比较单位"><span class="header-section-number">9.4.2</span> 先确定比较单位</a></li>
+  <li><a href="#问题同一性不能预设" id="toc-问题同一性不能预设" class="nav-link" data-scroll-target="#问题同一性不能预设"><span class="header-section-number">9.4.3</span> 问题同一性不能预设</a></li>
+  <li><a href="#概念角色而非单词对齐" id="toc-概念角色而非单词对齐" class="nav-link" data-scroll-target="#概念角色而非单词对齐"><span class="header-section-number">9.4.4</span> 概念角色而非单词对齐</a></li>
+  <li><a href="#避免年代错置与先发现叙事" id="toc-避免年代错置与先发现叙事" class="nav-link" data-scroll-target="#避免年代错置与先发现叙事"><span class="header-section-number">9.4.5</span> 避免年代错置与“先发现”叙事</a></li>
+  <li><a href="#慈善原则与批评对称" id="toc-慈善原则与批评对称" class="nav-link" data-scroll-target="#慈善原则与批评对称"><span class="header-section-number">9.4.6</span> 慈善原则与批评对称</a></li>
+  <li><a href="#多元主义不等于相对主义" id="toc-多元主义不等于相对主义" class="nav-link" data-scroll-target="#多元主义不等于相对主义"><span class="header-section-number">9.4.7</span> 多元主义不等于相对主义</a></li>
+  <li><a href="#文本语言与版本责任" id="toc-文本语言与版本责任" class="nav-link" data-scroll-target="#文本语言与版本责任"><span class="header-section-number">9.4.8</span> 文本、语言与版本责任</a></li>
+  <li><a href="#经验研究与生活实践" id="toc-经验研究与生活实践" class="nav-link" data-scroll-target="#经验研究与生活实践"><span class="header-section-number">9.4.9</span> 经验研究与生活实践</a></li>
+  <li><a href="#从比较到共同建构" id="toc-从比较到共同建构" class="nav-link" data-scroll-target="#从比较到共同建构"><span class="header-section-number">9.4.10</span> 从比较到共同建构</a></li>
+  <li><a href="#综合案例比较知而行与知识规范" id="toc-综合案例比较知而行与知识规范" class="nav-link" data-scroll-target="#综合案例比较知而行与知识规范"><span class="header-section-number">9.4.11</span> 综合案例：比较“知而行”与知识规范</a></li>
+  <li><a href="#完整示范从知之为知之到认识谦逊" id="toc-完整示范从知之为知之到认识谦逊" class="nav-link" data-scroll-target="#完整示范从知之为知之到认识谦逊"><span class="header-section-number">9.4.12</span> 完整示范：从“知之为知之”到认识谦逊</a></li>
+  <li><a href="#竞争解释不是附录而是内部解释的一部分" id="toc-竞争解释不是附录而是内部解释的一部分" class="nav-link" data-scroll-target="#竞争解释不是附录而是内部解释的一部分"><span class="header-section-number">9.4.13</span> 竞争解释不是附录，而是内部解释的一部分</a></li>
+  <li><a href="#跨文化案例实验需要四道控制" id="toc-跨文化案例实验需要四道控制" class="nav-link" data-scroll-target="#跨文化案例实验需要四道控制"><span class="header-section-number">9.4.14</span> 跨文化案例实验需要四道控制</a></li>
+  <li><a href="#任何比较都使用第三种语言的反对" id="toc-任何比较都使用第三种语言的反对" class="nav-link" data-scroll-target="#任何比较都使用第三种语言的反对"><span class="header-section-number">9.4.15</span> “任何比较都使用第三种语言”的反对</a></li>
+  <li><a href="#失败的对应怎样改进理论" id="toc-失败的对应怎样改进理论" class="nav-link" data-scroll-target="#失败的对应怎样改进理论"><span class="header-section-number">9.4.16</span> 失败的对应怎样改进理论</a></li>
+  </ul></li>
+  <li><a href="#从概念对应转向问题迁移" id="toc-从概念对应转向问题迁移" class="nav-link" data-scroll-target="#从概念对应转向问题迁移"><span class="header-section-number">9.5</span> 从概念对应转向问题迁移</a>
+  <ul class="collapse">
+  <li><a href="#比较研究包含三种不同事业" id="toc-比较研究包含三种不同事业" class="nav-link" data-scroll-target="#比较研究包含三种不同事业"><span class="header-section-number">9.5.1</span> 比较研究包含三种不同事业</a></li>
+  <li><a href="#比较单位不能只是一对词" id="toc-比较单位不能只是一对词" class="nav-link" data-scroll-target="#比较单位不能只是一对词"><span class="header-section-number">9.5.2</span> 比较单位不能只是一对词</a></li>
+  <li><a href="#内部解释要求文本位置和反方材料" id="toc-内部解释要求文本位置和反方材料" class="nav-link" data-scroll-target="#内部解释要求文本位置和反方材料"><span class="header-section-number">9.5.3</span> 内部解释要求文本位置和反方材料</a></li>
+  <li><a href="#四项检验控制相似主张" id="toc-四项检验控制相似主张" class="nav-link" data-scroll-target="#四项检验控制相似主张"><span class="header-section-number">9.5.4</span> 四项检验控制相似主张</a></li>
+  <li><a href="#厚概念不能被抽成薄条件" id="toc-厚概念不能被抽成薄条件" class="nav-link" data-scroll-target="#厚概念不能被抽成薄条件"><span class="header-section-number">9.5.5</span> 厚概念不能被抽成薄条件</a></li>
+  <li><a href="#历史同源需要独立证据" id="toc-历史同源需要独立证据" class="nav-link" data-scroll-target="#历史同源需要独立证据"><span class="header-section-number">9.5.6</span> 历史同源需要独立证据</a></li>
+  <li><a href="#翻译应保存推论而不只保存字面" id="toc-翻译应保存推论而不只保存字面" class="nav-link" data-scroll-target="#翻译应保存推论而不只保存字面"><span class="header-section-number">9.5.7</span> 翻译应保存推论而不只保存字面</a></li>
+  <li><a href="#案例跨语境迁移需要重建背景常识" id="toc-案例跨语境迁移需要重建背景常识" class="nav-link" data-scroll-target="#案例跨语境迁移需要重建背景常识"><span class="header-section-number">9.5.8</span> 案例跨语境迁移需要重建背景常识</a></li>
+  <li><a href="#比较关系中的权力会决定谁负责解释" id="toc-比较关系中的权力会决定谁负责解释" class="nav-link" data-scroll-target="#比较关系中的权力会决定谁负责解释"><span class="header-section-number">9.5.9</span> 比较关系中的权力会决定谁负责解释</a></li>
+  <li><a href="#谱系批评与规范反驳承担不同任务" id="toc-谱系批评与规范反驳承担不同任务" class="nav-link" data-scroll-target="#谱系批评与规范反驳承担不同任务"><span class="header-section-number">9.5.10</span> 谱系批评与规范反驳承担不同任务</a></li>
+  <li><a href="#负面比较也能产生实质知识" id="toc-负面比较也能产生实质知识" class="nav-link" data-scroll-target="#负面比较也能产生实质知识"><span class="header-section-number">9.5.11</span> 负面比较也能产生实质知识</a></li>
+  <li><a href="#阶段性结论" id="toc-阶段性结论" class="nav-link" data-scroll-target="#阶段性结论"><span class="header-section-number">9.5.12</span> 阶段性结论</a></li>
+  </ul></li>
+  <li><a href="#形成一套可修订的认识论立场" id="toc-形成一套可修订的认识论立场" class="nav-link" data-scroll-target="#形成一套可修订的认识论立场"><span class="header-section-number">9.6</span> 形成一套可修订的认识论立场</a>
+  <ul class="collapse">
+  <li><a href="#双向批评要求双方都可能改变" id="toc-双向批评要求双方都可能改变" class="nav-link" data-scroll-target="#双向批评要求双方都可能改变"><span class="header-section-number">9.6.1</span> 双向批评要求双方都可能改变</a></li>
+  <li><a href="#不可通约是一项发现而非禁令" id="toc-不可通约是一项发现而非禁令" class="nav-link" data-scroll-target="#不可通约是一项发现而非禁令"><span class="header-section-number">9.6.2</span> 不可通约是一项发现而非禁令</a></li>
+  <li><a href="#规范建构必须由研究者署名" id="toc-规范建构必须由研究者署名" class="nav-link" data-scroll-target="#规范建构必须由研究者署名"><span class="header-section-number">9.6.3</span> 规范建构必须由研究者署名</a></li>
+  <li><a href="#九个问题构成一张可迁移地图" id="toc-九个问题构成一张可迁移地图" class="nav-link" data-scroll-target="#九个问题构成一张可迁移地图"><span class="header-section-number">9.6.4</span> 九个问题构成一张可迁移地图</a></li>
+  <li><a href="#比较也要接受经验与语言证据" id="toc-比较也要接受经验与语言证据" class="nav-link" data-scroll-target="#比较也要接受经验与语言证据"><span class="header-section-number">9.6.5</span> 比较也要接受经验与语言证据</a></li>
+  <li><a href="#认识谦逊不等于停止判断" id="toc-认识谦逊不等于停止判断" class="nav-link" data-scroll-target="#认识谦逊不等于停止判断"><span class="header-section-number">9.6.6</span> 认识谦逊不等于停止判断</a></li>
+  <li><a href="#问题驱动不是取消经典文本" id="toc-问题驱动不是取消经典文本" class="nav-link" data-scroll-target="#问题驱动不是取消经典文本"><span class="header-section-number">9.6.7</span> 问题驱动不是取消经典文本</a></li>
+  <li><a href="#全书结论" id="toc-全书结论" class="nav-link" data-scroll-target="#全书结论"><span class="header-section-number">9.6.8</span> 全书结论</a></li>
+  <li><a href="#研究定位" id="toc-研究定位" class="nav-link" data-scroll-target="#研究定位"><span class="header-section-number">9.6.9</span> 研究定位</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/07-value.html">第三部　认识价值、技术环境与比较方法</a></li><li class="breadcrumb-item"><a href="../manuscript/09-comparative.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">比较认识论如何改变我们的问题</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">比较认识论如何改变我们的问题</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="学习目标">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>学习目标
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>区分历史解释、结构比较和规范建构；掌握语义、论证、功能与历史四项检验；避免强制对应与不可比较论；形成能够接受双向批评的认识论立场。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="开篇案例">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">提示</span>开篇案例
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>研究者说：“庄子早已提出语境主义，王阳明早已提出德性认识论。”这些说法以熟悉术语制造接近感，却可能同时误读两边。真正的问题不是谁“先说过”一个相似句子，而是原概念在何种问题、论证和实践中工作；现代概念是否保留了这些关系；比较之后，双方是否都需要修改原来的问题。</p>
+</div>
+</div>
+<section id="为什么比较以及比较什么" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="为什么比较以及比较什么"><span class="header-section-number">9.1</span> 为什么比较以及比较什么</h2>
+<section id="对应问题" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="对应问题"><span class="header-section-number">9.1.1</span> 对应问题</h3>
+<p>“认识论”作为学科分类具有特定历史。不同传统当然都讨论学习、判断、错误、言说和智慧，但不必把这些议题组织为“知识的必要充分条件”。比较的第一步不是问“中国有没有西方式认识论”，而是明确比较目的。 至少有三种工作：<strong>历史解释</strong>力求说明文本在原语境中的意思和功能；<strong>比较分析</strong>选择可比问题，揭示相似与差异；<strong>规范重构</strong>借旧资源发展今天可辩护的理论。重构可以富有哲学价值，却不能冒充作者本人的历史主张。</p>
+</section>
+<section id="比较的四项检验" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="比较的四项检验"><span class="header-section-number">9.1.2</span> 比较的四项检验</h3>
+<p>第一，<strong>语义检验</strong>：关键术语的使用范围是否相近？“知”可能指事实掌握、识人、实践智慧或道德觉悟。第二，<strong>论证检验</strong>：双方是否给出相同前提与推理，而非只有结论听起来类似？第三，<strong>功能检验</strong>：概念在何种实践中工作，是法庭证明、科学解释、修身还是政治劝诫？第四，<strong>历史检验</strong>：所声称的影响是否有传承证据，还是仅为结构相似。 通过这些检验后，比较可以有三种结果：真正相近；局部可译但目标不同；表面相似却在关键位置不可直接互译。第三种不是失败，也不自动推出两个传统整体“不可通约”。只要研究者仍能说明差异、给出理由并让双方接受批评，比较就已经在进行；局部不可译首先是限制比较主张强度的信号，而不是停止比较的结论。</p>
+</section>
+<section id="四组问题的重新打开" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="四组问题的重新打开"><span class="header-section-number">9.1.3</span> 四组问题的重新打开</h3>
+</section>
+<section id="知与行" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="知与行"><span class="header-section-number">9.1.4</span> 知与行</h3>
+<p>王阳明知行合一不是简单说“知识必然导致行动”。其工夫论针对把道德认知与实践割裂<span class="citation" data-cites="tiwald2014">(<a href="references.html#ref-tiwald2014" role="doc-biblioref">Tiwald 和 Van Norden 2014年</a>)</span>。它能挑战把知识仅视为静态命题库存的模型，但不能直接反驳JTB，因为二者对象和目标不同。</p>
+</section>
+<section id="蔽与视角" class="level3" data-number="9.1.5">
+<h3 data-number="9.1.5" class="anchored" data-anchor-id="蔽与视角"><span class="header-section-number">9.1.5</span> 蔽与视角</h3>
+<p>荀子的“解蔽”关心片面执著如何妨碍把握整体<span class="citation" data-cites="xunzi2014">(<a href="references.html#ref-xunzi2014" role="doc-biblioref">Xunzi 2014年</a>)</span>；庄子通过视角转换质疑固定尺度<span class="citation" data-cites="zhuangzi2009">(<a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>)</span>。二者可与认知偏差、立场认识论和语境讨论对话，但一个主张通过秩序与学习矫正，一个更警惕任何视角自居终局。</p>
+</section>
+<section id="名实与公共理由" class="level3" data-number="9.1.6">
+<h3 data-number="9.1.6" class="anchored" data-anchor-id="名实与公共理由"><span class="header-section-number">9.1.6</span> 名、实与公共理由</h3>
+<p>名家、墨家和因明传统包含丰富的语言、分类与推理研究<span class="citation" data-cites="graham1989 dunne2004">(<a href="references.html#ref-graham1989" role="doc-biblioref">Graham 1989年</a>; <a href="references.html#ref-dunne2004" role="doc-biblioref">Dunne 2004年</a>)</span>。把它们称作“东方形式逻辑”可能方便入门，却容易用现代体系裁剪材料。更稳妥的做法是比较具体推理规范：何者算理由，类推如何受约束，反例如何改变分类。</p>
+</section>
+<section id="工夫与认知能力" class="level3" data-number="9.1.7">
+<h3 data-number="9.1.7" class="anchored" data-anchor-id="工夫与认知能力"><span class="header-section-number">9.1.7</span> 工夫与认知能力</h3>
+<p>工夫论把认识能力视为长期练习、身体习惯、情感与关系共同塑造的结果。它可扩展德性认识论，使“可靠能力”不只是一项个体内部机制。但若抽去伦理和共同体目标，只剩“训练提高准确率”，就失去原理论的厚度。</p>
+</section>
+<section id="一套问题驱动的方法" class="level3" data-number="9.1.8">
+<h3 data-number="9.1.8" class="anchored" data-anchor-id="一套问题驱动的方法"><span class="header-section-number">9.1.8</span> 一套问题驱动的方法</h3>
+<p>面对任何知识声称，可以依次询问：</p>
+<ol type="1">
+<li><p>命题是什么，真值条件是否清楚？</p></li>
+<li><p>主体以何种态度接受它，确信程度是否校准？</p></li>
+<li><p>根据来自知觉、记忆、推理、证言还是制度记录？</p></li>
+<li><p>根据与信念之间是否有适当的“基于”关系？</p></li>
+<li><p>有无击败者、近邻错误或Gettier式运气？</p></li>
+<li><p>专家、工具和共同体如何分担认识劳动与责任？</p></li>
+<li><p>权力是否不当改变了可信度和表达资源？</p></li>
+<li><p>结论只是真信念，还是形成了理解与行动能力？</p></li>
+</ol>
+<p>这不是知识的八条件定义，而是一张诊断清单。不同问题会突出不同项目。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>全书的元论证：有限主体无法脱离知觉、记忆、语言、他人和制度；依赖却不等于放弃理性，因为依赖关系可以被记录、比较和纠错；认识自主因而不是无依赖，而是有能力识别根据、分配信任、响应反证并承认未知。</p>
+</div>
+</div>
+</section>
+<section id="结语知道如何继续追问" class="level3" data-number="9.1.9">
+<h3 data-number="9.1.9" class="anchored" data-anchor-id="结语知道如何继续追问"><span class="header-section-number">9.1.9</span> 结语：知道如何继续追问</h3>
+<p>认识论没有提供一种永不出错的算法。它提供的是区分能力：把真与合理分开，把理由与原因分开，把个人确信与公共证据分开，把知识与理解分开。掌握这些区分，不会消除不确定性，却能使不确定性变得可说明、可讨论、可修正。 好的认识者并非从不犯错，而是错误能够暴露；并非凡事独立验证，而是知道何时信任、何时追问；并非永远保持怀疑，而是在根据不足时暂停，在根据改善时更新。这也是一本问题驱动教材最终希望训练的能力。</p>
+<div class="callout callout-style-default callout-important callout-titled" title="比较视角">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">重要</span>比较视角
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>比较认识论最有价值的结果，不是宣布某传统“早已有之”，而是让原本自然化的问题重新可见：为何把知识主体设想成孤立个人？为何把解释与实践排除在知识价值之外？反过来，当代分析工具也能要求比较研究给出更精确的文本、论证和反例。</p>
+</div>
+</div>
+</section>
+<section id="翻译是一项理论选择" class="level3" data-number="9.1.10">
+<h3 data-number="9.1.10" class="anchored" data-anchor-id="翻译是一项理论选择"><span class="header-section-number">9.1.10</span> 翻译是一项理论选择</h3>
+<p>把一个词译为“knowledge”“reason”或“virtue”，已经选择了比较方向。同一“知”在不同句中可能需要译成知道、识别、理解或智慧。可靠研究应给出原文位置、语境和替代译法，而不是用统一译词制造理论一致。 不可译并不意味着不可理解。研究者可以描述概念在推论和实践中的角色，再说明目标语言缺少单一对应词。保留音译有时能防止过早同一化，但若不提供使用说明，音译也只是把困难隐藏起来。</p>
+</section>
+<section id="避免两种中心主义" class="level3" data-number="9.1.11">
+<h3 data-number="9.1.11" class="anchored" data-anchor-id="避免两种中心主义"><span class="header-section-number">9.1.11</span> 避免两种中心主义</h3>
+<p>一种错误以当代英美问题为唯一尺度，只在其他传统中寻找相似答案；另一种错误则因反对西方中心主义而免除非西方主张的论证检验。真正平等的比较既允许传统改变问题，也允许双方被反例和文本证据批评。 比较还要避免“代表整个传统”。儒家、道家、佛教内部各有历史分歧，所谓“西方认识论”也包含理性主义、经验主义、实用主义、女性主义和自然主义等不同方案。分析单位应尽量具体到文本、论证或实践。</p>
+</section>
+<section id="案例工作坊知行合一" class="level3" data-number="9.1.12">
+<h3 data-number="9.1.12" class="anchored" data-anchor-id="案例工作坊知行合一"><span class="header-section-number">9.1.12</span> 案例工作坊：知行合一</h3>
+<p>若研究者说“王阳明证明知道<span class="math inline">\(p\)</span>就必然做<span class="math inline">\(p\)</span>”，先检查“知”是否指对任意事实命题的接受，“行”是否指一次外显行为，以及命题是在描述心理规律还是提出道德工夫标准<span class="citation" data-cites="tiwald2014">(<a href="references.html#ref-tiwald2014" role="doc-biblioref">Tiwald 和 Van Norden 2014年</a>)</span>。若这些问题答案是否定的，把它形式化成 <span class="math inline">\(Kp\rightarrow Ap\)</span> 就会误译。 更好的重构是：在相关道德语境中，脱离实践倾向的口头认可不足以算作完成的知。这个主张可与能力之知、德性认识论和动机内在主义对话，但它并不因此与任一理论相同。比较结论应同时写出对话点与剩余差异。</p>
+</section>
+</section>
+<section id="内部解释结构比较与规范建构" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="内部解释结构比较与规范建构"><span class="header-section-number">9.2</span> 内部解释、结构比较与规范建构</h2>
+<section id="比较不是寻找相同词" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="比较不是寻找相同词"><span class="header-section-number">9.2.1</span> 比较不是寻找相同词</h3>
+<p>两个传统都有可译为“知”的词，不表示它们提出同一问题。词的意义取决于与哪些词对立、能进入哪些推理、在哪些实践中使用。现代分析知识常与信念、真和确证联系；古典文本中的“知”还可能与学、行、智、名、道等构成网络。 反过来，没有对应词也不表示没有相关思想。传统可能通过学习制度、辩论规范和修养实践处理错误与可靠性，而不把它抽象成“认识论”。比较单位可从词扩大到论证、案例和实践，但必须说明转换步骤。 同源词内部也变化。先秦、宋明与现代汉语的“知”不可默认恒定；英文 knowledge 在不同时期也有理论负担。比较研究同时需要历史语义与哲学重构。</p>
+</section>
+<section id="三层写作规范" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="三层写作规范"><span class="header-section-number">9.2.2</span> 三层写作规范</h3>
+<p>第一层写<strong>文本事实</strong>：某篇、某章、某角色说了什么，版本和翻译如何。第二层写<strong>解释主张</strong>：这段话在全篇与历史语境中承担什么功能。第三层写<strong>哲学重构</strong>：若把它转成当代问题，可形成怎样的论证。三层应使用不同语气。 “《庄子》写道……”需要文本定位；“这段批评固定视角”是解释；“它可发展成一种语境认识论”是重构。若省略层次，读者会把研究者的创造性方案误当历史作者明说的理论。 重构并非不合法。哲学传统一直在新问题中再解释旧资源。规范是公开目标、保留文本阻力，并允许重构因反例而修正，而不是借古人权威为现代主张背书。</p>
+</section>
+<section id="论语中的知不知与学习" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="论语中的知不知与学习"><span class="header-section-number">9.2.3</span> 《论语》中的知、不知与学习</h3>
+<p>《论语》把承认不知、好学、听言观行和识人等放在同一实践中<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年</a>)</span>。这提供认识谦逊、证言判断和长期能力培养的资源，却不是一套JTB定义。核心单位常是学习者怎样成为能判断和行动的人。 “知之为知之，不知为不知”可解释为二阶校准<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年, 2.17</a>)</span>：主体不仅形成一阶判断，还应准确判断自己是否拥有知识。它反对虚假自信，但不说明一阶知识全部条件。放到AI界面中，可成为系统表达不确定性的规范性类比，而不是历史预见。 孔子重视多闻、多见与择取，也强调言行一致。证言信任不是无条件服从：观察行为和长期记录构成对言说者的评价。师生关系同时包含权威与学习自主，适合与第九章的关系性自主对话。</p>
+</section>
+<section id="孟子的反身认识" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="孟子的反身认识"><span class="header-section-number">9.2.4</span> 孟子的反身认识</h3>
+<p>孟子讨论心、性、恻隐等道德能力，反身工夫旨在扩充和实现道德端绪<span class="citation" data-cites="mencius2008">(<a href="references.html#ref-mencius2008" role="doc-biblioref">Mencius 2008年</a>)</span>。把它直接等同于笛卡尔内省，会忽略对象与目标：前者不是从不可怀疑心理表象奠定外部世界知识。 可比问题是第一人称对道德动机是否有特殊入口，情感经验能否成为道德理由，以及修养如何改善自知。孟子也承认环境与习惯影响能力，这使“内在”不等于脱离社会因果。 现代重构可提出：某些规范理由通过受教育的情感显现。反对者会问情感如何区分文化偏见，支持者需加入反思、他人批评和实践结果。这样的对话产生新论证，而非简单贴“内在主义”标签。</p>
+</section>
+<section id="荀子的解蔽与学习" class="level3" data-number="9.2.5">
+<h3 data-number="9.2.5" class="anchored" data-anchor-id="荀子的解蔽与学习"><span class="header-section-number">9.2.5</span> 荀子的解蔽与学习</h3>
+<p>荀子强调人的认识能力、对象之理、语言分类和心受“蔽”限制，并把学习、师法与辩说视为矫正条件<span class="citation" data-cites="xunzi2014">(<a href="references.html#ref-xunzi2014" role="doc-biblioref">Xunzi 2014年</a>)</span>。蔽不是一次感官幻觉，而是执著一端遮蔽整体。它与确认偏误、立场局限有结构相似。 解蔽不要求没有视角，而要求通过比较、秩序和公共规范扩展判断。这里可与社会认识论的批评制度对话。差异在于荀子的“道”、礼与政治秩序具有实质规范内容，不是中立的信息多样性原则。 若把“兼陈万物而中县衡”重构为多源证据和权衡方法，应说明这是现代抽象<span class="citation" data-cites="xunzi2014">(<a href="references.html#ref-xunzi2014" role="doc-biblioref">Xunzi 2014年</a>, chap.&nbsp;21)</span>。文本对师法和正名的重视还带来权威问题：规范秩序能校正偏见，也可能压制异议。比较应保留这项双重性。</p>
+</section>
+<section id="庄子的视角与相对主义" class="level3" data-number="9.2.6">
+<h3 data-number="9.2.6" class="anchored" data-anchor-id="庄子的视角与相对主义"><span class="header-section-number">9.2.6</span> 庄子的视角与相对主义</h3>
+<p>《庄子》频繁转换人物、物种与梦醒视角，揭示判断标准和语言区分的局限<span class="citation" data-cites="zhuangzi2009">(<a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>)</span>。把它归为“凡观点都同样真”的简单相对主义不充分，因为文本也批评僵化、展示技艺和适应情境的优劣。 与当代语境主义的相似在于标准与视角重要；差异在于语境主义通常仍给知识归属确定真值条件，庄子更广泛地松动执着于固定是非和自我中心。二者的问题范围不同。 庄周梦蝶可与梦怀疑比较，但笛卡尔用梦寻找确定基础，庄子让身份与转化边界不再自明。相同故事装置服务相反方向。比较价值正来自这一差异，而非谁更早提出怀疑论。</p>
+</section>
+<section id="墨家名辩与理由规范" class="level3" data-number="9.2.7">
+<h3 data-number="9.2.7" class="anchored" data-anchor-id="墨家名辩与理由规范"><span class="header-section-number">9.2.7</span> 墨家、名辩与理由规范</h3>
+<p>墨家文本重视“故”、类、名实与辩，提供公共论证和分类的材料。将其直接套成亚里士多德三段论会损失文本结构；更适合比较理由如何支持主张、类比何时成立、名称怎样对应实践区分<span class="citation" data-cites="graham1989">(<a href="references.html#ref-graham1989" role="doc-biblioref">Graham 1989年</a>)</span>。 “白马非马”等名辩命题涉及名称范围、类与复合限定。现代内涵—外延工具可帮助重构，却不是证明古代作者已经拥有Frege式语义学。重构应展示多个解释及其文本代价。 公共可争辩性是重要连接点。理由若只能由私人体验把握，难以进入辩；名、类和标准使判断可共享。现代形式逻辑提供更严格符号工具，但同样依赖选取恰当分类和前提。</p>
+</section>
+<section id="佛教量论与二谛的比较边界" class="level3" data-number="9.2.8">
+<h3 data-number="9.2.8" class="anchored" data-anchor-id="佛教量论与二谛的比较边界"><span class="header-section-number">9.2.8</span> 佛教量论与二谛的比较边界</h3>
+<p>佛教传统内部差异巨大。因明与量论讨论现量、比量、可靠认知和推理标志；中观二谛讨论世俗语言与胜义分析。把所有内容合成“佛教认识论”会抹去学派、语言和历史层次<span class="citation" data-cites="dunne2004 siderits2013">(<a href="references.html#ref-dunne2004" role="doc-biblioref">Dunne 2004年</a>; <a href="references.html#ref-siderits2013" role="doc-biblioref">Siderits 和 Katsura 2013年</a>)</span>。 现量不能简单等于当代感觉材料，比量也不只是西方演绎。它们嵌在错误认知、概念构造和解脱目标中。与知觉、推理理论比较前，需要确定具体作者与论证。 “世俗谛=现象、胜义谛=物自体”的康德式对应尤其危险。两组概念在形而上学和方法中功能不同<span class="citation" data-cites="siderits2013">(<a href="references.html#ref-siderits2013" role="doc-biblioref">Siderits 和 Katsura 2013年</a>)</span>。可比较两层话语怎样约束真理主张，但不能用术语配对代替解释。</p>
+</section>
+<section id="工夫论对德性认识论的挑战" class="level3" data-number="9.2.9">
+<h3 data-number="9.2.9" class="anchored" data-anchor-id="工夫论对德性认识论的挑战"><span class="header-section-number">9.2.9</span> 工夫论对德性认识论的挑战</h3>
+<p>德性认识论常把能力归属于个体；工夫论强调身体习惯、情感、礼仪、师友和具体实践共同塑造判断。它推动我们把认知德性看作发展过程和关系成果，而非主体已有模块。 工夫也提供训练细节：反复实践、在事上检验、通过榜样和纠错形成敏感性。这比只列“开放、认真、谦逊”德性清单更动态。现代教育可借此问，制度怎样让德性可练习。 但工夫目标常是道德—政治人格，而非最大化真信念。若现代重构只保留提高准确率，会抽空传统价值。更好的对话让真理导向与人格、关系目标彼此提出问题。</p>
+</section>
+<section id="关系性认识自主" class="level3" data-number="9.2.10">
+<h3 data-number="9.2.10" class="anchored" data-anchor-id="关系性认识自主"><span class="header-section-number">9.2.10</span> 关系性认识自主</h3>
+<p>西方现代图景常把自主想成独立于他人判断。证言与社会认识论已经显示，成熟自主是管理依赖。儒家师友与共同学习可提供关系性模型：他人帮助主体形成判断能力，而不只是替主体决定。 关系也可能压迫。年龄、身份和礼制权威若免于质疑，会损害纠错。关系性自主必须包含权威可问责、学习者逐步取得发言能力和转换关系的可能。 比较结论因而不是“儒家重关系更好”，而是提出评价问题：依赖是否培养能力，能否回应反证，退出与申诉是否可行，信用如何分配。这些标准可用于古代实践与现代教育。</p>
+</section>
+<section id="去中心化与共同标准" class="level3" data-number="9.2.11">
+<h3 data-number="9.2.11" class="anchored" data-anchor-id="去中心化与共同标准"><span class="header-section-number">9.2.11</span> 去中心化与共同标准</h3>
+<p>扩大课程传统不是按地域各放一章就完成。若所有理论问题仍由单一传统定义，其他材料只作装饰，结构仍中心化。问题本身也应被改变：从“知识由哪些条件构成”扩展到“什么实践培养可知者”“认识目标为何”。 去中心化又不能取消准确性标准。文本需有版本与语境，论证需有效，比较需可批评。以尊重多元为由免于证据要求，会把非西方传统当不可讨论的身份象征，而非平等哲学伙伴。 课程可使用双向压力测试：用当代分析工具要求古典重构精确，用古典问题结构揭露当代理论的个体主义或命题中心倾向。双方都能改变，才是真正对话。</p>
+</section>
+<section id="综合案例如何比较知行合一" class="level3" data-number="9.2.12">
+<h3 data-number="9.2.12" class="anchored" data-anchor-id="综合案例如何比较知行合一"><span class="header-section-number">9.2.12</span> 综合案例：如何比较“知行合一”</h3>
+<p>第一步做文本工作：说明具体版本、上下文和“知”“行”的用法。第二步列历史解释：命题是否针对把道德认可与实践割裂<span class="citation" data-cites="tiwald2014">(<a href="references.html#ref-tiwald2014" role="doc-biblioref">Tiwald 和 Van Norden 2014年</a>)</span>。第三步才作重构：完成的道德知包含相应行动倾向。 随后选择现代对话对象。与能力之知比较，问会做是否可还原为命题；与德性认识论比较，问稳定品格如何使真信念成为成就；与动机理论比较，问真诚道德判断是否必然推动行动。每次比较只承诺局部结构相似。 最后列出不可化约差异：良知的形上与伦理背景、工夫目标、现代知识理论的真值中心。一个合格比较结论应同时写“它帮助我们看见什么”和“它不能被翻译成什么”。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="比较研究工作表">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>比较研究工作表
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>记录原文、版本、说话角色与语境；列关键词的语义范围和替代译法；区分文本事实、历史解释、结构比较与规范重构；说明比较单位与目的；写出相似点、功能差异和不可化约处；让双方理论各自接受一个新问题或反例。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="文本证据与比较实验" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="文本证据与比较实验"><span class="header-section-number">9.3</span> 文本证据与比较实验</h2>
+<section id="研读实验室比较是一种受约束的重构" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="研读实验室比较是一种受约束的重构"><span class="header-section-number">9.3.1</span> 研读实验室：比较是一种受约束的重构</h3>
+<p>比较认识论不是把两份术语表并排。研究者先在每个文本内部说明问题、论证和实践角色，再建立可检验的比较维度。若一开始便规定所有传统都必须回答“知识的必要充分条件是什么”，会把不以定义为中心的材料裁成缺失版本。 受约束重构同时避免另一个极端：因历史语境不同便拒绝任何跨传统判断。概念无需完全同一才能比较。只要说明比较轴，例如错误如何被发现、权威如何可纠正、主体怎样形成能力，就能分析结构相似与差异。不可直接翻译本身也是结果。 比较结论应有强度层级。“两段文本都讨论学习”最弱；“它们对学习中反思与实践的关系给出结构相似答案”较强；“它们表达同一理论”最强，需要语义、推论与历史证据。写作时明确强度，防止从主题相近滑到理论相同。</p>
+</section>
+<section id="文本证据的四层" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="文本证据的四层"><span class="header-section-number">9.3.2</span> 文本证据的四层</h3>
+<p>第一层是版本与篇章。古典作品可能有编纂层、异文和注释传统；引用必须给出篇章或段落，而不只作者名。第二层是词语在句中的语法和语义，不能以一个现代译词固定全部用法。第三层是论证角色：该句是提问者立场、寓言声音、反面例子还是作者认可。第四层是实践背景：概念用于辩论、修养、治理或解脱，会改变理论意义。 二手研究帮助识别争议，却不能让研究者跳过原文。若两个译本差异影响论证，应并列说明并给出选择理由。读者不懂原语时，可以诚实依赖学术译本，同时降低对细微词义的断言强度。 引用名句尤其危险。以“知之为知之”为例，脱离上下文后，它很容易被包装成任何现代观点的格言<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年, 2.17</a>)</span>。“吾生也有涯”也必须放回原篇的论述进程<span class="citation" data-cites="zhuangzi2009">(<a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>, chap.&nbsp;3)</span>。先复述前后问题，再说明名句承担的推理功能；若只提供道德启发，应标为启发性使用，不伪装成历史解释。</p>
+</section>
+<section id="六种比较关系" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="六种比较关系"><span class="header-section-number">9.3.3</span> 六种比较关系</h3>
+<p>同源关系要求历史传播或共同文本证据；平行关系只说在无已知影响下出现相似问题；对比关系用差异照亮各自承诺；翻译关系研究概念如何跨语言移动；批判关系让一方揭示另一方盲点；建构关系从多种资源提出新规范方案。六者需要不同证据。 若没有传播证据，就不应说某思想“影响”另一传统；年代更早也不证明后者抄袭。平行比较不需要同源，却要避免竞赛式“谁先发现”。哲学价值来自论证和问题重构，不来自时间冠军。 批判比较应双向。用当代证据主义检验古典权威时，也让古典修养论追问证据主义如何形成诚实、耐心和可教的主体。若只有一方提供标准，另一方只做材料，比较仍以单一中心组织。 建构方案必须标明作者责任。研究者从荀子学习论、德性认识论和社会纠错提出新模型，这个模型不再等同任何原传统。清楚区分“文本说”“可重构为”“我据此主张”，既保护历史准确，也允许哲学创造。</p>
+</section>
+<section id="概念簇而非一对一词典" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="概念簇而非一对一词典"><span class="header-section-number">9.3.4</span> 概念簇而非一对一词典</h3>
+<p>“知”可涉及识别、会做、理解、意识到、具有智慧或道德上真正体认；“knowledge”也在不同理论中与事实性、信念、能力和断言相连。一对一翻译会让两边内部差异消失。较好的方法是建立概念簇：列出典型对象、推论、反例、主体和实践后果。 翻译可以用测试句检验。若把某处“知”译为命题知识，能否自然接宾语？是否允许真假评价？文本是否把能言与能行区分？若译为技能，是否要求重复表现？没有单一测试决定，但多项证据能限制选择。 不可译词不应成为神秘特权。研究者仍要说明它与哪些词对立、何时适用、什么算误用。音译保留开放性，却不免除分析。反过来，目标语言已有相近词也不保证理论角色相同。 概念工程还需公开规范目标。为了跨文化课堂，可设计一个宽泛“认识成就”上位词，容纳知识、理解与工夫；这有教学价值，但不是发现所有传统暗中共享一个本质。新词的便利与历史主张要分开。</p>
+</section>
+<section id="案例一庄周梦蝶与梦论证" class="level3" data-number="9.3.5">
+<h3 data-number="9.3.5" class="anchored" data-anchor-id="案例一庄周梦蝶与梦论证"><span class="header-section-number">9.3.5</span> 案例一：庄周梦蝶与梦论证</h3>
+<p>两段材料都可引出梦醒区分，却处于不同问题进程。笛卡尔逐步扩大怀疑，寻找不可怀疑起点；庄周梦蝶嵌入物化、视角与身份转换的讨论<span class="citation" data-cites="descartes1996 zhuangzi2009">(<a href="references.html#ref-descartes1996" role="doc-biblioref">Descartes [1641年] 1996年</a>; <a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>)</span>。把二者都称“外部世界怀疑论”会损失终点差异。 可比较轴包括：经验内部是否有决定性梦醒标志；主体身份如何保持；怀疑的治疗目标是什么。笛卡尔路线可能把不确定性当作需克服的威胁，庄子文本则可能改变我们对固定分判的执着。这里用“可能”是因为庄子解释有争议，不能用一个寓言消灭全部诠释。 反向压力也有价值。庄子可追问寻求绝对基础是否由特定认识欲望推动；笛卡尔可追问视角转换是否仍需某些稳定判断才能表达。比较不是选胜者，而是让两种怀疑实践的隐含目标显现。</p>
+</section>
+<section id="案例二荀子解蔽与认识偏差" class="level3" data-number="9.3.6">
+<h3 data-number="9.3.6" class="anchored" data-anchor-id="案例二荀子解蔽与认识偏差"><span class="header-section-number">9.3.6</span> 案例二：荀子解蔽与认识偏差</h3>
+<p>“解蔽”可与确认偏误、选择性注意和群体极化对话，因为都关心主体如何被一端遮蔽<span class="citation" data-cites="xunzi2014">(<a href="references.html#ref-xunzi2014" role="doc-biblioref">Xunzi 2014年</a>)</span>。但现代偏差研究通常以统计表现或规范模型为基准，荀子讨论还涉及欲望、名辨、学习和政治秩序。二者的错误单位并不相同。 当代理论可细分机制：信息采样偏、更新权重偏、记忆偏或表达激励偏。荀子式视角则强调长期学习、师法和心的统摄，提醒纠错不是一次提供更多事实。结合可提出多层干预：改变信息环境、训练辨别、设置批评关系并校正欲望。 建构结论应归于研究者：“我们可据此提出一种生态纠偏模型”，而非“荀子已经发现现代认知偏差”。前者承认资源来源和新组合，后者会把历史文本变成现代科学预告。</p>
+</section>
+<section id="案例三知行与厚知识" class="level3" data-number="9.3.7">
+<h3 data-number="9.3.7" class="anchored" data-anchor-id="案例三知行与厚知识"><span class="header-section-number">9.3.7</span> 案例三：知行与厚知识</h3>
+<p>若“知”被规定为任何真命题的知识，“知道三角形内角性质”显然不要求以道德行动表现。某些儒学语境中的知却把体认、倾向和实践完成纳入评价<span class="citation" data-cites="tiwald2014">(<a href="references.html#ref-tiwald2014" role="doc-biblioref">Tiwald 和 Van Norden 2014年</a>)</span>。分歧可能不是事实争议，而是概念厚度不同。 比较可区分最低命题知识、能力知识、反思知识和德性化体认。厚概念能解释为何口头赞成道德原则却持续违背被批评为“不真知”；代价是难以保留日常所说“明知故犯”。薄概念能描述意志失败，却可能低估学习对人格的要求。 不必选一个词义消灭另一方。理论可承认层级：主体在薄意义知道规范，在厚意义尚未形成稳定认识成就。关键是避免在论证中从薄义前提滑到厚义结论。</p>
+</section>
+<section id="案例四佛教量论与当代证据" class="level3" data-number="9.3.8">
+<h3 data-number="9.3.8" class="anchored" data-anchor-id="案例四佛教量论与当代证据"><span class="header-section-number">9.3.8</span> 案例四：佛教量论与当代证据</h3>
+<p>印度佛教量论传统对知识来源、知觉、推理与错误有高度技术化讨论；不同作者与后继解释差异显著<span class="citation" data-cites="dunne2004">(<a href="references.html#ref-dunne2004" role="doc-biblioref">Dunne 2004年</a>)</span>。把“量”直译成证据或知识来源只是起点，不能据此宣布它等同可靠主义、基础主义或贝叶斯主义。 比较需要具体文本和论证：认知是否必须新颖且不欺诳，知觉如何排除概念构造，推理标志如何成立，修行目标怎样影响认识分类。若教材只有二手概述，应降低历史断言，并把进一步原典研究列为开放任务。 当代理论可借此反思默认分类是否过度围绕命题信念；佛教材料也可受当代反事实与社会知识问题追问。对话的边界同样重要：解脱目标、心识理论和论辩语境不能从几个共享术语中删去。</p>
+</section>
+<section id="案例五认识自主与关系" class="level3" data-number="9.3.9">
+<h3 data-number="9.3.9" class="anchored" data-anchor-id="案例五认识自主与关系"><span class="header-section-number">9.3.9</span> 案例五：认识自主与关系</h3>
+<p>自由主义图景常把自主理解为个人能反思并选择信念；关系性观点强调，语言、能力和自信都在依赖中形成。儒家学习关系可提示受教、劝谏和角色责任的认识意义；当代社会认识论则揭示关系也会压制、沉默和分配不公。 关系本身既非自主的敌人，也非保证。判断要看主体能否获得替代来源、提出异议、理解权威范围并在受损时退出；也要看照护和教育是否提供发展能力的真实条件。孤立可能减少支配，却也切断知识资源。 比较结论可以是规范性的：认识自主是管理不可避免依赖的能力与制度条件。这个结论受到多种传统启发，却不应倒签给任何单一古典作者。</p>
+</section>
+<section id="研究者位置与中心主义" class="level3" data-number="9.3.10">
+<h3 data-number="9.3.10" class="anchored" data-anchor-id="研究者位置与中心主义"><span class="header-section-number">9.3.10</span> 研究者位置与中心主义</h3>
+<p>研究者选择问题、译本和比较轴，不可能完全无位置。位置说明不是以身份代替论证，而是公开材料能力、语言限制和规范兴趣。例如，只能阅读译本就应说明；以当代知识分析为起点，就要主动检查它是否压缩其他问题。 去西方中心化不等于把“西方”整体拒绝，也不等于对非西方材料取消批评。真正对称要求双方都有内部差异、可犯错性与论证责任。若一方被描写成抽象理性，另一方被浪漫化为整体智慧，仍是失真二分。 课程编排也表达中心。若比较只在末章出现，读者可能把前十三章当普遍理论、最后一章当文化补充。本书在各章加入比较问题，末章任务是反思方法与汇总差异。贯穿并不要求每章平均分配传统，而要求主要问题不被单一谱系垄断。</p>
+</section>
+<section id="结课综合建立自己的认识论地图" class="level3" data-number="9.3.11">
+<h3 data-number="9.3.11" class="anchored" data-anchor-id="结课综合建立自己的认识论地图"><span class="header-section-number">9.3.11</span> 结课综合：建立自己的认识论地图</h3>
+<p>完成全书后，不应只选择“我是可靠主义者”。先列出不同评价：知识、确证、理解、责任、群体表现和行动许可；再说明每项由哪些条件决定。单一理论可解释部分维度，多元理论必须交代维度间关系。 其次选择三个压力案例：一个Gettier案例、一个社会或数字系统案例、一个跨传统概念案例。检验自己的立场是否在三个领域使用一致原则，若不一致，说明差异来自对象还是临时修补。理论成熟表现为知道代价，而非声称没有反例。 最后写出纠错程序：什么证据会改变立场，遇到专家分歧如何行动，如何记录不确定性，怎样避免身份偏见和来源重复。认识论不是获得一组永远正确答案，而是构造能在错误中继续学习的规范。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="结课研读任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>结课研读任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>选择两个具体文本和一个当代认识论问题，分别完成内部解释、结构比较和规范建构；为每项主张标注文本证据强度；列出一个相似点、两个不可约差异和一项双向批评；最后说明新立场属于谁，以及何种反例会迫使你修正。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="双向批评与方法边界" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="双向批评与方法边界"><span class="header-section-number">9.4</span> 双向批评与方法边界</h2>
+<section id="专题研讨比较认识论的方法限度与共同问题" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="专题研讨比较认识论的方法限度与共同问题"><span class="header-section-number">9.4.1</span> 专题研讨：比较认识论的方法、限度与共同问题</h3>
+<p>比较不是在两列术语之间画等号。它至少包含三种不同工作：历史解释问某文本在自身语境中主张什么；结构比较问不同理论如何处理相似问题；规范建构则借多种资源提出研究者自己的方案。三种工作都正当，但证据标准不同。若不标明切换，研究者会把自己的重构误写成古人的原意，或以历史差异阻止任何哲学对话。</p>
+</section>
+<section id="先确定比较单位" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="先确定比较单位"><span class="header-section-number">9.4.2</span> 先确定比较单位</h3>
+<p>“中国认识论与西方认识论的差异”范围过大，通常只能产生文化性格标签。可检验的比较单位应缩小到具体文本段落、论证、概念角色、实践或问题。例如比较荀子关于蔽的诊断与当代注意偏差，不是比较两个文明；比较休谟归纳问题与某种类推实践，也需说明双方究竟共享哪个推理压力。 单位过小也会失真。孤立一个“知”字而不看它与学、行、名、心的关系，会制造词典比较；截取一句怀疑表述而忽略作品的文学角色，也可能把修辞变成命题。理想单位足以重建推论与实践背景，又小到允许逐项证据检查。 研究开头应写一份范围声明：使用哪些版本和语言，比较何种问题，哪些历史时期不纳入，目标是解释、对照还是建构。范围声明不会消除争议，却让读者知道结论不能外推到哪里。</p>
+</section>
+<section id="问题同一性不能预设" class="level3" data-number="9.4.3">
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="问题同一性不能预设"><span class="header-section-number">9.4.3</span> 问题同一性不能预设</h3>
+<p>两个文本都问“怎样知”，不表示它们面对同一问题。当代知识分析可能寻找命题知识的必要充分条件；古典文本可能关心治理、技艺、学习或道德转化。比较者需要证明相似性位于哪一层：词语、论证形式、功能压力、实践目标还是规范理想。 一个稳健方法是先分别写“内部问题陈述”，不使用另一传统的技术术语；再写“桥梁问题”，说明两者为何值得放在一起。例如：一方解释知觉信念怎样获得证成，另一方解释主体怎样克服局部之蔽。桥梁可以是“有限主体如何避免把局部当整体”，而不是宣称“蔽就是认知偏差”。 桥梁还要允许失败。深入解释后若发现一方讨论语义真值，另一方讨论道德人格，不可通约本身就是结果。它显示原问题划分具有地方性，并促使研究者改写更宽问题。比较的成功不以找到相同答案为必要。</p>
+</section>
+<section id="概念角色而非单词对齐" class="level3" data-number="9.4.4">
+<h3 data-number="9.4.4" class="anchored" data-anchor-id="概念角色而非单词对齐"><span class="header-section-number">9.4.4</span> 概念角色而非单词对齐</h3>
+<p>同一个词在句子中可以承担不同作用，“知”可能表示识别、掌握、理解、熟悉或规范认可；英语 knowledge 也有命题、能力和熟悉之分。翻译时应追踪概念的推论角色：从它可推出什么，什么能作为其理由，它与行动、责任和教育怎样相连。 概念角色可用六项表记录：典型对象、获得方式、失败模式、主体条件、实践后果和相邻反义。两个概念若译词相同，却在失败模式与实践后果上差异巨大，不能视为同一；译词不同却承担相近问题功能，则可谨慎比较。表格是诊断工具，不是证明同一性的算法。 保留原词有时必要，但不能把拼音当解释。研究者应给出关键文本位置、字面与语境译法、至少一种替代译法，并说明选择改变何种论证。引用现代译本也要查原文，因为译者可能已经把古典术语纳入某种西方哲学词汇。</p>
+</section>
+<section id="避免年代错置与先发现叙事" class="level3" data-number="9.4.5">
+<h3 data-number="9.4.5" class="anchored" data-anchor-id="避免年代错置与先发现叙事"><span class="header-section-number">9.4.5</span> 避免年代错置与“先发现”叙事</h3>
+<p>说某古代思想家“早已发现”现代理论，容易把哲学史写成通往当前分类的竞赛。相似句子可能缺少现代理论依赖的科学背景、概念区分和论证目标。判断是否为同一理论，至少要比较核心问题、肯定主张、理由结构、反例响应与适用范围。 这不意味着古代资源只能放在博物馆。研究者可以明确进行规范重构：从文本中提取一种对有限视角的洞见，与当代理论结合，形成新方案。此时应使用“受某文本启发”“可以重构为”，而非“文本已经主张”。作者所有权与哲学创造可以同时清楚。 反向年代错置也要避免：把当代概念只当作西方文化事实，仿佛不能用它提出跨时问题。证据、能力、信任和怀疑触及广泛人类实践，技术术语可以作为分析工具；关键是工具使用后是否遮蔽文本差异、是否允许对象反过来修改工具。</p>
+</section>
+<section id="慈善原则与批评对称" class="level3" data-number="9.4.6">
+<h3 data-number="9.4.6" class="anchored" data-anchor-id="慈善原则与批评对称"><span class="header-section-number">9.4.6</span> 慈善原则与批评对称</h3>
+<p>慈善解释要求尽可能重建一个连贯、有力的论证，不把翻译困难或省略前提立即当成荒谬。但慈善不是免于反驳。重建完成后，任何传统都应面对文本证据、反例和规范后果。对熟悉传统细分立场、对陌生传统只给格言，是不对称；对陌生传统只赞美深刻、拒绝提出反例，也是不对称。 可以采用“双重钢人测试”：先让熟悉该传统的研究者认可重构没有明显误读，再让持竞争理论者认可它已经是足够强的对手。前一关保证历史与语言责任，后一关保证哲学相关性。两者都不是最终裁判，但能减少稻草人。 批评标准还需公开。若以预测准确、道德后果、概念一致与生活转化分别评价，结论可能不同。研究者应说明为何某标准与双方共同问题相关，不能在一方失败时临时更换尺度。</p>
+</section>
+<section id="多元主义不等于相对主义" class="level3" data-number="9.4.7">
+<h3 data-number="9.4.7" class="anchored" data-anchor-id="多元主义不等于相对主义"><span class="header-section-number">9.4.7</span> 多元主义不等于相对主义</h3>
+<p>比较常揭示多种认识价值：真值、理解、能力、和谐、解蔽、可教与行动得当。承认多元不表示任何主张只在本文化内正确。某些标准可能冲突，仍可通过内部一致、经验后果、反例处理和实践代价比较。相对主义若声称所有判断都只能在框架内成立，还需解释跨框架批评本身的地位。 一种温和多元主义承认问题目标决定评价重点，同时保留共同最低约束：不得随意歪曲证据，必须对相关反例开放，主张强度应与理由相称，受影响者有机会质疑。这些约束也需接受比较检验，不应被宣称为无历史来源的中立法庭。 不可通约可以是局部的。两个传统对“人格修养”与“命题确证”的中心性不同，仍可在证言责任或注意训练上形成具体对话。比较不要求一套总尺度覆盖全部，只要求在每个局部说明桥梁与剩余差异。</p>
+</section>
+<section id="文本语言与版本责任" class="level3" data-number="9.4.8">
+<h3 data-number="9.4.8" class="anchored" data-anchor-id="文本语言与版本责任"><span class="header-section-number">9.4.8</span> 文本、语言与版本责任</h3>
+<p>严格比较研究必须给出可定位文本。古典作品存在篇章分层、版本差异和注疏传统，只列书名不足以支持细密解释。课堂论文至少标注篇章或章句；涉及关键译词时列原文与所用译本；若通过二手研究得知争议，也应追查其引用。 译本不是透明窗口。不同译者可能把同一术语译成 knowledge、understanding 或 realization，由此改变比较对象。研究者可以并列两种译法，说明各自获得与失去什么；不熟悉原文时，应坦诚依赖译本并限制结论强度，而非假装无语言中介。 现代西方文本同样需要版本责任。引用休谟、笛卡尔或维特根斯坦时，应区分原作年代与现代编校译本，给出章节或段落，不把流行概述当原典。严格标准必须双向适用，才不是把一种传统当理论、另一种当文化素材。</p>
+</section>
+<section id="经验研究与生活实践" class="level3" data-number="9.4.9">
+<h3 data-number="9.4.9" class="anchored" data-anchor-id="经验研究与生活实践"><span class="header-section-number">9.4.9</span> 经验研究与生活实践</h3>
+<p>比较认识论可以使用实验、访谈与田野材料，但问卷中的群体差异不直接证明经典传统造成当代直觉。语言、教育、题目理解与社会期望都可能介入。若研究 Gettier 判断跨文化差异，应先验证案例译文、知识词语用法和受试者是否理解偶然结构。 实践研究可揭示概念怎样在医学、法律、宗教或教育中运作。它也需要避免把一个社区成员的话代表整个传统。抽样、位置关系和研究者影响应公开。参与者不是为理论提供“本土例子”的资料库，他们可以质疑研究问题和分类。 文本与经验可以互相约束，却不能互相替代。经典解释说明某概念的历史可能性，当代实践显示其现在如何被使用；两者差异可能正是重要发现。不要用一次访谈证明古文原意，也不要用古文预言现代群体心理。</p>
+</section>
+<section id="从比较到共同建构" class="level3" data-number="9.4.10">
+<h3 data-number="9.4.10" class="anchored" data-anchor-id="从比较到共同建构"><span class="header-section-number">9.4.10</span> 从比较到共同建构</h3>
+<p>比较的更高目标不是选出赢家，而是让问题空间发生变化。德性传统可使知识分析看见主体形成与教育，怀疑传统可检验关系秩序中的权威，社会认识论可让个人修养面对制度偏差，形式方法可迫使情境判断明确权重。共同建构仍要保留来源标记，说明每个部件来自哪里、怎样修改。 一个跨传统方案应接受“三重账本”。解释账本记录对原文本负责的主张；比较账本记录结构相似与差异；建构账本记录作者新增的规范。若某一段同时完成三件事，读者很难判断证据。分账能让创造更大胆，因为它不需伪装成历史发现。 最终方案还需现实案例检验。若主张“认识自主是对依赖的反思管理”，就要说明在患者信任医生、学生使用 AI、公众依赖气候专家时，主体具体需要哪些能力与制度支持。概念若不能改变问题诊断、行动或教育，只剩漂亮综合。</p>
+</section>
+<section id="综合案例比较知而行与知识规范" class="level3" data-number="9.4.11">
+<h3 data-number="9.4.11" class="anchored" data-anchor-id="综合案例比较知而行与知识规范"><span class="header-section-number">9.4.11</span> 综合案例：比较“知而行”与知识规范</h3>
+<p>研究者想比较某儒家知行论与当代“知识是行动规范”。第一步分别重建：古典主张可能针对道德认识的完成与实践倾向<span class="citation" data-cites="tiwald2014">(<a href="references.html#ref-tiwald2014" role="doc-biblioref">Tiwald 和 Van Norden 2014年</a>)</span>，当代理论则可能主张若主体知道 (p)，就能在适当决定中以 (p) 为理由。两者都连接知与行，却在对象范围、必然性、主体形成和规范类型上不同。 第二步建立桥梁问题：“认识资格与行动能力之间应有多强联系？”随后构造四类反例：知道事实却因意志软弱不行动；能熟练行动却不能命题表达；高风险中知道但仍需复核；口头认可道德原则却稳定违反。每个案例对两种理论压力不同。 第三步进行建构。可以提出：完整的实践认识同时要求真值导向、适当理由、相关能力与可问责行动，但不同领域权重不同。这个方案受到两方启发，却不归属于任何原作者。报告最后列明古典文本位置、当代理论来源、桥梁理由与无法消除的差异。这样的结论不炫耀“古今相同”，却更有哲学含量。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="专题研读任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>专题研读任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>选择两个传统中的一个局部概念，提交三页“分账报告”：第一页只做内部解释，第二页只列结构相似与差异，第三页提出自己的规范建构。每页至少写出一个可能推翻本页结论的证据。</p>
+</div>
+</div>
+</section>
+<section id="完整示范从知之为知之到认识谦逊" class="level3" data-number="9.4.12">
+<h3 data-number="9.4.12" class="anchored" data-anchor-id="完整示范从知之为知之到认识谦逊"><span class="header-section-number">9.4.12</span> 完整示范：从“知之为知之”到认识谦逊</h3>
+<p>以《论语》“知之为知之，不知为不知”与当代认识谦逊作比较，第一步不是宣布二者相同，而是分别重建问题。原句处在问答、学习和言说规范中，至少涉及主体不把未知冒充已知；当代认识谦逊可能讨论证据限度、能力边界、对反证开放或避免过度自信。二者共享“正确标记自己的认识位置”这一桥梁问题，但不必共享知识定义、德性结构或社会角色<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年, 2.17</a>)</span>。</p>
+<p>第二步寻找反向材料。若只收集赞成自知之明的句子，对应几乎必然成功。研究者还要问：文本是否把承认无知与求教、身份秩序或道德修养连接？当代理论是否允许一个谦逊主体仍然断言并行动？一方若强调学习关系，另一方若主要评价个体置信校准，差异就会改变理论。比较结论应写成：二者在“避免伪装知道”这一功能上相近，但对无知如何被克服、谁有资格纠正以及认识目标是什么，给出不同结构。</p>
+<p>第三步才进入规范建构。可以提出一种关系性的认识谦逊：主体不仅准确报告自己的把握程度，还应知道何时寻找更好来源、怎样让对方能够纠正自己，以及权威关系何时妨碍承认无知。这个方案受到古典材料和当代认识论共同启发，却是研究者的新主张。把三步分开，比较既不沦为格言装饰，也不要求历史文本预先拥有现代术语<span class="citation" data-cites="norden2017">(<a href="references.html#ref-norden2017" role="doc-biblioref">Van Norden 2017年</a>)</span>。</p>
+</section>
+<section id="竞争解释不是附录而是内部解释的一部分" class="level3" data-number="9.4.13">
+<h3 data-number="9.4.13" class="anchored" data-anchor-id="竞争解释不是附录而是内部解释的一部分"><span class="header-section-number">9.4.13</span> 竞争解释不是附录，而是内部解释的一部分</h3>
+<p>古典文本通常没有唯一无争议的现代释义。同一句话可以被理解为语义判断、修养劝告、政治言说规范或特定角色的回应。比较者应至少列出一种能改变现代对应的竞争解释，并说明自己依据哪些篇章、注疏、用词或整体论证作选择。若两种解释都与证据相容，比较结论就应使用条件句，而不是把争议隐藏在译文中。</p>
+<p>现代对话理论也必须接受同样要求。“语境主义”“德性认识论”或“知识规范”各自包含内部版本。选择其中最方便匹配的弱版本，会制造虚假接近。合格比较要让双方都有具体作者、问题和论证，不能一边是精确文本，另一边只是教科书标签。证据责任的对称性，是双向批评能够真正发生的前提。</p>
+</section>
+<section id="跨文化案例实验需要四道控制" class="level3" data-number="9.4.14">
+<h3 data-number="9.4.14" class="anchored" data-anchor-id="跨文化案例实验需要四道控制"><span class="header-section-number">9.4.14</span> 跨文化案例实验需要四道控制</h3>
+<p>跨文化Gettier实验已经在多种语言和群体中检验“有根据的真信念却不算知识”的判断<span class="citation" data-cites="machery2017">(<a href="references.html#ref-machery2017" role="doc-biblioref">Machery 等 2017年</a>)</span>，但直译和统计票数远远不够。第一是语言控制：目标语言中的“知道”是否覆盖相同对象和语用强度。第二是情境控制：支票、谷仓或司法程序等背景是否为各组熟悉。第三是理解控制：受试者是否把握信念为真的偶然路径，而不是被故事长度或人物道德吸引。第四是测量控制：二元选择、程度评分和解释性回答是否指向同一判断。</p>
+<p>高质量研究可以先访谈少量参与者，寻找他们实际依据的特征；再共同设计在各语境中功能相当的案例；通过回译检查字面差异，同时保留无法对齐之处；最后报告组内分布和不确定区间，而不是把每个群体写成单一“文化直觉”。即使差异稳定，它首先支持的是关于该任务中判断分布的主张，不能直接证明古典传统造成差异，更不能单独决定知识的规范本质。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>研究层次</th>
+<th>可以支持的结论</th>
+<th>不能直接推出的结论</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>文本解释</td>
+<td>某段材料在特定版本中的问题与论证</td>
+<td>整个传统或当代群体都持同一立场</td>
+</tr>
+<tr class="even">
+<td>结构比较</td>
+<td>两套理论在指定问题轴上的相似与差异</td>
+<td>双方概念完全同一或存在历史影响</td>
+</tr>
+<tr class="odd">
+<td>案例实验</td>
+<td>特定样本在特定任务中的判断分布</td>
+<td>多数判断自动决定规范真理</td>
+</tr>
+<tr class="even">
+<td>规范建构</td>
+<td>研究者提出并辩护的新方案</td>
+<td>历史作者已经完整提出该方案</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="任何比较都使用第三种语言的反对" class="level3" data-number="9.4.15">
+<h3 data-number="9.4.15" class="anchored" data-anchor-id="任何比较都使用第三种语言的反对"><span class="header-section-number">9.4.15</span> “任何比较都使用第三种语言”的反对</h3>
+<p>最强的方法论反对指出：一旦选取“证据”“能力”或“纠错”作为共同问题轴，比较者已经用自己的元语言重排双方，因此不存在完全中立的比较。这个反对是正确的警告，却不能推出比较不可能。没有中立视角，不等于所有视角同样任意。研究者可以公开桥梁概念的来源，展示它在双方材料中抓住与遗漏什么，并允许对象材料迫使桥梁改写。</p>
+<p>反身性因此不是写一段身份声明便完成，而是报告选择怎样影响结果。为什么选这两份文本而不是内部反例？为什么用“知识”而不是“学习”作轴？若改用另一译法，结论哪里变化？当这些问题有可检查答案时，比较仍然能够获得有程度的客观性：结论依赖哪些证据、替代框架会怎样改变它，都向批评者开放。</p>
+</section>
+<section id="失败的对应怎样改进理论" class="level3" data-number="9.4.16">
+<h3 data-number="9.4.16" class="anchored" data-anchor-id="失败的对应怎样改进理论"><span class="header-section-number">9.4.16</span> 失败的对应怎样改进理论</h3>
+<p>假定研究最终发现“庄周梦蝶就是笛卡尔怀疑论”无法成立：叙事角色、论证目标和回应方式都不同。结果不应被压缩成“不可比较”。失败提示我们，原桥梁“梦境使知觉不可靠”过窄；更合适的问题也许是“主体如何理解视角转换以及自己无法占据的立场”。新问题既能保存差异，也可能揭示当代怀疑论忽略的主体转化。</p>
+<p>负面比较的价值在于改变问题，而不是勉强保留对应。它需要说明哪项证据推翻了原假设、较弱对应是否仍成立，以及双方理论分别因此看见什么盲点。若每次失败都被改写成更抽象的“其实相似”，理论就无法被反驳；若第一次差异便终止研究，又无法学习。可修订性要求比较者预先说明什么会使自己缩小、改写或放弃结论。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>一份成熟的比较结论应同时包含五句话：我比较的具体对象是什么；共同问题轴为何成立；最强相似证据是什么；最强差异或竞争解释是什么；这些材料怎样迫使我修改自己的问题。缺少最后一句，比较往往只是在为既有理论寻找异域例证。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="从概念对应转向问题迁移" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="从概念对应转向问题迁移"><span class="header-section-number">9.5</span> 从概念对应转向问题迁移</h2>
+<section id="比较研究包含三种不同事业" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="比较研究包含三种不同事业"><span class="header-section-number">9.5.1</span> 比较研究包含三种不同事业</h3>
+<p>历史解释力求说明一个概念或论证在原语言、文本位置和实践中的意义；结构比较选择共同问题轴，考察不同材料怎样处理证据、错误、能力或行动；规范建构则借多种资源提出今天可辩护的新理论。三者可以连续进行，却必须在写作中标明转换。若把自己的重构写成古代作者原意，会伪造历史主张；若拒绝任何重构，又会使历史材料只能被陈列而不能参与当前论证。</p>
+</section>
+<section id="比较单位不能只是一对词" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="比较单位不能只是一对词"><span class="header-section-number">9.5.2</span> 比较单位不能只是一对词</h3>
+<p>“知”与knowledge、“信”与belief可能在部分语境重叠，却各自嵌在对象、推论、角色和实践中。可靠比较应描述一个概念簇：它典型适用于什么，和哪些词对立，允许推出什么，失败案例是什么，谁有资格使用，产生何种行动后果。比较单位也可以是完整论证或问题结构，例如“如何在有限视角中修正判断”，而不是假定两边先有同名概念。单位选得越清楚，结论的强度越容易控制。</p>
+</section>
+<section id="内部解释要求文本位置和反方材料" class="level3" data-number="9.5.3">
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="内部解释要求文本位置和反方材料"><span class="header-section-number">9.5.3</span> 内部解释要求文本位置和反方材料</h3>
+<p>摘取一句“知之为知之”即可支持多种现代美德；只有放回《论语》相应对话和学习、言说规范中，才能判断它主要约束诚实自评、求学态度还是知识条件<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年, 2.17</a>)</span>。同样，庄周梦蝶不能因包含梦就直接成为笛卡尔怀疑论。内部解释要追踪篇章功能、术语变化、角色话语与作者立场，还要寻找不符合现代对应的材料。恰恰是这些阻力，能够防止比较退化为名句装饰。</p>
+</section>
+<section id="四项检验控制相似主张" class="level3" data-number="9.5.4">
+<h3 data-number="9.5.4" class="anchored" data-anchor-id="四项检验控制相似主张"><span class="header-section-number">9.5.4</span> 四项检验控制相似主张</h3>
+<p>语义检验问关键术语范围是否相近；论证检验问双方是否依相似前提和推理，而非只有结论相似；功能检验问概念在法庭证明、修身、科学解释或政治劝诫中做什么；历史检验问相似是否来自传播、共同文本或独立平行。通过一项不代表通过四项。两个概念可以语义不同却解决相似功能，也可以字面相似却服务完全不同实践。结论应写成“在哪一轴上、到何种程度相似”。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>每提出一次跨传统对应，附一张限度表：最强相似证据；最强不相似证据；不可确定之处；是否主张历史传播；该对应对双方各改变什么。若对应只让熟悉理论显得更古老，却没有反向修正任何问题，其认识收益通常很低。</p>
+</div>
+</div>
+</section>
+<section id="厚概念不能被抽成薄条件" class="level3" data-number="9.5.5">
+<h3 data-number="9.5.5" class="anchored" data-anchor-id="厚概念不能被抽成薄条件"><span class="header-section-number">9.5.5</span> 厚概念不能被抽成薄条件</h3>
+<p>某些“知”同时包含能力、修养、情境判断或行动表现，而命题知识分析可能只问主体是否对真命题具有适当信念。把厚概念还原成薄状态，会丢失规范与实践；反过来，用厚概念批评薄概念“不够完整”，也可能误解后者本来只承担局部理论角色。比较应先承认厚薄差异，再问薄分析是否需要解释行动关联、厚概念是否能区分真值与德性。差异由此成为双向问题，而非胜负证据。</p>
+</section>
+<section id="历史同源需要独立证据" class="level3" data-number="9.5.6">
+<h3 data-number="9.5.6" class="anchored" data-anchor-id="历史同源需要独立证据"><span class="header-section-number">9.5.6</span> 历史同源需要独立证据</h3>
+<p>年代更早不证明影响，概念相似也不证明传播。历史同源主张至少需要可追踪文本、翻译、接触网络、术语借用或同时代接受记录。没有这些证据时，可以主张独立平行或结构相似，但不能使用“早已提出”“影响了”等强词。谨慎不是削弱比较，而是让哲学结构与历史因果各自接受合适证据。</p>
+</section>
+<section id="翻译应保存推论而不只保存字面" class="level3" data-number="9.5.7">
+<h3 data-number="9.5.7" class="anchored" data-anchor-id="翻译应保存推论而不只保存字面"><span class="header-section-number">9.5.7</span> 翻译应保存推论而不只保存字面</h3>
+<p>一个译词看似自然，却可能让读者自动带入原概念没有的反义词、必要条件与理论争论。判断译法时可做推论测试：在原文中，拥有该状态能推出什么，缺少它是否受责备，它与学习、行动或角色怎样连接；再检查译入语中的概念是否允许同样推论。若不能，应保留原词、使用复合译法或加限定说明。译文的目标不是让陌生材料立刻熟悉，而是让读者既能进入论证，又看见不可无损转换之处。</p>
+</section>
+<section id="案例跨语境迁移需要重建背景常识" class="level3" data-number="9.5.8">
+<h3 data-number="9.5.8" class="anchored" data-anchor-id="案例跨语境迁移需要重建背景常识"><span class="header-section-number">9.5.8</span> 案例跨语境迁移需要重建背景常识</h3>
+<p>银行、谷仓或法庭案例依赖特定制度、风险和语言习惯，直译到另一环境后，读者可能因不熟悉支票制度、财产权或证言角色而作不同判断。差异未必显示知识概念不同，也可能显示案例中的默认事实改变。比较实验应先共同确认制度背景，再制作本地等功能案例，并记录哪些变量无法对齐。只有判断差异在多种表达和背景控制后仍稳定，才有理由把它提升为概念或规范差异。</p>
+</section>
+<section id="比较关系中的权力会决定谁负责解释" class="level3" data-number="9.5.9">
+<h3 data-number="9.5.9" class="anchored" data-anchor-id="比较关系中的权力会决定谁负责解释"><span class="header-section-number">9.5.9</span> 比较关系中的权力会决定谁负责解释</h3>
+<p>当一种传统被当作默认理论语言，另一种只被要求提供“文化例子”时，比较已经不对称。前者的概念无需说明历史位置，后者却被迫证明能翻译成前者。方法上的修正不是取消共同标准，而是让双方都交代语境、反例与盲点，并允许非默认材料改变问题分类。选取文本、译本和对话对象时还应说明谁的解释被代表，防止把内部多样传统压成一个整齐声音。</p>
+</section>
+<section id="谱系批评与规范反驳承担不同任务" class="level3" data-number="9.5.10">
+<h3 data-number="9.5.10" class="anchored" data-anchor-id="谱系批评与规范反驳承担不同任务"><span class="header-section-number">9.5.10</span> 谱系批评与规范反驳承担不同任务</h3>
+<p>说明一个概念如何在殖民、宗教、科学或官僚制度中形成，可以揭示其排除与权力作用，却不单独证明该概念为假；给出逻辑反例也不能说明概念为何在历史中取得权威。比较认识论应把两种批评分工：谱系追踪问题和分类怎样被制造，规范论证检验它们是否值得保留。二者结合时，历史材料可提出被现有理论忽略的代价，规范分析则防止“出身有问题”直接变成否定结论。</p>
+</section>
+<section id="负面比较也能产生实质知识" class="level3" data-number="9.5.11">
+<h3 data-number="9.5.11" class="anchored" data-anchor-id="负面比较也能产生实质知识"><span class="header-section-number">9.5.11</span> 负面比较也能产生实质知识</h3>
+<p>研究可能发现两个概念没有共同对象、两套论证依赖不兼容实践，或相似仅是译词制造。这样的结果不是项目失败。它能阻止错误历史主张，澄清各理论的边界，并指出真正共同问题应上移或下移到何处。负面结论也需证据：展示曾被主张的对应、系统列出不相似材料，并说明为何更弱比较仍不成立。与轻率统一相比，有论证的不可对应更能为后续研究节省道路。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>比较写作的最小证据包包括：原文与版本；至少一种竞争解释；关键术语的推论表；现代对话理论的最强表述；共同问题轴；相似与不相似的对称证据；历史传播证据状态；以及研究者自己的建构从哪一步开始。</p>
+</div>
+</div>
+</section>
+<section id="阶段性结论" class="level3" data-number="9.5.12">
+<h3 data-number="9.5.12" class="anchored" data-anchor-id="阶段性结论"><span class="header-section-number">9.5.12</span> 阶段性结论</h3>
+<p>比较认识论的首要纪律是控制主张强度。它不从词形相似出发，而从明确问题、内部解释和关系结构出发；不把现代框架设为唯一裁判，也不把传统差异神秘化。经过语义、论证、功能与历史检验后，研究者才能决定应当翻译、保留差异，还是公开进行规范重构。</p>
+</section>
+</section>
+<section id="形成一套可修订的认识论立场" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="形成一套可修订的认识论立场"><span class="header-section-number">9.6</span> 形成一套可修订的认识论立场</h2>
+<section id="双向批评要求双方都可能改变" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="双向批评要求双方都可能改变"><span class="header-section-number">9.6.1</span> 双向批评要求双方都可能改变</h3>
+<p>若比较只问古代文本是否符合现代知识分析，现代框架始终不承担风险；若只用传统整体智慧批评分析哲学狭窄，传统概念也无需接受精确反例。双向批评先让每方以最强版本提出问题，再要求对方暴露边界。命题知识分析可以迫使厚概念区分真值、能力和责任；修身与实践传统则可以迫使命题分析说明知识为何与注意、言说角色和行动相连。比较成功的标志不是达成同一词汇，而是双方问题都变得更清楚。</p>
+</section>
+<section id="不可通约是一项发现而非禁令" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="不可通约是一项发现而非禁令"><span class="header-section-number">9.6.2</span> 不可通约是一项发现而非禁令</h3>
+<p>两种框架可能缺少无损共同尺度，例如一边评价孤立命题状态，另一边评价长期工夫和人格转变。强行统一会歪曲材料，但宣布完全不可比较也过快。研究者仍可比较错误如何被发现、学习怎样改变主体、共同体如何确认成就，以及各框架无法表达什么。不可通约报告应指出具体损失发生在哪里，并说明这一边界怎样限制结论；它不是“各说各话”的终点。</p>
+</section>
+<section id="规范建构必须由研究者署名" class="level3" data-number="9.6.3">
+<h3 data-number="9.6.3" class="anchored" data-anchor-id="规范建构必须由研究者署名"><span class="header-section-number">9.6.3</span> 规范建构必须由研究者署名</h3>
+<p>把多个传统资源结合成新理论可以富有创造性，例如用反运气条件约束命题真值联系，用修身资源解释注意和品格，再用社会认识论分析制度依赖。但这套组合不是任何一位历史作者已经完整主张的理论。研究者应明确选择理由、内部张力和反例责任。规范建构越成功，越不需要借“古人早已说过”取得权威；它应以当前论证、证据和实践效果接受评价。</p>
+</section>
+<section id="九个问题构成一张可迁移地图" class="level3" data-number="9.6.4">
+<h3 data-number="9.6.4" class="anchored" data-anchor-id="九个问题构成一张可迁移地图"><span class="header-section-number">9.6.4</span> 九个问题构成一张可迁移地图</h3>
+<p>本书从知识分析、怀疑与运气、理由结构、认识来源、社会依赖、形式模型、认识价值、数字环境到比较方法，提供九组互相连接的问题。面对一个新案例，不必机械套用全部术语，而应判断失败发生在哪一层：命题是否为真，理由是否实际支撑信念，方法是否抵抗近邻错误，来源链是否可追踪，群体是否保存异议，数字模型是否稳健，认识成果服务何种价值，以及采用的概念是否跨语境失真。这张地图帮助定位，不是自动评分器。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>形成个人立场时建立“理论档案”：核心主张；适用范围；最强正例；最强反例；为回应反例付出的代价；来自其他传统的修正压力；可能改变立场的新证据。档案使立场成为可修订研究方案，而不是一组不可动摇的主义标签。</p>
+</div>
+</div>
+</section>
+<section id="比较也要接受经验与语言证据" class="level3" data-number="9.6.5">
+<h3 data-number="9.6.5" class="anchored" data-anchor-id="比较也要接受经验与语言证据"><span class="header-section-number">9.6.5</span> 比较也要接受经验与语言证据</h3>
+<p>不同群体对案例的判断、翻译选择和实践背景可能变化。经验差异不会直接决定规范真理，却能削弱“人人都这样使用概念”的描述主张，也能揭示问卷预设了哪种主体模型。研究者应区分语言使用、直觉分布、历史解释与规范理由，使用各自证据。跨文化数据若只是把英语案例直译并比较票数，很可能测到理解难度和教育背景；高质量研究需要共同设计案例、检查概念功能并报告不可比较部分。</p>
+</section>
+<section id="认识谦逊不等于停止判断" class="level3" data-number="9.6.6">
+<h3 data-number="9.6.6" class="anchored" data-anchor-id="认识谦逊不等于停止判断"><span class="header-section-number">9.6.6</span> 认识谦逊不等于停止判断</h3>
+<p>承认翻译有损失、证据有限和理论可能修正，不意味着所有解释同样好。研究者仍可根据文本覆盖、论证一致、解释范围和反例承受力作出有程度的判断。谦逊表现为让主张强度与证据相称、保存替代解释、说明何种材料会改变结论。只说“一切都有可能”逃避了评价，也不能指导后续研究。</p>
+</section>
+<section id="问题驱动不是取消经典文本" class="level3" data-number="9.6.7">
+<h3 data-number="9.6.7" class="anchored" data-anchor-id="问题驱动不是取消经典文本"><span class="header-section-number">9.6.7</span> 问题驱动不是取消经典文本</h3>
+<p>以问题组织教材，能够把原典放入真实论证，而不是按年代排成名单。读者先知道某段文本在回答什么，才能判断其前提、反例和当代意义；同时，文本阻力又会迫使既有问题改写。问题与文本因此形成循环：问题引导阅读，内部解释限制比较，比较产生新问题。只要转换被公开标明，这种循环不是任意，而是理解逐步加深的机制。</p>
+</section>
+<section id="全书结论" class="level3" data-number="9.6.8">
+<h3 data-number="9.6.8" class="anchored" data-anchor-id="全书结论"><span class="header-section-number">9.6.8</span> 全书结论</h3>
+<p>认识论不只问“我有没有知识”，还问成功为何不偶然、理由怎样支撑信念、来源和制度如何工作、概率如何表达不确定、理解与智慧为何重要、技术怎样重塑证据，以及不同传统如何重新安排这些问题。没有一种短定义能够独自完成全部任务。更可靠的目标是一套可审计、可比较、可修订的探究：明确命题，追踪理由，检验反例，保存来源，报告不确定，分配责任，并让新证据真正能够改变结论。</p>
+</section>
+<section id="研究定位" class="level3" data-number="9.6.9">
+<h3 data-number="9.6.9" class="anchored" data-anchor-id="研究定位"><span class="header-section-number">9.6.9</span> 研究定位</h3>
+<p>比较研究既需要传统内部的论证史，也需要反省案例方法的跨文化外推。<span class="citation" data-cites="matilal1986与">(<a href="references.html#ref-matilal1986与" role="doc-biblioref"><strong>matilal1986与?</strong></a>)</span><span class="citation" data-cites="ganeri2001展示印度认识论的论证资源">(<a href="references.html#ref-ganeri2001展示印度认识论的论证资源" role="doc-biblioref"><strong>ganeri2001展示印度认识论的论证资源?</strong></a>)</span>，<span class="citation" data-cites="mizumoto2018系统提出跨文化认识论议程">(<a href="references.html#ref-mizumoto2018系统提出跨文化认识论议程" role="doc-biblioref"><strong>mizumoto2018系统提出跨文化认识论议程?</strong></a>)</span>，<span class="citation" data-cites="weinberg2001与">(<a href="references.html#ref-weinberg2001与" role="doc-biblioref"><strong>weinberg2001与?</strong></a>)</span><span class="citation" data-cites="machery2017则使">(<a href="references.html#ref-machery2017则使" role="doc-biblioref"><strong>machery2017则使?</strong></a>)</span>“直觉是否普遍”成为可经验检验的问题。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="自测小结">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>自测小结
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>比较认识论既不能用现代术语吞并历史材料，也不能以不可通约为由停止比较。可靠方法先做内部解释，再选择明确问题轴，检验结构和功能，并把最终规范主张明确承担为研究者自己的理论责任。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="章末练习">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">警告</span>章末练习
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>选择一个“某传统早已提出某理论”的说法，依次完成语义、论证、功能与历史四项检验。</p></li>
+<li><p>对“知之为知之”或“知行合一”给出内部解释，再说明一种现代对应为什么只成立到有限程度。</p></li>
+<li><p>选择两个不可直接互译的概念，说明不可通约发现怎样反而改进共同问题。</p></li>
+<li><p>区分历史同源、独立平行和研究者规范建构，并为每类主张列出所需证据。</p></li>
+<li><p>用本书九章问题分析一个现实案例，说明哪些概念可以共同使用，哪些必须保留传统差异。</p></li>
+<li><p>写出你自己的知识或认识成就理论，接受一个西方分析案例和一个非西方文本资源的双向压力，并说明什么会使你修正立场。</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="分层阅读地图">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">提示</span>分层阅读地图
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>第一层：中国思想内部脉络：</strong> 先在文本、概念史与修养实践中理解儒、墨、道诸家的认识问题。 <span class="citation" data-cites="analects2003 mencius2008 xunzi2014 zhuangzi2009 graham1989 hall1987 ivanhoe2000 ziporyn2003 shun1997 johnston2010 fraser2016 hansen1992 tiwald2014">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年</a>; <a href="references.html#ref-mencius2008" role="doc-biblioref">Mencius 2008年</a>; <a href="references.html#ref-xunzi2014" role="doc-biblioref">Xunzi 2014年</a>; <a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>; <a href="references.html#ref-graham1989" role="doc-biblioref">Graham 1989年</a>; <a href="references.html#ref-hall1987" role="doc-biblioref">Hall 和 Ames 1987年</a>; <a href="references.html#ref-ivanhoe2000" role="doc-biblioref">Ivanhoe 2000年</a>; <a href="references.html#ref-ziporyn2003" role="doc-biblioref">Ziporyn 2003年</a>; <a href="references.html#ref-shun1997" role="doc-biblioref">Shun 1997年</a>; <a href="references.html#ref-johnston2010" role="doc-biblioref">Johnston 2010年</a>; <a href="references.html#ref-fraser2016" role="doc-biblioref">Fraser 2016年</a>; <a href="references.html#ref-hansen1992" role="doc-biblioref">Hansen 1992年</a>; <a href="references.html#ref-tiwald2014" role="doc-biblioref">Tiwald 和 Van Norden 2014年</a>)</span></p>
+<p><strong>第二层：印度与佛教认识论：</strong> 以知觉、推理、无我和中观论证扩展问题空间。 <span class="citation" data-cites="dunne2004 siderits2007 siderits2013 garfield2015 matilal1986 ganeri2001 ganeri2012">(<a href="references.html#ref-dunne2004" role="doc-biblioref">Dunne 2004年</a>; <a href="references.html#ref-siderits2007" role="doc-biblioref">Siderits 2007年</a>; <a href="references.html#ref-siderits2013" role="doc-biblioref">Siderits 和 Katsura 2013年</a>; <a href="references.html#ref-garfield2015" role="doc-biblioref">Garfield 2015年</a>; <a href="references.html#ref-matilal1986" role="doc-biblioref">Matilal 1986年</a>; <a href="references.html#ref-ganeri2001" role="doc-biblioref">Ganeri 2001年</a>, <a href="references.html#ref-ganeri2012" role="doc-biblioref">2012年</a>)</span></p>
+<p><strong>第三层：比较方法：</strong> 比较不是术语配对；用德性、圣贤理想、文化普遍与特殊的讨论训练双向修正。 <span class="citation" data-cites="vannorden2007 norden2017 angle2009 wiredu1996 mizumoto2018">(<a href="references.html#ref-vannorden2007" role="doc-biblioref">Van Norden 2007年</a>, <a href="references.html#ref-norden2017" role="doc-biblioref">2017年</a>; <a href="references.html#ref-angle2009" role="doc-biblioref">Angle 2009年</a>; <a href="references.html#ref-wiredu1996" role="doc-biblioref">Wiredu 1996年</a>; <a href="references.html#ref-mizumoto2018" role="doc-biblioref">Mizumoto 等 2018年</a>)</span></p>
+<p><strong>第四层：实验与元哲学：</strong> 用跨文化直觉研究检验案例方法，同时区分经验差异与规范结论。 <span class="citation" data-cites="stich1990 weinberg2001 machery2017 machery2017book">(<a href="references.html#ref-stich1990" role="doc-biblioref">Stich 1990年</a>; <a href="references.html#ref-weinberg2001" role="doc-biblioref">Weinberg 等 2001年</a>; <a href="references.html#ref-machery2017" role="doc-biblioref">Machery 等 2017年</a>; <a href="references.html#ref-machery2017book" role="doc-biblioref">Machery 2017年</a>)</span></p>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-angle2009" class="csl-entry" role="listitem">
+Angle, Stephen C. 2009年. <em>Sagehood: The Contemporary Significance of Neo-Confucian Philosophy</em>. Oxford University Press.
+</div>
+<div id="ref-analects2003" class="csl-entry" role="listitem">
+Confucius. 2003年. <em>Confucius: Analects</em>. 翻译 Edward Slingerland. Hackett.
+</div>
+<div id="ref-descartes1996" class="csl-entry" role="listitem">
+Descartes, René. (1641年) 1996年. <em>Meditations on First Philosophy</em>. 翻译 John Cottingham. Cambridge University Press.
+</div>
+<div id="ref-dunne2004" class="csl-entry" role="listitem">
+Dunne, John D. 2004年. <em>Foundations of Dharmakīrti’s Philosophy</em>. Wisdom Publications.
+</div>
+<div id="ref-fraser2016" class="csl-entry" role="listitem">
+Fraser, Chris. 2016年. <em>The Philosophy of the Mòzĭ: The First Consequentialists</em>. Columbia University Press.
+</div>
+<div id="ref-ganeri2001" class="csl-entry" role="listitem">
+Ganeri, Jonardon. 2001年. <em>Philosophy in Classical India: The Proper Work of Reason</em>. Routledge.
+</div>
+<div id="ref-ganeri2012" class="csl-entry" role="listitem">
+Ganeri, Jonardon. 2012年. <em>The Self: Naturalism, Consciousness, and the First-Person Stance</em>. Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780199652365.001.0001">https://doi.org/10.1093/acprof:oso/9780199652365.001.0001</a>.
+</div>
+<div id="ref-garfield2015" class="csl-entry" role="listitem">
+Garfield, Jay L. 2015年. <em>Engaging Buddhism: Why It Matters to Philosophy</em>. Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780190204334.001.0001">https://doi.org/10.1093/acprof:oso/9780190204334.001.0001</a>.
+</div>
+<div id="ref-graham1989" class="csl-entry" role="listitem">
+Graham, A. C. 1989年. <em>Disputers of the Tao</em>. Open Court.
+</div>
+<div id="ref-hall1987" class="csl-entry" role="listitem">
+Hall, David L., 和 Roger T. Ames. 1987年. <em>Thinking through Confucius</em>. State University of New York Press.
+</div>
+<div id="ref-hansen1992" class="csl-entry" role="listitem">
+Hansen, Chad. 1992年. <em>A Daoist Theory of Chinese Thought: A Philosophical Interpretation</em>. Oxford University Press.
+</div>
+<div id="ref-ivanhoe2000" class="csl-entry" role="listitem">
+Ivanhoe, Philip J. 2000年. <em>Confucian Moral Self Cultivation</em>. 2 版. Hackett.
+</div>
+<div id="ref-johnston2010" class="csl-entry" role="listitem">
+Johnston, Ian. 2010年. <em>The Mozi: A Complete Translation</em>. Chinese University Press.
+</div>
+<div id="ref-machery2017book" class="csl-entry" role="listitem">
+Machery, Edouard. 2017年. <em>Philosophy within Its Proper Bounds</em>. Oxford University Press. <a href="https://doi.org/10.1093/oso/9780198807520.001.0001">https://doi.org/10.1093/oso/9780198807520.001.0001</a>.
+</div>
+<div id="ref-machery2017" class="csl-entry" role="listitem">
+Machery, Edouard, Stephen Stich, David Rose, 等. 2017年. <span>《Gettier Across Cultures》</span>. <em>Noûs</em> 51 (3): 645～64. <a href="https://doi.org/10.1111/nous.12110">https://doi.org/10.1111/nous.12110</a>.
+</div>
+<div id="ref-matilal1986" class="csl-entry" role="listitem">
+Matilal, Bimal Krishna. 1986年. <em>Perception: An Essay on Classical Indian Theories of Knowledge</em>. Clarendon Press.
+</div>
+<div id="ref-mencius2008" class="csl-entry" role="listitem">
+Mencius. 2008年. <em>Mengzi: With Selections from Traditional Commentaries</em>. 翻译 Bryan W. Van Norden. Hackett.
+</div>
+<div id="ref-mizumoto2018" class="csl-entry" role="listitem">
+Mizumoto, Masaharu, Stephen Stich, 和 Eric McCready, 编. 2018年. <em>Epistemology for the Rest of the World</em>. Oxford University Press. <a href="https://doi.org/10.1093/oso/9780190865085.001.0001">https://doi.org/10.1093/oso/9780190865085.001.0001</a>.
+</div>
+<div id="ref-shun1997" class="csl-entry" role="listitem">
+Shun, Kwong-loi. 1997年. <em>Mencius and Early Chinese Thought</em>. Stanford University Press.
+</div>
+<div id="ref-siderits2007" class="csl-entry" role="listitem">
+Siderits, Mark. 2007年. <em>Buddhism as Philosophy: An Introduction</em>. Hackett.
+</div>
+<div id="ref-siderits2013" class="csl-entry" role="listitem">
+Siderits, Mark, 和 Shōryū Katsura. 2013年. <em>Nāgārjuna’s Middle Way: Mūlamadhyamakakārikā</em>. Wisdom Publications.
+</div>
+<div id="ref-stich1990" class="csl-entry" role="listitem">
+Stich, Stephen P. 1990年. <em>The Fragmentation of Reason: Preface to a Pragmatic Theory of Cognitive Evaluation</em>. MIT Press.
+</div>
+<div id="ref-tiwald2014" class="csl-entry" role="listitem">
+Tiwald, Justin, 和 Bryan W. Van Norden, 编. 2014年. <em>Readings in Later Chinese Philosophy: Han Dynasty to the Twentieth Century</em>. Hackett.
+</div>
+<div id="ref-vannorden2007" class="csl-entry" role="listitem">
+Van Norden, Bryan W. 2007年. <em>Virtue Ethics and Consequentialism in Early Chinese Philosophy</em>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511497971">https://doi.org/10.1017/CBO9780511497971</a>.
+</div>
+<div id="ref-norden2017" class="csl-entry" role="listitem">
+Van Norden, Bryan W. 2017年. <em>Taking Back Philosophy</em>. Columbia University Press.
+</div>
+<div id="ref-weinberg2001" class="csl-entry" role="listitem">
+Weinberg, Jonathan M., Shaun Nichols, 和 Stephen Stich. 2001年. <span>《Normativity and Epistemic Intuitions》</span>. <em>Philosophical Topics</em> 29 (1–2): 429～60. <a href="https://doi.org/10.5840/philtopics2001291/217">https://doi.org/10.5840/philtopics2001291/217</a>.
+</div>
+<div id="ref-wiredu1996" class="csl-entry" role="listitem">
+Wiredu, Kwasi. 1996年. <em>Cultural Universals and Particulars: An African Perspective</em>. Indiana University Press.
+</div>
+<div id="ref-xunzi2014" class="csl-entry" role="listitem">
+Xunzi. 2014年. <em>Xunzi: The Complete Text</em>. 翻译 Eric L. Hutton. Princeton University Press.
+</div>
+<div id="ref-zhuangzi2009" class="csl-entry" role="listitem">
+Zhuangzi. 2009年. <em>Zhuangzi: The Essential Writings</em>. 翻译 Brook Ziporyn. Hackett.
+</div>
+<div id="ref-ziporyn2003" class="csl-entry" role="listitem">
+Ziporyn, Brook. 2003年. <em>The Penumbra Unbound: The Neo-Taoist Philosophy of Guo Xiang</em>. State University of New York Press.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../manuscript/08-digital-ai.html" class="pagination-link" aria-label="数字环境与人工智能怎样重塑认识">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">数字环境与人工智能怎样重塑认识</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../manuscript/study-guide.html" class="pagination-link" aria-label="自学、讨论与论文写作指南">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">自学、讨论与论文写作指南</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

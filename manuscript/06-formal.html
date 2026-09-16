@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; 概率、模型与理性决策 – 我们如何知道？</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../manuscript/07-value.html" rel="next">
+<link href="../manuscript/05-social-knowledge.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d36f34d314bee33b330446342baae240.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../book.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/04-sources.html">第二部　认识来源、社会系统与理性模型</a></li><li class="breadcrumb-item"><a href="../manuscript/06-formal.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">我们如何知道？</a> 
+        <div class="sidebar-tools-main">
+    <a href="../how-do-we-know.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="搜索"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">我们如何知道？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/00-preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">写在前面</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">第一部　知识、怀疑与理由</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/01-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">知识是什么，我们为什么需要它</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/02-skepticism-luck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">怀疑、运气与知识的边界</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/03-justification-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">理由如何支持信念</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">第二部　认识来源、社会系统与理性模型</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/04-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">经验、记忆与先验怎样成为知识来源</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/05-social-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">他人、专家与制度如何共同生产知识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/06-formal.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">第三部　认识价值、技术环境与比较方法</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/07-value.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/08-digital-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">数字环境与人工智能怎样重塑认识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/09-comparative.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">比较认识论如何改变我们的问题</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">学习与研究</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/study-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">自学、讨论与论文写作指南</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/research-studio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">全书综合研究工坊</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/exercise-hints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">练习提示</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">核心术语表</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#从相信到置信度" id="toc-从相信到置信度" class="nav-link active" data-scroll-target="#从相信到置信度"><span class="header-section-number">6.1</span> 从相信到置信度</a>
+  <ul class="collapse">
+  <li><a href="#从相信到置信度-1" id="toc-从相信到置信度-1" class="nav-link" data-scroll-target="#从相信到置信度-1"><span class="header-section-number">6.1.1</span> 从相信到置信度</a></li>
+  <li><a href="#二值信念与程度信念并非竞争替代" id="toc-二值信念与程度信念并非竞争替代" class="nav-link" data-scroll-target="#二值信念与程度信念并非竞争替代"><span class="header-section-number">6.1.2</span> 二值信念与程度信念并非竞争替代</a></li>
+  <li><a href="#一致性只是理性的一层" id="toc-一致性只是理性的一层" class="nav-link" data-scroll-target="#一致性只是理性的一层"><span class="header-section-number">6.1.3</span> 一致性只是理性的一层</a></li>
+  <li><a href="#条件概率与更新" id="toc-条件概率与更新" class="nav-link" data-scroll-target="#条件概率与更新"><span class="header-section-number">6.1.4</span> 条件概率与更新</a></li>
+  <li><a href="#证据强度与似然" id="toc-证据强度与似然" class="nav-link" data-scroll-target="#证据强度与似然"><span class="header-section-number">6.1.5</span> 证据强度与似然</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">7</span> </a>
+  <ul class="collapse">
+  <li><a href="#旧证据与选择性报告" id="toc-旧证据与选择性报告" class="nav-link" data-scroll-target="#旧证据与选择性报告"><span class="header-section-number">7.0.1</span> 旧证据与选择性报告</a></li>
+  <li><a href="#先验从哪里来" id="toc-先验从哪里来" class="nav-link" data-scroll-target="#先验从哪里来"><span class="header-section-number">7.0.2</span> 先验从哪里来</a></li>
+  <li><a href="#条件独立与重复计算" id="toc-条件独立与重复计算" class="nav-link" data-scroll-target="#条件独立与重复计算"><span class="header-section-number">7.0.3</span> 条件独立与重复计算</a></li>
+  <li><a href="#案例工作坊两次检测" id="toc-案例工作坊两次检测" class="nav-link" data-scroll-target="#案例工作坊两次检测"><span class="header-section-number">7.0.4</span> 案例工作坊：两次检测</a></li>
+  <li><a href="#贝叶斯更新及其限制" id="toc-贝叶斯更新及其限制" class="nav-link" data-scroll-target="#贝叶斯更新及其限制"><span class="header-section-number">7.1</span> 贝叶斯更新及其限制</a>
+  <ul class="collapse">
+  <li><a href="#概率的多种解释" id="toc-概率的多种解释" class="nav-link" data-scroll-target="#概率的多种解释"><span class="header-section-number">7.1.1</span> 概率的多种解释</a></li>
+  <li><a href="#概率公理与认识融贯" id="toc-概率公理与认识融贯" class="nav-link" data-scroll-target="#概率公理与认识融贯"><span class="header-section-number">7.1.2</span> 概率公理与认识融贯</a></li>
+  <li><a href="#条件化为何合理" id="toc-条件化为何合理" class="nav-link" data-scroll-target="#条件化为何合理"><span class="header-section-number">7.1.3</span> 条件化为何合理</a></li>
+  <li><a href="#贝叶斯因子与证据比较" id="toc-贝叶斯因子与证据比较" class="nav-link" data-scroll-target="#贝叶斯因子与证据比较"><span class="header-section-number">7.1.4</span> 贝叶斯因子与证据比较</a></li>
+  <li><a href="#旧证据问题与新预测" id="toc-旧证据问题与新预测" class="nav-link" data-scroll-target="#旧证据问题与新预测"><span class="header-section-number">7.1.5</span> 旧证据问题与新预测</a></li>
+  <li><a href="#确认悖论" id="toc-确认悖论" class="nav-link" data-scroll-target="#确认悖论"><span class="header-section-number">7.1.6</span> 确认悖论</a></li>
+  <li><a href="#概率与决策" id="toc-概率与决策" class="nav-link" data-scroll-target="#概率与决策"><span class="header-section-number">7.1.7</span> 概率与决策</a></li>
+  <li><a href="#群体概率与专家汇总" id="toc-群体概率与专家汇总" class="nav-link" data-scroll-target="#群体概率与专家汇总"><span class="header-section-number">7.1.8</span> 群体概率与专家汇总</a></li>
+  <li><a href="#综合案例暴雨预警" id="toc-综合案例暴雨预警" class="nav-link" data-scroll-target="#综合案例暴雨预警"><span class="header-section-number">7.1.9</span> 综合案例：暴雨预警</a></li>
+  </ul></li>
+  <li><a href="#计算校准与证据审计" id="toc-计算校准与证据审计" class="nav-link" data-scroll-target="#计算校准与证据审计"><span class="header-section-number">7.2</span> 计算、校准与证据审计</a>
+  <ul class="collapse">
+  <li><a href="#研读实验室从直觉到可复核计算" id="toc-研读实验室从直觉到可复核计算" class="nav-link" data-scroll-target="#研读实验室从直觉到可复核计算"><span class="header-section-number">7.2.1</span> 研读实验室：从直觉到可复核计算</a></li>
+  <li><a href="#赔率形式与贝叶斯因子" id="toc-赔率形式与贝叶斯因子" class="nav-link" data-scroll-target="#赔率形式与贝叶斯因子"><span class="header-section-number">7.2.2</span> 赔率形式与贝叶斯因子</a></li>
+  <li><a href="#校准分辨与评分" id="toc-校准分辨与评分" class="nav-link" data-scroll-target="#校准分辨与评分"><span class="header-section-number">7.2.3</span> 校准、分辨与评分</a></li>
+  <li><a href="#先验参照类与模型选择" id="toc-先验参照类与模型选择" class="nav-link" data-scroll-target="#先验参照类与模型选择"><span class="header-section-number">7.2.4</span> 先验、参照类与模型选择</a></li>
+  <li><a href="#从概率到行动" id="toc-从概率到行动" class="nav-link" data-scroll-target="#从概率到行动"><span class="header-section-number">7.2.5</span> 从概率到行动</a></li>
+  <li><a href="#比较视角墨家三表与形式证据" id="toc-比较视角墨家三表与形式证据" class="nav-link" data-scroll-target="#比较视角墨家三表与形式证据"><span class="header-section-number">7.2.6</span> 比较视角：墨家“三表”与形式证据</a></li>
+  <li><a href="#综合案例大学录取模型" id="toc-综合案例大学录取模型" class="nav-link" data-scroll-target="#综合案例大学录取模型"><span class="header-section-number">7.2.7</span> 综合案例：大学录取模型</a></li>
+  </ul></li>
+  <li><a href="#模型选择与决策实践" id="toc-模型选择与决策实践" class="nav-link" data-scroll-target="#模型选择与决策实践"><span class="header-section-number">7.3</span> 模型选择与决策实践</a>
+  <ul class="collapse">
+  <li><a href="#专题研讨概率模型校准与决定" id="toc-专题研讨概率模型校准与决定" class="nav-link" data-scroll-target="#专题研讨概率模型校准与决定"><span class="header-section-number">7.3.1</span> 专题研讨：概率模型、校准与决定</a></li>
+  <li><a href="#后验概率与似然不能交换" id="toc-后验概率与似然不能交换" class="nav-link" data-scroll-target="#后验概率与似然不能交换"><span class="header-section-number">7.3.2</span> 后验概率与似然不能交换</a></li>
+  <li><a href="#先验从何而来" id="toc-先验从何而来" class="nav-link" data-scroll-target="#先验从何而来"><span class="header-section-number">7.3.3</span> 先验从何而来</a></li>
+  <li><a href="#条件独立与重复证据" id="toc-条件独立与重复证据" class="nav-link" data-scroll-target="#条件独立与重复证据"><span class="header-section-number">7.3.4</span> 条件独立与重复证据</a></li>
+  <li><a href="#校准准确性与评分" id="toc-校准准确性与评分" class="nav-link" data-scroll-target="#校准准确性与评分"><span class="header-section-number">7.3.5</span> 校准、准确性与评分</a></li>
+  <li><a href="#概率并不直接给出行动" id="toc-概率并不直接给出行动" class="nav-link" data-scroll-target="#概率并不直接给出行动"><span class="header-section-number">7.3.6</span> 概率并不直接给出行动</a></li>
+  <li><a href="#模型比较与证据欠定" id="toc-模型比较与证据欠定" class="nav-link" data-scroll-target="#模型比较与证据欠定"><span class="header-section-number">7.3.7</span> 模型比较与证据欠定</a></li>
+  <li><a href="#比较视野度量与审势" id="toc-比较视野度量与审势" class="nav-link" data-scroll-target="#比较视野度量与审势"><span class="header-section-number">7.3.8</span> 比较视野：度量与审势</a></li>
+  <li><a href="#综合案例两阶段癌症筛查" id="toc-综合案例两阶段癌症筛查" class="nav-link" data-scroll-target="#综合案例两阶段癌症筛查"><span class="header-section-number">7.3.9</span> 综合案例：两阶段癌症筛查</a></li>
+  <li><a href="#一个后验数不等于一个稳健结论" id="toc-一个后验数不等于一个稳健结论" class="nav-link" data-scroll-target="#一个后验数不等于一个稳健结论"><span class="header-section-number">7.3.10</span> 一个后验数不等于一个稳健结论</a></li>
+  <li><a href="#区分风险参数不确定与模型无知" id="toc-区分风险参数不确定与模型无知" class="nav-link" data-scroll-target="#区分风险参数不确定与模型无知"><span class="header-section-number">7.3.11</span> 区分风险、参数不确定与模型无知</a></li>
+  <li><a href="#从概率阈值到信息价值" id="toc-从概率阈值到信息价值" class="nav-link" data-scroll-target="#从概率阈值到信息价值"><span class="header-section-number">7.3.12</span> 从概率阈值到信息价值</a></li>
+  <li><a href="#形式主义的最强反对与有限辩护" id="toc-形式主义的最强反对与有限辩护" class="nav-link" data-scroll-target="#形式主义的最强反对与有限辩护"><span class="header-section-number">7.3.13</span> 形式主义的最强反对与有限辩护</a></li>
+  </ul></li>
+  <li><a href="#数字不会替我们选择问题" id="toc-数字不会替我们选择问题" class="nav-link" data-scroll-target="#数字不会替我们选择问题"><span class="header-section-number">7.4</span> 数字不会替我们选择问题</a>
+  <ul class="collapse">
+  <li><a href="#形式化首先是一项表示选择" id="toc-形式化首先是一项表示选择" class="nav-link" data-scroll-target="#形式化首先是一项表示选择"><span class="header-section-number">7.4.1</span> 形式化首先是一项表示选择</a></li>
+  <li><a href="#概率公理约束一致性而不提供全部内容" id="toc-概率公理约束一致性而不提供全部内容" class="nav-link" data-scroll-target="#概率公理约束一致性而不提供全部内容"><span class="header-section-number">7.4.2</span> 概率公理约束一致性而不提供全部内容</a></li>
+  <li><a href="#基础率是关于参照类的主张" id="toc-基础率是关于参照类的主张" class="nav-link" data-scroll-target="#基础率是关于参照类的主张"><span class="header-section-number">7.4.3</span> 基础率是关于参照类的主张</a></li>
+  <li><a href="#似然衡量区分力而非结论概率" id="toc-似然衡量区分力而非结论概率" class="nav-link" data-scroll-target="#似然衡量区分力而非结论概率"><span class="header-section-number">7.4.4</span> 似然衡量区分力而非结论概率</a></li>
+  <li><a href="#证据重复计算常藏在数据谱系中" id="toc-证据重复计算常藏在数据谱系中" class="nav-link" data-scroll-target="#证据重复计算常藏在数据谱系中"><span class="header-section-number">7.4.5</span> 证据重复计算常藏在数据谱系中</a></li>
+  <li><a href="#校准与分辨力回答不同问题" id="toc-校准与分辨力回答不同问题" class="nav-link" data-scroll-target="#校准与分辨力回答不同问题"><span class="header-section-number">7.4.6</span> 校准与分辨力回答不同问题</a></li>
+  <li><a href="#不确定性也有不同来源" id="toc-不确定性也有不同来源" class="nav-link" data-scroll-target="#不确定性也有不同来源"><span class="header-section-number">7.4.7</span> 不确定性也有不同来源</a></li>
+  <li><a href="#置信度的解释会改变规范问题" id="toc-置信度的解释会改变规范问题" class="nav-link" data-scroll-target="#置信度的解释会改变规范问题"><span class="header-section-number">7.4.8</span> 置信度的解释会改变规范问题</a></li>
+  <li><a href="#先验不是更新前可以遗忘的背景" id="toc-先验不是更新前可以遗忘的背景" class="nav-link" data-scroll-target="#先验不是更新前可以遗忘的背景"><span class="header-section-number">7.4.9</span> 先验不是更新前可以遗忘的背景</a></li>
+  <li><a href="#开放世界会使完备假设空间失效" id="toc-开放世界会使完备假设空间失效" class="nav-link" data-scroll-target="#开放世界会使完备假设空间失效"><span class="header-section-number">7.4.10</span> 开放世界会使完备假设空间失效</a></li>
+  <li><a href="#证据选择本身需要进入模型" id="toc-证据选择本身需要进入模型" class="nav-link" data-scroll-target="#证据选择本身需要进入模型"><span class="header-section-number">7.4.11</span> 证据选择本身需要进入模型</a></li>
+  <li><a href="#证据关系不等于因果关系" id="toc-证据关系不等于因果关系" class="nav-link" data-scroll-target="#证据关系不等于因果关系"><span class="header-section-number">7.4.12</span> 证据关系不等于因果关系</a></li>
+  <li><a href="#区间与集合有时比单一概率更诚实" id="toc-区间与集合有时比单一概率更诚实" class="nav-link" data-scroll-target="#区间与集合有时比单一概率更诚实"><span class="header-section-number">7.4.13</span> 区间与集合有时比单一概率更诚实</a></li>
+  <li><a href="#预测问题与干预问题不能共用一个答案" id="toc-预测问题与干预问题不能共用一个答案" class="nav-link" data-scroll-target="#预测问题与干预问题不能共用一个答案"><span class="header-section-number">7.4.14</span> 预测问题与干预问题不能共用一个答案</a></li>
+  <li><a href="#分布变化使旧校准失效" id="toc-分布变化使旧校准失效" class="nav-link" data-scroll-target="#分布变化使旧校准失效"><span class="header-section-number">7.4.15</span> 分布变化使旧校准失效</a></li>
+  <li><a href="#稳健决定不必等待唯一最佳模型" id="toc-稳健决定不必等待唯一最佳模型" class="nav-link" data-scroll-target="#稳健决定不必等待唯一最佳模型"><span class="header-section-number">7.4.16</span> 稳健决定不必等待唯一最佳模型</a></li>
+  </ul></li>
+  <li><a href="#从概率判断到可问责行动" id="toc-从概率判断到可问责行动" class="nav-link" data-scroll-target="#从概率判断到可问责行动"><span class="header-section-number">7.5</span> 从概率判断到可问责行动</a>
+  <ul class="collapse">
+  <li><a href="#后验概率不是行动按钮" id="toc-后验概率不是行动按钮" class="nav-link" data-scroll-target="#后验概率不是行动按钮"><span class="header-section-number">7.5.1</span> 后验概率不是行动按钮</a></li>
+  <li><a href="#阈值来自后果结构而非知识定义" id="toc-阈值来自后果结构而非知识定义" class="nav-link" data-scroll-target="#阈值来自后果结构而非知识定义"><span class="header-section-number">7.5.2</span> 阈值来自后果结构而非知识定义</a></li>
+  <li><a href="#信息价值取决于能否改变行动" id="toc-信息价值取决于能否改变行动" class="nav-link" data-scroll-target="#信息价值取决于能否改变行动"><span class="header-section-number">7.5.3</span> 信息价值取决于能否改变行动</a></li>
+  <li><a href="#稳健决策不依赖单一点估计" id="toc-稳健决策不依赖单一点估计" class="nav-link" data-scroll-target="#稳健决策不依赖单一点估计"><span class="header-section-number">7.5.4</span> 稳健决策不依赖单一点估计</a></li>
+  <li><a href="#概率沟通必须保留条件方向" id="toc-概率沟通必须保留条件方向" class="nav-link" data-scroll-target="#概率沟通必须保留条件方向"><span class="header-section-number">7.5.5</span> 概率沟通必须保留条件方向</a></li>
+  <li><a href="#模型责任需要分层" id="toc-模型责任需要分层" class="nav-link" data-scroll-target="#模型责任需要分层"><span class="header-section-number">7.5.6</span> 模型责任需要分层</a></li>
+  <li><a href="#效用数字不会消除价值分歧" id="toc-效用数字不会消除价值分歧" class="nav-link" data-scroll-target="#效用数字不会消除价值分歧"><span class="header-section-number">7.5.7</span> 效用数字不会消除价值分歧</a></li>
+  <li><a href="#预防原则也需要触发与退出条件" id="toc-预防原则也需要触发与退出条件" class="nav-link" data-scroll-target="#预防原则也需要触发与退出条件"><span class="header-section-number">7.5.8</span> 预防原则也需要触发与退出条件</a></li>
+  <li><a href="#权利与角色义务可以限制期望最大化" id="toc-权利与角色义务可以限制期望最大化" class="nav-link" data-scroll-target="#权利与角色义务可以限制期望最大化"><span class="header-section-number">7.5.9</span> 权利与角色义务可以限制期望最大化</a></li>
+  <li><a href="#群体决定需要说明谁的概率进入系统" id="toc-群体决定需要说明谁的概率进入系统" class="nav-link" data-scroll-target="#群体决定需要说明谁的概率进入系统"><span class="header-section-number">7.5.10</span> 群体决定需要说明谁的概率进入系统</a></li>
+  <li><a href="#行动会反过来改变数据环境" id="toc-行动会反过来改变数据环境" class="nav-link" data-scroll-target="#行动会反过来改变数据环境"><span class="header-section-number">7.5.11</span> 行动会反过来改变数据环境</a></li>
+  <li><a href="#可逆与不可逆决定应采用不同证据策略" id="toc-可逆与不可逆决定应采用不同证据策略" class="nav-link" data-scroll-target="#可逆与不可逆决定应采用不同证据策略"><span class="header-section-number">7.5.12</span> 可逆与不可逆决定应采用不同证据策略</a></li>
+  <li><a href="#复盘必须检验当时过程而非只看结果" id="toc-复盘必须检验当时过程而非只看结果" class="nav-link" data-scroll-target="#复盘必须检验当时过程而非只看结果"><span class="header-section-number">7.5.13</span> 复盘必须检验当时过程而非只看结果</a></li>
+  <li><a href="#阶段性结论" id="toc-阶段性结论" class="nav-link" data-scroll-target="#阶段性结论"><span class="header-section-number">7.5.14</span> 阶段性结论</a></li>
+  <li><a href="#研究定位" id="toc-研究定位" class="nav-link" data-scroll-target="#研究定位"><span class="header-section-number">7.5.15</span> 研究定位</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/04-sources.html">第二部　认识来源、社会系统与理性模型</a></li><li class="breadcrumb-item"><a href="../manuscript/06-formal.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="学习目标">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>学习目标
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>掌握置信度、条件概率、似然、校准和期望效用；理解概率模型的认识论地位；能够识别基础率忽视、证据重复计算、选择性报告和模型误设。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="开篇案例">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">提示</span>开篇案例
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>一种疾病患病率为1%，检测对患者有90%概率呈阳性，对健康者有5%概率误报。阳性结果把患病概率提高到多少？若第二次检测使用同一设备和样本，能否把两个结果当作独立证据？即使后验概率很高，它是否足以支持诊断、隔离或手术？形式工具能澄清推理，却不会自行确定模型、数据来源与行动代价。</p>
+</div>
+</div>
+<section id="从相信到置信度" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="从相信到置信度"><span class="header-section-number">6.1</span> 从相信到置信度</h2>
+<section id="从相信到置信度-1" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="从相信到置信度-1"><span class="header-section-number">6.1.1</span> 从相信到置信度</h3>
+<p>传统知识论常把相信视为“有或没有”，形式认识论则用<strong>置信度</strong>（<em>credence</em>）表示程度。若置信度满足概率公理，则 <span class="math inline">\(0\leq P(A)\leq1\)</span>，必然命题概率为1，互斥命题的析取概率等于概率之和。概率并不自动等于客观频率；它在这里首先约束一组信心如何彼此一致。 若同时高度相信 <span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>，却极低相信 <span class="math inline">\(A\land B\)</span>，信念组合可能不融贯。荷兰赌论证试图说明，违反概率公理的置信度会使主体接受一组无论结果如何都净亏损的赌注。它把认识规范连接到实际一致性，但也受限于效用、赌注接受和理想化假设<span class="citation" data-cites="joyce1998">(<a href="references.html#ref-joyce1998" role="doc-biblioref">Joyce 1998年</a>)</span>。</p>
+</section>
+<section id="二值信念与程度信念并非竞争替代" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="二值信念与程度信念并非竞争替代"><span class="header-section-number">6.1.2</span> 二值信念与程度信念并非竞争替代</h3>
+<p>“我相信会下雨”与“我对下雨有六成把握”回答不同问题。前者可进入推理、断言和行动承诺，后者表达不确定的强弱；把六成以上一律转成相信，会遇到阈值为何设在此处、多个分别可信命题的合取为何迅速跌破阈值等困难。反过来，只有程度而没有接受状态，也难解释主体为何用某前提继续推理或公开负责。较好的模型把二者连接为任务相关关系：置信度影响何时接受，接受又受行动风险、信息成本与推理用途约束。</p>
+</section>
+<section id="一致性只是理性的一层" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="一致性只是理性的一层"><span class="header-section-number">6.1.3</span> 一致性只是理性的一层</h3>
+<p>一个主体可以把每项概率安排得完全一致，却系统忽略反证、选择偏见来源或拒绝更新；另一个主体可能因计算能力有限而略有数值不一致，却敏锐追踪证据。形式一致性识别的是信念组合中的一种缺陷，不等于全部认识理性。评价时应分开内部约束、与证据的响应关系、模型同世界的联系和主体的认知限制。规范理论若要求现实主体精确存储巨大概率分布，还需说明近似、启发式与有限计算怎样在资源约束下仍可合理。</p>
+</section>
+<section id="条件概率与更新" class="level3" data-number="6.1.4">
+<h3 data-number="6.1.4" class="anchored" data-anchor-id="条件概率与更新"><span class="header-section-number">6.1.4</span> 条件概率与更新</h3>
+<p>条件概率定义为：</p>
+<p>$$</p>
+<p>P(HE)=.</p>
+<p>$$</p>
+<p>贝叶斯定理把假设 <span class="math inline">\(H\)</span> 在证据 <span class="math inline">\(E\)</span> 后的概率写为：</p>
+<p>$$</p>
+<p>P(HE)=.</p>
+<p>$$</p>
+<p>代入开篇数据：</p>
+<p>$$</p>
+<p>P(H+)=.</p>
+<p>$$</p>
+<p>阳性使患病概率从1%升至约15.4%，是重要证据，却远非90%。90%是“患病时阳性”的概率，不是“阳性时患病”的概率。</p>
+</section>
+<section id="证据强度与似然" class="level3" data-number="6.1.5">
+<h3 data-number="6.1.5" class="anchored" data-anchor-id="证据强度与似然"><span class="header-section-number">6.1.5</span> 证据强度与似然</h3>
+<p>证据支持哪个假设，可比较似然 <span class="math inline">\(P(E\mid H)\)</span> 与 <span class="math inline">\(P(E\mid\neg H)\)</span>。二者之比称为<strong>贝叶斯因子</strong>（<em>Bayes factor</em>）：</p>
+<p>$$</p>
+<p>BF_{H:H}=.</p>
+<p>$$</p>
+<p>它把证据带来的区分力与主体原有的先验分开。贝叶斯因子大于1时，<span class="math inline">\(E\)</span>相对支持<span class="math inline">\(H\)</span>；小于1时，相对支持<span class="math inline">\(\neg H\)</span>。它不是<span class="math inline">\(H\)</span>的后验概率，因为后验还取决于先验赔率。两者关系可写为：</p>
+<p>$$</p>
+</section>
+</section>
+<section id="section" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> </h1>
+<p>BF_{H:H}.</p>
+<p>$$</p>
+<p>因此，同一证据可以具有相同的似然比，却因基础率不同产生不同后验。 贝叶斯条件化要求新证据被赋予确定值，并把其他概率按规则调整。现实主体常不确定证据本身、忘记旧数据或无法列出全部假设。形式模型是规范性理想和诊断工具，不是对心理过程的逐字描述<span class="citation" data-cites="howson2006">(<a href="references.html#ref-howson2006" role="doc-biblioref">Howson 和 Urbach 2006年</a>)</span>。</p>
+<section id="旧证据与选择性报告" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="旧证据与选择性报告"><span class="header-section-number">7.0.1</span> 旧证据与选择性报告</h3>
+<p>若一个理论在看到数据后才被设计来拟合数据，<span class="math inline">\(P(E\mid H)\)</span> 很高却未必说明预测成功。模型复杂度、独立检验和事先登记有助于防止把噪声当证据。只公布阳性结果会扭曲读者的更新输入；这说明形式理性依赖社会性的信息生产规则。 概率也不直接等于知识。极高概率的彩票命题可能仍不被知道；正常知觉知识则未必伴随精确数值。形式工具最擅长澄清证据比较和置信度变化，不应未经论证取代知识概念。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>基础率忽视的错误：把 <span class="math inline">\(P(E\mid H)\)</span> 当成 <span class="math inline">\(P(H\mid E)\)</span>。纠正步骤是列出一批代表性个体：一万人中约100人患病，90人真阳性；9900名健康者中约495人假阳性。因此阳性者共585人，其中约90人患病。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="比较视角">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">重要</span>比较视角
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>墨家“以故生、以理成、以类取”强调理由、规则和类比在论辩中的作用。它不是概率论的早期版本；可比之处仅在于把判断置于可公开检验的推理规范中。现代形式化增加了数量约束，却同样需要回答输入从何而来、分类是否恰当。</p>
+</div>
+</div>
+</section>
+<section id="先验从哪里来" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored" data-anchor-id="先验从哪里来"><span class="header-section-number">7.0.2</span> 先验从哪里来</h3>
+<p>贝叶斯方法并不消灭主观判断，而是把它放在先验概率中公开。先验可来自基础率、既有研究、对称原则或较宽的无信息分布。批评者担心不同先验导致任意结论；支持者回应，足够强且有区分力的证据常使合理先验逐渐汇合。双方都承认，极端先验可能对证据“免疫”。 比较分析应报告先验敏感性：在一组合理先验下，结论是否稳定？若只在特定先验下成立，就应把依赖关系写进结论。透明性不是假装没有判断，而是让判断的位置可见。</p>
+</section>
+<section id="条件独立与重复计算" class="level3" data-number="7.0.3">
+<h3 data-number="7.0.3" class="anchored" data-anchor-id="条件独立与重复计算"><span class="header-section-number">7.0.3</span> 条件独立与重复计算</h3>
+<p>连续收到两条证据时，只有在给定假设后它们条件独立，才可简单相乘似然。两家媒体若引用同一消息源、两个医学检测若受同一生理因素影响，就不能当成独立确认。忽视相关性会产生过度自信。 自然频率有助于检查：把百分比转换为一千或一万人中的人数，画出真阳性、假阳性、真阴性和假阴性。形式工具的教育价值不是炫示公式，而是迫使推理者保留分母、方向和依赖结构。</p>
+</section>
+<section id="案例工作坊两次检测" class="level3" data-number="7.0.4">
+<h3 data-number="7.0.4" class="anchored" data-anchor-id="案例工作坊两次检测"><span class="header-section-number">7.0.4</span> 案例工作坊：两次检测</h3>
+<p>假定第二次检测与第一次条件独立且参数相同。第一次阳性后的患病概率约15.4%。第二次也阳性时，可用第一次后验作为新先验，得到约76.7%。若两次使用同一污染样本，条件独立假设失败，这个数值会高估支持。答题时必须先写假设，再计算结果。 形式答案还应转回行动语言。76.7%是否足以治疗，取决于治疗副作用、进一步检测成本和延误风险。概率描述信念与证据，决策还需要效用；知识判断则可能关心个案联系与来源，而不只数值门槛。</p>
+</section>
+<section id="贝叶斯更新及其限制" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="贝叶斯更新及其限制"><span class="header-section-number">7.1</span> 贝叶斯更新及其限制</h2>
+<section id="概率的多种解释" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="概率的多种解释"><span class="header-section-number">7.1.1</span> 概率的多种解释</h3>
+<p>概率可以表示长期频率、客观倾向、逻辑支持或主观置信度。硬币正面概率二分之一可能指长期抛掷频率；某原子在时段内衰变的概率像客观倾向；“根据证据被告有罪的概率”表达证据支持；主体的0.7则是信心。混用解释会产生假争论。 形式认识论通常研究置信度应满足什么规范，不必先决定世界是否有客观概率。但合理置信应响应已知客观机会：若知道硬币公平，却仍给正面0.9，似乎不理性。主体概率与客观机会之间需要协调原则。 单次事件概率也不容易由频率定义。明天某候选人获胜只有一次，却可基于民调、模型和类比赋概率。频率数据是证据，模型把它转换成个案概率；转换假设必须公开。</p>
+</section>
+<section id="概率公理与认识融贯" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="概率公理与认识融贯"><span class="header-section-number">7.1.2</span> 概率公理与认识融贯</h3>
+<p>若主体给<span class="math inline">\(A\)</span>概率0.7、给其否定概率0.6，总和超过1，信念集合内部冲突。荷兰赌论证把不融贯转成必亏赌组；准确性论证则说，非概率化置信总存在另一个概率化组合，在每种可能状态下都更接近真值<span class="citation" data-cites="joyce1998">(<a href="references.html#ref-joyce1998" role="doc-biblioref">Joyce 1998年</a>)</span>。 两种辩护各有前提。赌论证假设置信可用公平下注率表示，主体线性评价金钱；准确性论证需选择衡量信念离真值多远的评分规则。它们说明概率公理有强规范基础，却不表示真实人必须随时拥有无限精确数字。 区间概率允许主体用范围表达信息不足，如<span class="math inline">\(P(A)\in[0.4,0.7]\)</span>。它更诚实，却使决策与更新复杂。精确概率与区间之间不是严谨和含糊之争，而是模型可操作性与不确定性表达的权衡。</p>
+</section>
+<section id="条件化为何合理" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="条件化为何合理"><span class="header-section-number">7.1.3</span> 条件化为何合理</h3>
+<p>标准贝叶斯条件化说，当主体确定学到<span class="math inline">\(E\)</span>且除此之外没有新信息，新的<span class="math inline">\(P'(H)=P(H\mid E)\)</span>。规则保存旧概率中关于<span class="math inline">\(H\)</span>与<span class="math inline">\(E\)</span>关系的判断，只重新分配到<span class="math inline">\(E\)</span>成立的空间。 现实证据很少获得概率1。医生认为检验本身有10%出错，不能把结果当确定。Jeffrey条件化允许主体只改变<span class="math inline">\(E\)</span>的概率，再按加权方式更新。还有证据可能改变模型结构，使旧条件概率也需修订；机械条件化不适用。 信息顺序在理想条件化下通常不应影响最终结果，但相关证据、遗忘和模型更新会产生路径依赖。实际贝叶斯分析需记录每次证据是什么、是否独立、参数是否同时学习。</p>
+</section>
+<section id="贝叶斯因子与证据比较" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="贝叶斯因子与证据比较"><span class="header-section-number">7.1.4</span> 贝叶斯因子与证据比较</h3>
+<p>后验赔率可写为：</p>
+<p>$$</p>
+<p>= .</p>
+<p>$$</p>
+<p>最后一项是贝叶斯因子或似然比，表示证据把赔率放大多少。它把证据强度与先验可信度分开：强证据可显著提高一个仍不占优势的低先验假设。 假设一种症状在疾病下出现率0.8，在无病时0.2，似然比为4。若先验赔率1:99，更新后为4:99，后验仍约3.9%。说“症状支持疾病”与“疾病现在很可能”是不同判断。 报告时同时给似然比与后验，可避免选择性叙述。只强调风险“增加四倍”可能掩盖绝对风险仍低；只强调绝对概率低又可能掩盖证据确有信息。</p>
+</section>
+<section id="旧证据问题与新预测" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="旧证据问题与新预测"><span class="header-section-number">7.1.5</span> 旧证据问题与新预测</h3>
+<p>一个理论常在已知证据后被提出。若<span class="math inline">\(E\)</span>已经确定，简单条件化中<span class="math inline">\(P(E)=1\)</span>，似乎不能再提高<span class="math inline">\(H\)</span>。但相对论解释水星近日点进动等旧证据仍被视为支持。贝叶斯主义需表示“理论提出前的预期能力”、理论为何不为该数据临时拼装等元层信息。 新奇预测通常更有说服力，因为研究者较难为目标结果过拟合。不过时间上的新并非绝对要求。一个理论若从独立原则自然推出旧而精细的事实，同样有解释价值。关键是数据是否用于构造理论以及理论复杂度。 预注册、留出数据和独立复制是制度化解决方案。它们不是取代统计推理，而是让<span class="math inline">\(P(E\mid H)\)</span>不因事后选择被夸大。</p>
+</section>
+<section id="确认悖论" class="level3" data-number="7.1.6">
+<h3 data-number="7.1.6" class="anchored" data-anchor-id="确认悖论"><span class="header-section-number">7.1.6</span> 确认悖论</h3>
+<p>“所有乌鸦都是黑的”逻辑等价于“所有非黑物都不是乌鸦”。若看到一只绿苹果确认后者，按等价原则也确认前者，这就是乌鸦悖论。直觉上绿苹果对乌鸦颜色几乎无关。 贝叶斯分析可以说，绿苹果确有极微弱确认，因为它排除了一个非黑乌鸦可能，但世界中非黑非乌鸦极多，信息量近零。观察一只黑乌鸦的似然比更高。悖论提醒我们区分逻辑确认方向与实际证据强度。 另一个是基准类问题。同一个人属于多个群体，各群体频率不同。选择“同龄人”“同职业者”或“同症状者”会给不同先验。数据本身不决定基准类，因果和模型知识需要介入。</p>
+</section>
+<section id="概率与决策" class="level3" data-number="7.1.7">
+<h3 data-number="7.1.7" class="anchored" data-anchor-id="概率与决策"><span class="header-section-number">7.1.7</span> 概率与决策</h3>
+<p>期望效用把每个结果价值乘以概率并求和。它解释低概率灾难为何可能值得预防，也说明高概率不等于应行动。设治疗成功概率0.6，成功收益大但副作用严重；是否治疗不能只看0.6超过一半。 效用不是简单金钱。健康、时间、公平和权利可能难以统一量化。决策模型可作为透明框架，显示分歧究竟在概率还是价值，而非假装产生唯一客观答案。某些道德约束也可能不允许被期望值完全抵消。 知识与决策的关系仍开放。一方说概率与效用足以，知识标签不增加决策信息；另一方认为，只有知识才可作为不再敏感分析的前提，或知识影响责任。实际高风险制度常同时使用概率阈值、证据等级与程序性知识标准。</p>
+</section>
+<section id="群体概率与专家汇总" class="level3" data-number="7.1.8">
+<h3 data-number="7.1.8" class="anchored" data-anchor-id="群体概率与专家汇总"><span class="header-section-number">7.1.8</span> 群体概率与专家汇总</h3>
+<p>多个专家给出不同概率，简单平均是一种意见池，但若专家共享数据或能力差异大，平均会误导。权重可依据历史校准、领域相关性和信息独立性。权重本身也需防止事后只奖励碰巧准确者。 市场价格有时聚合分散信息，却受财富、策略、流动性和操纵影响。德尔菲法通过匿名多轮反馈减少地位压力，却可能让少数正确异议向多数收敛。没有脱离制度条件的万能聚合器。 群体还需校准：在所有给70%的事件中约70%发生。校准良好不等于分辨力好；永远报告基础率可能校准，却不能区分案例。Brier分数等适当评分同时奖励校准和信息性。</p>
+</section>
+<section id="综合案例暴雨预警" class="level3" data-number="7.1.9">
+<h3 data-number="7.1.9" class="anchored" data-anchor-id="综合案例暴雨预警"><span class="header-section-number">7.1.9</span> 综合案例：暴雨预警</h3>
+<p>模型A给暴雨概率60%，模型B给30%。两者都使用同一雷达，但B另含地形数据。不能把它们当完全独立。气象员需检查历史校准、当前雷达故障、模型适用区域和共用误差。 城市是否发布红色预警还依赖错误成本：漏报可能危及生命，误报会造成停工和预警疲劳。决策阈值可以低于“最可能发生”。发布“有60%概率”与断言“一定暴雨”承担不同认识责任。 事后没有暴雨不证明60%预测错误。评价要看长期校准和当次输入是否正确；若模型把60%事件预测一百次，约四十次不发生完全相容。单次结果可揭示故障，却不能单独评估概率诚实性。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="形式分析清单">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>形式分析清单
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>说明概率解释；写出先验、似然与后验；检查条件概率方向和证据独立性；做先验与模型敏感性分析；区分支持度与最终概率；把概率和效用分开；用自然频率复核；报告模型限制而非只给小数。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="计算校准与证据审计" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="计算校准与证据审计"><span class="header-section-number">7.2</span> 计算、校准与证据审计</h2>
+<section id="研读实验室从直觉到可复核计算" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="研读实验室从直觉到可复核计算"><span class="header-section-number">7.2.1</span> 研读实验室：从直觉到可复核计算</h3>
+<p>形式认识论的价值不在于用公式替代判断，而在于公开判断结构。一个后验概率必须说明先验、似然与条件独立；一个决策必须说明可能结果和效用；一个专家汇总必须说明权重。读者可以不同意输入，却能复算结论并定位分歧。 概率记号首先防止方向混淆。<span class="math inline">\(P(D\mid +)\)</span>表示检测阳性后患病概率，<span class="math inline">\(P(+\mid D)\)</span>表示患病者检测阳性的概率。后者是灵敏度，不能直接当作前者。贝叶斯定理把两者连接：</p>
+<p>$$</p>
+<p>P(D+)= {P(+D)P(D)+P(+D)P(D)}.</p>
+<p>$$</p>
+<p>分母保留了真阳性和假阳性两种到达“阳性”的路径。 设患病率为1%，灵敏度90%，假阳性率5%。在一万人中约有100名患者，其中90人阳性；9900名非患者中约495人阳性。所有585名阳性者中只有90名患病，因此</p>
+<p>$$</p>
+<p>P(D+)=%.</p>
+<p>$$</p>
+<p>“检测准确率很高”若不区分错误类型和基础率，容易产生远高于15.4%的直觉。</p>
+</section>
+<section id="赔率形式与贝叶斯因子" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="赔率形式与贝叶斯因子"><span class="header-section-number">7.2.2</span> 赔率形式与贝叶斯因子</h3>
+<p>概率<span class="math inline">\(p\)</span>可转成赔率<span class="math inline">\(p/(1-p)\)</span>。上述先验赔率是<span class="math inline">\(0.01/0.99\approx1:99\)</span>。阳性的贝叶斯因子为</p>
+<p>$$</p>
+<p>BF_+===18.</p>
+<p>$$</p>
+<p>后验赔率等于先验赔率乘以18，约为<span class="math inline">\(18:99\)</span>，再转回概率即15.4%。赔率形式清楚显示证据贡献与先验分离。 若第二次检测在给定患病状态后与第一次条件独立，两个阳性的总贝叶斯因子为<span class="math inline">\(18^2=324\)</span>，后验赔率约<span class="math inline">\(324:99\)</span>，概率约76.6%。若两次都使用同一污染样本，条件独立不成立；简单平方会把共享错误当作两份支持。 贝叶斯因子衡量证据区分两个假设的能力，不等于某假设的最终概率。同一阳性对低基础率和高基础率人群给出相同似然比，却产生不同后验。报告“证据强18倍”时，应说明比较的是哪两个假设以及参数如何估计。</p>
+</section>
+<section id="校准分辨与评分" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="校准分辨与评分"><span class="header-section-number">7.2.3</span> 校准、分辨与评分</h3>
+<p>一个预测者若在所有报70%的事件中约七成发生，就在该档位校准良好。校准不要求每个70%预测都成真；单次失败不能证明概率错。长期检验应把相近概率分组，比较预测频率与实际频率，并报告样本量和不确定区间。 校准也不等于信息丰富。总说“明天下雨概率等于当地长期频率”的预测可以校准，却不能区分具体天气。分辨能力要求在会下雨的日子给更高概率、不会下雨的日子给更低概率。好系统同时追求校准和分辨。 恰当评分规则奖励诚实概率报告。以Brier分数为例，二元事件结果<span class="math inline">\(o\)</span>取0或1，预测为<span class="math inline">\(p\)</span>，损失为<span class="math inline">\((p-o)^2\)</span>。报0.9而事件未发生的损失很大，报0.6的损失较小；长期上，按真实置信报告可最小化期望损失。评分规则评价置信质量，不自动判定主体是否拥有知识<span class="citation" data-cites="joyce1998">(<a href="references.html#ref-joyce1998" role="doc-biblioref">Joyce 1998年</a>)</span>。 预测系统还需防止选择性展示。只公布成功的高置信预测、删除失败记录，会制造虚假校准。应在结果发生前锁定预测、保存全部版本并预先规定评估窗口。形式透明依赖记录制度。</p>
+</section>
+<section id="先验参照类与模型选择" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="先验参照类与模型选择"><span class="header-section-number">7.2.4</span> 先验、参照类与模型选择</h3>
+<p>先验不是纯主观偏好。它可来自基础率、先前研究、机制知识或对称性原则。但不同参照类给出不同基础率：某病在全国、某年龄组、某基因携带者中的比例不同。选择应以与目标个体因果和抽样相关的特征为依据，不能事后挑选得到所需结论的群体。 先验也不能包含当前证据两次。若基础率研究已使用这名患者的检测结果，再把同一结果作为新似然更新，就会重复计算。历史数据与当前证据的边界在大数据系统中尤其难，需要记录训练集、验证集和个案输入。 复杂模型通常能更好拟合已有数据，却可能过拟合噪声。模型比较要考察新数据预测、参数惩罚与稳健性，而非只看训练拟合。旧证据问题说明，一个理论若在看到证据后才调参解释它，解释成功的确认价值低于事前给出新预测。 先验分歧不必导致永久相对主义。若不同主体使用非零且不过度极端的先验，持续获得具有区分力的共同证据时，后验往往趋近。但若双方模型赋予证据完全不同似然、或只接触各自选择的信息，分歧可持续。形式化帮助说明分歧在哪个输入，而非保证自动共识。</p>
+</section>
+<section id="从概率到行动" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="从概率到行动"><span class="header-section-number">7.2.5</span> 从概率到行动</h3>
+<p>概率不包含损失。即使患病概率只有5%，若漏诊致命而进一步检查成本很低，行动上仍应检查；即使某市场上涨概率60%，潜在损失极大也未必投资。期望效用把每项行动在各状态的效用按概率加权<span class="citation" data-cites="jeffrey1983">(<a href="references.html#ref-jeffrey1983" role="doc-biblioref">Jeffrey 1983年</a>)</span>。 设治疗在患病时带来<span class="math inline">\(+100\)</span>，未患病却治疗为<span class="math inline">\(-20\)</span>；不治疗在患病时为<span class="math inline">\(-200\)</span>，未患病为0。若患病概率为<span class="math inline">\(q\)</span>，治疗期望效用为<span class="math inline">\(100q-20(1-q)=120q-20\)</span>，不治疗为<span class="math inline">\(-200q\)</span>。治疗优于不治疗当<span class="math inline">\(320q&gt;20\)</span>，即<span class="math inline">\(q&gt;6.25%\)</span>。行动阈值来自效用，不是知识定义。 效用数字本身需要伦理和经验论证。不同人的副作用负担、风险态度和权利限制不能随意压成一个专家数字。法律定罪尤其不能只按社会总效用选择概率阈值，因为程序正义和个体权利构成约束。决策模型公开权衡，却不能替我们决定所有价值。 信息也有价值。若一次额外检测可能显著改变行动，而且成本低，其期望信息价值高；若无论结果如何都采取同一行动，继续检测可能无益。信息价值解释何时应暂停行动搜集证据，也解释为什么高风险不总意味着无限调查。</p>
+</section>
+<section id="比较视角墨家三表与形式证据" class="level3" data-number="7.2.6">
+<h3 data-number="7.2.6" class="anchored" data-anchor-id="比较视角墨家三表与形式证据"><span class="header-section-number">7.2.6</span> 比较视角：墨家“三表”与形式证据</h3>
+<p>后期文献传统常以墨家“三表”讨论言说应考察古代依据、百姓耳目经验和实施效果；具体篇章、版本与解释存在争议，不能把它直接写成贝叶斯定理<span class="citation" data-cites="graham1989">(<a href="references.html#ref-graham1989" role="doc-biblioref">Graham 1989年</a>)</span>。其可比较之处是，主张要同时受传统记录、公共经验和实践后果约束，而非只凭权威或辞令。 三类检验之间没有现成数值权重，也未给出条件概率公理。当代形式工具可以追问：材料是否独立、历史记录的基础率怎样、实施效果是否由目标主张造成；墨家问题意识则提醒，证据评价与公共可检验性、治理后果密切相关。 把古代“数”或“法”见到就译成统计模型，是时代错置；反过来，认为没有现代符号便没有严谨推理，也忽略论证规则可以用非数学方式表达。比较应在证据来源、公开检验与行动反馈三个问题层面进行，不宣称形式同一。</p>
+</section>
+<section id="综合案例大学录取模型" class="level3" data-number="7.2.7">
+<h3 data-number="7.2.7" class="anchored" data-anchor-id="综合案例大学录取模型"><span class="header-section-number">7.2.7</span> 综合案例：大学录取模型</h3>
+<p>学校模型给申请者70%的“学业成功概率”。首先要问事件定义：一年不退学、四年毕业还是绩点达标？训练人群和当前申请者是否同分布？概率对不同群体是否分别校准？总校准可能掩盖交叉群体的系统误差。 模型使用高中成绩、课程资源和历史录取数据。若历史录取本身受机会不平等影响，预测可能准确再现现状，却不能直接回答谁应被录取。预测命题与规范决策不同：成功概率是证据输入，教育潜力、补偿目标和权利约束还需单独论证。 招生员又读取推荐信，而推荐信内容已被模型文本特征使用。如果人工判断再次把同一内容当独立证据，就发生重复计算。应标记哪些信息已经进入模型，哪些是新证据，并用盲审测试人工增量是否真正提高校准。 最终报告不应只给单分数。它应给出事件定义、置信区间、适用人群、主要特征、已知失效模式和对阈值附近个案的复核流程。形式认识论的目标不是让数字获得神秘权威，而是让推断与决定可追踪、可反驳。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="本章研读任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>本章研读任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>任选一个检测或预测，使用一万人自然频率计算后验，再以赔率和贝叶斯因子复算；检查两份证据是否条件独立；设计校准表和评分方式；最后给出一个效用矩阵，明确区分概率结论、知识判断与行动阈值。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="模型选择与决策实践" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="模型选择与决策实践"><span class="header-section-number">7.3</span> 模型选择与决策实践</h2>
+<section id="专题研讨概率模型校准与决定" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="专题研讨概率模型校准与决定"><span class="header-section-number">7.3.1</span> 专题研讨：概率模型、校准与决定</h3>
+<p>形式认识论把“较相信”“证据更强”转化为可比较结构，却不把认识论缩成算术。任何概率都相对于命题划分、背景信息和模型假设。算式正确而事件定义错误，可能比没有数字更具误导性。本节的目标是把计算置于完整工作流：先规定问题，再更新信念，检查校准，最后引入价值作出决定。</p>
+</section>
+<section id="后验概率与似然不能交换" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="后验概率与似然不能交换"><span class="header-section-number">7.3.2</span> 后验概率与似然不能交换</h3>
+<p>检测阳性时，人们容易把“患者患病的概率”误当成“患者患病时检测阳性的概率”。前者是 (P(D+))，后者是 (P(+D))。贝叶斯公式之所以重要，不只是提供一个换算，而是迫使我们同时保留基础率 (P(D))、真阳性率和假阳性率。罕见疾病即使检测敏感，也可能产生大量假阳性。 似然比比较证据在两个假设下的预期程度。若 (e) 在 (h) 下远比在非 (h) 下可能，(e) 支持 (h)；但“强支持”不等于“高后验”。一个极低先验的假设可以被证据大幅提高，结果仍不够高。报道应同时说明变化幅度和最终水平，避免用“概率增加三倍”掩盖从万分之一到万分之三。 自然频率把抽象百分比转换成计数。在一万人中先画患病与未患病人数，再填检测结果，许多方向错误会显现。频率图还揭示分母选择：是所有检测阳性者、所有患病者，还是所有被送检者？形式训练的首要德性是不给分母消失的机会。</p>
+</section>
+<section id="先验从何而来" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="先验从何而来"><span class="header-section-number">7.3.3</span> 先验从何而来</h3>
+<p>先验并非纯粹主观任性。它可以来自基准频率、先前研究、对称性或信息受限下的约束；也可能表达合理分歧。争论先验时应问：参考类如何选择，旧研究与当前对象是否可比，先验对结论有多敏感？如果一组合理先验都导向相近结论，结果稳健；若轻微变化就逆转，报告应突出先验敏感性。 所谓“无信息先验”也依赖参数化。在发生概率上均匀，不等于在对数几率上均匀。选择不可能完全脱离建模目的，因此透明说明比宣称中立更重要。客观约束可以缩小合理范围，却未必给出唯一数字。<span class="citation" data-cites="howson2006">(<a href="references.html#ref-howson2006" role="doc-biblioref">Howson 和 Urbach 2006年</a>)</span> 先验还可能携带历史偏差。犯罪风险模型用过去逮捕率作基础率，逮捕率又受巡逻分布影响；把它当作自然频率会把制度选择写进预测。形式上合法的更新不保证输入具有正当解释。模型说明应区分目标事件、可观测代理与生成数据的社会过程。</p>
+</section>
+<section id="条件独立与重复证据" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="条件独立与重复证据"><span class="header-section-number">7.3.4</span> 条件独立与重复证据</h3>
+<p>连续获得两项证据时，只有在相关条件下独立，才能简单相乘似然。两次检测使用同一污染样本、两位专家读到同一初步报告、两篇论文使用同一数据库，都可能共享错误。忽略相关性会重复计算证据，使后验虚高。 判断相关性应针对假设条件。两个症状在人群中相关，不表示在已知疾病状态后仍相关；两名证人平时互不认识，若事后共同观看新闻，也不再独立。贝叶斯网络用有向边表示依赖，帮助追问哪些共同原因被遗漏。图并不自动保证因果正确，但能把隐藏假设暴露给批评。 证据也可能相互削弱或增强。两项各自模糊的测量若误差方向相反，联合后更精确；两个几乎相同的来源只增加很少信息。报告“共有五项证据”没有意义，除非说明它们的联合结构。数量是证据的属性之一，不是支持度本身。</p>
+</section>
+<section id="校准准确性与评分" class="level3" data-number="7.3.5">
+<h3 data-number="7.3.5" class="anchored" data-anchor-id="校准准确性与评分"><span class="header-section-number">7.3.5</span> 校准、准确性与评分</h3>
+<p>一个预报者若对所有标为 (70%) 的事件中约七成最终发生，称为在该组上校准。校准评价长期匹配，不保证个案正确，也不保证预测足够精细。总把晴雨各报 (50%) 在某些数据上可以校准，却没有区分能力。评价应结合校准、锐度、分辨率和适用范围。 恰当评分规则让诚实报告真实置信度在期望上最有利。它们可以比较概率预测而不只比较二元命中。<span class="citation" data-cites="joyce1998">(<a href="references.html#ref-joyce1998" role="doc-biblioref">Joyce 1998年</a>)</span> 但分数仍依赖事件定义与样本选择。平台若只展示已经解决的预测题，或在临界时更改结算标准，漂亮分数会误导。形式指标需要可审计的数据治理。 校准还应分群体检查。总体表现良好可能掩盖在某年龄、地区或设备上的系统偏差。细分过度又会因样本太小而不稳定。合理做法是预先选择与故障机制相关的亚组，给出不确定区间，并在新数据上复验，而不是事后寻找最有利切片。</p>
+</section>
+<section id="概率并不直接给出行动" class="level3" data-number="7.3.6">
+<h3 data-number="7.3.6" class="anchored" data-anchor-id="概率并不直接给出行动"><span class="header-section-number">7.3.6</span> 概率并不直接给出行动</h3>
+<p>行动需要把概率与结果价值结合。期望效用以每种结果的概率乘其效用，再比较方案。若误治副作用很小，较低患病概率也可支持治疗；若手术不可逆且危险，可能需要更高阈值。阈值不是“知道”的简单数值定义，而是具体决定中的损益折中。<span class="citation" data-cites="jeffrey1983">(<a href="references.html#ref-jeffrey1983" role="doc-biblioref">Jeffrey 1983年</a>)</span> 效用也不是金钱的同义词。生命、隐私、公平、可逆性和程序权利可能进入评价。有些限制不适合完全换算成单一数值，例如不得未经同意把个体置于高风险实验。决策分析可以展示权衡，却不能替代伦理论证。 信息本身也有价值。一次追加检测的价值取决于它改变行动的概率、检测成本和延误风险。若无论结果如何都采取同一方案，检测可能没有决策价值；但它仍可能具有解释、安慰或研究价值。区分认识价值与决策价值可防止“不能改变行动，所以不值得知道”的草率结论。</p>
+</section>
+<section id="模型比较与证据欠定" class="level3" data-number="7.3.7">
+<h3 data-number="7.3.7" class="anchored" data-anchor-id="模型比较与证据欠定"><span class="header-section-number">7.3.7</span> 模型比较与证据欠定</h3>
+<p>同一数据可能由多个模型解释。更复杂模型通常拟合更好，却可能过拟合；更简单模型易推广，却可能漏掉真实机制。模型比较需在拟合、复杂度、预测性能和解释目标间权衡。交叉验证测试未见数据表现，不能证明部署环境永远相同；信息准则压缩复杂度代价，也不能代替领域知识。 证据欠定不意味着任意选择。模型可能在旧数据上近似等价，却对新干预、边界条件或辅助变量给出不同预测。研究者可设计区分性实验，寻找双方预期差异最大的观察。若当前无法区分，报告模型不确定性比挑一个最顺眼的故事更诚实。 形式模型的简化必须可追踪。把连续风险二分为高低、把未知值当作阴性、假设损失对称，都会改变结论。每个简化应附有适用理由与敏感性检查。模型不是世界的缩小复制，而是为特定问题保留某些关系的工具。</p>
+</section>
+<section id="比较视野度量与审势" class="level3" data-number="7.3.8">
+<h3 data-number="7.3.8" class="anchored" data-anchor-id="比较视野度量与审势"><span class="header-section-number">7.3.8</span> 比较视野：度量与审势</h3>
+<p>古典实践推理常强调审时、度势与权衡轻重，这与概率决策在功能上相交：行动者不能只问命题真伪，还要判断情势与后果。但这种相交不表示古典“权”就是现代期望效用。前者嵌在德性、礼义和具体判断中，未必接受一切价值可通约；后者提供明确的一致性结构。 比较可以形成双向批评。形式方法要求古典式权衡说明哪些因素改变结论，避免“因时制宜”成为无约束直觉；实践智慧传统则提醒形式模型，事件划分和效用赋值本身需要情境判断。目标不是让一方翻译掉另一方，而是检查各自遗漏：一种可能缺少可计算约束，另一种可能遮蔽价值来源。</p>
+</section>
+<section id="综合案例两阶段癌症筛查" class="level3" data-number="7.3.9">
+<h3 data-number="7.3.9" class="anchored" data-anchor-id="综合案例两阶段癌症筛查"><span class="header-section-number">7.3.9</span> 综合案例：两阶段癌症筛查</h3>
+<p>某疾病在人群中的基础率为 (1%)。初筛敏感度 (90%)、特异度 (95%)；复筛使用同一生物标志物，敏感度 (95%)、特异度 (90%)。机构把两次阳性当作独立证据，宣称患病概率超过 (75%)。但两项检测受同一种炎症影响，条件独立不成立。 分析应先用自然频率计算独立假设下的结果，再给相关性设定一组合理范围，展示后验敏感性。随后区分三项决定：是否告知患者、是否做侵入式活检、是否立即治疗。三者损益不同，不能共用一个概率阈值。报告还要说明基础率是否适用于有症状的送检人群。 若医院拥有过往联合检测数据，可直接估计两次结果的联合条件概率；若样本不足，应给区间而非伪精确数。最后检查校准：过去的“双阳性”患者中实际患病比例是多少，各亚组是否一致？一个成熟答案不会止于单一后验，而会把模型不确定性转化成进一步取证与决策方案。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="专题研读任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>专题研读任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>找一则带百分比的公共报道，重建事件、分母、先验、似然与决策阈值。至少提出一个相关性问题和一个参考类问题，并把原报道改写成同时呈现数值与假设的版本。</p>
+</div>
+</div>
+</section>
+<section id="一个后验数不等于一个稳健结论" class="level3" data-number="7.3.10">
+<h3 data-number="7.3.10" class="anchored" data-anchor-id="一个后验数不等于一个稳健结论"><span class="header-section-number">7.3.10</span> 一个后验数不等于一个稳健结论</h3>
+<p>开篇检测得到的<span class="math inline">\(15.4%\)</span>，只是在一组明确假设下的结果：基础率是<span class="math inline">\(1%\)</span>，阳性的似然比为18，竞争假设只有“患病”和“未患病”，检测参数也被当作已知。改变其中任何一项，后验都可能移动。最简单的敏感性分析不是再给更多小数，而是把几个合理设定并列：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>患病基础率</th>
+<th>阳性似然比</th>
+<th>阳性后的患病概率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(1%\)</span></td>
+<td>18</td>
+<td><span class="math inline">\(15.4%\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(2%\)</span></td>
+<td>18</td>
+<td><span class="math inline">\(26.9%\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(1%\)</span></td>
+<td>9</td>
+<td><span class="math inline">\(8.3%\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(2%\)</span></td>
+<td>9</td>
+<td><span class="math inline">\(15.5%\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>表中没有哪个设定凭自身就是“正确答案”。它的作用是暴露结论依赖什么：参照类改变会移动先验，设备在真实部署中的性能下降会移动似然。若四种设定都支持同一行动，决定较稳健；若结论随一项合理改动而反转，就应把不确定性本身作为主要结果。贝叶斯计算使条件关系清楚，却不能把条件假设变成无条件事实<span class="citation" data-cites="howson2006">(<a href="references.html#ref-howson2006" role="doc-biblioref">Howson 和 Urbach 2006年</a>)</span>。</p>
+</section>
+<section id="区分风险参数不确定与模型无知" class="level3" data-number="7.3.11">
+<h3 data-number="7.3.11" class="anchored" data-anchor-id="区分风险参数不确定与模型无知"><span class="header-section-number">7.3.11</span> 区分风险、参数不确定与模型无知</h3>
+<p>风险是已经列出结果并能合理赋予概率，例如一枚已知公平硬币的下一次结果。参数不确定是知道模型形式，却不确定灵敏度究竟为<span class="math inline">\(0.85\)</span>还是<span class="math inline">\(0.90\)</span>。模型无知更深：检测可能受某种尚未列入的药物、实验室污染或人群选择机制影响。把三者都压成一个精确概率，会制造虚假精确。处理参数不确定，可以给区间、分布或多组情景；处理模型无知，则需要主动寻找遗漏假设、设置异常监测并保留暂缓判断的可能。</p>
+<p>这一区分也限制“证据越多，置信度越高”的口号。若新增数据只是同一有偏模型的重复输出，样本量增加会让错误结论更稳定；若新证据揭示模型遗漏，合理更新可能不是在原模型中移动概率，而是重画整个假设空间。成熟的形式分析因此至少包含两轮提问：在模型内怎样更新，以及什么迹象要求更换模型。</p>
+</section>
+<section id="从概率阈值到信息价值" class="level3" data-number="7.3.12">
+<h3 data-number="7.3.12" class="anchored" data-anchor-id="从概率阈值到信息价值"><span class="header-section-number">7.3.12</span> 从概率阈值到信息价值</h3>
+<p>设医生在患病概率超过<span class="math inline">\(6.25%\)</span>时倾向治疗，而侵入性治疗只有在概率超过<span class="math inline">\(70%\)</span>时才可接受。一次阳性后的合理范围若是<span class="math inline">\(8%\)</span>至<span class="math inline">\(27%\)</span>，它已经跨过“继续检查或低风险处置”的门槛，却没有跨过侵入性治疗门槛。此时第二项检测的价值不在于让医生“知道得更多”这一抽象事实，而在于它是否有较大机会把患者移到另一行动区间，并且这种改变的收益是否超过检测费用、等待和误差。</p>
+<p>信息价值也可能为负。若复检与初检共享污染源，它提供的表面确认会诱发过度自信；若结果返回太晚，等待损失可能超过信息收益；若机构没有能力依据结果改变行动，检测只增加数据而不改善决定。决策分析应比较“立即行动”“先复检”“采用不同原理的检测”“暂缓并观察”等完整策略，而不是孤立比较两个概率<span class="citation" data-cites="jeffrey1983">(<a href="references.html#ref-jeffrey1983" role="doc-biblioref">Jeffrey 1983年</a>)</span>。</p>
+</section>
+<section id="形式主义的最强反对与有限辩护" class="level3" data-number="7.3.13">
+<h3 data-number="7.3.13" class="anchored" data-anchor-id="形式主义的最强反对与有限辩护"><span class="header-section-number">7.3.13</span> 形式主义的最强反对与有限辩护</h3>
+<p>反对者担心，数字会把争议藏进输入：谁决定参照类、效用和允许的假设，谁就预先决定了答案。这个批评击中了把模型当作中立裁判的用法，却没有证明形式化毫无价值。恰当的回应不是声称输入完全客观，而是把输入选择、敏感性和未建模因素一并公开。与只说“综合考虑后风险较高”相比，一个可复算模型至少让批评者知道应攻击哪个基础率、哪项独立性假设或哪种价值权重。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>一份可问责的决策报告应分成两页。第一页是认识报告：命题、数据来源、先验、似然、依赖结构、模型替代和敏感性范围。第二页是行动报告：可选行动、结果价值、不可折算的权利约束、信息价值、复核权限和触发重新评估的条件。把两页合成一个“模型建议”，会掩盖从证据到行动之间新增的规范前提。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="数字不会替我们选择问题" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="数字不会替我们选择问题"><span class="header-section-number">7.4</span> 数字不会替我们选择问题</h2>
+<section id="形式化首先是一项表示选择" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="形式化首先是一项表示选择"><span class="header-section-number">7.4.1</span> 形式化首先是一项表示选择</h3>
+<p>把信念写成概率并不只是把模糊语言换成数字。研究者必须先选择命题空间：疾病是否只分“有／无”，还是包含不同亚型；天气是否只分“下雨／不下雨”，还是还要区分时间和区域。过粗空间会隐藏行动相关差异，过细空间又需要无法支持的参数。随后还要选择参照类、时间窗口和条件变量。任何计算在这些选择之后才开始，因此形式结果的严格性不能反向证明表示本身正确。</p>
+</section>
+<section id="概率公理约束一致性而不提供全部内容" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="概率公理约束一致性而不提供全部内容"><span class="header-section-number">7.4.2</span> 概率公理约束一致性而不提供全部内容</h3>
+<p>若主体对互斥完备命题给出的置信度总和不为一，赌局或评分规则可以揭示某种内部不一致。恰当评分规则进一步说明，诚实报告真实置信度具有期望优势<span class="citation" data-cites="joyce1998">(<a href="references.html#ref-joyce1998" role="doc-biblioref">Joyce 1998年</a>)</span>。然而公理没有告诉我们初始置信度应是多少，也没有判断模型遗漏了哪项假设。一个内部一致的阴谋论者可以给所有事件分配概率；问题在于他的似然、来源和更新是否与世界适当连接。形式规范因此是必要约束，却不是认识充分条件。</p>
+</section>
+<section id="基础率是关于参照类的主张" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="基础率是关于参照类的主张"><span class="header-section-number">7.4.3</span> 基础率是关于参照类的主张</h3>
+<p>开篇检测只有在患病率真正适用于当前患者时才可直接代入。年龄、症状、暴露史和就诊选择可能使患者属于不同参照类。忽略基础率会夸大阳性证据，机械使用一般人群基础率也可能低估个案信息。研究者应说明基础率来自何时、何地、哪类人群，样本如何进入数据；若多个参照类给出不同先验，应做敏感性分析，而不是把其中一个数字包装成客观起点。</p>
+</section>
+<section id="似然衡量区分力而非结论概率" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="似然衡量区分力而非结论概率"><span class="header-section-number">7.4.4</span> 似然衡量区分力而非结论概率</h3>
+<p>证据<span class="math inline">\(E\)</span>在假设<span class="math inline">\(H\)</span>下常见，只说明<span class="math inline">\(P(E\mid H)\)</span>高；若<span class="math inline">\(E\)</span>在非<span class="math inline">\(H\)</span>下同样常见，它几乎没有区分力。贝叶斯因子比较不同假设对同一证据的预测，避免把“假设能解释证据”误作“证据强烈支持假设”。但是似然往往来自模型估计而非直接观察，模型误设、测量误差和选择性报告都会扭曲比值。对极大似然比尤其应追问：分母是否被低估，竞争假设是否遗漏，证据是否在看过结果后才被选择。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>报告一次概率更新时，不只写后验数值；同时写明命题空间、基础率来源、似然来源、独立性假设、遗漏假设和敏感性范围。若改变一个合理设定便使结论反转，最重要结果不是某个点估计，而是模型尚不稳健。</p>
+</div>
+</div>
+</section>
+<section id="证据重复计算常藏在数据谱系中" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="证据重复计算常藏在数据谱系中"><span class="header-section-number">7.4.5</span> 证据重复计算常藏在数据谱系中</h3>
+<p>两家网站引用同一报告、两次检测使用同一污染样本、三个模型在同一训练数据上给出相似结果，都可能产生条件相关。给定目标假设后，若一项结果出现会提高另一项出现的概率，就不能简单相乘似然。相关结构可以用联合概率、层级模型或显式因果图表示；即使无法精确估计，也应做上下界或情景分析。把来源谱系带进形式模型，是避免“看似证据很多、实际只有一条链”的关键。</p>
+</section>
+<section id="校准与分辨力回答不同问题" class="level3" data-number="7.4.6">
+<h3 data-number="7.4.6" class="anchored" data-anchor-id="校准与分辨力回答不同问题"><span class="header-section-number">7.4.6</span> 校准与分辨力回答不同问题</h3>
+<p>总是报告基础率的系统可能完美校准，却无法区分个案；极具分辨力的系统也可能系统性过度自信。校准要按足够大样本和适当时间窗口检验，分辨力则比较发生与未发生事件的概率分布。分组校准还可能与其他公平目标冲突。因而“模型准确”至少应拆成总体错误、概率校准、排序能力、分组表现和极端情形稳健性。单一平均指标不能承担全部认识评价。</p>
+</section>
+<section id="不确定性也有不同来源" class="level3" data-number="7.4.7">
+<h3 data-number="7.4.7" class="anchored" data-anchor-id="不确定性也有不同来源"><span class="header-section-number">7.4.7</span> 不确定性也有不同来源</h3>
+<p>随机不确定性来自事件本身的变异，认识不确定性来自数据不足、参数不明或模型竞争；分布变化则使过去估计不再适用于当前环境。三者需要不同回应：增加样本未必减少不可消除的随机性，精确计算也不能修复模型类别错误，重新校准则可能应对环境变化。把所有不确定性压成一个置信区间会隐藏应采取的行动。形式认识论的任务之一，正是把“不知道”细分为可通过什么证据减少、无法通过当前方法减少以及尚未被模型表达的部分。</p>
+</section>
+<section id="置信度的解释会改变规范问题" class="level3" data-number="7.4.8">
+<h3 data-number="7.4.8" class="anchored" data-anchor-id="置信度的解释会改变规范问题"><span class="header-section-number">7.4.8</span> 置信度的解释会改变规范问题</h3>
+<p>把数值理解为长期频率、主体的主观信念程度，还是在公平赌局中愿意接受的比率，会导向不同检验。一次事件没有可直接观察的长期频率，纯主观解释又可能使任意先验显得宽容；行为解释则会受风险厌恶和财富变化干扰。实际研究常把这些解释组合使用：概率由群体频率与模型产生，再作为个体置信输入，最后通过选择行为间接表现。组合并非错误，但必须说明每次转换需要哪些桥梁，否则一个统计总体中的比例会被悄悄当成特定主体应有的信心。</p>
+</section>
+<section id="先验不是更新前可以遗忘的背景" class="level3" data-number="7.4.9">
+<h3 data-number="7.4.9" class="anchored" data-anchor-id="先验不是更新前可以遗忘的背景"><span class="header-section-number">7.4.9</span> 先验不是更新前可以遗忘的背景</h3>
+<p>两个研究者使用相同证据而得到不同后验，分歧可能来自先验。先验可以编码既有研究、机制知识与基础率，也可能携带传统偏见、方便假设或任意平滑。称其“主观”不能终止评价：应追问它对哪些人群和时间适用，是否把争议结论预先写入模型，以及数据量增加后后验多快摆脱它。报告多组可辩护先验及其结果，比假装存在一个无立场起点更能显示结论强度。若结论只在极窄先验下成立，真正需要辩护的就是先验而非计算。</p>
+</section>
+<section id="开放世界会使完备假设空间失效" class="level3" data-number="7.4.10">
+<h3 data-number="7.4.10" class="anchored" data-anchor-id="开放世界会使完备假设空间失效"><span class="header-section-number">7.4.10</span> 开放世界会使完备假设空间失效</h3>
+<p>贝叶斯归一化通常假定列出的假设互斥且完备，但现实调查经常遗漏未知故障、混合原因或尚未发现的疾病亚型。若模型只比较“机器正常”和“传感器损坏”，来自软件更新的第三种错误会被错误分配给前两项，后验仍然精确却回答了封闭世界中的问题。研究者可加入“其他原因”类别、使用异常检测、追踪残差，或明确将结论限定为“在已列模型中”。保留未知项会降低表面确定性，却防止模型以错误的完备性垄断解释。</p>
+</section>
+<section id="证据选择本身需要进入模型" class="level3" data-number="7.4.11">
+<h3 data-number="7.4.11" class="anchored" data-anchor-id="证据选择本身需要进入模型"><span class="header-section-number">7.4.11</span> 证据选择本身需要进入模型</h3>
+<p>若研究者在看到结果后才决定报告哪项指标、何时停止实验或把哪个亚群当作目标，普通条件化无法自动纠正选择偏差。观察到“有一项检验显著”与事先指定的那项检验显著，似然不同；连续查看数据直到跨过阈值，也会增加偶然成功。完整证据不只包括最终数字，还包括采样规则、停止规则、排除标准和未报告比较。形式化的优势正是可以把这些程序写入概率模型，而不是把模型用于最终结果却把结果如何被挑选留在模型外。</p>
+</section>
+<section id="证据关系不等于因果关系" class="level3" data-number="7.4.12">
+<h3 data-number="7.4.12" class="anchored" data-anchor-id="证据关系不等于因果关系"><span class="header-section-number">7.4.12</span> 证据关系不等于因果关系</h3>
+<p>变量之间的条件相关可以提高预测，却不说明干预其中一个会改变另一个。医院数据中，接受高强度治疗者死亡率较高，可能因为病情严重者更常接受治疗；把相关性直接作为治疗有害的证据，会混淆选择机制。认识论上，“支持某预测”与“支持某解释或干预”是不同任务。应先说明问题是预测、诊断还是因果决策，再选择相应模型与数据。一个在预测上校准良好的系统，仍可能在回答“若采取行动会怎样”时系统错误。</p>
+</section>
+<section id="区间与集合有时比单一概率更诚实" class="level3" data-number="7.4.13">
+<h3 data-number="7.4.13" class="anchored" data-anchor-id="区间与集合有时比单一概率更诚实"><span class="header-section-number">7.4.13</span> 区间与集合有时比单一概率更诚实</h3>
+<p>当样本有限、先验争议大或多个模型难以排序时，给出一个精确到小数点后的概率会制造不存在的信息。可以用概率区间、模型集合或多种情景表达“不确定到什么程度”。代价是部分命题无法得到唯一排序，某些决定也不会由计算自动确定；收益则是把证据不足与立场分歧保留下来。区间不应无限宽到失去约束，而应由可说明的样本界限、模型差异和参数范围产生，并随新证据收窄或移动。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>一份可审计的形式分析至少回答六问：研究的命题空间是否适合任务；先验与基础率从何而来；证据选择过程怎样形成；哪些依赖与遗漏被模型表达；合理替代模型是否改变结论；数值精度是否超过材料能够支持的程度。公式正确只能通过其中一问。</p>
+</div>
+</div>
+</section>
+<section id="预测问题与干预问题不能共用一个答案" class="level3" data-number="7.4.14">
+<h3 data-number="7.4.14" class="anchored" data-anchor-id="预测问题与干预问题不能共用一个答案"><span class="header-section-number">7.4.14</span> 预测问题与干预问题不能共用一个答案</h3>
+<p>一个模型可以准确预测哪些患者会再次入院，却没有说明哪项措施能够降低再入院率。预测寻找变量与结果之间稳定的关联；干预判断则要比较“实施某措施”与“不实施”造成的差异。若贫困程度能预测健康风险，不表示改变数据库中的收入字段就会改善健康；若接受某治疗的人恢复较慢，也可能因为病情更重者更常接受治疗。把预测权重解释成因果机制，会从形式正确的模型推出错误行动。</p>
+<p>决定是否干预时，应画出可能的共同原因、选择机制和中介路径，并寻找随机实验、自然实验或可靠机制证据。观察数据仍然有价值，但结论强度必须与设计相称。预测模型回答“接下来可能发生什么”，因果模型尝试回答“若我们改变某项因素会怎样”；解释模型还可能回答“哪些关系使结果可理解”。三类任务可以使用同一数据，却要求不同验证。</p>
+</section>
+<section id="分布变化使旧校准失效" class="level3" data-number="7.4.15">
+<h3 data-number="7.4.15" class="anchored" data-anchor-id="分布变化使旧校准失效"><span class="header-section-number">7.4.15</span> 分布变化使旧校准失效</h3>
+<p>模型在去年、甲医院或某年龄组中校准良好，不保证换到今年、乙医院或另一群体仍然校准。疾病流行率改变会移动先验，设备更新会改变测量误差，使用者知道模型规则后还会调整行为。部署不是把一个固定工具放进不变世界，而是让模型进入会回应它的社会系统。模型一旦影响谁被检查、谁获得资源，下一轮数据就部分由旧模型制造。</p>
+<p>因此，验证不能只在上线前完成。机构应预先确定哪些变化触发重新估计：基础率越过什么范围，缺失率或输入分布怎样漂移，哪类错误突然增加，政策目标是否改变。监测到差异后也不能盲目重训；新数据若已受旧决策污染，直接学习可能加深反馈循环。需要保留未受模型选择的审计样本、记录政策变动，并区分世界改变与记录方式改变。</p>
+</section>
+<section id="稳健决定不必等待唯一最佳模型" class="level3" data-number="7.4.16">
+<h3 data-number="7.4.16" class="anchored" data-anchor-id="稳健决定不必等待唯一最佳模型"><span class="header-section-number">7.4.16</span> 稳健决定不必等待唯一最佳模型</h3>
+<p>面对多个都能解释现有数据的模型，一种反应是继续搜集证据，直到选出唯一赢家；现实决定常没有这么多时间。另一种方法是比较不同模型下各行动的后果。若“加固堤坝”在多种合理暴雨模型下都避免巨大损失，且成本可接受，它可能是稳健行动；若某措施只在一个脆弱模型中显得最优，就应优先搜集能区分模型的证据。</p>
+<p>稳健不等于永远选择最保守方案。过度预防也有机会成本，反复误报会削弱未来信任。可以先列出合理模型集合，再检查每项行动的最坏损失、后悔值、可逆性和后续学习机会。可逆的小步试验有时优于一次性最大化期望效用，因为它同时行动并产生新信息。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>模型进入行动前要通过三道门：预测门检查新数据上的校准和失效群体；因果门检查建议的干预是否真能改变结果；治理门检查决定目标、权利限制、申诉和重新评估。通过第一道门的高分模型，仍可能在后两道门失败。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="从概率判断到可问责行动" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="从概率判断到可问责行动"><span class="header-section-number">7.5</span> 从概率判断到可问责行动</h2>
+<section id="后验概率不是行动按钮" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="后验概率不是行动按钮"><span class="header-section-number">7.5.1</span> 后验概率不是行动按钮</h3>
+<p>同一患病概率对不同决定具有不同意义。是否进行低成本复检、是否使用高副作用药物、是否隔离患者，需要比较误报、漏报、等待、可逆性和资源占用。期望效用把每项行动在各状态下的后果按概率加权，但效用数值包含价值判断：谁承担损失、长期后果如何折现、公平约束是否可被金钱替代。把这些判断写进矩阵比隐藏在“风险过高”一句话中更诚实，也使争议能够定位。</p>
+</section>
+<section id="阈值来自后果结构而非知识定义" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="阈值来自后果结构而非知识定义"><span class="header-section-number">7.5.2</span> 阈值来自后果结构而非知识定义</h3>
+<p>若漏诊损失远大于误报，采取进一步检查的阈值可以很低；若行动不可逆且伤害严重，执行阈值应更高。两个阈值之间还可能存在“继续收集信息”区域。知识不必与任一固定概率阈值相同：彩票命题概率极高却缺少个案联系，直接知觉可能没有可报告数值却构成知识。概率为行动提供可比较输入，知识则评价信念如何连接事实。将二者区分后，我们既可说主体知道<span class="math inline">\(p\)</span>却因巨大损失仍应复核，也可在尚无知识时依高概率采取可逆防护。</p>
+</section>
+<section id="信息价值取决于能否改变行动" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="信息价值取决于能否改变行动"><span class="header-section-number">7.5.3</span> 信息价值取决于能否改变行动</h3>
+<p>一项新检测即使非常准确，若结果不会改变任何可行行动，其决策价值可能很低；一种中等准确、快速而廉价的检测若能把个案从等待区移入行动区，价值反而较高。计算信息价值要比较检测前最优行动与看到每种结果后的最优行动，再扣除成本和延迟。该框架还提醒我们，收集更多数据并非总是理性：调查可能错过救治窗口、增加隐私风险或耗尽有限资源。停止调查需要理由，但“还有信息可得”本身不是继续的充分理由。</p>
+</section>
+<section id="稳健决策不依赖单一点估计" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="稳健决策不依赖单一点估计"><span class="header-section-number">7.5.4</span> 稳健决策不依赖单一点估计</h3>
+<p>若多个合理模型给出不同后验和效用，决策者可比较最坏后果、遗憾值或跨模型均表现可接受的方案。稳健不是永远选择最保守行动；过度保守也会产生机会成本和系统性伤害。关键是公开哪些不确定性足以改变选择，并为模型更新预设触发条件。例如当基础率超过某范围、传感器漂移达到某值或新亚群误差出现时，原决策规则自动进入复核。这样，模型不确定性被转化为制度可执行的监测。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>从数字到行动使用五步链：写出备选行动；列出相关状态与后果；用概率表示当前不确定性；计算或比较行动表现；最后检查公平、权利、角色义务和模型稳健性等不能被期望值完全吸收的约束。任何一步缺失，都可能把精确计算用于错误问题。</p>
+</div>
+</div>
+</section>
+<section id="概率沟通必须保留条件方向" class="level3" data-number="7.5.5">
+<h3 data-number="7.5.5" class="anchored" data-anchor-id="概率沟通必须保留条件方向"><span class="header-section-number">7.5.5</span> 概率沟通必须保留条件方向</h3>
+<p>“检测对患者有90%概率阳性”与“阳性者有90%概率患病”方向不同；“未来十年发生概率30%”也不表示事件将在第三年发生。自然频率、绝对风险和对照基线通常比孤立百分比更易理解。沟通还要报告不确定范围、适用人群和版本时间。只给一个醒目数字会制造虚假确定性，使听者无法判断证据更新还是模型设定导致结论变化。形式素养不仅是会算，更是能把计算条件完整传递给他人。</p>
+</section>
+<section id="模型责任需要分层" class="level3" data-number="7.5.6">
+<h3 data-number="7.5.6" class="anchored" data-anchor-id="模型责任需要分层"><span class="header-section-number">7.5.6</span> 模型责任需要分层</h3>
+<p>数据团队负责采样与测量，建模者负责假设和验证，领域专家负责解释适用性，决策者负责把概率与后果结合，机构负责监测和申诉。一次失败可能跨越多层：模型在原人群校准良好，却被部署到新环境；医生看见警告却没有时间复核；制度又没有记录覆写理由。把责任全部归给“算法”或最后点击按钮的人都会遗漏因果与规范结构。可问责系统应让每层留下可检查产物，并明确谁能暂停使用。</p>
+</section>
+<section id="效用数字不会消除价值分歧" class="level3" data-number="7.5.7">
+<h3 data-number="7.5.7" class="anchored" data-anchor-id="效用数字不会消除价值分歧"><span class="header-section-number">7.5.7</span> 效用数字不会消除价值分歧</h3>
+<p>把后果换算成同一尺度便于比较，却可能把不可替代的生命、权利与尊严压成一个方便数字。即使接受量化，也要区分个人内不同结果的权衡与不同人之间的聚合：一百人各获得很小便利，是否足以抵消一人承受不可逆伤害，并非概率公理能够回答。决策报告应分别展示概率判断、后果估值和聚合原则，使反对者能够指出争议究竟位于事实预测还是价值计算。隐藏价值不是中立，只是让默认权重不受审查。</p>
+</section>
+<section id="预防原则也需要触发与退出条件" class="level3" data-number="7.5.8">
+<h3 data-number="7.5.8" class="anchored" data-anchor-id="预防原则也需要触发与退出条件"><span class="header-section-number">7.5.8</span> 预防原则也需要触发与退出条件</h3>
+<p>面对低概率而灾难性后果，决策者可能在证据尚弱时采取防护。预防并不等于永远选择最坏情形；若任何逻辑可能都触发最大干预，行动会互相冲突且资源迅速耗尽。合理方案要说明伤害严重度、可能性证据、措施可逆性与替代成本，还要规定何时降级或终止。这样，预防原则成为处理尾部风险的一种结构化判断，而不是在需要支持既定立场时才使用的口号。</p>
+</section>
+<section id="权利与角色义务可以限制期望最大化" class="level3" data-number="7.5.9">
+<h3 data-number="7.5.9" class="anchored" data-anchor-id="权利与角色义务可以限制期望最大化"><span class="header-section-number">7.5.9</span> 权利与角色义务可以限制期望最大化</h3>
+<p>医生对患者、法官对被告、公共机构对公民承担的义务，不总能被总体效用吸收。即使错误拘押少数人能提高平均安全感，正当程序仍可能禁止这种方案；即使公开个人信息能改善模型，也需满足同意与用途限制。决策模型可以把权利写成不可越过的约束、词典式优先级或极高代价，但采用哪种方式本身是规范选择。形式清晰的好处不是证明约束正确，而是显示哪些行动因何被排除。</p>
+</section>
+<section id="群体决定需要说明谁的概率进入系统" class="level3" data-number="7.5.10">
+<h3 data-number="7.5.10" class="anchored" data-anchor-id="群体决定需要说明谁的概率进入系统"><span class="header-section-number">7.5.10</span> 群体决定需要说明谁的概率进入系统</h3>
+<p>委员会成员可能掌握不同证据、使用不同模型，也可能在讨论后彼此锚定。简单平均置信度忽略专长与证据相关性，按权威加权又可能压低异议。更好的程序先汇集各自理由和来源，再判断独立性与专长范围，必要时保留少数报告。群体最后采取一项行动，不表示成员必须拥有同一信念；重要的是决定规则能保存不确定、记录反对并在新证据到来时重新开启。</p>
+</section>
+<section id="行动会反过来改变数据环境" class="level3" data-number="7.5.11">
+<h3 data-number="7.5.11" class="anchored" data-anchor-id="行动会反过来改变数据环境"><span class="header-section-number">7.5.11</span> 行动会反过来改变数据环境</h3>
+<p>预测高风险后采取干预，风险没有实现，不能直接说明模型错误；反之，资源按模型分配会使被忽视群体数据更少，未来模型看起来更不需要关注他们。信用、治安与医疗系统尤其容易形成反馈：模型影响行动，行动影响可观察结果，可观察结果再训练模型。验证必须区分自然结果与干预后结果，并寻找未部署对照、机制分析或审慎实验。否则系统会把自己的影响当成世界原本如此。</p>
+</section>
+<section id="可逆与不可逆决定应采用不同证据策略" class="level3" data-number="7.5.12">
+<h3 data-number="7.5.12" class="anchored" data-anchor-id="可逆与不可逆决定应采用不同证据策略"><span class="header-section-number">7.5.12</span> 可逆与不可逆决定应采用不同证据策略</h3>
+<p>在可低成本撤回的行动中，可以较早试行并密切监测；一旦造成不可恢复伤害、锁定基础设施或改变权利地位，进入门槛应更高，试验范围应更小。这个区分把认识不足与行动设计连接起来：证据弱并不总要求完全等待，也可要求分阶段、可回滚和预设停止线。相同后验概率因行动可逆性不同而支持不同策略，不是概率标准任意变化，而是后果结构改变。</p>
+</section>
+<section id="复盘必须检验当时过程而非只看结果" class="level3" data-number="7.5.13">
+<h3 data-number="7.5.13" class="anchored" data-anchor-id="复盘必须检验当时过程而非只看结果"><span class="header-section-number">7.5.13</span> 复盘必须检验当时过程而非只看结果</h3>
+<p>好决定可能遇到坏结果，坏决定也可能侥幸成功。复盘若只奖惩结果，会鼓励后见偏差与风险掩盖。应保存当时可得数据、模型版本、置信区间、替代方案和价值权重，再问过程是否按证据强度和既定规则运行。随后才用结果更新模型：哪些似然估计错了，哪个故障未列入，哪项代价被低估。过程评价与结果学习结合，才能既不因运气错责，也不因主观善意停止改进。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>一项负责任决定应同时留下概率档案与规范档案。前者记录数据、模型、依赖和敏感性，后者记录受影响者、后果权重、权利约束、决定权限、回滚条件与申诉入口。只有两份档案能够相互对应，数字才真正进入了可问责行动。</p>
+</div>
+</div>
+</section>
+<section id="阶段性结论" class="level3" data-number="7.5.14">
+<h3 data-number="7.5.14" class="anchored" data-anchor-id="阶段性结论"><span class="header-section-number">7.5.14</span> 阶段性结论</h3>
+<p>形式认识论的价值不是把哲学问题消解成算术，而是迫使我们写清假设、证据方向、依赖结构和价值权衡。概率一致性限制信念组合，贝叶斯更新说明新证据如何改变置信，决策理论比较不确定中的行动；但问题选择、模型适用、知识资格和制度责任仍需更广认识论。最成熟的使用方式，是让数字增加可检验性，同时拒绝让数字遮蔽它无法回答的问题。</p>
+</section>
+<section id="研究定位" class="level3" data-number="7.5.15">
+<h3 data-number="7.5.15" class="anchored" data-anchor-id="研究定位"><span class="header-section-number">7.5.15</span> 研究定位</h3>
+<p>形式化不是单一路线：<span class="citation" data-cites="ramsey1931与">(<a href="references.html#ref-ramsey1931与" role="doc-biblioref"><strong>ramsey1931与?</strong></a>)</span><span class="citation" data-cites="pettigrew2016代表置信度规范的不同论证资源">(<a href="references.html#ref-pettigrew2016代表置信度规范的不同论证资源" role="doc-biblioref"><strong>pettigrew2016代表置信度规范的不同论证资源?</strong></a>)</span>，<span class="citation" data-cites="mayo2018对贝叶斯主导叙事形成方法压力">(<a href="references.html#ref-mayo2018对贝叶斯主导叙事形成方法压力" role="doc-biblioref"><strong>mayo2018对贝叶斯主导叙事形成方法压力?</strong></a>)</span>，<span class="citation" data-cites="pearl2009引入干预性的因果结构">(<a href="references.html#ref-pearl2009引入干预性的因果结构" role="doc-biblioref"><strong>pearl2009引入干预性的因果结构?</strong></a>)</span>，<span class="citation" data-cites="douglas2009则说明模型进入公共决策后为何不能假定价值中立">(<a href="references.html#ref-douglas2009则说明模型进入公共决策后为何不能假定价值中立" role="doc-biblioref"><strong>douglas2009则说明模型进入公共决策后为何不能假定价值中立?</strong></a>)</span>。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="自测小结">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>自测小结
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>概率模型约束置信度如何一致更新，但其结论取决于假设空间、基础率、似然和独立性。理性行动还需加入效用、信息价值、角色责任和模型不确定性，不能把一个数字直接翻译成知识或决策。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="章末练习">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">警告</span>章末练习
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>用一万人自然频率表重算开篇检测案例，并解释为什么90%不是阳性后的患病概率。</p></li>
+<li><p>把患病率改为20%，比较后验变化并说明基础率在推理中的作用。</p></li>
+<li><p>构造两项共享污染、设备或数据来源的检测，说明条件独立为何失败。</p></li>
+<li><p>为一个天气或信用模型同时检查校准、分辨力和分组表现；解释三者不能互相替代。</p></li>
+<li><p>制作一个包含误报、漏报、复核成本和等待损失的决策矩阵，判断新检测的信息价值。</p></li>
+<li><p>选择一个高概率却不宜称为知识的案例，分别用安全性、个案联系和行动门槛解释原因。</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="分层阅读地图">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">提示</span>分层阅读地图
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>第一层：概率基础：</strong> 从逻辑概率、主观概率到公理化概率，理解同一公式背后的不同解释。 <span class="citation" data-cites="keynes1921 ramsey1931 definetti1937 carnap1950 kolmogorov1950 savage1954 cox1961 jaynes2003">(<a href="references.html#ref-keynes1921" role="doc-biblioref">Keynes 1921年</a>; <a href="references.html#ref-ramsey1931" role="doc-biblioref">Ramsey 1931年</a>; <a href="references.html#ref-definetti1937" role="doc-biblioref">Finetti 1937年</a>; <a href="references.html#ref-carnap1950" role="doc-biblioref">Carnap 1950年</a>; <a href="references.html#ref-kolmogorov1950" role="doc-biblioref">Kolmogorov [1933年] 1950年</a>; <a href="references.html#ref-savage1954" role="doc-biblioref">Savage 1954年</a>; <a href="references.html#ref-cox1961" role="doc-biblioref">Cox 1961年</a>; <a href="references.html#ref-jaynes2003" role="doc-biblioref">Jaynes 2003年</a>)</span></p>
+<p><strong>第二层：置信度规范：</strong> 研究条件化、准确性、概率一致性和概率性知识。 <span class="citation" data-cites="jeffrey1983 joyce1998 hajek2003 pettigrew2016 leitgeb2010a leitgeb2010b williamson2010 moss2018">(<a href="references.html#ref-jeffrey1983" role="doc-biblioref">Jeffrey 1983年</a>; <a href="references.html#ref-joyce1998" role="doc-biblioref">Joyce 1998年</a>; <a href="references.html#ref-hajek2003" role="doc-biblioref">Hájek 2003年</a>; <a href="references.html#ref-pettigrew2016" role="doc-biblioref">Pettigrew 2016年</a>; <a href="references.html#ref-leitgeb2010a" role="doc-biblioref">Leitgeb 和 Pettigrew 2010年a</a>, <a href="references.html#ref-leitgeb2010b" role="doc-biblioref">2010年b</a>; <a href="references.html#ref-williamson2010" role="doc-biblioref">Williamson 2010年</a>; <a href="references.html#ref-moss2018" role="doc-biblioref">Moss 2018年</a>)</span></p>
+<p><strong>第三层：决策与因果：</strong> 区分信念更新、偏好选择、理论下注与干预因果。 <span class="citation" data-cites="gilboa2009 levi1980 maher1993 pearl2009 skyrms1980">(<a href="references.html#ref-gilboa2009" role="doc-biblioref">Gilboa 2009年</a>; <a href="references.html#ref-levi1980" role="doc-biblioref">Levi 1980年</a>; <a href="references.html#ref-maher1993" role="doc-biblioref">Maher 1993年</a>; <a href="references.html#ref-pearl2009" role="doc-biblioref">Pearl 2009年</a>; <a href="references.html#ref-skyrms1980" role="doc-biblioref">Skyrms 1980年</a>)</span></p>
+<p><strong>第四层：科学推断与价值：</strong> 把贝叶斯推断、严厉检验、归纳基础、模型理想化和政策价值放在一起比较。 <span class="citation" data-cites="howson2006 mayo2018 salmon1967 sprenger2019 cartwright1983 douglas2009 kelly2005">(<a href="references.html#ref-howson2006" role="doc-biblioref">Howson 和 Urbach 2006年</a>; <a href="references.html#ref-mayo2018" role="doc-biblioref">Mayo 2018年</a>; <a href="references.html#ref-salmon1967" role="doc-biblioref">Salmon 1967年</a>; <a href="references.html#ref-sprenger2019" role="doc-biblioref">Sprenger 和 Hartmann 2019年</a>; <a href="references.html#ref-cartwright1983" role="doc-biblioref">Cartwright 1983年</a>; <a href="references.html#ref-douglas2009" role="doc-biblioref">Douglas 2009年</a>; <a href="references.html#ref-kelly2005" role="doc-biblioref">Kelly 2005年</a>)</span></p>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-carnap1950" class="csl-entry" role="listitem">
+Carnap, Rudolf. 1950年. <em>Logical Foundations of Probability</em>. University of Chicago Press.
+</div>
+<div id="ref-cartwright1983" class="csl-entry" role="listitem">
+Cartwright, Nancy. 1983年. <em>How the Laws of Physics Lie</em>. Oxford University Press.
+</div>
+<div id="ref-cox1961" class="csl-entry" role="listitem">
+Cox, Richard T. 1961年. <em>The Algebra of Probable Inference</em>. Johns Hopkins Press.
+</div>
+<div id="ref-douglas2009" class="csl-entry" role="listitem">
+Douglas, Heather. 2009年. <em>Science, Policy, and the Value-Free Ideal</em>. University of Pittsburgh Press.
+</div>
+<div id="ref-definetti1937" class="csl-entry" role="listitem">
+Finetti, Bruno de. 1937年. <span>《La prévision: ses lois logiques, ses sources subjectives》</span>. <em>Annales de l’Institut Henri Poincaré</em> 7 (1): 1～68. <a href="http://www.numdam.org/item/AIHP_1937__7_1_1_0/">http://www.numdam.org/item/AIHP_1937__7_1_1_0/</a>.
+</div>
+<div id="ref-gilboa2009" class="csl-entry" role="listitem">
+Gilboa, Itzhak. 2009年. <em>Theory of Decision under Uncertainty</em>. Cambridge University Press.
+</div>
+<div id="ref-graham1989" class="csl-entry" role="listitem">
+Graham, A. C. 1989年. <em>Disputers of the Tao</em>. Open Court.
+</div>
+<div id="ref-hajek2003" class="csl-entry" role="listitem">
+Hájek, Alan. 2003年. <span>《What Conditional Probability Could Not Be》</span>. <em>Synthese</em> 137 (3): 273～323. <a href="https://doi.org/10.1023/B:SYNT.0000004904.91112.16">https://doi.org/10.1023/B:SYNT.0000004904.91112.16</a>.
+</div>
+<div id="ref-howson2006" class="csl-entry" role="listitem">
+Howson, Colin, 和 Peter Urbach. 2006年. <em>Scientific Reasoning: The Bayesian Approach</em>. 3 版. Open Court.
+</div>
+<div id="ref-jaynes2003" class="csl-entry" role="listitem">
+Jaynes, E. T. 2003年. <em>Probability Theory: The Logic of Science</em>. 编辑 G. Larry Bretthorst. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511790423">https://doi.org/10.1017/CBO9780511790423</a>.
+</div>
+<div id="ref-jeffrey1983" class="csl-entry" role="listitem">
+Jeffrey, Richard C. 1983年. <em>The Logic of Decision</em>. 2 版. University of Chicago Press.
+</div>
+<div id="ref-joyce1998" class="csl-entry" role="listitem">
+Joyce, James M. 1998年. <span>《A Nonpragmatic Vindication of Probabilism》</span>. <em>Philosophy of Science</em> 65 (4): 575～603. <a href="https://doi.org/10.1086/392661">https://doi.org/10.1086/392661</a>.
+</div>
+<div id="ref-kelly2005" class="csl-entry" role="listitem">
+Kelly, Thomas. 2005年. <span>《The Epistemic Significance of Disagreement》</span>. 收入 <em>Oxford Studies in Epistemology</em>, 编辑 Tamar Szabó Gendler 和 John Hawthorne, 卷 1. Oxford University Press. <a href="https://doi.org/10.1093/oso/9780199285891.003.0007">https://doi.org/10.1093/oso/9780199285891.003.0007</a>.
+</div>
+<div id="ref-keynes1921" class="csl-entry" role="listitem">
+Keynes, John Maynard. 1921年. <em>A Treatise on Probability</em>. Macmillan.
+</div>
+<div id="ref-kolmogorov1950" class="csl-entry" role="listitem">
+Kolmogorov, A. N. (1933年) 1950年. <em>Foundations of the Theory of Probability</em>. Chelsea Publishing.
+</div>
+<div id="ref-leitgeb2010a" class="csl-entry" role="listitem">
+Leitgeb, Hannes, 和 Richard Pettigrew. 2010年a. <span>《An Objective Justification of Bayesianism I: Measuring Inaccuracy》</span>. <em>Philosophy of Science</em> 77 (2): 201～35. <a href="https://doi.org/10.1086/651317">https://doi.org/10.1086/651317</a>.
+</div>
+<div id="ref-leitgeb2010b" class="csl-entry" role="listitem">
+Leitgeb, Hannes, 和 Richard Pettigrew. 2010年b. <span>《An Objective Justification of Bayesianism II: The Consequences of Minimizing Inaccuracy》</span>. <em>Philosophy of Science</em> 77 (2): 236～72. <a href="https://doi.org/10.1086/651318">https://doi.org/10.1086/651318</a>.
+</div>
+<div id="ref-levi1980" class="csl-entry" role="listitem">
+Levi, Isaac. 1980年. <em>The Enterprise of Knowledge: An Essay on Knowledge, Credal Probability, and Chance</em>. MIT Press.
+</div>
+<div id="ref-maher1993" class="csl-entry" role="listitem">
+Maher, Patrick. 1993年. <em>Betting on Theories</em>. Cambridge University Press.
+</div>
+<div id="ref-mayo2018" class="csl-entry" role="listitem">
+Mayo, Deborah G. 2018年. <em>Statistical Inference as Severe Testing: How to Get Beyond the Statistics Wars</em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781107286184">https://doi.org/10.1017/9781107286184</a>.
+</div>
+<div id="ref-moss2018" class="csl-entry" role="listitem">
+Moss, Sarah. 2018年. <em>Probabilistic Knowledge</em>. Oxford University Press. <a href="https://doi.org/10.1093/oso/9780198792154.001.0001">https://doi.org/10.1093/oso/9780198792154.001.0001</a>.
+</div>
+<div id="ref-pearl2009" class="csl-entry" role="listitem">
+Pearl, Judea. 2009年. <em>Causality: Models, Reasoning, and Inference</em>. 2 版. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511803161">https://doi.org/10.1017/CBO9780511803161</a>.
+</div>
+<div id="ref-pettigrew2016" class="csl-entry" role="listitem">
+Pettigrew, Richard. 2016年. <em>Accuracy and the Laws of Credence</em>. Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780198732716.001.0001">https://doi.org/10.1093/acprof:oso/9780198732716.001.0001</a>.
+</div>
+<div id="ref-ramsey1931" class="csl-entry" role="listitem">
+Ramsey, Frank P. 1931年. <span>《Truth and Probability》</span>. 收入 <em>The Foundations of Mathematics and Other Logical Essays</em>, 编辑 R. B. Braithwaite. Kegan Paul.
+</div>
+<div id="ref-salmon1967" class="csl-entry" role="listitem">
+Salmon, Wesley C. 1967年. <em>The Foundations of Scientific Inference</em>. University of Pittsburgh Press.
+</div>
+<div id="ref-savage1954" class="csl-entry" role="listitem">
+Savage, Leonard J. 1954年. <em>The Foundations of Statistics</em>. Wiley.
+</div>
+<div id="ref-skyrms1980" class="csl-entry" role="listitem">
+Skyrms, Brian. 1980年. <em>Causal Necessity: A Pragmatic Investigation of the Necessity of Laws</em>. Yale University Press.
+</div>
+<div id="ref-sprenger2019" class="csl-entry" role="listitem">
+Sprenger, Jan, 和 Stephan Hartmann. 2019年. <em>Bayesian Philosophy of Science</em>. Oxford University Press. <a href="https://doi.org/10.1093/oso/9780199672110.001.0001">https://doi.org/10.1093/oso/9780199672110.001.0001</a>.
+</div>
+<div id="ref-williamson2010" class="csl-entry" role="listitem">
+Williamson, Jon. 2010年. <em>In Defence of Objective Bayesianism</em>. Oxford University Press.
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../manuscript/05-social-knowledge.html" class="pagination-link" aria-label="他人、专家与制度如何共同生产知识">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">他人、专家与制度如何共同生产知识</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../manuscript/07-value.html" class="pagination-link" aria-label="知识、理解与智慧为什么有价值">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

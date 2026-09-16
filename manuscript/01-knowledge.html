@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; 知识是什么，我们为什么需要它 – 我们如何知道？</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../manuscript/02-skepticism-luck.html" rel="next">
+<link href="../manuscript/00-preface.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d36f34d314bee33b330446342baae240.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../book.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/01-knowledge.html">第一部　知识、怀疑与理由</a></li><li class="breadcrumb-item"><a href="../manuscript/01-knowledge.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">知识是什么，我们为什么需要它</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">我们如何知道？</a> 
+        <div class="sidebar-tools-main">
+    <a href="../how-do-we-know.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="搜索"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">我们如何知道？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/00-preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">写在前面</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">第一部　知识、怀疑与理由</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/01-knowledge.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">知识是什么，我们为什么需要它</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/02-skepticism-luck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">怀疑、运气与知识的边界</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/03-justification-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">理由如何支持信念</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">第二部　认识来源、社会系统与理性模型</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/04-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">经验、记忆与先验怎样成为知识来源</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/05-social-knowledge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">他人、专家与制度如何共同生产知识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/06-formal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">概率、模型与理性决策</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">第三部　认识价值、技术环境与比较方法</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/07-value.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">知识、理解与智慧为什么有价值</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/08-digital-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">数字环境与人工智能怎样重塑认识</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/09-comparative.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">比较认识论如何改变我们的问题</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">学习与研究</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/study-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">自学、讨论与论文写作指南</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/research-studio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">全书综合研究工坊</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/exercise-hints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">练习提示</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">核心术语表</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../manuscript/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#知识概念与认识评价" id="toc-知识概念与认识评价" class="nav-link active" data-scroll-target="#知识概念与认识评价"><span class="header-section-number">1.1</span> 知识概念与认识评价</a>
+  <ul class="collapse">
+  <li><a href="#从知道开始但不止于知识" id="toc-从知道开始但不止于知识" class="nav-link" data-scroll-target="#从知道开始但不止于知识"><span class="header-section-number">1.1.1</span> 从“知道”开始，但不止于知识</a></li>
+  <li><a href="#问题对象与层次" id="toc-问题对象与层次" class="nav-link" data-scroll-target="#问题对象与层次"><span class="header-section-number">1.1.2</span> 问题、对象与层次</a></li>
+  <li><a href="#概念分析与反例" id="toc-概念分析与反例" class="nav-link" data-scroll-target="#概念分析与反例"><span class="header-section-number">1.1.3</span> 概念分析与反例</a></li>
+  <li><a href="#怎样读一篇认识论论文" id="toc-怎样读一篇认识论论文" class="nav-link" data-scroll-target="#怎样读一篇认识论论文"><span class="header-section-number">1.1.4</span> 怎样读一篇认识论论文</a></li>
+  <li><a href="#案例工作坊天气应用的认识链" id="toc-案例工作坊天气应用的认识链" class="nav-link" data-scroll-target="#案例工作坊天气应用的认识链"><span class="header-section-number">1.1.5</span> 案例工作坊：天气应用的认识链</a></li>
+  <li><a href="#常见误区" id="toc-常见误区" class="nav-link" data-scroll-target="#常见误区"><span class="header-section-number">1.1.6</span> 常见误区</a></li>
+  </ul></li>
+  <li><a href="#如何研究知识概念案例与论证" id="toc-如何研究知识概念案例与论证" class="nav-link" data-scroll-target="#如何研究知识概念案例与论证"><span class="header-section-number">1.2</span> 如何研究知识：概念、案例与论证</a>
+  <ul class="collapse">
+  <li><a href="#从直觉到论证四种推理任务" id="toc-从直觉到论证四种推理任务" class="nav-link" data-scroll-target="#从直觉到论证四种推理任务"><span class="header-section-number">1.2.1</span> 从直觉到论证：四种推理任务</a></li>
+  <li><a href="#论证图的制作" id="toc-论证图的制作" class="nav-link" data-scroll-target="#论证图的制作"><span class="header-section-number">1.2.2</span> 论证图的制作</a></li>
+  <li><a href="#概念工程我们只是在描述用法吗" id="toc-概念工程我们只是在描述用法吗" class="nav-link" data-scroll-target="#概念工程我们只是在描述用法吗"><span class="header-section-number">1.2.3</span> 概念工程：我们只是在描述用法吗</a></li>
+  <li><a href="#自然主义与规范性" id="toc-自然主义与规范性" class="nav-link" data-scroll-target="#自然主义与规范性"><span class="header-section-number">1.2.4</span> 自然主义与规范性</a></li>
+  <li><a href="#实验哲学能告诉我们什么" id="toc-实验哲学能告诉我们什么" class="nav-link" data-scroll-target="#实验哲学能告诉我们什么"><span class="header-section-number">1.2.5</span> 实验哲学能告诉我们什么</a></li>
+  <li><a href="#认识论与伦理学的边界" id="toc-认识论与伦理学的边界" class="nav-link" data-scroll-target="#认识论与伦理学的边界"><span class="header-section-number">1.2.6</span> 认识论与伦理学的边界</a></li>
+  <li><a href="#综合案例校园匿名指控" id="toc-综合案例校园匿名指控" class="nav-link" data-scroll-target="#综合案例校园匿名指控"><span class="header-section-number">1.2.7</span> 综合案例：校园匿名指控</a></li>
+  </ul></li>
+  <li><a href="#从日常探究到规范判断" id="toc-从日常探究到规范判断" class="nav-link" data-scroll-target="#从日常探究到规范判断"><span class="header-section-number">1.3</span> 从日常探究到规范判断</a>
+  <ul class="collapse">
+  <li><a href="#研读实验室把一个问题变成可评估的研究" id="toc-研读实验室把一个问题变成可评估的研究" class="nav-link" data-scroll-target="#研读实验室把一个问题变成可评估的研究"><span class="header-section-number">1.3.1</span> 研读实验室：把一个问题变成可评估的研究</a></li>
+  <li><a href="#从问题到立场地图" id="toc-从问题到立场地图" class="nav-link" data-scroll-target="#从问题到立场地图"><span class="header-section-number">1.3.2</span> 从问题到立场地图</a></li>
+  <li><a href="#必要条件充分条件与反例方向" id="toc-必要条件充分条件与反例方向" class="nav-link" data-scroll-target="#必要条件充分条件与反例方向"><span class="header-section-number">1.3.3</span> 必要条件、充分条件与反例方向</a></li>
+  <li><a href="#原典工作引文转述与重构" id="toc-原典工作引文转述与重构" class="nav-link" data-scroll-target="#原典工作引文转述与重构"><span class="header-section-number">1.3.4</span> 原典工作：引文、转述与重构</a></li>
+  <li><a href="#写作实验一千字微型论文" id="toc-写作实验一千字微型论文" class="nav-link" data-scroll-target="#写作实验一千字微型论文"><span class="header-section-number">1.3.5</span> 写作实验：一千字微型论文</a></li>
+  <li><a href="#研究伦理证据管理也是认识实践" id="toc-研究伦理证据管理也是认识实践" class="nav-link" data-scroll-target="#研究伦理证据管理也是认识实践"><span class="header-section-number">1.3.6</span> 研究伦理：证据管理也是认识实践</a></li>
+  <li><a href="#专题研讨相信有规范吗" id="toc-专题研讨相信有规范吗" class="nav-link" data-scroll-target="#专题研讨相信有规范吗"><span class="header-section-number">1.3.7</span> 专题研讨：相信有规范吗</a></li>
+  <li><a href="#真理是否是唯一认识目标" id="toc-真理是否是唯一认识目标" class="nav-link" data-scroll-target="#真理是否是唯一认识目标"><span class="header-section-number">1.3.8</span> 真理是否是唯一认识目标</a></li>
+  <li><a href="#合理信念是否唯一许可" id="toc-合理信念是否唯一许可" class="nav-link" data-scroll-target="#合理信念是否唯一许可"><span class="header-section-number">1.3.9</span> 合理信念是否唯一许可</a></li>
+  <li><a href="#认识责任的四种失败" id="toc-认识责任的四种失败" class="nav-link" data-scroll-target="#认识责任的四种失败"><span class="header-section-number">1.3.10</span> 认识责任的四种失败</a></li>
+  <li><a href="#自然化解释与规范评价" id="toc-自然化解释与规范评价" class="nav-link" data-scroll-target="#自然化解释与规范评价"><span class="header-section-number">1.3.11</span> 自然化解释与规范评价</a></li>
+  <li><a href="#比较视角学问与可教性" id="toc-比较视角学问与可教性" class="nav-link" data-scroll-target="#比较视角学问与可教性"><span class="header-section-number">1.3.12</span> 比较视角：学、问与可教性</a></li>
+  <li><a href="#综合研讨校园健康信息争议" id="toc-综合研讨校园健康信息争议" class="nav-link" data-scroll-target="#综合研讨校园健康信息争议"><span class="header-section-number">1.3.13</span> 综合研讨：校园健康信息争议</a></li>
+  </ul></li>
+  <li><a href="#jtb分析与gettier断裂" id="toc-jtb分析与gettier断裂" class="nav-link" data-scroll-target="#jtb分析与gettier断裂"><span class="header-section-number">1.4</span> JTB分析与Gettier断裂</a>
+  <ul class="collapse">
+  <li><a href="#jtb分析的吸引力" id="toc-jtb分析的吸引力" class="nav-link" data-scroll-target="#jtb分析的吸引力"><span class="header-section-number">1.4.1</span> JTB分析的吸引力</a></li>
+  <li><a href="#两个原始反例" id="toc-两个原始反例" class="nav-link" data-scroll-target="#两个原始反例"><span class="header-section-number">1.4.2</span> 两个原始反例</a></li>
+  <li><a href="#修补为何困难" id="toc-修补为何困难" class="nav-link" data-scroll-target="#修补为何困难"><span class="header-section-number">1.4.3</span> 修补为何困难</a></li>
+  <li><a href="#直觉分歧与方法教训" id="toc-直觉分歧与方法教训" class="nav-link" data-scroll-target="#直觉分歧与方法教训"><span class="header-section-number">1.4.4</span> 直觉分歧与方法教训</a></li>
+  <li><a href="#原典细读两个假设究竟做了什么" id="toc-原典细读两个假设究竟做了什么" class="nav-link" data-scroll-target="#原典细读两个假设究竟做了什么"><span class="header-section-number">1.4.5</span> 原典细读：两个假设究竟做了什么</a></li>
+  <li><a href="#反例谱系" id="toc-反例谱系" class="nav-link" data-scroll-target="#反例谱系"><span class="header-section-number">1.4.6</span> 反例谱系</a></li>
+  <li><a href="#案例工作坊自动评分" id="toc-案例工作坊自动评分" class="nav-link" data-scroll-target="#案例工作坊自动评分"><span class="header-section-number">1.4.7</span> 案例工作坊：自动评分</a></li>
+  </ul></li>
+  <li><a href="#修补知识分析及其代价" id="toc-修补知识分析及其代价" class="nav-link" data-scroll-target="#修补知识分析及其代价"><span class="header-section-number">1.5</span> 修补知识分析及其代价</a>
+  <ul class="collapse">
+  <li><a href="#传统定义的历史应当怎样叙述" id="toc-传统定义的历史应当怎样叙述" class="nav-link" data-scroll-target="#传统定义的历史应当怎样叙述"><span class="header-section-number">1.5.1</span> “传统定义”的历史应当怎样叙述</a></li>
+  <li><a href="#无法击败条件" id="toc-无法击败条件" class="nav-link" data-scroll-target="#无法击败条件"><span class="header-section-number">1.5.2</span> 无法击败条件</a></li>
+  <li><a href="#相关替代与辨别能力" id="toc-相关替代与辨别能力" class="nav-link" data-scroll-target="#相关替代与辨别能力"><span class="header-section-number">1.5.3</span> 相关替代与辨别能力</a></li>
+  <li><a href="#因果关系的范围与偏离" id="toc-因果关系的范围与偏离" class="nav-link" data-scroll-target="#因果关系的范围与偏离"><span class="header-section-number">1.5.4</span> 因果关系的范围与偏离</a></li>
+  <li><a href="#可靠性为何仍会放过个案运气" id="toc-可靠性为何仍会放过个案运气" class="nav-link" data-scroll-target="#可靠性为何仍会放过个案运气"><span class="header-section-number">1.5.5</span> 可靠性为何仍会放过个案运气</a></li>
+  <li><a href="#gettier与认识责任" id="toc-gettier与认识责任" class="nav-link" data-scroll-target="#gettier与认识责任"><span class="header-section-number">1.5.6</span> Gettier与认识责任</a></li>
+  <li><a href="#知识分析失败了吗" id="toc-知识分析失败了吗" class="nav-link" data-scroll-target="#知识分析失败了吗"><span class="header-section-number">1.5.7</span> 知识分析失败了吗</a></li>
+  <li><a href="#综合案例科研图像的偶然真实" id="toc-综合案例科研图像的偶然真实" class="nav-link" data-scroll-target="#综合案例科研图像的偶然真实"><span class="header-section-number">1.5.8</span> 综合案例：科研图像的偶然真实</a></li>
+  </ul></li>
+  <li><a href="#反例谱系与研究方法" id="toc-反例谱系与研究方法" class="nav-link" data-scroll-target="#反例谱系与研究方法"><span class="header-section-number">1.6</span> 反例谱系与研究方法</a>
+  <ul class="collapse">
+  <li><a href="#研读实验室怎样比较gettier解法" id="toc-研读实验室怎样比较gettier解法" class="nav-link" data-scroll-target="#研读实验室怎样比较gettier解法"><span class="header-section-number">1.6.1</span> 研读实验室：怎样比较Gettier解法</a></li>
+  <li><a href="#无假前提简单但范围有限" id="toc-无假前提简单但范围有限" class="nav-link" data-scroll-target="#无假前提简单但范围有限"><span class="header-section-number">1.6.2</span> 无假前提：简单但范围有限</a></li>
+  <li><a href="#击败理论把缺失信息纳入评价" id="toc-击败理论把缺失信息纳入评价" class="nav-link" data-scroll-target="#击败理论把缺失信息纳入评价"><span class="header-section-number">1.6.3</span> 击败理论：把缺失信息纳入评价</a></li>
+  <li><a href="#因果与可靠性连接事实和方法" id="toc-因果与可靠性连接事实和方法" class="nav-link" data-scroll-target="#因果与可靠性连接事实和方法"><span class="header-section-number">1.6.4</span> 因果与可靠性：连接事实和方法</a></li>
+  <li><a href="#安全性与能力从不易错到因能力而对" id="toc-安全性与能力从不易错到因能力而对" class="nav-link" data-scroll-target="#安全性与能力从不易错到因能力而对"><span class="header-section-number">1.6.5</span> 安全性与能力：从不易错到因能力而对</a></li>
+  <li><a href="#最小对比法一次只改一个变量" id="toc-最小对比法一次只改一个变量" class="nav-link" data-scroll-target="#最小对比法一次只改一个变量"><span class="header-section-number">1.6.6</span> 最小对比法：一次只改一个变量</a></li>
+  <li><a href="#实验哲学与gettier直觉" id="toc-实验哲学与gettier直觉" class="nav-link" data-scroll-target="#实验哲学与gettier直觉"><span class="header-section-number">1.6.7</span> 实验哲学与Gettier直觉</a></li>
+  <li><a href="#综合案例医学报告的双重错配" id="toc-综合案例医学报告的双重错配" class="nav-link" data-scroll-target="#综合案例医学报告的双重错配"><span class="header-section-number">1.6.8</span> 综合案例：医学报告的双重错配</a></li>
+  <li><a href="#专题研讨gettier之后怎样做知识分析" id="toc-专题研讨gettier之后怎样做知识分析" class="nav-link" data-scroll-target="#专题研讨gettier之后怎样做知识分析"><span class="header-section-number">1.6.9</span> 专题研讨：Gettier之后怎样做知识分析</a></li>
+  <li><a href="#zagzebski式反例配方" id="toc-zagzebski式反例配方" class="nav-link" data-scroll-target="#zagzebski式反例配方"><span class="header-section-number">1.6.10</span> Zagzebski式反例配方</a></li>
+  <li><a href="#无假前提与推理纯洁性" id="toc-无假前提与推理纯洁性" class="nav-link" data-scroll-target="#无假前提与推理纯洁性"><span class="header-section-number">1.6.11</span> 无假前提与推理纯洁性</a></li>
+  <li><a href="#击败条件与信息边界" id="toc-击败条件与信息边界" class="nav-link" data-scroll-target="#击败条件与信息边界"><span class="header-section-number">1.6.12</span> 击败条件与信息边界</a></li>
+  <li><a href="#知识优先的研究程序" id="toc-知识优先的研究程序" class="nav-link" data-scroll-target="#知识优先的研究程序"><span class="header-section-number">1.6.13</span> 知识优先的研究程序</a></li>
+  <li><a href="#德性与反运气的结合" id="toc-德性与反运气的结合" class="nav-link" data-scroll-target="#德性与反运气的结合"><span class="header-section-number">1.6.14</span> 德性与反运气的结合</a></li>
+  <li><a href="#案例研究怎样避免直觉循环" id="toc-案例研究怎样避免直觉循环" class="nav-link" data-scroll-target="#案例研究怎样避免直觉循环"><span class="header-section-number">1.6.15</span> 案例研究怎样避免直觉循环</a></li>
+  <li><a href="#比较视角知识分析的范围" id="toc-比较视角知识分析的范围" class="nav-link" data-scroll-target="#比较视角知识分析的范围"><span class="header-section-number">1.6.16</span> 比较视角：知识分析的范围</a></li>
+  <li><a href="#综合研讨自动科学发现" id="toc-综合研讨自动科学发现" class="nav-link" data-scroll-target="#综合研讨自动科学发现"><span class="header-section-number">1.6.17</span> 综合研讨：自动科学发现</a></li>
+  </ul></li>
+  <li><a href="#知识分析之后统一解释的要求" id="toc-知识分析之后统一解释的要求" class="nav-link" data-scroll-target="#知识分析之后统一解释的要求"><span class="header-section-number">1.7</span> 知识分析之后：统一解释的要求</a>
+  <ul class="collapse">
+  <li><a href="#分析必须说明自己的目标" id="toc-分析必须说明自己的目标" class="nav-link" data-scroll-target="#分析必须说明自己的目标"><span class="header-section-number">1.7.1</span> 分析必须说明自己的目标</a></li>
+  <li><a href="#反例不是一次性否决票" id="toc-反例不是一次性否决票" class="nav-link" data-scroll-target="#反例不是一次性否决票"><span class="header-section-number">1.7.2</span> 反例不是一次性否决票</a></li>
+  <li><a href="#修补条件会产生覆盖压力" id="toc-修补条件会产生覆盖压力" class="nav-link" data-scroll-target="#修补条件会产生覆盖压力"><span class="header-section-number">1.7.3</span> 修补条件会产生覆盖压力</a></li>
+  <li><a href="#知识可能是关系性的成就" id="toc-知识可能是关系性的成就" class="nav-link" data-scroll-target="#知识可能是关系性的成就"><span class="header-section-number">1.7.4</span> 知识可能是关系性的成就</a></li>
+  <li><a href="#知识优先并不取消案例分析" id="toc-知识优先并不取消案例分析" class="nav-link" data-scroll-target="#知识优先并不取消案例分析"><span class="header-section-number">1.7.5</span> 知识优先并不取消案例分析</a></li>
+  <li><a href="#阶段性结论" id="toc-阶段性结论" class="nav-link" data-scroll-target="#阶段性结论"><span class="header-section-number">1.7.6</span> 阶段性结论</a></li>
+  <li><a href="#研究定位" id="toc-研究定位" class="nav-link" data-scroll-target="#研究定位"><span class="header-section-number">1.7.7</span> 研究定位</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../manuscript/01-knowledge.html">第一部　知识、怀疑与理由</a></li><li class="breadcrumb-item"><a href="../manuscript/01-knowledge.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">知识是什么，我们为什么需要它</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">知识是什么，我们为什么需要它</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="学习目标">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>学习目标
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>区分知识、真信念、确证、理性与责任；理解知识分析的目标；能够重构JTB分析、Gettier反例及主要修补路线，并判断一种理论究竟解释了什么。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="开篇案例">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">提示</span>开篇案例
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>甲看见窗外行人都撑伞，相信正在下雨；乙没有看窗外，只因每天随身带伞而随口说“正在下雨”。两人的话碰巧都是真的。后来发现，甲所见其实是电影布景，但楼后确实在下雨。这个连续案例迫使我们依次追问：真信念为什么不够，理由怎样与信念发生关系，真值若来自另一条路径，原有理由还能否把信念提升为知识？</p>
+</div>
+</div>
+<section id="知识概念与认识评价" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="知识概念与认识评价"><span class="header-section-number">1.1</span> 知识概念与认识评价</h2>
+<section id="从知道开始但不止于知识" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="从知道开始但不止于知识"><span class="header-section-number">1.1.1</span> 从“知道”开始，但不止于知识</h3>
+<p>传统知识论常从命题知识开始。所谓<strong>命题知识</strong>（<em>propositional knowledge</em>），形式是“主体 <span class="math inline">\(S\)</span> 知道命题 <span class="math inline">\(p\)</span>”。它不同于熟悉某人、某地的<strong>亲知</strong>（<em>knowledge by acquaintance</em>），也不同于会游泳、会修车的<strong>能力之知</strong>（<em>knowledge-how</em>）。这三类用法之间是否能够还原，仍有争议；本书以命题知识为主，但不会假定它穷尽所有认识成就。 知识首先具有<strong>事实性</strong>（<em>factivity</em>）：若 <span class="math inline">\(S\)</span> 知道 <span class="math inline">\(p\)</span>，则 <span class="math inline">\(p\)</span> 为真。我们可以相信一个假命题，却不能知道一个假命题。事实性不表示人永不犯错，只表示当某次判断确实算作知识时，它没有错。第二，知识通常要求主体持有某种认知态度。把正确答案印在纸上而从未读过它，不会使人知道答案。第三，知识似乎要求信念与真之间不是偶然重合。开篇案例中的乙说中了，却缺乏把真相与判断连接起来的认识根据。</p>
+<p>由此出现四组不同的评价：</p>
+<ol type="1">
+<li><p><strong>真值评价</strong>：命题是否为真？</p></li>
+<li><p><strong>认识地位评价</strong>：主体是否知道、是否得到确证？</p></li>
+<li><p><strong>理性评价</strong>：就主体拥有的信息而言，相信它是否合理？</p></li>
+<li><p><strong>责任评价</strong>：主体是否尽到了查证、倾听和修正的责任？</p></li>
+</ol>
+<p>这些评价可能分离。这里把“确证”与“认识理性”暂时分栏，是为了训练诊断，不预设二者在理论上必然不同；有些理论会把它们部分甚至完全重合，另一些理论则用“确证”指更窄的知识相关地位。一个谨慎的人可以根据强证据形成后来被证明为假的信念；一个粗心的人也可能猜中。认识论的任务之一，就是说明这些评价的关系，而不是把它们压缩成“对”与“错”。</p>
+</section>
+<section id="问题对象与层次" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="问题对象与层次"><span class="header-section-number">1.1.2</span> 问题、对象与层次</h3>
+<p>认识论至少研究四类问题。第一是<strong>分析问题</strong>：知识、确证、证据、理解分别是什么？第二是<strong>来源问题</strong>：知觉、记忆、推理、内省和证言如何产生知识？第三是<strong>范围问题</strong>：我们能否知道外部世界、他人心灵、道德事实和未来事件？第四是<strong>规范与社会问题</strong>：应当如何形成信念，制度和权力又如何塑造可知之物？ 把这些问题分开很重要。“人是否有自由意志”主要是形而上学问题；“我们如何知道人有自由意志”才是认识论问题。“某新闻为假”是事实判断；“在当时信息条件下转发它是否不负责任”则是规范判断。问题层次不清，常使争论双方各自回答不同问题。</p>
+</section>
+<section id="概念分析与反例" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="概念分析与反例"><span class="header-section-number">1.1.3</span> 概念分析与反例</h3>
+<p>一种经典方法是提出知识的必要条件和充分条件。若 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(B\)</span> 的必要条件，则没有 <span class="math inline">\(A\)</span> 就没有 <span class="math inline">\(B\)</span>；若 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(B\)</span> 的充分条件，则有 <span class="math inline">\(A\)</span> 就足以有 <span class="math inline">\(B\)</span>。定义“知识是得到确证的真信念”，既声称真、信念和确证各自必要，也声称三者合取充分。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>概念分析的基本检验：先提出条件集合 <span class="math inline">\(C\)</span>；再寻找满足 <span class="math inline">\(C\)</span> 却不是目标概念的案例，以反驳充分性；或寻找属于目标概念却不满足 <span class="math inline">\(C\)</span> 的案例，以反驳必要性。反例不是故事比赛。有效反例必须说明判断稳定、相关细节受控，并指出究竟攻击哪个条件。</p>
+</div>
+</div>
+<p>思想实验依赖直觉，但直觉不是神秘证据。我们应检查措辞效应、文化差异、背景假设和概念的实际用途。即使个别直觉分歧，思想实验仍可揭示理论承诺：如果一个理论把明显的猜中算作知识，我们至少知道它对认识运气非常宽容。 除概念分析外，认识论还使用心理学实验、概率模型、语言分析、思想史和社会制度研究。方法的选择应服从问题。有关记忆可靠性的经验事实不能仅靠扶手椅思辨决定；有关“知道”一词语义的结论，也不能直接从脑成像推出。</p>
+<div class="callout callout-style-default callout-important callout-titled" title="比较视角">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">重要</span>比较视角
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>《论语》“知之为知之，不知为不知”常被理解为一种认识谦逊规范，而不是知识的充分必要条件<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年, 2.17</a>)</span>。若直接把“知”翻译成当代分析哲学的命题知识，就会忽略其修身语境；若因此断言它毫无认识论意义，又会错过它对自我评估和言说责任的关注。比较的第一原则，是先说明原概念在自身实践中的功能，再讨论结构上的可比性。</p>
+</div>
+</div>
+</section>
+<section id="怎样读一篇认识论论文" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="怎样读一篇认识论论文"><span class="header-section-number">1.1.4</span> 怎样读一篇认识论论文</h3>
+<p>第一遍阅读只回答三个问题：作者要反对什么看法，作者自己的结论是什么，核心例子是什么。不要在第一遍就逐句查词，否则容易见树不见林。第二遍把论证写成编号前提，补出作者没有明说却必需的桥梁原则。例如，从“该信念由可靠过程产生”到“该信念得到确证”，需要一个把可靠性与确证连接起来的规范前提。第三遍才检验每个前提，并寻找作者最可能接受的修正。 摘要和评价应严格分开。摘要阶段应使观点的支持者也愿意承认自己的立场得到公平呈现；评价阶段则指出反例、歧义或代价。“我不同意”不是反驳，“这个案例不现实”也通常不够，因为思想实验的功能可能只是检验条件组合。有效批评要说明不现实细节为什么破坏了目标直觉或推理。 阅读中还要标记三类词。第一类是作者明确定义的技术词，不能随日常语感替换。第二类是论证连接词，如“因此”“除非”“只要”，它们暴露推理结构。第三类是范围词，如“所有”“通常”“在正常条件下”，许多反例正是通过改变范围起作用。</p>
+</section>
+<section id="案例工作坊天气应用的认识链" class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5" class="anchored" data-anchor-id="案例工作坊天气应用的认识链"><span class="header-section-number">1.1.5</span> 案例工作坊：天气应用的认识链</h3>
+<p>设想一款应用显示“明日降雨概率80%”。用户相信明日会下雨。至少可以提出五种不同问题：（1）模型的输出是否校准；（2）用户是否理解80%并不等于必然；（3）应用是否基于本地区数据；（4）用户的信念是否由读数形成，而不是原先迷信；（5）带伞行动是否需要达到知识门槛。若第二天未下雨，不能仅凭单次结果断言模型不可靠；若应用伪造数据，即使碰巧下雨，用户也可能缺少知识。 这个案例显示，认识论分析不是给“知道”做一次性判决。我们可以评价模型、信息传递、用户理解和行动选择四个环节。把认识链拆开，才能确定失败发生在哪里，也才能提出相称的改进：校准问题需要统计检验，来源问题需要数据审计，理解问题需要更好的风险表达，行动问题需要结合损失权衡。</p>
+</section>
+<section id="常见误区" class="level3" data-number="1.1.6">
+<h3 data-number="1.1.6" class="anchored" data-anchor-id="常见误区"><span class="header-section-number">1.1.6</span> 常见误区</h3>
+<p>第一，把“有理由”理解为“能够说出一个理由”。婴儿和动物可能以可靠知觉拥有知识，却不能进行语言辩护。第二，把“主观确信”当作确证程度。确信是一种心理强度，确证是规范地位，两者可能反向变化。第三，把认识论问题全都理解成怀疑论问题；实际研究还关心比较理由、解释理解、制度纠错和认识公正。第四，以为承认社会与历史条件就必须放弃真理。知识生产受条件塑造，与命题是否为真是两个层次；社会分析恰可说明哪些条件改善了发现真相的机会。</p>
+</section>
+</section>
+<section id="如何研究知识概念案例与论证" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="如何研究知识概念案例与论证"><span class="header-section-number">1.2</span> 如何研究知识：概念、案例与论证</h2>
+<section id="从直觉到论证四种推理任务" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="从直觉到论证四种推理任务"><span class="header-section-number">1.2.1</span> 从直觉到论证：四种推理任务</h3>
+<p>初学者常把所有理由都叫作“证明”，但认识论中的支持关系至少有四类。第一，<strong>演绎推理</strong>要求前提为真时结论不可能为假。它的强度最高，却不能凭空增加经验内容。第二，<strong>归纳推理</strong>从样本、频率或过去规律支持未观察结论，结论可能为假。第三，<strong>溯因推理</strong>或最佳解释推理，从现象出发比较能解释它们的假设。第四，<strong>证言接受</strong>依赖说话者、传播链和听者的认识地位，不能简单归入个人观察。 区分推理类型能防止错置标准。要求医学预测具有演绎确定性，会把一切可错科学排除；仅因某解释“说得通”就接受它，又会忽略竞争解释和先验可信度。评价时应先问：这一推理声称提供必然保证、概率提高、解释优势，还是可被击败的信任权利？只有弄清承诺，反例才击中目标。 演绎有效性也不保证前提合理。论证“所有梦中经验都不可靠；当前经验可能是梦；所以当前经验不可靠”即使形式上可整理为有效，第一前提仍需辩护。相反，一个结论很可能为真，也不能挽救无效推理。认识论评价同时关心形式联系、前提地位和主体是否适当基于这些前提。</p>
+</section>
+<section id="论证图的制作" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="论证图的制作"><span class="header-section-number">1.2.2</span> 论证图的制作</h3>
+<p>阅读时可给每个陈述编号，并用箭头标记支持。两个前提共同支持结论时，要用同一括号连接；各自独立支持时，则画两条箭头。反驳也有不同对象：攻击某个前提，攻击从前提到结论的联系，提出相反证据，或说明即使结论成立也不能回答原问题。 以“知觉有时出错，所以知觉从不产生知识”为例：前提只是偶称命题，结论是全称命题，中间需要“只要一种来源可能出错，它就从不产生知识”。把桥梁前提写出后，讨论从笼统的赞成或反对，转向可错论能否接受的精确争点。 论证图还会暴露循环。如果“这份报告可信，因为它来自可靠机构”，而“机构可靠，因为它总发布可信报告”，两条理由彼此支撑却没有独立输入。这不表示任何相互支持都是恶性循环；长期记录、外部审计和可重复预测可以给循环系统增加世界约束。</p>
+</section>
+<section id="概念工程我们只是在描述用法吗" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="概念工程我们只是在描述用法吗"><span class="header-section-number">1.2.3</span> 概念工程：我们只是在描述用法吗</h3>
+<p>概念分析可有三种目标。描述性分析试图说明日常“知道”如何使用；解释性分析寻找在理论中统一现象的结构；改良性或<strong>概念工程</strong>（<em>conceptual engineering</em>）则问，为了研究或公共实践，我们应当使用怎样的概念。三者的证据不同。日常语言调查对描述性目标重要，却不能单独决定哪种概念最公正或最有解释力。 例如，日常群体知识归属可能摇摆：“委员会知道风险”有时只是说报告已进入档案，有时表示组织能据此行动。描述者记录这种用法；解释者区分信息存储、正式接受与行动能力；改良者可能建议，在安全监管中只有能够触发责任流程的信息才称为组织知识。建议不是发现隐藏词义，而是基于实践目标重设规范。 概念工程也有风险。若哲学家把“知识”重新规定成自己理论最容易满足的状态，就可能逃避原问题；若改革完全脱离现有用法，又难以指导真实交流。因此合理改良需要说明现有概念造成何种混乱，新概念改善什么，以及转换成本和可能排除谁。</p>
+</section>
+<section id="自然主义与规范性" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="自然主义与规范性"><span class="header-section-number">1.2.4</span> 自然主义与规范性</h3>
+<p>认识论是否应成为心理学的一部分？自然主义者强调，人类实际如何形成信念、感知系统在什么环境可靠、偏差怎样产生，不能只靠先验思辨。蒯因提出把传统的基础奠定计划转化为研究感觉输入如何导致理论输出的经验项目<span class="citation" data-cites="quine1969">(<a href="references.html#ref-quine1969" role="doc-biblioref">Quine 1969年</a>)</span>。这一转向推动认知科学与认识论对话。 反对意见是，心理学描述人事实上怎样相信，不直接回答应当怎样相信。若实验发现人普遍受确认偏误影响，结论通常是这种倾向需要校正，而不是因为普遍所以合理。这是“是”与“应当”的间隙。自然主义可以回应：规范目标仍是获得真理或成功行动，经验科学帮助我们找出实现目标的可靠策略；规范性没有被消除，而是与可行机制连接。 另一个问题是可靠性环境相对。依赖面孔识别在熟悉群体中可能可靠，在跨群体环境中显著下降；启发式在信息稀缺时有效，在广告操纵下却系统失灵。经验研究不仅给过程一个总准确率，还应揭示能力—环境配合。这样的自然化结果反过来修改哲学案例中“正常条件”的含义。</p>
+</section>
+<section id="实验哲学能告诉我们什么" class="level3" data-number="1.2.5">
+<h3 data-number="1.2.5" class="anchored" data-anchor-id="实验哲学能告诉我们什么"><span class="header-section-number">1.2.5</span> 实验哲学能告诉我们什么</h3>
+<p>实验哲学收集不同人群对思想实验的判断，研究措辞、顺序、文化和个体差异。它可以检验哲学家声称“人人都会判断”的经验前提，也能发现一个案例实际触发的是道德责备、概率估计还是知识概念。调查不是用多数票决定真理，而是研究概念判断这类证据的分布与机制。 设计调查至少要控制四点。第一，参与者是否理解技术词；第二，翻译是否保持情境而非逐词对应；第三，问题是否把“知道”“确定”“有理由”等评价混在一起；第四，案例顺序是否产生对比效应。若不同群体判断不同，还需说明差异稳定、可复制，并与哪些背景变量相关。 实验结果对不同理论目标的意义不同。若目标是描述普通语言，广泛而稳定的差异非常重要；若目标是提出规范性知识概念，多数直觉可能本身受偏见影响；若思想实验只用于展示理论后果，即使直觉不一致，它仍能说明条件组合。把“发现直觉差异”直接等同于“反驳扶手椅哲学”过于迅速。</p>
+</section>
+<section id="认识论与伦理学的边界" class="level3" data-number="1.2.6">
+<h3 data-number="1.2.6" class="anchored" data-anchor-id="认识论与伦理学的边界"><span class="header-section-number">1.2.6</span> 认识论与伦理学的边界</h3>
+<p>相信是否受意志控制？我们似乎不能仅因有利而立即相信明天晴天，却能选择查证、注意哪类信息、接近哪些来源。认识责任更多落在间接控制：是否培养能力、是否忽视反证、是否让愿望支配搜索。因而“你不该相信<span class="math inline">\(p\)</span>”可能批评信念本身与证据不相称，也可能批评导致信念的可控行为。 认识规范与道德规范可能冲突。医生保护隐私可能限制公开证据；记者为避免伤害会延迟发布已核实信息；朋友有时认为信任本身是关系义务。认识论不能假定追求每个真相永远优先，但也不能因道德目的良好就把愿望当证据。正确做法是把两类理由分别列出，再讨论行动选择，而不是改变命题的证据支持。</p>
+</section>
+<section id="综合案例校园匿名指控" class="level3" data-number="1.2.7">
+<h3 data-number="1.2.7" class="anchored" data-anchor-id="综合案例校园匿名指控"><span class="header-section-number">1.2.7</span> 综合案例：校园匿名指控</h3>
+<p>校园论坛出现匿名帖，指控一名教师篡改成绩。帖子包含一张局部截图，迅速被多个账号转发。我们可以逐层分析。真值问题是成绩是否被篡改；证据问题是截图是否完整、账号是否独立、教务记录怎样；证言问题是匿名是否有保护理由、发布者是否有直接接触；社会问题是权力差异会不会使实名举报代价过高；责任问题是转发者应采取何种核验。 两种极端都不合理：匿名所以必假，忽略了弱势者可能只有匿名渠道；指控严重所以应立即相信，又把严重性误当作真实性证据。较合适的态度可能是：认为指控值得调查，对事实暂缓判断，保存材料并交由有程序保障的独立机构核验。这里“认真对待”不等于“已经知道为真”。 若后续证实成绩确被改动，早期轻率转发者不会因此自动获得知识；真值不能回溯修复当时根据。若调查证明截图被误读，早期谨慎要求调查者也不因此不理性。这个案例综合展示真值、确证、行动和责任评价为何必须分离。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="方法清单">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>方法清单
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>面对新问题，依次写下：目标命题；评价类型；信息来源；推理类型；未明说的桥梁前提；可能的击败者；最小反例；竞争理论的代价；需要经验调查还是概念分析；在不确定性下可以采取的行动。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="从日常探究到规范判断" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="从日常探究到规范判断"><span class="header-section-number">1.3</span> 从日常探究到规范判断</h2>
+<section id="研读实验室把一个问题变成可评估的研究" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="研读实验室把一个问题变成可评估的研究"><span class="header-section-number">1.3.1</span> 研读实验室：把一个问题变成可评估的研究</h3>
+<p>认识论学习真正困难之处，通常不是记住理论名称，而是把一个含混困惑转化成可争论的问题。假设你问：“为什么网络上谁都不可信？”这句话至少混合了四项主张：某些内容为假；某些发布者不可靠；现有平台使人难以辨别；自己应当降低信任。四项主张分别需要事实调查、来源评估、制度分析与规范论证。若不先拆开，任何一个反例都可能被当成回答，讨论却不会前进。 一个可操作的研究问题应含有对象、评价与对比。例如，“在来源身份不明但内容可独立核验时，匿名证言能否给听者提供初步确证？”比“匿名消息可信吗？”更精确。它限定了信息状态，说明所问是确证而非真值，并预留了与实名证言比较的空间。精确并不意味着问题狭窄，而是让不同答案承担清楚的证明责任。</p>
+</section>
+<section id="从问题到立场地图" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="从问题到立场地图"><span class="header-section-number">1.3.2</span> 从问题到立场地图</h3>
+<p>先写出最简答案，再寻找它的强弱版本。对上述问题，强还原论说，听者必须先有关于说话者可靠性的独立正面理由；弱还原论只要求没有具体反证；非还原论则可能承认，理解一个真诚断言本身就给予可被击败的接受权利。地图的作用不是提前选择阵营，而是防止把不同主张混成“相信他人”与“不相信他人”的性格对立。 每个立场还应配一项最有利案例和一项压力案例。匿名求救者因公开身份会受报复，是非还原立场的有利案例；匿名账号长期制造假消息，则迫使它说明击败条件。强还原论在高风险调查中显得谨慎，却要解释儿童如何从照护者学习以及我们如何避免验证回溯。公平比较要求让每个理论面对同一组案例，而不是给自己容易题、给对手极端题。 最后标出分歧究竟属于概念、经验还是价值。两方也许都同意可靠率数据，却不同意知识是否要求主体能够说明来源；也许共享知识概念，却对平台机器人比例的事实判断不同；也许共享事实，却对错误接受和错误拒绝哪种代价更严重意见不一。把分歧类型写出，会直接决定下一步读哲学论证、找经验材料，还是明确价值权衡。</p>
+</section>
+<section id="必要条件充分条件与反例方向" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="必要条件充分条件与反例方向"><span class="header-section-number">1.3.3</span> 必要条件、充分条件与反例方向</h3>
+<p>设理论主张：“若主体知道<span class="math inline">\(p\)</span>，则<span class="math inline">\(p\)</span>为真。”真是知识的必要条件。要反驳它，需要一个知识存在而<span class="math inline">\(p\)</span>为假的案例；给出“<span class="math inline">\(p\)</span>为真却不知道”的案例并不相关。若理论主张“只要真诚相信<span class="math inline">\(p\)</span>，主体就知道<span class="math inline">\(p\)</span>”，真诚信念是充分条件；一个真诚却错误的信念即可反驳。初学写作最常见的技术错误，是举出有启发性的故事，却攻击了错误方向。 双条件定义包含两项任务。JTB分析声称，知道<span class="math inline">\(p\)</span>当且仅当<span class="math inline">\(p\)</span>为真、主体相信<span class="math inline">\(p\)</span>且对<span class="math inline">\(p\)</span>得到确证。反例可指出某一条件不必要，也可指出三项合起来不充分。Gettier案例做的是后者；一个婴儿似乎知道母亲在场却不能表达命题的案例，则可能质疑“信念”的具体理解，但不是Gettier问题。准确标明反例方向，比称它为“对定义的挑战”更有信息量。 条件也可能只在正常、典型或理想化范围内成立。此时反例必须说明自己落在承诺范围之内。若一个知觉理论明确研究光线良好、感官正常的成人，夜间服用致幻药的案例不能直接推翻它；但你可以追问，排除这些情形是否让理论失去解释环境风险的能力。范围限定既可能合理，也可能是保护理论免受检验的手段。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构 条件分析示范">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构 条件分析示范
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>理论T：任何能给出理由的人都对其信念得到确证。反例：某人能流利编造一个与信念无因果关系的理由。这个案例攻击T的充分性，因为“能给出理由”成立而确证不成立。若要攻击必要性，则应寻找不能给出理由却仍有确证的主体，例如以正常视觉形成信念、但尚不能语言表达的儿童。</p>
+</div>
+</div>
+</section>
+<section id="原典工作引文转述与重构" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="原典工作引文转述与重构"><span class="header-section-number">1.3.4</span> 原典工作：引文、转述与重构</h3>
+<p>哲学论文中的“作者说”有三种强度。直接引文要求文字、页码或段落号准确，省略不改变原意；近距离转述要保存限定词和论证角色；理论重构可以补出隐含前提，但必须标明这是解释者的重构。若作者只说某条件“通常足够”，教材却转述为“必要且充分”，后续反例即使精彩，也没有击中原文。 阅读可采用三栏笔记。第一栏记录文本证据，包括页码、术语与上下文；第二栏写最善意的论证重构；第三栏写疑问和反例。三栏不能合并：如果质疑直接进入摘要，读者无法判断作者观点还是你的批评；如果只摘句不重构，又看不出句子在整体论证中做什么。 二手研究适合定位争议、发现参考文献和比较解释，却不能替代关键原典。特别是一个著名案例被反复简写后，细节可能漂移。核对原文不仅为了历史准确，也因为细节往往承担逻辑功能：主体到底相信哪个命题，推理是否有效，真值由何事实造成，都可能决定案例是否成立。 翻译增加一层责任。一个术语在目标语言中可能已有日常含义，例如“正当化”易被理解成事后辩解，“确证”则更像证据支持。选择译名时应说明本书用法，必要时保留原文，并在整书中一致。对古典文本，篇章语境和注疏分歧也不能被现代术语抹平。</p>
+</section>
+<section id="写作实验一千字微型论文" class="level3" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="写作实验一千字微型论文"><span class="header-section-number">1.3.5</span> 写作实验：一千字微型论文</h3>
+<p>一篇合格的微型论文可以只有五段。第一段提出单一问题和明确结论；第二段公平呈现最强对手；第三段给出自己的核心论证；第四段处理最危险反对；第五段说明结论范围。篇幅越短，越应减少背景综述，不要用“自古以来人们一直追求知识”消耗开头。 核心论证最好先写成编号形式，再转成散文。每个前提都要问：是定义、经验事实、直觉判断还是另一个理论原则？如果前提类型不同，支持方式也不同。经验前提不能仅靠思想实验，定义不能假装是新发现，直觉若有争议就要说明理论为何仍值得接受。 反对意见必须针对真实结论。若你只主张“可靠性通常与确证有关”，对手指出“可靠性不是知识的充分条件”并未反驳你。反过来，若你声称“所有可靠形成的真信念都是知识”，就必须处理Gettier式个案。通过在开头写出量词和模态词，可以防止论文在强弱命题之间滑动。 结尾不应宣布“这一问题仍值得进一步研究”便结束。应精确说明你证明了什么、没有证明什么，以及若接受结论需要修改哪项理论承诺。好的有限结论比宏大但无支持的结论更有哲学力量。</p>
+</section>
+<section id="研究伦理证据管理也是认识实践" class="level3" data-number="1.3.6">
+<h3 data-number="1.3.6" class="anchored" data-anchor-id="研究伦理证据管理也是认识实践"><span class="header-section-number">1.3.6</span> 研究伦理：证据管理也是认识实践</h3>
+<p>学术引用不只是避免抄袭，也让读者重建证据链。阅读笔记应区分原文、自己的翻译、转引和评论；无法取得原典时，明确标注转引，不把二手引文伪装成直接核对。网页材料记录作者、标题、版本、发布日期与访问日期，因为内容可能更新。 反例和调查材料也涉及选择偏差。只收集支持自己直觉的案例，会让理论看似稳固；只呈现一种文化传统的著名短句，会制造虚假统一。研究者应记录排除标准、反例版本和解释不确定性。承认材料不足不是软弱，而是防止认识权威超过证据。 最后，哲学写作同样受社会关系影响。对仍在争议中的群体经验，不应把个体证言当作整个群体本质；批评一个传统时，应优先处理其内部有代表性的强论证；使用真实人物案例时，去除不必要身份信息。追求真理与尊重认识主体并不冲突，尊重恰要求我们准确呈现其理由。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="本章研读任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>本章研读任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>选择一个日常“我知道”判断：先写目标命题与评价类型；列出两种竞争理论；各配一个有利案例与压力案例；把一项核心论证写成三至五个编号前提；最后用一百字说明需要哪些文本证据或经验资料才能继续判断。</p>
+</div>
+</div>
+</section>
+<section id="专题研讨相信有规范吗" class="level3" data-number="1.3.7">
+<h3 data-number="1.3.7" class="anchored" data-anchor-id="专题研讨相信有规范吗"><span class="header-section-number">1.3.7</span> 专题研讨：相信有规范吗</h3>
+<p>认识论不只描述人怎样形成信念，还评价怎样相信才合宜。但“应当相信<span class="math inline">\(p\)</span>”至少有四种读法。它可能说证据支持<span class="math inline">\(p\)</span>，说某种过程可靠，说主体在现有能力下无责，或说接受<span class="math inline">\(p\)</span>有利于行动。四项常常同向，却能分离：一项证据很强的坏消息可能令人痛苦；一个无责主体可能因环境欺骗而形成不可靠信念；一个有利信念也可能没有证据。 规范的对象同样需要区分。我们似乎不能仅凭决定就立即相信“明天不会下雨”，却能决定是否查预报、是否只读支持自己的一方、是否记录反证。对信念缺少直接控制，不等于没有认识责任。规范可以评价当前态度与证据是否相称，也可以评价主体在注意、查询和维护上的间接控制。 如果认识义务要求“不相信任何证据不足的命题”，日常生活会不会过度苛刻？人无法核验每项常识，也必须依赖记忆和证言。较合理的义务应随问题重要性、核验成本、具体警报和主体角色变化。无具体风险时默认使用正常来源可以合理；发现来源异常仍拒绝复核，则产生新的责任问题。</p>
+</section>
+<section id="真理是否是唯一认识目标" class="level3" data-number="1.3.8">
+<h3 data-number="1.3.8" class="anchored" data-anchor-id="真理是否是唯一认识目标"><span class="header-section-number">1.3.8</span> 真理是否是唯一认识目标</h3>
+<p>信念的正确性与真值密切相关：相信<span class="math inline">\(p\)</span>时，主体把<span class="math inline">\(p\)</span>当作真。如果认识规范完全不关心真，便难解释证据为何应引导信念。但从“真理是基本目标”不能推出“应尽可能拥有最多真信念”。记住海滩每粒沙的位置虽增加真信念，却挤占有限注意，也未必有理解价值。 一种方案把目标写成“相信真命题且不相信假命题”。这包含追求真与避免错误两方面，而两者可能冲突：只相信逻辑真理可以少错，却错过世界信息；轻易相信则获得一些真理，同时积累大量错误。具体规范需说明在何种任务中如何权衡信息增益与错误风险。 理解、智慧和认识自主也可能是不可还原的目标。理解要求把握关系，智慧要求判断重要性，自主要求管理依赖。它们通常促进真理，却不能只按真信念数量衡量。一个学生偶然背对全部答案，拥有许多真信念，却没有稳定能力；另一个提出错误假说后准确诊断失败，可能取得重要认识进步。 真理目标还受道德限制。未经同意获取他人隐私可能得到真信息，却不因此成为许可的探究。保护研究参与者、延迟公开危险信息和尊重保密，都不是把假当真，而是限制何种求真行动可以采取。评价时应保持认识理由与道德理由的种类，不用一个总分掩盖冲突。</p>
+</section>
+<section id="合理信念是否唯一许可" class="level3" data-number="1.3.9">
+<h3 data-number="1.3.9" class="anchored" data-anchor-id="合理信念是否唯一许可"><span class="header-section-number">1.3.9</span> 合理信念是否唯一许可</h3>
+<p>给定同一证据，是否只有一个理性态度？严格唯一论认为证据决定一个信念或精确置信度；许可主义允许不同主体在相同证据下采取多个合理态度。争论触及背景信念、风险态度和认识目标能否合理不同。 若两位气候研究者掌握同一数据，却使用都受到学界支持的模型，得出60%与75%预测，差异可能来自模型不确定性，而非一人不理性。若允许范围过宽，许可主义会让证据失去约束；若要求唯一数字，理论又需说明有限数据如何决定全部先验和模型。 “同一证据”本身并不容易满足。两人可能看过同一文档，却在理解、记忆和背景专长上不同；也可能拥有相同命题材料，但某证据对其中一人更显著。思想实验可以规定完全相同，现实分析则应先排除隐藏差异。 分歧出现后，双方又获得关于对方判断的高阶证据。即使原先各自被许可，知道同侪选择不同态度也可能要求更新。许可主义不等于每个人永远坚持初始立场，它仍需说明反思与社会校准。</p>
+</section>
+<section id="认识责任的四种失败" class="level3" data-number="1.3.10">
+<h3 data-number="1.3.10" class="anchored" data-anchor-id="认识责任的四种失败"><span class="header-section-number">1.3.10</span> 认识责任的四种失败</h3>
+<p>第一种是证据忽视：主体接触到明确反证，却因不喜欢结论而不纳入判断。第二种是选择性搜寻：只查询会确认原信念的来源。第三种是来源失管：知道渠道有系统错误仍继续无保留依赖。第四种是过度断言：把暂时、局部或概率证据说成确定普遍事实。 四种失败的心理原因不同。证据忽视可能是动机偏差，选择性搜寻可能由平台推荐放大，来源失管可能来自时间压力，过度断言可能受奖励机制驱动。把它们都归于“缺乏批判性思考”不能指导改进。对应措施分别是反方清单、预先搜索协议、来源审计和限定语言。 责任也有能力条件。儿童、信息被封锁者和专业外行不能承担与专家相同义务；但能力有限不意味着任何信念都合宜。主体可承担与角色相称的最低责任，例如承认不知道、求助可信来源和避免高风险断言。 制度会改变个人责任。若医生每次复核都会受惩罚，单纯要求“更认真”忽略激励；若平台隐藏来源，用户很难评估独立性。认识责任既可评价个人选择，也可评价谁设计了信息环境、谁控制时间和复核权限。</p>
+</section>
+<section id="自然化解释与规范评价" class="level3" data-number="1.3.11">
+<h3 data-number="1.3.11" class="anchored" data-anchor-id="自然化解释与规范评价"><span class="header-section-number">1.3.11</span> 自然化解释与规范评价</h3>
+<p>自然化认识论研究实际认知机制、环境和错误分布。实验可发现记忆受提问影响、视觉可靠性随光线变化、群体判断受发言顺序影响。这些事实对可行规范至关重要：要求人执行心理上不可能的更新，或假定不存在的注意资源，不是好规范。 经验事实却不单独推出规范。人普遍确认偏误，不等于应该偏误；某策略在历史环境有效，也不证明在新平台合理。规范理论仍需目标，如真理、理解或可靠行动，并说明经验机制如何服务目标。蒯因的自然化方案推动从先验奠基转向研究感觉输入与理论输出，但规范维度是否被保留一直是争点<span class="citation" data-cites="quine1969">(<a href="references.html#ref-quine1969" role="doc-biblioref">Quine 1969年</a>)</span>。 一种合作模型分三步。哲学先澄清评价对象和目标；经验研究测量实际机制和环境；规范设计再比较可行干预。三步互相修正：实验证明案例直觉不稳定，概念分析需要调整证据权重；规范目标变化，又会改变实验应测什么。 自然主义还提醒理论的环境敏感性。一个启发式在信息稀缺时节约资源，在操纵平台上却被利用；面对熟人可靠的信任习惯，在匿名大规模传播中可能失败。不能给过程一个脱离环境的永久可靠标签。</p>
+</section>
+<section id="比较视角学问与可教性" class="level3" data-number="1.3.12">
+<h3 data-number="1.3.12" class="anchored" data-anchor-id="比较视角学问与可教性"><span class="header-section-number">1.3.12</span> 比较视角：学、问与可教性</h3>
+<p>《论语》常把知与不知、学、问和改过放在关系实践中<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年</a>)</span>。这提供一种认识主体图景：好主体不仅拥有正确答案，还能够承认边界、向他人学习并修正。它与当代认识责任相通，却不等同一条关于证据充分性的形式原则。 “可教”具有双重面向。主体要有接受理由和纠正的开放，教师与制度也要值得信任并允许提问。把顺从权威当作可教，会牺牲自主；把拒绝一切依赖当作独立，又使学习不可能。关系质量是认识能力的组成条件。 古典修养语言还会把认识、品格与行动紧密连接。当代理论可以区分信念确证与人格德性，避免把一个正确但性格有缺陷的人说成完全无知识；修养论则反问，只评价孤立信念是否忽略了稳定偏差和长期学习。两种尺度可并存，但不可在论证中无提示切换。</p>
+</section>
+<section id="综合研讨校园健康信息争议" class="level3" data-number="1.3.13">
+<h3 data-number="1.3.13" class="anchored" data-anchor-id="综合研讨校园健康信息争议"><span class="header-section-number">1.3.13</span> 综合研讨：校园健康信息争议</h3>
+<p>校园出现传染病传闻。匿名帖称已有多人确诊，校方公告说“尚无经实验室确认病例”，学生会要求立即停课。三个句子可能同时真实：有人出现症状，实验室尚未确认，预防行动仍有理由。把它们写成二选一真假争议，会混淆命题和行动门槛。 先建立证据表：匿名帖有何直接接触，校方“尚无确认”是否被误读为“没有病例”，检测是否延迟，学生会依据什么损失评估。再区分认识态度：可认为传播风险值得重视，对确诊人数悬置，对短期减少聚集采取预防。 责任评价也要分配。发帖者若编造数字负有真实性责任；校方若用技术表述掩盖已知症状负有沟通责任；学生转发时应保留不确定性；平台应把后续更正连接原帖。最终是否确有病例，不能回溯改变早期根据是否合宜。 研讨可由四组分别主张证据主义、可靠主义、德性认识论和社会制度方案。每组必须回答：目标态度是什么，决定因素在哪里，什么信息会击败它，个人与机构各负何责。最后不投票选“正确主义”，而比较哪一方案解释了哪些维度。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="专题研讨任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>专题研讨任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>围绕一项现实争论写四页研究备忘录：第一页区分真值、确证、责任和行动；第二页重构两种规范理论；第三页给出一个最小对比和一项经验研究设计；第四页说明个人与制度改进，并列出会改变你结论的证据。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="jtb分析与gettier断裂" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="jtb分析与gettier断裂"><span class="header-section-number">1.4</span> JTB分析与Gettier断裂</h2>
+<section id="jtb分析的吸引力" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="jtb分析的吸引力"><span class="header-section-number">1.4.1</span> JTB分析的吸引力</h3>
+<p>把知识分析为<strong>得到确证的真信念</strong>（<em>justified true belief, JTB</em>），可以解释三个直觉：知识不能为假，主体必须接受命题，纯粹猜中不算知识。形式化地说：</p>
+<p>$$</p>
+<p>K_Sp p B_Sp J_Sp .</p>
+<p>$$</p>
+<p>这里的公式只是分析方案，不是已经证明的定理。尤其“确证”若被定义成“足以产生知识的根据”，分析就会循环。 通常所说的“柏拉图式JTB传统”应谨慎对待。《泰阿泰德》确实讨论真判断加说明，却没有把现代JTB定义确立为此后两千年的无争议定论<span class="citation" data-cites="plato1990">(<a href="references.html#ref-plato1990" role="doc-biblioref">Plato 1990年, 201c～210b</a>)</span>。二十世纪中叶的分析哲学语境，才是Gettier问题的直接背景。</p>
+</section>
+<section id="两个原始反例" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="两个原始反例"><span class="header-section-number">1.4.2</span> 两个原始反例</h3>
+<p>Gettier只用了三页和两个案例<span class="citation" data-cites="gettier1963">(<a href="references.html#ref-gettier1963" role="doc-biblioref">Gettier 1963年, 121～23</a>)</span>。第一个是职位与硬币：史密斯从一个得到确证但为假的命题，演绎出一个碰巧为真的命题。第二个案例中，史密斯有强证据相信“琼斯拥有一辆福特车”，并由此任意推出析取命题，如“琼斯拥有福特车，或者布朗在巴塞罗那”。琼斯其实没有福特车，但史密斯毫不知情的布朗恰在巴塞罗那，于是析取命题为真。 两个案例依赖两项假设：一个假命题也可能得到确证；确证在主体知道的演绎推理下传递。Gettier让“有根据”沿推理传下去，而真值从另一条意外路径到达结论。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>若JTB足以构成知识，任何满足真、信念、确证的案例都是知识。</p></li>
+<li><p>Gettier案例满足这三项条件。</p></li>
+<li><p>Gettier案例中的主体并不知道目标命题。</p></li>
+<li><p>因而JTB不是知识的充分条件。</p></li>
+</ol>
+</div>
+</div>
+<p>结论只是否定充分性。它没有证明真、信念或确证不是必要条件，也没有证明知识不可分析，更没有证明所有确证理论失败。</p>
+</section>
+<section id="修补为何困难" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="修补为何困难"><span class="header-section-number">1.4.3</span> 修补为何困难</h3>
+<p>最直接的修补是增加“无假前提”：信念不能从任何假命题推得。但有些推理包含无关的假信念，仍可产生知识；反之，一个主体可以不用显式假前提，却被误导性环境包围。例如谷仓立面案例中，亨利看着唯一真谷仓形成“那是谷仓”的真信念；附近其余外观全是假立面。其信念来自真知觉，却仍像是碰巧命中。 “不可击败条件”要求不存在一个真事实，使主体一旦知道它就会失去确证。问题是如何界定真正击败者，避免把“<span class="math inline">\(p\)</span>为假”这种平凡信息也算进去。因果理论要求事实以适当方式造成信念<span class="citation" data-cites="goldman1967">(<a href="references.html#ref-goldman1967" role="doc-biblioref">Goldman 1967年</a>)</span>，能够解释知觉知识，却较难处理数学、道德和普遍命题。 扎格泽布斯基指出，只要理论把获得真理的条件与获得确证的条件分开，就可能人为制造二者意外汇合的案例<span class="citation" data-cites="zagzebski1994">(<a href="references.html#ref-zagzebski1994" role="doc-biblioref">Zagzebski 1994年</a>)</span>。这说明Gettier问题不是寻找第四个词那么简单，而是在问：主体认知成功的<strong>真</strong>是否源自主体的认识能力或方法。</p>
+</section>
+<section id="直觉分歧与方法教训" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="直觉分歧与方法教训"><span class="header-section-number">1.4.4</span> 直觉分歧与方法教训</h3>
+<p>不同语言和文化中的受试者可能对个别案例作不同判断。由此不能直接推出“知识没有事实”。实验结果需要区分翻译、教育背景、案例复杂度和回答尺度。反过来，哲学家也不应把自己的第一反应当作不可修正的裁决。 Gettier问题的持久意义在于，它迫使理论连接两种评价：信念是否以可辩护方式形成，以及信念为真是否归功于这种方式。后续的安全性、德性和知识优先理论，都是对这项连接任务的不同回答。</p>
+<div class="callout callout-style-default callout-important callout-titled" title="比较视角">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">重要</span>比较视角
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“知之为知之”的认识诚实不能单独解决Gettier问题<span class="citation" data-cites="analects2003">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年, 2.17</a>)</span>：史密斯并不知道自己处于运气案例，也未必虚假自信。不过，儒家传统把“知”与能否恰当行动、承认无知联系起来，提醒我们：知识概念的实践角色可能超过给命题贴标签。比较应当扩展问题，而不是把经典语句当成现成答案。</p>
+</div>
+</div>
+</section>
+<section id="原典细读两个假设究竟做了什么" class="level3" data-number="1.4.5">
+<h3 data-number="1.4.5" class="anchored" data-anchor-id="原典细读两个假设究竟做了什么"><span class="header-section-number">1.4.5</span> 原典细读：两个假设究竟做了什么</h3>
+<p>Gettier开篇没有宣称所有确证都可错，而是明确假定：（一）一个得到确证的命题可能为假；（二）若主体对<span class="math inline">\(p\)</span>得到确证，且从<span class="math inline">\(p\)</span>有效推出<span class="math inline">\(q\)</span>并接受<span class="math inline">\(q\)</span>，则主体对<span class="math inline">\(q\)</span>也得到确证<span class="citation" data-cites="gettier1963">(<a href="references.html#ref-gettier1963" role="doc-biblioref">Gettier 1963年, 121</a>)</span>。随后两个案例都在这组假设下运作。若把确证定义为事实性的，第一项就会被拒绝；但此时要解释日常所谓“完全有理由却不幸出错”属于什么认识地位。 职位案例中，史密斯并不是推出“我会得到职位”。他推出的是去指称的命题“得到职位的人口袋里有十枚硬币”。这个细节不能省略：原命题以琼斯为根据，结论却可由史密斯意外满足。第二案例使用析取引入规则；史密斯随意选择自己对布朗位置一无所知的地点，正是为了确保结论真值来自完全独立的偶然事实。 准确复述案例是理论训练的一部分。若把结论改成“史密斯会得到职位”，史密斯并没有从原证据得到它，JTB结构就不再成立；若把第二例改成羊或谷仓，则已经换成后来的反例家族，不能再称Gettier的原始案例。</p>
+</section>
+<section id="反例谱系" class="level3" data-number="1.4.6">
+<h3 data-number="1.4.6" class="anchored" data-anchor-id="反例谱系"><span class="header-section-number">1.4.6</span> 反例谱系</h3>
+<p>“假谷仓”把问题从错误推理转向环境运气；“停止的钟”中，主体在恰好正确时刻看钟，过程通常不可靠；“假火柴”类案例让主体的证据链含有误导因素，却由另一因素保证真；“鲁莽的认识者”则追问信念虽安全可靠但主体是否缺乏应有责任。不同案例攻击不同修补方案，不能都以“巧合”一句带过。 分析反例可使用四格：（1）目标信念是什么；（2）主体为何相信；（3）何事使它为真；（4）在最近的变化中哪里会出错。若第二项与第三项脱节，通常有Gettier风险；若第四项显示同一方法容易出错，安全性受威胁；若方法稳定但主体忽视明显反证，则责任或信念确证受威胁。</p>
+</section>
+<section id="案例工作坊自动评分" class="level3" data-number="1.4.7">
+<h3 data-number="1.4.7" class="anchored" data-anchor-id="案例工作坊自动评分"><span class="header-section-number">1.4.7</span> 案例工作坊：自动评分</h3>
+<p>教师使用可靠率99%的系统评分。某份答案本应得85分，系统因识别错误算成70分；教师又误点修正按钮，恰好把成绩改回85分。学生查看系统后相信自己得85分。信念为真，信息来源通常可靠，但这次真值来自两个错误抵消。因果理论若只要求成绩记录造成信念，可能过宽；一般可靠率若只看长期表现，也会遗漏个案路径；能力或安全理论能更直接指出，该结果不适当地归功于评分过程。 改变细节可检验理论。若教师在发布前逐项人工复核，最终85分便不再是运气；若学生知道系统刚升级且错误频繁，其信念即使为真也可能不理性；若学生只猜自己常得85分，连系统因果链也不存在。通过最小改动观察判断变化，比不断发明离奇故事更能定位知识条件。</p>
+</section>
+</section>
+<section id="修补知识分析及其代价" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="修补知识分析及其代价"><span class="header-section-number">1.5</span> 修补知识分析及其代价</h2>
+<section id="传统定义的历史应当怎样叙述" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="传统定义的历史应当怎样叙述"><span class="header-section-number">1.5.1</span> “传统定义”的历史应当怎样叙述</h3>
+<p>教科书常说，从柏拉图到1963年，哲学家普遍把知识定义为JTB，Gettier用三页论文推翻两千年共识。这个故事便于记忆，却不够准确。《泰阿泰德》考察真判断加说明的方案，最终没有给出得到认可的定义<span class="citation" data-cites="plato1990">(<a href="references.html#ref-plato1990" role="doc-biblioref">Plato 1990年, 201c～210b</a>)</span>；近代哲学家关心确定性、观念来源和怀疑论，也未共享一个固定三条件公式。Gettier直接针对的是当时若干分析方案及其共同结构<span class="citation" data-cites="gettier1963">(<a href="references.html#ref-gettier1963" role="doc-biblioref">Gettier 1963年</a>)</span>。 这项历史修正不降低论文的重要性。Gettier把一个可普遍复制的反例模式置于议程中心：主体的根据在认识上看似良好，结论也真，但真并非以正确方式来自根据。此后理论必须解释反运气联系。更准确的叙述是，他改变了二十世纪知识分析的研究程序，而不是独自终结一条从未变化的古老教义。 历史叙述本身有认识规范。引用“柏拉图定义”应给出具体对话篇和段落，区分角色提出与作者认可；声称“学界共识”应说明样本与时期。教材若用神话制造戏剧性，会让学生误学哲学史如何使用证据。</p>
+</section>
+<section id="无法击败条件" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="无法击败条件"><span class="header-section-number">1.5.2</span> 无法击败条件</h3>
+<p>一种回应说，JTB只有在没有<strong>击败者</strong>（<em>defeater</em>）时才是知识。职位案例中，“琼斯不会得到职位”击败史密斯的根据；假谷仓中，“附近绝大多数外观是假立面”击败视觉判断。条件抓住了新信息为何会撤销知识归属。 但击败者不能定义成“任何与<span class="math inline">\(p\)</span>不相容的真命题”，否则“<span class="math inline">\(p\)</span>为假”总是平凡击败假信念，却没有解释Gettier。也不能要求主体实际拥有击败信息，因为Gettier主体正是不知道关键事实。理论需区分规范击败、心理击败、误导性击败者和击败者的击败。 例如，可靠同事错误告诉你仪器坏了，这条信息心理上削弱你的理由；后来维护记录证明仪器正常，击败者被解除。若你从未看到同事消息，它是否仍破坏知识，取决于理论把“可得信息”划在哪里。击败理论因此连接到确证的时间与社会范围。</p>
+</section>
+<section id="相关替代与辨别能力" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="相关替代与辨别能力"><span class="header-section-number">1.5.3</span> 相关替代与辨别能力</h3>
+<p>另一思路要求主体能排除相关替代。看见斑马时，不需排除它是全息投影、机器人或宇宙瞬间复制品；但动物园若曾用伪装骡子欺骗游客，“它是骡子”便可能相关。相关性来自背景事实、具体反证、错误机制与对话目的，而非想象力本身。 辨别论可解释谷仓：亨利在该环境不能区分真谷仓与假立面。困难是普通知识也依赖有限辨别。我们不能凭肉眼区分真钞与完美伪钞，却在普通交易中可能知道拿到真钞。若要求排除所有主观不可区分替代，怀疑论重现；若只排除事先选定替代，理论又需独立相关性标准。</p>
+</section>
+<section id="因果关系的范围与偏离" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="因果关系的范围与偏离"><span class="header-section-number">1.5.4</span> 因果关系的范围与偏离</h3>
+<p>因果理论要求事实以适当因果链造成信念<span class="citation" data-cites="goldman1967">(<a href="references.html#ref-goldman1967" role="doc-biblioref">Goldman 1967年</a>)</span>。它比“真且有根据”更直接连接真值与信念。在正常知觉中，苹果反射光、视觉系统响应，信念由苹果存在造成；Gettier真值来自主体不知道的旁路。 然而并非任何因果链都适当。山火导致烟，烟触发故障警报，故障又让值班员随意猜“有山火”；事实参与了因果过程，猜测却不是知识。所谓<strong>因果偏离</strong>（<em>causal deviance</em>）说明理论仍需规范“适当方式”。数学和逻辑真理不明显以普通事件因果造成信念，普遍命题也难由其全部实例造成。 因果理论可被理解为某些知识来源的局部模型，而不必充当统一定义。它对知觉、记忆痕迹和证言链极有解释力；对先验知识则可能让位于能力或理由结构。接受理论多元性不等于放弃统一问题，而是承认不同对象有不同成功关系。</p>
+</section>
+<section id="可靠性为何仍会放过个案运气" class="level3" data-number="1.5.5">
+<h3 data-number="1.5.5" class="anchored" data-anchor-id="可靠性为何仍会放过个案运气"><span class="header-section-number">1.5.5</span> 可靠性为何仍会放过个案运气</h3>
+<p>可靠主义评价信念形成类型在相关环境中产生真信念的比例。停止的钟通常不可靠，所以案例容易排除；但一个总体可靠过程这次可能因错误抵消而碰巧成功。自动评分案例中系统准确率99%，个案路径仍是两个错误相消。总体可靠性是重要条件，却未必充分排除个案Gettier运气。 过程类型划分也改变答案。“看钟”可能可靠，“看这只停摆的钟”不可靠，“在恰好十二点看这只钟”又百分之百为真。若理论可事后任意选择类型，就没有预测力。合理划分应对应主体稳定能力、可重复机制和解释错误的自然类别，而不能把结果本身写入类型。</p>
+</section>
+<section id="gettier与认识责任" class="level3" data-number="1.5.6">
+<h3 data-number="1.5.6" class="anchored" data-anchor-id="gettier与认识责任"><span class="header-section-number">1.5.6</span> Gettier与认识责任</h3>
+<p>原始史密斯并不明显粗心。他遵守演绎规则，拥有按案例设定充分的证据，也不知道意外事实。Gettier问题因此首先挑战成功结构，不是道德责备。把“他应该更认真”当作统一解法，会错过无责运气。 但后来的案例可以加入责任因素。记者根据一向可靠的消息源发布新闻，却忽略页面上明显的更正标记；新闻内容因另一事实碰巧为真。这里既有Gettier运气，也有可责忽视。分析应分别问：若移除疏忽，运气是否仍在？若移除运气，疏忽是否仍使信念缺少确证？ 德性认识论中的能力德性与人格德性也要分开。视觉敏锐是能力，认真、公正和谦逊是品格。知识可能最低要求能力成功，而高质量探究还要求人格德性；不同理论不必把全部评价塞进单一知识条件。</p>
+</section>
+<section id="知识分析失败了吗" class="level3" data-number="1.5.7">
+<h3 data-number="1.5.7" class="anchored" data-anchor-id="知识分析失败了吗"><span class="header-section-number">1.5.7</span> 知识分析失败了吗</h3>
+<p>Gettier之后不断出现新反例，有人据此认为必要充分条件项目已经破产。知识优先理论把知识作为基本心理状态<span class="citation" data-cites="williamson2000">(<a href="references.html#ref-williamson2000" role="doc-biblioref">Williamson 2000年</a>)</span>；原型理论或语境方法则可能接受边界案例，不追求一条简短定义。 “不可还原”不等于“无法说明”。我们仍可研究知识与真、断言、行动、证据和能力的系统联系，也可给出局部必要条件。化学上水可还原为分子结构，不表示所有有用概念都必须如此；知识也许像行动、原因或游戏，拥有丰富结构而没有非循环的有限定义。 反过来，反例不断出现也不证明分析原则上不可能。它可能说明早期条件过粗。理论选择应比较：定义方案能解释多少案例，基本概念方案是否真正减少承诺，语义多元是否有独立语言证据。宣布项目死亡和无限补丁同样需要论证。</p>
+</section>
+<section id="综合案例科研图像的偶然真实" class="level3" data-number="1.5.8">
+<h3 data-number="1.5.8" class="anchored" data-anchor-id="综合案例科研图像的偶然真实"><span class="header-section-number">1.5.8</span> 综合案例：科研图像的偶然真实</h3>
+<p>研究者的软件把样本A与B标签调换。显微图像中A确有目标结构，B没有；另一处导入错误又把图像顺序调回，使论文中“A具有结构”的图文配对碰巧正确。研究者相信结论，并有看似规范的图像与分析流程。 无假前提条件会发现软件元数据中的假设；因果理论注意样本A确实造成最终图像，却需解释偏离链；可靠主义可能说双重错误流程不可靠；安全性指出任一错误稍有不同结论就为假；能力理论问正确配对是否归功于研究者能力。案例让多种方案在同一材料上显示各自解释重点。 若研究者随后独立重做实验并验证结论，新的证据可使他获得知识，但不会让先前信念在当时回溯成为知识。认识地位具有时间性：同一命题、同一主体，因证据链改变而从偶然真信念转为知识。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Gettier分析表">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>Gettier分析表
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>逐项填写：目标命题；信念形成根据；根据是否含假；使命题为真的事实；根据与真值的连接；最近错误情形；主体是否有责；无假前提、击败、因果、可靠、安全和能力理论各自如何判定。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="反例谱系与研究方法" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="反例谱系与研究方法"><span class="header-section-number">1.6</span> 反例谱系与研究方法</h2>
+<section id="研读实验室怎样比较gettier解法" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="研读实验室怎样比较gettier解法"><span class="header-section-number">1.6.1</span> 研读实验室：怎样比较Gettier解法</h3>
+<p>一个新条件能排除原始两个案例，只是最低要求。成熟评价还要检验三件事：它是否错误排除普通知识；是否只是换词重述“没有Gettier问题”；是否能统一处理介入运气与环境运气。逐一修补案例容易形成无限清单，比较框架则迫使理论解释自己的范围和机制。</p>
+</section>
+<section id="无假前提简单但范围有限" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="无假前提简单但范围有限"><span class="header-section-number">1.6.2</span> 无假前提：简单但范围有限</h3>
+<p>无假前提条件要求，主体的推理链不能依赖假命题。职位案例中“琼斯会得到职位”是假，因而史密斯的结论被排除。优点是诊断清楚，也保留了演绎确证传递的大部分结构。问题是，并非所有Gettier案例都包含主体接受的假前提。 停止的钟案例中，主体看到表盘恰好显示正确时间。他未必先相信“这只钟正常”再显式推理；即使把背景预设算作前提，许多普通知觉也依赖可能为假的背景假设。假谷仓中，实际所见就是真谷仓，视觉经验和“那里有谷仓”都真，失败来自环境中大量相似假立面。无假前提因而更像处理一类推理性Gettier，而非知识的一般充分条件。 理论还必须说明“基于”什么。一个主体拥有假信念，但目标信念并不依赖它，不能仅因心理系统中存在错误就取消知识。反之，主体未在意识中表述的错误预设可能真正引导推理。基于关系比信念清单更重要。</p>
+</section>
+<section id="击败理论把缺失信息纳入评价" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="击败理论把缺失信息纳入评价"><span class="header-section-number">1.6.3</span> 击败理论：把缺失信息纳入评价</h3>
+<p>击败理论问：是否存在一个真信息，若主体适当获得，会撤销其确证？“琼斯不会获职”和“这只钟已经停了”显然具有这种作用。条件与实际探究相连，因为我们经常通过寻找潜在击败者改善信念。 但若任意真命题都可作为击败者，理论会过宽。某个遥远星系此刻爆炸是真，却与我看见桌子无关。击败必须通过证据相关性、说明关系或规范可得性连接目标根据。若要求主体能实际取得全部击败信息，又会对信息受限者过苛。 还要处理误导性击败者。一个一贯可靠的人错误告诉你灯光会使红物看绿，你因而暂停颜色判断；后来校准报告证明灯光正常。错误证言虽然不真，却能合理地心理击败原确证；校准又击败该击败者。知识状态随时间和信息层级变化，不能仅用“是否存在一个真反驳”刻画。</p>
+</section>
+<section id="因果与可靠性连接事实和方法" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="因果与可靠性连接事实和方法"><span class="header-section-number">1.6.4</span> 因果与可靠性：连接事实和方法</h3>
+<p>因果理论要求使<span class="math inline">\(p\)</span>为真的事实以适当方式造成主体相信<span class="math inline">\(p\)</span>。正常知觉最符合此图景：对象造成经验，经验造成信念。Gettier案例中真值事实常在因果链之外，或通过偏离路径进入。理论的吸引力是把“正确连接”具体化，而不是继续列心理条件。 它的难题包括先验知识、否定事实、普遍命题和因果偏离。相信“没有独角兽”似乎不是由一个单一的“无独角兽事实”造成；数学真理也不以通常事件因果作用。若把因果扩大为任何可靠信息关系，理论又逐渐变成可靠主义。 可靠主义评价过程在相关环境中是否倾向产生真信念<span class="citation" data-cites="goldman1979">(<a href="references.html#ref-goldman1979" role="doc-biblioref">Goldman 1979年</a>)</span>。它自然说明儿童、动物与无反思主体的知识，也能与心理学和工程可靠性结合。过程类型问题却非常尖锐：描述成“视觉”“清晨雾中看远处红灯”还是“这次看见真实红灯”，可靠率完全不同。类型必须在知道结果前由机制、功能与任务稳定划定。</p>
+</section>
+<section id="安全性与能力从不易错到因能力而对" class="level3" data-number="1.6.5">
+<h3 data-number="1.6.5" class="anchored" data-anchor-id="安全性与能力从不易错到因能力而对"><span class="header-section-number">1.6.5</span> 安全性与能力：从不易错到因能力而对</h3>
+<p>安全性要求，在主体以相近方式相信<span class="math inline">\(p\)</span>的近邻情形中，<span class="math inline">\(p\)</span>不轻易为假。它直接排除停止的钟与假谷仓，因为微小环境变化便产生同样信念而命题为假。安全并不要求主体实际排除每个怀疑可能，关键是错误世界是否足够接近。 能力理论进一步区分安全的偶然成功与可归功成功。假设一位新手随意按下一台自动验证设备，而设备非常可靠；信念可能安全，却不明显是新手的认知成就。若知识至少是一种成就，需要说明主体、工具和制度各自贡献。把全部功劳只归给个人，会错误排除证言和分布式认知；把设备任何可靠输出都算作个人能力，又使能力条件空洞。 反运气德性方案组合安全与能力，能覆盖多类案例<span class="citation" data-cites="pritchard2012">(<a href="references.html#ref-pritchard2012" role="doc-biblioref">Pritchard 2012年</a>)</span>。代价是理论更复杂，也可能面对条件冲突：在假谷仓中，亨利实际视觉表现正常，成功可部分归功能力，却不安全；在高度受控实验中，团队流程让信念安全，单个成员却未理解结果。组合理论要说明知识归属于个人、团队还是系统。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方案</th>
+<th>核心问题</th>
+<th>优势</th>
+<th>主要压力</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>无假前提</td>
+<td>推理是否依赖假命题</td>
+<td>处理原始推理案例清楚</td>
+<td>无假前提的环境运气</td>
+</tr>
+<tr class="even">
+<td>击败</td>
+<td>是否有撤销根据的信息</td>
+<td>接近实际调查与更新</td>
+<td>相关性、误导击败与可得范围</td>
+</tr>
+<tr class="odd">
+<td>因果/可靠</td>
+<td>事实与方法如何导向信念</td>
+<td>可自然化并覆盖无反思知识</td>
+<td>偏离、过程类型、个案错误抵消</td>
+</tr>
+<tr class="even">
+<td>安全/能力</td>
+<td>是否容易错，是否因能力而对</td>
+<td>统一反运气与认知成就</td>
+<td>近邻标准与分布式功劳</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="最小对比法一次只改一个变量" class="level3" data-number="1.6.6">
+<h3 data-number="1.6.6" class="anchored" data-anchor-id="最小对比法一次只改一个变量"><span class="header-section-number">1.6.6</span> 最小对比法：一次只改一个变量</h3>
+<p>思想实验最有分析力的用法，不是让故事越来越奇特，而是制作最小对比。以停止的钟为基准：A中钟正常；B中钟停了，主体恰在正确时刻看；C中钟停了，但主体另以电话报时核验；D中钟正常，却有人给出可信的故障警告。A与B改变过程可靠性，B与C改变信念基础，A与D改变击败信息。若知识判断变化，就能定位理论需要解释的变量。 对比时要保持目标命题一致。“现在是八点”与“钟显示八点”不同；停钟仍可让后者成为知识。还要保持主体实际根据一致。若加入独立核验，不能说同一信念方法突然更安全，而应承认形成基础已经改变。许多争论来自案例叙述未说明主体究竟基于什么。 读者直觉不一致时，可进一步拆分评价：主体是否合理、是否无责、是否可靠、是否知道、是否值得信任。有人判断“他没有做错什么”，却误以为这等于“他知道”。将问题逐项询问，常能发现分歧不在知识判断，而在责任评价渗入。</p>
+</section>
+<section id="实验哲学与gettier直觉" class="level3" data-number="1.6.7">
+<h3 data-number="1.6.7" class="anchored" data-anchor-id="实验哲学与gettier直觉"><span class="header-section-number">1.6.7</span> 实验哲学与Gettier直觉</h3>
+<p>对Gettier案例的问卷研究可以检验判断在不同语言、文化和措辞下是否稳定，但调查设计必须避免把复杂故事变成阅读理解测试。参与者要明确目标命题、真值、根据与偶然因素；问题要区分“知道”“有充分理由”和“只是运气”。若参与者未注意关键细节，其回答不能直接支持概念差异。 即使多数人把某案例判为知识，理论后果也取决于研究目标。描述普通用法的理论必须认真解释；把知识视为规范性认知成就的理论可以说直觉受责任或概率混淆，但要给出独立理由。少数哲学家的稳定判断也不是自动权威，因为专业训练可能增加辨别力，也可能造成理论污染。 最有价值的结果往往不是投票比例，而是变量效应：当真值路径与理由路径更明显脱节时，知识归属是否下降；当主体加入核验时是否恢复；当运气来自环境而非推理时，判断是否变化。变量效应能帮助理论定位机制。</p>
+</section>
+<section id="综合案例医学报告的双重错配" class="level3" data-number="1.6.8">
+<h3 data-number="1.6.8" class="anchored" data-anchor-id="综合案例医学报告的双重错配"><span class="header-section-number">1.6.8</span> 综合案例：医学报告的双重错配</h3>
+<p>医院系统把甲、乙两人的样本条码互换。甲确有疾病，乙没有；随后报告发送模块又把收件人互换，于是甲收到写着自己姓名且显示阳性的报告。甲基于报告相信自己患病。命题为真，医院总体检测可靠，疾病也因甲的样本在系统中留下因果痕迹，但正确报告由两次错误抵消。 无假前提理论要决定甲是否相信“这是由我的样本正常生成的报告”这一背景命题；击败理论指出条码交换记录；因果理论面对一条既由甲的疾病启动、又发生偏离的链；可靠主义若只看检测仪准确率会漏掉身份匹配过程；安全性指出任一交换不发生，甲的信念便可能为假；能力理论则问甲只是接受制度输出，知识能否归功于他。 若甲的医生在诊断前重新独立采样，第二次阳性使后来信念获得新的基础。不能把后来的验证倒灌回第一次阅读报告。若医院知道系统近期有错配警报却未暂停报告，甲本人可能无责，机构却有严重认识责任。一个案例可以同时包含个体知识失败与制度失职，二者不应相互替代。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="本章研读任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>本章研读任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>自拟一个Gettier案例并制作四个最小版本：原始运气版、移除运气版、加入真击败者版、加入独立核验版。对每版分别填写JTB、无假前提、击败、可靠、安全与能力理论的判定；若某理论无法判定，说明缺失的是哪项细节。</p>
+</div>
+</div>
+</section>
+<section id="专题研讨gettier之后怎样做知识分析" class="level3" data-number="1.6.9">
+<h3 data-number="1.6.9" class="anchored" data-anchor-id="专题研讨gettier之后怎样做知识分析"><span class="header-section-number">1.6.9</span> 专题研讨：Gettier之后怎样做知识分析</h3>
+<p>Gettier问题留下的不是一个待填空的“第四条件”，而是一种研究约束：知识不能只是若干彼此独立条件偶然同时满足。真值、信念与根据之间需要合适联系。新增条件若只排除一个故事，却不能解释联系，容易遭遇结构相同的新反例。 研究知识分析可分三条路线。条件路线继续寻找必要充分条件；基本概念路线把知识视为不可还原状态，研究它与证据、断言和行动的联系；多元路线认为日常“知道”覆盖多个相关原型或语境。三条路线都需要案例和理论解释，没有哪条仅凭“分析失败”自动胜出。</p>
+</section>
+<section id="zagzebski式反例配方" class="level3" data-number="1.6.10">
+<h3 data-number="1.6.10" class="anchored" data-anchor-id="zagzebski式反例配方"><span class="header-section-number">1.6.10</span> Zagzebski式反例配方</h3>
+<p>一种著名诊断指出，只要理论的正面认识条件不蕴涵真理，就可能先构造条件满足但信念为假的案例，再加入独立运气使信念为真，从而得到Gettier案例<span class="citation" data-cites="zagzebski1994">(<a href="references.html#ref-zagzebski1994" role="doc-biblioref">Zagzebski 1994年</a>)</span>。可靠主义、德性或击败条件若允许认识部分在某次失败，似乎都可被这种双重运气利用。 配方的力量在于解释反例为何不断重生。它不依赖史密斯、硬币或谷仓的表面细节，而利用“认识条件可错”与“真值独立修复”的结构。回应不能只禁止案例中的某个假前提，而要让成功与认识条件更紧密结合。 一种回应把真理内置于能力成功：知识不是先有能力表现再偶然加真，而是“因能力而真”的整体。另一回应使用安全性，排除附近失败。第三种把事实本身纳入理由，如析取论。每种方案都减少可分离性，却可能提高理论强度或排除普通可错知识。 配方也并非逻辑证明所有分析必败。某条件可以是事实性的，或以非附加方式定义成功；理论也可质疑配方中的案例判断。它提供一般压力，不替代对具体方案的逐项论证。</p>
+</section>
+<section id="无假前提与推理纯洁性" class="level3" data-number="1.6.11">
+<h3 data-number="1.6.11" class="anchored" data-anchor-id="无假前提与推理纯洁性"><span class="header-section-number">1.6.11</span> 无假前提与推理纯洁性</h3>
+<p>无假前提条件直观地解释原始两个案例：史密斯的推理依赖错误命题。若所有知识都必须无假前提，普通推理会不会过于脆弱？科学模型含理想化，历史推断含可修正背景，复杂证明可能有无关错误。关键是哪些假命题实际作为目标信念基础。 假前提也可能不造成错误。主体用两条独立理由支持<span class="math inline">\(p\)</span>，其中一条为假，另一条充分且主导判断。若任何假理由都污染知识，条件过强；若只看是否存在一条真路径，又可能放过主体实际上依赖错误。必须加入基于关系和解释权重。 背景预设更难。看钟者通常不显式相信“这只钟正在运行”，但该预设在过程功能中重要。把所有功能条件都算前提，可以处理停钟，却会使“无假前提”变成“没有任何相关环境故障”的重述。理论需要独立标准区分信念、预设和外部条件。 理想化模型提醒真假也有层级。把无摩擦当作精确世界命题是假的，把它当作模型设定则未必是假信念；主体知道适用范围时，可通过模型获得理解。知识分析不能把所有简化都等同误导前提。</p>
+</section>
+<section id="击败条件与信息边界" class="level3" data-number="1.6.12">
+<h3 data-number="1.6.12" class="anchored" data-anchor-id="击败条件与信息边界"><span class="header-section-number">1.6.12</span> 击败条件与信息边界</h3>
+<p>击败理论把关键缺失事实纳入知识评价。若知道钟停了，主体不会再相信时间；若知道谷仓地区充满立面，视觉理由被削弱。但主体实际不知道的信息为何能取消知识？理论区分心理击败与规范击败，后者取决于哪些信息在评价范围内。 范围可按个人可得、社会角色可得或环境客观事实划分。医生未看到系统中一份已上传报告，个人是否有责取决于访问与提醒；医院作为组织可能已经接收，仍应被评价为忽略。相同“缺失信息”在不同主体层级给出不同结果。 若任何真命题只要与理由相关就击败，知识会因遥远隐藏事实过度稀少；若只允许主体实际相信的反证，Gettier关键事实又无法进入。中间方案考虑信息是否通过正常调查可发现、是否解释证据误导、是否属于主体任务环境。 击败者的击败形成动态结构。可信同事错误说仪器坏了，合理削弱信念；独立校准证明仪器正常，恢复原证据。知识不是一次性贴在信念上的属性，而随时间、来源和高阶证据变化。</p>
+</section>
+<section id="知识优先的研究程序" class="level3" data-number="1.6.13">
+<h3 data-number="1.6.13" class="anchored" data-anchor-id="知识优先的研究程序"><span class="header-section-number">1.6.13</span> 知识优先的研究程序</h3>
+<p>知识优先拒绝用信念、真理和确证的非知识组合还原知识，却不等于拒绝理论。它可以提出：主体证据由其知识构成；合宜断言以知识为规范；理性行动可把所知作为前提；心理状态的区分也以知识为核心<span class="citation" data-cites="williamson2000">(<a href="references.html#ref-williamson2000" role="doc-biblioref">Williamson 2000年</a>)</span>。 这种程序的优势是避免无限补丁，并解释知识为何在多个规范中居中心。压力则是基本概念是否真的解释更多，还是把困难藏入“知道”。若证据定义为知识，怎样说明无知主体仍有部分理由？若行动必须以知识为前提，概率风险如何处理？ 基本性也允许局部分析。理论可研究真理、信念和安全是否为必要条件，或说明典型知识来源，而不承诺完整定义。正如行动和原因可能难以有限还原，却仍有丰富理论，分析失败不等于概念神秘。 知识优先与Gettier案例的关系是诊断性的：案例显示从更弱成分向知识组合并不可靠；基本概念论认为判断知识是否存在不能由一张独立条件清单机械决定。反对者会要求可预测的新案例标准，而非只凭整体直觉。</p>
+</section>
+<section id="德性与反运气的结合" class="level3" data-number="1.6.14">
+<h3 data-number="1.6.14" class="anchored" data-anchor-id="德性与反运气的结合"><span class="header-section-number">1.6.14</span> 德性与反运气的结合</h3>
+<p>能力理论说真信念必须因认知能力而真；安全理论说同方法相信不容易为假。二者处理不同缺陷。假谷仓中实际视觉准确且由能力发挥，功劳似乎存在，却不安全；某高度安全的自动系统输出，使用者却可能没有任何能力贡献。 反运气德性方案组合两项：排除显著认识运气，并要求成功在重要程度上归功能力<span class="citation" data-cites="pritchard2012">(<a href="references.html#ref-pritchard2012" role="doc-biblioref">Pritchard 2012年</a>)</span>。组合提高覆盖，却产生权重问题。证言知识和团队知识的成功由多人和制度分布，个人贡献可能不显著；若要求唯一主要功劳，依赖知识受威胁。 可以把能力主体扩大为人—工具或群体系统，但扩大不能任意。系统必须有稳定接口、错误监控和共同目标；临时把任何成功因素都算进主体，会让能力条件无法失败。知识归属与解释单位需要一致。 能力还分一阶与反思。一阶视觉、记忆和推理产生真信念；二阶能力评估环境、来源和击败者。普通知识可由一阶能力获得，高风险专业断言可能要求更强反思。层级方案解释知识质量差异，却须避免把高阶标准反投射到一切日常案例。</p>
+</section>
+<section id="案例研究怎样避免直觉循环" class="level3" data-number="1.6.15">
+<h3 data-number="1.6.15" class="anchored" data-anchor-id="案例研究怎样避免直觉循环"><span class="header-section-number">1.6.15</span> 案例研究怎样避免直觉循环</h3>
+<p>理论由案例直觉支持，又用理论解释相同直觉，可能形成方法循环。改善方式不是放弃案例，而是增加证据来源：最小对比、语言使用、跨群体调查、认知机制、与其他规范的系统联系。不同证据互相约束。 案例措辞要预注册目标变量。若测试知识，不应在问题中加入“纯粹碰巧”“无可责”等引导；先问事实理解，再分开询问知识、理由和责任。参与者若未理解真值路径，回答不能直接作为概念证据。 理论比较也要使用盲案例。先记录各理论对新案例的预测，再揭示结果或直觉；若总在看到判断后修改条件，理论不会冒风险。保留失败预测有助于评估解释力。 专家直觉可能来自训练，也可能受理论污染。普通直觉可能更接近日常语义，也可能混淆概率与道德。没有单一人群自动权威；证据权重由研究目标决定。</p>
+</section>
+<section id="比较视角知识分析的范围" class="level3" data-number="1.6.16">
+<h3 data-number="1.6.16" class="anchored" data-anchor-id="比较视角知识分析的范围"><span class="header-section-number">1.6.16</span> 比较视角：知识分析的范围</h3>
+<p>以必要充分条件分析命题知识，是一种具体研究程序，并非所有认识传统的默认问题。《庄子》的技艺故事、儒家的学习与工夫讨论，经常把能力、视角和生活转化置于中心<span class="citation" data-cites="analects2003 zhuangzi2009">(<a href="references.html#ref-analects2003" role="doc-biblioref">Confucius 2003年</a>; <a href="references.html#ref-zhuangzi2009" role="doc-biblioref">Zhuangzi 2009年</a>)</span>。它们未必需要先回答JTB是否充分。 这不表示Gettier问题只对“西方”有效。任何传统若把真实判断、适当根据和认识成就联系，都可能面对偶然成功；但案例形式和目标概念需重新建立，不能只把“知”替换成knowledge便宣布同一反例。 反向压力是：厚认识概念可能通过把能力、行动和人格纳入而避开某些Gettier案例，却也难以解释日常薄知识归属。现代分析的细分有助于区分“知道事实”“能够做到”“真正体认”，避免用一个理想状态否定所有普通知识。</p>
+</section>
+<section id="综合研讨自动科学发现" class="level3" data-number="1.6.17">
+<h3 data-number="1.6.17" class="anchored" data-anchor-id="综合研讨自动科学发现"><span class="header-section-number">1.6.17</span> 综合研讨：自动科学发现</h3>
+<p>自动系统扫描数据，提出材料X在低温超导的假说。训练代码有一个单位错误，数据清洗又误把温度缩放，两项错误抵消，预测恰好为真。实验团队依建议合成材料并重复测得超导。哪个时间点、哪个主体拥有知识？ 系统最初输出具有双重错误抵消，符合Gettier结构；提出假说的真值不归功正确计算。团队第一次实验若独立操作，可能获得新知，不会回溯修复系统原始输出。多次异质复现进一步增强安全和理解。 无假前提会定位单位与清洗假设；可靠主义审查整个发现流程；安全性检验稍改错误是否失败；能力理论把后来实验归功团队；知识优先则可直接区分系统猜中与团队知道。案例让各方案显示解释单位。 若论文写“AI发现超导材料”，语言把假说生成、实验验证和机构接受压成单一主体。更精确的归属应说明系统提出候选，团队验证，知识由何流程形成。概念分析由此影响科研功劳与责任制度。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="专题研讨任务">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>专题研讨任务
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>选取一个新的Gettier式系统案例，分别让无假前提、击败、可靠、安全、能力和知识优先方案作出预测。对每个方案给一个最有利版本与一个压力变体，最后说明你采用的是定义项目、基本概念项目还是多元项目。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="知识分析之后统一解释的要求" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="知识分析之后统一解释的要求"><span class="header-section-number">1.7</span> 知识分析之后：统一解释的要求</h2>
+<section id="分析必须说明自己的目标" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="分析必须说明自己的目标"><span class="header-section-number">1.7.1</span> 分析必须说明自己的目标</h3>
+<p>“知识是什么”至少可以有三种不同研究目标。第一种追求一组必要且充分条件，希望判断任何案例时都能给出清楚边界；第二种追求解释模型，重点不是逐字定义“知道”，而是说明知识与证据、断言、行动、学习之间的系统联系；第三种属于概念工程，询问现有知识概念是否适合公共交流和制度设计。三种目标都合理，却不能在论证中随意切换。若理论在反例出现后说自己从未追求严格分析，它就必须展示解释收益；若主张改造概念，也要说明为何新概念比日常概念更能服务目标。</p>
+</section>
+<section id="反例不是一次性否决票" class="level3" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="反例不是一次性否决票"><span class="header-section-number">1.7.2</span> 反例不是一次性否决票</h3>
+<p>一个反例通常只能否定某组条件的充分性或必要性，不能直接给出替代理论。Gettier案例显示JTB允许理由路径与真值路径偶然交叉，但由此还不能判断问题来自假前提、因果偏离、近邻错误、能力归功还是某种更基本的知识结构。研究者应在案例后提出诊断性问题：若删除假前提，直觉是否保留；若改变环境中的假对象，判断是否变化；若让主体能力更强，成功是否更归功于主体。反例的真正价值在于生成一组最小对照，使竞争解释承担不同预测。</p>
+</section>
+<section id="修补条件会产生覆盖压力" class="level3" data-number="1.7.3">
+<h3 data-number="1.7.3" class="anchored" data-anchor-id="修补条件会产生覆盖压力"><span class="header-section-number">1.7.3</span> 修补条件会产生覆盖压力</h3>
+<p>无假前提条件能够排除Gettier原始推理，却难以处理没有显式推理的停钟与假谷仓。因果理论把事实重新接入信念形成过程，但必须区分适当因果链与偏离链，并说明数学知识怎样进入框架。安全性把注意力转向近邻世界，却要回答相似性和方法固定问题；德性理论强调成功源自主体能力，却必须处理团队、仪器和制度共同贡献。一个条件若被不断扩大到吸收所有反例，往往会失去独立解释力：理论看似覆盖更多，实际上只是把“以非运气方式为真”换成另一种说法。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="论证重构">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>论证重构
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>评价知识理论可使用四项联合标准：范围——它要解释哪些类型的知识；区分力——它能否分开结构相近的正例与反例；解释力——它指出成功为何属于主体或系统；连接力——它能否说明知识与证据、断言、行动和价值的关系。没有任何一项可由“符合我的直觉”替代。</p>
+</div>
+</div>
+</section>
+<section id="知识可能是关系性的成就" class="level3" data-number="1.7.4">
+<h3 data-number="1.7.4" class="anchored" data-anchor-id="知识可能是关系性的成就"><span class="header-section-number">1.7.4</span> 知识可能是关系性的成就</h3>
+<p>许多案例提示，知识既不只是主体内部的一组状态，也不只是外部过程的统计性质。主体需要以某种方式响应证据，环境需要让方法具有适当可靠性，真值还要通过不太偶然的路径进入信念。关系性理解允许不同成分在不同知识类型中权重不同：知觉知识更依赖环境与感官能力，数学知识更依赖推理结构，证言知识还依赖说话者与制度。代价是理论不再提供一个短小定义；收益则是它可以解释为什么同一主体在不同环境中认识地位改变，也能解释团队知识不等于个人状态之和。</p>
+</section>
+<section id="知识优先并不取消案例分析" class="level3" data-number="1.7.5">
+<h3 data-number="1.7.5" class="anchored" data-anchor-id="知识优先并不取消案例分析"><span class="header-section-number">1.7.5</span> 知识优先并不取消案例分析</h3>
+<p>把知识当作基本项，可以用知识解释证据、正当断言或理性行动，而不必先把它还原为非知识条件<span class="citation" data-cites="williamson2000">(<a href="references.html#ref-williamson2000" role="doc-biblioref">Williamson 2000年</a>)</span>。但“基本”不等于“神秘”或“不可研究”。知识优先理论仍须说明知识归属在案例中为何变化、哪些心理和环境因素能够提供证据、哪些制度安排更容易产生知识。它把研究重心从定义转向理论角色，却没有免除反例、语言证据和经验研究。相反，若知识承担更多解释任务，对归属错误的代价也会更大。</p>
+</section>
+<section id="阶段性结论" class="level3" data-number="1.7.6">
+<h3 data-number="1.7.6" class="anchored" data-anchor-id="阶段性结论"><span class="header-section-number">1.7.6</span> 阶段性结论</h3>
+<p>本章没有寻找一条能永久终结争论的定义，而是建立一种更严格的分析习惯：先固定评价对象，再区分必要与充分；画出理由路径和真值路径；使用最小对照定位运气；最后比较理论在范围、区分、解释和连接上的得失。这样处理后，“知识是什么”不再是一场术语投票，而成为对认识成功结构的连续研究。</p>
+</section>
+<section id="研究定位" class="level3" data-number="1.7.7">
+<h3 data-number="1.7.7" class="anchored" data-anchor-id="研究定位"><span class="header-section-number">1.7.7</span> 研究定位</h3>
+<p>本章的路线从“增加第四条件”的修补史，推进到辨别能力、概念功能和知识优先等解释方案。前者可由@lehrer1969与<span class="citation" data-cites="goldman1976进入">(<a href="references.html#ref-goldman1976进入" role="doc-biblioref"><strong>goldman1976进入?</strong></a>)</span>，后者可用@craig1990、<span class="citation" data-cites="williamson2000和">(<a href="references.html#ref-williamson2000和" role="doc-biblioref"><strong>williamson2000和?</strong></a>)</span><span class="citation" data-cites="greco2010作相互有张力的研究起点">(<a href="references.html#ref-greco2010作相互有张力的研究起点" role="doc-biblioref"><strong>greco2010作相互有张力的研究起点?</strong></a>)</span>。</p>
+<div class="callout callout-style-default callout-note callout-titled" title="自测小结">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>自测小结
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>知识评价不能压缩为真假评价；JTB解释了知识为何包含真、信念与理由，却无法排除理由路径与真值路径偶然分离的情形。成熟理论既要处理反例，也要说明知识为何能支持探究、断言和行动。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="章末练习">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">警告</span>章末练习
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>用同一核心命题构造“合理但为假”“不合理但为真”和“得到确证却因运气为真”三个最小对照案例。</p></li>
+<li><p>重构Gettier原文中一个案例，分别画出证据路径与真值路径，并指出两条路径在哪里分离。</p></li>
+<li><p>比较“无假前提”“恰当因果联系”和“反运气条件”三种修补方案；每种方案给出一个它能处理和一个它难以处理的案例。</p></li>
+<li><p>若有人坚持史密斯在原始Gettier案例中确实知道，他必须修改知识的哪一项常见直觉？</p></li>
+<li><p>选择一场现实争论，分别评价参与者的真值、认识地位、理性和责任，说明四项评价为何不能互相替代。</p></li>
+<li><p>写一篇八百字立场短文：知识分析应追求严格定义、解释性模型，还是改良后的实践概念？至少处理一个最强反对。</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="分层阅读地图">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">提示</span>分层阅读地图
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>第一层：问题奠基：</strong> 先掌握知识分析、Gettier压力及标准教材中的基本论证。 <span class="citation" data-cites="plato1990 chisholm1989 armstrong1973 dancy1985 audi2011 gettier1963 lehrer1969">(<a href="references.html#ref-plato1990" role="doc-biblioref">Plato 1990年</a>; <a href="references.html#ref-chisholm1989" role="doc-biblioref">Chisholm 1989年</a>; <a href="references.html#ref-armstrong1973" role="doc-biblioref">Armstrong 1973年</a>; <a href="references.html#ref-dancy1985" role="doc-biblioref">Dancy 1985年</a>; <a href="references.html#ref-audi2011" role="doc-biblioref">Audi 2011年</a>; <a href="references.html#ref-gettier1963" role="doc-biblioref">Gettier 1963年</a>; <a href="references.html#ref-lehrer1969" role="doc-biblioref">Lehrer 和 Paxson 1969年</a>)</span></p>
+<p><strong>第二层：反例与修补：</strong> 比较因果、辨别、德性与“真信念”路线怎样重画知识的边界。 <span class="citation" data-cites="goldman1967 goldman1976 zagzebski1994 sartwell1991 turri2012 sosa1991">(<a href="references.html#ref-goldman1967" role="doc-biblioref">Goldman 1967年</a>, <a href="references.html#ref-goldman1976" role="doc-biblioref">1976年</a>; <a href="references.html#ref-zagzebski1994" role="doc-biblioref">Zagzebski 1994年</a>; <a href="references.html#ref-sartwell1991" role="doc-biblioref">Sartwell 1991年</a>; <a href="references.html#ref-turri2012" role="doc-biblioref">Turri 2012年</a>; <a href="references.html#ref-sosa1991" role="doc-biblioref">Sosa 1991年</a>)</span></p>
+<p><strong>第三层：解释性理论：</strong> 研究知识优先、自然主义、能力论、实践论与知识概念功能。 <span class="citation" data-cites="williamson2000 greco2010 greco2012 kelp2018 kornblith2002 littlejohn2012 hetherington2011 craig1990">(<a href="references.html#ref-williamson2000" role="doc-biblioref">Williamson 2000年</a>; <a href="references.html#ref-greco2010" role="doc-biblioref">Greco 2010年</a>, <a href="references.html#ref-greco2012" role="doc-biblioref">2012年</a>; <a href="references.html#ref-kelp2018" role="doc-biblioref">Kelp 2018年</a>; <a href="references.html#ref-kornblith2002" role="doc-biblioref">Kornblith 2002年</a>; <a href="references.html#ref-littlejohn2012" role="doc-biblioref">Littlejohn 2012年</a>; <a href="references.html#ref-hetherington2011" role="doc-biblioref">Hetherington 2011年</a>; <a href="references.html#ref-craig1990" role="doc-biblioref">Craig 1990年</a>)</span></p>
+<p><strong>第四层：课程与研究入口：</strong> 用论文集、手册和比较哲学材料定位争论史及专题书目。 <span class="citation" data-cites="brown2012 steup2014 moser2002 bernecker2011 quine1969 norden2017">(<a href="references.html#ref-brown2012" role="doc-biblioref">Brown 和 Gerken 2012年</a>; <a href="references.html#ref-steup2014" role="doc-biblioref">Steup 等 2014年</a>; <a href="references.html#ref-moser2002" role="doc-biblioref">Moser 2002年</a>; <a href="references.html#ref-bernecker2011" role="doc-biblioref">Bernecker 和 Pritchard 2011年</a>; <a href="references.html#ref-quine1969" role="doc-biblioref">Quine 1969年</a>; <a href="references.html#ref-norden2017" role="doc-biblioref">Van Norden 2017年</a>)</span></p>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-armstrong1973" class="csl-entry" role="listitem">
+Armstrong, D. M. 1973年. <em>Belief, Truth and Knowledge</em>. Cambridge University Press.
+</div>
+<div id="ref-audi2011" class="csl-entry" role="listitem">
+Audi, Robert. 2011年. <em>Epistemology: A Contemporary Introduction to the Theory of Knowledge</em>. 3 版. Routledge.
+</div>
+<div id="ref-bernecker2011" class="csl-entry" role="listitem">
+Bernecker, Sven, 和 Duncan Pritchard, 编. 2011年. <em>The Routledge Companion to Epistemology</em>. Routledge.
+</div>
+<div id="ref-brown2012" class="csl-entry" role="listitem">
+Brown, Jessica, 和 Mikkel Gerken, 编. 2012年. <em>Knowledge Ascriptions</em>. Oxford University Press.
+</div>
+<div id="ref-chisholm1989" class="csl-entry" role="listitem">
+Chisholm, Roderick M. 1989年. <em>Theory of Knowledge</em>. 3 版. Prentice Hall.
+</div>
+<div id="ref-analects2003" class="csl-entry" role="listitem">
+Confucius. 2003年. <em>Confucius: Analects</em>. 翻译 Edward Slingerland. Hackett.
+</div>
+<div id="ref-craig1990" class="csl-entry" role="listitem">
+Craig, Edward. 1990年. <em>Knowledge and the State of Nature: An Essay in Conceptual Synthesis</em>. Clarendon Press.
+</div>
+<div id="ref-dancy1985" class="csl-entry" role="listitem">
+Dancy, Jonathan. 1985年. <em>An Introduction to Contemporary Epistemology</em>. Basil Blackwell.
+</div>
+<div id="ref-gettier1963" class="csl-entry" role="listitem">
+Gettier, Edmund L. 1963年. <span>《Is Justified True Belief Knowledge?》</span> <em>Analysis</em> 23 (6): 121～23. <a href="https://doi.org/10.1093/analys/23.6.121">https://doi.org/10.1093/analys/23.6.121</a>.
+</div>
+<div id="ref-goldman1967" class="csl-entry" role="listitem">
+Goldman, Alvin I. 1967年. <span>《A Causal Theory of Knowing》</span>. <em>The Journal of Philosophy</em> 64 (12): 357～72. <a href="https://doi.org/10.2307/2024268">https://doi.org/10.2307/2024268</a>.
+</div>
+<div id="ref-goldman1976" class="csl-entry" role="listitem">
+Goldman, Alvin I. 1976年. <span>《Discrimination and Perceptual Knowledge》</span>. <em>The Journal of Philosophy</em> 73 (20): 771～91. <a href="https://doi.org/10.2307/2025679">https://doi.org/10.2307/2025679</a>.
+</div>
+<div id="ref-goldman1979" class="csl-entry" role="listitem">
+Goldman, Alvin I. 1979年. <span>《What Is Justified Belief?》</span> 收入 <em>Justification and Knowledge</em>, 编辑 George S. Pappas. D. Reidel.
+</div>
+<div id="ref-greco2010" class="csl-entry" role="listitem">
+Greco, John. 2010年. <em>Achieving Knowledge: A Virtue-Theoretic Account of Epistemic Normativity</em>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511844645">https://doi.org/10.1017/CBO9780511844645</a>.
+</div>
+<div id="ref-greco2012" class="csl-entry" role="listitem">
+Greco, John. 2012年. <span>《A (Different) Virtue Epistemology》</span>. <em>Philosophy and Phenomenological Research</em> 85 (1): 1～26. <a href="https://doi.org/10.1111/j.1933-1592.2011.00567.x">https://doi.org/10.1111/j.1933-1592.2011.00567.x</a>.
+</div>
+<div id="ref-hetherington2011" class="csl-entry" role="listitem">
+Hetherington, Stephen. 2011年. <em>How to Know: A Practicalist Conception of Knowledge</em>. Wiley-Blackwell. <a href="https://doi.org/10.1002/9781118083178">https://doi.org/10.1002/9781118083178</a>.
+</div>
+<div id="ref-kelp2018" class="csl-entry" role="listitem">
+Kelp, Christoph. 2018年. <em>Good Thinking: A Knowledge First Virtue Epistemology</em>. Routledge.
+</div>
+<div id="ref-kornblith2002" class="csl-entry" role="listitem">
+Kornblith, Hilary. 2002年. <em>Knowledge and Its Place in Nature</em>. Oxford University Press.
+</div>
+<div id="ref-lehrer1969" class="csl-entry" role="listitem">
+Lehrer, Keith, 和 Thomas Jr. Paxson. 1969年. <span>《Knowledge: Undefeated Justified True Belief》</span>. <em>The Journal of Philosophy</em> 66 (8): 225～37. <a href="https://doi.org/10.2307/2024435">https://doi.org/10.2307/2024435</a>.
+</div>
+<div id="ref-littlejohn2012" class="csl-entry" role="listitem">
+Littlejohn, Clayton. 2012年. <em>Justification and the Truth-Connection</em>. Cambridge University Press.
+</div>
+<div id="ref-moser2002" class="csl-entry" role="listitem">
+Moser, Paul K., 编. 2002年. <em>The Oxford Handbook of Epistemology</em>. Oxford University Press. <a href="https://doi.org/10.1093/oxfordhb/9780195301700.001.0001">https://doi.org/10.1093/oxfordhb/9780195301700.001.0001</a>.
+</div>
+<div id="ref-plato1990" class="csl-entry" role="listitem">
+Plato. 1990年. <em>The Theaetetus of Plato</em>. 编辑 Myles Burnyeat. 翻译 M. J. Levett. Hackett.
+</div>
+<div id="ref-pritchard2012" class="csl-entry" role="listitem">
+Pritchard, Duncan. 2012年. <span>《Anti-Luck Virtue Epistemology》</span>. <em>The Journal of Philosophy</em> 109 (3): 247～79. <a href="https://doi.org/10.5840/jphil201210939">https://doi.org/10.5840/jphil201210939</a>.
+</div>
+<div id="ref-quine1969" class="csl-entry" role="listitem">
+Quine, W. V. O. 1969年. <span>《Epistemology Naturalized》</span>. 收入 <em>Ontological Relativity and Other Essays</em>. Columbia University Press.
+</div>
+<div id="ref-sartwell1991" class="csl-entry" role="listitem">
+Sartwell, Crispin. 1991年. <span>《Knowledge Is Merely True Belief》</span>. <em>American Philosophical Quarterly</em> 28 (2): 157～65.
+</div>
+<div id="ref-sosa1991" class="csl-entry" role="listitem">
+Sosa, Ernest. 1991年. <em>Knowledge in Perspective: Selected Essays in Epistemology</em>. Cambridge University Press.
+</div>
+<div id="ref-steup2014" class="csl-entry" role="listitem">
+Steup, Matthias, John Turri, 和 Ernest Sosa, 编. 2014年. <em>Contemporary Debates in Epistemology</em>. 2 版. Wiley-Blackwell.
+</div>
+<div id="ref-turri2012" class="csl-entry" role="listitem">
+Turri, John. 2012年. <span>《Is Knowledge Justified True Belief?》</span> <em>Synthese</em> 184 (3): 247～59. <a href="https://doi.org/10.1007/s11229-010-9773-8">https://doi.org/10.1007/s11229-010-9773-8</a>.
+</div>
+<div id="ref-norden2017" class="csl-entry" role="listitem">
+Van Norden, Bryan W. 2017年. <em>Taking Back Philosophy</em>. Columbia University Press.
+</div>
+<div id="ref-williamson2000" class="csl-entry" role="listitem">
+Williamson, Timothy. 2000年. <em>Knowledge and Its Limits</em>. Oxford University Press.
+</div>
+<div id="ref-zagzebski1994" class="csl-entry" role="listitem">
+Zagzebski, Linda. 1994年. <span>《The Inescapability of Gettier Problems》</span>. <em>The Philosophical Quarterly</em> 44 (174): 65～73. <a href="https://doi.org/10.2307/2220147">https://doi.org/10.2307/2220147</a>.
+</div>
+<div id="ref-zhuangzi2009" class="csl-entry" role="listitem">
+Zhuangzi. 2009年. <em>Zhuangzi: The Essential Writings</em>. 翻译 Brook Ziporyn. Hackett.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../manuscript/00-preface.html" class="pagination-link" aria-label="写在前面">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">写在前面</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../manuscript/02-skepticism-luck.html" class="pagination-link" aria-label="怀疑、运气与知识的边界">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">怀疑、运气与知识的边界</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
