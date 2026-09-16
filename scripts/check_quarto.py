@@ -17,6 +17,7 @@ WORKFLOWS = ROOT / ".github" / "workflows"
 PAGES_WORKFLOW = WORKFLOWS / "html-ci.yml"
 
 EXPECTED = [
+    "00-open-access-and-support.qmd",
     "00-preface.qmd",
     "01-knowledge.qmd",
     "02-skepticism-luck.qmd",
@@ -95,6 +96,10 @@ def check_quarto_config(config: str) -> None:
         fail("_quarto.yml must use the root references.bib bibliography")
     if "lang: zh-CN" not in config:
         fail("_quarto.yml must keep the Chinese language setting (zh-CN)")
+    if 'header: "**本书目录**"' not in config:
+        fail('_quarto.yml must label the left sidebar as "本书目录"')
+    if 'toc-title: "本章目录"' not in config:
+        fail('_quarto.yml must label the chapter table of contents as "本章目录"')
 
     canonical_paths = ["index.qmd"] + [f"manuscript/{name}" for name in EXPECTED]
     for rel_path in canonical_paths:
