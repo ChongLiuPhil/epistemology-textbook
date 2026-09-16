@@ -1,0 +1,52 @@
+name: 网页显示与阅读问题
+description: 报告目录、公式、表格、脚注、链接、移动端或浏览器显示问题
+title: "[网页问题] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢帮助改进网页版。请尽量提供页面链接和设备环境，以便复现问题。
+  - type: input
+    id: page
+    attributes:
+      label: 页面链接
+      placeholder: https://chongliuphil.github.io/epistemology-textbook/...
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 问题类型
+      options:
+        - 目录或导航
+        - 公式
+        - 表格或代码块
+        - 脚注或引文
+        - 链接
+        - 移动端排版
+        - 可访问性
+        - 其他显示问题
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题说明
+      description: 请说明预期效果和实际效果。
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 设备与浏览器
+      description: 例如 iPhone Safari、Windows Chrome、Android Firefox。
+    validations:
+      required: false
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 如有截图、复现步骤或其他线索，可写在这里。
+    validations:
+      required: false
