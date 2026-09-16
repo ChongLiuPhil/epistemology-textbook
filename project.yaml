@@ -27,15 +27,15 @@ topics:
 
 source_of_truth:
   overview: README.md
-  manuscript: textbook/main.tex
-  bibliography: textbook/references.bib
+  book_config: _quarto.yml
+  manuscript: manuscript/
+  bibliography: references.bib
 
 website:
   metadata: website.yaml
-  default_publish: false
+  default_publish: true
 
 notes: >
-  Private project metadata for organizing the academic knowledge system.
-  The repository overview, canonical manuscript entry point, and bibliography
-  are explicitly recorded above. Public website content must still be
-  explicitly approved through website.yaml.
+  Quarto QMD files are the canonical manuscript source. HTML and EPUB are built
+  directly from the same manuscript. The legacy textbook/ LaTeX tree is kept
+  only for historical audit and is not part of the active build.

@@ -1,29 +1,27 @@
-# Repository-level convenience targets.
-# The canonical PDF build logic remains in textbook/Makefile.
-
-.PHONY: check pdf web-source web clean help
+.PHONY: check html epub web all clean help
 
 help:
 	@echo "Available targets:"
-	@echo "  make check       - run source consistency checks"
-	@echo "  make pdf         - build the complete textbook PDF"
-	@echo "  make web-source  - generate and validate Quarto pages from LaTeX"
-	@echo "  make web         - render the HTML reading site with Quarto"
-	@echo "  make clean       - remove temporary PDF and web build output"
+	@echo "  make check  - validate canonical Quarto sources and citations"
+	@echo "  make html   - render the HTML reading edition"
+	@echo "  make epub   - render the EPUB ebook"
+	@echo "  make web    - alias for make html"
+	@echo "  make all    - render all configured Quarto formats"
+	@echo "  make clean  - remove Quarto build output"
 
 check:
-	$(MAKE) -C textbook check
-	python3 scripts/build_web.py --check
+	python3 scripts/check_quarto.py
 
-pdf:
-	$(MAKE) -C textbook pdf
-
-web-source:
-	python3 scripts/build_web.py --check
-
-web: web-source
+html: check
 	quarto render --to html
 
+epub: check
+	quarto render --to epub
+
+web: html
+
+all: check
+	quarto render
+
 clean:
-	$(MAKE) -C textbook clean
-	rm -rf _book website/generated .quarto
+	rm -rf _book .quarto

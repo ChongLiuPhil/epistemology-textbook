@@ -1,25 +1,28 @@
-name: Validate and Publish Quarto Book
+name: Build and Publish Quarto Book
 
 on:
   workflow_dispatch:
   pull_request:
     paths:
-      - "textbook/**"
-      - "website/**"
-      - "scripts/build_web.py"
-      - "book.css"
-      - "_quarto.yml"
+      - "manuscript/**"
+      - "references.bib"
       - "index.qmd"
+      - "_quarto.yml"
+      - "book.css"
+      - "epub.css"
+      - "scripts/check_quarto.py"
       - "Makefile"
       - ".github/workflows/publish-book.yml"
   push:
+    branches: [main]
     paths:
-      - "textbook/**"
-      - "website/**"
-      - "scripts/build_web.py"
-      - "book.css"
-      - "_quarto.yml"
+      - "manuscript/**"
+      - "references.bib"
       - "index.qmd"
+      - "_quarto.yml"
+      - "book.css"
+      - "epub.css"
+      - "scripts/check_quarto.py"
       - "Makefile"
       - ".github/workflows/publish-book.yml"
 
@@ -33,7 +36,7 @@ concurrency:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -43,22 +46,23 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate and validate reading sources
-        run: python3 scripts/build_web.py --check
+      - name: Check canonical Quarto sources
+        run: make check
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render HTML book
-        run: quarto render --to html
+      - name: Render HTML and EPUB
+        run: quarto render
 
       - name: Validate rendered book
         run: |
           test -f _book/index.html
-          test -f _book/website/generated/01-knowledge.html
-          test -f _book/website/generated/09-comparative.html
-          test -f _book/website/generated/glossary.html
-          test -f _book/website/generated/references.html
+          test -f _book/manuscript/01-knowledge.html
+          test -f _book/manuscript/09-comparative.html
+          test -f _book/manuscript/glossary.html
+          test -f _book/manuscript/references.html
+          test -f _book/how-do-we-know.epub
 
       - name: Upload HTML preview
         uses: actions/upload-artifact@v4
@@ -68,7 +72,15 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: Publish validated HTML to GitHub Pages branch
+      - name: Upload EPUB ebook
+        uses: actions/upload-artifact@v4
+        with:
+          name: epistemology-textbook-epub
+          path: _book/how-do-we-know.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish validated book to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: quarto-dev/quarto-actions/publish@v2
         with:
