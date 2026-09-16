@@ -44,11 +44,21 @@
 
 ## 4. 文献约定
 
-所有正式引文键必须存在于根目录 `references.bib`。新增条目后应在正文或阅读地图中实际使用，并运行：
+所有正式引文键必须存在于根目录 `references.bib`。新增或修改文献条目时：
+
+- 优先记录可核验的 DOI；`doi` 字段使用规范的 bare DOI（例如 `10.xxxx/...`），不要把 resolver URL 填进 DOI 字段。
+- `url` 字段使用完整的 `http://` 或 `https://` 地址；DOI resolver 可以同时作为 URL 保留，但不能替代 `doi` 字段。
+- 不要给多个不同条目复用同一 DOI。若确实是同一作品的不同版本，应先确认是否需要分别建条目以及应引用哪个版本。
+- 新增条目原则上应在正文、阅读地图或研究材料中实际使用；暂未引用的条目可以保留，但 `make check` 会将它们列为审计信息。
+- 对作者、标题、年份、卷期、页码、出版社或 DOI 的实质修订，应以出版社、DOI 注册元数据或其他权威书目信息为依据，不凭印象猜改。
+
+提交前运行：
 
 ```sh
 make check
 ```
+
+该命令会检查 citation key、BibTeX 基本结构、重复/格式错误 DOI 与 URL 等确定性问题。外部链接是否仍可访问由独立的 `External Link Audit` 定期检查，因为 403、429、5xx、TLS 与超时可能只是第三方网站的临时或机器人访问限制。
 
 ## 5. 练习与后置材料
 
@@ -103,7 +113,9 @@ Pull Request 应说明改动内容、理由、是否改变章节结构或核心�
 
 ## 9. CI 与网页发布
 
-Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、完整 HTML render 和关键页面/阅读界面检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
+Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、bibliography integrity checks、完整 HTML render 与全站内部链接/锚点检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
+
+仓库另有独立的每周/手动 `External Link Audit`。它不参与正常 Pages 发布门禁；只有明确的 HTTP 404/410 会被标记为断链失败，认证、限流、服务器错误和网络异常作为 warning 留给维护者复核。
 
 因此，一次网页相关修改的完成标准不是“QMD 已修改”或“CI 能 render”，而是：修改进入 `main`、主分支 CI 通过、Pages deployment 成功，公开网页能够显示新的书籍版本。
 
