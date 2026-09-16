@@ -25,6 +25,11 @@ Thumbs.db
 *.pdf
 !reference/*.pdf
 
+# Quarto / 在线阅读构建产物
+_book/
+website/generated/
+.quarto/
+
 # 编辑器 / 本地工作区
 .vscode/
 .idea/
