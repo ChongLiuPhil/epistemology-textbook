@@ -1,0 +1,80 @@
+name: Quarto HTML CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "manuscript/**"
+      - "references.bib"
+      - "index.qmd"
+      - "_quarto.yml"
+      - "book.css"
+      - "project.yaml"
+      - "website.yaml"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "scripts/check_quarto.py"
+      - "Makefile"
+      - ".github/workflows/html-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "manuscript/**"
+      - "references.bib"
+      - "index.qmd"
+      - "_quarto.yml"
+      - "book.css"
+      - "project.yaml"
+      - "website.yaml"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "scripts/check_quarto.py"
+      - "Makefile"
+      - ".github/workflows/html-ci.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quarto-html-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-html:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check canonical Quarto sources
+        run: make check
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render HTML
+        run: quarto render --to html
+
+      - name: Validate rendered HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f _book/index.html
+          test -f _book/manuscript/01-knowledge.html
+          test -f _book/manuscript/05-social-knowledge.html
+          test -f _book/manuscript/09-comparative.html
+          test -f _book/manuscript/study-guide.html
+          test -f _book/manuscript/research-studio.html
+          test -f _book/manuscript/glossary.html
+          test -f _book/manuscript/references.html
+
+          if find _book -type f \( -name '*.epub' -o -name '*.pdf' -o -name '*.docx' \) -print -quit | grep -q .; then
+            echo "Unexpected release-format artifact found in _book" >&2
+            exit 1
+          fi

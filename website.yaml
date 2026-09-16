@@ -1,5 +1,5 @@
 schema_version: 1
-publish: true
+publish: false
 
 title:
   zh: "我们如何知道？——问题驱动的认识论"
@@ -10,9 +10,7 @@ summary:
   en: "A problem-driven Chinese-language epistemology textbook covering knowledge, skepticism, justification, sources of knowledge, social and formal epistemology, epistemic value, digital and AI environments, and comparative epistemology."
 
 status:
-  zh: "三部九章持续审校；Quarto QMD 为唯一正式书稿来源，并直接生成 HTML 阅读版与 EPUB 电子书。"
-  en: "The three-part, nine-chapter book remains under editorial review; canonical Quarto QMD sources directly produce the HTML reading edition and EPUB ebook."
+  zh: "Web Edition Development：Quarto QMD 为唯一正式书稿来源；当前持续验证并生成 HTML，不自动部署，EPUB、PDF 与 DOCX 延后到独立 release 流程。"
+  en: "Web Edition Development: canonical Quarto QMD sources are validated and rendered to HTML only. Automatic deployment is paused; EPUB, PDF, and DOCX are deferred to a separate release workflow."
 
 featured: false
-links:
-  - https://chongliuphil.github.io/epistemology-textbook/
