@@ -14,6 +14,7 @@ MANUSCRIPT = ROOT / "manuscript"
 MAKEFILE = ROOT / "Makefile"
 GITIGNORE = ROOT / ".gitignore"
 WORKFLOWS = ROOT / ".github" / "workflows"
+PAGES_WORKFLOW = WORKFLOWS / "html-ci.yml"
 
 EXPECTED = [
     "00-preface.qmd",
@@ -42,6 +43,7 @@ REQUIRED_PROJECT_FILES = [
     ROOT / "project.yaml",
     ROOT / "website.yaml",
     GITIGNORE,
+    PAGES_WORKFLOW,
 ]
 
 GENERATED_MARKERS = (
@@ -106,8 +108,11 @@ def check_active_build_files() -> None:
         "old QMD generator": r"scripts/build_web\.py|website/generated/",
         "legacy LaTeX toolchain": r"(?i)latexmk|xelatex|pdflatex|textbook/[^\s]+\.tex",
     }
-    release_command_pattern = re.compile(
-        r"(?i)(quarto\s+(?:render|publish)[^\n]*(?:epub|pdf|docx)|make\s+(?:epub|pdf|docx)|gh-pages|actions/deploy-pages|quarto-actions/publish)"
+    forbidden_release_pattern = re.compile(
+        r"(?i)(quarto\s+(?:render|publish)[^\n]*(?:epub|pdf|docx)|make\s+(?:epub|pdf|docx)|quarto-actions/publish)"
+    )
+    legacy_pages_pattern = re.compile(
+        r"(?i)(git\s+(?:branch|push)[^\n]*gh-pages|refs/heads/gh-pages)"
     )
 
     for path in build_files:
@@ -115,8 +120,10 @@ def check_active_build_files() -> None:
         for label, pattern in legacy_patterns.items():
             if re.search(pattern, text):
                 fail(f"{label} dependency remains in {path.relative_to(ROOT)}")
-        if release_command_pattern.search(text):
-            fail(f"release/deployment command remains in active build file: {path.relative_to(ROOT)}")
+        if forbidden_release_pattern.search(text):
+            fail(f"release-format command remains in active build file: {path.relative_to(ROOT)}")
+        if legacy_pages_pattern.search(text):
+            fail(f"legacy gh-pages branch deployment remains in active build file: {path.relative_to(ROOT)}")
 
     makefile = MAKEFILE.read_text(encoding="utf-8")
     for target in ("epub", "pdf", "docx"):
@@ -125,6 +132,21 @@ def check_active_build_files() -> None:
 
     if (ROOT / "epub.css").exists():
         fail("obsolete epub.css remains in the active project root")
+
+
+def check_pages_deployment() -> None:
+    workflow = PAGES_WORKFLOW.read_text(encoding="utf-8")
+    required_markers = {
+        "official Pages configuration": "actions/configure-pages@",
+        "Pages artifact upload": "actions/upload-pages-artifact@",
+        "Pages deployment": "actions/deploy-pages@",
+        "rendered _book deployment source": "path: _book",
+        "GitHub Pages environment": "name: github-pages",
+        "main-only deployment guard": "github.ref == 'refs/heads/main'",
+    }
+    for label, marker in required_markers.items():
+        if marker not in workflow:
+            fail(f"{label} is missing from {PAGES_WORKFLOW.relative_to(ROOT)}")
 
 
 def check_sources() -> list[Path]:
@@ -164,13 +186,14 @@ def main() -> None:
     config = CONFIG.read_text(encoding="utf-8")
     check_quarto_config(config)
     check_active_build_files()
+    check_pages_deployment()
     files = check_sources()
     cited_count, bib_count = check_citations(files)
 
     print(
         "Quarto source check passed: "
         f"{len(files)} canonical QMD files, {cited_count} cited keys, "
-        f"{bib_count} bibliography entries; active output is HTML only."
+        f"{bib_count} bibliography entries; HTML is the active output and main deploys it to GitHub Pages."
     )
 
 
