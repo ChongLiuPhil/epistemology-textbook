@@ -46,6 +46,14 @@ jobs:
       - name: Generate and validate reading sources
         run: python3 scripts/build_web.py --check
 
+      - name: Upload generated Quarto sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: quarto-generated-sources
+          path: website/generated/*.qmd
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
