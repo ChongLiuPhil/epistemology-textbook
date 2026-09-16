@@ -15,6 +15,7 @@ on:
       - "CONTRIBUTING.md"
       - "scripts/check_quarto.py"
       - "Makefile"
+      - ".github/ISSUE_TEMPLATE/**"
       - ".github/workflows/html-ci.yml"
   push:
     branches: [main]
@@ -30,6 +31,7 @@ on:
       - "CONTRIBUTING.md"
       - "scripts/check_quarto.py"
       - "Makefile"
+      - ".github/ISSUE_TEMPLATE/**"
       - ".github/workflows/html-ci.yml"
 
 permissions:
@@ -76,6 +78,12 @@ jobs:
           test -f _book/manuscript/research-studio.html
           test -f _book/manuscript/glossary.html
           test -f _book/manuscript/references.html
+
+          grep -q "本书目录" _book/index.html
+          grep -q "当前阅读版本" _book/index.html
+          grep -q "本章目录" _book/manuscript/01-knowledge.html
+          grep -q "版本、引用与来源" _book/manuscript/00-open-access-and-support.html
+          grep -q "github.com/ChongLiuPhil/epistemology-textbook" _book/manuscript/01-knowledge.html
 
           if find _book -type f \( -name '*.epub' -o -name '*.pdf' -o -name '*.docx' \) -print -quit | grep -q .; then
             echo "Unexpected release-format artifact found in _book" >&2
