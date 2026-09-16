@@ -8,6 +8,7 @@ title:
 
 kind: book-project
 status: active
+phase: web-edition-development
 
 areas:
   - epistemology
@@ -26,16 +27,18 @@ topics:
   - comparative-epistemology
 
 source_of_truth:
-  overview: README.md
-  book_config: _quarto.yml
+  homepage: index.qmd
   manuscript: manuscript/
   bibliography: references.bib
+  book_config: _quarto.yml
 
 website:
   metadata: website.yaml
-  default_publish: true
+  default_publish: false
 
 notes: >
-  Quarto QMD files are the canonical manuscript source. HTML and EPUB are built
-  directly from the same manuscript. The legacy textbook/ LaTeX tree is kept
-  only for historical audit and is not part of the active build.
+  Quarto QMD files are the canonical manuscript source. During Web Edition
+  Development the active pipeline validates the sources and renders HTML only.
+  EPUB, PDF, and DOCX are deferred to a future release workflow after the web
+  edition stabilizes. The legacy textbook/ LaTeX tree is retained only for
+  historical audit and is not part of the active edit or build workflow.
