@@ -15,6 +15,7 @@ MAKEFILE = ROOT / "Makefile"
 GITIGNORE = ROOT / ".gitignore"
 WORKFLOWS = ROOT / ".github" / "workflows"
 PAGES_WORKFLOW = WORKFLOWS / "html-ci.yml"
+RENDERED_CHECK = ROOT / "scripts" / "check_rendered_html.py"
 OPEN_READING = MANUSCRIPT / "00-open-access-and-support.qmd"
 ISSUE_TEMPLATES = ROOT / ".github" / "ISSUE_TEMPLATE"
 
@@ -47,6 +48,7 @@ REQUIRED_PROJECT_FILES = [
     ROOT / "website.yaml",
     GITIGNORE,
     PAGES_WORKFLOW,
+    RENDERED_CHECK,
     ISSUE_TEMPLATES / "content-feedback.yml",
     ISSUE_TEMPLATES / "website-bug.yml",
     ISSUE_TEMPLATES / "config.yml",
@@ -59,6 +61,11 @@ GENERATED_MARKERS = (
 )
 
 CROSSREF_PREFIXES = ("fig-", "tbl-", "eq-", "sec-", "lst-")
+CJK = r"\u3400-\u9fff"
+OPEN_READING_URL = (
+    "https://chongliuphil.github.io/epistemology-textbook/"
+    "manuscript/00-open-access-and-support.html"
+)
 
 
 def fail(message: str) -> None:
@@ -109,7 +116,7 @@ def check_quarto_config(config: str) -> None:
         "book sidebar label": 'header: "**本书目录**"',
         "chapter TOC label": 'toc-title: "本章目录"',
         "page footer": "page-footer:",
-        "open-reading sidebar link": "[开放阅读与支持](manuscript/00-open-access-and-support.qmd)",
+        "stable open-reading URL": OPEN_READING_URL,
     }
     for label, marker in required_markers.items():
         if marker not in config:
@@ -122,7 +129,12 @@ def check_quarto_config(config: str) -> None:
 
 
 def check_active_build_files() -> None:
-    build_files = [CONFIG, MAKEFILE, *sorted(WORKFLOWS.glob("*.yml")), *sorted(WORKFLOWS.glob("*.yaml"))]
+    build_files = [
+        CONFIG,
+        MAKEFILE,
+        *sorted(WORKFLOWS.glob("*.yml")),
+        *sorted(WORKFLOWS.glob("*.yaml")),
+    ]
     legacy_patterns = {
         "old QMD generator": r"scripts/build_web\.py|website/generated/",
         "legacy LaTeX toolchain": r"(?i)latexmk|xelatex|pdflatex|textbook/[^\s]+\.tex",
@@ -160,6 +172,7 @@ def check_pages_deployment() -> None:
         "Pages artifact upload": "actions/upload-pages-artifact@",
         "Pages deployment": "actions/deploy-pages@",
         "rendered _book deployment source": "path: _book",
+        "rendered HTML integrity check": "python3 scripts/check_rendered_html.py",
         "GitHub Pages environment": "name: github-pages",
         "main-only deployment guard": "github.ref == 'refs/heads/main'",
     }
@@ -205,10 +218,29 @@ def check_citations(files: list[Path]) -> tuple[int, int]:
     if not bib_keys:
         fail("no bibliography entries found")
 
+    key_alternatives = "|".join(
+        re.escape(key) for key in sorted(bib_keys, key=len, reverse=True)
+    )
+    malformed_boundary = re.compile(
+        rf"(?<=[{CJK}])@(?:{key_alternatives})(?![A-Za-z0-9_:.+-])"
+        rf"|@(?:{key_alternatives})(?=[{CJK}])"
+    )
+
     cited: set[str] = set()
-    citation_pattern = re.compile(r"(?<![\w@])@([A-Za-z][A-Za-z0-9_:.+-]*)")
+    citation_pattern = re.compile(
+        r"(?<![A-Za-z0-9_@])@([A-Za-z][A-Za-z0-9_:.+-]*)"
+    )
+
     for path in files:
-        for key in citation_pattern.findall(path.read_text(encoding="utf-8")):
+        text = path.read_text(encoding="utf-8")
+        boundary_match = malformed_boundary.search(text)
+        if boundary_match:
+            fail(
+                "bare citation touches Chinese text and may be parsed as a longer key in "
+                f"{path.relative_to(ROOT)}: {boundary_match.group(0)}"
+            )
+
+        for key in citation_pattern.findall(text):
             if not key.startswith(CROSSREF_PREFIXES):
                 cited.add(key)
 
@@ -232,8 +264,9 @@ def main() -> None:
     print(
         "Quarto source check passed: "
         f"{len(files)} canonical QMD files, {cited_count} cited keys, "
-        f"{bib_count} bibliography entries; reader feedback/navigation are configured, "
-        "HTML is the active output, and main deploys it to GitHub Pages."
+        f"{bib_count} bibliography entries; citation boundaries are safe, "
+        "reader feedback/navigation are configured, HTML is the active output, "
+        "and main deploys only integrity-checked HTML to GitHub Pages."
     )
 
 
