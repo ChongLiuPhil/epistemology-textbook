@@ -1,6 +1,6 @@
 # 编辑与贡献约定
 
-本项目以 Quarto `.qmd` 作为唯一正式书稿格式。当前阶段是 **Web Edition Development**：一套 canonical QMD sources 经过检查后只生成 HTML。
+本项目以 Quarto `.qmd` 作为唯一正式书稿格式。当前阶段是 **Web Edition Development**：一套 canonical QMD sources 经过检查后生成 HTML；进入 `main` 的修改还必须落实为 GitHub Pages 上实际可阅读的网页。
 
 ## 1. 编辑哪些文件
 
@@ -75,7 +75,7 @@ make html
 # 或 make all；当前阶段二者都只生成 HTML
 ```
 
-当前日常流程不生成 EPUB、PDF 或 DOCX。这些发行格式将在网页版稳定后通过独立 release workflow 处理。
+当前日常流程不生成 EPUB、PDF 或 DOCX。这些发行格式将在网页版稳定后通过独立 release workflow 处理，并继续以同一套 canonical QMD sources 为来源。
 
 ## 7. Commit 与 Pull Request
 
@@ -89,6 +89,10 @@ make html
 
 Pull Request 应说明改动内容、理由、是否改变章节结构或核心论证、文献变化，以及已运行的检查。
 
-## 8. CI 与发布
+## 8. CI 与网页发布
 
-GitHub Actions 当前只做 source validation 与完整 HTML render，并检查关键 HTML 页面是否生成。开发阶段不自动部署 GitHub Pages，不更新 `gh-pages`，也不生成或上传 EPUB/PDF/DOCX artifacts。
+Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、完整 HTML render 和关键页面检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
+
+因此，一次网页相关修改的完成标准不是“QMD 已修改”或“CI 能 render”，而是：修改进入 `main`、主分支 CI 通过、Pages deployment 成功，公开网页能够显示新的书籍版本。
+
+在线阅读地址：<https://chongliuphil.github.io/epistemology-textbook/>
