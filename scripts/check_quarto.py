@@ -15,6 +15,8 @@ MAKEFILE = ROOT / "Makefile"
 GITIGNORE = ROOT / ".gitignore"
 WORKFLOWS = ROOT / ".github" / "workflows"
 PAGES_WORKFLOW = WORKFLOWS / "html-ci.yml"
+OPEN_READING = MANUSCRIPT / "00-open-access-and-support.qmd"
+ISSUE_TEMPLATES = ROOT / ".github" / "ISSUE_TEMPLATE"
 
 EXPECTED = [
     "00-open-access-and-support.qmd",
@@ -45,6 +47,9 @@ REQUIRED_PROJECT_FILES = [
     ROOT / "website.yaml",
     GITIGNORE,
     PAGES_WORKFLOW,
+    ISSUE_TEMPLATES / "content-feedback.yml",
+    ISSUE_TEMPLATES / "website-bug.yml",
+    ISSUE_TEMPLATES / "config.yml",
 ]
 
 GENERATED_MARKERS = (
@@ -92,14 +97,23 @@ def check_quarto_config(config: str) -> None:
     if re.search(r"(?mi)^\s*downloads:\s*", config):
         fail("downloads configuration is not allowed during Web Edition Development")
 
-    if "bibliography: references.bib" not in config:
-        fail("_quarto.yml must use the root references.bib bibliography")
-    if "lang: zh-CN" not in config:
-        fail("_quarto.yml must keep the Chinese language setting (zh-CN)")
-    if 'header: "**本书目录**"' not in config:
-        fail('_quarto.yml must label the left sidebar as "本书目录"')
-    if 'toc-title: "本章目录"' not in config:
-        fail('_quarto.yml must label the chapter table of contents as "本章目录"')
+    required_markers = {
+        "root bibliography": "bibliography: references.bib",
+        "Chinese language": "lang: zh-CN",
+        "book author": 'author: "Chong Liu"',
+        "public site URL": 'site-url: "https://chongliuphil.github.io/epistemology-textbook/"',
+        "source repository": 'repo-url: "https://github.com/ChongLiuPhil/epistemology-textbook"',
+        "reader feedback/source actions": "repo-actions: [issue, source]",
+        "reader mode": "reader-mode: true",
+        "back-to-top navigation": "back-to-top-navigation: true",
+        "book sidebar label": 'header: "**本书目录**"',
+        "chapter TOC label": 'toc-title: "本章目录"',
+        "page footer": "page-footer:",
+        "open-reading sidebar link": "[开放阅读与支持](manuscript/00-open-access-and-support.qmd)",
+    }
+    for label, marker in required_markers.items():
+        if marker not in config:
+            fail(f"{label} is missing from _quarto.yml")
 
     canonical_paths = ["index.qmd"] + [f"manuscript/{name}" for name in EXPECTED]
     for rel_path in canonical_paths:
@@ -154,6 +168,25 @@ def check_pages_deployment() -> None:
             fail(f"{label} is missing from {PAGES_WORKFLOW.relative_to(ROOT)}")
 
 
+def check_reader_support() -> None:
+    text = OPEN_READING.read_text(encoding="utf-8")
+    required_markers = (
+        "阅读权不以付费为前提",
+        "GitHub Issues",
+        "版本、引用与来源",
+        "当前开发范围",
+    )
+    for marker in required_markers:
+        if marker not in text:
+            fail(f"open-reading guidance is missing required section or principle: {marker}")
+
+    for name in ("content-feedback.yml", "website-bug.yml"):
+        template = (ISSUE_TEMPLATES / name).read_text(encoding="utf-8")
+        for marker in ("页面链接", "问题说明"):
+            if marker not in template:
+                fail(f"issue template {name} is missing reader-facing field: {marker}")
+
+
 def check_sources() -> list[Path]:
     files = [ROOT / "index.qmd"] + [MANUSCRIPT / name for name in EXPECTED]
     for path in files:
@@ -192,13 +225,15 @@ def main() -> None:
     check_quarto_config(config)
     check_active_build_files()
     check_pages_deployment()
+    check_reader_support()
     files = check_sources()
     cited_count, bib_count = check_citations(files)
 
     print(
         "Quarto source check passed: "
         f"{len(files)} canonical QMD files, {cited_count} cited keys, "
-        f"{bib_count} bibliography entries; HTML is the active output and main deploys it to GitHub Pages."
+        f"{bib_count} bibliography entries; reader feedback/navigation are configured, "
+        "HTML is the active output, and main deploys it to GitHub Pages."
     )
 
 

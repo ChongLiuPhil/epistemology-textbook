@@ -54,7 +54,18 @@ make check
 
 修改章末练习、提示或术语时，直接维护相应的 `manuscript/*.qmd`。若题目数量、顺序或术语定义发生变化，应同步检查练习提示和术语表是否仍对应。
 
-## 6. 构建与检查
+## 6. 读者反馈与问题分流
+
+公开网页中的“报告问题”是正式反馈入口。GitHub Issue chooser 提供两类结构化模板：
+
+- **书稿纠错与内容建议**：概念、论证、事实、例子、翻译、术语、引文、参考文献、练习或教学结构问题；
+- **网页显示与阅读问题**：目录、公式、表格、脚注、链接、移动端、浏览器兼容或可访问性问题。
+
+处理反馈时优先确认公开网页是否仍能复现；内容问题要回到 canonical QMD 修改，网页问题优先检查 `_quarto.yml`、`book.css` 与 Quarto 输出。不要直接编辑 `_book/` 中的生成文件。
+
+对于书稿反馈，尽量保留页面链接、章节/小节、问题说明、建议修改和参考来源；对于网页反馈，再补充设备与浏览器信息。修复后仍需走 Pull Request → HTML validation → `main` → Pages deployment 的完整流程。
+
+## 7. 构建与检查
 
 提交前至少运行：
 
@@ -77,7 +88,7 @@ make html
 
 当前日常流程不生成 EPUB、PDF 或 DOCX。这些发行格式将在网页版稳定后通过独立 release workflow 处理，并继续以同一套 canonical QMD sources 为来源。
 
-## 7. Commit 与 Pull Request
+## 8. Commit 与 Pull Request
 
 建议一个提交只处理一类问题：
 
@@ -85,13 +96,14 @@ make html
 - `content:` 教材正文、案例与练习
 - `refs:` 书目与引用
 - `style:` HTML 阅读样式
+- `ux:` 阅读、导航与反馈体验
 - `chore:` Quarto 构建、检查和仓库维护
 
-Pull Request 应说明改动内容、理由、是否改变章节结构或核心论证、文献变化，以及已运行的检查。
+Pull Request 应说明改动内容、理由、是否改变章节结构或核心论证、文献变化，以及已运行的检查。涉及网页体验时，还应说明它如何改变最终公开网站的阅读或反馈路径。
 
-## 8. CI 与网页发布
+## 9. CI 与网页发布
 
-Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、完整 HTML render 和关键页面检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
+Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、完整 HTML render 和关键页面/阅读界面检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
 
 因此，一次网页相关修改的完成标准不是“QMD 已修改”或“CI 能 render”，而是：修改进入 `main`、主分支 CI 通过、Pages deployment 成功，公开网页能够显示新的书籍版本。
 

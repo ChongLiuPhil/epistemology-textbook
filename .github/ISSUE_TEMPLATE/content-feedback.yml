@@ -1,0 +1,52 @@
+name: 书稿纠错与内容建议
+description: 报告概念、论证、引文、翻译、参考文献或教学内容问题
+title: "[内容反馈] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢帮助改进《我们如何知道？》。请尽量提供可定位的信息；不确定如何修改也没关系。
+  - type: input
+    id: page
+    attributes:
+      label: 页面链接
+      description: 请粘贴出现问题的公开网页链接。
+      placeholder: https://chongliuphil.github.io/epistemology-textbook/...
+    validations:
+      required: true
+  - type: input
+    id: section
+    attributes:
+      label: 章节或小节
+      description: 例如“第 3 章—内在主义与外在主义”。
+    validations:
+      required: false
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 问题类型
+      options:
+        - 概念或论证
+        - 事实或例子
+        - 引文或参考文献
+        - 翻译或术语
+        - 教学结构或练习
+        - 文字表达
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题说明
+      description: 请说明哪里有问题，以及为什么值得修改。
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 建议修改
+      description: 如有具体改法、反例、文献或来源，可写在这里。
+    validations:
+      required: false
