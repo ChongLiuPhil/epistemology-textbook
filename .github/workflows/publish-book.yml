@@ -1,25 +1,28 @@
-name: Validate and Publish Quarto Book
+name: Build and Publish Quarto Book
 
 on:
   workflow_dispatch:
   pull_request:
     paths:
-      - "textbook/**"
-      - "website/**"
-      - "scripts/build_web.py"
-      - "book.css"
-      - "_quarto.yml"
+      - "manuscript/**"
+      - "references.bib"
       - "index.qmd"
+      - "_quarto.yml"
+      - "book.css"
+      - "epub.css"
+      - "scripts/check_quarto.py"
       - "Makefile"
       - ".github/workflows/publish-book.yml"
   push:
+    branches: [main]
     paths:
-      - "textbook/**"
-      - "website/**"
-      - "scripts/build_web.py"
-      - "book.css"
-      - "_quarto.yml"
+      - "manuscript/**"
+      - "references.bib"
       - "index.qmd"
+      - "_quarto.yml"
+      - "book.css"
+      - "epub.css"
+      - "scripts/check_quarto.py"
       - "Makefile"
       - ".github/workflows/publish-book.yml"
 
@@ -33,7 +36,7 @@ concurrency:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -43,54 +46,23 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate and validate reading sources
-        run: python3 scripts/build_web.py --check
-
-      - name: Upload generated Quarto sources
-        uses: actions/upload-artifact@v4
-        with:
-          name: quarto-generated-sources
-          path: website/generated/*.qmd
-          if-no-files-found: error
-          retention-days: 7
-
-      - name: Promote Quarto sources to canonical manuscript
-        if: github.ref == 'refs/heads/refactor/quarto-source-of-truth' && github.event_name == 'push'
-        run: |
-          mkdir -p manuscript
-          cp website/generated/*.qmd manuscript/
-          cp textbook/references.bib references.bib
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          for path in Path('manuscript').glob('*.qmd'):
-              text = path.read_text(encoding='utf-8')
-              text = re.sub(r'^source-file:.*\n', '', text, flags=re.M)
-              text = text.replace('<div class="source-note">本页由 LaTeX 主稿自动生成；请勿直接编辑生成文件。</div>\n', '')
-              text = text.replace('以下条目由全书引文自动汇总。', '以下条目由本书 Quarto 引文自动汇总。')
-              path.write_text(text, encoding='utf-8')
-          PY
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add manuscript references.bib
-          if ! git diff --cached --quiet; then
-            git commit -m "content: promote Quarto manuscript as canonical source"
-            git push
-          fi
+      - name: Check canonical Quarto sources
+        run: make check
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render HTML book
-        run: quarto render --to html
+      - name: Render HTML and EPUB
+        run: quarto render
 
       - name: Validate rendered book
         run: |
           test -f _book/index.html
-          test -f _book/website/generated/01-knowledge.html
-          test -f _book/website/generated/09-comparative.html
-          test -f _book/website/generated/glossary.html
-          test -f _book/website/generated/references.html
+          test -f _book/manuscript/01-knowledge.html
+          test -f _book/manuscript/09-comparative.html
+          test -f _book/manuscript/glossary.html
+          test -f _book/manuscript/references.html
+          test -f _book/how-do-we-know.epub
 
       - name: Upload HTML preview
         uses: actions/upload-artifact@v4
@@ -100,7 +72,15 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: Publish validated HTML to GitHub Pages branch
+      - name: Upload EPUB ebook
+        uses: actions/upload-artifact@v4
+        with:
+          name: epistemology-textbook-epub
+          path: _book/how-do-we-know.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish validated book to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: quarto-dev/quarto-actions/publish@v2
         with:

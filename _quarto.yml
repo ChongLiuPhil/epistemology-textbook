@@ -1,43 +1,44 @@
 project:
   type: book
   output-dir: _book
-  pre-render: python3 scripts/build_web.py
 
 book:
   title: "我们如何知道？"
   subtitle: "问题驱动的认识论"
+  output-file: "how-do-we-know"
   page-navigation: true
   search: true
+  downloads: [epub]
   sidebar:
     style: docked
     collapse-level: 1
   chapters:
     - index.qmd
-    - website/generated/00-preface.qmd
+    - manuscript/00-preface.qmd
     - part: "第一部　知识、怀疑与理由"
       chapters:
-        - website/generated/01-knowledge.qmd
-        - website/generated/02-skepticism-luck.qmd
-        - website/generated/03-justification-context.qmd
+        - manuscript/01-knowledge.qmd
+        - manuscript/02-skepticism-luck.qmd
+        - manuscript/03-justification-context.qmd
     - part: "第二部　认识来源、社会系统与理性模型"
       chapters:
-        - website/generated/04-sources.qmd
-        - website/generated/05-social-knowledge.qmd
-        - website/generated/06-formal.qmd
+        - manuscript/04-sources.qmd
+        - manuscript/05-social-knowledge.qmd
+        - manuscript/06-formal.qmd
     - part: "第三部　认识价值、技术环境与比较方法"
       chapters:
-        - website/generated/07-value.qmd
-        - website/generated/08-digital-ai.qmd
-        - website/generated/09-comparative.qmd
+        - manuscript/07-value.qmd
+        - manuscript/08-digital-ai.qmd
+        - manuscript/09-comparative.qmd
     - part: "学习与研究"
       chapters:
-        - website/generated/study-guide.qmd
-        - website/generated/research-studio.qmd
-        - website/generated/exercise-hints.qmd
-        - website/generated/glossary.qmd
-        - website/generated/references.qmd
+        - manuscript/study-guide.qmd
+        - manuscript/research-studio.qmd
+        - manuscript/exercise-hints.qmd
+        - manuscript/glossary.qmd
+        - manuscript/references.qmd
 
-bibliography: textbook/references.bib
+bibliography: references.bib
 
 format:
   html:
@@ -49,5 +50,8 @@ format:
     footnotes-hover: true
     code-copy: false
     css: book.css
+  epub:
+    toc: true
+    css: epub.css
 
 lang: zh-CN

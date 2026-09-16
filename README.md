@@ -1,17 +1,19 @@
 # 《我们如何知道？》——问题驱动的认识论
 
-这是一本以问题为中心组织的中文认识论教材项目。当前主稿采用 LaTeX/XeLaTeX 编写，围绕知识、怀疑、证成、认识来源、社会认识论、形式认识论、认识价值、数字与 AI 环境、比较认识论等主题展开。
+这是一本以问题为中心组织的中文认识论教材，也是一个 **Quarto-first 的电子书项目**。项目的正式正文现在直接采用 `.qmd` 维护；同一套源文件生成网页阅读版与 EPUB，不再维护一套独立的 LaTeX 主稿。
 
-项目当前处于持续维护状态。教材主稿已经形成“三部九章”的稳定结构；仓库同时保留源稿一致性检查、索引与参考文献构建工具，方便继续修订、审校与出版准备。
+## 正式内容入口
 
-## 项目入口
-
-- **教材主稿**：`textbook/main.tex`
-- **参考文献库**：`textbook/references.bib`
-- **教材内部说明**：`textbook/README.md`
-- **源稿一致性检查**：`textbook/tools/check_consistency.py`
+- **全书配置**：`_quarto.yml`
+- **首页**：`index.qmd`
+- **正文与前后置材料**：`manuscript/*.qmd`
+- **参考文献**：`references.bib`
+- **网页样式**：`book.css`
+- **EPUB 样式**：`epub.css`
 - **项目元数据**：`project.yaml`
-- **网站发布开关**：`website.yaml`（默认不发布）
+- **发布元数据**：`website.yaml`
+
+`manuscript/` 与 `index.qmd` 是今后编辑教材时的唯一正文 source of truth。
 
 ## 全书结构
 
@@ -33,88 +35,36 @@
 8. 数字环境与人工智能怎样重塑认识
 9. 比较认识论如何改变我们的问题
 
-主章节编排器位于 `textbook/chapters/revised/`；各章还会通过 `\input` 组合扩展阅读、研读实验室、专题研讨、综合论述以及部分深论模块。后置材料位于 `textbook/backmatter/`。
+此外还包含写在前面、学习与写作指南、研究工作坊、练习提示、术语表和参考文献。
 
-## 快速开始
+## 构建
 
-在仓库根目录运行：
+需要 Python 3、GNU Make 和 Quarto。**不需要安装 LaTeX/XeLaTeX。**
 
 ```sh
-make check   # 不依赖 LaTeX，检查源稿结构、练习/提示配对和文献引用
-make pdf     # 构建完整 PDF
-make clean   # 删除临时构建目录
+make check   # 检查 QMD 结构与文献键
+make html    # 生成网页阅读版
+make epub    # 生成 EPUB 电子书
+make all     # 生成全部配置格式（HTML + EPUB）
+make clean   # 清理构建输出
 ```
 
-也可以直接进入 `textbook/` 使用其原生 `Makefile`。完整构建说明、临时目录策略和索引流程见 `textbook/README.md`。
+Quarto 输出位于 `_book/`。EPUB 文件名固定为 `_book/how-do-we-know.epub`。
 
-### 最低工具要求
+## 在线阅读与电子书
 
-只运行源稿检查：
+GitHub Actions 会在正文或构建配置变化时验证 HTML 与 EPUB。合并到 `main` 后，验证通过的网页自动发布到：
 
-- Python 3
-- GNU Make（或直接运行 Python 脚本）
+`https://chongliuphil.github.io/epistemology-textbook/`
 
-构建 PDF 还需要：
+同一次构建会上传 `epistemology-textbook-epub` artifact；网页侧栏也提供 EPUB 下载入口。
 
-- XeLaTeX
-- `latexmk`
-- Biber
-- MakeIndex
-- 支持中文排版的 TeX 发行版（例如 TeX Live）
+## 编辑原则
 
-## 目录结构
+直接编辑 `manuscript/*.qmd`。引文使用 Quarto/Pandoc citation 语法，文献键维护在 `references.bib`；公式、脚注、表格和 callout 均使用 Quarto 可直接处理的 Markdown/Pandoc 语法。提交前至少运行 `make check`，需要检查最终阅读效果时运行 `make all`。
 
-```text
-.
-├── README.md                 # 仓库总览（本文件）
-├── CONTRIBUTING.md           # 编辑与提交约定
-├── Makefile                  # 根目录统一命令入口
-├── project.yaml              # 学术项目元数据
-├── website.yaml              # 网站发布元数据与发布开关
-├── reference/                # 外部参考资料（不属于可编译主稿）
-└── textbook/
-    ├── main.tex              # 全书入口
-    ├── style.tex             # 全局样式与自定义宏
-    ├── frontmatter.tex       # 前置材料
-    ├── references.bib        # BibLaTeX 文献库
-    ├── chapters/             # 章节与内容模块
-    ├── backmatter/           # 学习指南、研究工坊、练习提示、术语表等
-    └── tools/                # 源稿检查工具
-```
+详细约定见 `CONTRIBUTING.md`。
 
-## 编辑工作流
+## 旧 LaTeX 目录
 
-建议每次修改遵循以下顺序：
-
-1. 修改对应的章节或模块文件，尽量保持现有模块边界。
-2. 新增或删除模块时，同步维护调用它的 `\input` / `\include` 关系和文件头归属说明。
-3. 新增文献时同步更新 `textbook/references.bib`，并确保正文或阅读地图实际引用该键。
-4. 修改章末练习时，同步更新 `textbook/backmatter/exercise-hints.tex`。
-5. 先运行 `make check`；需要交付版面时再运行 `make pdf`。
-6. 提交前确认没有把 PDF、LaTeX 临时文件或本地编辑器状态加入版本控制。
-
-更详细的提交约定见 `CONTRIBUTING.md`。
-
-## 自动校验
-
-仓库使用 GitHub Actions 在 push 和 pull request 时运行轻量级源稿检查。该检查不构建 PDF，因此可以快速发现：
-
-- `\input` / `\include` 指向不存在的文件；
-- 各章练习数量与练习提示不一致；
-- 正文引用了不存在的 BibLaTeX 键；
-- `references.bib` 中存在完全未使用的条目。
-
-完整 PDF 构建仍建议在具有完整中文 TeX 环境的本地或专用构建环境中执行。
-
-## 当前基线
-
-当前定稿基线为三部九章，教材内部 README 记录的最近一次完整构建为 216 页，并包含章末练习、详细提示、术语表、索引和分层阅读地图。具体统计与构建记录以 `textbook/README.md` 为准。
-
-## 出版前待办
-
-主稿目前仍保留出版元数据 TODO，包括：
-
-- 补齐 `textbook/main.tex` 中的作者署名；
-- 同步补齐 `textbook/style.tex` 中 PDF metadata 的 `pdfauthor`；
-- 最终确认封面日期；
-- 在明确需要公开发布时，再修改 `website.yaml` 的发布开关与公开说明。
+`textbook/` 保存迁移前的 LaTeX 历史稿，仅作为审计与版本追溯材料。它**不再参与正式构建，也不应继续编辑**。迁移说明见 `textbook/LEGACY.md`。

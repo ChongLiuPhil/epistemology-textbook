@@ -10,8 +10,9 @@ summary:
   en: "A problem-driven Chinese-language epistemology textbook covering knowledge, skepticism, justification, sources of knowledge, social and formal epistemology, epistemic value, digital and AI environments, and comparative epistemology."
 
 status:
-  zh: "三部九章主稿持续审校；已配置由 LaTeX 主稿自动生成的 Quarto 在线阅读版。"
-  en: "The three-part, nine-chapter manuscript remains under editorial review; a Quarto reading edition is generated automatically from the LaTeX source."
+  zh: "三部九章持续审校；Quarto QMD 为唯一正式书稿来源，并直接生成 HTML 阅读版与 EPUB 电子书。"
+  en: "The three-part, nine-chapter book remains under editorial review; canonical Quarto QMD sources directly produce the HTML reading edition and EPUB ebook."
 
 featured: false
-links: []
+links:
+  - https://chongliuphil.github.io/epistemology-textbook/
