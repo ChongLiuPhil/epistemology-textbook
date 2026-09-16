@@ -457,7 +457,7 @@ number-sections: true
 
 ### 研究定位
 
-来源研究应同时处理规范资格和实际机制：@siegel2017讨论知觉经验能否合理化，@bernecker2010与@fernandez2019重构记忆的认识角色，@gertler2011分析自知的特殊性，@casullo2003则系统整理先验确证的候选基础。
+来源研究应同时处理规范资格和实际机制：@siegel2017 讨论知觉经验能否合理化，@bernecker2010 与 @fernandez2019 重构记忆的认识角色，@gertler2011 分析自知的特殊性，@casullo2003 则系统整理先验确证的候选基础。
 
 
 ::: {.callout-note title="自测小结"}
