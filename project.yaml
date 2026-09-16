@@ -34,11 +34,12 @@ source_of_truth:
 
 website:
   metadata: website.yaml
-  default_publish: false
+  default_publish: true
 
 notes: >
   Quarto QMD files are the canonical manuscript source. During Web Edition
-  Development the active pipeline validates the sources and renders HTML only.
+  Development the active pipeline validates the sources, renders HTML, and
+  deploys the validated _book output to GitHub Pages after changes reach main.
   EPUB, PDF, and DOCX are deferred to a future release workflow after the web
   edition stabilizes. The legacy textbook/ LaTeX tree is retained only for
   historical audit and is not part of the active edit or build workflow.
