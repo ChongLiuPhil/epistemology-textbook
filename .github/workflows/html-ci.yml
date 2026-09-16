@@ -68,6 +68,7 @@ jobs:
         run: |
           set -euo pipefail
           test -f _book/index.html
+          test -f _book/manuscript/00-open-access-and-support.html
           test -f _book/manuscript/01-knowledge.html
           test -f _book/manuscript/05-social-knowledge.html
           test -f _book/manuscript/09-comparative.html
