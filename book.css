@@ -71,13 +71,62 @@ blockquote {
   border-left-width: 3px;
 }
 
-#quarto-sidebar {
+#quarto-sidebar,
+nav[role="doc-toc"],
+.nav-footer {
   font-family: ui-sans-serif, system-ui, -apple-system, "Noto Sans SC", "Microsoft YaHei", sans-serif;
 }
 
 .sidebar-title,
 .sidebar-navigation .sidebar-item-text {
   line-height: 1.45;
+}
+
+.quarto-sidebar-header .sidebar-header-item {
+  color: var(--reader-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--reader-rule);
+}
+
+#quarto-sidebar .sidebar-footer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--reader-rule);
+  color: var(--reader-muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+#quarto-sidebar .sidebar-footer a,
+.nav-footer a {
+  text-decoration: none;
+}
+
+nav[role="doc-toc"] .toc-title {
+  color: var(--reader-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+nav[role="doc-toc"] a {
+  line-height: 1.45;
+}
+
+.quarto-other-links {
+  margin-top: 1rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--reader-rule);
+}
+
+.nav-footer {
+  color: var(--reader-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
 }
 
 /* Keep all reader-facing blocks inside the reading column. */
@@ -185,6 +234,8 @@ main.content #refs {
 
 main.content a:focus-visible,
 #quarto-sidebar a:focus-visible,
+nav[role="doc-toc"] a:focus-visible,
+.nav-footer a:focus-visible,
 .page-navigation a:focus-visible,
 button:focus-visible,
 input:focus-visible {
@@ -221,6 +272,10 @@ input:focus-visible {
   main.content h5,
   main.content h6 {
     scroll-margin-top: 4.25rem;
+  }
+
+  .nav-footer {
+    font-size: 0.8rem;
   }
 }
 
