@@ -5,13 +5,36 @@ project:
 book:
   title: "我们如何知道？"
   subtitle: "问题驱动的认识论"
+  author: "Chong Liu"
   output-file: "how-do-we-know"
+  site-url: "https://chongliuphil.github.io/epistemology-textbook/"
+  repo-url: "https://github.com/ChongLiuPhil/epistemology-textbook"
+  repo-branch: main
+  repo-actions: [issue, source]
+  repo-link-target: _blank
+  reader-mode: true
+  back-to-top-navigation: true
+  bread-crumbs: true
+  open-graph: true
   page-navigation: true
   search: true
   sidebar:
     header: "**本书目录**"
     style: docked
     collapse-level: 1
+    tools:
+      - icon: github
+        href: "https://github.com/ChongLiuPhil/epistemology-textbook"
+    footer: |
+      [开放阅读与支持](manuscript/00-open-access-and-support.qmd) · [报告问题](https://github.com/ChongLiuPhil/epistemology-textbook/issues/new/choose)
+  page-footer:
+    border: true
+    left: "《我们如何知道？》开放 Web Edition · 持续修订"
+    right:
+      - text: "开放阅读与支持"
+        href: manuscript/00-open-access-and-support.qmd
+      - text: "报告问题"
+        href: "https://github.com/ChongLiuPhil/epistemology-textbook/issues/new/choose"
   chapters:
     - index.qmd
     - manuscript/00-open-access-and-support.qmd
