@@ -1,19 +1,26 @@
 # 《我们如何知道？》——问题驱动的认识论
 
-这是一本以问题为中心组织的中文认识论教材，也是一个 **Quarto-first 的电子书项目**。项目的正式正文现在直接采用 `.qmd` 维护；同一套源文件生成网页阅读版与 EPUB，不再维护一套独立的 LaTeX 主稿。
+这是一本以问题为中心组织的中文认识论教材，也是一个以 Quarto 为唯一正式写作系统的电子教材项目。
 
-## 正式内容入口
+## 当前阶段：Web Edition Development
 
-- **全书配置**：`_quarto.yml`
-- **首页**：`index.qmd`
-- **正文与前后置材料**：`manuscript/*.qmd`
-- **参考文献**：`references.bib`
-- **网页样式**：`book.css`
-- **EPUB 样式**：`epub.css`
-- **项目元数据**：`project.yaml`
-- **发布元数据**：`website.yaml`
+目前只开发和验证网页版。日常工作流是：
 
-`manuscript/` 与 `index.qmd` 是今后编辑教材时的唯一正文 source of truth。
+`QMD → validation → HTML`
+
+EPUB、PDF、DOCX 暂不生成，也不属于当前 CI。等网页版稳定后，再通过独立的 release workflow 统一建立发行格式。
+
+## Source of truth
+
+正式书稿只有以下来源：
+
+- 首页与教材入口：`index.qmd`
+- 正文与前后置材料：`manuscript/*.qmd`
+- 参考文献数据库：`references.bib`
+
+全书结构与 HTML 配置位于 `_quarto.yml`，网页样式位于 `book.css`。
+
+`textbook/` 保存迁移前的 LaTeX 历史稿，仅用于审计与版本追溯。它不是正式书稿来源，不参与编辑、检查或构建。数学公式中的 TeX/LaTeX 风格语法属于 Quarto/Pandoc 数学语法，不意味着恢复 LaTeX 文档工作流。
 
 ## 全书结构
 
@@ -37,34 +44,38 @@
 
 此外还包含写在前面、学习与写作指南、研究工作坊、练习提示、术语表和参考文献。
 
-## 构建
+## 本地开发
 
-需要 Python 3、GNU Make 和 Quarto。**不需要安装 LaTeX/XeLaTeX。**
+需要 Python 3、GNU Make 和 Quarto；当前开发流程不需要 LaTeX/XeLaTeX。
 
 ```sh
-make check   # 检查 QMD 结构与文献键
-make html    # 生成网页阅读版
-make epub    # 生成 EPUB 电子书
-make all     # 生成全部配置格式（HTML + EPUB）
-make clean   # 清理构建输出
+make check    # 检查 QMD、bibliography、项目结构和 HTML-only 配置
+make preview  # 启动 Quarto 本地 HTML 预览
+make html     # 生成 HTML 阅读版
+make all      # 当前阶段等同于完整 HTML 开发构建
+make clean    # 删除 _book/ 与 .quarto/
 ```
 
-Quarto 输出位于 `_book/`。EPUB 文件名固定为 `_book/how-do-we-know.epub`。
+Quarto HTML 输出位于 `_book/`。
 
-## 在线阅读与电子书
+## 当前不生成的格式
 
-GitHub Actions 会在正文或构建配置变化时验证 HTML 与 EPUB。合并到 `main` 后，验证通过的网页自动发布到：
+当前默认流程和 CI 都不生成：
 
-`https://chongliuphil.github.io/epistemology-textbook/`
+- EPUB
+- PDF
+- DOCX
 
-同一次构建会上传 `epistemology-textbook-epub` artifact；网页侧栏也提供 EPUB 下载入口。
+这些格式将在网页版定稿后通过独立 release 流程统一生成，而不是在每次正文修改时构建。
+
+## CI 与部署
+
+GitHub Actions 当前只负责：检查 canonical QMD sources、验证 bibliography citation keys 与项目结构、安装 Quarto、完整渲染 HTML，并确认关键 HTML 页面存在。
+
+当前 CI **不部署 GitHub Pages，不更新 `gh-pages`，也不上传 EPUB/PDF/DOCX artifacts**。
 
 ## 编辑原则
 
-直接编辑 `manuscript/*.qmd`。引文使用 Quarto/Pandoc citation 语法，文献键维护在 `references.bib`；公式、脚注、表格和 callout 均使用 Quarto 可直接处理的 Markdown/Pandoc 语法。提交前至少运行 `make check`，需要检查最终阅读效果时运行 `make all`。
+直接编辑 `index.qmd`、`manuscript/*.qmd` 和 `references.bib`。引文使用 Quarto/Pandoc citation 语法；公式、脚注、表格和 callout 使用 Quarto 可直接处理的 Markdown/Pandoc 语法。提交前至少运行 `make check`，检查最终网页效果时运行 `make preview` 或 `make html`。
 
 详细约定见 `CONTRIBUTING.md`。
-
-## 旧 LaTeX 目录
-
-`textbook/` 保存迁移前的 LaTeX 历史稿，仅作为审计与版本追溯材料。它**不再参与正式构建，也不应继续编辑**。迁移说明见 `textbook/LEGACY.md`。
