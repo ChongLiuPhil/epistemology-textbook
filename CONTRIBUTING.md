@@ -1,17 +1,16 @@
 # 编辑与贡献约定
 
-本项目以 Quarto `.qmd` 作为正式书稿格式。编辑目标是让一套源文件同时服务网页阅读和 EPUB 电子书，避免多格式正文长期分叉。
+本项目以 Quarto `.qmd` 作为唯一正式书稿格式。当前阶段是 **Web Edition Development**：一套 canonical QMD sources 经过检查后只生成 HTML。
 
 ## 1. 编辑哪些文件
 
-- 全书结构与输出格式：`_quarto.yml`
-- 首页：`index.qmd`
+- 首页与教材入口：`index.qmd`
 - 九章正文及前后置材料：`manuscript/*.qmd`
 - 参考文献：`references.bib`
+- 全书结构与 HTML 配置：`_quarto.yml`
 - HTML 阅读样式：`book.css`
-- EPUB 阅读样式：`epub.css`
 
-`textbook/` 是迁移前的历史 LaTeX 快照，不再是正文来源，也不应继续编辑。
+`textbook/` 是迁移前的历史 LaTeX 快照，不再是正文来源，也不应继续编辑或参与构建。
 
 ## 2. 内容编辑原则
 
@@ -41,7 +40,7 @@
 - 展示公式：`$$...$$`
 - 教学提示、案例和论证框：Quarto callout fenced div
 
-不要在正文中重新引入 `.tex` 文件、`\\input` / `\\include` 或依赖 LaTeX 主稿的生成步骤。数学表达式中的 TeX-style math notation 属于 Quarto/Pandoc 数学语法，可以继续使用。
+不要在正文或构建配置中重新引入 `.tex` 文件、`\\input` / `\\include`、XeLaTeX、latexmk 或依赖旧 LaTeX 主稿的生成步骤。数学表达式中的 TeX-style math notation 属于 Quarto/Pandoc 数学语法，可以继续使用。
 
 ## 4. 文献约定
 
@@ -63,13 +62,20 @@ make check
 make check
 ```
 
-需要检查最终电子阅读效果时运行：
+需要检查网页阅读效果时运行：
 
 ```sh
-make all
+make preview
 ```
 
-这会从同一套 QMD 构建 HTML 与 EPUB；无需 XeLaTeX、Biber 或 MakeIndex。
+需要执行完整开发构建时运行：
+
+```sh
+make html
+# 或 make all；当前阶段二者都只生成 HTML
+```
+
+当前日常流程不生成 EPUB、PDF 或 DOCX。这些发行格式将在网页版稳定后通过独立 release workflow 处理。
 
 ## 7. Commit 与 Pull Request
 
@@ -78,11 +84,11 @@ make all
 - `docs:` 项目文档与编辑说明
 - `content:` 教材正文、案例与练习
 - `refs:` 书目与引用
-- `style:` HTML/EPUB 阅读样式
+- `style:` HTML 阅读样式
 - `chore:` Quarto 构建、检查和仓库维护
 
 Pull Request 应说明改动内容、理由、是否改变章节结构或核心论证、文献变化，以及已运行的检查。
 
-## 8. 发布
+## 8. CI 与发布
 
-`website.yaml` 的 `publish: true` 表示项目处于公开电子书发布模式。`main` 分支构建通过后，HTML 自动发布到 GitHub Pages，同时生成 EPUB artifact。涉及书名、作者、封面、许可证或正式版本号等出版元数据时，应作为明确的发布改动处理。
+GitHub Actions 当前只做 source validation 与完整 HTML render，并检查关键 HTML 页面是否生成。开发阶段不自动部署 GitHub Pages，不更新 `gh-pages`，也不生成或上传 EPUB/PDF/DOCX artifacts。
