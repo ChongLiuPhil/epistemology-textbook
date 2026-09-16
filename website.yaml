@@ -1,5 +1,5 @@
 schema_version: 1
-publish: false
+publish: true
 
 title:
   zh: "我们如何知道？——问题驱动的认识论"
@@ -10,8 +10,8 @@ summary:
   en: "A problem-driven Chinese-language epistemology textbook covering knowledge, skepticism, justification, sources of knowledge, social and formal epistemology, epistemic value, digital and AI environments, and comparative epistemology."
 
 status:
-  zh: "三部九章主稿已形成稳定基线，正在持续审校与出版准备。"
-  en: "The three-part, nine-chapter manuscript has a stable baseline and remains under editorial review and publication preparation."
+  zh: "三部九章主稿持续审校；已配置由 LaTeX 主稿自动生成的 Quarto 在线阅读版。"
+  en: "The three-part, nine-chapter manuscript remains under editorial review; a Quarto reading edition is generated automatically from the LaTeX source."
 
 featured: false
 links: []
