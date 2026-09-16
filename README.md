@@ -4,11 +4,15 @@
 
 ## 当前阶段：Web Edition Development
 
-目前只开发和验证网页版。日常工作流是：
+目前优先开发网页版。日常流程是：
 
-`QMD → validation → HTML`
+`QMD → validation → HTML → GitHub Pages`
 
-EPUB、PDF、DOCX 暂不生成，也不属于当前 CI。等网页版稳定后，再通过独立的 release workflow 统一建立发行格式。
+每次修改通过 Pull Request 进入 `main` 后，GitHub Actions 会重新验证 canonical QMD sources、完整生成 HTML，并把验证通过的 `_book/` 部署到公开网页。因此，对书稿、结构和网页样式的修改最终都应落实到实际可阅读的网站。
+
+在线阅读：<https://chongliuphil.github.io/epistemology-textbook/>
+
+EPUB、PDF、DOCX 暂不属于日常 CI。等网页版稳定后，再通过独立 release workflow 从同一套 canonical QMD sources 统一生成发行格式。
 
 ## Source of truth
 
@@ -60,19 +64,26 @@ Quarto HTML 输出位于 `_book/`。
 
 ## 当前不生成的格式
 
-当前默认流程和 CI 都不生成：
+当前日常流程和 CI 不生成：
 
 - EPUB
 - PDF
 - DOCX
 
-这些格式将在网页版定稿后通过独立 release 流程统一生成，而不是在每次正文修改时构建。
+这些格式将在网页版定稿后通过独立 release 流程统一生成。由于它们仍然从 `index.qmd`、`manuscript/*.qmd` 与 `references.bib` 生成，网页开发期间对正式书稿的修改不会与未来发行稿分叉。
 
 ## CI 与部署
 
-GitHub Actions 当前只负责：检查 canonical QMD sources、验证 bibliography citation keys 与项目结构、安装 Quarto、完整渲染 HTML，并确认关键 HTML 页面存在。
+Pull Request 阶段：
 
-当前 CI **不部署 GitHub Pages，不更新 `gh-pages`，也不上传 EPUB/PDF/DOCX artifacts**。
+- 检查 canonical QMD sources
+- 验证 bibliography citation keys 与项目结构
+- 安装 Quarto
+- 完整渲染 HTML
+- 验证关键 HTML 页面存在
+- 验证没有意外生成 EPUB/PDF/DOCX
+
+合并到 `main` 后，在上述验证全部通过之后，工作流会把同一次构建得到的 `_book/` 作为 GitHub Pages artifact 部署。部署不再通过脚本强推 `gh-pages` 分支。
 
 ## 编辑原则
 
