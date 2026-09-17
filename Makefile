@@ -10,6 +10,7 @@ help:
 
 check:
 	python3 scripts/check_quarto.py
+	python3 scripts/check_references.py
 
 preview: check
 	quarto preview --to html

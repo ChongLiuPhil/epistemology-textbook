@@ -79,14 +79,16 @@ EPUB、PDF、DOCX 暂不属于日常 CI。等网页版稳定后，再通过独�
 需要 Python 3、GNU Make 和 Quarto；当前开发流程不需要 LaTeX/XeLaTeX。
 
 ```sh
-make check    # 检查 QMD、bibliography、项目结构、阅读/反馈配置和 HTML-only 流程
+make check    # 检查 QMD、bibliography 元数据、项目结构、阅读/反馈配置和 HTML-only 流程
 make preview  # 启动 Quarto 本地 HTML 预览
 make html     # 生成 HTML 阅读版
 make all      # 当前阶段等同于完整 HTML 开发构建
 make clean    # 删除 _book/ 与 .quarto/
 ```
 
-Quarto HTML 输出位于 `_book/`。
+Quarto HTML 输出位于 `_book/`。`make check` 会阻止缺失 citation key、重复或格式错误的 DOI、非法 URL 等确定性文献错误；当前未被正文引用的书目条目会作为审计信息报告，而不会自动删除。
+
+外部网站可达性受出版社、限流、认证与网络状态影响，因此不放进每次发布的阻断路径。仓库另有每周与手动触发的 `External Link Audit`：它完整渲染网站后检查最终 HTML 中的外部链接，只把明确的 HTTP 404/410 作为断链失败，其余网络异常保留为 warning。
 
 ## 当前不生成的格式
 
@@ -103,14 +105,15 @@ Quarto HTML 输出位于 `_book/`。
 Pull Request 阶段：
 
 - 检查 canonical QMD sources
-- 验证 bibliography citation keys 与项目结构
+- 验证 bibliography citation keys、DOI/URL 元数据与项目结构
 - 检查开放阅读、反馈入口和左右目录标签等 reader-facing 配置
 - 安装 Quarto
 - 完整渲染 HTML
+- 验证全站内部链接、静态资源、页面锚点与重复 HTML ID
 - 验证关键 HTML 页面和关键阅读界面元素存在
 - 验证没有意外生成 EPUB/PDF/DOCX
 
-合并到 `main` 后，在上述验证全部通过之后，工作流会把同一次构建得到的 `_book/` 作为 GitHub Pages artifact 部署。部署不通过脚本强推 `gh-pages` 分支。
+合并到 `main` 后，在上述验证全部通过之后，工作流会把同一次构建得到的 `_book/` 作为 GitHub Pages artifact 部署。部署不通过脚本强推 `gh-pages` 分支。外部 HTTP 可达性由独立的定期审计处理，不把第三方网站的临时故障混入 Pages 发布门禁。
 
 ## 编辑原则
 
