@@ -58,7 +58,7 @@
 make check
 ```
 
-该命令会检查 citation key、BibTeX 基本结构、重复/格式错误 DOI 与 URL 等确定性问题。外部链接是否仍可访问由独立的 `External Link Audit` 定期检查，因为 403、429、5xx、TLS 与超时可能只是第三方网站的临时或机器人访问限制。
+该命令会检查 citation key、BibTeX 基本结构、重复/格式错误 DOI 与 URL 等确定性问题。外部链接是否仍可访问由独立的 `External Link Audit` 检查：相关内容进入 `main` 时自动运行，同时保留每周与手动触发。它与 Pages 发布门禁分离，因为 403、429、5xx、TLS 与超时可能只是第三方网站的临时或机器人访问限制。
 
 ## 5. 练习与后置材料
 
@@ -115,7 +115,7 @@ Pull Request 应说明改动内容、理由、是否改变章节结构或核心�
 
 Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、bibliography integrity checks、完整 HTML render 与全站内部链接/锚点检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
 
-仓库另有独立的每周/手动 `External Link Audit`。它不参与正常 Pages 发布门禁；只有明确的 HTTP 404/410 会被标记为断链失败，认证、限流、服务器错误和网络异常作为 warning 留给维护者复核。
+仓库另有独立的 `External Link Audit`。相关书稿、书目、网页配置或审计脚本进入 `main` 后会自动运行，并保留每周/手动触发。它不参与正常 Pages 发布门禁；只有明确的 HTTP 404/410 会被标记为断链失败，认证、限流、服务器错误和网络异常作为 warning 留给维护者复核。
 
 因此，一次网页相关修改的完成标准不是“QMD 已修改”或“CI 能 render”，而是：修改进入 `main`、主分支 CI 通过、Pages deployment 成功，公开网页能够显示新的书籍版本。
 
