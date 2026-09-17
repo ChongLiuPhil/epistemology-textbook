@@ -4,6 +4,19 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "17 3 * * 1"
+  push:
+    branches:
+      - main
+    paths:
+      - "index.qmd"
+      - "manuscript/**"
+      - "references.bib"
+      - "_quarto.yml"
+      - "book.css"
+      - "project.yaml"
+      - "website.yaml"
+      - "scripts/check_external_links.py"
+      - ".github/workflows/external-link-audit.yml"
 
 permissions:
   contents: read
