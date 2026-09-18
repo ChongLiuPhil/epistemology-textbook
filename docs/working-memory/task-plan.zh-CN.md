@@ -4,55 +4,39 @@
 
 ## ACTIVE TASKS
 
-- None. HARC-lite `0.1.1` refinement is complete.
-
-## COMPLETED IN CURRENT CYCLE
-
-- `WM-T005` — 轻量 Onboarding Check + PASS/PARTIAL/FAIL — DONE
-- `WM-T006` — 明确人类责任主体与独立 Release Approval gate — DONE
-- `WM-T007` — 补全 clarification promotion 与 revision-conflict 行为 — DONE
-- `WM-T008` — governance validator 改为 manifest-driven，并验证 PR/main — DONE
-
-Main implementation commit: `1906a4f56739ae1f3039cc3d695093eb986bfdd7`.
-
-Validation on that main commit:
-
-- Repository Governance CI — success
-- External Link Audit — success
-- Quarto HTML CI and Pages — success
+- `WM-T009` — 将学习资料整合/问题化组织定位写入 Content Core、Decision Log、Book Architecture 和适量公开说明 — IN-PROGRESS
+- `WM-T010` — 将“哲学研究不等于前人思想研究”的方法立场以简短方式进入前言/项目定位 — IN-PROGRESS
+- `WM-T011` — 参考 What-Remains-Human 建立 publication profile、移动章目录与 citation navigation — IN-PROGRESS
+- `WM-T012` — 增加 PDF/DOCX/EPUB 手动构建 workflow，并验证多格式可生成 — IN-PROGRESS
+- `WM-T013` — 完成 PR/main 验证与 handoff — TODO
 
 ## NEXT ACTIONS
 
-1. 等待下一项人类优先任务。
-2. 对新任务按 CONTENT / FORM / PROTOCOL 路由读取最小必要状态。
-3. 新 Agent / 长中断 / 高影响 Architecture 或 Release 工作时执行轻量 Onboarding Check。
-4. 较大工作循环结束后继续更新 Current Focus / Task Plan / Work Log。
+1. 更新 index / preface 和 README 定位。
+2. 更新 Quarto/CSS/HTML includes。
+3. 增加 publication-format workflow 和必要 source checks。
+4. 通过 Governance CI + HTML CI + publication-format build。
+5. 合并并更新 Working Memory。
 
 ## BLOCKERS
 
-- None for normal manuscript, bibliography, website, or governance maintenance.
+- None for current content/form implementation.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
 ### CLR-001 — 项目正式许可
 
 - Status: `WAITING-HUMAN`
-- Severity: `NON-BLOCKING`
-- Uncertain point: authored textbook text、文档、脚本应采用什么法律许可。
-- Current rule: 不把“公开仓库/开放阅读”解释成已经授予开放许可。
-- Promotion destination: `LICENSE-DECISION.md` + repository LICENSE file(s).
+- Severity: `NON-BLOCKING for Web Edition and build previews; BLOCKING for formal open-license declaration`
 
 ### CLR-002 — 外部参考 PDF 的公开分发权利
 
 - Status: `WAITING-HUMAN`
-- Severity: `NON-BLOCKING for manuscript work; BLOCKING for repackaging/redistribution decisions`
-- Uncertain point: `reference/我们如何知道.pdf` 是否具有允许本公开仓库继续分发的明确权利依据。
-- Current rule: 不将其视为项目 authored/open-content，也不纳入未来 release artifact。
-- Promotion destination: `reference/README.md` / license or provenance record.
+- Severity: `NON-BLOCKING for manuscript/build preview; BLOCKING for redistribution/repackaging of that file`
 
 ## RECENTLY RESOLVED / PROMOTED
 
-- None in the active clarification queue.
+- Human decision in current cycle -> D005 -> Content Core / Form Core / Book Architecture / Publication Profile.
 
 ## CLARIFICATION COMPLETION RULE
 
@@ -60,10 +44,9 @@ Validation on that main commit:
 
 ## TODO / BACKLOG
 
-- `AI-PROPOSED` — 如人类希望继续内容质量提升，从第 1 章开始逐章学术/教学审校。
-- 在真正启用 PDF/EPUB/DOCX release 前设计独立 release workflow。
-- 若协作者增多，再评估 main ruleset / required checks。
+- 在后续逐章审校中检查是否存在“人物/学说堆叠但没有明确问题功能”的段落。
+- 若以后确定正式出版社或纸质版规格，再增加 PDF 具体版式约束。
 
 ## SYNC DEFECTS
 
-- None known.
+- Current public README/preface and HTML-only source checker still reflect the pre-D005 publication scope; this cycle will reconcile them.
