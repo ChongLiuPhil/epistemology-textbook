@@ -81,3 +81,23 @@
 - governance validator 应优先根据 `HARC_MANIFEST.yaml` 解析和校验声明路径/版本，而不是维护平行的硬编码项目拓扑。
 
 **实现状态：** implemented in HARC-lite profile version `0.1.1` via PR #16 / main commit `1906a4f56739ae1f3039cc3d695093eb986bfdd7`.
+
+
+---
+
+## 2026-09-18 — D005 — 明确学习整合型教材定位与多格式出版模型
+
+**来源：** 人类作者明确说明本项目主要来自自己的学习过程，是对学习资料、问题、论证与文献的整合和梳理；不以提出大量原创理论为主要目标，但问题选择、材料取舍、判断视角和整体组织需要由作者审核。作者同时要求出版、网页与排版方式可参考 `What-Remains-Human-Epistemic-Agency-and-Human-Value-in-the-Age-of-AI`。  
+**分类：** CONTENT / FORM / PROTOCOL。  
+**决定：**
+
+- 本项目定位为学习—整合—梳理型、问题驱动的认识论教材工程，不以建立作者原创理论体系为主要目标；
+- 作者判断主要体现于问题选择、材料取舍、概念区分、争议组织、教学层次与评价性判断；
+- 教学取向明确区分哲学研究与单纯的思想研究、思想史研究、哲学史研究：哲学学习应训练问题提出、概念区分、理由比较、反例构造与立场检验；
+- 上述哲学教育取向主要作为项目级组织原则，通过章节结构、练习、研究工作坊与阅读路线体现，不要求在正文中设置大篇幅宣言；
+- 出版形式采用一套 Quarto canonical source 服务 HTML / PDF / DOCX / EPUB；
+- HTML 继续自动发布到公开 GitHub Pages；
+- PDF / DOCX / EPUB 通过独立手动 workflow 按需生成 artifact，不自动等于正式 Release Approval；
+- 排版与网页阅读逻辑可以参考 `What-Remains-Human...`，但不复制其私有 Cloudflare 发布方式，也不移植与本项目书目结构不兼容的 citation interaction。
+
+**实现状态：** implementing in current branch.
