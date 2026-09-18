@@ -16,7 +16,7 @@
 
 ### 保持问题驱动
 
-每章围绕明确问题推进，而不是把人物、流派或术语简单并列。新增内容应说明它解决什么问题、反驳什么主张，或改变哪一步推理。
+每章围绕明确问题推进，而不是把人物、流派或术语简单并列。新增内容应说明它解决什么问题、反驳什么主张，或改变哪一步推理。哲学家思想、思想史或哲学史材料进入正文时，也应说明它在当前哲学问题中承担什么功能；历史归属本身不能替代论证。
 
 ### 保持教学层次
 
@@ -96,7 +96,7 @@ make html
 # 或 make all；当前阶段二者都只生成 HTML
 ```
 
-当前日常流程不生成 EPUB、PDF 或 DOCX。这些发行格式将在网页版稳定后通过独立 release workflow 处理，并继续以同一套 canonical QMD sources 为来源。
+当前日常 Pages 流程不生成 EPUB、PDF 或 DOCX。仓库另有独立手动 publication-format workflow，可从同一套 canonical QMD sources 生成这些格式供排版检查与作者审阅；构建 artifact 不自动构成正式 release。
 
 ## 8. Commit 与 Pull Request
 
