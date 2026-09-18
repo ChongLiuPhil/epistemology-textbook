@@ -1,0 +1,94 @@
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = Array.from(document.querySelectorAll('a[role="doc-biblioref"][href^="#ref-"]'));
+  if (!links.length) return;
+
+  const byReference = new Map();
+  links.forEach((link, index) => {
+    if (!link.id) link.id = `citation-origin-${index + 1}`;
+    const id = decodeURIComponent(link.getAttribute("href").slice(1));
+    if (!byReference.has(id)) byReference.set(id, []);
+    byReference.get(id).push(link);
+  });
+
+  const dialog = document.createElement("dialog");
+  dialog.className = "citation-detail-dialog";
+  dialog.setAttribute("aria-label", "参考文献详情");
+  dialog.innerHTML = [
+    '<div class="citation-detail-panel">',
+    '<div class="citation-detail-header"><strong>参考文献详情</strong>',
+    '<button type="button" class="citation-dialog-close" aria-label="关闭参考文献详情">×</button></div>',
+    '<div class="citation-detail-body"></div>',
+    '<div class="citation-detail-actions"><button type="button" class="citation-view-bibliography">查看本章参考文献</button></div>',
+    '</div>'
+  ].join("");
+  document.body.appendChild(dialog);
+
+  const body = dialog.querySelector(".citation-detail-body");
+  const close = dialog.querySelector(".citation-dialog-close");
+  const view = dialog.querySelector(".citation-view-bibliography");
+  let activeReference = null;
+
+  const closeDialog = () => dialog.open ? dialog.close() : dialog.removeAttribute("open");
+
+  function highlight(node) {
+    if (!node) return;
+    node.scrollIntoView({behavior: "smooth", block: "center"});
+    const target = node.closest(".citation") || node;
+    target.classList.add("citation-return-highlight");
+    window.setTimeout(() => target.classList.remove("citation-return-highlight"), 1500);
+  }
+
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const id = decodeURIComponent(link.getAttribute("href").slice(1));
+      const reference = document.getElementById(id);
+      if (!reference) return;
+      event.preventDefault();
+      activeReference = reference;
+      const clone = reference.cloneNode(true);
+      clone.removeAttribute("id");
+      clone.querySelectorAll(".citation-backlinks").forEach((node) => node.remove());
+      body.replaceChildren(clone);
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+    });
+  });
+
+  close.addEventListener("click", closeDialog);
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) closeDialog();
+  });
+  view.addEventListener("click", () => {
+    const target = activeReference;
+    closeDialog();
+    window.setTimeout(() => highlight(target), 30);
+  });
+
+  byReference.forEach((origins, refId) => {
+    const reference = document.getElementById(refId);
+    if (!reference || reference.querySelector(":scope > .citation-backlinks")) return;
+
+    const nav = document.createElement("nav");
+    nav.className = "citation-backlinks";
+    nav.setAttribute("aria-label", "返回正文引用位置");
+
+    const label = document.createElement("span");
+    label.className = "citation-backlinks-label";
+    label.textContent = origins.length === 1 ? "↩ " : "↩ 返回引用位置：";
+    nav.appendChild(label);
+
+    origins.forEach((origin, index) => {
+      const back = document.createElement("a");
+      back.href = `#${origin.id}`;
+      back.textContent = origins.length === 1 ? "返回正文" : String(index + 1);
+      back.addEventListener("click", (event) => {
+        event.preventDefault();
+        highlight(origin);
+      });
+      nav.appendChild(back);
+    });
+    reference.prepend(nav);
+  });
+});
+</script>
