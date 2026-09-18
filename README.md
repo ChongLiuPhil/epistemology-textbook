@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-This is a Chinese-language epistemology textbook written by Chong Liu and organized around problems rather than a history of figures or schools. It is also an open Web Edition project using Quarto as its sole formal writing system.
+This is a Chinese-language, problem-driven epistemology textbook and learning project maintained by Chong Liu. It grows primarily out of the author's ongoing study and integration of concepts, arguments, debates, and literature. Its main goal is not to construct a new proprietary epistemological theory, although the selection of problems, organization of material, comparative framing, and evaluative judgments remain author-reviewed.
 
 ## Current stage: Web Edition Development
 
@@ -16,7 +16,13 @@ Read online: <https://chongliuphil.github.io/epistemology-textbook/>
 
 Open access and support: <https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html>
 
-EPUB, PDF, and DOCX are not part of the day-to-day CI at this stage. Once the web edition is stable, release formats will be generated from the same canonical QMD sources through a separate release workflow.
+PDF, DOCX, and EPUB are not part of the day-to-day Pages CI. They can now be generated on demand from the same canonical QMD sources through the manual `Build Publication Formats` workflow. By default these are build artifacts for review, offline reading, and publication preparation rather than approved formal releases.
+
+## Project orientation
+
+The project uses a **learning-and-synthesis + problem-driven** approach. Its organization reflects a pedagogical view that doing philosophy is not identical to studying what earlier thinkers said. Intellectual history and the history of philosophy are important, but philosophical training also involves confronting problems directly, distinguishing concepts, comparing reasons, constructing counterexamples, and testing positions.
+
+Accordingly, the book uses historical and contemporary material in the service of philosophical problems rather than organizing itself mainly as a catalogue of thinkers or schools. This orientation is expressed primarily through chapter structure, exercises, the research studio, and reading routes rather than through a long methodological manifesto.
 
 ## Source of truth
 
@@ -34,7 +40,7 @@ The book structure and HTML configuration live in `_quarto.yml`, and the website
 
 The current Web Edition treats the website itself as the primary development deliverable rather than a by-product of the build process. The site provides:
 
-- a left-side “Book contents” navigation for moving across chapters and a right-side “On this page” navigation for locating material within the current chapter;
+- a left-side “Book contents” navigation for moving across chapters, a desktop right-side “On this page” navigation, and a collapsible chapter table of contents near the title on narrow screens;
 - full-site search, previous/next chapter navigation, and back-to-top controls;
 - reader mode for focused reading of long chapters;
 - hover previews for citations and footnotes;
@@ -92,15 +98,11 @@ Quarto HTML output is written to `_book/`. `make check` blocks deterministic bib
 
 External website availability depends on publishers, rate limits, authentication, and network state, so it is not part of the blocking gate for Pages deployment. The repository has a separate `External Link Audit`: it runs automatically when relevant manuscript, bibliography, web configuration, or audit-script changes enter `main`, and it also supports weekly and manual runs. It renders the complete site and checks the external links in the final HTML, treating only explicit HTTP 404/410 responses as broken-link failures; other network problems remain warnings.
 
-## Formats not generated at this stage
+## On-demand publication formats
 
-The current day-to-day workflow and CI do not generate:
+`_quarto.yml` now declares HTML, PDF, DOCX, and EPUB from the same source. Day-to-day Pull Request and `main` workflows still render and publish HTML only. When review, offline reading, or publication preparation requires it, the manual `Build Publication Formats` workflow can generate PDF, DOCX, and EPUB artifacts.
 
-- EPUB
-- PDF
-- DOCX
-
-These formats will be generated together through a separate release workflow after the web edition is finalized. Because they will still be produced from `index.qmd`, `manuscript/*.qmd`, and `references.bib`, manuscript changes made during web development will not diverge from future release formats.
+These artifacts use the same `index.qmd`, `manuscript/*.qmd`, and `references.bib` sources as the web edition. A successful manual build does not by itself constitute an approved formal release; release state is tracked separately in `docs/release-status.zh-CN.md`.
 
 ## CI and deployment
 

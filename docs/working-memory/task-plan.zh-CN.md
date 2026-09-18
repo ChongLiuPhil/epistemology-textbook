@@ -4,33 +4,24 @@
 
 ## ACTIVE TASKS
 
-- None. HARC-lite `0.1.1` refinement is complete.
-
-## COMPLETED IN CURRENT CYCLE
-
-- `WM-T005` — 轻量 Onboarding Check + PASS/PARTIAL/FAIL — DONE
-- `WM-T006` — 明确人类责任主体与独立 Release Approval gate — DONE
-- `WM-T007` — 补全 clarification promotion 与 revision-conflict 行为 — DONE
-- `WM-T008` — governance validator 改为 manifest-driven，并验证 PR/main — DONE
-
-Main implementation commit: `1906a4f56739ae1f3039cc3d695093eb986bfdd7`.
-
-Validation on that main commit:
-
-- Repository Governance CI — success
-- External Link Audit — success
-- Quarto HTML CI and Pages — success
+- `WM-T009` — 持久化学习—整合—梳理型教材定位与问题驱动哲学教育原则 — IN-PROGRESS
+- `WM-T010` — 配置 HTML/PDF/DOCX/EPUB 同源输出与手动 publication workflow — IN-PROGRESS
+- `WM-T011` — 移植兼容的网页阅读形式：移动端“本章目录”与相关样式 — IN-PROGRESS
+- `WM-T012` — 更新 source/CI checks，验证 PR/main 与 publication-format build — TODO
 
 ## NEXT ACTIONS
 
-1. 等待下一项人类优先任务。
-2. 对新任务按 CONTENT / FORM / PROTOCOL 路由读取最小必要状态。
-3. 新 Agent / 长中断 / 高影响 Architecture 或 Release 工作时执行轻量 Onboarding Check。
-4. 较大工作循环结束后继续更新 Current Focus / Task Plan / Work Log。
+1. 修改 `_quarto.yml` 声明多格式输出。
+2. 新增手动 publication-format workflow。
+3. 加入移动端章节 TOC include 与 CSS。
+4. 调整 `scripts/check_quarto.py`：允许手动 release build，但继续禁止日常 CI 生成/部署非 HTML。
+5. 更新 README / CONTRIBUTING。
+6. PR 验证；必要时执行一次性 publication-format 构建测试。
+7. 合并 main 并更新 Working Memory。
 
 ## BLOCKERS
 
-- None for normal manuscript, bibliography, website, or governance maintenance.
+- None for this implementation.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -38,21 +29,15 @@ Validation on that main commit:
 
 - Status: `WAITING-HUMAN`
 - Severity: `NON-BLOCKING`
-- Uncertain point: authored textbook text、文档、脚本应采用什么法律许可。
-- Current rule: 不把“公开仓库/开放阅读”解释成已经授予开放许可。
-- Promotion destination: `LICENSE-DECISION.md` + repository LICENSE file(s).
 
 ### CLR-002 — 外部参考 PDF 的公开分发权利
 
 - Status: `WAITING-HUMAN`
 - Severity: `NON-BLOCKING for manuscript work; BLOCKING for repackaging/redistribution decisions`
-- Uncertain point: `reference/我们如何知道.pdf` 是否具有允许本公开仓库继续分发的明确权利依据。
-- Current rule: 不将其视为项目 authored/open-content，也不纳入未来 release artifact。
-- Promotion destination: `reference/README.md` / license or provenance record.
 
 ## RECENTLY RESOLVED / PROMOTED
 
-- None in the active clarification queue.
+- Human project-positioning / publication-form instruction → D005 → Content Core / Form Core / Release Status — `RESOLVED / PROMOTED`.
 
 ## CLARIFICATION COMPLETION RULE
 
@@ -60,8 +45,8 @@ Validation on that main commit:
 
 ## TODO / BACKLOG
 
-- `AI-PROPOSED` — 如人类希望继续内容质量提升，从第 1 章开始逐章学术/教学审校。
-- 在真正启用 PDF/EPUB/DOCX release 前设计独立 release workflow。
+- 逐章学术/教学审校。
+- 出版级 PDF typography / DOCX styles / EPUB CSS 在实际需要时继续细化，不把工具默认值提前升级为作者永久偏好。
 - 若协作者增多，再评估 main ruleset / required checks。
 
 ## SYNC DEFECTS

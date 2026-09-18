@@ -55,8 +55,10 @@ notes: >
   Quarto QMD files are the canonical manuscript source. During Web Edition
   Development the active pipeline validates the sources, renders HTML, and
   deploys the validated _book output to GitHub Pages after changes reach main.
-  EPUB, PDF, and DOCX are deferred to a future release workflow after the web
-  edition stabilizes. The legacy textbook/ LaTeX tree is retained only for
+  PDF, DOCX, and EPUB are declared in the same Quarto project and can be built
+  on demand through a manual publication workflow. Those outputs are review/
+  offline-reading artifacts by default and do not become approved releases
+  automatically. The legacy textbook/ LaTeX tree is retained only for
   historical audit and is not part of the active edit or build workflow.
   HARC-lite governance persists collaboration state in the repository without
   changing the canonical manuscript boundary.

@@ -4,14 +4,15 @@
 
 ## 成果类型
 
-- 类型：中文哲学教材 / 持续修订 Web Edition。
-- 当前主要公开成果：GitHub Pages 上的 HTML 阅读版。
+- 类型：中文哲学教材 / 学习—整合—梳理型持续修订项目。
+- 当前主要公开成果：GitHub Pages 上的 HTML Web Edition。
+- PDF / DOCX / EPUB：与 HTML 共用同一套 Quarto canonical source，按需生成，不作为日常编辑源。
 
 ## 规范编辑与来源
 
 - 正式正文：`index.qmd` 与 `manuscript/*.qmd`。
 - 正式书目：`references.bib`。
-- 书籍结构与 HTML 配置：`_quarto.yml`。
+- 书籍结构与统一输出配置：`_quarto.yml`。
 - `textbook/`：迁移前 LaTeX 历史快照，仅用于审计、比较和 provenance，不再编辑。
 - `_book/`：生成结果，不是可编辑真值源。
 
@@ -21,19 +22,36 @@
 - 公共 GitHub 入口：`README.zh-CN.md` 与 `README.md` 保持双语入口。
 - 内部 HARC-lite 治理文档不要求逐份英文镜像。
 
-## 当前 Web Edition 规则
+## 出版模型
 
-- 左侧目录明确标为“本书目录”。
-- 右侧页面目录明确标为“本章目录”。
-- 提供搜索、reader mode、前后页、返回顶部、引文/脚注预览、查看源码与报告问题入口。
+本项目的出版形式参考 `What-Remains-Human-Epistemic-Agency-and-Human-Value-in-the-Age-of-AI` 的 Quarto 多格式安排，但根据本项目“公开教材”属性进行项目化调整：
+
+- 一套 canonical QMD / bibliography 同时服务 HTML、PDF、DOCX、EPUB；
+- HTML 是持续更新的主要阅读版本，进入 `main` 后自动部署 GitHub Pages；
+- PDF / DOCX / EPUB 通过独立手动 workflow 按需构建成 GitHub Actions artifact；
+- 手动生成 artifact 不自动等于 `RELEASE-APPROVED`，也不自动创建 GitHub Release；
+- 本项目保持公开 Pages，不复制参考项目的私有 Cloudflare 发布方式。
+
+## Web Edition 与排版规则
+
+网页形式可以与参考项目保持接近的阅读逻辑，同时保留本项目已经形成的公开阅读与反馈机制：
+
+- 左侧目录明确标为“本书目录”；
+- 右侧页面目录明确标为“本章目录”；
+- 窄屏设备在正文顶部提供可折叠的“本章目录”，其内容直接复用 Quarto 生成的 canonical TOC，不维护第二套目录；
+- 中文正文采用适合长篇阅读的 serif 字体栈，导航与界面采用 sans-serif；
+- 正文桌面阅读列保持约 820px 的适中宽度；
+- 长公式、表格、图片和代码不得把阅读列撑破；
+- 提供搜索、reader mode、前后页、返回顶部、引文/脚注预览、查看源码与报告问题入口；
 - 网页开放阅读不设置付费门槛；支持完全自愿。
-- 当前日常 CI 只构建 HTML。
-- EPUB / PDF / DOCX 延后到独立 release workflow，并继续从同一 canonical QMD 生成。
+
+参考项目中依赖“每章独立参考文献”的 citation dialog / backlink 逻辑当前不直接移植，因为本项目书目结构不同；如以后调整 citation architecture，再单独评估。
 
 ## 版本与反馈
 
 - 网页持续修订；精确学术引用可以记录 Git commit。
 - 内容问题与网页问题通过不同 GitHub Issue Form 分流。
+- 多格式 artifact 都是 canonical source 的派生产物，不允许反向编辑形成第二套正文。
 
 ## 临时实现默认值
 
@@ -41,5 +59,6 @@
 
 - Quarto 当前 HTML theme：`cosmo`。
 - 当前具体 CSS 数值、间距、断点与视觉微调。
+- PDF / DOCX / EPUB 当前使用 Quarto 默认输出配置，后续可在不改变 canonical source 的前提下逐步建立出版级样式。
 
 这些默认值可以在不改变核心 Form 原则的前提下迭代。

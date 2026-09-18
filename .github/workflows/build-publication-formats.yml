@@ -1,0 +1,52 @@
+name: Build Publication Formats
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-publication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Install Chinese fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
+
+      - name: Set up Quarto and TinyTeX
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Render PDF book
+        run: |
+          quarto render --to pdf
+          mkdir -p build-artifacts
+          find _book -maxdepth 1 -type f -name '*.pdf' -exec cp {} build-artifacts/ \;
+          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.pdf' -print -quit)"
+
+      - name: Render DOCX book
+        run: |
+          quarto render --to docx
+          find _book -maxdepth 1 -type f -name '*.docx' -exec cp {} build-artifacts/ \;
+          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.docx' -print -quit)"
+
+      - name: Render EPUB book
+        run: |
+          quarto render --to epub
+          find _book -maxdepth 1 -type f -name '*.epub' -exec cp {} build-artifacts/ \;
+          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.epub' -print -quit)"
+
+      - name: Upload publication-format artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: epistemology-textbook-publication-formats
+          path: build-artifacts/*
+          if-no-files-found: error
+          retention-days: 30

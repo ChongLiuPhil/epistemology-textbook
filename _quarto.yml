@@ -75,5 +75,14 @@ format:
     footnotes-hover: true
     code-copy: false
     css: book.css
+    include-after-body:
+      - assets/includes/reading-navigation.html
+  pdf:
+    toc: true
+    number-sections: true
+  docx:
+    toc: true
+  epub:
+    toc: true
 
 lang: zh-CN

@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-这是一本由 Chong Liu 编写、以问题为中心组织的中文认识论教材，也是一个以 Quarto 为唯一正式写作系统的开放 Web Edition 项目。
+这是一个由 Chong Liu 持续维护、以问题为中心组织的中文认识论教材与学习工程。它首先服务于作者自身学习过程中对概念、问题、论证和文献的整合与梳理，并进一步开放给学生、自学者、教师与研究者使用；项目不以建立一套作者原创认识论理论为主要目标，但问题选择、材料取舍、比较框架与评价性判断由作者负责审核和组织。
 
 ## 当前阶段：Web Edition Development
 
@@ -16,7 +16,13 @@
 
 开放阅读与支持：<https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html>
 
-EPUB、PDF、DOCX 暂不属于日常 CI。等网页版稳定后，再通过独立 release workflow 从同一套 canonical QMD sources 统一生成发行格式。
+PDF、DOCX、EPUB 不属于日常 Pages CI，但现在可以通过独立的手动 `Build Publication Formats` workflow 从同一套 canonical QMD sources 按需生成。默认生成物是校对、离线阅读和出版准备 artifact，不自动等于正式 release。
+
+## 项目定位
+
+本项目采用**学习—整合—梳理 + 问题驱动**的方式组织认识论材料。这里的“问题驱动”也体现一种哲学教育判断：哲学研究不能被简单等同于研究前人的思想。思想研究、思想史和哲学史当然重要，但哲学训练还要求直接面对问题、区分概念、比较理由、构造反例并检验立场。
+
+因此，本书尽量不是按哲学家或流派罗列“谁说过什么”，而是让历史观点、当代研究与作者的组织判断共同服务于问题本身。这个原则主要体现在章节结构、练习、研究工作坊和阅读路线中，而不是把教材变成长篇方法论宣言。
 
 ## Source of truth
 
@@ -34,7 +40,7 @@ EPUB、PDF、DOCX 暂不属于日常 CI。等网页版稳定后，再通过独�
 
 当前 Web Edition 将网页本身视为开发阶段的主要交付物，而不是构建过程的副产品。站点提供：
 
-- 左侧“本书目录”用于跨章导航；右侧“本章目录”用于当前章节内部定位
+- 左侧“本书目录”用于跨章导航；桌面右侧“本章目录”用于当前章节内部定位，窄屏设备在正文标题下提供可折叠的“本章目录”
 - 全站搜索、前后章节导航与返回顶部
 - reader mode，用于长章的专注阅读
 - 引文与脚注悬浮预览
@@ -92,15 +98,11 @@ Quarto HTML 输出位于 `_book/`。`make check` 会阻止缺失 citation key、
 
 外部网站可达性受出版社、限流、认证与网络状态影响，因此不放进 Pages 发布的阻断路径。仓库另有独立的 `External Link Audit`：相关书稿、书目、网页配置或审计脚本进入 `main` 时会自动运行，同时保留每周与手动触发。它完整渲染网站后检查最终 HTML 中的外部链接，只把明确的 HTTP 404/410 作为断链失败，其余网络异常保留为 warning。
 
-## 当前不生成的格式
+## 按需电子出版格式
 
-当前日常流程和 CI 不生成：
+`_quarto.yml` 现在统一声明 HTML、PDF、DOCX 与 EPUB。日常 PR / `main` 流程仍然只渲染并发布 HTML；需要校对、离线阅读或出版准备时，可以手动运行 `Build Publication Formats` workflow，一次生成 PDF、DOCX 和 EPUB artifact。
 
-- EPUB
-- PDF
-- DOCX
-
-这些格式将在网页版定稿后通过独立 release 流程统一生成。由于它们仍然从 `index.qmd`、`manuscript/*.qmd` 与 `references.bib` 生成，网页开发期间对正式书稿的修改不会与未来发行稿分叉。
+这些 artifact 与 HTML 使用完全相同的 `index.qmd`、`manuscript/*.qmd` 和 `references.bib`，不会形成第二套正文。手动构建成功也不自动代表正式 release 已获批准；正式版本状态见 `docs/release-status.zh-CN.md`。
 
 ## CI 与部署
 
