@@ -4,22 +4,26 @@
 
 ## ACTIVE TASKS
 
-- `WM-T001` — 建立 HARC-lite 控制层与 Core / Working Memory — IN-PROGRESS
-- `WM-T002` — 清理 website/reference/legacy README 中的仓库真值冲突 — IN-PROGRESS
-- `WM-T003` — 增加 PR 模板、CITATION.cff、治理一致性检查与专用 CI — IN-PROGRESS
-- `WM-T004` — 通过 PR、合并 main，并确认 Pages/治理 CI 成功 — TODO
+- None. HARC-lite governance rollout is complete.
+
+## COMPLETED IN CURRENT CYCLE
+
+- `WM-T001` — 建立 HARC-lite 控制层与 Core / Working Memory — DONE
+- `WM-T002` — 清理 website/reference/legacy README 中的仓库真值冲突 — DONE
+- `WM-T003` — 增加 PR 模板、CITATION.cff、治理一致性检查与专用 CI — DONE
+- `WM-T004` — PR #14 验证、合并 main，并确认 Pages/治理/外链流水线成功 — DONE
+
+Main implementation commit: `691374183198919d8229aaa7216c237348120b92`.
 
 ## NEXT ACTIONS
 
-1. 完成分支文件变更。
-2. 跑 governance + HTML CI。
-3. 修复任何失败。
-4. 更新 Working Memory 为完成状态。
-5. 合并并核对 main workflow。
+1. 等待下一项人类优先任务。
+2. 对新任务按 CONTENT / FORM / PROTOCOL 路由读取最小必要状态。
+3. 较大工作循环结束后继续更新 Current Focus / Task Plan / Work Log。
 
 ## BLOCKERS
 
-- None for the current governance upgrade.
+- None for normal manuscript, bibliography, website, or governance maintenance.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -41,10 +45,10 @@
 
 ## TODO / BACKLOG
 
-- `AI-PROPOSED` — HARC-lite 稳定后，从第 1 章开始做逐章学术/教学审校。
+- `AI-PROPOSED` — 如人类希望继续内容质量提升，从第 1 章开始逐章学术/教学审校。
 - 在真正启用 PDF/EPUB/DOCX release 前设计独立 release workflow。
-- 若协作者增多，再评估 main ruleset / required checks；不在本次通过不确定 API 权限强行设置。
+- 若协作者增多，再评估 main ruleset / required checks。
 
 ## SYNC DEFECTS
 
-- 当前已知：旧 `website/README.md` 与 `reference/README.md` 的 active-workflow 描述过时；本升级负责修复。
+- None known. Previously stale `website/README.md` was removed; `reference/README.md` and legacy LaTeX documentation were corrected in PR #14.
