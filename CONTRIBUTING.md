@@ -89,14 +89,14 @@ make check
 make preview
 ```
 
-需要执行完整开发构建时运行：
+需要执行完整 HTML 开发构建时运行：
 
 ```sh
 make html
 # 或 make all；当前阶段二者都只生成 HTML
 ```
 
-当前日常 Pages 流程不生成 EPUB、PDF 或 DOCX。仓库另有独立手动 publication-format workflow，可从同一套 canonical QMD sources 生成这些格式供排版检查与作者审阅；构建 artifact 不自动构成正式 release。
+当前日常 Pages 流程不生成 EPUB、PDF 或 DOCX。仓库另有 `.github/workflows/build-publication-formats.yml`，可手动从同一套 canonical QMD sources 生成这些格式供排版检查与作者审阅；它也会在出版配置本身发生 PR 变更时做一次多格式验证。构建 artifact 不自动构成正式 release。
 
 ## 8. Commit 与 Pull Request
 
