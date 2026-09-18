@@ -1,0 +1,53 @@
+harc:
+  profile: "HARC-lite-book"
+  project: "epistemology-textbook"
+  protocol_source: "ChongLiuPhil/Human-AI-Research-Collaboration-Protocol"
+  adopted_protocol_version: "0.2.0-draft"
+  adopted_protocol_commit: "e741c43c5cd158c43910e3832c7d757226717a97"
+
+  canonical_language: "zh-CN"
+  english_mirror_policy: "public-entry-only"
+
+  bootstrap:
+    start_here: "START_HERE.zh-CN.md"
+    agent_contract: "AGENTS.md"
+    context_interface: "HARC_CONTEXT_INTERFACE.yaml"
+
+  required_read_order:
+    - "HARC_MANIFEST.yaml"
+    - "HARC_CONTEXT_INTERFACE.yaml"
+    - "AGENTS.md"
+    - "docs/working-memory.zh-CN.md"
+    - "docs/working-memory/current-focus.zh-CN.md"
+    - "docs/working-memory/task-plan.zh-CN.md"
+    - "core/DECISION_LOG.zh-CN.md"
+
+  state:
+    content_core: "core/CONTENT_CORE.zh-CN.md"
+    form_core: "core/FORM_CORE.zh-CN.md"
+    decision_log: "core/DECISION_LOG.zh-CN.md"
+    working_memory_index: "docs/working-memory.zh-CN.md"
+    working_memory_current_focus: "docs/working-memory/current-focus.zh-CN.md"
+    working_memory_task_plan: "docs/working-memory/task-plan.zh-CN.md"
+    working_memory_work_log: "docs/working-memory/work-log.zh-CN.md"
+    book_architecture: "docs/book-architecture.zh-CN.md"
+    framework_status: "docs/framework-status.zh-CN.md"
+
+  artifacts:
+    canonical_home: "index.qmd"
+    canonical_manuscript: "manuscript/"
+    bibliography: "references.bib"
+    book_config: "_quarto.yml"
+    web_output: "_book/"
+    legacy_latex: "textbook/"
+
+  invariants:
+    - "Repository state outranks chat or model memory."
+    - "AI proposals are not human commitments."
+    - "Read latest relevant state before high-impact actions and writes."
+    - "Working Memory stores operational resume state, not manuscript truth."
+    - "Quarto QMD plus references.bib remain the canonical manuscript sources."
+    - "The public HTML Web Edition is the active publication artifact."
+    - "Legacy LaTeX is historical only."
+    - "Internal governance is Chinese-canonical; full bilingual mirroring is not required."
+    - "Upstream HARC changes are not adopted automatically."
