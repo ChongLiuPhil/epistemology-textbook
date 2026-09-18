@@ -34,10 +34,10 @@ EPUB、PDF、DOCX 不属于日常 Pages CI，但可以通过独立的手动 publ
 
 当前 Web Edition 将网页本身视为开发阶段的主要交付物，而不是构建过程的副产品。站点提供：
 
-- 左侧“本书目录”用于跨章导航；右侧“本章目录”用于当前章节内部定位
+- 左侧“本书目录”用于跨章导航；桌面端右侧“本章目录”用于当前章节内部定位，移动端提供正文内可折叠章目录
 - 全站搜索、前后章节导航与返回顶部
 - reader mode，用于长章的专注阅读
-- 引文与脚注悬浮预览
+- 引文与脚注悬浮预览；引文点击可查看文献详情，并从章末参考文献返回正文引用位置
 - 右侧“报告问题”和“查看源码”入口
 - 全书页脚中的开放阅读、反馈与版本状态提示
 - GitHub 上区分“书稿纠错与内容建议”和“网页显示与阅读问题”的结构化反馈表单
@@ -81,7 +81,7 @@ EPUB、PDF、DOCX 不属于日常 Pages CI，但可以通过独立的手动 publ
 需要 Python 3、GNU Make 和 Quarto；当前开发流程不需要 LaTeX/XeLaTeX。
 
 ```sh
-make check    # 检查 QMD、bibliography 元数据、项目结构、阅读/反馈配置和 HTML-only 流程
+make check    # 检查 QMD、数学布局风险、bibliography 元数据、项目结构、阅读/反馈与发布边界
 make preview  # 启动 Quarto 本地 HTML 预览
 make html     # 生成 HTML 阅读版
 make all      # 当前阶段等同于完整 HTML 开发构建
@@ -90,7 +90,7 @@ make clean    # 删除 _book/ 与 .quarto/
 
 Quarto HTML 输出位于 `_book/`。`make check` 会阻止缺失 citation key、重复或格式错误的 DOI、非法 URL 等确定性文献错误；当前未被正文引用的书目条目会作为审计信息报告，而不会自动删除。
 
-外部网站可达性受出版社、限流、认证与网络状态影响，因此不放进 Pages 发布的阻断路径。仓库另有独立的 `External Link Audit`：相关书稿、书目、网页配置或审计脚本进入 `main` 时会自动运行，同时保留每周与手动触发。它完整渲染网站后检查最终 HTML 中的外部链接，只把明确的 HTTP 404/410 作为断链失败，其余网络异常保留为 warning。
+电子出版与网页形式的项目级约定见 `docs/publication-profile.zh-CN.md`。外部网站可达性受出版社、限流、认证与网络状态影响，因此不放进 Pages 发布的阻断路径。仓库另有独立的 `External Link Audit`：相关书稿、书目、网页配置或审计脚本进入 `main` 时会自动运行，同时保留每周与手动触发。它完整渲染网站后检查最终 HTML 中的外部链接，只把明确的 HTTP 404/410 作为断链失败，其余网络异常保留为 warning。
 
 ## 按需电子出版格式
 
