@@ -63,6 +63,7 @@ book:
         - manuscript/references.qmd
 
 bibliography: references.bib
+reference-section-title: "本章参考文献"
 
 format:
   html:
@@ -75,5 +76,15 @@ format:
     footnotes-hover: true
     code-copy: false
     css: book.css
+    include-after-body:
+      - assets/includes/reading-navigation.html
+      - assets/includes/citation-navigation.html
+  pdf:
+    toc: true
+    number-sections: true
+  docx:
+    toc: true
+  epub:
+    toc: true
 
 lang: zh-CN
