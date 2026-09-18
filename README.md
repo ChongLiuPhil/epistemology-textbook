@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-This is a Chinese-language epistemology textbook written by Chong Liu and organized around problems rather than a history of figures or schools. It is also an open Web Edition project using Quarto as its sole formal writing system.
+This is a Chinese-language epistemology learning textbook organized and continuously revised by Chong Liu. It grows primarily out of selecting, integrating, comparing, and problematizing materials encountered in the course of studying epistemology; it does not require the construction of an original philosophical system as its main goal. Authorial judgment is concentrated in problem framing, source selection, interpretation, comparison, and pedagogical organization. Quarto remains the sole formal manuscript system.
 
 ## Current stage: Web Edition Development
 
@@ -16,7 +16,7 @@ Read online: <https://chongliuphil.github.io/epistemology-textbook/>
 
 Open access and support: <https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html>
 
-EPUB, PDF, and DOCX are not part of the day-to-day CI at this stage. Once the web edition is stable, release formats will be generated from the same canonical QMD sources through a separate release workflow.
+EPUB, PDF, and DOCX are not part of the day-to-day Pages CI. A separate manual publication-format workflow may generate them from the same canonical QMD sources for layout testing and editorial review; a successful build is not itself a formal release approval.
 
 ## Source of truth
 
@@ -92,15 +92,15 @@ Quarto HTML output is written to `_book/`. `make check` blocks deterministic bib
 
 External website availability depends on publishers, rate limits, authentication, and network state, so it is not part of the blocking gate for Pages deployment. The repository has a separate `External Link Audit`: it runs automatically when relevant manuscript, bibliography, web configuration, or audit-script changes enter `main`, and it also supports weekly and manual runs. It renders the complete site and checks the external links in the final HTML, treating only explicit HTTP 404/410 responses as broken-link failures; other network problems remain warnings.
 
-## Formats not generated at this stage
+## On-demand publication formats
 
-The current day-to-day workflow and CI do not generate:
+The current day-to-day Pages workflow does not generate:
 
 - EPUB
 - PDF
 - DOCX
 
-These formats will be generated together through a separate release workflow after the web edition is finalized. Because they will still be produced from `index.qmd`, `manuscript/*.qmd`, and `references.bib`, manuscript changes made during web development will not diverge from future release formats.
+A separate manual publication-format workflow can generate these formats for layout checks and future publication preparation. They still derive from `index.qmd`, `manuscript/*.qmd`, and `references.bib`, so they do not create a second manuscript source; formal release remains subject to separate author review.
 
 ## CI and deployment
 
