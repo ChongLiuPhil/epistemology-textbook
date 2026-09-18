@@ -11,4 +11,16 @@
 - 固定上游采用基线：HARC `0.2.0-draft` @ `e741c43c5cd158c43910e3832c7d757226717a97`；
 - 许可选择与外部参考 PDF 权利状态保留为显式人类待决事项。
 
-后续在 PR 验证、合并与部署完成后追加完成记录。
+## 2026-09-18 — HARC-lite 升级完成
+
+- PR #14 “建立 HARC-lite 协作治理与仓库状态检查”通过 Repository Governance CI 与完整 Quarto HTML CI；
+- squash merge 到 `main`：`691374183198919d8229aaa7216c237348120b92`；
+- `main` 的 Repository Governance CI：success；
+- `main` 的 Quarto HTML validation：success；
+- GitHub Pages `deploy-pages`：success；
+- External Link Audit：success；
+- 九章正文与 `references.bib` 未在本轮治理升级中改写；
+- 当前已无已知 repository-truth sync defect；
+- 两项仍待人类决定：正式许可模型、外部参考 PDF 的公开分发权利依据。
+
+HARC-lite 现已成为后续协作的仓库级控制层；上游 HARC 后续变化不会自动进入本项目。
