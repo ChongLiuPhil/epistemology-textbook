@@ -270,13 +270,22 @@ def check_sources() -> list[Path]:
                 "standalone single-dollar math delimiter is not cross-format safe in "
                 f"{path.relative_to(ROOT)}"
             )
-        if re.search(r"\$\$\n[ \t]*\n", text) or re.search(
-            r"\n[ \t]*\n[ \t]*\$\$", text
-        ):
-            fail(
-                "display math delimiter must directly touch its math block in "
-                f"{path.relative_to(ROOT)}"
-            )
+
+        lines = text.splitlines()
+        display_delimiters = [
+            index for index, line in enumerate(lines) if line.strip() == "$"
+        ]
+        if len(display_delimiters) % 2:
+            fail(f"unpaired display-math delimiter in {path.relative_to(ROOT)}")
+
+        for opening, closing in zip(display_delimiters[0::2], display_delimiters[1::2]):
+            if closing <= opening + 1:
+                fail(f"empty display-math block in {path.relative_to(ROOT)}")
+            if not lines[opening + 1].strip() or not lines[closing - 1].strip():
+                fail(
+                    "display math delimiter must directly touch its math content in "
+                    f"{path.relative_to(ROOT)}"
+                )
     return files
 
 
