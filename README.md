@@ -34,10 +34,10 @@ The book structure and HTML configuration live in `_quarto.yml`, and the website
 
 The current Web Edition treats the website itself as the primary development deliverable rather than a by-product of the build process. The site provides:
 
-- a left-side “Book contents” navigation for moving across chapters and a right-side “On this page” navigation for locating material within the current chapter;
+- a left-side “Book contents” navigation for moving across chapters, a desktop right-side “On this page” navigation, and a collapsible in-text chapter TOC on mobile;
 - full-site search, previous/next chapter navigation, and back-to-top controls;
 - reader mode for focused reading of long chapters;
-- hover previews for citations and footnotes;
+- hover previews for citations and footnotes, plus click-through citation details and return links from chapter references;
 - right-side “Report an issue” and “View source” entry points;
 - footer notices across the book for open access, feedback, and version status;
 - structured GitHub feedback forms that distinguish “manuscript corrections/content suggestions” from “web display/reading problems.”
@@ -81,7 +81,7 @@ For scholarly citations that require precise version tracking, in addition to au
 Python 3, GNU Make, and Quarto are required. The current development workflow does not require LaTeX/XeLaTeX.
 
 ```sh
-make check    # validate QMD, bibliography metadata, project structure, reading/feedback configuration, and HTML-only workflow
+make check    # validate QMD, math-layout risks, bibliography metadata, project structure, reading/feedback, and publication boundaries
 make preview  # launch local Quarto HTML preview
 make html     # generate the HTML reading edition
 make all      # currently equivalent to a full HTML development build
@@ -90,7 +90,7 @@ make clean    # remove _book/ and .quarto/
 
 Quarto HTML output is written to `_book/`. `make check` blocks deterministic bibliographic errors such as missing citation keys, duplicate or malformed DOIs, and invalid URLs. Bibliography entries that are not currently cited are reported as audit information rather than deleted automatically.
 
-External website availability depends on publishers, rate limits, authentication, and network state, so it is not part of the blocking gate for Pages deployment. The repository has a separate `External Link Audit`: it runs automatically when relevant manuscript, bibliography, web configuration, or audit-script changes enter `main`, and it also supports weekly and manual runs. It renders the complete site and checks the external links in the final HTML, treating only explicit HTTP 404/410 responses as broken-link failures; other network problems remain warnings.
+The publication profile is documented in `docs/publication-profile.zh-CN.md`. External website availability depends on publishers, rate limits, authentication, and network state, so it is not part of the blocking gate for Pages deployment. The repository has a separate `External Link Audit`: it runs automatically when relevant manuscript, bibliography, web configuration, or audit-script changes enter `main`, and it also supports weekly and manual runs. It renders the complete site and checks the external links in the final HTML, treating only explicit HTTP 404/410 responses as broken-link failures; other network problems remain warnings.
 
 ## On-demand publication formats
 
