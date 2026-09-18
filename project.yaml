@@ -33,7 +33,7 @@ source_of_truth:
   book_config: _quarto.yml
 
 governance:
-  profile: harc-lite-book
+  profile: HARC-lite-book
   profile_version: 0.1.1
   protocol_source: ChongLiuPhil/Human-AI-Research-Collaboration-Protocol
   adopted_protocol_version: 0.2.0-draft
