@@ -122,3 +122,14 @@ Pull Request 阶段：
 直接编辑 `index.qmd`、`manuscript/*.qmd` 和 `references.bib`。引文使用 Quarto/Pandoc citation 语法；公式、脚注、表格和 callout 使用 Quarto 可直接处理的 Markdown/Pandoc 语法。提交前至少运行 `make check`，检查最终网页效果时运行 `make preview` 或 `make html`。
 
 详细约定见 `CONTRIBUTING.md`。
+
+
+## 协作治理：HARC-lite
+
+本仓库采用针对教材项目裁剪的 HARC-lite 协作层，使新的协作者或 AI Agent 不依赖旧聊天也能重建当前项目状态。
+
+从零接管请先读 `START_HERE.zh-CN.md`。长期稳定的内容/形式原则分别位于 `core/CONTENT_CORE.zh-CN.md` 与 `core/FORM_CORE.zh-CN.md`；持久决定记录在 `core/DECISION_LOG.zh-CN.md`；当前目标、任务与待确认事项位于 `docs/working-memory/`。
+
+项目采用的上游 HARC revision 固定在 `HARC_MANIFEST.yaml`，不会自动跟随上游变化。内部治理以中文为 canonical，不要求为每份协作文档维护英文镜像；公共 README 仍保留中英文入口。
+
+`make check` 除书稿与书目检查外，还会验证 repository-backed collaboration state，防止旧发布说明、legacy 路径或未决许可状态被误写成当前真值。
