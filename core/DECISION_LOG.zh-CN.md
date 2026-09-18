@@ -62,3 +62,22 @@
 - 在人类明确决定前，不把该 PDF 纳入本项目 authored/open-content 许可，也不把它打包进未来 release artifact。
 
 **实现状态：** pending human licensing/rights decision; operational safeguard implemented.
+
+
+---
+
+## 2026-09-18 — D004 — 完善 HARC-lite v0.1.1 的协作闭环
+
+**来源：** 人类作者在协议复核后明确确认“好，请完善”。  
+**分类：** PROTOCOL。  
+**决定：**
+
+- 保持现有 HARC-lite 教材化架构，不扩张成完整 HARC 协议仓库；
+- 新 Agent、长中断、高影响 Architecture/Release 工作或状态冲突时执行轻量 Onboarding Check，并使用 `PASS / PARTIAL / FAIL`；
+- 明确作者 Chong Liu 保持为项目目的、核心知识判断、重大 Architecture 授权和公开 Release 决定的责任主体；
+- 明确 Architecture/Framework Approval 与具体 Release Approval 相互独立；
+- clarification 采用 `WAITING-HUMAN -> human resolution -> Decision Log -> promotion -> RESOLVED / PROMOTED` 生命周期，并从 active queue 退出；
+- revision 变化触发 `REVISION-CONFLICT`，禁止用旧缓存覆盖新仓库状态；
+- governance validator 应优先根据 `HARC_MANIFEST.yaml` 解析和校验声明路径/版本，而不是维护平行的硬编码项目拓扑。
+
+**实现状态：** implementing in HARC-lite profile version `0.1.1`.
