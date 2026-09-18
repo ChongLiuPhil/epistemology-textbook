@@ -211,7 +211,7 @@ def check_operational_state() -> None:
 
 
 def check_protocol_semantics() -> None:
-    for marker in ("D001", "D004"):
+    for marker in ("D001", "D004", "D005"):
         require_marker("core/DECISION_LOG.zh-CN.md", marker)
 
     for marker in (
@@ -223,8 +223,11 @@ def check_protocol_semantics() -> None:
     ):
         require_marker("AGENTS.md", marker)
 
-    for marker in ("责任主体", "作者 Chong Liu"):
+    for marker in ("责任主体", "作者 Chong Liu", "学习—整合—梳理", "哲学研究不能被简单等同"):
         require_marker("core/CONTENT_CORE.zh-CN.md", marker)
+
+    for marker in ("PDF / DOCX / EPUB", "GitHub Pages", "手动 workflow"):
+        require_marker("core/FORM_CORE.zh-CN.md", marker)
 
     for marker in (
         "BOOK REPOSITORY CONTEXT — ACTIVE",
