@@ -223,9 +223,7 @@ number-sections: true
 
 
 $$
-
 K_Sp \leftrightarrow p \land B_Sp \land J_Sp .
-
 $$
 
 
