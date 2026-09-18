@@ -260,9 +260,7 @@ number-sections: true
 
 
 $$
-
 \neg p \Box\!\!\to \neg B_Sp .
-
 $$
 
 
