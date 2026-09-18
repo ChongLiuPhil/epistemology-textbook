@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-这是一本由 Chong Liu 编写、以问题为中心组织的中文认识论教材，也是一个以 Quarto 为唯一正式写作系统的开放 Web Edition 项目。
+这是一本由 Chong Liu 组织和持续修订、以问题为中心的中文认识论学习教材。它主要来自学习过程中对认识论材料的选择、整合、比较与问题化梳理，不以建立原创理论体系为必要目标；作者的判断主要体现在问题框架、材料取舍、解释比较和教学组织。项目以 Quarto 作为唯一正式写作系统。
 
 ## 当前阶段：Web Edition Development
 
@@ -16,7 +16,7 @@
 
 开放阅读与支持：<https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html>
 
-EPUB、PDF、DOCX 暂不属于日常 CI。等网页版稳定后，再通过独立 release workflow 从同一套 canonical QMD sources 统一生成发行格式。
+EPUB、PDF、DOCX 不属于日常 Pages CI，但可以通过独立的手动 publication-format workflow 从同一套 canonical QMD sources 生成，用于电子出版测试与审阅。构建成功不自动表示正式 release 已获批准。
 
 ## Source of truth
 
@@ -92,15 +92,15 @@ Quarto HTML 输出位于 `_book/`。`make check` 会阻止缺失 citation key、
 
 外部网站可达性受出版社、限流、认证与网络状态影响，因此不放进 Pages 发布的阻断路径。仓库另有独立的 `External Link Audit`：相关书稿、书目、网页配置或审计脚本进入 `main` 时会自动运行，同时保留每周与手动触发。它完整渲染网站后检查最终 HTML 中的外部链接，只把明确的 HTTP 404/410 作为断链失败，其余网络异常保留为 warning。
 
-## 当前不生成的格式
+## 按需电子出版格式
 
-当前日常流程和 CI 不生成：
+当前日常 Pages 流程不生成：
 
 - EPUB
 - PDF
 - DOCX
 
-这些格式将在网页版定稿后通过独立 release 流程统一生成。由于它们仍然从 `index.qmd`、`manuscript/*.qmd` 与 `references.bib` 生成，网页开发期间对正式书稿的修改不会与未来发行稿分叉。
+仓库提供独立的手动 publication-format workflow 来生成这些格式，供排版检查和未来发行准备。它们仍然从 `index.qmd`、`manuscript/*.qmd` 与 `references.bib` 生成，因此不会形成第二套正文；正式 release 仍需单独作者审核。
 
 ## CI 与部署
 
