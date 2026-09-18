@@ -120,3 +120,22 @@ Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub A
 因此，一次网页相关修改的完成标准不是“QMD 已修改”或“CI 能 render”，而是：修改进入 `main`、主分支 CI 通过、Pages deployment 成功，公开网页能够显示新的书籍版本。
 
 在线阅读地址：<https://chongliuphil.github.io/epistemology-textbook/>
+
+
+## 10. HARC-lite 协作与高影响修改
+
+从零接管本仓库时，先读 `START_HERE.zh-CN.md` 和 `AGENTS.md`，并从 `docs/working-memory/current-focus.zh-CN.md` 与 `docs/working-memory/task-plan.zh-CN.md` 确认当前续接点。
+
+实质性修改先按以下标签判断：
+
+- **CONTENT**：正文、概念、论证、章节功能、教学结构、案例或文献支持；
+- **FORM**：语言呈现、网页、导航、样式、引用呈现或输出形式；
+- **PROTOCOL**：协作、状态持久化、CI、批准与发布流程。
+
+普通纠错、链接、书目元数据与局部样式修复仍按轻量 PR 流程进行。只有会改变全书核心问题、关键概念关系、章节功能或总体学习/论证路径的重大结构变更，才需要更新 `docs/book-architecture.zh-CN.md` / `docs/framework-status.zh-CN.md` 并获得作者明确确认。
+
+AI 生成的高影响提议在作者确认前应标记为 `AI-PROPOSED`，不得静默写入 Content Core 作为人类承诺。人类明确决定应进入 `core/DECISION_LOG.zh-CN.md`。
+
+较大工作循环结束或 handoff 前，应更新 Working Memory。历史 Work Log 不要求每次接管都读取。
+
+本项目当前许可状态仍为显式未决，见 `LICENSE-DECISION.md`；不要把开放阅读或公开仓库解释为已经授予开放许可。
