@@ -264,6 +264,19 @@ def check_sources() -> list[Path]:
         for marker in GENERATED_MARKERS:
             if marker in text:
                 fail(f"legacy generated-source marker remains in {path.relative_to(ROOT)}: {marker}")
+
+        if re.search(r"(?m)^\s*\$\s*$", text):
+            fail(
+                "standalone single-dollar math delimiter is not cross-format safe in "
+                f"{path.relative_to(ROOT)}"
+            )
+        if re.search(r"\$\$\n[ \t]*\n", text) or re.search(
+            r"\n[ \t]*\n[ \t]*\$\$", text
+        ):
+            fail(
+                "display math delimiter must directly touch its math block in "
+                f"{path.relative_to(ROOT)}"
+            )
     return files
 
 
