@@ -81,3 +81,23 @@
 - governance validator 应优先根据 `HARC_MANIFEST.yaml` 解析和校验声明路径/版本，而不是维护平行的硬编码项目拓扑。
 
 **实现状态：** implemented in HARC-lite profile version `0.1.1` via PR #16 / main commit `1906a4f56739ae1f3039cc3d695093eb986bfdd7`.
+
+
+---
+
+## 2026-09-18 — D005 — 将本书定位为问题驱动的学习整合与判断性组织项目
+
+**来源：** 人类作者说明本项目主要源于自身学习过程中对认识论学习资料的整合和梳理，并进一步明确问题导向的哲学观与形式参考项目。  
+**分类：** CONTENT / FORM。  
+**决定：**
+
+- 本书首先是对认识论学习材料的选择、整合、比较、重构与问题化组织，不以提出作者原创认识论体系为主要目标；
+- 原创理论可以出现，但不作为项目必须追求的成果；不应为了“原创性”强行制造新的理论主张；
+- 作者需要审核和组织的重点，是问题选择、材料取舍、概念区分、论证强弱、比较边界、解释视角与整体学习路径；
+- 本书采用明确的问题导向哲学观：哲学研究不能被简化为“研究前人哲学家的思想”；思想研究、思想史研究、哲学史研究与直接围绕哲学问题进行的概念和论证研究应保持区分，同时可以相互支持；
+- 这一方法立场应进入项目定位和适当的前言/学习说明，但不要求在正文中发展成大篇幅元哲学论证；
+- 电子出版、网页阅读与排版形式参考 `ChongLiuPhil/What-Remains-Human-Epistemic-Agency-and-Human-Value-in-the-Age-of-AI` 的整体出版 profile；借鉴同源多格式、长文网页阅读和引用导航，但保留本项目的公开 GitHub Pages、开放阅读与 Issue 反馈机制。
+
+**参考形式基线：** `What-Remains-Human-Epistemic-Agency-and-Human-Value-in-the-Age-of-AI` @ `040511a8c09866eeed6479b933e25bf51705ab32`。
+
+**实现状态：** implementing in current cycle.
