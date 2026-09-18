@@ -12,6 +12,21 @@
 
 采用 HARC-lite 不追溯把已经公开的 Web Edition 降级为 provisional。
 
+## 按需生成的电子出版格式
+
+PDF / DOCX / EPUB 可以从同一 canonical Quarto source 通过手动 GitHub Actions workflow 生成。
+
+这些输出默认状态是：
+
+`BUILD-ARTIFACT / NOT-RELEASED`
+
+含义：
+
+- 可以用于作者校对、跨格式检查、离线阅读或后续出版准备；
+- 不因 artifact 已成功生成而自动成为正式出版版本；
+- 不自动创建 GitHub Release；
+- 不改变 HTML Web Edition 作为当前主要持续发布版本的地位。
+
 ## 未来重大版本
 
 当未来发生大规模正文/架构重写，或准备正式 PDF / EPUB / DOCX / v1.0 等 release 时，使用以下轻量状态：
@@ -44,7 +59,8 @@ MAJOR-REVISION
 
 ## 当前 blocker
 
-正常 Web Edition 修订：无。
+正常 Web Edition 修订：无。  
+手动生成 PDF / DOCX / EPUB build artifact：无，但不构成正式 release。
 
 正式开放许可 release：受 `CLR-001` 影响。  
 包含或再分发外部参考 PDF 的任何 release：受 `CLR-002` 影响。
