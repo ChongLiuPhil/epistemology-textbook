@@ -122,3 +122,14 @@ After merging into `main`, and only after all of the above validation passes, th
 Edit `index.qmd`, `manuscript/*.qmd`, and `references.bib` directly. Use Quarto/Pandoc citation syntax for references; use Markdown/Pandoc syntax supported directly by Quarto for formulas, footnotes, tables, and callouts. Run at least `make check` before committing, and use `make preview` or `make html` when checking the final web presentation.
 
 See `CONTRIBUTING.md` for detailed conventions.
+
+
+## Collaboration governance: HARC-lite
+
+This repository uses a project-specific HARC-lite collaboration layer so that a new human collaborator or AI agent can reconstruct the current project state without relying on prior chat history.
+
+For zero-context onboarding, start with `START_HERE.zh-CN.md`. Stable content and form principles live in `core/CONTENT_CORE.zh-CN.md` and `core/FORM_CORE.zh-CN.md`; durable decisions are recorded in `core/DECISION_LOG.zh-CN.md`; current objectives, tasks, and pending human decisions live under `docs/working-memory/`.
+
+The adopted upstream HARC revision is pinned in `HARC_MANIFEST.yaml` and does not automatically follow upstream changes. Internal governance is Chinese-canonical and does not require a full English mirror for every internal file; the public README remains bilingual.
+
+`make check` now also validates repository-backed collaboration state so stale publishing instructions, legacy-source confusion, and unresolved licensing status cannot silently become current project truth.
