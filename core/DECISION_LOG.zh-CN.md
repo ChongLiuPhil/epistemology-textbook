@@ -80,4 +80,4 @@
 - revision 变化触发 `REVISION-CONFLICT`，禁止用旧缓存覆盖新仓库状态；
 - governance validator 应优先根据 `HARC_MANIFEST.yaml` 解析和校验声明路径/版本，而不是维护平行的硬编码项目拓扑。
 
-**实现状态：** implementing in HARC-lite profile version `0.1.1`.
+**实现状态：** implemented in HARC-lite profile version `0.1.1` via PR #16 / main commit `1906a4f56739ae1f3039cc3d695093eb986bfdd7`.
