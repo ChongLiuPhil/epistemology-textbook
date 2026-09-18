@@ -46,6 +46,7 @@ governance:
   decision_log: core/DECISION_LOG.zh-CN.md
   working_memory: docs/working-memory.zh-CN.md
   release_status: docs/release-status.zh-CN.md
+  publication_profile: docs/publication-profile.zh-CN.md
 
 website:
   metadata: website.yaml
@@ -55,8 +56,8 @@ notes: >
   Quarto QMD files are the canonical manuscript source. During Web Edition
   Development the active pipeline validates the sources, renders HTML, and
   deploys the validated _book output to GitHub Pages after changes reach main.
-  EPUB, PDF, and DOCX are deferred to a future release workflow after the web
-  edition stabilizes. The legacy textbook/ LaTeX tree is retained only for
+  HTML remains the continuous public edition. PDF, DOCX, and EPUB may be
+  generated on demand from the same canonical sources for publication testing; The legacy textbook/ LaTeX tree is retained only for
   historical audit and is not part of the active edit or build workflow.
   HARC-lite governance persists collaboration state in the repository without
   changing the canonical manuscript boundary.
