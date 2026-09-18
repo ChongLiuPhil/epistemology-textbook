@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this continuously revised web textbook, please cite the author, title, relevant chapter/page URL, access date, and—when exact version tracking matters—the corresponding Git commit."
+title: "我们如何知道？——问题驱动的认识论"
+type: book
+authors:
+  - family-names: "Liu"
+    given-names: "Chong"
+repository-code: "https://github.com/ChongLiuPhil/epistemology-textbook"
+url: "https://chongliuphil.github.io/epistemology-textbook/"
+abstract: "一本以问题为中心组织的中文认识论教材，涵盖知识、怀疑、证成、认识来源、社会与形式认识论、认识价值、数字与 AI 环境以及比较认识论。"
+keywords:
+  - epistemology
+  - knowledge
+  - skepticism
+  - social epistemology
+  - formal epistemology
+  - AI epistemology
