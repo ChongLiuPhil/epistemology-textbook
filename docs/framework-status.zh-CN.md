@@ -5,6 +5,7 @@
 - Public manuscript baseline：当前 `main` 上的 canonical QMD。
 - Collaboration map：`docs/book-architecture.zh-CN.md`。
 - 状态：`CURRENT-PUBLISHED-BASELINE / WORKING MAP`。
+- 具体公开版本状态：见 `docs/release-status.zh-CN.md`。
 
 ## Approved Framework Snapshot
 
@@ -27,6 +28,12 @@
 - 局部表达澄清；
 - 不改变章节功能的案例或文献补充；
 - 常规教学提示与网页体验改进。
+
+## 与 Release Approval 的边界
+
+Architecture / Framework Approval 回答“核心知识结构是否得到作者确认”；Release Approval 回答“某个具体版本是否允许公开发布”。
+
+二者不得互相替代。重大结构被确认后，具体 release 仍需满足 `docs/release-status.zh-CN.md` 的 release review；反过来，连续修订 Web Edition 的小型发布也不要求每次创建新的 Framework Snapshot。
 
 ## 当前 blocker
 

@@ -1,5 +1,5 @@
 harc_context_interface:
-  version: "0.1-project"
+  version: "0.1.1-project"
   mode: "repository-backed"
   authoritative_store: "github"
   canonical_language: "zh-CN"
@@ -7,6 +7,7 @@ harc_context_interface:
   control_plane:
     manifest: "HARC_MANIFEST.yaml"
     start_here: "START_HERE.zh-CN.md"
+    onboarding_check: "ONBOARDING_CHECK.zh-CN.md"
     agent_contract: "AGENTS.md"
     authoritative_session_copy: false
 
@@ -19,6 +20,31 @@ harc_context_interface:
     read_latest_before_write: true
     invalidate_touched_cache_after_write: true
     write_through_repository: true
+
+  revision_policy:
+    preferred_tokens:
+      - "git_commit_sha"
+      - "git_blob_sha"
+      - "etag_or_equivalent_revision"
+    stale_after_write: true
+    on_revision_conflict:
+      - "stop_write"
+      - "fresh_fetch_changed_state"
+      - "inspect_intervening_change"
+      - "reconcile_or_rebase_current_change"
+      - "revalidate_before_write"
+    conflict_state: "REVISION-CONFLICT"
+
+  onboarding:
+    full_check_when:
+      - "new_agent_or_model"
+      - "no_prior_context"
+      - "long_interruption"
+      - "high_impact_architecture_or_release_work"
+      - "repository_state_conflict"
+      - "human_requests_reonboarding"
+    report: "ONBOARDING_CHECK.zh-CN.md"
+    activation_phrase: "BOOK REPOSITORY CONTEXT — ACTIVE"
 
   working_memory:
     index: "docs/working-memory.zh-CN.md"
@@ -56,6 +82,8 @@ harc_context_interface:
         - "HARC_CONTEXT_INTERFACE.yaml"
         - "AGENTS.md"
       optional:
+        - "ONBOARDING_CHECK.zh-CN.md"
+        - "docs/release-status.zh-CN.md"
         - ".github/"
         - "scripts/"
         - "CONTRIBUTING.md"

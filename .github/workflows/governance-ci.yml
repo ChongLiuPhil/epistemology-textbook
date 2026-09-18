@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "START_HERE.zh-CN.md"
+      - "ONBOARDING_CHECK.zh-CN.md"
       - "AGENTS.md"
       - "HARC_MANIFEST.yaml"
       - "HARC_CONTEXT_INTERFACE.yaml"
@@ -12,6 +13,7 @@ on:
       - "docs/working-memory/**"
       - "docs/book-architecture.zh-CN.md"
       - "docs/framework-status.zh-CN.md"
+      - "docs/release-status.zh-CN.md"
       - "LICENSE-DECISION.md"
       - "CITATION.cff"
       - "README.md"
@@ -28,6 +30,7 @@ on:
     branches: [main]
     paths:
       - "START_HERE.zh-CN.md"
+      - "ONBOARDING_CHECK.zh-CN.md"
       - "AGENTS.md"
       - "HARC_MANIFEST.yaml"
       - "HARC_CONTEXT_INTERFACE.yaml"
@@ -36,6 +39,7 @@ on:
       - "docs/working-memory/**"
       - "docs/book-architecture.zh-CN.md"
       - "docs/framework-status.zh-CN.md"
+      - "docs/release-status.zh-CN.md"
       - "LICENSE-DECISION.md"
       - "CITATION.cff"
       - "README.md"

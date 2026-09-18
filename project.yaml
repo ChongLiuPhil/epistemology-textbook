@@ -33,16 +33,19 @@ source_of_truth:
   book_config: _quarto.yml
 
 governance:
-  profile: harc-lite-book
+  profile: HARC-lite-book
+  profile_version: 0.1.1
   protocol_source: ChongLiuPhil/Human-AI-Research-Collaboration-Protocol
   adopted_protocol_version: 0.2.0-draft
   adopted_protocol_commit: e741c43c5cd158c43910e3832c7d757226717a97
   canonical_language: zh-CN
   context_mode: repository-backed
   start_here: START_HERE.zh-CN.md
+  onboarding_check: ONBOARDING_CHECK.zh-CN.md
   agent_contract: AGENTS.md
   decision_log: core/DECISION_LOG.zh-CN.md
   working_memory: docs/working-memory.zh-CN.md
+  release_status: docs/release-status.zh-CN.md
 
 website:
   metadata: website.yaml
