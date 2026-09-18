@@ -15,7 +15,11 @@ MAKEFILE = ROOT / "Makefile"
 GITIGNORE = ROOT / ".gitignore"
 WORKFLOWS = ROOT / ".github" / "workflows"
 PAGES_WORKFLOW = WORKFLOWS / "html-ci.yml"
+PUBLICATION_WORKFLOW = WORKFLOWS / "build-publication-formats.yml"
 RENDERED_CHECK = ROOT / "scripts" / "check_rendered_html.py"
+MATH_CHECK = ROOT / "scripts" / "check_math_layout.py"
+READING_INCLUDE = ROOT / "assets" / "includes" / "reading-navigation.html"
+CITATION_INCLUDE = ROOT / "assets" / "includes" / "citation-navigation.html"
 OPEN_READING = MANUSCRIPT / "00-open-access-and-support.qmd"
 ISSUE_TEMPLATES = ROOT / ".github" / "ISSUE_TEMPLATE"
 
@@ -48,7 +52,11 @@ REQUIRED_PROJECT_FILES = [
     ROOT / "website.yaml",
     GITIGNORE,
     PAGES_WORKFLOW,
+    PUBLICATION_WORKFLOW,
     RENDERED_CHECK,
+    MATH_CHECK,
+    READING_INCLUDE,
+    CITATION_INCLUDE,
     ISSUE_TEMPLATES / "content-feedback.yml",
     ISSUE_TEMPLATES / "website-bug.yml",
     ISSUE_TEMPLATES / "config.yml",
@@ -97,9 +105,9 @@ def check_quarto_config(config: str) -> None:
     ):
         fail("HTML output is not configured in _quarto.yml")
 
-    for output_format in ("epub", "pdf", "docx"):
-        if re.search(rf"(?mi)^\s{{2}}{output_format}:\s*$", config):
-            fail(f"release format is configured during Web Edition Development: {output_format}")
+    for output_format in ("pdf", "docx", "epub"):
+        if not re.search(rf"(?mi)^\s{{2}}{output_format}:\s*$", config):
+            fail(f"on-demand publication format is missing from _quarto.yml: {output_format}")
 
     if re.search(r"(?mi)^\s*downloads:\s*", config):
         fail("downloads configuration is not allowed during Web Edition Development")
@@ -115,6 +123,9 @@ def check_quarto_config(config: str) -> None:
         "back-to-top navigation": "back-to-top-navigation: true",
         "book sidebar label": 'header: "**本书目录**"',
         "chapter TOC label": 'toc-title: "本章目录"',
+        "chapter bibliography label": 'reference-section-title: "本章参考文献"',
+        "mobile chapter TOC include": "assets/includes/reading-navigation.html",
+        "citation navigation include": "assets/includes/citation-navigation.html",
         "page footer": "page-footer:",
         "stable open-reading URL": OPEN_READING_URL,
     }
@@ -129,11 +140,14 @@ def check_quarto_config(config: str) -> None:
 
 
 def check_active_build_files() -> None:
+    workflow_files = [
+        *sorted(WORKFLOWS.glob("*.yml")),
+        *sorted(WORKFLOWS.glob("*.yaml")),
+    ]
     build_files = [
         CONFIG,
         MAKEFILE,
-        *sorted(WORKFLOWS.glob("*.yml")),
-        *sorted(WORKFLOWS.glob("*.yaml")),
+        *[path for path in workflow_files if path != PUBLICATION_WORKFLOW],
     ]
     legacy_patterns = {
         "old QMD generator": r"scripts/build_web\.py|website/generated/",
@@ -179,6 +193,25 @@ def check_pages_deployment() -> None:
     for label, marker in required_markers.items():
         if marker not in workflow:
             fail(f"{label} is missing from {PAGES_WORKFLOW.relative_to(ROOT)}")
+
+
+def check_publication_formats() -> None:
+    workflow = PUBLICATION_WORKFLOW.read_text(encoding="utf-8")
+    required_markers = {
+        "manual trigger": "workflow_dispatch:",
+        "Quarto/TinyTeX setup": "tinytex: true",
+        "PDF render": "quarto render --to pdf",
+        "DOCX render": "quarto render --to docx",
+        "EPUB render": "quarto render --to epub",
+        "publication artifact upload": "actions/upload-artifact@",
+        "publication artifact directory": "build-artifacts",
+    }
+    for label, marker in required_markers.items():
+        if marker not in workflow:
+            fail(f"{label} is missing from {PUBLICATION_WORKFLOW.relative_to(ROOT)}")
+
+    if re.search(r"(?m)^\s*push:\s*$", workflow):
+        fail("publication-format workflow must not auto-run on main pushes")
 
 
 def check_reader_support() -> None:
@@ -257,6 +290,7 @@ def main() -> None:
     check_quarto_config(config)
     check_active_build_files()
     check_pages_deployment()
+    check_publication_formats()
     check_reader_support()
     files = check_sources()
     cited_count, bib_count = check_citations(files)
@@ -265,8 +299,9 @@ def main() -> None:
         "Quarto source check passed: "
         f"{len(files)} canonical QMD files, {cited_count} cited keys, "
         f"{bib_count} bibliography entries; citation boundaries are safe, "
-        "reader feedback/navigation are configured, HTML is the active output, "
-        "and main deploys only integrity-checked HTML to GitHub Pages."
+        "reader feedback/navigation are configured, HTML is the continuous public output, "
+        "on-demand PDF/DOCX/EPUB builds are isolated from daily Pages CI, and main deploys "
+        "only integrity-checked HTML to GitHub Pages."
     )
 
 
