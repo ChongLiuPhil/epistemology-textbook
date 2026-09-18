@@ -44,8 +44,26 @@ def main() -> int:
     for path in FILES:
         body = path.read_text(encoding="utf-8")
         rel = path.relative_to(ROOT)
-        if body.count("$$") % 2:
-            errors.append(f"{rel}: unmatched $$ display-math delimiter")
+        if body.count("$") % 2:
+            errors.append(f"{rel}: unmatched $ display-math delimiter")
+
+        source_lines = body.splitlines()
+        in_display = False
+        for line_number, line in enumerate(source_lines, start=1):
+            if line.strip() != "$":
+                continue
+            if not in_display:
+                in_display = True
+                if line_number < len(source_lines) and source_lines[line_number].strip() == "":
+                    errors.append(
+                        f"{rel}:{line_number}: blank line immediately after opening $ delimiter"
+                    )
+            else:
+                if line_number > 1 and source_lines[line_number - 2].strip() == "":
+                    errors.append(
+                        f"{rel}:{line_number}: blank line immediately before closing $ delimiter"
+                    )
+                in_display = False
 
         for env in ENVIRONMENTS:
             begins = len(re.findall(rf"\\begin\{{{env}\}}", body))
