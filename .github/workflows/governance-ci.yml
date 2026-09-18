@@ -1,0 +1,67 @@
+name: Repository Governance CI
+
+on:
+  pull_request:
+    paths:
+      - "START_HERE.zh-CN.md"
+      - "AGENTS.md"
+      - "HARC_MANIFEST.yaml"
+      - "HARC_CONTEXT_INTERFACE.yaml"
+      - "core/**"
+      - "docs/working-memory.zh-CN.md"
+      - "docs/working-memory/**"
+      - "docs/book-architecture.zh-CN.md"
+      - "docs/framework-status.zh-CN.md"
+      - "LICENSE-DECISION.md"
+      - "CITATION.cff"
+      - "README.md"
+      - "README.zh-CN.md"
+      - "CONTRIBUTING.md"
+      - "project.yaml"
+      - "reference/README.md"
+      - "textbook/README.md"
+      - "website/**"
+      - ".github/PULL_REQUEST_TEMPLATE.md"
+      - "scripts/check_repository_state.py"
+      - ".github/workflows/governance-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "START_HERE.zh-CN.md"
+      - "AGENTS.md"
+      - "HARC_MANIFEST.yaml"
+      - "HARC_CONTEXT_INTERFACE.yaml"
+      - "core/**"
+      - "docs/working-memory.zh-CN.md"
+      - "docs/working-memory/**"
+      - "docs/book-architecture.zh-CN.md"
+      - "docs/framework-status.zh-CN.md"
+      - "LICENSE-DECISION.md"
+      - "CITATION.cff"
+      - "README.md"
+      - "README.zh-CN.md"
+      - "CONTRIBUTING.md"
+      - "project.yaml"
+      - "reference/README.md"
+      - "textbook/README.md"
+      - "website/**"
+      - ".github/PULL_REQUEST_TEMPLATE.md"
+      - "scripts/check_repository_state.py"
+      - ".github/workflows/governance-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  governance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate repository collaboration state
+        run: python3 scripts/check_repository_state.py

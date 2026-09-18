@@ -1,3 +1,8 @@
+> [!WARNING]
+> **LEGACY — 本文件保存迁移前 LaTeX 快照的历史构建说明，不再是当前构建说明。**
+> 当前正式书稿与发布流程请看仓库根目录 `README.zh-CN.md`、`CONTRIBUTING.md` 和 `textbook/LEGACY.md`。
+> 不要在本目录继续进行新的教材编辑，也不要把下面的 LaTeX 命令用于当前 Web Edition 或未来发行流程。
+
 # 《我们如何知道？》构建说明
 
 主稿是 `main.tex`。全书由三部、九章构成，九章主文件位于 `chapters/revised/`；每章围绕一个大问题组织基础论证、理论扩展、研读实验室、专题研讨与综合论述。第六至九章另有深论模块位于 `chapters/deepening/`，用完整算例、竞争解释、反对意见和审计表扩展既有大节，不增加碎片化标题。自学与写作指南、全书综合研究工坊、练习提示和术语表位于 `backmatter/`，文献数据位于 `references.bib`。
