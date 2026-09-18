@@ -293,3 +293,64 @@ input:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* Mobile chapter TOC reuses Quarto's canonical right-side TOC.
+   There is no second hand-maintained outline. */
+.mobile-chapter-toc {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #quarto-margin-sidebar #TOC ul.collapse {
+    display: block !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .mobile-chapter-toc {
+    display: block;
+    margin: 0.75rem 0 2rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--reader-rule);
+    border-radius: 0.45rem;
+    background: var(--bs-body-bg, #fff);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  }
+
+  .mobile-chapter-toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .mobile-chapter-toc nav {
+    margin-top: 0.8rem;
+  }
+
+  .mobile-chapter-toc ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .mobile-chapter-toc ul ul {
+    margin-top: 0.35rem;
+    padding-left: 1rem;
+  }
+
+  .mobile-chapter-toc li {
+    margin: 0.45rem 0;
+    line-height: 1.45;
+  }
+
+  .mobile-chapter-toc a {
+    text-decoration: none;
+  }
+
+  .mobile-chapter-toc a:focus-visible {
+    outline: 3px solid var(--reader-focus);
+    outline-offset: 3px;
+    border-radius: 0.15rem;
+  }
+}
