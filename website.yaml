@@ -1,6 +1,14 @@
 schema_version: 1
 publish: true
 
+language:
+  default: auto
+  fallback: en
+  supported:
+    - en
+    - zh
+  detect_from_browser: true
+
 title:
   zh: "我们如何知道？——问题驱动的认识论"
   en: "How Do We Know? A Problem-Driven Epistemology"
