@@ -32,6 +32,18 @@ source_of_truth:
   bibliography: references.bib
   book_config: _quarto.yml
 
+governance:
+  profile: harc-lite-book
+  protocol_source: ChongLiuPhil/Human-AI-Research-Collaboration-Protocol
+  adopted_protocol_version: 0.2.0-draft
+  adopted_protocol_commit: e741c43c5cd158c43910e3832c7d757226717a97
+  canonical_language: zh-CN
+  context_mode: repository-backed
+  start_here: START_HERE.zh-CN.md
+  agent_contract: AGENTS.md
+  decision_log: core/DECISION_LOG.zh-CN.md
+  working_memory: docs/working-memory.zh-CN.md
+
 website:
   metadata: website.yaml
   default_publish: true
@@ -43,3 +55,5 @@ notes: >
   EPUB, PDF, and DOCX are deferred to a future release workflow after the web
   edition stabilizes. The legacy textbook/ LaTeX tree is retained only for
   historical audit and is not part of the active edit or build workflow.
+  HARC-lite governance persists collaboration state in the repository without
+  changing the canonical manuscript boundary.
