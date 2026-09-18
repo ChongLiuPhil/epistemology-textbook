@@ -41,9 +41,7 @@ number-sections: true
 
 
 $$
-
 P(H\mid E)=\frac{P(H\land E)}{P(E)}.
-
 $$
 
 
@@ -51,9 +49,7 @@ $$
 
 
 $$
-
 P(H\mid E)=\frac{P(E\mid H)P(H)}{P(E\mid H)P(H)+P(E\mid\neg H)P(\neg H)}.
-
 $$
 
 
@@ -61,9 +57,7 @@ $$
 
 
 $$
-
 P(H\mid +)=\frac{0.90\times0.01}{0.90\times0.01+0.05\times0.99}\approx0.154.
-
 $$
 
 
@@ -76,9 +70,7 @@ $$
 
 
 $$
-
 BF_{H:\neg H}=\frac{P(E\mid H)}{P(E\mid\neg H)}.
-
 $$
 
 
@@ -86,11 +78,9 @@ $$
 
 
 $$
-
 \frac{P(H\mid E)}{P(\neg H\mid E)}
 =
 BF_{H:\neg H}\times\frac{P(H)}{P(\neg H)}.
-
 $$
 
 
@@ -155,11 +145,9 @@ $$
 
 
 $$
-
 \frac{P(H\mid E)}{P(\neg H\mid E)}=
 \frac{P(H)}{P(\neg H)}\times
 \frac{P(E\mid H)}{P(E\mid\neg H)}.
-
 $$
 
 
@@ -207,10 +195,8 @@ $$
 
 
 $$
-
 P(D\mid +)=\frac{P(+\mid D)P(D)}
 {P(+\mid D)P(D)+P(+\mid \neg D)P(\neg D)}.
-
 $$
 
 
@@ -218,9 +204,7 @@ $$
 
 
 $$
-
 P(D\mid +)=\frac{90}{90+495}\approx15.4%.
-
 $$
 
 
@@ -233,9 +217,7 @@ $$
 
 
 $$
-
 BF_+=\frac{P(+\mid D)}{P(+\mid\neg D)}=\frac{0.90}{0.05}=18.
-
 $$
 
 
