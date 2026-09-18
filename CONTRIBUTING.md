@@ -18,6 +18,8 @@
 
 每章围绕明确问题推进，而不是把人物、流派或术语简单并列。新增内容应说明它解决什么问题、反驳什么主张，或改变哪一步推理。
 
+本项目首先是学习、整合与梳理工程，不以制造作者原创理论为目标。哲学家、流派与思想史材料进入教材，是因为它们有助于理解问题、理由、反例与争论，而不是因为“哲学研究”等同于整理前人观点。作者自己的组织性或评价性判断应尽量与被介绍文献的原始立场区分。
+
 ### 保持教学层次
 
 基础说明负责建立问题与核心论证；扩展、研读、专题和深论内容负责增加争议、案例、技术细节和研究入口。避免让难度无提示地突然跃升。
@@ -96,7 +98,7 @@ make html
 # 或 make all；当前阶段二者都只生成 HTML
 ```
 
-当前日常流程不生成 EPUB、PDF 或 DOCX。这些发行格式将在网页版稳定后通过独立 release workflow 处理，并继续以同一套 canonical QMD sources 为来源。
+当前日常流程仍只生成并部署 HTML。PDF、DOCX 与 EPUB 已由 `_quarto.yml` 统一配置，可通过 GitHub Actions 的手动 `Build Publication Formats` workflow 按需生成 artifact。它们继续使用同一套 canonical QMD sources，不允许形成第二套正文；构建 artifact 不自动等于正式 Release Approval。
 
 ## 8. Commit 与 Pull Request
 
