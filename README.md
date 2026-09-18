@@ -1,5 +1,11 @@
 # 《我们如何知道？》——问题驱动的认识论
 
+<!-- bilingual-home-intro -->
+> **English:** A problem-driven Chinese-language epistemology textbook and open Quarto Web Edition covering knowledge, skepticism, justification, sources of knowledge, social and formal epistemology, epistemic value, digital and AI environments, and comparative epistemology.
+>
+> **中文：** 一本以问题为中心组织的中文认识论教材与开放 Quarto 网页版，涵盖知识、怀疑、证成、认识来源、社会与形式认识论、认识价值、数字与 AI 环境以及比较认识论。
+<!-- /bilingual-home-intro -->
+
 这是一本由 Chong Liu 编写、以问题为中心组织的中文认识论教材，也是一个以 Quarto 为唯一正式写作系统的开放 Web Edition 项目。
 
 ## 当前阶段：Web Edition Development
