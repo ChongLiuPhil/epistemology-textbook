@@ -1,5 +1,9 @@
 # 我们如何知道？ {.unnumbered}
 
+**How Do We Know? A Problem-Driven Epistemology**
+
+This is a Chinese-language epistemology textbook for systematic study and further research. Rather than following a history of figures or schools, it is organized around connected problems: what knowledge is, how skepticism and epistemic luck limit knowledge, how reasons support belief, how experience, memory, other people, institutions, and models contribute to knowing, and how digital technologies and different intellectual traditions reshape these questions.
+
 **问题驱动的认识论**
 
 这是一部面向系统学习与进一步研究的中文认识论教材。全书不以人物史或流派史为主线，而从一组持续相互牵连的问题出发：知识是什么，怀疑与运气怎样限制知识，理由怎样支持信念，我们如何依靠经验、记忆、他人、制度与模型形成认识，以及数字技术与不同思想传统会怎样改变这些问题。
