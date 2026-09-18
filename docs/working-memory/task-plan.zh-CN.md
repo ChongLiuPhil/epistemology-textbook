@@ -4,22 +4,33 @@
 
 ## ACTIVE TASKS
 
-- `WM-T005` — 轻量 Onboarding Check + PASS/PARTIAL/FAIL — IN-PROGRESS
-- `WM-T006` — 明确人类责任主体与独立 Release Approval gate — IN-PROGRESS
-- `WM-T007` — 补全 clarification promotion 与 revision-conflict 行为 — IN-PROGRESS
-- `WM-T008` — 将 governance validator 改为 manifest-driven，并验证 PR/main — IN-PROGRESS
+- None. HARC-lite `0.1.1` refinement is complete.
+
+## COMPLETED IN CURRENT CYCLE
+
+- `WM-T005` — 轻量 Onboarding Check + PASS/PARTIAL/FAIL — DONE
+- `WM-T006` — 明确人类责任主体与独立 Release Approval gate — DONE
+- `WM-T007` — 补全 clarification promotion 与 revision-conflict 行为 — DONE
+- `WM-T008` — governance validator 改为 manifest-driven，并验证 PR/main — DONE
+
+Main implementation commit: `1906a4f56739ae1f3039cc3d695093eb986bfdd7`.
+
+Validation on that main commit:
+
+- Repository Governance CI — success
+- External Link Audit — success
+- Quarto HTML CI and Pages — success
 
 ## NEXT ACTIONS
 
-1. 完成 manifest-driven repository governance checker。
-2. 更新 Governance CI 路径覆盖。
-3. 创建 PR 并通过 governance checks。
-4. 合并 main 后确认 main governance run。
-5. 更新 Current Focus / Task Plan / Work Log 到完成状态。
+1. 等待下一项人类优先任务。
+2. 对新任务按 CONTENT / FORM / PROTOCOL 路由读取最小必要状态。
+3. 新 Agent / 长中断 / 高影响 Architecture 或 Release 工作时执行轻量 Onboarding Check。
+4. 较大工作循环结束后继续更新 Current Focus / Task Plan / Work Log。
 
 ## BLOCKERS
 
-- None for the current HARC-lite v0.1.1 refinement.
+- None for normal manuscript, bibliography, website, or governance maintenance.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -41,7 +52,7 @@
 
 ## RECENTLY RESOLVED / PROMOTED
 
-- None in the current active queue. Future resolved clarifications should be kept here only briefly as `CLR-xxx -> Dxxx -> promoted target`, then moved to Work Log.
+- None in the active clarification queue.
 
 ## CLARIFICATION COMPLETION RULE
 
