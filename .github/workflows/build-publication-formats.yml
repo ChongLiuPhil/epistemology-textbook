@@ -1,0 +1,60 @@
+name: Build Publication Formats
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "_quarto.yml"
+      - "book.css"
+      - "assets/**"
+      - "scripts/check_math_layout.py"
+      - "scripts/check_quarto.py"
+      - ".github/workflows/build-publication-formats.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-publication-formats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Validate canonical sources
+        run: make check
+
+      - name: Set up Quarto and TinyTeX
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Prepare artifact directory
+        run: mkdir -p build-artifacts
+
+      - name: Render PDF
+        run: |
+          quarto render --to pdf
+          find _book -maxdepth 1 -type f -name '*.pdf' -exec cp {} build-artifacts/ \;
+          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.pdf' -print -quit)"
+
+      - name: Render DOCX
+        run: |
+          quarto render --to docx
+          find _book -maxdepth 1 -type f -name '*.docx' -exec cp {} build-artifacts/ \;
+          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.docx' -print -quit)"
+
+      - name: Render EPUB
+        run: |
+          quarto render --to epub
+          find _book -maxdepth 1 -type f -name '*.epub' -exec cp {} build-artifacts/ \;
+          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.epub' -print -quit)"
+
+      - name: Upload publication-format artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: how-do-we-know-publication-formats
+          path: build-artifacts/*
+          if-no-files-found: error
+          retention-days: 30
