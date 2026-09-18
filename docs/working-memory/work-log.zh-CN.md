@@ -24,3 +24,20 @@
 - 两项仍待人类决定：正式许可模型、外部参考 PDF 的公开分发权利依据。
 
 HARC-lite 现已成为后续协作的仓库级控制层；上游 HARC 后续变化不会自动进入本项目。
+
+
+## 2026-09-18 — HARC-lite v0.1.1 协作闭环完善完成
+
+- 人类作者在二次复核后明确确认继续完善当前协作框架；
+- 新增轻量 `ONBOARDING_CHECK.zh-CN.md`，仅在新 Agent、长中断、高影响 Architecture/Release 工作或状态冲突时要求 PASS/PARTIAL/FAIL 接管报告；
+- 明确作者 Chong Liu 保持为项目目的、核心知识判断、重大 Architecture 授权与公开 Release 决定的责任主体；
+- 新增独立 `docs/release-status.zh-CN.md`，区分 Architecture/Framework Approval 与 Release Approval；
+- clarification lifecycle 补全为 `WAITING-HUMAN -> resolution -> Decision Log -> promotion -> RESOLVED/PROMOTED -> leave active queue`；
+- revision conflict 补全为 stop-write / fresh-fetch / inspect / reconcile / revalidate / write；
+- repository governance checker 改为 manifest-driven，并动态核对 manifest 与 `project.yaml` 的 profile、profile version、HARC version 与 adopted commit；
+- validator 首轮真实发现 `HARC-lite-book` / `harc-lite-book` metadata casing drift，修复后 PR #16 两个门禁均通过；
+- PR #16 合并实现 commit：`1906a4f56739ae1f3039cc3d695093eb986bfdd7`；
+- 该 main commit 的 Repository Governance CI、External Link Audit、Quarto HTML CI and Pages 全部成功；
+- 本轮没有修改九章正文、`references.bib`、Quarto book config 或 CSS。
+
+HARC-lite profile version 现为 `0.1.1`。
