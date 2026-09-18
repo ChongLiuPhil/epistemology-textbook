@@ -21,6 +21,7 @@
    - CONTENT：`core/CONTENT_CORE.zh-CN.md`、`docs/book-architecture.zh-CN.md`、`docs/framework-status.zh-CN.md`、相关 QMD 与文献；
    - FORM：`core/FORM_CORE.zh-CN.md`、`_quarto.yml`、`book.css`；
    - PROTOCOL：本文件、`AGENTS.md`、manifest/context interface、CI 与维护文档。
+9. 如果属于新 Agent、长中断、高影响 Architecture/Release 工作或出现状态冲突，按 `ONBOARDING_CHECK.zh-CN.md` 输出轻量接管报告。
 
 `docs/working-memory/work-log.zh-CN.md` 主要用于历史回顾，默认不属于接管必读项。
 
@@ -32,6 +33,7 @@
 - 公共入口 README 继续维护中英版本；
 - 普通错字、链接、书目元数据和局部样式修复不需要 Framework Approval；
 - 只有会改变全书核心问题、重大概念关系、章节功能或整体架构的修改，才进入结构批准门；
+- Architecture Approval 与 Release Approval 是不同的 gate；
 - 已公开的现有教材不因采用 HARC-lite 被追溯标记为“AI provisional”。
 
 ## 接管成功标准
@@ -42,6 +44,7 @@
 - 哪些内容/形式/协议决定已经稳定？
 - 现在最重要的目标、阻塞与下一步是什么？
 - 哪些事项仍需作者决定？
+- 当前 Architecture 与 Release 状态是什么？
 - 当前任务属于 CONTENT、FORM、PROTOCOL 中哪一类？
 - 修改后应运行哪些检查、何时才算完成？
 
