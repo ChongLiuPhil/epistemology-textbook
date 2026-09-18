@@ -14,10 +14,13 @@
 - CONTENT 任务：再读 Content Core、Book Architecture、Framework Status 和相关 QMD。
 - FORM 任务：再读 Form Core 与相关配置。
 - PROTOCOL 任务：再读 manifest/context/AGENTS/CI。
+- 正式或重大公开版本：再读 `docs/release-status.zh-CN.md`。
+- 新 Agent、长中断、高影响 Architecture/Release 工作或状态冲突：执行 `ONBOARDING_CHECK.zh-CN.md`。
 
 ## 规则
 
-- Current Focus 保持短小，只描述“现在最重要的事”。
+- Current Focus 保持短小，只描述“现在最重要的事情”。
 - Task Plan 维护 active tasks、next actions、blockers、clarifications、backlog 和 sync defects。
+- clarification 解决后必须 Promotion 到长期状态，并从 active queue 退出。
 - 完成的阶段性工作进入 Work Log；稳定决定 Promotion 到 Decision Log / Core。
 - 不把聊天摘要复制成第二份权威项目状态。
