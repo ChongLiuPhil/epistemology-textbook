@@ -3,7 +3,7 @@
 help:
 	@echo "Available targets:"
 	@echo "  make governance-check - validate repository-backed collaboration state"
-	@echo "  make check            - validate governance, canonical Quarto sources, bibliography, and project structure"
+	@echo "  make check            - validate governance, canonical sources, math layout, bibliography, and project structure"
 	@echo "  make preview          - start the local Quarto HTML preview"
 	@echo "  make html             - render the HTML reading edition"
 	@echo "  make all              - run the complete HTML development build"
@@ -14,6 +14,7 @@ governance-check:
 
 check: governance-check
 	python3 scripts/check_quarto.py
+	python3 scripts/check_math_layout.py
 	python3 scripts/check_references.py
 
 preview: check
