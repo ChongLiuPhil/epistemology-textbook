@@ -15,7 +15,9 @@ MAKEFILE = ROOT / "Makefile"
 GITIGNORE = ROOT / ".gitignore"
 WORKFLOWS = ROOT / ".github" / "workflows"
 PAGES_WORKFLOW = WORKFLOWS / "html-ci.yml"
+PUBLICATION_WORKFLOW = WORKFLOWS / "build-publication-formats.yml"
 RENDERED_CHECK = ROOT / "scripts" / "check_rendered_html.py"
+MOBILE_READING_INCLUDE = ROOT / "assets" / "includes" / "reading-navigation.html"
 OPEN_READING = MANUSCRIPT / "00-open-access-and-support.qmd"
 ISSUE_TEMPLATES = ROOT / ".github" / "ISSUE_TEMPLATE"
 
@@ -48,7 +50,9 @@ REQUIRED_PROJECT_FILES = [
     ROOT / "website.yaml",
     GITIGNORE,
     PAGES_WORKFLOW,
+    PUBLICATION_WORKFLOW,
     RENDERED_CHECK,
+    MOBILE_READING_INCLUDE,
     ISSUE_TEMPLATES / "content-feedback.yml",
     ISSUE_TEMPLATES / "website-bug.yml",
     ISSUE_TEMPLATES / "config.yml",
@@ -92,17 +96,16 @@ def require_project_structure() -> None:
 def check_quarto_config(config: str) -> None:
     if not re.search(r"(?m)^project:\s*\n(?:.*\n)*?\s{2}type:\s*book\s*$", config):
         fail("_quarto.yml is not configured as a Quarto book")
-    if not re.search(r"(?m)^format:\s*$", config) or not re.search(
-        r"(?m)^\s{2}html:\s*$", config
-    ):
-        fail("HTML output is not configured in _quarto.yml")
 
-    for output_format in ("epub", "pdf", "docx"):
-        if re.search(rf"(?mi)^\s{{2}}{output_format}:\s*$", config):
-            fail(f"release format is configured during Web Edition Development: {output_format}")
+    if not re.search(r"(?m)^format:\s*$", config):
+        fail("_quarto.yml has no format section")
+
+    for output_format in ("html", "pdf", "docx", "epub"):
+        if not re.search(rf"(?m)^\s{{2}}{output_format}:\s*$", config):
+            fail(f"Quarto publication format is not configured: {output_format}")
 
     if re.search(r"(?mi)^\s*downloads:\s*", config):
-        fail("downloads configuration is not allowed during Web Edition Development")
+        fail("automatic download links are not enabled during continuous Web Edition development")
 
     required_markers = {
         "root bibliography": "bibliography: references.bib",
@@ -115,6 +118,7 @@ def check_quarto_config(config: str) -> None:
         "back-to-top navigation": "back-to-top-navigation: true",
         "book sidebar label": 'header: "**本书目录**"',
         "chapter TOC label": 'toc-title: "本章目录"',
+        "mobile chapter TOC include": "assets/includes/reading-navigation.html",
         "page footer": "page-footer:",
         "stable open-reading URL": OPEN_READING_URL,
     }
@@ -129,32 +133,45 @@ def check_quarto_config(config: str) -> None:
 
 
 def check_active_build_files() -> None:
-    build_files = [
+    active_build_files = [
         CONFIG,
         MAKEFILE,
-        *sorted(WORKFLOWS.glob("*.yml")),
-        *sorted(WORKFLOWS.glob("*.yaml")),
+        PAGES_WORKFLOW,
+        *[
+            path
+            for path in sorted(WORKFLOWS.glob("*.yml"))
+            if path not in {PAGES_WORKFLOW, PUBLICATION_WORKFLOW}
+        ],
+        *[
+            path
+            for path in sorted(WORKFLOWS.glob("*.yaml"))
+            if path not in {PAGES_WORKFLOW, PUBLICATION_WORKFLOW}
+        ],
     ]
     legacy_patterns = {
         "old QMD generator": r"scripts/build_web\.py|website/generated/",
         "legacy LaTeX toolchain": r"(?i)latexmk|xelatex|pdflatex|textbook/[^\s]+\.tex",
     }
     forbidden_release_pattern = re.compile(
-        r"(?i)(quarto\s+(?:render|publish)[^\n]*(?:epub|pdf|docx)|make\s+(?:epub|pdf|docx)|quarto-actions/publish)"
+        r"(?i)(quarto\s+(?:render|publish)[^\n]*(?:epub|pdf|docx)|"
+        r"make\s+(?:epub|pdf|docx)|quarto-actions/publish)"
     )
     legacy_pages_pattern = re.compile(
         r"(?i)(git\s+(?:branch|push)[^\n]*gh-pages|refs/heads/gh-pages)"
     )
 
-    for path in build_files:
-        text = path.read_text(encoding="utf-8")
+    for path in active_build_files:
+        body = path.read_text(encoding="utf-8")
         for label, pattern in legacy_patterns.items():
-            if re.search(pattern, text):
+            if re.search(pattern, body):
                 fail(f"{label} dependency remains in {path.relative_to(ROOT)}")
-        if forbidden_release_pattern.search(text):
-            fail(f"release-format command remains in active build file: {path.relative_to(ROOT)}")
-        if legacy_pages_pattern.search(text):
-            fail(f"legacy gh-pages branch deployment remains in active build file: {path.relative_to(ROOT)}")
+        if forbidden_release_pattern.search(body):
+            fail(
+                "release-format command is allowed only in the manual publication workflow: "
+                f"{path.relative_to(ROOT)}"
+            )
+        if legacy_pages_pattern.search(body):
+            fail(f"legacy gh-pages branch deployment remains in {path.relative_to(ROOT)}")
 
     makefile = MAKEFILE.read_text(encoding="utf-8")
     for target in ("epub", "pdf", "docx"):
@@ -168,6 +185,7 @@ def check_active_build_files() -> None:
 def check_pages_deployment() -> None:
     workflow = PAGES_WORKFLOW.read_text(encoding="utf-8")
     required_markers = {
+        "HTML-only daily render": "quarto render --to html",
         "official Pages configuration": "actions/configure-pages@",
         "Pages artifact upload": "actions/upload-pages-artifact@",
         "Pages deployment": "actions/deploy-pages@",
@@ -179,6 +197,38 @@ def check_pages_deployment() -> None:
     for label, marker in required_markers.items():
         if marker not in workflow:
             fail(f"{label} is missing from {PAGES_WORKFLOW.relative_to(ROOT)}")
+
+    for output_format in ("pdf", "docx", "epub"):
+        if re.search(rf"(?i)quarto\s+render[^\n]*--to\s+{output_format}\b", workflow):
+            fail(f"daily Pages workflow unexpectedly renders {output_format}")
+
+
+def check_publication_workflow() -> None:
+    workflow = PUBLICATION_WORKFLOW.read_text(encoding="utf-8")
+    required_markers = {
+        "manual trigger": "workflow_dispatch:",
+        "PDF render": "quarto render --to pdf",
+        "DOCX render": "quarto render --to docx",
+        "EPUB render": "quarto render --to epub",
+        "publication artifact upload": "actions/upload-artifact@",
+        "artifact directory": "build-artifacts",
+    }
+    for label, marker in required_markers.items():
+        if marker not in workflow:
+            fail(f"{label} is missing from {PUBLICATION_WORKFLOW.relative_to(ROOT)}")
+
+    forbidden_markers = (
+        "actions/deploy-pages@",
+        "actions/create-release@",
+        "softprops/action-gh-release",
+        "gh release create",
+    )
+    for marker in forbidden_markers:
+        if marker in workflow:
+            fail(
+                "manual publication-format build must not publish a release automatically: "
+                f"{marker}"
+            )
 
 
 def check_reader_support() -> None:
@@ -192,6 +242,11 @@ def check_reader_support() -> None:
     for marker in required_markers:
         if marker not in text:
             fail(f"open-reading guidance is missing required section or principle: {marker}")
+
+    mobile = MOBILE_READING_INCLUDE.read_text(encoding="utf-8")
+    for marker in ("mobile-chapter-toc", "本章目录", "#quarto-margin-sidebar #TOC"):
+        if marker not in mobile:
+            fail(f"mobile chapter TOC include is missing expected behavior: {marker}")
 
     for name in ("content-feedback.yml", "website-bug.yml"):
         template = (ISSUE_TEMPLATES / name).read_text(encoding="utf-8")
@@ -257,6 +312,7 @@ def main() -> None:
     check_quarto_config(config)
     check_active_build_files()
     check_pages_deployment()
+    check_publication_workflow()
     check_reader_support()
     files = check_sources()
     cited_count, bib_count = check_citations(files)
@@ -264,9 +320,9 @@ def main() -> None:
     print(
         "Quarto source check passed: "
         f"{len(files)} canonical QMD files, {cited_count} cited keys, "
-        f"{bib_count} bibliography entries; citation boundaries are safe, "
-        "reader feedback/navigation are configured, HTML is the active output, "
-        "and main deploys only integrity-checked HTML to GitHub Pages."
+        f"{bib_count} bibliography entries; HTML/PDF/DOCX/EPUB share one Quarto source, "
+        "daily CI deploys only integrity-checked HTML to GitHub Pages, publication formats "
+        "are build-only manual artifacts, and reader navigation/feedback remain configured."
     )
 
 
