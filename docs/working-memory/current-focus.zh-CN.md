@@ -4,35 +4,26 @@
 
 ## CURRENT_STAGE
 
-Web Edition Development — HARC-lite `0.1.1` governance is active on `main`.
+Content/Form alignment — study-synthesis identity and publication-profile adoption.
 
 ## CURRENT_OBJECTIVE
 
-让后续 CONTENT / FORM / PROTOCOL 工作都能从仓库最新状态安全续接，同时保持现有 Quarto HTML / GitHub Pages 发布链稳定。
+把作者刚确认的项目性质与哲学学习观落实到长期内容状态和适量正文入口，并参考 `What-Remains-Human...` 建立同源多格式、长篇网页阅读的出版 profile，同时保持公开 GitHub Pages 与 HARC-lite 协作边界。
 
 ## PRIMARY_BLOCKER
 
-None for normal manuscript, bibliography, website, or governance work.
+None for this implementation.
 
-Two non-blocking human decisions remain open:
-
-- project licensing model；
-- public-distribution rights for `reference/我们如何知道.pdf`.
+License model and external reference-PDF distribution rights remain separate human decisions; they do not block build-preview formats but still govern formal release.
 
 ## IMMEDIATE_NEXT_ACTION
 
-收到下一项实质请求后，先按 CONTENT / FORM / PROTOCOL 路由 fresh-fetch 相关状态；新 Agent、长中断、高影响 Architecture/Release 工作或状态冲突时执行 `ONBOARDING_CHECK.zh-CN.md`。
-
-若没有其他人类优先级，逐章学术/教学审校仍可从第 1 章开始，但该方向目前仅为 `AI-PROPOSED` backlog。
+更新首页/前言定位、Quarto 多格式配置、HTML 阅读增强、manual publication workflow 与相关 CI/source checks；通过 PR 和实际构建验证后完成 handoff。
 
 ## HANDOFF POINTERS
 
-- Task Plan：`docs/working-memory/task-plan.zh-CN.md`
 - Decision Log：`core/DECISION_LOG.zh-CN.md`
 - Content Core：`core/CONTENT_CORE.zh-CN.md`
 - Form Core：`core/FORM_CORE.zh-CN.md`
-- Book Architecture：`docs/book-architecture.zh-CN.md`
-- Framework Status：`docs/framework-status.zh-CN.md`
+- Publication Profile：`docs/publication-profile.zh-CN.md`
 - Release Status：`docs/release-status.zh-CN.md`
-- Onboarding：`ONBOARDING_CHECK.zh-CN.md`
-- Protocol：`AGENTS.md` / `HARC_MANIFEST.yaml`
