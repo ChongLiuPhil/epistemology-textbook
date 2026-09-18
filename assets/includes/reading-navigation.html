@@ -1,0 +1,33 @@
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const main = document.querySelector("main.content");
+  const desktopToc = document.querySelector("#quarto-margin-sidebar #TOC");
+  if (!main || !desktopToc) return;
+
+  const title = main.querySelector(":scope > #title-block-header");
+  const sourceList = desktopToc.querySelector(":scope > ul");
+  if (!title || !sourceList || !sourceList.children.length) return;
+  if (main.querySelector(".mobile-chapter-toc")) return;
+
+  const details = document.createElement("details");
+  details.className = "mobile-chapter-toc";
+
+  const summary = document.createElement("summary");
+  summary.textContent = "本章目录";
+  details.appendChild(summary);
+
+  const nav = document.createElement("nav");
+  nav.setAttribute("aria-label", "本章目录");
+  const list = sourceList.cloneNode(true);
+  list.querySelectorAll("[id]").forEach((node) => node.removeAttribute("id"));
+  list.querySelectorAll(".collapse").forEach((node) => node.classList.remove("collapse"));
+  nav.appendChild(list);
+  details.appendChild(nav);
+
+  nav.querySelectorAll("a[href^='#']").forEach((link) => {
+    link.addEventListener("click", () => details.removeAttribute("open"));
+  });
+
+  title.insertAdjacentElement("afterend", details);
+});
+</script>
