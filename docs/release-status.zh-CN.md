@@ -12,6 +12,12 @@
 
 采用 HARC-lite 不追溯把已经公开的 Web Edition 降级为 provisional。
 
+## 按需电子出版构建
+
+仓库可以通过独立手动 workflow 从 canonical QMD 生成 PDF / DOCX / EPUB，用于排版检查、作者审阅和未来发行准备。
+
+这些 workflow artifact 属于 `BUILD-PREVIEW / NOT-A-RELEASE`：生成成功不等于作者已经批准正式发行，也不解除许可或第三方材料权利要求。
+
 ## 未来重大版本
 
 当未来发生大规模正文/架构重写，或准备正式 PDF / EPUB / DOCX / v1.0 等 release 时，使用以下轻量状态：
