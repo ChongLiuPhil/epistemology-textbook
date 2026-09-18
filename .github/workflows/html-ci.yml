@@ -9,9 +9,11 @@ on:
       - "index.qmd"
       - "_quarto.yml"
       - "book.css"
+      - "assets/**"
       - "project.yaml"
       - "website.yaml"
       - "README.md"
+      - "README.zh-CN.md"
       - "CONTRIBUTING.md"
       - "scripts/**"
       - "Makefile"
@@ -25,9 +27,11 @@ on:
       - "index.qmd"
       - "_quarto.yml"
       - "book.css"
+      - "assets/**"
       - "project.yaml"
       - "website.yaml"
       - "README.md"
+      - "README.zh-CN.md"
       - "CONTRIBUTING.md"
       - "scripts/**"
       - "Makefile"
@@ -84,6 +88,9 @@ jobs:
           grep -q "本章目录" _book/manuscript/01-knowledge.html
           grep -q "版本、引用与来源" _book/manuscript/00-open-access-and-support.html
           grep -q "github.com/ChongLiuPhil/epistemology-textbook" _book/manuscript/01-knowledge.html
+          grep -q "mobile-chapter-toc" _book/manuscript/01-knowledge.html
+          grep -q "citation-detail-dialog" _book/manuscript/01-knowledge.html
+          grep -q "本章参考文献" _book/manuscript/01-knowledge.html
 
           python3 scripts/check_rendered_html.py
 
