@@ -1,5 +1,6 @@
 harc:
   profile: "HARC-lite-book"
+  profile_version: "0.1.1"
   project: "epistemology-textbook"
   protocol_source: "ChongLiuPhil/Human-AI-Research-Collaboration-Protocol"
   adopted_protocol_version: "0.2.0-draft"
@@ -10,6 +11,7 @@ harc:
 
   bootstrap:
     start_here: "START_HERE.zh-CN.md"
+    onboarding_check: "ONBOARDING_CHECK.zh-CN.md"
     agent_contract: "AGENTS.md"
     context_interface: "HARC_CONTEXT_INTERFACE.yaml"
 
@@ -32,6 +34,7 @@ harc:
     working_memory_work_log: "docs/working-memory/work-log.zh-CN.md"
     book_architecture: "docs/book-architecture.zh-CN.md"
     framework_status: "docs/framework-status.zh-CN.md"
+    release_status: "docs/release-status.zh-CN.md"
 
   artifacts:
     canonical_home: "index.qmd"
@@ -44,8 +47,12 @@ harc:
   invariants:
     - "Repository state outranks chat or model memory."
     - "AI proposals are not human commitments."
+    - "The human author remains the responsibility bearer for project purpose, core judgment, major architecture authorization, and public release decisions."
     - "Read latest relevant state before high-impact actions and writes."
+    - "A revision conflict stops the write until the intervening repository change is fetched and reconciled."
     - "Working Memory stores operational resume state, not manuscript truth."
+    - "Resolved clarifications are promoted to long-term state and leave the active queue."
+    - "Architecture approval and release approval are distinct."
     - "Quarto QMD plus references.bib remain the canonical manuscript sources."
     - "The public HTML Web Edition is the active publication artifact."
     - "Legacy LaTeX is historical only."
