@@ -57,7 +57,8 @@ notes: >
   Development the active pipeline validates the sources, renders HTML, and
   deploys the validated _book output to GitHub Pages after changes reach main.
   HTML remains the continuous public edition. PDF, DOCX, and EPUB may be
-  generated on demand from the same canonical sources for publication testing; The legacy textbook/ LaTeX tree is retained only for
+  generated on demand from the same canonical sources for publication testing.
+  The legacy textbook/ LaTeX tree is retained only for
   historical audit and is not part of the active edit or build workflow.
   HARC-lite governance persists collaboration state in the repository without
   changing the canonical manuscript boundary.
