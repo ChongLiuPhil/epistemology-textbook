@@ -354,3 +354,142 @@ input:focus-visible {
     border-radius: 0.15rem;
   }
 }
+
+/* Citation detail dialog and chapter-reference return navigation. */
+main.content h1:has(+ #refs),
+main.content h2:has(+ #refs),
+main.content h3:has(+ #refs),
+main.content h1:has(+ .references),
+main.content h2:has(+ .references),
+main.content h3:has(+ .references) {
+  margin-top: 4.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--reader-rule);
+}
+
+main.content #refs,
+main.content .references {
+  margin-top: 1rem;
+}
+
+main.content #refs .csl-entry,
+main.content .references .csl-entry {
+  margin-bottom: 0.9rem;
+  line-height: 1.65;
+}
+
+.citation-detail-dialog {
+  width: min(680px, calc(100vw - 2rem));
+  max-height: min(78vh, 720px);
+  padding: 0;
+  border: 1px solid var(--reader-rule);
+  border-radius: 0.65rem;
+  background: Canvas;
+  color: CanvasText;
+}
+
+.citation-detail-dialog::backdrop {
+  background: rgb(0 0 0 / 0.28);
+}
+
+.citation-detail-panel {
+  display: flex;
+  max-height: inherit;
+  flex-direction: column;
+}
+
+.citation-detail-header,
+.citation-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+}
+
+.citation-detail-header {
+  justify-content: space-between;
+  border-bottom: 1px solid var(--reader-rule);
+}
+
+.citation-detail-actions {
+  justify-content: flex-end;
+  border-top: 1px solid var(--reader-rule);
+}
+
+.citation-detail-body {
+  padding: 1rem;
+  overflow: auto;
+  line-height: 1.65;
+}
+
+.citation-detail-body .csl-entry {
+  margin: 0;
+}
+
+.citation-dialog-close,
+.citation-view-bibliography {
+  border: 1px solid var(--reader-rule);
+  border-radius: 0.4rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.citation-dialog-close {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.citation-view-bibliography {
+  padding: 0.5rem 0.8rem;
+  font-weight: 650;
+}
+
+.citation-dialog-close:focus-visible,
+.citation-view-bibliography:focus-visible,
+.citation-backlinks a:focus-visible {
+  outline: 3px solid var(--reader-focus);
+  outline-offset: 3px;
+}
+
+.citation-backlinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.45rem;
+  font-size: 0.86rem;
+}
+
+.citation-backlinks-label {
+  color: var(--reader-muted);
+}
+
+.citation-backlinks a {
+  display: inline-flex;
+  min-width: 1.45rem;
+  min-height: 1.45rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--reader-rule);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.citation-return-highlight {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+
+@media (max-width: 991.98px) {
+  .citation-detail-dialog {
+    width: calc(100vw - 1rem);
+    max-height: 82vh;
+  }
+}
+

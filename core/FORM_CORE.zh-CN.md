@@ -5,14 +5,14 @@
 ## 成果类型
 
 - 类型：中文哲学教材 / 学习—整合—梳理型持续修订项目。
-- 当前主要公开成果：GitHub Pages 上的 HTML Web Edition。
+- 当前主要公开成果：Cloudflare Workers 上持续发布的 HTML Web Edition。
 - PDF / DOCX / EPUB：与 HTML 共用同一套 Quarto canonical source，按需生成，不作为日常编辑源。
 
 ## 规范编辑与来源
 
 - 正式正文：`index.qmd` 与 `manuscript/*.qmd`。
 - 正式书目：`references.bib`。
-- 书籍结构与统一输出配置：`_quarto.yml`。
+- 书籍共享结构：`_quarto.yml`；Web 与按需出版格式分别由 `_quarto-web.yml`、`_quarto-pdf.yml`、`_quarto-docx.yml`、`_quarto-epub.yml`、`_quarto-latex.yml` 承担 profile-specific 配置。
 - `textbook/`：迁移前 LaTeX 历史快照，仅用于审计、比较和 provenance，不再编辑。
 - `_book/`：生成结果，不是可编辑真值源。
 
@@ -24,13 +24,16 @@
 
 ## 出版模型
 
-本项目的出版形式参考 `What-Remains-Human-Epistemic-Agency-and-Human-Value-in-the-Age-of-AI` 的 Quarto 多格式安排，但根据本项目“公开教材”属性进行项目化调整：
+本项目采用 Personal Publishing Framework (PPF) 的 source / build / publish / release 分离语义，并保留早期参考项目带来的 Quarto 多格式形式启发：
 
-- 一套 canonical QMD / bibliography 同时服务 HTML、PDF、DOCX、EPUB；
-- HTML 是持续更新的主要阅读版本，进入 `main` 后自动部署 GitHub Pages；
-- PDF / DOCX / EPUB 通过独立手动 workflow 按需构建成 GitHub Actions artifact；
+- 一套 canonical QMD / bibliography 同时服务 HTML、PDF、DOCX、EPUB 与 LaTeX；
+- HTML 是 `continuous` publication，经 canonical Web gate 后由 Cloudflare Workers Builds 持续发布；
+- PDF / DOCX / EPUB / LaTeX 通过独立手动 workflow、按 profile、一次一种格式构建；
 - 手动生成 artifact 不自动等于 `RELEASE-APPROVED`，也不自动创建 GitHub Release；
-- 本项目保持公开 Pages，不复制参考项目的私有 Cloudflare 发布方式。
+- 当前 canonical Web identity 是 `https://epistemology-textbook.philosophy-research.workers.dev/`；
+- GitHub Pages legacy publication 已按 `RETIRE` policy 退出当前发布路径。
+
+详细项目级映射见 `docs/publication-profile.zh-CN.md`。
 
 ## Web Edition 与排版规则
 
@@ -42,10 +45,10 @@
 - 中文正文采用适合长篇阅读的 serif 字体栈，导航与界面采用 sans-serif；
 - 正文桌面阅读列保持约 820px 的适中宽度；
 - 长公式、表格、图片和代码不得把阅读列撑破；
-- 提供搜索、reader mode、前后页、返回顶部、引文/脚注预览、查看源码与报告问题入口；
+- 提供搜索、reader mode、前后页、返回顶部、引文/脚注预览、citation click detail、章末 bibliography backlink、查看源码与报告问题入口；
 - 网页开放阅读不设置付费门槛；支持完全自愿。
 
-参考项目中依赖“每章独立参考文献”的 citation dialog / backlink 逻辑当前不直接移植，因为本项目书目结构不同；如以后调整 citation architecture，再单独评估。
+本项目已采用 citation dialog / bibliography backlink，但只作为 Web 表现层增强；canonical citation 仍来自 QMD + `references.bib`，其他输出格式不依赖这层 JavaScript。
 
 ## 版本与反馈
 

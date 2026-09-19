@@ -226,8 +226,11 @@ def check_protocol_semantics() -> None:
     for marker in ("责任主体", "作者 Chong Liu", "学习—整合—梳理", "哲学研究不能被简单等同"):
         require_marker("core/CONTENT_CORE.zh-CN.md", marker)
 
-    for marker in ("PDF / DOCX / EPUB", "GitHub Pages", "手动 workflow"):
+    for marker in ("PDF / DOCX / EPUB", "Cloudflare Workers", "手动 workflow", "citation dialog"):
         require_marker("core/FORM_CORE.zh-CN.md", marker)
+
+    for marker in ("Cloudflare Workers Builds", "本章参考文献", "BUILD 不自动等于 RELEASE"):
+        require_marker("docs/publication-profile.zh-CN.md", marker)
 
     for marker in (
         "BOOK REPOSITORY CONTEXT — ACTIVE",

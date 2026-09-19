@@ -26,6 +26,8 @@ on:
       - "README.zh-CN.md"
       - "CONTRIBUTING.md"
       - "docs/ppf-adoption.md"
+      - "docs/publication-profile.zh-CN.md"
+      - "docs/publication-profile.zh-CN.md"
       - "scripts/**"
       - "Makefile"
       - ".github/ISSUE_TEMPLATE/**"
@@ -84,4 +86,10 @@ jobs:
 
       - name: Run canonical Web publication gate
         run: make web-publish-check
+
+      - name: Verify publication-profile reader features
+        run: |
+          grep -q "mobile-chapter-toc" _book/manuscript/01-knowledge.html
+          grep -q "citation-detail-dialog" _book/manuscript/01-knowledge.html
+          grep -q "本章参考文献" _book/manuscript/01-knowledge.html
 

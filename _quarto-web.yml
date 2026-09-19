@@ -44,3 +44,4 @@ format:
     css: book.css
     include-after-body:
       - assets/includes/reading-navigation.html
+      - assets/includes/citation-navigation.html

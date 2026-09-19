@@ -4,129 +4,61 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **workers.dev canonical production VERIFIED / GitHub Pages RETIRE human-confirmed complete**.
+Content Quality — **PR #18 reconciliation validated / Chapter 1 review next**.
 
 ## CURRENT_OBJECTIVE
 
-把 Cloudflare ↔ GitHub 接入固化为可复用范本，而不是只完成一次临时部署。
+把项目主工作重心从已经完成的 publication infrastructure 转回教材质量：从第 1 章开始逐章进行学术、教学与引用审校。
 
-当前首选架构：
+PR #39 已在 current PPF/Workers baseline 上验证通过，旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
 
-```text
-GitHub repository
-    |
-    +--> GitHub Actions
-    |      make web-publish-check
-    |
-    +--> Cloudflare Workers Builds
-           bash scripts/cloudflare_build.sh
-             -> pinned Quarto
-             -> make web-publish-check
-           preview -> npm run cloudflare:preview
-           main    -> npm run cloudflare:deploy
-```
+- D005 学习—整合—梳理型教材定位与问题驱动哲学学习观；
+- current publication profile；
+- citation click detail + bibliography backlinks；
+- “本章参考文献”；
+- math-layout source check；
+- README / CONTRIBUTING / AGENTS / project metadata 的 Pages/Phase 1 漂移清理。
 
-已在当前分支实现：
+第 1 章审校重点：
 
-- `make web-publish-check` 作为唯一 Web publication quality gate；
-- GitHub Actions 改为调用该 gate；
-- `cloudflare-builds.yaml` 作为 Workers Builds 机器契约；
-- Node 24 / Wrangler 4.135.0 / Quarto 1.10.18 固定；
-- Cloudflare build wrapper 可从没有 Quarto 的环境安装并校验固定版本；
-- 独立 Cloudflare Build Contract CI，不执行 deployment；
-- 非技术操作者授权指南；
-- Workers Builds + GitHub App + Cloudflare OAuth/MCP 成为默认方案；
-- GitHub Actions + Wrangler token 降为 fallback。
+- 是否始终围绕“知识是什么/为什么需要知识”的哲学问题推进；
+- 是否存在人物/流派罗列但没有问题功能的段落；
+- 概念区分、论证重构、反例与竞争立场是否准确、公平；
+- 学术性/历史性陈述是否有可核验文献支持；
+- citation key、书目信息与正文主张是否匹配；
+- 教学层次、案例、练习和段落路标是否服务学习目标；
+- 是否存在重复、泛化、空洞总结或不必要的小标题。
 
 ## PRIMARY_BLOCKER
 
-Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocker：
+无 infrastructure blocker，也无阻止第 1 章审校的 content blocker。
 
-- Cloudflare account：human-confirmed；
-- GitHub App：通过 GitHub check-run 自动验证；
-- repository connection：verified；
-- Worker target：verified；
-- main production-branch trigger：真实 build PASS；
-- workers.dev endpoint：已分配。
+仍存在但不阻塞书稿工作的 human clarifications：
 
-Cloudflare account-side staging 技术验证已经闭环：
-
-- GitHub App connection：PASS；
-- main Workers Build：PASS；
-- non-production preview：PASS；
-- main workers.dev runtime：PASS；
-- preview runtime：PASS；
-- 合并后的 main push 再次触发 Cloudflare Workers Build：PASS。
-
-当前安全研究已经完成：
-
-- Cloudflare-managed default build token 的权限比本项目实际需要更宽；
-- individual Worker `Editor` 是 routine deploy 的理论最小权限；
-- Cloudflare 当前 granular Worker token 能力要求 account-owned token；
-- Workers Builds 当前只支持 user token，account-owned token support 尚未进入当前产品；
-- 因此“Workers Builds + per-Worker account-owned Editor token”当前被产品能力阻塞，不应继续盲测。
-
-人类作者已选择 **Profile A — Workers Builds Native**：
-
-- 保留已验证的 Workers Builds 原生链路；
-- 明确接受当前 Cloudflare-managed user token 的已知较宽 scope 作为当前项目安全权衡；
-- `least_privilege: false` 保持不变，不把 broad token 描述成 least privilege；
-- Profile B 继续作为未采用 fallback；
-- Profile C 继续等待 provider 原生 granular support。
-
-## PPF ADOPTION STATE
-
-- adopted PPF: `v0.1.0-draft @ 21a5360727167bad6f399477ded073431645fa1d`;
-- source visibility: `public`;
-- Web publication: `authorized / public`;
-- Web access: `none`;
-- current canonical identity: workers.dev;
-- provider endpoint: workers.dev;
-- legacy GitHub Pages policy: `retire`; `Unpublish site` human-confirmed complete on 2026-09-20;
-- later upstream PPF changes remain non-adopted until another explicit decision.
+- CLR-001：项目正式许可；
+- CLR-002：外部参考 PDF 的公开分发权利。
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. main Workers Build 已通过 GitHub Cloudflare check 自动验证；
-2. non-production preview build 已通过 GitHub Cloudflare check 自动验证；
-3. workers.dev / preview runtime HTTP verification 已通过；
-4. account-side staging 技术验证已闭环；
-5. build-token hardening compatibility research 已完成：Workers Builds 当前 user-token-only；
-6. Profile B candidate 无凭据 validate-only CI 已通过（run `35435831128`）；
-7. production security profile：Profile A 已由人类明确选择并记录；
-8. workers.dev post-cutover provider build/runtime verification 已通过；GitHub Pages `Unpublish site` 已由 repository owner 确认完成。
+1. 合并已通过 current-main CI 的 PR #39；
+2. 将旧 PR #18 关闭并标记为 superseded；
+3. 以当前 main 为基线开始 Chapter 1 academic / pedagogical / citation audit；
+4. 对审校发现的问题按普通 content/refs 修订处理；只有重大 Architecture 变化才重新进入人类确认。
 
-## HANDOFF POINTERS
+## PPF / DELIVERY BASELINE
 
-- Machine build contract：`cloudflare-builds.yaml`
-- Canonical Web gate：`make web-publish-check`
-- Cloudflare wrapper：`scripts/cloudflare_build.sh`
-- Pinned Quarto installer：`scripts/ensure_quarto.sh`
-- Wrangler：`wrangler.jsonc`
-- Machine readiness state：`docs/cloudflare-readiness.yaml`
-- Governance validation run：`35427051865`
-- GitHub Web validation run：`35427051858`
-- Cloudflare Build Contract run：`35427051853`
-- Runtime HTTP verification run：`35431565729`
-- Verified post-merge Cloudflare checkpoint check：`105904495866`
-- Verified post-merge Cloudflare checkpoint Build ID：`93823dff-1206-4282-b037-24876840f0c6`
-- Verified checkpoint project revision：`71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15`
-- Build-token security audit：`docs/cloudflare-build-token-security.zh-CN.md`
-- Staging runbook：`docs/cloudflare-staging-runbook.zh-CN.md`
-- Human authorization guide：`docs/cloudflare-human-authorization.zh-CN.md`
-- Current canonical production config：Cloudflare workers.dev
-- Current delivery：Cloudflare Workers Static Assets via Workers Builds
-- Legacy delivery：GitHub Pages / RETIRE / unpublish human-confirmed complete
-- Verified cutover revision：`63510364ed40a97faf190c484dd80afc91971ecb`
-- Verified cutover runtime run：`35453967021`
-- Verified cutover runtime check：`105925881599`
-- Verified cutover Cloudflare provider check：`105926103705`
-- Verified cutover Cloudflare Build ID：`42aa93fe-d9b6-49e4-80be-a849951a6b9d`
-- workers.dev staging：`https://epistemology-textbook.philosophy-research.workers.dev`
-- main Cloudflare Build ID：`d6bc8b62-78ba-4a9e-98ea-7a049a539858`
-- preview probe Build ID：`a12446a5-e341-48e4-8c22-1a184b1102c8`
-- preview Version ID：`3f8a15d6-9994-4e90-839c-2144c8dc54b7`
-- preview URL：`https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev`
-- preview Alias：`https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev`
-
-Profile A、workers.dev canonical URL 与 GitHub Pages `retire` policy 都已由人类确认。Repository cutover 已实施：后续 main 不再部署 Pages。post-cutover Cloudflare/runtime verification 与 GitHub Pages provider-side unpublish 均已完成到当前可验证边界；当前会话无法独立 HTTP 探测旧 URL，因此不伪造该层证据；token 继续不得写入仓库。
+- adopted PPF: `v0.1.0-draft @ 21a5360727167bad6f399477ded073431645fa1d`;
+- production security profile: **Profile A — Workers Builds Native**;
+- `least_privilege: false` remains explicit for the managed build token;
+- Web publication: `authorized / public`;
+- Web access: `none`;
+- current canonical identity: workers.dev;
+- workers.dev post-cutover provider build/runtime verification 已通过;
+- legacy GitHub Pages policy: `retire`;
+- `Unpublish site` human-confirmed complete on 2026-09-20;
+- Verified cutover revision：`63510364ed40a97faf190c484dd80afc91971ecb`;
+- Verified cutover runtime run：`35453967021`;
+- Verified cutover Cloudflare provider check：`105926103705`;
+- Verified post-merge Cloudflare checkpoint check：`105904495866`;
+- Verified post-merge Cloudflare checkpoint Build ID：`93823dff-1206-4282-b037-24876840f0c6`;
+- deployment/security line is stable maintenance, not the current development objective.

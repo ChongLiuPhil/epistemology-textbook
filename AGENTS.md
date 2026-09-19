@@ -37,8 +37,8 @@
 - 高影响 AI 提议应标记为 `AI-PROPOSED`，进入 Task Plan 或工作架构等待作者确认。
 - 人类明确决定应记录到 `core/DECISION_LOG.zh-CN.md`，再传播到相应 Core / architecture / artifact。
 - 证据与当前主张冲突时，应明确报告冲突，不得为保持原文而隐藏证据。
-- AI Agent 可以执行或辅助检索、核查、综合、起草、重组、引用检查、网页维护与质量审计；**作者 Chong Liu 保持为本教材项目目的、核心知识判断、重大 Architecture 授权以及公开 Release 决定的责任主体。**
-- AI 参与多少工作都不自动把上述责任主体位置转移给 AI。
+- AI Agent 可以执行或辅助检索、核查、综合、起草、重组、引用检查、网页维护与质量审计；**作者 Chong Liu 保持为本教材项目目的、问题框架、材料选择与解释性/教学判断、重大 Architecture 授权以及公开 Release 决定的责任主体。**
+- 本项目以学习资料整合和问题化组织为主，不要求作者通过每一节提出原创理论来证明责任；责任主要体现在选择、比较、判断、组织和最终审核。AI 参与多少工作都不自动把上述责任主体位置转移给 AI。
 
 ## 5. 内容与结构
 
@@ -55,14 +55,15 @@
 
 ## 6. 形式、Release 与发布
 
-`core/FORM_CORE.zh-CN.md` 保存稳定形式决定。当前 active artifact 是 Quarto HTML Web Edition。具体 release 状态见 `docs/release-status.zh-CN.md`。
+`core/FORM_CORE.zh-CN.md` 保存稳定形式决定，`docs/publication-profile.zh-CN.md` 保存当前项目级电子出版/阅读 profile。active continuous artifact 是 workers.dev 上的 Quarto HTML Web Edition；具体 release 状态见 `docs/release-status.zh-CN.md`，machine publication contract 见 `publishing.yaml`。
 
 不得：
 
 - 把 `textbook/` 恢复成 active source；
-- 直接编辑 `_book/`；
-- 在日常 CI 中重新加入 PDF/EPUB/DOCX；
-- 绕过验证直接把生成物当作 canonical source。
+- 直接编辑 `_book/` 或 `_publication/`；
+- 在日常 Web CI 中自动构建/发布 PDF、EPUB、DOCX、LaTeX；
+- 绕过 `make web-publish-check` 直接更新 Web production；
+- 把 on-demand build artifact 当作 formal release。
 
 重大 Architecture Approval 与具体 Release Approval 是两个不同 gate。未来正式 PDF/EPUB/DOCX、v1.0 或大规模重写版本，必须在人类作者明确 review 后才能进入 `RELEASE-APPROVED`。
 
@@ -95,7 +96,7 @@ Task Plan 可以短期保留“Recently resolved”指针；之后移入 Work Lo
 2. 运行相应检查；
 3. 通过 Pull Request；
 4. 合并到 `main`；
-5. 若影响公开书籍，确认 main 的 HTML build 与 Pages deployment 成功；
+5. 若影响公开书籍，确认 main 的 canonical Web gate、Workers Builds / workers.dev runtime 相关检查成功；
 6. 若属于正式 release，确认对应 Release Approval gate；
 7. 更新 Working Memory，使下一位协作者知道任务已完成和接下来做什么。
 
