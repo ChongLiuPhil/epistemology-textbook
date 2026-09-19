@@ -1,7 +1,17 @@
-name: Build Publication Formats
+name: Build Publication Format
 
 on:
   workflow_dispatch:
+    inputs:
+      format:
+        description: Publication format to build
+        required: true
+        type: choice
+        options:
+          - epub
+          - pdf
+          - docx
+          - latex
 
 permissions:
   contents: read
@@ -10,43 +20,49 @@ jobs:
   build-publication:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
 
-      - name: Install Chinese fonts
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Install Chinese fonts for PDF
+        if: inputs.format == 'pdf'
         run: |
           sudo apt-get update
           sudo apt-get install -y fonts-noto-cjk
 
-      - name: Set up Quarto and TinyTeX
-        uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
+      - name: Install TinyTeX for PDF
+        if: inputs.format == 'pdf'
+        run: quarto install tinytex --no-prompt
 
-      - name: Render PDF book
+      - name: Render requested publication profile
+        run: quarto render --profile "${{ inputs.format }}"
+
+      - name: Verify requested artifact
+        shell: bash
         run: |
-          quarto render --to pdf
-          mkdir -p build-artifacts
-          find _book -maxdepth 1 -type f -name '*.pdf' -exec cp {} build-artifacts/ \;
-          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.pdf' -print -quit)"
+          set -euo pipefail
+          format="${{ inputs.format }}"
+          output="_publication/$format"
+          test -d "$output"
 
-      - name: Render DOCX book
-        run: |
-          quarto render --to docx
-          find _book -maxdepth 1 -type f -name '*.docx' -exec cp {} build-artifacts/ \;
-          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.docx' -print -quit)"
+          case "$format" in
+            epub) extension="epub" ;;
+            pdf) extension="pdf" ;;
+            docx) extension="docx" ;;
+            latex) extension="tex" ;;
+            *) echo "Unsupported format: $format" >&2; exit 1 ;;
+          esac
 
-      - name: Render EPUB book
-        run: |
-          quarto render --to epub
-          find _book -maxdepth 1 -type f -name '*.epub' -exec cp {} build-artifacts/ \;
-          test -n "$(find build-artifacts -maxdepth 1 -type f -name '*.epub' -print -quit)"
+          test -n "$(find "$output" -type f -name "*.$extension" -print -quit)"
 
-      - name: Upload publication-format artifacts
+      - name: Upload publication artifact
         uses: actions/upload-artifact@v7
         with:
-          name: epistemology-textbook-publication-formats
-          path: build-artifacts/*
+          name: "epistemology-textbook-${{ inputs.format }}-${{ github.sha }}"
+          path: "_publication/${{ inputs.format }}/"
           if-no-files-found: error
           retention-days: 30
