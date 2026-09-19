@@ -6,7 +6,7 @@
 
 - `WM-T029` — reconcile PR #18 content/form improvements with current PPF/Workers baseline — `COMPLETED / MAIN-MERGED`
 - `WM-T030` — Chapter 1 academic / pedagogical / citation review — `COMPLETED / ROUND2-MAIN-VERIFIED`
-- `WM-T031` — Chapter 2 academic / pedagogical / citation review — `ROUND1 / VALIDATION-PENDING`
+- `WM-T031` — Chapter 2 academic / pedagogical / citation review — `ROUND2 / VALIDATION-PENDING`
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
@@ -67,10 +67,10 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. Validate Chapter 2 Round 1 on current main architecture.
-2. Merge Round 1 only if Governance + Web + Cloudflare contract/runtime + link audit pass.
-3. Run Chapter 2 Round 2 for structural repetition, chapter load, and remaining citation/attribution gaps.
-4. Escalate only genuine cross-chapter Architecture changes for explicit human approval.
+1. Validate Chapter 2 Round 2 on the current PPF/Workers baseline.
+2. Merge only if Governance + Web + Cloudflare contract/runtime + link audit pass.
+3. Run Chapter 2 closure review; promote no cross-chapter Architecture change without explicit human approval.
+4. If closure review is clean, mark WM-T031 complete and queue Chapter 3 review.
 5. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
@@ -110,6 +110,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## RECENTLY RESOLVED / PROMOTED
 
+- WM-T031 Round 1 → merge `99a27a5e1094b311638022fd7a382b012688bd61`; Governance `35473757087`, Web `35473757089`, Cloudflare Contract `35473757094`, Runtime `35473757090`, External Link Audit `35473757101` → `PASS`.
 - WM-T029 PR #18 reconciliation → PR #39 merged as `3e36d5dc015d8224ec6e6e98a952c5d77c872eee`; Governance `35456091399`, Web `35456091339`, Cloudflare Contract `35456091266`, Hardened candidate `35456091221`, Runtime `35456091331` → `PASS`.
 - workers.dev canonical cutover post-merge verification → revision `63510364ed40a97faf190c484dd80afc91971ecb`, runtime run `35453967021`, runtime check `105925881599`, Cloudflare provider check `105926103705`, build `42aa93fe-d9b6-49e4-80be-a849951a6b9d` → `PASS`.
 - CLR-003 GitHub Pages legacy policy → human decision `RETIRE`; D010 recorded; canonical config migration implemented; provider-side `Unpublish site` human-confirmed complete on 2026-09-20.
