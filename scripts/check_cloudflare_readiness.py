@@ -344,6 +344,7 @@ def check_human_readable_state_reconciliation() -> None:
             "candidate / validate-only PASS",
             "不是 production-tested",
             "Cloudflare canonical production cutover: NOT DONE / BLOCKED.",
+            "human production security-profile selection：Profile A",
         )
         for marker in required_human_markers:
             if marker not in human:
@@ -397,6 +398,8 @@ def check_human_readable_state_reconciliation() -> None:
     ):
         if marker not in security_audit:
             fail(f"Cloudflare security audit is missing Profile A decision marker: {marker}")
+    if "HUMAN PROFILE DECISION PENDING" in security_audit:
+        fail("Cloudflare security audit still claims the production profile decision is pending")
 
     decision_log = DECISION_LOG.read_text(encoding="utf-8")
     for marker in (
