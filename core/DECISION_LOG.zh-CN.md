@@ -122,3 +122,25 @@
 - 本 PR 只迁移出版生命周期，不同时把 HARC-lite 项目治理迁移到 AHICP，以保持故障域与审计边界清楚。
 
 **实现状态：** implementing in `ppf-pilot-v0.1`.
+
+---
+
+## 2026-09-19 — D007 — 选择 Cloudflare Production Security Profile A
+
+**来源：** 人类作者明确选择 `A`。  
+**分类：** PROTOCOL / INFRASTRUCTURE SECURITY。  
+**决定：**
+
+- 本项目选择 **Profile A — Workers Builds Native** 作为当前 Cloudflare production delivery security profile；
+- 继续使用已经真实验证的 Cloudflare GitHub App + Workers Builds + Cloudflare-managed user build token；
+- 人类作者明确接受当前 managed build token 的已知较宽权限范围，作为本项目当前生产接入的已知安全权衡；
+- 该接受**不**改变事实判断：当前 token 仍不是 per-Worker least privilege，`least_privilege: false` 保持不变；
+- 不创建新的 account-owned deployment token，不启用 Hardened External CI 自动部署，不把 Profile B 描述为已采用；
+- Profile B 继续保留为未激活的 hardened fallback / migration path；
+- Profile C 继续等待 Workers Builds 原生支持 account-owned granular credential；
+- 如果 Cloudflare 后续支持 Workers Builds + account-owned per-Worker Editor token，或项目 threat model / security requirement 改变，应重新评估本决定；
+- 本决定只解除 production security-profile blocker，不等于批准 canonical production cutover；
+- Custom Domain、target canonical URL、GitHub Pages legacy policy 与最终 cutover 仍需独立决定和验证。
+
+**实现状态：** human-approved；本轮 repository migration 负责把该选择传播到 machine readiness、security audit、Working Memory 与 validators。
+
