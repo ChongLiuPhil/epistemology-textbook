@@ -4,6 +4,7 @@
 
 ## ACTIVE TASKS
 
+- `WM-T029` — reconcile PR #18 content/form improvements with current PPF/Workers baseline — `IMPLEMENTED / VALIDATION-PENDING`
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
@@ -60,13 +61,11 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. PPF `21a53607...` downstream adoption 已完成 PR validation；保持 adopted commit 固定，后续 upstream 变化继续要求显式 adoption。
-2. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
-2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
-3. Profile A 已由人类选择；保留 Workers Builds native / managed user token，并记录 broad-scope risk acceptance。
-4. workers.dev canonical cutover 已完成真实 post-cutover verification；GitHub Pages actual unpublish 已由 repository owner 确认完成。当前会话无法独立 HTTP 探测旧 URL，不再把这一工具限制当作部署 blocker。
-5. Profile B 保留为未采用 fallback，不创建 deployment token、不启用 external CI deployment。
-6. Future：Cloudflare Workers Builds 支持 account-owned per-Worker token 或 threat model 变化后，重新评估 Profile C / Profile B。
+1. Validate WM-T029 on the current-main architecture: Governance + canonical Web gate + Cloudflare contract/runtime + publication-profile reader markers.
+2. Merge the reconciled replacement PR if all checks pass.
+3. Close old PR #18 as superseded by the reconciled main-based implementation.
+4. Start the next content-quality cycle with Chapter 1 academic/pedagogical/citation review.
+5. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
@@ -129,9 +128,10 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-workers.dev canonical cutover is implemented and verified, and GitHub Pages unpublish is human-confirmed complete. No further routing/cutover task is active; independent old-URL HTTP probing is unavailable in the current tool session.
-
-Other project standardization work remains paused.
+- After WM-T029 closes, begin Chapter 1 academic/pedagogical/citation review.
+- During chapter review, flag passages that catalogue thinkers/schools without a clear problem-function.
+- If a formal publisher or print specification is later chosen, add provider/channel-specific PDF layout constraints without changing canonical manuscript semantics.
+- No further routing/cutover task is active.
 
 ## SYNC DEFECTS
 
