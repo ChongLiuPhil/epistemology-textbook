@@ -5,7 +5,7 @@
 ## ACTIVE TASKS
 
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
-- `WM-T021` — Cloudflare account-side staging context — `IN-PROGRESS / HTTP-AND-SECURITY-VERIFYING`
+- `WM-T021` — Cloudflare account-side staging context — `IN-PROGRESS / SECURITY-VERIFYING`
 
 ## COMPLETED PPF TASKS
 
@@ -37,6 +37,8 @@ Account connection:
 - [x] preview trigger configured and preview build PASS
 - [ ] build token present; least-privilege review pending
 - [x] non-production preview build PASS
+- [x] main workers.dev HTTP/content verification PASS
+- [x] preview workers.dev HTTP/content verification PASS
 
 Production cutover:
 - [ ] target canonical URL
@@ -76,7 +78,6 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-- workers.dev HTTP/content verification is blocked by current ChatGPT network-fetch limitations;
 - Cloudflare-managed build-token least-privilege review remains pending.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
@@ -103,6 +104,7 @@ Fallback is not enabled while Workers Builds remains viable.
 - Workers Builds machine contract → promoted into `cloudflare-builds.yaml` and `docs/cloudflare-readiness.yaml`.
 - Main Workers Build `d6bc8b62-78ba-4a9e-98ea-7a049a539858` → `PASS`.
 - Preview Workers Build `a12446a5-e341-48e4-8c22-1a184b1102c8`, Version `3f8a15d6-9994-4e90-839c-2144c8dc54b7` → `PASS`.
+- Runtime HTTP verification `35431565729` → main + preview, each 5 pages + 30 local assets → `PASS`.
 
 ## CLARIFICATION COMPLETION RULE
 
