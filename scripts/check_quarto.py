@@ -80,7 +80,7 @@ GENERATED_MARKERS = (
 CROSSREF_PREFIXES = ("fig-", "tbl-", "eq-", "sec-", "lst-")
 CJK = r"\u3400-\u9fff"
 OPEN_READING_URL = (
-    "https://chongliuphil.github.io/epistemology-textbook/"
+    "https://epistemology-textbook.philosophy-research.workers.dev/"
     "manuscript/00-open-access-and-support.html"
 )
 
@@ -132,7 +132,7 @@ def check_quarto_config(config: str) -> None:
     required_web_markers = {
         "Web output directory": "output-dir: _book",
         "HTML format": "  html:",
-        "public site URL": 'site-url: "https://chongliuphil.github.io/epistemology-textbook/"',
+        "public site URL": 'site-url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
         "source repository": 'repo-url: "https://github.com/ChongLiuPhil/epistemology-textbook"',
         "reader feedback/source actions": "repo-actions: [issue, source]",
         "reader mode": "reader-mode: true",
@@ -146,6 +146,9 @@ def check_quarto_config(config: str) -> None:
     for label, marker in required_web_markers.items():
         if marker not in web:
             fail(f"{label} is missing from _quarto-web.yml")
+
+    if "https://chongliuphil.github.io/epistemology-textbook/" in web:
+        fail("retired GitHub Pages canonical URL remains in _quarto-web.yml")
 
     expected_profiles = {
         "pdf": ("_publication/pdf", "  pdf:"),
@@ -172,9 +175,12 @@ def check_ppf_contract() -> None:
         "PPF source": "ChongLiuPhil/Personal-Publishing-Framework",
         "continuous Web mode": "mode: continuous",
         "on-demand mode": "mode: on-demand",
-        "current Pages provider": "current_provider: github-pages",
-        "target Cloudflare provider": "target_provider: cloudflare-workers",
-        "staged migration": "migration_status: staged",
+        "current Cloudflare provider": "current_provider: cloudflare-workers",
+        "resolved target provider": "target_provider: null",
+        "active canonical migration": "migration_status: canonical-active-verification-pending",
+        "active deployment integration": "integration_state: PRODUCTION_ACTIVE",
+        "active cutover state": "cutover_state: ACTIVE",
+        "retired Pages policy": "legacy_url_policy: retire",
         "explicit release": "require_explicit_release: true",
     }
     for label, marker in required.items():
@@ -244,18 +250,24 @@ def check_active_build_files() -> None:
 
 def check_pages_deployment() -> None:
     workflow = PAGES_WORKFLOW.read_text(encoding="utf-8")
-    required_markers = {
-        "canonical Web publication gate": "make web-publish-check",
-        "official Pages configuration": "actions/configure-pages@",
-        "Pages artifact upload": "actions/upload-pages-artifact@",
-        "Pages deployment": "actions/deploy-pages@",
-        "rendered _book deployment source": "path: _book",
-        "GitHub Pages environment": "name: github-pages",
-        "main-only deployment guard": "github.ref == 'refs/heads/main'",
-    }
-    for label, marker in required_markers.items():
-        if marker not in workflow:
-            fail(f"{label} is missing from {PAGES_WORKFLOW.relative_to(ROOT)}")
+    if "make web-publish-check" not in workflow:
+        fail("HTML CI must continue to run the canonical Web publication gate")
+
+    forbidden_pages_markers = (
+        "actions/configure-pages@",
+        "actions/upload-pages-artifact@",
+        "actions/deploy-pages@",
+        "name: github-pages",
+        "pages: write",
+        "id-token: write",
+        "deploy-pages:",
+    )
+    for marker in forbidden_pages_markers:
+        if marker in workflow:
+            fail(
+                "GitHub Pages deployment must remain retired from normal HTML CI: "
+                f"{marker}"
+            )
 
     makefile = MAKEFILE.read_text(encoding="utf-8")
     gate_markers = {
@@ -269,7 +281,7 @@ def check_pages_deployment() -> None:
 
     for output_format in ("pdf", "docx", "epub"):
         if re.search(rf"(?i)quarto\s+render[^\n]*--to\s+{output_format}\b", workflow):
-            fail(f"daily Pages workflow unexpectedly renders {output_format}")
+            fail(f"daily HTML validation workflow unexpectedly renders {output_format}")
 
 
 def check_publication_workflow() -> None:
@@ -419,8 +431,8 @@ def main() -> None:
         "Quarto source check passed: "
         f"{len(files)} canonical QMD files, {cited_count} cited keys, "
         f"{bib_count} bibliography entries; PPF profiles share one canonical Quarto source, "
-        "daily CI deploys only integrity-checked Web HTML to GitHub Pages during Phase 1, "
-        "EPUB/PDF/DOCX/LaTeX remain explicit on-demand build artifacts, and "
+        "daily CI validates integrity-checked Web HTML while Cloudflare Workers Builds owns delivery, "
+        "GitHub Pages deployment remains retired, EPUB/PDF/DOCX/LaTeX remain explicit on-demand build artifacts, and "
         "reader navigation/feedback remain configured."
     )
 
