@@ -4,59 +4,74 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **Phase 2 repository readiness complete / account-side staging pending**.
+Personal Publishing Framework — **Cloudflare ↔ GitHub standard integration / Workers Builds contract validation**.
 
 ## CURRENT_OBJECTIVE
 
-仓库侧 Cloudflare readiness 已实现并通过 CI 验证：
+把 Cloudflare ↔ GitHub 接入固化为可复用范本，而不是只完成一次临时部署。
 
-- `wrangler.jsonc` 保持纯 static-assets Worker 形态；
-- `assets.directory = ./_book`；
-- `publishing.yaml` 明确 current provider = GitHub Pages、target provider = Cloudflare Workers；
-- `docs/cloudflare-readiness.yaml` 记录账户侧未知状态；
-- `scripts/check_cloudflare_readiness.py` 防止 prerequisites 未完成时提前出现 `wrangler deploy` / Cloudflare deploy action；
-- `make check` 已纳入 readiness validator。
+当前首选架构：
 
-当前目标不是切换生产，而是把 repository side 固化为：
+```text
+GitHub repository
+    |
+    +--> GitHub Actions
+    |      make web-publish-check
+    |
+    +--> Cloudflare Workers Builds
+           bash scripts/cloudflare_build.sh
+             -> pinned Quarto
+             -> make web-publish-check
+           preview -> npm run cloudflare:preview
+           main    -> npm run cloudflare:deploy
+```
 
-`REPOSITORY-READY / ACCOUNT-SIDE-UNVERIFIED / CUTOVER-BLOCKED`
+已在当前分支实现：
+
+- `make web-publish-check` 作为唯一 Web publication quality gate；
+- GitHub Actions 改为调用该 gate；
+- `cloudflare-builds.yaml` 作为 Workers Builds 机器契约；
+- Node 24 / Wrangler 4.135.0 / Quarto 1.10.18 固定；
+- Cloudflare build wrapper 可从没有 Quarto 的环境安装并校验固定版本；
+- 独立 Cloudflare Build Contract CI，不执行 deployment；
+- 非技术操作者授权指南；
+- Workers Builds + GitHub App + Cloudflare OAuth/MCP 成为默认方案；
+- GitHub Actions + Wrangler token 降为 fallback。
 
 ## PRIMARY_BLOCKER
 
-Cloudflare account-side prerequisites 未验证：
+当前 ChatGPT 会话没有真正暴露可调用的 Cloudflare account / Workers Builds MCP tool。
 
-- Cloudflare account / account ID；
-- Worker target；
-- GitHub Secrets 中的 deployment credentials；
-- Cloudflare-managed zone / target canonical URL；
-- preview/staging deployment；
-- GitHub Pages legacy URL policy。
+因此尚不能从本会话直接：
 
-当前 ChatGPT 环境没有可用 Cloudflare account connector，因此不能把这些未知项升级成“已配置”。
+- 读取 Cloudflare account；
+- 安装/确认 GitHub App connection；
+- 创建/确认 Worker；
+- 创建 Workers Builds triggers；
+- 触发并读取首次 Cloudflare build。
+
+这不是仓库设计 blocker，而是当前会话 account connector availability blocker。
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. repository-side readiness PR #22 已合并并在 `main` 验证通过；
-2. Cloudflare staging runbook 与非执行 workflow example 已准备；
-3. 保持 GitHub Pages production 不变；
-4. 账户侧建立 Cloudflare deployment context 后，先确认/创建目标 Worker；
-5. 配置最小权限 CI credential 后，通过 `workers.dev` 做 staging deployment；
-6. staging PASS 后再讨论 Custom Domain 与生产 cutover。
+1. 让本分支通过普通 Web CI + Cloudflare Build Contract CI；
+2. 若 CI PASS，合并 repository standard；
+3. 继续尝试建立 Cloudflare OAuth/MCP account context；
+4. 一旦 account context 可用，由 AI 按 `cloudflare-builds.yaml` 自动完成 Git connection / Worker / triggers / preview build；
+5. 若最终仍无法在当前 AI 客户端建立 MCP，则只要求人类完成 `docs/cloudflare-human-authorization.zh-CN.md` 中的最少授权步骤；
+6. workers.dev staging PASS 前保持 GitHub Pages 为正式公开站点。
 
 ## HANDOFF POINTERS
 
-- PPF contract：`publishing.yaml`
-- Cloudflare readiness audit：`docs/cloudflare-readiness.zh-CN.md`
-- Machine readiness state：`docs/cloudflare-readiness.yaml`
-- Readiness validator：`scripts/check_cloudflare_readiness.py`
+- Machine build contract：`cloudflare-builds.yaml`
+- Canonical Web gate：`make web-publish-check`
+- Cloudflare wrapper：`scripts/cloudflare_build.sh`
+- Pinned Quarto installer：`scripts/ensure_quarto.sh`
 - Wrangler：`wrangler.jsonc`
+- Machine readiness state：`docs/cloudflare-readiness.yaml`
 - Staging runbook：`docs/cloudflare-staging-runbook.zh-CN.md`
-- Non-executable workflow example：`docs/examples/cloudflare-staging-workflow.yml`
+- Human authorization guide：`docs/cloudflare-human-authorization.zh-CN.md`
 - Current production：GitHub Pages
-- Target provider：Cloudflare Workers Static Assets
-- Readiness merge commit：`f0af87ea5c060a69141eeb82c5992de8126af55d`
-- Main Governance run：`35422807542`
-- Main Web/Pages run：`35422807549`
-- Main External Link Audit：`35422807546`
+- Target delivery：Cloudflare Workers Static Assets via Workers Builds
 
-本阶段不得添加 active Cloudflare deployment workflow，除非 account-side prerequisites 已被实际验证并持久化。
+当前阶段不得修改 DNS、绑定正式 Custom Domain、停用 GitHub Pages 或把 token 写入仓库。
