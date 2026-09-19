@@ -6,17 +6,15 @@
 
 ## 当前阶段：Web Edition Development
 
-目前处于 **PPF Pilot Phase 1**：优先开发并持续发布网页版，同时验证同一 canonical source 的多格式按需构建。当前生产 Web provider 仍是 GitHub Pages。日常流程是：
+Web Edition 已经是经过验证的 canonical continuous publication。当前正常发布路径是：
 
-`QMD → validation → HTML → GitHub Pages`
+`canonical QMD → make web-publish-check → Cloudflare Workers Builds → workers.dev`
 
-每次修改通过 Pull Request 进入 `main` 后，GitHub Actions 会重新验证 canonical QMD sources、完整生成 HTML，并把验证通过的 `_book/` 部署到公开网页。因此，对书稿、结构和网页样式的修改最终都应落实到实际可阅读的网站。
+在线阅读：<https://epistemology-textbook.philosophy-research.workers.dev/>
 
-在线阅读：<https://chongliuphil.github.io/epistemology-textbook/>
+开放阅读与支持：<https://epistemology-textbook.philosophy-research.workers.dev/manuscript/00-open-access-and-support.html>
 
-开放阅读与支持：<https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html>
-
-PDF、DOCX、EPUB、LaTeX 不属于日常 Pages CI。它们通过独立的手动 `Build Publication Format` workflow 按需生成，并且每次明确选择一种格式。默认生成物是校对、离线阅读和出版准备 artifact，不自动等于正式 release。
+PDF、DOCX、EPUB、LaTeX 是显式按需构建 artifact。手动 `Build Publication Format` workflow 每次选择一种 profile；构建成功可用于校对、离线阅读与出版准备，但不自动构成正式 release approval。
 
 ## 项目定位
 
@@ -43,7 +41,7 @@ PDF、DOCX、EPUB、LaTeX 不属于日常 Pages CI。它们通过独立的手动
 - 左侧“本书目录”用于跨章导航；桌面右侧“本章目录”用于当前章节内部定位，窄屏设备在正文标题下提供可折叠的“本章目录”
 - 全站搜索、前后章节导航与返回顶部
 - reader mode，用于长章的专注阅读
-- 引文与脚注悬浮预览
+- 引文与脚注悬浮预览；引文点击可查看文献详情，并从章末参考文献返回正文引用位置
 - 右侧“报告问题”和“查看源码”入口
 - 全书页脚中的开放阅读、反馈与版本状态提示
 - GitHub 上区分“书稿纠错与内容建议”和“网页显示与阅读问题”的结构化反馈表单
@@ -87,7 +85,7 @@ PDF、DOCX、EPUB、LaTeX 不属于日常 Pages CI。它们通过独立的手动
 需要 Python 3、GNU Make 和 Quarto；当前开发流程不需要 LaTeX/XeLaTeX。
 
 ```sh
-make check    # 检查 QMD、bibliography 元数据、项目结构、阅读/反馈配置和 HTML-only 流程
+make check    # 检查 QMD、数学布局风险、bibliography 元数据、项目结构、阅读/反馈、PPF 与发布边界
 make preview  # 启动 Quarto 本地 HTML 预览
 make html     # 生成 HTML 阅读版
 make all      # 当前阶段等同于完整 HTML 开发构建
@@ -96,7 +94,7 @@ make clean    # 删除 _book/ 与 .quarto/
 
 Quarto HTML 输出位于 `_book/`。`make check` 会阻止缺失 citation key、重复或格式错误的 DOI、非法 URL 等确定性文献错误；当前未被正文引用的书目条目会作为审计信息报告，而不会自动删除。
 
-外部网站可达性受出版社、限流、认证与网络状态影响，因此不放进 Pages 发布的阻断路径。仓库另有独立的 `External Link Audit`：相关书稿、书目、网页配置或审计脚本进入 `main` 时会自动运行，同时保留每周与手动触发。它完整渲染网站后检查最终 HTML 中的外部链接，只把明确的 HTTP 404/410 作为断链失败，其余网络异常保留为 warning。
+外部网站可达性受出版社、限流、认证与网络状态影响，因此不放进 canonical Web publication gate。电子出版与网页阅读约定见 `docs/publication-profile.zh-CN.md`。仓库另有独立的 `External Link Audit`：相关书稿、书目、网页配置或审计脚本进入 `main` 时会自动运行，同时保留每周与手动触发。它完整渲染网站后检查最终 HTML 中的外部链接，只把明确的 HTTP 404/410 作为断链失败，其余网络异常保留为 warning。
 
 ## 按需电子出版格式
 
@@ -104,26 +102,19 @@ Quarto HTML 输出位于 `_book/`。`make check` 会阻止缺失 citation key、
 
 这些 artifact 与 HTML 使用完全相同的 `index.qmd`、`manuscript/*.qmd` 和 `references.bib`，不会形成第二套正文。Web 输出位于 `_book/`，按需格式位于 `_publication/<format>/`。手动构建成功也不自动代表正式 release 已获批准；正式版本状态见 `docs/release-status.zh-CN.md`。
 
-## PPF 与 Cloudflare 迁移状态
+## PPF 与 Cloudflare 发布状态
 
-本项目采用 Personal Publishing Framework v0.1.0-draft 作为出版生命周期框架，具体 contract 见 `publishing.yaml`，采用说明见 `docs/ppf-adoption.md`。
+本项目采用 Personal Publishing Framework v0.1.0-draft，并固定 adopted commit 为 `21a5360727167bad6f399477ded073431645fa1d`。具体 contract 见 `publishing.yaml`，采用说明见 `docs/ppf-adoption.md`。
 
-Phase 1 保留 GitHub Pages 作为现有生产站点，用于真实验证 profile-based 构建与 CI。`wrangler.jsonc` 已准备 Cloudflare Workers Static Assets 的目标配置，但当前**不代表 Cloudflare 已经上线**。只有在 Worker target、凭据、canonical URL、preview verification 以及旧 Pages URL 的 redirect/canonical policy 均确认后，才进入 Phase 2 cutover。
+Cloudflare Workers 已是经过验证的当前 Web provider，workers.dev URL 是 current canonical publication identity。GitHub Pages 已按记录的 `RETIRE` policy 退出当前发布路径。source visibility、publication authorization、publication visibility、access policy 与 canonical identity 在 PPF 中保持彼此独立；当前教材是 public publication，access mode 为 `none`。
 
 ## CI 与部署
 
-Pull Request 阶段：
+Pull Request 阶段会验证 canonical QMD sources、bibliography 元数据、PPF/Cloudflare contracts、读者界面配置、完整 Web render、内部链接/资源/锚点与 rendered HTML integrity。
 
-- 检查 canonical QMD sources
-- 验证 bibliography citation keys、DOI/URL 元数据与项目结构
-- 检查开放阅读、反馈入口和左右目录标签等 reader-facing 配置
-- 安装 Quarto
-- 使用 `web` profile 完整渲染 HTML
-- 验证全站内部链接、静态资源、页面锚点与重复 HTML ID
-- 验证关键 HTML 页面和关键阅读界面元素存在
-- 验证没有意外生成 EPUB/PDF/DOCX/LaTeX
+`make web-publish-check` 是唯一 canonical Web publication quality gate。GitHub Actions 用它做验证；Cloudflare Workers Builds 在更新 workers.dev production 之前调用同一个 gate。正常 CI 不再部署 GitHub Pages。
 
-合并到 `main` 后，在上述验证全部通过之后，工作流会把同一次构建得到的 `_book/` 作为 GitHub Pages artifact 部署。部署不通过脚本强推 `gh-pages` 分支。外部 HTTP 可达性由独立审计处理：相关内容进入 `main` 后即时运行，并另有每周与手动触发；它不把第三方网站的临时故障混入 Pages 发布门禁。
+外部 HTTP 链接继续由独立 audit 处理，避免第三方临时故障混入 canonical publication gate。
 
 ## 编辑原则
 
