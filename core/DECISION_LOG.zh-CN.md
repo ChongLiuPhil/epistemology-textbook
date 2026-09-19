@@ -100,7 +100,7 @@
 - PDF / DOCX / EPUB 通过独立手动 workflow 按需生成 artifact，不自动等于正式 Release Approval；
 - 排版与网页阅读逻辑可以参考 `What-Remains-Human...`，但不复制其私有 Cloudflare 发布方式，也不移植与本项目书目结构不兼容的 citation interaction。
 
-**实现状态：** implementing in current branch.
+**实现状态：** implemented. 内容定位、问题驱动原则与多格式同源构建已经进入 current main。D005 当时关于 GitHub Pages / 不移植 citation interaction 的实现选择，后续分别被 PPF profile architecture、D008–D010 canonical cutover 与本次 publication-profile reconciliation 所取代；当前 Web provider / canonical identity 以 `publishing.yaml` 和 `docs/publication-profile.zh-CN.md` 为准。
 
 
 ---
