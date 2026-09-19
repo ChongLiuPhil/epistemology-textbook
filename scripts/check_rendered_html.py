@@ -17,7 +17,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 BOOK = (ROOT / "_book").resolve()
-SITE_URL = "https://chongliuphil.github.io/epistemology-textbook/"
+SITE_URL = "https://epistemology-textbook.philosophy-research.workers.dev/"
 SITE_PARTS = urlsplit(SITE_URL)
 SITE_PATH = SITE_PARTS.path.rstrip("/")
 SITE_PREFIX = SITE_PATH + "/"
@@ -137,6 +137,14 @@ def main() -> None:
         for marker in markers:
             if marker not in body:
                 fail(f"{relative} is missing required rendered marker: {marker}")
+
+    legacy_url = "https://chongliuphil.github.io/epistemology-textbook/"
+    for html_path in BOOK.rglob("*.html"):
+        body = html_path.read_text(encoding="utf-8")
+        if legacy_url in body:
+            fail(
+                f"{html_path.relative_to(BOOK)} still contains retired GitHub Pages canonical URL"
+            )
 
     unexpected_extensions = {".epub", ".pdf", ".docx", ".tex"}
     unexpected = [
