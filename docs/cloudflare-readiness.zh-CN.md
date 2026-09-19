@@ -2,7 +2,7 @@
 
 **日期：** 2026-09-19  
 **项目：** `ChongLiuPhil/epistemology-textbook`  
-**状态：** `ACCOUNT-CONNECTED / MAIN+PREVIEW+RUNTIME-VERIFIED / CUTOVER-BLOCKED`
+**状态：** `ACCOUNT-CONNECTED / MAIN+PREVIEW+RUNTIME-VERIFIED / PROFILE-A-SELECTED / CUTOVER-BLOCKED`
 
 > 本文件是 `docs/cloudflare-readiness.yaml` 的人类可读解释。机器可读 readiness state 是本仓库对当前已验证 Cloudflare 状态的 durable record；本文不得与其形成第二套冲突真值。
 
@@ -102,7 +102,7 @@ Account-side staging readiness：**VERIFIED**。
 
 当前状态：
 
-`operational-verified`
+`selected-production-profile / operationally-verified`
 
 特点：
 
@@ -207,10 +207,9 @@ Workers Builds
 
 **Cloudflare canonical production cutover: NOT DONE / BLOCKED.**
 
-当前 blocker 不再是 account connection 或 runtime verification，而是：
+当前 blocker 不再是 account connection、runtime verification 或 security-profile decision，而是：
 
-1. 人类 production security-profile 决定；
-2. target canonical URL / Custom Domain；
-3. GitHub Pages legacy policy。
+1. target canonical URL / Custom Domain；
+2. GitHub Pages legacy policy。
 
-在这些决定完成前，不修改 DNS、不绑定正式 Custom Domain、不停用 GitHub Pages，也不把 workers.dev staging 描述成 canonical production。
+Profile A 已选定，但这**不等于** production cutover approval。在 target canonical URL / Custom Domain 与 GitHub Pages legacy policy 明确并验证前，不修改 DNS、不绑定正式 Custom Domain、不停用 GitHub Pages，也不把 workers.dev staging 描述成 canonical production。
