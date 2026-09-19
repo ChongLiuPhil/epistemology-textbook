@@ -139,7 +139,7 @@ def check_publication_contract() -> None:
         "build_contract: cloudflare-builds.yaml",
         'canonical_publish_gate: "make web-publish-check"',
         "output_directory: _book",
-        "migration_status: canonical-active-verification-pending",
+        "migration_status: canonical-active-verified",
         "integration_state: PRODUCTION_ACTIVE",
         "cutover_state: ACTIVE",
         "legacy_url_policy: retire",
@@ -164,9 +164,16 @@ def check_publication_contract() -> None:
         "custom_domain: not-applicable-workers-dev-canonical",
         "selected_production_profile: workers-builds-native",
         "human_risk_acceptance: accepted-broad-managed-user-token-scope",
-        "status: active-verification-pending",
-        "legacy_url_policy: retire",
-        "github_pages_retirement: selected-retire-pending-unpublish",
+        "status: complete",
+        "post_cutover_verification:",
+        'git_commit: "63510364ed40a97faf190c484dd80afc91971ecb"',
+        "github_actions_runtime_run: 35453967021",
+        "github_actions_runtime_check_id: 105925881599",
+        "cloudflare_provider_check_id: 105926103705",
+        'cloudflare_build_id: "42aa93fe-d9b6-49e4-80be-a849951a6b9d"',
+        "legacy_retirement:",
+        "policy: retire",
+        "status: pending-unpublish",
     ):
         require(READINESS, marker)
 
@@ -254,7 +261,7 @@ def check_publication_contract() -> None:
         'workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"',
         "cloudflare_main_build: passed",
         "preview_deployment: passed",
-        "production_cutover: active-verification-pending",
+        "production_cutover: verified-active",
         "production_security_profile: workers-builds-native",
         'current_production_url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
         "target_production_url: null",
@@ -352,11 +359,12 @@ def check_no_premature_github_actions_deploy() -> None:
 def check_human_readable_state_reconciliation() -> None:
     machine = READINESS.read_text(encoding="utf-8")
 
-    if "status: connected-production-cutover" in machine:
+    if "status: connected-production-active" in machine:
         human = READINESS_DOC.read_text(encoding="utf-8")
         required_human_markers = (
-            "CLOUDFLARE-CANONICAL-ACTIVE / POST-CUTOVER-VERIFICATION-PENDING / PAGES-RETIREMENT-PENDING",
-            "Current canonical identity configured in source: workers.dev.",
+            "CLOUDFLARE-CANONICAL-ACTIVE-VERIFIED / PAGES-RETIREMENT-PENDING",
+            "Current canonical identity: workers.dev.",
+            "Cloudflare production delivery: ACTIVE / VERIFIED.",
             "GitHub Pages legacy policy: RETIRE / CURRENT DEPLOYMENT UNPUBLISH PENDING.",
             "candidate / validate-only PASS",
             "不是 production-tested",
@@ -365,7 +373,7 @@ def check_human_readable_state_reconciliation() -> None:
             if marker not in human:
                 fail(
                     "human-readable Cloudflare readiness drifted from "
-                    f"connected-production-cutover machine state: missing {marker!r}"
+                    f"connected-production-active machine state: missing {marker!r}"
                 )
         for stale in (
             "ACCOUNT-SIDE-UNVERIFIED",
@@ -456,6 +464,9 @@ def check_human_readable_state_reconciliation() -> None:
         "Web access: `none`",
         "current canonical identity: workers.dev",
         "legacy GitHub Pages policy: `retire`",
+        "Verified cutover revision：`63510364ed40a97faf190c484dd80afc91971ecb`",
+        "Verified cutover runtime run：`35453967021`",
+        "Verified cutover Cloudflare provider check：`105926103705`",
     ):
         if marker not in current_focus:
             fail(f"Current Focus is missing selected Profile A state: {marker}")
@@ -481,6 +492,7 @@ def check_human_readable_state_reconciliation() -> None:
         "WM-T028",
         "GitHub Pages legacy policy — `RETIRE`",
         "Custom Domain — N/A for workers.dev canonical",
+        "- [x] post-cutover production verification",
     ):
         if marker not in task_plan:
             fail(f"Task Plan is missing Profile A completion marker: {marker}")
@@ -493,17 +505,27 @@ def check_human_readable_state_reconciliation() -> None:
     if "redirect-or-canonical-policy" in readiness_body:
         fail("legacy/canonical policy blocker must be removed after RETIRE selection")
     for marker in (
+        "post_cutover_verification:",
+        "status: passed",
+        'git_commit: "63510364ed40a97faf190c484dd80afc91971ecb"',
+        "github_actions_runtime_run: 35453967021",
+        "github_actions_runtime_check_id: 105925881599",
+        "cloudflare_provider_check_id: 105926103705",
+        'cloudflare_build_id: "42aa93fe-d9b6-49e4-80be-a849951a6b9d"',
         'canonical_target: "https://epistemology-textbook.philosophy-research.workers.dev/"',
         'canonical_identity_current: "https://epistemology-textbook.philosophy-research.workers.dev/"',
         "canonical_target_selected: true",
         "custom_domain_required: false",
-        "legacy_url_policy: retire",
-        "github_pages_retirement: selected-retire-pending-unpublish",
-        "- post-cutover-runtime-verification",
+        "cutover:\n  status: complete",
+        "legacy_retirement:",
+        "policy: retire",
+        "status: pending-unpublish",
         "- github-pages-unpublish",
     ):
         if marker not in readiness_body:
-            fail(f"readiness state is missing cutover marker: {marker}")
+            fail(f"readiness state is missing verified cutover marker: {marker}")
+    if "- post-cutover-runtime-verification" in readiness_body:
+        fail("post-cutover runtime blocker must be removed after verified canonical activation")
 
     quarto_web = QUARTO_WEB.read_text(encoding="utf-8")
     if 'site-url: "https://epistemology-textbook.philosophy-research.workers.dev/"' not in quarto_web:
@@ -549,7 +571,7 @@ def main() -> None:
         "gate, pinned toolchain, Wrangler static-assets config, Git integration commands, "
         "and verified Workers Builds connection state are mutually consistent; "
         "the hardened external-CI candidate is constrained to validate/manual modes; "
-        "workers.dev is the configured canonical production target; GitHub Pages "
+        "workers.dev is the verified canonical production target; GitHub Pages "
         "deployment is retired from normal CI and awaits provider-side unpublish."
     )
 
