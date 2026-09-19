@@ -65,7 +65,7 @@ deployment:
     canonical_identity:
       type: provider-native
       url: "https://epistemology-textbook.philosophy-research.workers.dev/"
-    migration_status: canonical-active-verification-pending
+    migration_status: canonical-active-verified
     integration_state: PRODUCTION_ACTIVE
     cutover_state: ACTIVE
     legacy_url_policy: retire
@@ -83,7 +83,7 @@ deployment:
       custom_domain: not-applicable
       cloudflare_main_build: passed
       preview_deployment: passed
-      production_cutover: active-verification-pending
+      production_cutover: verified-active
       github_pages_retirement: selected-retire-pending-unpublish
 
 release:
