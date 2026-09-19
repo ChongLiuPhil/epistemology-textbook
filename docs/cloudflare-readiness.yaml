@@ -35,8 +35,25 @@ permission_model:
     mechanism: cloudflare-workers-pages-github-app
     repository_scope: selected-repositories-only
   workers_builds:
-    default_build_token: allowed-with-security-review
-    restricted_user_token: preferred-for-hardened-setup
+    default_build_token:
+      status: operationally-verified-broad-scope
+      token_type: cloudflare-managed-user-token
+      documented_permissions:
+        account:
+          - account-settings-read
+          - workers-scripts-edit
+          - workers-kv-storage-edit
+          - workers-r2-storage-edit
+        zone:
+          - workers-routes-edit-all-zones
+        user:
+          - user-details-read
+          - memberships-read
+    hardened_target:
+      desired_scope: individual-worker-epistemology-textbook
+      desired_role: editor
+      status: compatibility-validation-pending
+      constraint: workers-builds-currently-user-token-oriented
   external_ci_fallback:
     target_scope: individual-worker
     role: editor
@@ -58,7 +75,7 @@ account_side:
   worker_target: verified
   production_trigger: verified-main-build-passed
   preview_trigger: verified-preview-build-passed
-  build_token: cloudflare-managed-present-security-review-pending
+  build_token: cloudflare-managed-default-reviewed-broad-scope
   cloudflare_zone: unverified
   workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
   target_canonical_url: unresolved
@@ -86,6 +103,11 @@ validation:
   workers_dev_http: passed-via-github-actions
   production_deployment: passed-as-cloudflare-workers-staging
   production_http_verification: passed-on-workers-dev-staging
+  latest_main_cloudflare_build:
+    git_commit: "f79e202c46eccf6868debf585e2d8ba2dfb9eb51"
+    github_check_id: 105867581534
+    cloudflare_build_id: "6eb6fb9a-34c0-4605-8670-98aea31fe2a5"
+    status: passed
   runtime_http_verification:
     workflow_run: 35431565729
     main_endpoint:
@@ -100,6 +122,6 @@ validation:
 cutover:
   status: blocked
   blockers:
-    - build-token-security-review
+    - build-token-hardening-validation
     - target-canonical-url
     - redirect-or-canonical-policy
