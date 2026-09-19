@@ -6,7 +6,7 @@
 
 - `WM-T029` — reconcile PR #18 content/form improvements with current PPF/Workers baseline — `COMPLETED / MAIN-MERGED`
 - `WM-T030` — Chapter 1 academic / pedagogical / citation review — `COMPLETED / ROUND2-MAIN-VERIFIED`
-- `WM-T031` — Chapter 2 academic / pedagogical / citation review — `READY / NEXT`
+- `WM-T031` — Chapter 2 academic / pedagogical / citation review — `ROUND1 / VALIDATION-PENDING`
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
@@ -67,10 +67,11 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. Merge the Chapter 1 audit closure Working Memory PR.
-2. Start WM-T031 on Chapter 2: skepticism argument structure, epistemic luck, modal conditions, citation support, pedagogy, and chapter load.
-3. Escalate only genuine cross-chapter Architecture changes for explicit human approval.
-4. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
+1. Validate Chapter 2 Round 1 on current main architecture.
+2. Merge Round 1 only if Governance + Web + Cloudflare contract/runtime + link audit pass.
+3. Run Chapter 2 Round 2 for structural repetition, chapter load, and remaining citation/attribution gaps.
+4. Escalate only genuine cross-chapter Architecture changes for explicit human approval.
+5. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
