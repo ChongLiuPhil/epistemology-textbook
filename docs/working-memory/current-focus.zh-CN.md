@@ -4,11 +4,11 @@
 
 ## CURRENT_STAGE
 
-Content Quality — **Chapter 2 review ROUND 1 / validation pending**.
+Content Quality — **Chapter 2 review ROUND 2 / validation pending**.
 
 ## CURRENT_OBJECTIVE
 
-把项目主工作重心保持在教材质量：第 1 章两轮审校已完成；当前正在做第 2 章学术、教学与引用审校 Round 1。
+把项目主工作重心保持在教材质量：第 1 章两轮审校已完成；第 2 章 Round 1 已 main-verified，当前正在做 Round 2 的结构/重复度与剩余引用精度审校。
 
 PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge `3e36d5dc015d8224ec6e6e98a952c5d77c872eee`）；旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
 
@@ -40,10 +40,10 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 验证 Chapter 2 Round 1 分支：Governance、canonical Web gate、Cloudflare contract/runtime、External Link Audit；
-2. 若通过，合并 Round 1；
-3. 再做一轮 Chapter 2 结构/重复度审计，重点检查怀疑论回应与反运气/风险案例是否存在不必要重复；
-4. 只有发现会改变章节功能或全书路径的结构问题，才重新进入人类 Architecture 确认。
+1. 验证 Chapter 2 Round 2：Governance、canonical Web gate、Cloudflare contract/runtime、External Link Audit；
+2. 若通过，合并 Round 2；
+3. 合并后做 Chapter 2 closure review：确认是否仍有需要 human Architecture approval 的跨章移动；
+4. 若无结构 blocker，把 WM-T031 收敛为 completed，并把下一章审校交给 WM-T032 / Chapter 3。
 
 ## PPF / DELIVERY BASELINE
 
@@ -140,4 +140,41 @@ Chapter 1 audit conclusion：
 - 第 2 章前半先给怀疑论回应概览，后半“怎样与怀疑者交锋”再做深描，存在有意的 overview → seminar 重复；目前先保留教学层次，不直接删并；
 - 第 2 章后半将模态认识论延伸到工程鲁棒性、制度风险、人机系统，这与第 8 章存在潜在交叉；当前把它视为应用案例，不自动移动；
 - 若 Round 2 发现重复导致明显阅读负担，再提出局部压缩或跨章 Architecture proposal。
+
+## CHAPTER 2 ROUND 1 MAIN VERIFICATION
+
+Round 1 merge：`99a27a5e1094b311638022fd7a382b012688bd61`
+
+- Governance `35473757087` → PASS;
+- Quarto HTML `35473757089` → PASS;
+- Cloudflare Build Contract `35473757094` → PASS;
+- Cloudflare Runtime HTTP `35473757090` → PASS;
+- External Link Audit `35473757101` → PASS.
+
+## CHAPTER 2 ROUND 2 FINDINGS
+
+量化结构检查：
+
+- Chapter 2 ≈ 27.4k characters / 72 个三级标题；
+- Chapter 1 ≈ 28.3k / 65，Chapter 3 ≈ 25.6k / 64，Chapter 5 ≈ 26.0k / 74；
+- 因此第 2 章篇幅与标题密度落在当前全书正常区间，没有证据支持跨章搬移大段内容；
+- 同章 3-gram 段落相似度检查没有发现高重复段落；最高约 0.14，支持“overview → seminar → application”主要是有意教学层次，而非直接复制。
+
+本轮已直接修复：
+
+- fallibilism 补 Cohen，lottery knowledge 补 Hawthorne；
+- 详细 contextualism 与 subject-sensitive invariantism 补 DeRose / Lewis / Fantl-McGrath / Hawthorne；
+- Moore 深描段补原始文献；
+- relevant alternatives / exclusion 补 Dretske / Vogel / Lewis；
+- easy knowledge / warrant transmission 补 Wright；
+- 最近世界/相关世界选择补 Nozick / Pritchard；
+- modal reading 与 safety/closure 补 Nozick / Sosa / Comesaña；
+- 彩票个案补 Hawthorne；
+- “模态条件可以转译为系统测试”改为“设计启发式”，避免把哲学模态条件与工程指标写成严格等价。
+
+结构结论：
+
+- 不建议在 Round 2 删除 overview / seminar / application 三层；
+- 与 Chapter 8 的工程/人机案例交叉仍作为应用层保留，不自动升级为跨章 Architecture move；
+- 若后续真实教学/阅读反馈显示负载问题，再重新打开结构 watch。
 
