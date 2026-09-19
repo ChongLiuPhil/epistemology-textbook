@@ -36,7 +36,7 @@ Cloudflare account-side prerequisites 未验证：
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 合并 repository-side readiness PR；
+1. repository-side readiness PR #22 已合并并在 `main` 验证通过；
 2. 保持 GitHub Pages production 不变；
 3. 账户侧建立 Cloudflare deployment context 后，先做 staging/preview deployment；
 4. staging PASS 后再讨论 Custom Domain 与生产 cutover。
@@ -50,5 +50,9 @@ Cloudflare account-side prerequisites 未验证：
 - Wrangler：`wrangler.jsonc`
 - Current production：GitHub Pages
 - Target provider：Cloudflare Workers Static Assets
+- Readiness merge commit：`f0af87ea5c060a69141eeb82c5992de8126af55d`
+- Main Governance run：`35422807542`
+- Main Web/Pages run：`35422807549`
+- Main External Link Audit：`35422807546`
 
 本阶段不得添加 active Cloudflare deployment workflow，除非 account-side prerequisites 已被实际验证并持久化。
