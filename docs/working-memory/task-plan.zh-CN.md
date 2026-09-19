@@ -11,7 +11,7 @@
 
 ## COMPLETED PPF TASKS
 
-- `WM-T027` — adopt PPF visibility/access/canonical-identity semantics — `IMPLEMENTED / VALIDATION-PENDING`
+- `WM-T027` — adopt PPF visibility/access/canonical-identity semantics — `COMPLETED / PR-VALIDATED`
 - `WM-T021` — Cloudflare account-side staging context — `COMPLETED / STAGING-PASS`
 - `WM-T022` — Cloudflare staging runbook + least-privilege deployment model — `COMPLETED`
 - `WM-T020` — PPF Phase 2 Cloudflare repository readiness — `COMPLETED / PASS`
@@ -58,7 +58,7 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. 完成本轮 PPF `21a53607...` downstream adoption 的 CI validation；通过后把 WM-T027 标记为 validated。
+1. PPF `21a53607...` downstream adoption 已完成 PR validation；保持 adopted commit 固定，后续 upstream 变化继续要求显式 adoption。
 2. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
 2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
 3. Profile A 已由人类选择；保留 Workers Builds native / managed user token，并记录 broad-scope risk acceptance。
@@ -108,6 +108,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## RECENTLY RESOLVED / PROMOTED
 
+- PPF `21a5360727167bad6f399477ded073431645fa1d` visibility/access/canonical-identity downstream adoption → Governance `35451267209`, Web `35451267208`, Cloudflare Contract `35451267235`, Hardened candidate `35451267205` → `PASS`.
 - Hardened External CI candidate `35435831128` → validate-only `PASS`; credential/preview/production deploy steps → `SKIPPED`.
 - Cloudflare Workers Builds repository contract validation → Governance `35427051865`, Web `35427051858`, Contract CI `35427051853` → `PASS`.
 - PPF Phase 1 source/profile/runtime validation → `COMPLETED / VERIFIED`.
