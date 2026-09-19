@@ -1,6 +1,6 @@
 # PPF Adoption — epistemology-textbook
 
-**Status:** PPF adopted / workers.dev canonical cutover VERIFIED / Pages retirement PENDING  
+**Status:** PPF adopted / workers.dev canonical cutover VERIFIED / Pages retirement HUMAN-CONFIRMED  
 **Framework:** Personal Publishing Framework v0.1.0-draft  
 **Adopted framework commit:** `21a5360727167bad6f399477ded073431645fa1d`  
 **Previous adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe` — superseded by explicit human adoption on 2026-09-19
@@ -60,7 +60,7 @@ current canonical identity = workers.dev
 provider endpoint = workers.dev
 legacy GitHub Pages policy = retire
 post-cutover verification = passed
-legacy unpublish = pending
+legacy unpublish = human-confirmed complete
 ~~~
 
 This adoption records current reality; it does not prevent a future project from using a private source repository, restricted/private Web publication, or an authenticated access policy.
@@ -99,9 +99,10 @@ Post-cutover evidence is now verified:
 - Cloudflare build `42aa93fe-d9b6-49e4-80be-a849951a6b9d`: PASS;
 - workers.dev canonical marker + 5 representative pages + 30 local assets: PASS.
 
-Remaining cleanup:
+Legacy cleanup:
 
-1. actual GitHub Pages deployment unpublish.
+- GitHub Pages `Unpublish site`: human-confirmed complete on 2026-09-20;
+- independent hosted-URL probe: unavailable in the current tool session, so not represented as independently HTTP-verified.
 
 The second item is provider-side cleanup and is not silently treated as complete merely because the repository stopped deploying Pages.
 
