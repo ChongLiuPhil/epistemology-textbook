@@ -74,30 +74,49 @@ def resolve_local(current: Path, raw_url: str) -> tuple[Path, str] | None:
     if parsed.scheme in {"http", "https"}:
         if (parsed.scheme, parsed.netloc) != (SITE_PARTS.scheme, SITE_PARTS.netloc):
             return None
+
         path = unquote(parsed.path)
-        if path == SITE_PATH:
-            relative = ""
-        elif path.startswith(SITE_PREFIX):
-            relative = path[len(SITE_PREFIX) :]
+        if SITE_PATH:
+            if path == SITE_PATH:
+                relative = ""
+            elif path.startswith(SITE_PREFIX):
+                relative = path[len(SITE_PREFIX) :]
+            else:
+                return None
         else:
-            return None
+            # The canonical workers.dev site is hosted at the domain root, so
+            # every same-origin absolute path belongs to this rendered book.
+            relative = path.lstrip("/")
+
         target = (BOOK / relative).resolve()
     elif parsed.scheme or parsed.netloc:
         return None
     else:
         path = unquote(parsed.path)
-        if path == SITE_PATH:
-            target = BOOK
-        elif path.startswith(SITE_PREFIX):
-            target = (BOOK / path[len(SITE_PREFIX) :]).resolve()
-        elif path.startswith("/"):
-            # A root-relative URL outside this GitHub Pages project is not a
-            # file owned by the book and cannot be checked locally.
-            return None
-        elif path:
-            target = (current.parent / path).resolve()
-        else:
+
+        # Fragment-only references such as "#section" always refer to the
+        # current page. This check must happen before canonical-root mapping:
+        # for a root-hosted site SITE_PATH is "", which otherwise makes an
+        # empty path look like the site root/index page.
+        if not path:
             target = current.resolve()
+        elif SITE_PATH:
+            if path == SITE_PATH:
+                target = BOOK
+            elif path.startswith(SITE_PREFIX):
+                target = (BOOK / path[len(SITE_PREFIX) :]).resolve()
+            elif path.startswith("/"):
+                # A root-relative URL outside a subpath-hosted site is not a
+                # file owned by this book.
+                return None
+            else:
+                target = (current.parent / path).resolve()
+        elif path.startswith("/"):
+            # At a domain-root canonical site, root-relative URLs are book
+            # paths and can be validated against the rendered artifact.
+            target = (BOOK / path.lstrip("/")).resolve()
+        else:
+            target = (current.parent / path).resolve()
 
     if target.is_dir():
         target = (target / "index.html").resolve()
