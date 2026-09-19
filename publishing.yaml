@@ -84,7 +84,7 @@ deployment:
       cloudflare_main_build: passed
       preview_deployment: passed
       production_cutover: verified-active
-      github_pages_retirement: selected-retire-pending-unpublish
+      github_pages_retirement: complete-human-confirmed
 
 release:
   require_explicit_release: true
