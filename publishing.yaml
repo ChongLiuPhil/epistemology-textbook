@@ -52,6 +52,14 @@ deployment:
     current_production_url: "https://chongliuphil.github.io/epistemology-textbook/"
     target_production_url: null
     migration_status: staged
+    readiness:
+      repository: validated
+      account_access: unverified
+      worker_target: unverified
+      deployment_credentials: unverified
+      canonical_url: unresolved
+      preview_deployment: not-run
+      production_cutover: blocked
 
 release:
   require_explicit_release: true
