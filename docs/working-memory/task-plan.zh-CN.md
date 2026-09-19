@@ -6,7 +6,8 @@
 
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
-- `WM-T025` — Cloudflare production security profile — `WAITING-HUMAN`
+- `WM-T025` — Cloudflare production security profile — `WAITING-HUMAN-AFTER-CANDIDATE-VALIDATION`
+- `WM-T026` — Hardened External CI candidate — `IN-PROGRESS / VALIDATE-ONLY-CI`
 
 ## COMPLETED PPF TASKS
 
@@ -40,6 +41,7 @@ Account connection:
 - [x] default build token present and operationally verified
 - [x] default token permission scope reviewed
 - [x] Workers Builds account-owned/per-Worker token incompatibility documented
+- [ ] hardened external-CI validate-only candidate PASS
 - [ ] production security profile selected
 - [x] non-production preview build PASS
 - [x] main workers.dev HTTP/content verification PASS
@@ -56,12 +58,13 @@ Production cutover:
 ## NEXT ACTIONS
 
 1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
-2. 人类选择 production security profile：
+2. 先验证 Profile B candidate：PR 只运行 validate-only，不需要 Cloudflare secret，不部署。
+3. candidate PASS 后，人类选择 production security profile：
    - A：Workers Builds native / managed user token；
    - B：GitHub Actions external CI / per-Worker account-owned Editor token。
-3. 如果选 A：记录 risk acceptance，进入 Custom Domain / canonical URL / Pages legacy policy。
-4. 如果选 B：先完成 external-CI migration + main/preview/runtime revalidation，再进入 cutover。
-5. Future：Cloudflare Workers Builds 支持 account-owned token 后，重新评估 Profile C。
+4. 如果选 A：记录 risk acceptance，进入 Custom Domain / canonical URL / Pages legacy policy。
+5. 如果选 B：只需创建 per-Worker account-owned Editor token + GitHub secret/variable，然后运行 manual preview/production revalidation。
+6. Future：Cloudflare Workers Builds 支持 account-owned token 后，重新评估 Profile C。
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
