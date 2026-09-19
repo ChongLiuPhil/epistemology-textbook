@@ -116,7 +116,8 @@ Fallback is not enabled while Workers Builds remains viable.
 - Main Workers Build `d6bc8b62-78ba-4a9e-98ea-7a049a539858` → `PASS`.
 - Preview Workers Build `a12446a5-e341-48e4-8c22-1a184b1102c8`, Version `3f8a15d6-9994-4e90-839c-2144c8dc54b7` → `PASS`.
 - Runtime HTTP verification `35431565729` → main + preview, each 5 pages + 30 local assets → `PASS`.
-- Post-merge main Cloudflare Build `6eb6fb9a-34c0-4605-8670-98aea31fe2a5`, check `105867581534` → `PASS`.
+- Verified post-merge main Cloudflare checkpoint: project revision `71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15`, Cloudflare Build `93823dff-1206-4282-b037-24876840f0c6`, check `105904495866` → `PASS`.
+- Checkpoint semantics intentionally replace a moving `latest_main_build` claim: later main pushes may create newer provider builds without invalidating this verified evidence checkpoint.
 - Cloudflare-managed build token scope audit → `REVIEWED / OPERATIONAL / BROAD-SCOPE`.
 - Workers Builds hardening compatibility research → `COMPLETE / PRODUCT-CONSTRAINT`: account-owned/per-Worker token cannot currently be used by Workers Builds.
 
