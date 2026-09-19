@@ -96,7 +96,7 @@ Passed:
 - LaTeX profile;
 - PDF profile with Noto CJK fonts and TinyTeX.
 
-The temporary PR-only matrix workflow used to validate all four on-demand formats is not part of the final architecture and is removed before merge.
+The temporary PR-only matrix workflow used to validate all four on-demand formats was removed after validation. It is not part of the final architecture.
 
 Detailed evidence is recorded in `docs/ppf-pilot-audit.zh-CN.md`.
 
