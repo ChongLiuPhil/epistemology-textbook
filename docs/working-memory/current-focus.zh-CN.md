@@ -4,7 +4,7 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **workers.dev canonical cutover active / post-cutover verification pending / GitHub Pages RETIRE pending unpublish**.
+Personal Publishing Framework — **workers.dev canonical production VERIFIED / GitHub Pages RETIRE pending unpublish**.
 
 ## CURRENT_OBJECTIVE
 
@@ -94,7 +94,7 @@ Cloudflare account-side staging 技术验证已经闭环：
 5. build-token hardening compatibility research 已完成：Workers Builds 当前 user-token-only；
 6. Profile B candidate 无凭据 validate-only CI 已通过（run `35435831128`）；
 7. production security profile：Profile A 已由人类明确选择并记录；
-8. workers.dev 已写入 canonical source/config；GitHub Pages legacy policy 已选择 `retire`；当前只剩 main post-cutover verification 与 Pages deployment actual unpublish。
+8. workers.dev post-cutover provider build/runtime verification 已通过；当前只剩 GitHub Pages current deployment actual unpublish。
 
 ## HANDOFF POINTERS
 
@@ -117,6 +117,11 @@ Cloudflare account-side staging 技术验证已经闭环：
 - Current canonical production config：Cloudflare workers.dev
 - Current delivery：Cloudflare Workers Static Assets via Workers Builds
 - Legacy delivery：GitHub Pages / RETIRE pending unpublish
+- Verified cutover revision：`63510364ed40a97faf190c484dd80afc91971ecb`
+- Verified cutover runtime run：`35453967021`
+- Verified cutover runtime check：`105925881599`
+- Verified cutover Cloudflare provider check：`105926103705`
+- Verified cutover Cloudflare Build ID：`42aa93fe-d9b6-49e4-80be-a849951a6b9d`
 - workers.dev staging：`https://epistemology-textbook.philosophy-research.workers.dev`
 - main Cloudflare Build ID：`d6bc8b62-78ba-4a9e-98ea-7a049a539858`
 - preview probe Build ID：`a12446a5-e341-48e4-8c22-1a184b1102c8`
@@ -124,4 +129,4 @@ Cloudflare account-side staging 技术验证已经闭环：
 - preview URL：`https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev`
 - preview Alias：`https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev`
 
-Profile A、workers.dev canonical URL 与 GitHub Pages `retire` policy 都已由人类确认。Repository cutover 已实施：后续 main 不再部署 Pages。当前只等待 post-cutover Cloudflare/runtime verification，以及 GitHub Pages 当前 deployment 的一次实际 unpublish；token 继续不得写入仓库。
+Profile A、workers.dev canonical URL 与 GitHub Pages `retire` policy 都已由人类确认。Repository cutover 已实施：后续 main 不再部署 Pages。post-cutover Cloudflare/runtime verification 已完成；当前只等待 GitHub Pages 当前 deployment 的一次实际 unpublish，并随后验证旧 URL 已不可用；token 继续不得写入仓库。
