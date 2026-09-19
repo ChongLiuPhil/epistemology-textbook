@@ -49,11 +49,23 @@ permission_model:
         user:
           - user-details-read
           - memberships-read
-    hardened_target:
-      desired_scope: individual-worker-epistemology-textbook
-      desired_role: editor
-      status: compatibility-validation-pending
-      constraint: workers-builds-currently-user-token-oriented
+    security_profiles:
+      workers_builds_native:
+        status: operational-verified
+        token_type: cloudflare-managed-user-token
+        least_privilege: false
+      hardened_external_ci:
+        status: available-not-adopted
+        token_type: account-owned-api-token
+        desired_scope: individual-worker-epistemology-textbook
+        desired_role: editor
+        least_privilege: true
+      future_native_granular:
+        status: unsupported-currently
+        desired_token_type: account-owned-api-token
+        desired_scope: individual-worker-epistemology-textbook
+        desired_role: editor
+        blocker: workers-builds-currently-supports-user-tokens-only
   external_ci_fallback:
     target_scope: individual-worker
     role: editor
@@ -122,6 +134,6 @@ validation:
 cutover:
   status: blocked
   blockers:
-    - build-token-hardening-validation
+    - human-security-profile-decision
     - target-canonical-url
     - redirect-or-canonical-policy

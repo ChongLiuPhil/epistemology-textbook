@@ -5,7 +5,8 @@
 ## ACTIVE TASKS
 
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
-- `WM-T024` — Cloudflare build-token hardening — `IN-PROGRESS / COMPATIBILITY-VALIDATION`
+- `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
+- `WM-T025` — Cloudflare production security profile — `WAITING-HUMAN`
 
 ## COMPLETED PPF TASKS
 
@@ -38,7 +39,8 @@ Account connection:
 - [x] preview trigger configured and preview build PASS
 - [x] default build token present and operationally verified
 - [x] default token permission scope reviewed
-- [ ] hardened least-privilege replacement compatibility validated
+- [x] Workers Builds account-owned/per-Worker token incompatibility documented
+- [ ] production security profile selected
 - [x] non-production preview build PASS
 - [x] main workers.dev HTTP/content verification PASS
 - [x] preview workers.dev HTTP/content verification PASS
@@ -53,11 +55,13 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定链路上盲目替换。
-2. 验证 Workers Builds 当前是否能使用满足 existing Worker deploy 的更小权限 custom token。
-3. 如果兼容，重新运行 main / preview / runtime verification 后迁移。
-4. 如果当前产品不兼容，则把 broad default token 作为显式 temporary risk，等待 Cloudflare Builds 对更细粒度 token 的稳定支持。
-5. hardening 结论明确后，再进入 Custom Domain / canonical URL / Pages legacy policy。
+1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
+2. 人类选择 production security profile：
+   - A：Workers Builds native / managed user token；
+   - B：GitHub Actions external CI / per-Worker account-owned Editor token。
+3. 如果选 A：记录 risk acceptance，进入 Custom Domain / canonical URL / Pages legacy policy。
+4. 如果选 B：先完成 external-CI migration + main/preview/runtime revalidation，再进入 cutover。
+5. Future：Cloudflare Workers Builds 支持 account-owned token 后，重新评估 Profile C。
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
@@ -80,8 +84,8 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-- Cloudflare-managed default token is broader than required;
-- Workers Builds compatibility with the preferred per-Worker least-privilege token model still needs validation.
+- Production security profile requires human choice before final cutover.
+- Workers Builds currently supports user tokens only; the desired per-Worker account-owned token is therefore not available on the preferred native path.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -109,7 +113,8 @@ Fallback is not enabled while Workers Builds remains viable.
 - Preview Workers Build `a12446a5-e341-48e4-8c22-1a184b1102c8`, Version `3f8a15d6-9994-4e90-839c-2144c8dc54b7` → `PASS`.
 - Runtime HTTP verification `35431565729` → main + preview, each 5 pages + 30 local assets → `PASS`.
 - Post-merge main Cloudflare Build `6eb6fb9a-34c0-4605-8670-98aea31fe2a5`, check `105867581534` → `PASS`.
-- Cloudflare-managed build token scope audit → `REVIEWED / OPERATIONAL / NOT-YET-HARDENED`.
+- Cloudflare-managed build token scope audit → `REVIEWED / OPERATIONAL / BROAD-SCOPE`.
+- Workers Builds hardening compatibility research → `COMPLETE / PRODUCT-CONSTRAINT`: account-owned/per-Worker token cannot currently be used by Workers Builds.
 
 ## CLARIFICATION COMPLETION RULE
 

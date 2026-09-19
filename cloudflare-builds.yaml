@@ -64,7 +64,20 @@ security:
   github_app_repository_scope: selected-repositories-only
   build_token_policy: cloudflare-managed-default-reviewed-broad-scope
   broad_default_token_requires_review: false
-  hardening:
-    desired_scope: individual-worker-epistemology-textbook
-    desired_role: editor
-    status: compatibility-validation-pending
+  profiles:
+    workers_builds_native:
+      status: operational-verified
+      token_type: cloudflare-managed-user-token
+      least_privilege: false
+    hardened_external_ci:
+      status: available-not-adopted
+      token_type: account-owned-api-token
+      desired_scope: individual-worker-epistemology-textbook
+      desired_role: editor
+      least_privilege: true
+    future_native_granular:
+      status: unsupported-currently
+      desired_token_type: account-owned-api-token
+      desired_scope: individual-worker-epistemology-textbook
+      desired_role: editor
+      blocker: workers-builds-user-token-only

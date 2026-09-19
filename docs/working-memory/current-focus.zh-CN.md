@@ -4,7 +4,7 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **Cloudflare Workers Builds staging complete / build-token hardening**.
+Personal Publishing Framework — **Cloudflare staging complete / production security-profile decision**.
 
 ## CURRENT_OBJECTIVE
 
@@ -58,11 +58,18 @@ Cloudflare account-side staging 技术验证已经闭环：
 - preview runtime：PASS；
 - 合并后的 main push 再次触发 Cloudflare Workers Build：PASS。
 
-当前剩余安全任务：
+当前安全研究已经完成：
 
-- Cloudflare-managed default build token 的权限已经审计，确认比本项目实际需要更宽；
-- 理想长期权限为 existing Worker `Editor`，但 Workers Builds 与最新 per-Worker account-owned token model 的兼容路径仍需验证；
-- Custom Domain / canonical URL / GitHub Pages legacy policy 属于随后 cutover 阶段。
+- Cloudflare-managed default build token 的权限比本项目实际需要更宽；
+- individual Worker `Editor` 是 routine deploy 的理论最小权限；
+- Cloudflare 当前 granular Worker token 能力要求 account-owned token；
+- Workers Builds 当前只支持 user token，account-owned token support 尚未进入当前产品；
+- 因此“Workers Builds + per-Worker account-owned Editor token”当前被产品能力阻塞，不应继续盲测。
+
+现在需要的是生产安全 profile 决策：
+
+- Profile A：保留已验证的 Workers Builds 原生链路，接受当前 managed token scope，等待 Cloudflare 原生 granular support；
+- Profile B：迁移 deployment 到 GitHub Actions + per-Worker account-owned Editor token，获得更强 least privilege，但增加 secret management 与迁移复杂度。
 
 ## IMMEDIATE_NEXT_ACTION
 
@@ -70,8 +77,9 @@ Cloudflare account-side staging 技术验证已经闭环：
 2. non-production preview build 已通过 GitHub Cloudflare check 自动验证；
 3. workers.dev / preview runtime HTTP verification 已通过；
 4. account-side staging 技术验证已闭环；
-5. 完成 build-token hardening compatibility validation；
-6. hardening 明确后，再进入 Custom Domain / canonical URL / Pages legacy policy。
+5. build-token hardening compatibility research 已完成：Workers Builds 当前 user-token-only；
+6. 由人类选择 production security profile A 或 B；
+7. profile 决定后，再进入 Custom Domain / canonical URL / Pages legacy policy。
 
 ## HANDOFF POINTERS
 
