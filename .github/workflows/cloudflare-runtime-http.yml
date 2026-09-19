@@ -1,0 +1,32 @@
+name: Cloudflare Runtime HTTP Verification
+
+on:
+  pull_request:
+    paths:
+      - "scripts/check_public_site.py"
+      - ".github/workflows/cloudflare-runtime-http.yml"
+      - "docs/cloudflare-readiness.yaml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-workers-dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify main and preview Workers endpoints
+        run: |
+          python3 scripts/check_public_site.py \
+            "https://epistemology-textbook.philosophy-research.workers.dev" \
+            "https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev"
