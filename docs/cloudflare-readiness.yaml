@@ -55,7 +55,10 @@ permission_model:
         token_type: cloudflare-managed-user-token
         least_privilege: false
       hardened_external_ci:
-        status: available-not-adopted
+        status: candidate-implemented-ci-validation-pending
+        contract: cloudflare-external-ci.yaml
+        workflow: .github/workflows/cloudflare-external-ci.yml
+        activation: manual-only
         token_type: account-owned-api-token
         desired_scope: individual-worker-epistemology-textbook
         desired_role: editor
