@@ -7,7 +7,7 @@
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `WAITING-HUMAN-AFTER-CANDIDATE-VALIDATION`
-- `WM-T026` — Hardened External CI candidate — `IN-PROGRESS / VALIDATE-ONLY-CI`
+- `WM-T026` — Hardened External CI candidate — `COMPLETED / VALIDATE-ONLY-PASS`
 
 ## COMPLETED PPF TASKS
 
@@ -41,7 +41,7 @@ Account connection:
 - [x] default build token present and operationally verified
 - [x] default token permission scope reviewed
 - [x] Workers Builds account-owned/per-Worker token incompatibility documented
-- [ ] hardened external-CI validate-only candidate PASS
+- [x] hardened external-CI validate-only candidate PASS
 - [ ] production security profile selected
 - [x] non-production preview build PASS
 - [x] main workers.dev HTTP/content verification PASS
@@ -58,8 +58,8 @@ Production cutover:
 ## NEXT ACTIONS
 
 1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
-2. 先验证 Profile B candidate：PR 只运行 validate-only，不需要 Cloudflare secret，不部署。
-3. candidate PASS 后，人类选择 production security profile：
+2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
+3. 合并候选实现后，人类选择 production security profile：
    - A：Workers Builds native / managed user token；
    - B：GitHub Actions external CI / per-Worker account-owned Editor token。
 4. 如果选 A：记录 risk acceptance，进入 Custom Domain / canonical URL / Pages legacy policy。
@@ -106,6 +106,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## RECENTLY RESOLVED / PROMOTED
 
+- Hardened External CI candidate `35435831128` → validate-only `PASS`; credential/preview/production deploy steps → `SKIPPED`.
 - Cloudflare Workers Builds repository contract validation → Governance `35427051865`, Web `35427051858`, Contract CI `35427051853` → `PASS`.
 - PPF Phase 1 source/profile/runtime validation → `COMPLETED / VERIFIED`.
 - Repository-side Cloudflare readiness → `COMPLETED / PASS`.
