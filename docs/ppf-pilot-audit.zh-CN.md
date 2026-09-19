@@ -247,18 +247,23 @@ PR #20 已合并：
 
 ## 12. Post-Phase-1 current-state pointer
 
-截至 2026-09-19 的后续持久状态：
+本文件是历史 Phase 1 audit，不再复制一套容易漂移的完整“当前状态”。
 
-- Cloudflare account / GitHub App / repository connection：VERIFIED；
-- main Workers Build：PASS；
-- non-production preview：PASS；
-- main + preview workers.dev runtime：PASS；
-- Profile A：operationally verified，但 managed token 不是 per-Worker least privilege；
-- Profile B：candidate / validate-only PASS，**不是 production-tested**；
-- Profile C：当前 unavailable；
-- current canonical production：GitHub Pages；
-- Custom Domain / canonical URL migration：NOT DONE；
+当前 durable state 以以下文件为准：
+
+- PPF adoption：`docs/ppf-adoption.md`；
+- Cloudflare machine readiness：`docs/cloudflare-readiness.yaml`；
+- human-readable readiness：`docs/cloudflare-readiness.zh-CN.md`；
+- current operational focus：`docs/working-memory/current-focus.zh-CN.md`。
+
+截至本次 adoption：
+
+- PPF adopted revision：`21a5360727167bad6f399477ded073431645fa1d`；
+- Cloudflare staging/runtime：VERIFIED；
+- Profile A：SELECTED；
+- target canonical URL：workers.dev / SELECTED；
+- current canonical identity：GitHub Pages；
 - GitHub Pages legacy policy：UNRESOLVED；
-- production security profile：WAITING HUMAN DECISION。
+- canonical production cutover：NOT DONE。
 
-因此本 Phase 1 audit 不应被用来推断“Cloudflare account 尚未连接”，也不应把后来 staging/runtime 验证误写成 production cutover。
+因此本 Phase 1 audit 不应被用来推断后续 account/security/canonical state；后续状态必须读取上述 durable records。
