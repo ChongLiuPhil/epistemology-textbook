@@ -2,7 +2,7 @@ project:
   output-dir: _book
 
 book:
-  site-url: "https://chongliuphil.github.io/epistemology-textbook/"
+  site-url: "https://epistemology-textbook.philosophy-research.workers.dev/"
   repo-url: "https://github.com/ChongLiuPhil/epistemology-textbook"
   repo-branch: main
   repo-actions: [issue, source]
@@ -21,13 +21,13 @@ book:
       - icon: github
         href: "https://github.com/ChongLiuPhil/epistemology-textbook"
     footer: |
-      [开放阅读与支持](https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html) · [报告问题](https://github.com/ChongLiuPhil/epistemology-textbook/issues/new/choose)
+      [开放阅读与支持](https://epistemology-textbook.philosophy-research.workers.dev/manuscript/00-open-access-and-support.html) · [报告问题](https://github.com/ChongLiuPhil/epistemology-textbook/issues/new/choose)
   page-footer:
     border: true
     left: "《我们如何知道？》开放 Web Edition · 持续修订"
     right:
       - text: "开放阅读与支持"
-        href: "https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html"
+        href: "https://epistemology-textbook.philosophy-research.workers.dev/manuscript/00-open-access-and-support.html"
       - text: "报告问题"
         href: "https://github.com/ChongLiuPhil/epistemology-textbook/issues/new/choose"
 
