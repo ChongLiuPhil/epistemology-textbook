@@ -118,10 +118,10 @@ validation:
   workers_dev_http: passed-via-github-actions
   production_deployment: passed-as-cloudflare-workers-staging
   production_http_verification: passed-on-workers-dev-staging
-  latest_main_cloudflare_build:
-    git_commit: "f79e202c46eccf6868debf585e2d8ba2dfb9eb51"
-    github_check_id: 105867581534
-    cloudflare_build_id: "6eb6fb9a-34c0-4605-8670-98aea31fe2a5"
+  verified_main_build_checkpoint:
+    git_commit: "71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15"
+    github_check_id: 105904495866
+    cloudflare_build_id: "93823dff-1206-4282-b037-24876840f0c6"
     status: passed
   hardened_external_ci_candidate:
     status: passed-validate-only
