@@ -15,6 +15,12 @@ NODE_VERSION = ROOT / ".nvmrc"
 BUILD_CONTRACT = ROOT / "cloudflare-builds.yaml"
 PUBLISHING = ROOT / "publishing.yaml"
 READINESS = ROOT / "docs" / "cloudflare-readiness.yaml"
+READINESS_DOC = ROOT / "docs" / "cloudflare-readiness.zh-CN.md"
+ADOPTION_DOC = ROOT / "docs" / "ppf-adoption.md"
+PHASE1_AUDIT = ROOT / "docs" / "ppf-pilot-audit.zh-CN.md"
+STAGING_RUNBOOK = ROOT / "docs" / "cloudflare-staging-runbook.zh-CN.md"
+CURRENT_FOCUS = ROOT / "docs" / "working-memory" / "current-focus.zh-CN.md"
+TASK_PLAN = ROOT / "docs" / "working-memory" / "task-plan.zh-CN.md"
 INSTALLER = ROOT / "scripts" / "ensure_quarto.sh"
 BUILD_WRAPPER = ROOT / "scripts" / "cloudflare_build.sh"
 EXTERNAL_CI_CONTRACT = ROOT / "cloudflare-external-ci.yaml"
@@ -297,6 +303,68 @@ def check_no_premature_github_actions_deploy() -> None:
                 )
 
 
+def check_human_readable_state_reconciliation() -> None:
+    machine = READINESS.read_text(encoding="utf-8")
+
+    if "status: connected-runtime-verified" in machine:
+        human = READINESS_DOC.read_text(encoding="utf-8")
+        required_human_markers = (
+            "ACCOUNT-CONNECTED / MAIN+PREVIEW+RUNTIME-VERIFIED / CUTOVER-BLOCKED",
+            "Current canonical production: GitHub Pages.",
+            "candidate / validate-only PASS",
+            "不是 production-tested",
+            "Cloudflare canonical production cutover: NOT DONE / BLOCKED.",
+        )
+        for marker in required_human_markers:
+            if marker not in human:
+                fail(
+                    "human-readable Cloudflare readiness drifted from "
+                    f"connected-runtime-verified machine state: missing {marker!r}"
+                )
+        for stale in (
+            "ACCOUNT-SIDE-UNVERIFIED",
+            "Account-side readiness: UNVERIFIED",
+        ):
+            if stale in human:
+                fail(
+                    "human-readable Cloudflare readiness contains stale account-side state: "
+                    f"{stale}"
+                )
+
+    adoption = ADOPTION_DOC.read_text(encoding="utf-8")
+    for marker in (
+        "Adopted framework commit: `9326920e1920d18f0a71eac26d4068da9d6bdffe`",
+        "NOT ADOPTED",
+        "does **not** silently follow PPF `main`",
+        "candidate / validate-only PASS",
+    ):
+        if marker not in adoption:
+            fail(f"PPF adoption record is missing reconciliation marker: {marker}")
+
+    phase1 = PHASE1_AUDIT.read_text(encoding="utf-8")
+    if "Historical Phase 1 audit." not in phase1:
+        fail("PPF Phase 1 audit must be explicitly marked as historical")
+
+    runbook = STAGING_RUNBOOK.read_text(encoding="utf-8")
+    for marker in (
+        "candidate / validate-only PASS",
+        "不是 production-tested",
+        "Profile C — Future Native Granular",
+    ):
+        if marker not in runbook:
+            fail(f"Cloudflare staging runbook is missing security-profile marker: {marker}")
+
+    current_focus = CURRENT_FOCUS.read_text(encoding="utf-8")
+    if "Profile B 已经推进到当前无新 credential 条件下的可验证极限" not in current_focus:
+        fail("Current Focus does not reflect completed Profile B candidate validation")
+
+    task_plan = TASK_PLAN.read_text(encoding="utf-8")
+    if "until first real Cloudflare staging is verified" in task_plan:
+        fail("Task Plan still claims first Cloudflare staging is unverified")
+    if "Cloudflare staging is verified." not in task_plan:
+        fail("Task Plan must record that Cloudflare staging is verified")
+
+
 def main() -> None:
     check_wrangler()
     check_toolchain()
@@ -304,6 +372,7 @@ def main() -> None:
     check_publication_contract()
     check_hardened_external_ci_candidate()
     check_no_premature_github_actions_deploy()
+    check_human_readable_state_reconciliation()
 
     print(
         "Cloudflare Workers Builds contract check passed: the canonical Web publication "
