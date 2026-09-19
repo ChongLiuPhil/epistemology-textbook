@@ -40,6 +40,12 @@
 
 - PPF adoption / two-phase migration model → D006 → `publishing.yaml` / Release Status / project metadata — `RESOLVED / PROMOTED`.
 
+## CLARIFICATION COMPLETION RULE
+
+`WAITING-HUMAN -> human resolution -> Decision Log -> appropriate Core / Architecture / Form / Release state -> RESOLVED / PROMOTED -> leave active clarification queue`
+
+PPF pilot work does not alter this HARC-lite clarification lifecycle.
+
 ## TODO / BACKLOG
 
 - Cloudflare Phase 2 cutover：Worker target、credentials、canonical URL、preview verification、redirect/canonical policy。
