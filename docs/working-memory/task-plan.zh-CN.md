@@ -4,8 +4,8 @@
 
 ## ACTIVE TASKS
 
-- `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `READY-TO-MERGE / CI-PASS`
-- `WM-T021` — Cloudflare account-side staging context — `WAITING-CONNECTOR-AUTHORIZATION`
+- `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
+- `WM-T021` — Cloudflare account-side staging context — `IN-PROGRESS / PREVIEW-RUNTIME-VERIFYING`
 
 ## COMPLETED PPF TASKS
 
@@ -26,17 +26,17 @@ Repository contract:
 - [x] nontechnical human authorization guide
 - [x] PR normal Web CI PASS
 - [x] PR Cloudflare Build Contract CI PASS
-- [ ] merge + main CI PASS
+- [x] merge + main CI PASS
 
 Account connection:
 - [ ] Cloudflare OAuth/MCP actually callable by current AI
-- [ ] Cloudflare GitHub App authorized for selected repository
-- [ ] repository connection verified
-- [ ] Worker `epistemology-textbook` verified/created
-- [ ] production trigger configured
-- [ ] preview trigger configured
-- [ ] build token reviewed
-- [ ] first workers.dev / preview build PASS
+- [x] Cloudflare GitHub App authorized for selected repository
+- [x] repository connection verified
+- [x] Worker `epistemology-textbook` verified/created
+- [x] production trigger configured and main build PASS
+- [x] preview trigger configured; runtime test in progress
+- [ ] build token present; least-privilege review pending
+- [ ] non-production preview build PASS
 
 Production cutover:
 - [ ] target canonical URL
@@ -76,7 +76,9 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-The current ChatGPT session does not expose a callable Cloudflare account/Builds MCP tool.
+- preview probe build is still running;
+- workers.dev HTTP/content verification is blocked by current ChatGPT network-fetch limitations;
+- Cloudflare-managed build-token least-privilege review remains pending.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
