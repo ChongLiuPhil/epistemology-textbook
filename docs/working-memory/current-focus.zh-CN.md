@@ -41,9 +41,17 @@ Content / Form — **PR #18 reconciliation against verified workers.dev + PPF ba
 ## PPF / DELIVERY BASELINE
 
 - adopted PPF: `v0.1.0-draft @ 21a5360727167bad6f399477ded073431645fa1d`;
-- canonical Web: `https://epistemology-textbook.philosophy-research.workers.dev/`;
-- provider: Cloudflare Workers Builds;
+- production security profile: **Profile A — Workers Builds Native**;
+- `least_privilege: false` remains explicit for the managed build token;
 - Web publication: `authorized / public`;
-- access: `none`;
-- GitHub Pages: `RETIRE`, Unpublish site human-confirmed complete;
+- Web access: `none`;
+- current canonical identity: workers.dev;
+- workers.dev post-cutover provider build/runtime verification 已通过;
+- legacy GitHub Pages policy: `retire`;
+- `Unpublish site` human-confirmed complete on 2026-09-20;
+- Verified cutover revision：`63510364ed40a97faf190c484dd80afc91971ecb`;
+- Verified cutover runtime run：`35453967021`;
+- Verified cutover Cloudflare provider check：`105926103705`;
+- Verified post-merge Cloudflare checkpoint check：`105904495866`;
+- Verified post-merge Cloudflare checkpoint Build ID：`93823dff-1206-4282-b037-24876840f0c6`;
 - deployment/security line is stable maintenance, not the current development objective.
