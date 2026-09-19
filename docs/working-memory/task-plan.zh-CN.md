@@ -4,21 +4,34 @@
 
 ## ACTIVE TASKS
 
-- `WM-T013` — PPF profile/source separation — IN-PROGRESS
-- `WM-T014` — PPF publication contract + staged Cloudflare config — IN-PROGRESS
-- `WM-T015` — update source/CI validators for PPF model — IN-PROGRESS
-- `WM-T016` — PR runtime Web-profile validation — TODO
-- `WM-T017` — on-demand EPUB / PDF / DOCX / LaTeX runtime validation — TODO
+- `WM-T018` — final PR cleanup + normal Governance/Web checks — IN-PROGRESS
+- `WM-T019` — merge Phase 1 and verify main GitHub Pages deployment — TODO
+
+## COMPLETED PPF PILOT TASKS
+
+- `WM-T013` — PPF profile/source separation — COMPLETED
+- `WM-T014` — PPF publication contract + staged Cloudflare config — COMPLETED
+- `WM-T015` — source/CI validators for PPF model — COMPLETED
+- `WM-T016` — PR runtime Web-profile validation — COMPLETED / PASS
+- `WM-T017` — on-demand EPUB / PDF / DOCX / LaTeX runtime validation — COMPLETED / PASS
+
+Runtime evidence：
+- Governance：PASS
+- Web：PASS
+- EPUB：PASS
+- DOCX：PASS
+- LaTeX：PASS
+- PDF：PASS
+- Audit：`docs/ppf-pilot-audit.zh-CN.md`
 
 ## NEXT ACTIONS
 
-1. 同步 README / CONTRIBUTING / project metadata / release status。
-2. 创建 Pull Request，检查 HTML/governance CI。
-3. 修复任何 profile merge、validator 或 rendered HTML defect。
-4. PR Web runtime validation 通过后，手动验证四种 on-demand profiles。
-5. 记录 PPF pilot audit。
-6. Phase 1 验证完成后再决定是否合并。
-7. Cloudflare cutover 独立进入 Phase 2，不与本 PR 混合。
+1. 删除临时 PR-only format validation workflow。
+2. 更新 adoption note 为 Phase 1 runtime validation complete。
+3. 最终 PR head 再跑正常 Governance + Web checks。
+4. checks PASS 后合并 PR #20。
+5. 验证 `main` Pages deployment 与公开网页。
+6. Phase 2 Cloudflare cutover 另开工作流/PR，不与 Phase 1 混合。
 
 ## BLOCKERS
 
@@ -39,6 +52,7 @@
 ## RECENTLY RESOLVED / PROMOTED
 
 - PPF adoption / two-phase migration model → D006 → `publishing.yaml` / Release Status / project metadata — `RESOLVED / PROMOTED`.
+- PPF Phase 1 runtime profile validation → `docs/ppf-pilot-audit.zh-CN.md` — `RESOLVED / VERIFIED`.
 
 ## CLARIFICATION COMPLETION RULE
 
