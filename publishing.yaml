@@ -48,6 +48,9 @@ deployment:
   web:
     current_provider: github-pages
     target_provider: cloudflare-workers
+    integration_mode: workers-builds-git
+    build_contract: cloudflare-builds.yaml
+    canonical_publish_gate: "make web-publish-check"
     output_directory: _book
     current_production_url: "https://chongliuphil.github.io/epistemology-textbook/"
     target_production_url: null
@@ -55,8 +58,11 @@ deployment:
     readiness:
       repository: validated
       account_access: unverified
+      github_app: unverified
+      repository_connection: unverified
       worker_target: unverified
-      deployment_credentials: unverified
+      workers_builds_triggers: unverified
+      build_token: unverified
       canonical_url: unresolved
       preview_deployment: not-run
       production_cutover: blocked
