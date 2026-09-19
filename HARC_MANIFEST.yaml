@@ -35,6 +35,7 @@ harc:
     book_architecture: "docs/book-architecture.zh-CN.md"
     framework_status: "docs/framework-status.zh-CN.md"
     release_status: "docs/release-status.zh-CN.md"
+    publication_profile: "docs/publication-profile.zh-CN.md"
 
   artifacts:
     canonical_home: "index.qmd"
@@ -47,7 +48,7 @@ harc:
   invariants:
     - "Repository state outranks chat or model memory."
     - "AI proposals are not human commitments."
-    - "The human author remains the responsibility bearer for project purpose, core judgment, major architecture authorization, and public release decisions."
+    - "The human author remains the responsibility bearer for project purpose, problem framing, source selection, interpretive/editorial judgment, major architecture authorization, and public release decisions."
     - "Read latest relevant state before high-impact actions and writes."
     - "A revision conflict stops the write until the intervening repository change is fetched and reconciled."
     - "Working Memory stores operational resume state, not manuscript truth."
