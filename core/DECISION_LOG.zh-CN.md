@@ -163,3 +163,26 @@
 
 **实现状态：** human-approved target intent；本轮 repository migration 只写入 target URL 与 N/A Custom Domain 状态，不执行 canonical cutover。
 
+---
+
+## 2026-09-19 — D009 — 显式采用 PPF publication visibility / access / canonical identity 语义
+
+**来源：** 人类作者在 PPF 上游完成 provider-neutral visibility/access/canonical-identity migration 后明确同意继续进行 downstream adoption。  
+**分类：** FORM / PROTOCOL / PUBLICATION INFRASTRUCTURE。  
+**决定：**
+
+- 本项目把 adopted PPF commit 从 `9326920e1920d18f0a71eac26d4068da9d6bdffe` 显式更新为 `21a5360727167bad6f399477ded073431645fa1d`；
+- 继续采用版本标识 **PPF v0.1.0-draft**；本次为向后兼容语义扩展，不改变 `schema: ppf/v0.1`；
+- 当前 source repository visibility 记录为 `public`；
+- 当前 Web publication authorization 记录为 `authorized`；
+- 当前 Web publication visibility 记录为 `public`；
+- 当前 Web access policy 记录为 `mode: none`；
+- 上述状态只描述当前项目事实，不把 private source、restricted/private publication 或 authenticated access 排除在未来项目/未来状态之外；
+- Cloudflare workers.dev 记录为当前 target/provider endpoint；
+- GitHub Pages 继续记录为当前 canonical publication identity，直到 GitHub Pages legacy policy 明确、source/config migration 完成并通过 production verification；
+- 已选择的 workers.dev target canonical intent 保持不变，但 target intent 不等于 current canonical identity，也不等于 cutover complete；
+- 本次 adoption 不修改 DNS、不新增 Custom Domain、不启用 Cloudflare Access、不停用 GitHub Pages、不改变 release authorization；
+- 后续 PPF upstream commit 仍不得被静默视为本项目已采用。
+
+**实现状态：** human-approved downstream adoption；repository migration + CI validation in current change。
+

@@ -14,13 +14,18 @@
 
 ## PPF Pilot 状态
 
-- Framework：Personal Publishing Framework v0.1.0-draft
+- Framework：Personal Publishing Framework v0.1.0-draft @ `21a5360727167bad6f399477ded073431645fa1d`
 - contract：`publishing.yaml`
 - default profile：`web`
 - 当前 Web provider：GitHub Pages
 - 目标 Web provider：Cloudflare Workers Static Assets
 - migration status：`staged`
-- Phase 1 不改变现有 canonical public URL。
+- source visibility：`public`
+- Web publication authorization：`authorized`
+- Web publication visibility：`public`
+- Web access policy：`none`
+- current canonical identity：GitHub Pages
+- target/provider endpoint：workers.dev
 - Cloudflare cutover 必须作为独立发布基础设施变更验证。
 
 ## 按需生成的电子出版格式
@@ -74,7 +79,7 @@ MAJOR-REVISION
 手动生成 PDF / DOCX / EPUB / LaTeX build artifact：无，但不构成正式 release.
 
 PPF Phase 1 Web：无 blocker；生产仍为 GitHub Pages。  
-Cloudflare cutover：等待 Worker/凭据、canonical URL、preview verification 与 redirect/canonical policy；这些条件在 Phase 1 不阻塞现有 Web 发布。  
+Cloudflare cutover：Worker/account/preview/runtime 已验证，Profile A 与 workers.dev target canonical URL 已选择；当前仍等待 GitHub Pages legacy policy、canonical source/config migration 与 post-cutover production verification。这些条件不阻塞现有 GitHub Pages Web 发布。  
 
 正式开放许可 release：受 `CLR-001` 影响.  
 包含或再分发外部参考 PDF 的任何 release：受 `CLR-002` 影响。

@@ -367,13 +367,28 @@ def check_human_readable_state_reconciliation() -> None:
                     f"{stale}"
                 )
 
-    require(PUBLISHING, "adopted_commit: 9326920e1920d18f0a71eac26d4068da9d6bdffe")
+    require(PUBLISHING, "adopted_commit: 21a5360727167bad6f399477ded073431645fa1d")
+    publishing = PUBLISHING.read_text(encoding="utf-8")
+    for marker in (
+        "source:\n  canonical: git\n  branch: main\n  visibility: public",
+        "authorization_state: authorized",
+        "visibility: public",
+        "access:\n      mode: none",
+        'provider_url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
+        "canonical_identity:\n      type: provider-native",
+        'url: "https://chongliuphil.github.io/epistemology-textbook/"',
+    ):
+        if marker not in publishing:
+            fail(f"publishing.yaml is missing adopted PPF visibility/access marker: {marker}")
 
     adoption = ADOPTION_DOC.read_text(encoding="utf-8")
     for marker in (
-        "9326920e1920d18f0a71eac26d4068da9d6bdffe",
-        "NOT ADOPTED",
+        "21a5360727167bad6f399477ded073431645fa1d",
+        "Previous adopted framework commit",
         "does **not** silently follow PPF `main`",
+        "source visibility = public",
+        "Web access mode = none",
+        "current canonical identity = GitHub Pages",
         "candidate / validate-only PASS",
     ):
         if marker not in adoption:
@@ -409,6 +424,8 @@ def check_human_readable_state_reconciliation() -> None:
     decision_log = DECISION_LOG.read_text(encoding="utf-8")
     for marker in (
         "D007 — 选择 Cloudflare Production Security Profile A",
+        "D009 — 显式采用 PPF publication visibility / access / canonical identity 语义",
+        "21a5360727167bad6f399477ded073431645fa1d",
         "least_privilege: false",
         "不等于批准 canonical production cutover",
     ):
@@ -420,6 +437,10 @@ def check_human_readable_state_reconciliation() -> None:
         "Profile A — Workers Builds Native",
         "least_privilege: false",
         "target canonical URL 已选择 workers.dev",
+        "21a5360727167bad6f399477ded073431645fa1d",
+        "Web publication: `authorized / public`",
+        "Web access: `none`",
+        "current canonical identity: GitHub Pages",
     ):
         if marker not in current_focus:
             fail(f"Current Focus is missing selected Profile A state: {marker}")
@@ -441,6 +462,7 @@ def check_human_readable_state_reconciliation() -> None:
         "COMPLETED / PROFILE-A-SELECTED",
         "production security profile selected — Profile A",
         "broad-scope risk acceptance",
+        "WM-T027",
         "Target canonical URL: `RESOLVED -> https://epistemology-textbook.philosophy-research.workers.dev/`",
         "Custom Domain: `NOT_APPLICABLE`",
     ):

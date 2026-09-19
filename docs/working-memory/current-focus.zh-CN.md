@@ -4,7 +4,7 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **Cloudflare staging complete / Profile A selected / workers.dev canonical target selected / legacy policy pending**.
+Personal Publishing Framework — **PPF 21a53607 adopted / Cloudflare staging complete / Profile A selected / workers.dev canonical target selected / legacy policy pending**.
 
 ## CURRENT_OBJECTIVE
 
@@ -73,6 +73,16 @@ Cloudflare account-side staging 技术验证已经闭环：
 - `least_privilege: false` 保持不变，不把 broad token 描述成 least privilege；
 - Profile B 继续作为未采用 fallback；
 - Profile C 继续等待 provider 原生 granular support。
+
+## PPF ADOPTION STATE
+
+- adopted PPF: `v0.1.0-draft @ 21a5360727167bad6f399477ded073431645fa1d`;
+- source visibility: `public`;
+- Web publication: `authorized / public`;
+- Web access: `none`;
+- current canonical identity: GitHub Pages;
+- target/provider endpoint: workers.dev;
+- later upstream PPF changes remain non-adopted until another explicit decision.
 
 ## IMMEDIATE_NEXT_ACTION
 

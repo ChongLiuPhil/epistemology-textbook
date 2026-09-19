@@ -2,8 +2,8 @@
 
 **Status:** PPF Phase 1 COMPLETE / Cloudflare staging+runtime VERIFIED / canonical cutover PENDING  
 **Framework:** Personal Publishing Framework v0.1.0-draft  
-**Adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe`  
-**Observed upstream PPF main during 2026-09-19 reconciliation:** `b9140e1abb116ba27e73c0c7873955078be9593b` — **NOT ADOPTED**
+**Adopted framework commit:** `21a5360727167bad6f399477ded073431645fa1d`  
+**Previous adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe` — superseded by explicit human adoption on 2026-09-19
 
 ## Purpose
 
@@ -37,6 +37,34 @@ It introduces:
 
 GitHub Pages remains the production provider during this phase so runtime validation can occur without changing the public canonical URL.
 
+## 2026-09-19 semantic adoption update
+
+The project owner explicitly adopted PPF `v0.1.0-draft @ 21a5360727167bad6f399477ded073431645fa1d`.
+
+This revision adds provider-neutral semantics for:
+
+- source / repository visibility;
+- publication authorization;
+- publication visibility;
+- access policy;
+- canonical publication identity distinct from provider endpoint.
+
+The current project state is recorded as:
+
+~~~text
+source visibility = public
+Web publication authorization = authorized
+Web publication visibility = public
+Web access mode = none
+current canonical identity = GitHub Pages
+target/provider endpoint = workers.dev
+canonical cutover = pending
+~~~
+
+This adoption records current reality; it does not prevent a future project from using a private source repository, restricted/private Web publication, or an authenticated access policy.
+
+The new semantics do **not** change the already selected target canonical URL. They make the migration state more precise: the workers.dev endpoint is the target/provider endpoint, while GitHub Pages remains the current canonical identity until explicit legacy-policy resolution and cutover verification.
+
 ## Phase 2 — Cloudflare staging and cutover
 
 Cloudflare staging is now real and verified, while canonical cutover remains a separate change.
@@ -54,11 +82,15 @@ Completed:
 
 Still required before canonical production cutover:
 
-1. explicit human production-security-profile selection;
-2. a confirmed canonical production URL;
-3. Cloudflare zone / Custom Domain eligibility and binding;
-4. post-cutover production verification;
-5. an explicit legacy / redirect / canonical policy for the existing GitHub Pages URL.
+1. an explicit legacy / redirect / canonical policy for the existing GitHub Pages URL;
+2. the corresponding source/config canonical-URL migration;
+3. post-cutover production verification.
+
+Already resolved:
+
+- production security profile = Profile A / Workers Builds Native;
+- target canonical URL = `https://epistemology-textbook.philosophy-research.workers.dev/`;
+- Custom Domain = not applicable for the selected workers.dev target.
 
 GitHub Pages remains the current canonical production until those gates are completed. A successful provider production-branch build or workers.dev runtime does not itself change canonical production.
 
@@ -135,10 +167,14 @@ Phase 2 staging/runtime verification is now complete. Cloudflare remains a verif
 - **Profile B — Hardened External CI:** candidate / validate-only PASS; no deployment credential is configured and preview/production deployment steps have not run, so it is not production-tested.
 - **Profile C — Future Native Granular:** currently unavailable because the required account-owned-token combination is not supported by the recorded Workers Builds product path.
 
-The production security profile is a human-governed decision and has not been selected in this adoption record.
+The production security profile is human-governed and has been selected as **Profile A — Workers Builds Native**. The target canonical URL has also been selected as the verified workers.dev endpoint. Neither decision alone completes canonical production cutover.
 
 ## Upstream adoption rule
 
 This repository does **not** silently follow PPF `main`.
 
-The durable adopted framework state remains the version/commit recorded above. Later upstream PPF changes, including provider-integration semantic work completed after the original pilot adoption, are informative until a separate downstream adoption decision updates `publishing.yaml` and this file after applicable validation.
+The durable adopted framework state is the version/commit recorded above: `21a5360727167bad6f399477ded073431645fa1d`.
+
+The earlier adoption `9326920e1920d18f0a71eac26d4068da9d6bdffe` has been superseded only because the human project owner explicitly approved this downstream adoption and the project migrated its publication contract accordingly.
+
+Any later upstream PPF changes remain informative until another explicit downstream adoption decision updates `publishing.yaml` and this file after applicable validation.
