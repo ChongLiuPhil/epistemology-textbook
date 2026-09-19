@@ -27,6 +27,9 @@ PAGES_WORKFLOW = WORKFLOWS / "html-ci.yml"
 PUBLICATION_WORKFLOW = WORKFLOWS / "build-publication-formats.yml"
 RENDERED_CHECK = ROOT / "scripts" / "check_rendered_html.py"
 MOBILE_READING_INCLUDE = ROOT / "assets" / "includes" / "reading-navigation.html"
+CITATION_INCLUDE = ROOT / "assets" / "includes" / "citation-navigation.html"
+MATH_CHECK = ROOT / "scripts" / "check_math_layout.py"
+PUBLICATION_PROFILE = ROOT / "docs" / "publication-profile.zh-CN.md"
 OPEN_READING = MANUSCRIPT / "00-open-access-and-support.qmd"
 ISSUE_TEMPLATES = ROOT / ".github" / "ISSUE_TEMPLATE"
 
@@ -66,6 +69,9 @@ REQUIRED_PROJECT_FILES = [
     PUBLICATION_WORKFLOW,
     RENDERED_CHECK,
     MOBILE_READING_INCLUDE,
+    CITATION_INCLUDE,
+    MATH_CHECK,
+    PUBLICATION_PROFILE,
     ISSUE_TEMPLATES / "content-feedback.yml",
     ISSUE_TEMPLATES / "website-bug.yml",
     ISSUE_TEMPLATES / "config.yml",
@@ -118,6 +124,7 @@ def check_quarto_config(config: str) -> None:
         "Chinese language": "lang: zh-CN",
         "book author": 'author: "Chong Liu"',
         "book output name": 'output-file: "how-do-we-know"',
+        "chapter bibliography title": 'reference-section-title: "本章参考文献"',
     }
     for label, marker in required_base_markers.items():
         if marker not in config:
@@ -140,6 +147,7 @@ def check_quarto_config(config: str) -> None:
         "book sidebar label": 'header: "**本书目录**"',
         "chapter TOC label": 'toc-title: "本章目录"',
         "mobile chapter TOC include": "assets/includes/reading-navigation.html",
+        "citation navigation include": "assets/includes/citation-navigation.html",
         "page footer": "page-footer:",
         "stable open-reading URL": OPEN_READING_URL,
     }
@@ -334,6 +342,26 @@ def check_reader_support() -> None:
     for marker in ("mobile-chapter-toc", "本章目录", "#quarto-margin-sidebar #TOC"):
         if marker not in mobile:
             fail(f"mobile chapter TOC include is missing expected behavior: {marker}")
+
+    citation = CITATION_INCLUDE.read_text(encoding="utf-8")
+    for marker in (
+        "citation-detail-dialog",
+        "参考文献详情",
+        "citation-backlinks",
+        "返回正文引用位置",
+    ):
+        if marker not in citation:
+            fail(f"citation navigation include is missing expected behavior: {marker}")
+
+    publication_profile = PUBLICATION_PROFILE.read_text(encoding="utf-8")
+    for marker in (
+        "Cloudflare Workers Builds",
+        "本章参考文献",
+        "BUILD 不自动等于 RELEASE",
+        "source visibility",
+    ):
+        if marker not in publication_profile:
+            fail(f"publication profile is missing current publication marker: {marker}")
 
     for name in ("content-feedback.yml", "website-bug.yml"):
         template = (ISSUE_TEMPLATES / name).read_text(encoding="utf-8")
