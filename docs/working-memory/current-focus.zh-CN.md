@@ -4,11 +4,11 @@
 
 ## CURRENT_STAGE
 
-Content Quality — **Chapter 2 review ROUND 2 / validation pending**.
+Content Quality — **Chapter 2 review COMPLETE / Chapter 3 review next**.
 
 ## CURRENT_OBJECTIVE
 
-把项目主工作重心保持在教材质量：第 1 章两轮审校已完成；第 2 章 Round 1 已 main-verified，当前正在做 Round 2 的结构/重复度与剩余引用精度审校。
+把项目主工作重心保持在教材质量：第 1、2 章两轮学术、教学与引用审校均已完成；下一项是第 3 章“理由如何支持信念”的审校。
 
 PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge `3e36d5dc015d8224ec6e6e98a952c5d77c872eee`）；旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
 
@@ -31,7 +31,7 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## PRIMARY_BLOCKER
 
-无 infrastructure blocker，也无阻止第 2 章 Round 1 审校的 content blocker。
+无 infrastructure blocker，也无阻止第 3 章审校的 content blocker。
 
 仍存在但不阻塞书稿工作的 human clarifications：
 
@@ -40,10 +40,10 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 验证 Chapter 2 Round 2：Governance、canonical Web gate、Cloudflare contract/runtime、External Link Audit；
-2. 若通过，合并 Round 2；
-3. 合并后做 Chapter 2 closure review：确认是否仍有需要 human Architecture approval 的跨章移动；
-4. 若无结构 blocker，把 WM-T031 收敛为 completed，并把下一章审校交给 WM-T032 / Chapter 3。
+1. 合并 Chapter 2 audit closure Working Memory PR；
+2. 以当前 main 为基线开始 WM-T032 / Chapter 3 academic / pedagogical / citation audit；
+3. Chapter 3 重点检查证成结构、内在主义/外在主义、基础主义/融贯主义、击败者与实践因素之间的归属和引用；
+4. 只有发现会改变章节功能或全书路径的结构问题，才重新进入人类 Architecture 确认。
 
 ## PPF / DELIVERY BASELINE
 
@@ -177,4 +177,27 @@ Round 1 merge：`99a27a5e1094b311638022fd7a382b012688bd61`
 - 不建议在 Round 2 删除 overview / seminar / application 三层；
 - 与 Chapter 8 的工程/人机案例交叉仍作为应用层保留，不自动升级为跨章 Architecture move；
 - 若后续真实教学/阅读反馈显示负载问题，再重新打开结构 watch。
+
+## CHAPTER 2 COMPLETION
+
+Round 2 main verification：
+
+- merge `2d4949f3d4f23ec9c83ce8f4f37c1af49793cc3e`;
+- Governance `35473999607` → PASS;
+- Quarto HTML `35473999657` → PASS;
+- Cloudflare Build Contract `35473999738` → PASS;
+- Cloudflare Runtime HTTP `35473999668` → PASS;
+- External Link Audit `35473999664` → PASS;
+- Cloudflare provider check `105980071721` / build `1c8edff0-d9f2-4c4a-8677-e61d2ea6c8ad` → PASS.
+
+Chapter 2 audit conclusion：
+
+- 怀疑论、语境主义、闭合/排除、敏感性、安全性、德性与知识优先的主要理论归属和直接文献锚点已加强；
+- 彩票敏感性矛盾笔误已修复，safety / probability / risk 的关系已收紧；
+- Pritchard epistemic angst 与 Sosa animal / reflective knowledge 不再混合归属；
+- 工程/制度案例被明确标为哲学模态条件的设计启发式，而非严格理论等价；
+- 第 2 章篇幅与三级标题密度处于全书正常区间；
+- 同章相似度检查没有发现高重复段落，overview → seminar → application 三层保留；
+- 与 Chapter 8 的人机/工程案例交叉暂不构成跨章迁移理由；
+- 当前没有 Architecture redistribution proposal 被提升。若真实教学或阅读反馈显示负载问题，再重新打开结构 watch。
 
