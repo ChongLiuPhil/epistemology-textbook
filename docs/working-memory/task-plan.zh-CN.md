@@ -59,7 +59,7 @@ Production cutover:
 
 1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
 2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
-3. 合并候选实现后，人类选择 production security profile：
+3. Hardened External CI candidate 已合并并完成 validate-only 验证；现在由人类选择 production security profile：
    - A：Workers Builds native / managed user token；
    - B：GitHub Actions external CI / per-Worker account-owned Editor token。
 4. 如果选 A：记录 risk acceptance，进入 Custom Domain / canonical URL / Pages legacy policy。
@@ -126,9 +126,9 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-Cloudflare ↔ GitHub standard remains the only infrastructure priority until first real Cloudflare staging is verified.
+Cloudflare staging is verified. The production security-profile / canonical-cutover decision line remains the only infrastructure priority until it is explicitly resolved.
 
-Other project standardization work is paused.
+Other project standardization work remains paused.
 
 ## SYNC DEFECTS
 
