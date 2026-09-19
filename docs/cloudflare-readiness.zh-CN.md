@@ -187,9 +187,9 @@ Workers Builds
 尚未完成：
 
 - [x] human production security-profile selection：Profile A
-- [ ] target canonical URL
-- [ ] Cloudflare zone / Custom Domain eligibility
-- [ ] Custom Domain binding
+- [x] target canonical URL：`https://epistemology-textbook.philosophy-research.workers.dev/`
+- [x] Cloudflare zone / Custom Domain eligibility：N/A（选择 workers.dev canonical）
+- [x] Custom Domain binding：N/A（选择 workers.dev canonical）
 - [ ] canonical production verification after cutover
 - [ ] GitHub Pages legacy URL policy
 - [ ] canonical URL migration
@@ -208,9 +208,9 @@ Workers Builds
 
 **Cloudflare canonical production cutover: NOT DONE / BLOCKED.**
 
-当前 blocker 不再是 account connection、runtime verification 或 security-profile decision，而是：
+当前 blocker 不再是 account connection、runtime verification、security-profile decision 或 target canonical URL，而是：
 
-1. target canonical URL / Custom Domain；
-2. GitHub Pages legacy policy。
+1. GitHub Pages legacy policy；
+2. legacy policy 确认后的 canonical URL migration / production verification。
 
-Profile A 已选定，但这**不等于** production cutover approval。在 target canonical URL / Custom Domain 与 GitHub Pages legacy policy 明确并验证前，不修改 DNS、不绑定正式 Custom Domain、不停用 GitHub Pages，也不把 workers.dev staging 描述成 canonical production。
+Profile A 与 target workers.dev canonical URL 都已选定，但这**不等于** production cutover approval。因为当前路线不使用 Custom Domain，所以无需 DNS/zone binding；在 GitHub Pages legacy policy 明确并完成相应 source/config migration 与 production verification 前，不停用 GitHub Pages，也不把 workers.dev staging 描述成 canonical production。
