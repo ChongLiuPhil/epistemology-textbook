@@ -2,7 +2,7 @@
 
 **日期：** 2026-09-19  
 **项目：** `ChongLiuPhil/epistemology-textbook`  
-**状态：** `REVIEWED / OPERATIONAL / PRODUCT-CONSTRAINT IDENTIFIED / HUMAN PROFILE DECISION PENDING`
+**状态：** `REVIEWED / PROFILE A SELECTED / BROAD-SCOPE RISK ACCEPTED / PRODUCT-CONSTRAINT TRACKED`
 
 ## 1. 当前 token
 
@@ -177,7 +177,7 @@ Cloudflare GitHub App
 
 当前状态：
 
-`OPERATIONAL / VERIFIED / BROAD TOKEN SCOPE`
+`SELECTED / OPERATIONAL / VERIFIED / BROAD TOKEN SCOPE / LEAST_PRIVILEGE_FALSE`
 
 ### Profile B — Hardened External CI
 
@@ -205,7 +205,7 @@ GitHub Actions
 
 当前状态：
 
-`AVAILABLE / NOT ADOPTED / REQUIRES MIGRATION VALIDATION`
+`CANDIDATE / VALIDATE-ONLY PASS / NOT ADOPTED`
 
 ### Profile C — Future Native Granular
 
@@ -237,12 +237,27 @@ Workers Builds
 
 `Profile B = available migration path`
 
-因此在 production cutover 前，需要人类明确选择：
+人类作者已经明确选择 **Profile A**。
 
-1. **保留 Profile A**，接受 Cloudflare-managed build token 的当前较宽 scope，等待 Cloudflare Builds 支持 account-owned token；或
-2. **迁移到 Profile B**，用 GitHub Actions + per-Worker account-owned Editor token 换取更严格的 least privilege。
+因此当前 production delivery security decision 为：
 
-在没有这个人类选择前，不把 broad token 自动解释为已接受风险。
+```text
+selected profile = Workers Builds Native
+managed user token = retained
+known broad scope = explicitly accepted for current project use
+least_privilege = false
+Profile B = not adopted
+Profile C = product-blocked
+```
+
+这个 risk acceptance 只接受“当前已验证 Workers Builds 原生链路使用已知较宽 managed token”这一安全权衡，不把 broad token 重命名为 least privilege，也不授权与 routine deployment 无关的更多权限。
+
+未来如果出现以下任一情况，应重新评估：
+
+- Workers Builds 原生支持 account-owned per-Worker granular token；
+- 项目 threat model / institutional security requirement 提高；
+- managed token scope 扩大；
+- 当前 Workers Builds 原生链路失去稳定性或支持。
 
 ## 8. Custom Domain 权限仍应独立
 
@@ -272,12 +287,12 @@ routine deployment identity
 - [x] theoretical minimum identified
 - [x] Workers Builds user-token-only constraint confirmed
 - [x] per-Worker account-owned token path identified for external CI
-- [ ] human selects production security profile
-- [ ] selected profile passes main build
-- [ ] selected profile passes non-production preview or equivalent
-- [ ] selected profile passes workers.dev/runtime verification
-- [ ] obsolete credential safely retired if migration occurs
+- [x] human selects production security profile — Profile A
+- [x] selected profile passes main build
+- [x] selected profile passes non-production preview or equivalent
+- [x] selected profile passes workers.dev/runtime verification
+- [x] obsolete credential retirement — N/A; Profile A retains the already verified managed token
 
 当前：
 
-`BUILD TOKEN SECURITY = REVIEWED / PRODUCT-CONSTRAINED / HUMAN PROFILE DECISION PENDING`
+`BUILD TOKEN SECURITY = PROFILE A SELECTED / VERIFIED / BROAD-SCOPE RISK ACCEPTED / LEAST_PRIVILEGE_FALSE`

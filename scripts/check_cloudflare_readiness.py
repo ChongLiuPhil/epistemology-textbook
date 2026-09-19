@@ -19,6 +19,8 @@ READINESS_DOC = ROOT / "docs" / "cloudflare-readiness.zh-CN.md"
 ADOPTION_DOC = ROOT / "docs" / "ppf-adoption.md"
 PHASE1_AUDIT = ROOT / "docs" / "ppf-pilot-audit.zh-CN.md"
 STAGING_RUNBOOK = ROOT / "docs" / "cloudflare-staging-runbook.zh-CN.md"
+SECURITY_AUDIT = ROOT / "docs" / "cloudflare-build-token-security.zh-CN.md"
+DECISION_LOG = ROOT / "core" / "DECISION_LOG.zh-CN.md"
 CURRENT_FOCUS = ROOT / "docs" / "working-memory" / "current-focus.zh-CN.md"
 TASK_PLAN = ROOT / "docs" / "working-memory" / "task-plan.zh-CN.md"
 INSTALLER = ROOT / "scripts" / "ensure_quarto.sh"
@@ -118,6 +120,9 @@ def check_workers_builds_contract() -> None:
         "static_assets_directory: ./_book",
         "credentials_in_repository: prohibited",
         "github_app_repository_scope: selected-repositories-only",
+        "selected_production_profile: workers-builds-native",
+        "human_risk_acceptance: accepted-broad-managed-user-token-scope",
+        "least_privilege: false",
     )
     for marker in markers:
         require(BUILD_CONTRACT, marker)
@@ -150,6 +155,8 @@ def check_publication_contract() -> None:
         'cloudflare_build_id: "a12446a5-e341-48e4-8c22-1a184b1102c8"',
         'version_id: "3f8a15d6-9994-4e90-839c-2144c8dc54b7"',
         "target_canonical_url: unresolved",
+        "selected_production_profile: workers-builds-native",
+        "human_risk_acceptance: accepted-broad-managed-user-token-scope",
         "status: blocked",
     ):
         require(READINESS, marker)
@@ -166,6 +173,7 @@ def check_publication_contract() -> None:
     if credential_match.group(1) not in {
         "cloudflare-managed-present-security-review-pending",
         "cloudflare-managed-default-reviewed-broad-scope",
+        "cloudflare-managed-default-reviewed-broad-scope-profile-a-accepted",
         "hardened-least-privilege",
     }:
         fail(f"unexpected readiness build credential state: {credential_match.group(1)}")
@@ -181,6 +189,7 @@ def check_publication_contract() -> None:
     if publishing_credential_match.group(1) not in {
         "present-security-review-pending",
         "reviewed-broad-scope-hardening-pending",
+        "reviewed-broad-scope-profile-a-accepted",
         "hardened-least-privilege",
     }:
         fail(
@@ -235,6 +244,7 @@ def check_publication_contract() -> None:
         "cloudflare_main_build: passed",
         "preview_deployment: passed",
         "production_cutover: blocked",
+        "production_security_profile: workers-builds-native",
     ):
         require(PUBLISHING, marker)
 
@@ -329,11 +339,12 @@ def check_human_readable_state_reconciliation() -> None:
     if "status: connected-runtime-verified" in machine:
         human = READINESS_DOC.read_text(encoding="utf-8")
         required_human_markers = (
-            "ACCOUNT-CONNECTED / MAIN+PREVIEW+RUNTIME-VERIFIED / CUTOVER-BLOCKED",
+            "ACCOUNT-CONNECTED / MAIN+PREVIEW+RUNTIME-VERIFIED / PROFILE-A-SELECTED / CUTOVER-BLOCKED",
             "Current canonical production: GitHub Pages.",
             "candidate / validate-only PASS",
             "不是 production-tested",
             "Cloudflare canonical production cutover: NOT DONE / BLOCKED.",
+            "human production security-profile selection：Profile A",
         )
         for marker in required_human_markers:
             if marker not in human:
@@ -369,16 +380,44 @@ def check_human_readable_state_reconciliation() -> None:
 
     runbook = STAGING_RUNBOOK.read_text(encoding="utf-8")
     for marker in (
+        "selected-production-profile / operational-verified",
         "candidate / validate-only PASS",
         "不是 production-tested",
         "Profile C — Future Native Granular",
+        "当前项目已选择 Profile A",
     ):
         if marker not in runbook:
             fail(f"Cloudflare staging runbook is missing security-profile marker: {marker}")
 
+    security_audit = SECURITY_AUDIT.read_text(encoding="utf-8")
+    for marker in (
+        "PROFILE A SELECTED",
+        "BROAD-SCOPE RISK ACCEPTED",
+        "LEAST_PRIVILEGE_FALSE",
+        "Profile B = not adopted",
+    ):
+        if marker not in security_audit:
+            fail(f"Cloudflare security audit is missing Profile A decision marker: {marker}")
+    if "HUMAN PROFILE DECISION PENDING" in security_audit:
+        fail("Cloudflare security audit still claims the production profile decision is pending")
+
+    decision_log = DECISION_LOG.read_text(encoding="utf-8")
+    for marker in (
+        "D007 — 选择 Cloudflare Production Security Profile A",
+        "least_privilege: false",
+        "不等于批准 canonical production cutover",
+    ):
+        if marker not in decision_log:
+            fail(f"Decision Log is missing Profile A human decision marker: {marker}")
+
     current_focus = CURRENT_FOCUS.read_text(encoding="utf-8")
-    if "Profile B 已经推进到当前无新 credential 条件下的可验证极限" not in current_focus:
-        fail("Current Focus does not reflect completed Profile B candidate validation")
+    for marker in (
+        "Profile A — Workers Builds Native",
+        "least_privilege: false",
+        "当前进入 Custom Domain / canonical URL / Pages legacy policy 决策与验证",
+    ):
+        if marker not in current_focus:
+            fail(f"Current Focus is missing selected Profile A state: {marker}")
     for marker in (
         "Verified post-merge Cloudflare checkpoint check：`105904495866`",
         "93823dff-1206-4282-b037-24876840f0c6",
@@ -389,10 +428,23 @@ def check_human_readable_state_reconciliation() -> None:
     task_plan = TASK_PLAN.read_text(encoding="utf-8")
     if "until first real Cloudflare staging is verified" in task_plan:
         fail("Task Plan still claims first Cloudflare staging is unverified")
-    if "Cloudflare staging is verified." not in task_plan:
+    if "Cloudflare staging is verified" not in task_plan:
         fail("Task Plan must record that Cloudflare staging is verified")
     if "Checkpoint semantics intentionally replace a moving `latest_main_build` claim" not in task_plan:
         fail("Task Plan must explain stable provider-evidence checkpoint semantics")
+    for marker in (
+        "COMPLETED / PROFILE-A-SELECTED",
+        "production security profile selected — Profile A",
+        "broad-scope risk acceptance",
+    ):
+        if marker not in task_plan:
+            fail(f"Task Plan is missing Profile A completion marker: {marker}")
+
+    readiness_body = READINESS.read_text(encoding="utf-8")
+    if "human-security-profile-decision" in readiness_body:
+        fail("security-profile blocker must be removed after human Profile A selection")
+    if "target-canonical-url" not in readiness_body or "redirect-or-canonical-policy" not in readiness_body:
+        fail("canonical URL and legacy/canonical policy blockers must remain after Profile A selection")
 
 
 def main() -> None:
