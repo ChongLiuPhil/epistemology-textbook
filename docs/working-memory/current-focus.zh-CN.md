@@ -4,13 +4,13 @@
 
 ## CURRENT_STAGE
 
-Content Quality — **PR #18 reconciliation validated / Chapter 1 review next**.
+Content Quality — **PR #18 reconciliation merged / Chapter 1 review next**.
 
 ## CURRENT_OBJECTIVE
 
 把项目主工作重心从已经完成的 publication infrastructure 转回教材质量：从第 1 章开始逐章进行学术、教学与引用审校。
 
-PR #39 已在 current PPF/Workers baseline 上验证通过，旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
+PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge `3e36d5dc015d8224ec6e6e98a952c5d77c872eee`）；旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
 
 - D005 学习—整合—梳理型教材定位与问题驱动哲学学习观；
 - current publication profile；
@@ -40,10 +40,9 @@ PR #39 已在 current PPF/Workers baseline 上验证通过，旧 PR #18 的有�
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 合并已通过 current-main CI 的 PR #39；
-2. 将旧 PR #18 关闭并标记为 superseded；
-3. 以当前 main 为基线开始 Chapter 1 academic / pedagogical / citation audit；
-4. 对审校发现的问题按普通 content/refs 修订处理；只有重大 Architecture 变化才重新进入人类确认。
+1. 合并当前 cleanup PR，清除 CONTRIBUTING 中最后两处旧 Pages workflow 措辞；
+2. 以当前 main 为基线开始 Chapter 1 academic / pedagogical / citation audit；
+3. 对审校发现的问题按普通 content/refs 修订处理；只有重大 Architecture 变化才重新进入人类确认。
 
 ## PPF / DELIVERY BASELINE
 

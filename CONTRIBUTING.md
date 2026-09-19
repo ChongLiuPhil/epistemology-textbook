@@ -63,7 +63,7 @@
 make check
 ```
 
-该命令会检查 citation key、BibTeX 基本结构、重复/格式错误 DOI 与 URL 等确定性问题。外部链接是否仍可访问由独立的 `External Link Audit` 检查：相关内容进入 `main` 时自动运行，同时保留每周与手动触发。它与 Pages 发布门禁分离，因为 403、429、5xx、TLS 与超时可能只是第三方网站的临时或机器人访问限制。
+该命令会检查 citation key、BibTeX 基本结构、重复/格式错误 DOI 与 URL 等确定性问题。外部链接是否仍可访问由独立的 `External Link Audit` 检查：相关内容进入 `main` 时自动运行，同时保留每周与手动触发。它与 canonical Web publication gate 分离，因为 403、429、5xx、TLS 与超时可能只是第三方网站的临时或机器人访问限制。
 
 ## 5. 练习与后置材料
 
@@ -78,7 +78,7 @@ make check
 
 处理反馈时优先确认公开网页是否仍能复现；内容问题要回到 canonical QMD 修改，网页问题优先检查 `_quarto.yml`、`book.css` 与 Quarto 输出。不要直接编辑 `_book/` 中的生成文件。
 
-对于书稿反馈，尽量保留页面链接、章节/小节、问题说明、建议修改和参考来源；对于网页反馈，再补充设备与浏览器信息。修复后仍需走 Pull Request → HTML validation → `main` → Pages deployment 的完整流程。
+对于书稿反馈，尽量保留页面链接、章节/小节、问题说明、建议修改和参考来源；对于网页反馈，再补充设备与浏览器信息。修复后仍需走 Pull Request → canonical Web validation → `main` → Workers Builds / workers.dev runtime 的完整流程。
 
 ## 7. 构建与检查
 
@@ -101,7 +101,7 @@ make html
 # 或 make all；当前阶段二者都只生成 HTML
 ```
 
-当前日常流程仍只生成并部署 `web` profile 的 HTML。PDF、DOCX、EPUB 与 LaTeX 使用独立 Quarto profile，通过 GitHub Actions 的手动 `Build Publication Format` workflow 一次按需生成一种 artifact。它们继续使用同一套 canonical QMD sources，不允许形成第二套正文；构建 artifact 不自动等于正式 Release Approval。
+当前日常流程仍只生成并持续发布 `web` profile 的 HTML。PDF、DOCX、EPUB 与 LaTeX 使用独立 Quarto profile，通过 GitHub Actions 的手动 `Build Publication Format` workflow 一次按需生成一种 artifact。它们继续使用同一套 canonical QMD sources，不允许形成第二套正文；构建 artifact 不自动等于正式 Release Approval。
 
 ## 8. Commit 与 Pull Request
 
