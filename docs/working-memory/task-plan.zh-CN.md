@@ -92,6 +92,14 @@ The current ChatGPT session does not expose a callable Cloudflare account/Builds
 - Status: `WAITING-HUMAN / AFTER-STAGING`
 - Severity: `BLOCKING FOR PRODUCTION CUTOVER, NOT FOR WORKERS.DEV STAGING`
 
+## RECENTLY RESOLVED / PROMOTED
+
+- PPF Phase 1 source/profile/runtime validation → `COMPLETED / VERIFIED`.
+- Repository-side Cloudflare readiness → `COMPLETED / PASS`.
+- Cloudflare staging runbook + least-privilege model → `COMPLETED`.
+- Canonical Web publication gate design → promoted into `Makefile`, `scripts/check_rendered_html.py`, and CI.
+- Workers Builds machine contract → promoted into `cloudflare-builds.yaml` and `docs/cloudflare-readiness.yaml`.
+
 ## CLARIFICATION COMPLETION RULE
 
 `WAITING-HUMAN -> human resolution -> Decision Log -> appropriate Core / Architecture / Form / Release state -> RESOLVED / PROMOTED -> leave active clarification queue`
