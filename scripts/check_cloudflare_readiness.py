@@ -137,7 +137,6 @@ def check_publication_contract() -> None:
         "worker_target: verified",
         "production_trigger: verified-main-build-passed",
         "preview_trigger: verified-preview-build-passed",
-        "build_token: cloudflare-managed-present-security-review-pending",
         'workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"',
         'cloudflare_build_id: "d6bc8b62-78ba-4a9e-98ea-7a049a539858"',
         'cloudflare_build_id: "a12446a5-e341-48e4-8c22-1a184b1102c8"',
@@ -148,6 +147,38 @@ def check_publication_contract() -> None:
         require(READINESS, marker)
 
     readiness_body = READINESS.read_text(encoding="utf-8")
+
+    credential_match = re.search(
+        r"^\s*build_token:\s*(\S+)\s*$",
+        readiness_body,
+        re.MULTILINE,
+    )
+    if not credential_match:
+        fail("docs/cloudflare-readiness.yaml is missing account-side build credential state")
+    if credential_match.group(1) not in {
+        "cloudflare-managed-present-security-review-pending",
+        "cloudflare-managed-default-reviewed-broad-scope",
+        "hardened-least-privilege",
+    }:
+        fail(f"unexpected readiness build credential state: {credential_match.group(1)}")
+
+    publishing_body = PUBLISHING.read_text(encoding="utf-8")
+    publishing_credential_match = re.search(
+        r"^\s*build_token:\s*(\S+)\s*$",
+        publishing_body,
+        re.MULTILINE,
+    )
+    if not publishing_credential_match:
+        fail("publishing.yaml is missing build credential readiness state")
+    if publishing_credential_match.group(1) not in {
+        "present-security-review-pending",
+        "reviewed-broad-scope-hardening-pending",
+        "hardened-least-privilege",
+    }:
+        fail(
+            "unexpected publishing.yaml build credential state: "
+            f"{publishing_credential_match.group(1)}"
+        )
 
     http_match = re.search(r"^\s*workers_dev_http:\s*(\S+)\s*$", readiness_body, re.MULTILINE)
     if not http_match:
@@ -192,7 +223,6 @@ def check_publication_contract() -> None:
         "repository_connection: verified",
         "worker_target: verified",
         "workers_builds_triggers: verified",
-        "build_token: present-security-review-pending",
         'workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"',
         "cloudflare_main_build: passed",
         "preview_deployment: passed",
