@@ -4,7 +4,7 @@
 
 ## ACTIVE TASKS
 
-- `WM-T029` — reconcile PR #18 content/form improvements with current PPF/Workers baseline — `COMPLETED / PR-VALIDATED`
+- `WM-T029` — reconcile PR #18 content/form improvements with current PPF/Workers baseline — `COMPLETED / MAIN-MERGED`
 - `WM-T030` — Chapter 1 academic / pedagogical / citation review — `READY / NEXT`
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
@@ -66,10 +66,9 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. Merge PR #39 after final-head CI remains green.
-2. Close old PR #18 as superseded by the current-main reconciliation.
-3. Start WM-T030 on Chapter 1: problem-function, argument reconstruction, counterexamples, citation support, pedagogy, and prose quality.
-4. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
+1. Merge the final cleanup PR that removes the last two legacy Pages phrases from CONTRIBUTING.md.
+2. Start WM-T030 on Chapter 1: problem-function, argument reconstruction, counterexamples, citation support, pedagogy, and prose quality.
+3. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
@@ -108,7 +107,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## RECENTLY RESOLVED / PROMOTED
 
-- WM-T029 PR #18 reconciliation → Governance `35456091399`, Web `35456091339`, Cloudflare Contract `35456091266`, Hardened candidate `35456091221`, Runtime `35456091331` → `PASS`.
+- WM-T029 PR #18 reconciliation → PR #39 merged as `3e36d5dc015d8224ec6e6e98a952c5d77c872eee`; Governance `35456091399`, Web `35456091339`, Cloudflare Contract `35456091266`, Hardened candidate `35456091221`, Runtime `35456091331` → `PASS`.
 - workers.dev canonical cutover post-merge verification → revision `63510364ed40a97faf190c484dd80afc91971ecb`, runtime run `35453967021`, runtime check `105925881599`, Cloudflare provider check `105926103705`, build `42aa93fe-d9b6-49e4-80be-a849951a6b9d` → `PASS`.
 - CLR-003 GitHub Pages legacy policy → human decision `RETIRE`; D010 recorded; canonical config migration implemented; provider-side `Unpublish site` human-confirmed complete on 2026-09-20.
 - PPF `21a5360727167bad6f399477ded073431645fa1d` visibility/access/canonical-identity downstream adoption → Governance `35451267209`, Web `35451267208`, Cloudflare Contract `35451267235`, Hardened candidate `35451267205` → `PASS`.
@@ -133,7 +132,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-- After WM-T029 closes, begin Chapter 1 academic/pedagogical/citation review.
+- Begin WM-T030 Chapter 1 academic/pedagogical/citation review after the final documentation cleanup merges.
 - During chapter review, flag passages that catalogue thinkers/schools without a clear problem-function.
 - If a formal publisher or print specification is later chosen, add provider/channel-specific PDF layout constraints without changing canonical manuscript semantics.
 - No further routing/cutover task is active.
