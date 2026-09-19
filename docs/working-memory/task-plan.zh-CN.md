@@ -51,6 +51,9 @@ Account connection:
 - [x] preview workers.dev HTTP/content verification PASS
 
 Production cutover:
+
+> Stable baseline: workers.dev canonical cutover is implemented and verified.
+
 - [x] target canonical URL — `https://epistemology-textbook.philosophy-research.workers.dev/`
 - [x] Cloudflare zone / Custom Domain eligibility — N/A for workers.dev canonical
 - [x] Custom Domain — N/A for workers.dev canonical
