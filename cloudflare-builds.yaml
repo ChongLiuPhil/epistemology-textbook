@@ -63,14 +63,16 @@ security:
   credentials_in_repository: prohibited
   github_app_repository_scope: selected-repositories-only
   build_token_policy: cloudflare-managed-default-reviewed-broad-scope
+  selected_production_profile: workers-builds-native
+  human_risk_acceptance: accepted-broad-managed-user-token-scope
   broad_default_token_requires_review: false
   profiles:
     workers_builds_native:
-      status: operational-verified
+      status: selected-production-profile
       token_type: cloudflare-managed-user-token
       least_privilege: false
     hardened_external_ci:
-      status: candidate-validated-credentials-not-configured
+      status: candidate-validated-not-adopted
       contract: cloudflare-external-ci.yaml
       workflow: .github/workflows/cloudflare-external-ci.yml
       activation: manual-only
