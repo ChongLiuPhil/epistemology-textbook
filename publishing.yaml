@@ -1,0 +1,62 @@
+schema: ppf/v0.1
+
+framework:
+  source: ChongLiuPhil/Personal-Publishing-Framework
+  adopted_version: v0.1.0-draft
+  adopted_commit: 9326920e1920d18f0a71eac26d4068da9d6bdffe
+
+project:
+  id: epistemology-textbook
+  type: book
+  title: "我们如何知道？——问题驱动的认识论"
+
+source:
+  canonical: git
+  branch: main
+  manuscript:
+    - index.qmd
+    - manuscript/
+    - references.bib
+
+publication:
+  web:
+    format: html
+    mode: continuous
+    enabled: true
+
+  epub:
+    format: epub
+    mode: on-demand
+    enabled: true
+
+  pdf:
+    format: pdf
+    mode: on-demand
+    enabled: true
+
+  docx:
+    format: docx
+    mode: on-demand
+    enabled: true
+
+  latex:
+    format: latex
+    mode: on-demand
+    enabled: true
+
+deployment:
+  web:
+    current_provider: github-pages
+    target_provider: cloudflare-workers
+    output_directory: _book
+    current_production_url: "https://chongliuphil.github.io/epistemology-textbook/"
+    target_production_url: null
+    migration_status: staged
+
+release:
+  require_explicit_release: true
+  continuous_web_is_release: false
+
+archive:
+  preserve_source: true
+  preserve_release_artifacts: true

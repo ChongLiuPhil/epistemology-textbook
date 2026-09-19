@@ -6,15 +6,26 @@
 
 - 状态：`AUTHOR-PUBLISHED / CONTINUOUSLY-REVISED`
 - canonical source：`index.qmd`、`manuscript/*.qmd`、`references.bib`
-- active artifact：GitHub Pages HTML Web Edition
-- 发布机制：经 main 的 source/bibliography/rendered-HTML checks 后自动部署
+- active artifact：HTML Web Edition
+- 当前生产发布机制：经 main 的 source/bibliography/rendered-HTML checks 后自动部署到 GitHub Pages
 - 责任主体：作者 Chong Liu
 
 采用 HARC-lite 不追溯把已经公开的 Web Edition 降级为 provisional。
 
+## PPF Pilot 状态
+
+- Framework：Personal Publishing Framework v0.1.0-draft
+- contract：`publishing.yaml`
+- default profile：`web`
+- 当前 Web provider：GitHub Pages
+- 目标 Web provider：Cloudflare Workers Static Assets
+- migration status：`staged`
+- Phase 1 不改变现有 canonical public URL。
+- Cloudflare cutover 必须作为独立发布基础设施变更验证。
+
 ## 按需生成的电子出版格式
 
-PDF / DOCX / EPUB 可以从同一 canonical Quarto source 通过手动 GitHub Actions workflow 生成。
+PDF / DOCX / EPUB / LaTeX 可以从同一 canonical Quarto source 通过手动 GitHub Actions workflow 按需生成；每次请求只构建一种格式。
 
 这些输出默认状态是：
 
@@ -60,7 +71,10 @@ MAJOR-REVISION
 ## 当前 blocker
 
 正常 Web Edition 修订：无。  
-手动生成 PDF / DOCX / EPUB build artifact：无，但不构成正式 release。
+手动生成 PDF / DOCX / EPUB / LaTeX build artifact：无，但不构成正式 release.
 
-正式开放许可 release：受 `CLR-001` 影响。  
+PPF Phase 1 Web：无 blocker；生产仍为 GitHub Pages。  
+Cloudflare cutover：等待 Worker/凭据、canonical URL、preview verification 与 redirect/canonical policy；这些条件在 Phase 1 不阻塞现有 Web 发布。  
+
+正式开放许可 release：受 `CLR-001` 影响.  
 包含或再分发外部参考 PDF 的任何 release：受 `CLR-002` 影响。

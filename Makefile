@@ -17,12 +17,12 @@ check: governance-check
 	python3 scripts/check_references.py
 
 preview: check
-	quarto preview --to html
+	quarto preview --profile web
 
 html: check
-	quarto render --to html
+	quarto render --profile web
 
 all: html
 
 clean:
-	rm -rf _book .quarto
+	rm -rf _book _publication .quarto

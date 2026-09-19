@@ -31,6 +31,8 @@ source_of_truth:
   manuscript: manuscript/
   bibliography: references.bib
   book_config: _quarto.yml
+  web_profile: _quarto-web.yml
+  publishing_contract: publishing.yaml
 
 governance:
   profile: HARC-lite-book
@@ -47,18 +49,35 @@ governance:
   working_memory: docs/working-memory.zh-CN.md
   release_status: docs/release-status.zh-CN.md
 
+publishing:
+  framework: Personal-Publishing-Framework
+  adopted_framework_version: v0.1.0-draft
+  adopted_framework_commit: 9326920e1920d18f0a71eac26d4068da9d6bdffe
+  contract: publishing.yaml
+  phase: ppf-pilot-phase-1
+  continuous_format: html
+  on_demand_formats:
+    - epub
+    - pdf
+    - docx
+    - latex
+  current_web_provider: github-pages
+  target_web_provider: cloudflare-workers
+  cloudflare_cutover: pending
+
 website:
   metadata: website.yaml
   default_publish: true
 
 notes: >
-  Quarto QMD files are the canonical manuscript source. During Web Edition
-  Development the active pipeline validates the sources, renders HTML, and
-  deploys the validated _book output to GitHub Pages after changes reach main.
-  PDF, DOCX, and EPUB are declared in the same Quarto project and can be built
-  on demand through a manual publication workflow. Those outputs are review/
-  offline-reading artifacts by default and do not become approved releases
-  automatically. The legacy textbook/ LaTeX tree is retained only for
-  historical audit and is not part of the active edit or build workflow.
-  HARC-lite governance persists collaboration state in the repository without
-  changing the canonical manuscript boundary.
+  Quarto QMD files plus references.bib remain the canonical manuscript source.
+  The project now pilots Personal Publishing Framework v0.1 using Quarto profiles:
+  web is the default continuous format; EPUB, PDF, DOCX, and LaTeX are explicit
+  on-demand build artifacts. During PPF pilot Phase 1, validated HTML continues
+  to deploy automatically to the existing GitHub Pages production URL. A
+  Cloudflare Workers Static Assets configuration is staged but is not active
+  production infrastructure until a Worker target, credentials, canonical URL,
+  preview deployment, and cutover/redirect policy are confirmed. Build does not
+  imply Release Approval. The legacy textbook/ LaTeX tree remains historical
+  only and is not part of the active edit or build workflow. HARC-lite project
+  governance is intentionally unchanged in this publishing-focused PR.

@@ -18,8 +18,8 @@ summary:
   en: "A Chinese-language epistemology textbook and learning project organized through study, synthesis, and philosophical problems, covering knowledge, skepticism, justification, sources of knowledge, social and formal epistemology, epistemic value, digital and AI environments, and comparative epistemology."
 
 status:
-  zh: "Web Edition Development：Quarto QMD 为唯一正式书稿来源；验证通过的 HTML 进入 main 后自动部署。PDF、DOCX 与 EPUB 可从同一母稿通过手动 workflow 按需构建，但默认不是正式 release。"
-  en: "Web Edition Development: canonical Quarto QMD sources are validated and automatically deployed as HTML after changes reach main. PDF, DOCX, and EPUB can be built on demand from the same sources, but are not formal releases by default."
+  zh: "PPF Pilot Phase 1：Quarto QMD 为唯一正式书稿来源；Web profile 的 HTML 经验证后继续自动部署到现有 GitHub Pages。EPUB、PDF、DOCX 与 LaTeX 使用独立 profile 按需构建，不自动成为正式 release。Cloudflare Workers Static Assets 已进入 staged configuration，但尚未切换生产。"
+  en: "PPF Pilot Phase 1: canonical Quarto QMD sources continue to publish validated Web-profile HTML automatically to the existing GitHub Pages site. EPUB, PDF, DOCX, and LaTeX use separate on-demand profiles and are not formal releases by default. Cloudflare Workers Static Assets is staged but not yet the production provider."
 
 featured: false
 links:

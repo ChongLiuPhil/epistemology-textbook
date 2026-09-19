@@ -8,12 +8,17 @@ on:
       - "references.bib"
       - "index.qmd"
       - "_quarto.yml"
+      - "_quarto-*.yml"
+      - "publishing.yaml"
+      - "wrangler.jsonc"
       - "book.css"
       - "assets/**"
       - "project.yaml"
       - "website.yaml"
       - "README.md"
+      - "README.zh-CN.md"
       - "CONTRIBUTING.md"
+      - "docs/ppf-adoption.md"
       - "scripts/**"
       - "Makefile"
       - ".github/ISSUE_TEMPLATE/**"
@@ -26,12 +31,17 @@ on:
       - "references.bib"
       - "index.qmd"
       - "_quarto.yml"
+      - "_quarto-*.yml"
+      - "publishing.yaml"
+      - "wrangler.jsonc"
       - "book.css"
       - "assets/**"
       - "project.yaml"
       - "website.yaml"
       - "README.md"
+      - "README.zh-CN.md"
       - "CONTRIBUTING.md"
+      - "docs/ppf-adoption.md"
       - "scripts/**"
       - "Makefile"
       - ".github/ISSUE_TEMPLATE/**"
@@ -66,8 +76,8 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render HTML
-        run: quarto render --to html
+      - name: Render Web profile
+        run: quarto render --profile web
 
       - name: Validate rendered HTML
         shell: bash
@@ -91,7 +101,7 @@ jobs:
 
           python3 scripts/check_rendered_html.py
 
-          if find _book -type f \( -name '*.epub' -o -name '*.pdf' -o -name '*.docx' \) -print -quit | grep -q .; then
+          if find _book -type f \( -name '*.epub' -o -name '*.pdf' -o -name '*.docx' -o -name '*.tex' \) -print -quit | grep -q .; then
             echo "Unexpected release-format artifact found in _book" >&2
             exit 1
           fi

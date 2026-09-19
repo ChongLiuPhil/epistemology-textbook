@@ -27,6 +27,7 @@ Thumbs.db
 
 # Quarto build output
 _book/
+_publication/
 .quarto/
 
 # Editors / local workspace

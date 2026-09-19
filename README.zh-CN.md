@@ -6,7 +6,7 @@
 
 ## 当前阶段：Web Edition Development
 
-目前优先开发并持续发布网页版。日常流程是：
+目前处于 **PPF Pilot Phase 1**：优先开发并持续发布网页版，同时验证同一 canonical source 的多格式按需构建。当前生产 Web provider 仍是 GitHub Pages。日常流程是：
 
 `QMD → validation → HTML → GitHub Pages`
 
@@ -16,7 +16,7 @@
 
 开放阅读与支持：<https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html>
 
-PDF、DOCX、EPUB 不属于日常 Pages CI，但现在可以通过独立的手动 `Build Publication Formats` workflow 从同一套 canonical QMD sources 按需生成。默认生成物是校对、离线阅读和出版准备 artifact，不自动等于正式 release。
+PDF、DOCX、EPUB、LaTeX 不属于日常 Pages CI。它们通过独立的手动 `Build Publication Format` workflow 按需生成，并且每次明确选择一种格式。默认生成物是校对、离线阅读和出版准备 artifact，不自动等于正式 release。
 
 ## 项目定位
 
@@ -32,7 +32,7 @@ PDF、DOCX、EPUB 不属于日常 Pages CI，但现在可以通过独立的手�
 - 正文与前后置材料：`manuscript/*.qmd`
 - 参考文献数据库：`references.bib`
 
-全书结构与 HTML 配置位于 `_quarto.yml`，网页样式位于 `book.css`。
+共享书籍结构位于 `_quarto.yml`；Web 配置位于 `_quarto-web.yml`；PDF、DOCX、EPUB、LaTeX 分别使用独立 profile。发布意图记录在 `publishing.yaml`，网页样式位于 `book.css`。
 
 `textbook/` 保存迁移前的 LaTeX 历史稿，仅用于审计与版本追溯。它不是正式书稿来源，不参与编辑、检查或构建。数学公式中的 TeX/LaTeX 风格语法属于 Quarto/Pandoc 数学语法，不意味着恢复 LaTeX 文档工作流。
 
@@ -100,9 +100,15 @@ Quarto HTML 输出位于 `_book/`。`make check` 会阻止缺失 citation key、
 
 ## 按需电子出版格式
 
-`_quarto.yml` 现在统一声明 HTML、PDF、DOCX 与 EPUB。日常 PR / `main` 流程仍然只渲染并发布 HTML；需要校对、离线阅读或出版准备时，可以手动运行 `Build Publication Formats` workflow，一次生成 PDF、DOCX 和 EPUB artifact。
+`_quarto.yml` 现在只保存共享母配置，并把 `web` 设为默认 profile。日常 PR / `main` 流程只渲染并发布 `_quarto-web.yml` 定义的 HTML；需要校对、离线阅读或出版准备时，手动运行 `Build Publication Format` workflow，并明确选择 EPUB、PDF、DOCX 或 LaTeX 中的一种。
 
-这些 artifact 与 HTML 使用完全相同的 `index.qmd`、`manuscript/*.qmd` 和 `references.bib`，不会形成第二套正文。手动构建成功也不自动代表正式 release 已获批准；正式版本状态见 `docs/release-status.zh-CN.md`。
+这些 artifact 与 HTML 使用完全相同的 `index.qmd`、`manuscript/*.qmd` 和 `references.bib`，不会形成第二套正文。Web 输出位于 `_book/`，按需格式位于 `_publication/<format>/`。手动构建成功也不自动代表正式 release 已获批准；正式版本状态见 `docs/release-status.zh-CN.md`。
+
+## PPF 与 Cloudflare 迁移状态
+
+本项目采用 Personal Publishing Framework v0.1.0-draft 作为出版生命周期框架，具体 contract 见 `publishing.yaml`，采用说明见 `docs/ppf-adoption.md`。
+
+Phase 1 保留 GitHub Pages 作为现有生产站点，用于真实验证 profile-based 构建与 CI。`wrangler.jsonc` 已准备 Cloudflare Workers Static Assets 的目标配置，但当前**不代表 Cloudflare 已经上线**。只有在 Worker target、凭据、canonical URL、preview verification 以及旧 Pages URL 的 redirect/canonical policy 均确认后，才进入 Phase 2 cutover。
 
 ## CI 与部署
 
@@ -112,10 +118,10 @@ Pull Request 阶段：
 - 验证 bibliography citation keys、DOI/URL 元数据与项目结构
 - 检查开放阅读、反馈入口和左右目录标签等 reader-facing 配置
 - 安装 Quarto
-- 完整渲染 HTML
+- 使用 `web` profile 完整渲染 HTML
 - 验证全站内部链接、静态资源、页面锚点与重复 HTML ID
 - 验证关键 HTML 页面和关键阅读界面元素存在
-- 验证没有意外生成 EPUB/PDF/DOCX
+- 验证没有意外生成 EPUB/PDF/DOCX/LaTeX
 
 合并到 `main` 后，在上述验证全部通过之后，工作流会把同一次构建得到的 `_book/` 作为 GitHub Pages artifact 部署。部署不通过脚本强推 `gh-pages` 分支。外部 HTTP 可达性由独立审计处理：相关内容进入 `main` 后即时运行，并另有每周与手动触发；它不把第三方网站的临时故障混入 Pages 发布门禁。
 

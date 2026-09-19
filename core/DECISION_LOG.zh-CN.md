@@ -101,3 +101,24 @@
 - 排版与网页阅读逻辑可以参考 `What-Remains-Human...`，但不复制其私有 Cloudflare 发布方式，也不移植与本项目书目结构不兼容的 citation interaction。
 
 **实现状态：** implementing in current branch.
+
+
+---
+
+## 2026-09-19 — D006 — 采用 Personal Publishing Framework 作为出版生命周期框架
+
+**来源：** 人类作者确认前述 AHICP / PPF /个人治理架构及 PPF reference implementation，并明确要求继续实施。  
+**分类：** FORM / PROTOCOL。  
+**决定：**
+
+- 本项目作为第一个真实 downstream pilot，采用 **Personal Publishing Framework (PPF) v0.1.0-draft**；
+- 采用的 PPF 上游 commit 固定为 `9326920e1920d18f0a71eac26d4068da9d6bdffe`，未来上游变化不自动成为本项目规则；
+- canonical source 继续是 `index.qmd`、`manuscript/*.qmd`、`references.bib` 及共享 Quarto metadata；
+- Quarto 配置改为 profile model：`web` 为默认 profile，EPUB / PDF / DOCX / LaTeX 为独立 on-demand profiles；
+- Web HTML 保持 continuous publication；其他格式只有在作者明确请求时才构建；
+- `BUILD` 不自动等于 `RELEASE`，`RELEASE` 也不自动等于外部平台发布；
+- Phase 1 继续使用现有 GitHub Pages 生产路径，以真实 PR/main CI 验证 PPF profile model；
+- `wrangler.jsonc` 仅用于 staging Cloudflare Workers Static Assets 实现；在 Worker target、凭据、canonical URL、preview 验证与 cutover/redirect policy 未确认前，不切断 GitHub Pages；
+- 本 PR 只迁移出版生命周期，不同时把 HARC-lite 项目治理迁移到 AHICP，以保持故障域与审计边界清楚。
+
+**实现状态：** implementing in `ppf-pilot-v0.1`.

@@ -12,6 +12,8 @@ on:
       - "manuscript/**"
       - "references.bib"
       - "_quarto.yml"
+      - "_quarto-web.yml"
+      - "publishing.yaml"
       - "book.css"
       - "project.yaml"
       - "website.yaml"
@@ -40,8 +42,8 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render HTML
-        run: quarto render --to html
+      - name: Render Web profile
+        run: quarto render --profile web
 
       - name: Audit external links
         run: python3 scripts/check_external_links.py --strict
