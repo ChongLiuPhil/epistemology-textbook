@@ -5,7 +5,7 @@
 **分支：** `ppf-pilot-v0.1`  
 **PR：** #20  
 **PPF：** v0.1.0-draft @ `9326920e1920d18f0a71eac26d4068da9d6bdffe`  
-**状态：** PASS — runtime profile validation completed
+**状态：** PASS — Phase 1 completed and main deployment verified
 
 ## 1. 审计目的
 
@@ -188,7 +188,57 @@ PR-only format validation workflow 已在四格式 runtime validation 完成后�
 
 1. ~~删除临时 PR-only format validation workflow；~~ `COMPLETED`
 2. ~~更新 Working Memory / adoption note 为 validation-complete；~~ `COMPLETED`
-3. 让最终 PR head 再通过正常 Governance + Web checks；
-4. 合并后验证 `main` GitHub Pages deployment 成功。
+3. ~~让最终 PR head 再通过正常 Governance + Web checks；~~ `COMPLETED / PASS`
+4. ~~合并后验证 `main` GitHub Pages deployment 成功。~~ `COMPLETED / PASS`
 
 Phase 1 不要求 Cloudflare cutover。
+
+
+## 10. Main merge and production-path verification
+
+PR #20 已合并：
+
+- merge commit：`96b91691bd776136e156c384eee619d52ff2e3a4`
+
+`main` push 验证：
+
+### Repository Governance CI
+
+- run：`35422349988`
+- conclusion：`success`
+
+### Quarto HTML CI and Pages
+
+- run：`35422349914`
+- source validation：PASS
+- `quarto render --profile web`：PASS
+- rendered HTML validation：PASS
+- Pages configuration：PASS
+- Pages artifact upload：PASS
+- `deploy-pages`：PASS
+
+### External Link Audit
+
+- run：`35422349888`
+- Web profile render：PASS
+- external-link audit：PASS
+
+通用网页读取工具无法直接读取该 GitHub Pages URL，因此本审计不声称完成了独立于 GitHub 的外部 HTTP 内容抓取。可确认的是：GitHub 平台侧 Pages production deployment 已成功，且仓库自身的外部链接审计通过。
+
+## 11. Phase 1 final conclusion
+
+**PASS — PPF Phase 1 is complete.**
+
+已验证的架构事实：
+
+`one canonical source -> continuous Web + explicit on-demand publication profiles`
+
+并且：
+
+- daily Web pipeline 不依赖 PDF/TeX；
+- EPUB/PDF/DOCX/LaTeX 不会自动构建或自动 release；
+- GitHub Pages 保持当前 production provider；
+- Cloudflare 保持 staged Phase 2 target；
+- HARC-lite collaboration governance 未被本轮 publishing migration 静默改写。
+
+下一步是 Cloudflare Phase 2 readiness，而不是直接 cutover。
