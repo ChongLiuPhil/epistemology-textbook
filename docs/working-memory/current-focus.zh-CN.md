@@ -4,11 +4,11 @@
 
 ## CURRENT_STAGE
 
-Content Quality — **PR #18 reconciliation merged / Chapter 1 review next**.
+Content Quality — **Chapter 1 review / Round 1 implemented / validation pending**.
 
 ## CURRENT_OBJECTIVE
 
-把项目主工作重心从已经完成的 publication infrastructure 转回教材质量：从第 1 章开始逐章进行学术、教学与引用审校。
+把项目主工作重心从已经完成的 publication infrastructure 转回教材质量：当前正在进行第 1 章学术、教学与引用审校。
 
 PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge `3e36d5dc015d8224ec6e6e98a952c5d77c872eee`）；旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
 
@@ -40,9 +40,10 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 合并当前 cleanup PR，清除 CONTRIBUTING 中最后两处旧 Pages workflow 措辞；
-2. 以当前 main 为基线开始 Chapter 1 academic / pedagogical / citation audit；
-3. 对审校发现的问题按普通 content/refs 修订处理；只有重大 Architecture 变化才重新进入人类确认。
+1. 验证 Chapter 1 Round 1：书目 integrity、Quarto render、citation/backlink、Web/Cloudflare contract；
+2. 若 PR 全绿，合并 Round 1；
+3. 继续 Chapter 1 深层审校：JTB/Gettier 论证准确性、章节负载与后续章节重复度；
+4. 若需要把大段内容迁移到第 3/5/7/9 章，先把它作为结构性提议提交人类确认，不在普通 content PR 中静默重排。
 
 ## PPF / DELIVERY BASELINE
 
@@ -61,3 +62,20 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 - Verified post-merge Cloudflare checkpoint check：`105904495866`;
 - Verified post-merge Cloudflare checkpoint Build ID：`93823dff-1206-4282-b037-24876840f0c6`;
 - deployment/security line is stable maintenance, not the current development objective.
+
+
+## CHAPTER 1 ROUND 1 FINDINGS
+
+本轮已直接修复：
+
+- 实验哲学不再暗示“文化差异必然很大”，同时加入早期差异研究与后续跨文化 Gettier 稳定性研究；
+- JTB “两千年传统定义”历史叙事加入专门历史文献；
+- 许可主义/唯一论加入直接基础文献；
+- 认识价值小节补入理解与认识价值文献；
+- 第 1 章中对第 3/5/7/9 章内容的提前展开增加前瞻链接；
+- “自然主义与规范性 / 自然化解释与规范评价”重复内容做局部压缩。
+
+结构观察（尚未授权迁移）：
+
+- 第 1 章仍然承担部分认识规范、分歧、认识价值、实验/比较方法与知识优先内容；
+- 是否进一步移动这些高级材料属于跨章 Architecture 问题，暂不在 Round 1 中处理。
