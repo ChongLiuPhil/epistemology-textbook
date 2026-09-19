@@ -26,8 +26,8 @@ Runtime evidence：
 
 ## NEXT ACTIONS
 
-1. 删除临时 PR-only format validation workflow。
-2. 更新 adoption note 为 Phase 1 runtime validation complete。
+1. ~~删除临时 PR-only format validation workflow。~~ `COMPLETED`
+2. ~~更新 adoption note 为 Phase 1 runtime validation complete。~~ `COMPLETED`
 3. 最终 PR head 再跑正常 Governance + Web checks。
 4. checks PASS 后合并 PR #20。
 5. 验证 `main` Pages deployment 与公开网页。
