@@ -11,6 +11,7 @@
 
 ## COMPLETED PPF TASKS
 
+- `WM-T027` — adopt PPF visibility/access/canonical-identity semantics — `IMPLEMENTED / VALIDATION-PENDING`
 - `WM-T021` — Cloudflare account-side staging context — `COMPLETED / STAGING-PASS`
 - `WM-T022` — Cloudflare staging runbook + least-privilege deployment model — `COMPLETED`
 - `WM-T020` — PPF Phase 2 Cloudflare repository readiness — `COMPLETED / PASS`
@@ -57,7 +58,8 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
+1. 完成本轮 PPF `21a53607...` downstream adoption 的 CI validation；通过后把 WM-T027 标记为 validated。
+2. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
 2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
 3. Profile A 已由人类选择；保留 Workers Builds native / managed user token，并记录 broad-scope risk acceptance。
 4. target canonical URL 已选择 workers.dev；Custom Domain 路线 N/A；现在只处理 GitHub Pages legacy policy 与其后的 canonical migration verification。
