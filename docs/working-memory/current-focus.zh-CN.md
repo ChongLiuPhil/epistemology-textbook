@@ -51,7 +51,7 @@ Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocke
 
 当前剩余 blocker：
 
-- non-production preview build 仍在运行；
+- non-production non-production preview build 已通过；
 - 当前 ChatGPT Web/HTTP 工具无法直接抓取新 workers.dev endpoint，因此页面内容验证尚未由 AI 自动完成；
 - Cloudflare-managed build token 的最小权限安全审计尚未完成；
 - Custom Domain / canonical URL / GitHub Pages legacy policy 尚未决定。
@@ -59,8 +59,8 @@ Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocke
 ## IMMEDIATE_NEXT_ACTION
 
 1. main Workers Build 已通过 GitHub Cloudflare check 自动验证；
-2. 等待 preview probe branch 的 Cloudflare build 完成；
-3. preview PASS 后删除 probe branch；
+2. non-production preview build 已通过 GitHub Cloudflare check 自动验证；
+3. 清理临时 preview probe branch；
 4. 完成 workers.dev 页面内容验证；
 5. 对 Cloudflare-managed build token 做最小权限审计；
 6. staging 全部 PASS 后再进入 Custom Domain / canonical URL / Pages legacy policy。
@@ -83,5 +83,8 @@ Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocke
 - workers.dev staging：`https://epistemology-textbook.philosophy-research.workers.dev`
 - main Cloudflare Build ID：`d6bc8b62-78ba-4a9e-98ea-7a049a539858`
 - preview probe Build ID：`a12446a5-e341-48e4-8c22-1a184b1102c8`
+- preview Version ID：`3f8a15d6-9994-4e90-839c-2144c8dc54b7`
+- preview URL：`https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev`
+- preview Alias：`https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev`
 
 当前阶段不得修改 DNS、绑定正式 Custom Domain、停用 GitHub Pages 或把 token 写入仓库。
