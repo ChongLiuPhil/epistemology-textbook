@@ -5,7 +5,7 @@
 ## ACTIVE TASKS
 
 - `WM-T029` — reconcile PR #18 content/form improvements with current PPF/Workers baseline — `COMPLETED / MAIN-MERGED`
-- `WM-T030` — Chapter 1 academic / pedagogical / citation review — `READY / NEXT`
+- `WM-T030` — Chapter 1 academic / pedagogical / citation review — `IN-PROGRESS / ROUND1-IMPLEMENTED / VALIDATION-PENDING`
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
@@ -66,9 +66,10 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. Merge the final cleanup PR that removes the last two legacy Pages phrases from CONTRIBUTING.md.
-2. Start WM-T030 on Chapter 1: problem-function, argument reconstruction, counterexamples, citation support, pedagogy, and prose quality.
-3. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
+1. Validate and merge WM-T030 Round 1.
+2. Continue Chapter 1 deep review after Round 1: JTB/Gettier accuracy, argument reconstruction, citation support, pedagogy, and chapter load.
+3. Treat any proposal to move substantial material into Chapters 3/5/7/9 as a structural proposal requiring explicit human approval.
+4. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
@@ -132,10 +133,14 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-- Begin WM-T030 Chapter 1 academic/pedagogical/citation review after the final documentation cleanup merges.
+- WM-T030 Round 1 implemented: experimental-philosophy nuance/citations, JTB-history source, permissivism source, epistemic-value citations, cross-chapter scope cues, and naturalism de-duplication; validation pending.
 - During chapter review, flag passages that catalogue thinkers/schools without a clear problem-function.
 - If a formal publisher or print specification is later chosen, add provider/channel-specific PDF layout constraints without changing canonical manuscript semantics.
 - No further routing/cutover task is active.
+
+## STRUCTURAL WATCH
+
+- `AI-PROPOSED / NOT-AUTHORIZED` — evaluate whether advanced material currently in Chapter 1 should later be redistributed to Chapters 3/5/7/9. Do not move sections without explicit human architecture approval.
 
 ## SYNC DEFECTS
 
