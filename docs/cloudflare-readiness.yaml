@@ -1,55 +1,84 @@
-schema_version: 1
+schema_version: 2
 reviewed_at: 2026-09-19
 
 provider:
   current: github-pages
   target: cloudflare-workers
 
+integration:
+  preferred_mode: workers-builds-git
+  contract: cloudflare-builds.yaml
+  external_ci_fallback: github-actions-wrangler
+
 repository:
-  status: ready-for-account-side-staging
+  status: workers-builds-contract-ready
+  canonical_publish_gate: "make web-publish-check"
+  cloudflare_build_wrapper: scripts/cloudflare_build.sh
   web_profile: _quarto-web.yml
   web_output: _book
   wrangler_config: wrangler.jsonc
   worker_name: epistemology-textbook
   static_assets_directory: ./_book
-  active_cloudflare_deploy_workflow: false
+  active_github_actions_cloudflare_deploy: false
+
+toolchain:
+  node: "24"
+  wrangler: "4.135.0"
+  quarto: "1.10.18"
 
 permission_model:
-  provisioning:
-    create_worker: workers-product-admin-required
-    custom_domain_change: worker-editor-plus-zone-workers-routes-write
-    long_lived: false
-  continuous_deployment:
+  ai_account_control:
+    preferred: cloudflare-oauth-mcp
+    api_mcp: "https://mcp.cloudflare.com/mcp"
+    builds_mcp: "https://builds.mcp.cloudflare.com/mcp"
+  github_connection:
+    mechanism: cloudflare-workers-pages-github-app
+    repository_scope: selected-repositories-only
+  workers_builds:
+    default_build_token: allowed-with-security-review
+    restricted_user_token: preferred-for-hardened-setup
+  external_ci_fallback:
     target_scope: individual-worker
     role: editor
-    zone_route_write_required: false-if-domain-provisioned-separately
+    long_lived: false-unless-workers-builds-unavailable
 
 staging:
-  strategy: target-worker-on-workers-dev-before-custom-domain
+  strategy: workers-builds-preview-before-production-cutover
   runbook: docs/cloudflare-staging-runbook.zh-CN.md
-  workflow_example: docs/examples/cloudflare-staging-workflow.yml
-  executable_workflow_enabled: false
+  human_handoff: docs/cloudflare-human-authorization.zh-CN.md
+  workers_builds_contract: cloudflare-builds.yaml
+  github_actions_deploy_enabled: false
 
 account_side:
   status: unverified
+  cloudflare_oauth_mcp: unavailable-in-current-session
   cloudflare_account: unverified
+  github_app: unverified
+  repository_connection: unverified
   worker_target: unverified
-  github_secret_CLOUDFLARE_ACCOUNT_ID: unverified
-  github_secret_CLOUDFLARE_API_TOKEN: unverified
+  production_trigger: unverified
+  preview_trigger: unverified
+  build_token: unverified
   cloudflare_zone: unverified
   target_canonical_url: unresolved
 
 validation:
-  preview_deployment: not-run
+  github_canonical_publish_gate: pending-this-pr
+  workers_builds_contract: pending-this-pr
+  first_preview_build: not-run
+  workers_dev_http: not-run
   production_deployment: not-run
   production_http_verification: not-run
 
 cutover:
   status: blocked
   blockers:
-    - cloudflare-account-access
+    - cloudflare-oauth-or-account-access
+    - cloudflare-github-app-authorization
+    - repository-connection
     - worker-target
-    - deployment-credentials
+    - workers-builds-triggers
+    - build-token
+    - first-preview-build
     - target-canonical-url
-    - preview-deployment
     - redirect-or-canonical-policy
