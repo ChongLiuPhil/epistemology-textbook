@@ -94,8 +94,9 @@ Profile B 已经推进到当前无新 credential 条件下的可验证极限；�
 - GitHub Web validation run：`35427051858`
 - Cloudflare Build Contract run：`35427051853`
 - Runtime HTTP verification run：`35431565729`
-- Latest post-merge Cloudflare check：`105867581534`
-- Latest post-merge Cloudflare Build ID：`6eb6fb9a-34c0-4605-8670-98aea31fe2a5`
+- Verified post-merge Cloudflare checkpoint check：`105904495866`
+- Verified post-merge Cloudflare checkpoint Build ID：`93823dff-1206-4282-b037-24876840f0c6`
+- Verified checkpoint project revision：`71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15`
 - Build-token security audit：`docs/cloudflare-build-token-security.zh-CN.md`
 - Staging runbook：`docs/cloudflare-staging-runbook.zh-CN.md`
 - Human authorization guide：`docs/cloudflare-human-authorization.zh-CN.md`

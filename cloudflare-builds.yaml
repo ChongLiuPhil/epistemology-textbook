@@ -52,11 +52,11 @@ validation:
     workflow_run: 35431565729
     main_endpoint: passed
     preview_endpoint: passed
-  latest_main_build:
+  verified_main_build_checkpoint:
     status: passed
-    git_commit: "f79e202c46eccf6868debf585e2d8ba2dfb9eb51"
-    github_check_id: 105867581534
-    cloudflare_build_id: "6eb6fb9a-34c0-4605-8670-98aea31fe2a5"
+    git_commit: "71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15"
+    github_check_id: 105904495866
+    cloudflare_build_id: "93823dff-1206-4282-b037-24876840f0c6"
   production_trigger_activation: staging-only
 
 security:
