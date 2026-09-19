@@ -173,7 +173,14 @@ def check_publication_contract() -> None:
         'cloudflare_build_id: "42aa93fe-d9b6-49e4-80be-a849951a6b9d"',
         "legacy_retirement:",
         "policy: retire",
-        "status: pending-unpublish",
+        "status: complete-human-confirmed",
+        "unpublish:",
+        "status: human-confirmed",
+        "confirmed_at: 2026-09-20",
+        "actor: repository-owner",
+        "independent_http_verification:",
+        "status: unavailable-current-session",
+        "blockers: []",
     ):
         require(READINESS, marker)
 
@@ -267,7 +274,7 @@ def check_publication_contract() -> None:
         "target_production_url: null",
         "canonical_url: active-workers-dev",
         "custom_domain: not-applicable",
-        "github_pages_retirement: selected-retire-pending-unpublish",
+        "github_pages_retirement: complete-human-confirmed",
     ):
         require(PUBLISHING, marker)
 
@@ -362,10 +369,10 @@ def check_human_readable_state_reconciliation() -> None:
     if "status: connected-production-active" in machine:
         human = READINESS_DOC.read_text(encoding="utf-8")
         required_human_markers = (
-            "CLOUDFLARE-CANONICAL-ACTIVE-VERIFIED / PAGES-RETIREMENT-PENDING",
+            "CLOUDFLARE-CANONICAL-ACTIVE-VERIFIED / PAGES-RETIREMENT-HUMAN-CONFIRMED",
             "Current canonical identity: workers.dev.",
             "Cloudflare production delivery: ACTIVE / VERIFIED.",
-            "GitHub Pages legacy policy: RETIRE / CURRENT DEPLOYMENT UNPUBLISH PENDING.",
+            "GitHub Pages legacy policy: RETIRE / UNPUBLISH HUMAN-CONFIRMED.",
             "candidate / validate-only PASS",
             "不是 production-tested",
         )
@@ -410,6 +417,7 @@ def check_human_readable_state_reconciliation() -> None:
         "Web access mode = none",
         "current canonical identity = workers.dev",
         "legacy GitHub Pages policy = retire",
+        "legacy unpublish = human-confirmed complete",
         "candidate / validate-only PASS",
     ):
         if marker not in adoption:
@@ -464,6 +472,7 @@ def check_human_readable_state_reconciliation() -> None:
         "Web access: `none`",
         "current canonical identity: workers.dev",
         "legacy GitHub Pages policy: `retire`",
+        "`Unpublish site` human-confirmed complete on 2026-09-20",
         "Verified cutover revision：`63510364ed40a97faf190c484dd80afc91971ecb`",
         "Verified cutover runtime run：`35453967021`",
         "Verified cutover Cloudflare provider check：`105926103705`",
@@ -490,9 +499,11 @@ def check_human_readable_state_reconciliation() -> None:
         "broad-scope risk acceptance",
         "WM-T027",
         "WM-T028",
+        "COMPLETED / HUMAN-CONFIRMED-UNPUBLISH",
         "GitHub Pages legacy policy — `RETIRE`",
         "Custom Domain — N/A for workers.dev canonical",
         "- [x] post-cutover production verification",
+        "- [x] GitHub Pages current deployment unpublish — repository-owner human-confirmed",
     ):
         if marker not in task_plan:
             fail(f"Task Plan is missing Profile A completion marker: {marker}")
@@ -519,13 +530,21 @@ def check_human_readable_state_reconciliation() -> None:
         "cutover:\n  status: complete",
         "legacy_retirement:",
         "policy: retire",
-        "status: pending-unpublish",
-        "- github-pages-unpublish",
+        "status: complete-human-confirmed",
+        "unpublish:",
+        "status: human-confirmed",
+        "confirmed_at: 2026-09-20",
+        "actor: repository-owner",
+        "independent_http_verification:",
+        "status: unavailable-current-session",
+        "blockers: []",
     ):
         if marker not in readiness_body:
-            fail(f"readiness state is missing verified cutover marker: {marker}")
+            fail(f"readiness state is missing completed legacy-retirement marker: {marker}")
     if "- post-cutover-runtime-verification" in readiness_body:
         fail("post-cutover runtime blocker must be removed after verified canonical activation")
+    if "- github-pages-unpublish" in readiness_body:
+        fail("GitHub Pages unpublish blocker must be removed after owner confirmation")
 
     quarto_web = QUARTO_WEB.read_text(encoding="utf-8")
     if 'site-url: "https://epistemology-textbook.philosophy-research.workers.dev/"' not in quarto_web:
@@ -572,7 +591,7 @@ def main() -> None:
         "and verified Workers Builds connection state are mutually consistent; "
         "the hardened external-CI candidate is constrained to validate/manual modes; "
         "workers.dev is the verified canonical production target; GitHub Pages "
-        "deployment is retired from normal CI and awaits provider-side unpublish."
+        "deployment is retired from normal CI and its unpublish is human-confirmed complete."
     )
 
 
