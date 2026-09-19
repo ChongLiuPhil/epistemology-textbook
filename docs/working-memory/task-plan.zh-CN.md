@@ -4,10 +4,11 @@
 
 ## ACTIVE TASKS
 
-- `WM-T020` — PPF Phase 2 Cloudflare repository readiness — `REPOSITORY-READY / CI-VERIFYING`
 - `WM-T021` — Cloudflare account-side staging context — `WAITING-EXTERNAL-ACCESS`
 
 ## COMPLETED PPF TASKS
+
+- `WM-T020` — PPF Phase 2 Cloudflare repository readiness — `COMPLETED / PASS`
 
 - `WM-T013` — PPF profile/source separation — `COMPLETED`
 - `WM-T014` — PPF publication contract + staged Cloudflare config — `COMPLETED`
@@ -25,7 +26,7 @@ Repository side:
 - [x] machine-readable readiness state
 - [x] readiness validator
 - [x] no active Cloudflare deploy workflow before prerequisites
-- [ ] readiness PR CI PASS
+- [x] readiness PR CI PASS
 
 Account side:
 - [ ] Cloudflare account access verified
@@ -41,7 +42,7 @@ Account side:
 
 ## NEXT ACTIONS
 
-1. Merge repository-side readiness only after Governance/Web CI PASS.
+1. Merge repository-side readiness.
 2. Keep GitHub Pages as current production.
 3. Establish Cloudflare account-side access/context.
 4. Perform staging/preview deployment.
