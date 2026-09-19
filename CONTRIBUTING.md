@@ -1,6 +1,6 @@
 # 编辑与贡献约定
 
-本项目以 Quarto `.qmd` 作为唯一正式书稿格式。当前阶段是 **Web Edition Development**：一套 canonical QMD sources 经过检查后生成 HTML；进入 `main` 的修改还必须落实为 GitHub Pages 上实际可阅读的网页。
+本项目以 Quarto `.qmd` 作为唯一正式书稿格式。当前阶段是 **Web Edition Development**：一套 canonical QMD sources 经过检查后生成 HTML；进入 `main` 的修改还必须通过 canonical Web gate，并由 Cloudflare Workers Builds 落实为 workers.dev 上实际可阅读的网页。
 
 ## 1. 编辑哪些文件
 
@@ -19,7 +19,7 @@
 
 ### 保持问题驱动
 
-每章围绕明确问题推进，而不是把人物、流派或术语简单并列。新增内容应说明它解决什么问题、反驳什么主张，或改变哪一步推理。
+每章围绕明确问题推进，而不是把人物、流派或术语简单并列。新增内容应说明它解决什么问题、反驳什么主张，或改变哪一步推理。哲学家思想、思想史或哲学史材料进入正文时，也应说明它在当前哲学问题中承担什么功能；历史归属本身不能替代论证。
 
 本项目首先是学习、整合与梳理工程，不以制造作者原创理论为目标。哲学家、流派与思想史材料进入教材，是因为它们有助于理解问题、理由、反例与争论，而不是因为“哲学研究”等同于整理前人观点。作者自己的组织性或评价性判断应尽量与被介绍文献的原始立场区分。
 
@@ -118,17 +118,17 @@ Pull Request 应说明改动内容、理由、是否改变章节结构或核心�
 
 ## 9. CI 与网页发布
 
-本项目当前处于 PPF Pilot Phase 1。GitHub Pages 仍是生产 Web provider；Cloudflare Workers Static Assets 配置只处于 staged 状态。不要把 `wrangler.jsonc` 的存在解释为已经完成 Cloudflare cutover。
+当前 canonical Web production provider 是 Cloudflare Workers。Pull Request 阶段只验证，不对外切换 canonical publication；进入 `main` 后，GitHub Actions 重新执行 source/bibliography/rendered-HTML checks，Cloudflare Workers Builds 从同一 repository state 运行 `make web-publish-check` 并更新 workers.dev production。
 
+`make web-publish-check` 是唯一 canonical Web publication quality gate。GitHub Actions 与 Cloudflare 都调用这个 gate，不维护两套平行验证逻辑。
 
-Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、bibliography integrity checks、`web` profile 的完整 HTML render 与全站内部链接/锚点检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
+仓库另有独立的 `External Link Audit`。相关书稿、书目、网页配置或审计脚本进入 `main` 后会自动运行，并保留每周/手动触发。只有明确的 HTTP 404/410 被视为断链失败，认证、限流、服务器错误和网络异常作为 warning 留给维护者复核。
 
-仓库另有独立的 `External Link Audit`。相关书稿、书目、网页配置或审计脚本进入 `main` 后会自动运行，并保留每周/手动触发。它不参与正常 Pages 发布门禁；只有明确的 HTTP 404/410 会被标记为断链失败，认证、限流、服务器错误和网络异常作为 warning 留给维护者复核。
+PDF / DOCX / EPUB / LaTeX 只通过 `Build Publication Format` workflow 按 profile、一次一种格式生成。它们继续使用同一套 canonical QMD sources；构建 artifact 不自动等于正式 Release Approval。
 
-因此，一次网页相关修改的完成标准不是“QMD 已修改”或“CI 能 render”，而是：修改进入 `main`、主分支 CI 通过、Pages deployment 成功，公开网页能够显示新的书籍版本。
+因此，一次网页相关修改的完成标准是：修改进入 `main`、canonical Web gate 通过、Workers Builds 成功、workers.dev runtime 保持可读。GitHub Pages 已按 `RETIRE` policy 退出当前发布路径。
 
-在线阅读地址：<https://chongliuphil.github.io/epistemology-textbook/>
-
+在线阅读地址：<https://epistemology-textbook.philosophy-research.workers.dev/>
 
 ## 10. HARC-lite 协作与高影响修改
 
