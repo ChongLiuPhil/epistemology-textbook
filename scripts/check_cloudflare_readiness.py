@@ -331,9 +331,11 @@ def check_human_readable_state_reconciliation() -> None:
                     f"{stale}"
                 )
 
+    require(PUBLISHING, "adopted_commit: 9326920e1920d18f0a71eac26d4068da9d6bdffe")
+
     adoption = ADOPTION_DOC.read_text(encoding="utf-8")
     for marker in (
-        "Adopted framework commit: `9326920e1920d18f0a71eac26d4068da9d6bdffe`",
+        "9326920e1920d18f0a71eac26d4068da9d6bdffe",
         "NOT ADOPTED",
         "does **not** silently follow PPF `main`",
         "candidate / validate-only PASS",
