@@ -9,6 +9,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "_quarto.yml"
+WEB_CONFIG = ROOT / "_quarto-web.yml"
+PROFILE_CONFIGS = {
+    "pdf": ROOT / "_quarto-pdf.yml",
+    "docx": ROOT / "_quarto-docx.yml",
+    "epub": ROOT / "_quarto-epub.yml",
+    "latex": ROOT / "_quarto-latex.yml",
+}
+PUBLISHING = ROOT / "publishing.yaml"
+WRANGLER = ROOT / "wrangler.jsonc"
 BIB = ROOT / "references.bib"
 MANUSCRIPT = ROOT / "manuscript"
 MAKEFILE = ROOT / "Makefile"
@@ -43,6 +52,10 @@ EXPECTED = [
 REQUIRED_PROJECT_FILES = [
     ROOT / "index.qmd",
     CONFIG,
+    WEB_CONFIG,
+    *PROFILE_CONFIGS.values(),
+    PUBLISHING,
+    WRANGLER,
     BIB,
     MAKEFILE,
     ROOT / "book.css",
@@ -88,29 +101,37 @@ def require_project_structure() -> None:
         fail("missing .github/workflows/ directory")
 
     ignored = GITIGNORE.read_text(encoding="utf-8")
-    for entry in ("_book/", ".quarto/"):
+    for entry in ("_book/", "_publication/", ".quarto/"):
         if entry not in ignored:
             fail(f"build output is not ignored by .gitignore: {entry}")
 
 
 def check_quarto_config(config: str) -> None:
-    if not re.search(r"(?m)^project:\s*\n(?:.*\n)*?\s{2}type:\s*book\s*$", config):
+    if not re.search(r"(?m)^project:\\s*\\n(?:.*\\n)*?\\s{2}type:\\s*book\\s*$", config):
         fail("_quarto.yml is not configured as a Quarto book")
 
-    if not re.search(r"(?m)^format:\s*$", config):
-        fail("_quarto.yml has no format section")
+    if not re.search(r"(?ms)^profile:\\s*\\n\\s{2}default:\\s*web\\s*$", config):
+        fail("_quarto.yml does not declare web as the default profile")
 
-    for output_format in ("html", "pdf", "docx", "epub"):
-        if not re.search(rf"(?m)^\s{{2}}{output_format}:\s*$", config):
-            fail(f"Quarto publication format is not configured: {output_format}")
-
-    if re.search(r"(?mi)^\s*downloads:\s*", config):
-        fail("automatic download links are not enabled during continuous Web Edition development")
-
-    required_markers = {
+    required_base_markers = {
         "root bibliography": "bibliography: references.bib",
         "Chinese language": "lang: zh-CN",
         "book author": 'author: "Chong Liu"',
+        "book output name": 'output-file: "how-do-we-know"',
+    }
+    for label, marker in required_base_markers.items():
+        if marker not in config:
+            fail(f"{label} is missing from _quarto.yml")
+
+    canonical_paths = ["index.qmd"] + [f"manuscript/{name}" for name in EXPECTED]
+    for rel_path in canonical_paths:
+        if rel_path not in config:
+            fail(f"_quarto.yml does not include canonical source: {rel_path}")
+
+    web = WEB_CONFIG.read_text(encoding="utf-8")
+    required_web_markers = {
+        "Web output directory": "output-dir: _book",
+        "HTML format": "  html:",
         "public site URL": 'site-url: "https://chongliuphil.github.io/epistemology-textbook/"',
         "source repository": 'repo-url: "https://github.com/ChongLiuPhil/epistemology-textbook"',
         "reader feedback/source actions": "repo-actions: [issue, source]",
@@ -122,14 +143,53 @@ def check_quarto_config(config: str) -> None:
         "page footer": "page-footer:",
         "stable open-reading URL": OPEN_READING_URL,
     }
-    for label, marker in required_markers.items():
-        if marker not in config:
-            fail(f"{label} is missing from _quarto.yml")
+    for label, marker in required_web_markers.items():
+        if marker not in web:
+            fail(f"{label} is missing from _quarto-web.yml")
 
-    canonical_paths = ["index.qmd"] + [f"manuscript/{name}" for name in EXPECTED]
-    for rel_path in canonical_paths:
-        if rel_path not in config:
-            fail(f"_quarto.yml does not include canonical source: {rel_path}")
+    expected_profiles = {
+        "pdf": ("_publication/pdf", "  pdf:"),
+        "docx": ("_publication/docx", "  docx:"),
+        "epub": ("_publication/epub", "  epub:"),
+        "latex": ("_publication/latex", "  latex:"),
+    }
+    for profile, (output_dir, format_marker) in expected_profiles.items():
+        body = PROFILE_CONFIGS[profile].read_text(encoding="utf-8")
+        if f"output-dir: {output_dir}" not in body:
+            fail(f"{profile} profile has wrong output directory")
+        if format_marker not in body:
+            fail(f"{profile} profile does not configure its expected format")
+
+    combined = config + "\n" + web
+    if re.search(r"(?mi)^\\s*downloads:\\s*", combined):
+        fail("automatic download links are not enabled during continuous Web Edition development")
+
+
+def check_ppf_contract() -> None:
+    publishing = PUBLISHING.read_text(encoding="utf-8")
+    required = {
+        "PPF schema": "schema: ppf/v0.1",
+        "PPF source": "ChongLiuPhil/Personal-Publishing-Framework",
+        "continuous Web mode": "mode: continuous",
+        "on-demand mode": "mode: on-demand",
+        "current Pages provider": "current_provider: github-pages",
+        "target Cloudflare provider": "target_provider: cloudflare-workers",
+        "staged migration": "migration_status: staged",
+        "explicit release": "require_explicit_release: true",
+    }
+    for label, marker in required.items():
+        if marker not in publishing:
+            fail(f"{label} is missing from publishing.yaml")
+
+    for profile in ("epub", "pdf", "docx", "latex"):
+        pattern = rf"(?ms)^  {profile}:.*?mode:\\s*on-demand"
+        if not re.search(pattern, publishing):
+            fail(f"publishing.yaml does not declare {profile} as on-demand")
+
+    wrangler = WRANGLER.read_text(encoding="utf-8")
+    for marker in ('"name": "epistemology-textbook"', '"directory": "./_book"'):
+        if marker not in wrangler:
+            fail(f"wrangler.jsonc is missing staged Cloudflare setting: {marker}")
 
 
 def check_active_build_files() -> None:
@@ -185,7 +245,7 @@ def check_active_build_files() -> None:
 def check_pages_deployment() -> None:
     workflow = PAGES_WORKFLOW.read_text(encoding="utf-8")
     required_markers = {
-        "HTML-only daily render": "quarto render --to html",
+        "Web-profile daily render": "quarto render --profile web",
         "official Pages configuration": "actions/configure-pages@",
         "Pages artifact upload": "actions/upload-pages-artifact@",
         "Pages deployment": "actions/deploy-pages@",
@@ -207,11 +267,14 @@ def check_publication_workflow() -> None:
     workflow = PUBLICATION_WORKFLOW.read_text(encoding="utf-8")
     required_markers = {
         "manual trigger": "workflow_dispatch:",
-        "PDF render": "quarto render --to pdf",
-        "DOCX render": "quarto render --to docx",
-        "EPUB render": "quarto render --to epub",
+        "format input": "format:",
+        "EPUB option": "- epub",
+        "PDF option": "- pdf",
+        "DOCX option": "- docx",
+        "LaTeX option": "- latex",
+        "profile render": 'quarto render --profile "${{ inputs.format }}"',
+        "PPF publication directory": '_publication/${{ inputs.format }}/',
         "publication artifact upload": "actions/upload-artifact@",
-        "artifact directory": "build-artifacts",
     }
     for label, marker in required_markers.items():
         if marker not in workflow:
@@ -222,12 +285,15 @@ def check_publication_workflow() -> None:
         "actions/create-release@",
         "softprops/action-gh-release",
         "gh release create",
+        "quarto render --to pdf",
+        "quarto render --to docx",
+        "quarto render --to epub",
     )
     for marker in forbidden_markers:
         if marker in workflow:
             fail(
-                "manual publication-format build must not publish a release automatically: "
-                f"{marker}"
+                "manual publication-format build must remain profile-based and must not "
+                f"publish a release automatically: {marker}"
             )
 
 
@@ -332,6 +398,7 @@ def main() -> None:
     require_project_structure()
     config = CONFIG.read_text(encoding="utf-8")
     check_quarto_config(config)
+    check_ppf_contract()
     check_active_build_files()
     check_pages_deployment()
     check_publication_workflow()
@@ -342,9 +409,10 @@ def main() -> None:
     print(
         "Quarto source check passed: "
         f"{len(files)} canonical QMD files, {cited_count} cited keys, "
-        f"{bib_count} bibliography entries; HTML/PDF/DOCX/EPUB share one Quarto source, "
-        "daily CI deploys only integrity-checked HTML to GitHub Pages, publication formats "
-        "are build-only manual artifacts, and reader navigation/feedback remain configured."
+        f"{bib_count} bibliography entries; PPF profiles share one canonical Quarto source, "
+        "daily CI deploys only integrity-checked Web HTML to GitHub Pages during Phase 1, "
+        "EPUB/PDF/DOCX/LaTeX remain explicit on-demand build artifacts, and "
+        "reader navigation/feedback remain configured."
     )
 
 
