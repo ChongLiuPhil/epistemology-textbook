@@ -4,11 +4,11 @@
 
 ## CURRENT_STAGE
 
-Content Quality — **Chapter 1 review / Round 1 main-verified / Round 2 implemented / validation pending**.
+Content Quality — **Chapter 1 review COMPLETE / Chapter 2 review next**.
 
 ## CURRENT_OBJECTIVE
 
-把项目主工作重心从已经完成的 publication infrastructure 转回教材质量：当前正在进行第 1 章学术、教学与引用审校。
+把项目主工作重心保持在教材质量：第 1 章两轮学术、教学与引用审校已完成，下一项是第 2 章审校。
 
 PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge `3e36d5dc015d8224ec6e6e98a952c5d77c872eee`）；旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
 
@@ -40,10 +40,10 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 验证 Chapter 1 Round 2：理论归属 citation、Quarto render、Web/Cloudflare contract；
-2. 若 PR 全绿，合并 Round 2；
-3. 继续 Chapter 1 深层审校：Gettier 原始案例、修补路线覆盖范围、教学负载与后续章节重复度；
-4. 若需要把大段内容迁移到第 3/5/7/9 章，先把它作为结构性提议提交人类确认，不在普通 content PR 中静默重排。
+1. 合并 Chapter 1 audit closure Working Memory PR；
+2. 以当前 main 为基线开始 Chapter 2 academic / pedagogical / citation audit；
+3. 第 2 章继续沿用“问题功能、论证重构、反例、citation 支持、教学层次、跨章重复度”同一检查框架；
+4. 只有发现会改变章节功能或全书路径的结构问题，才重新进入人类 Architecture 确认。
 
 ## PPF / DELIVERY BASELINE
 
@@ -99,3 +99,23 @@ Round 2 已实施：
 - 因果理论补 Goldman 原始来源；
 - safety 与 virtue/ability 路线分开表述，并关联 Sosa / Greco / Pritchard；
 - 增加到第二章的范围提示，避免第 1 章把怀疑论/反运气后续讨论伪装成完整处理。
+
+
+## CHAPTER 1 COMPLETION
+
+Round 2 main verification：
+
+- merge `db1914fb248a503e6dc84424310427bfba254966`;
+- Governance `35471217039` → PASS;
+- Quarto HTML `35471216984` → PASS;
+- Cloudflare Build Contract `35471217109` → PASS;
+- Cloudflare Runtime HTTP `35471217023` → PASS;
+- External Link Audit `35471217048` → PASS.
+
+Chapter 1 audit conclusion：
+
+- Gettier 原始两个案例与两项假设的复述未发现需要修正的实质错误；
+- JTB 历史叙事、实验哲学、许可主义、认识价值与主要修补路线的引用/归属已加强；
+- 自然主义重复段落已压缩；
+- 后续章节主题已通过前瞻链接标清范围；
+- 横向比较显示第 1 章虽较长，但第 2–5 章在篇幅与三级标题数量上处于相近区间，因此当前没有足够证据建议跨章迁移大段内容。
