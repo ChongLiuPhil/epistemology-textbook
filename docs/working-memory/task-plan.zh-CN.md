@@ -46,6 +46,15 @@ Production cutover:
 - [ ] GitHub Pages legacy policy
 - [ ] canonical URL migration
 
+## NEXT ACTIONS
+
+1. 让普通 Web CI 与 Cloudflare Build Contract CI 全部 PASS。
+2. 合并 Workers Builds 标准化仓库契约。
+3. 继续尝试 Cloudflare OAuth/MCP account context。
+4. account context 一旦可用，由 AI 根据 `cloudflare-builds.yaml` 自动创建/验证 Worker、repo connection、production/preview triggers 与 first preview build。
+5. 若当前 AI 客户端仍无法接 Cloudflare MCP，人类只执行授权指南中的必要授权步骤。
+6. workers.dev staging PASS 前不切 production。
+
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
 Preferred:
