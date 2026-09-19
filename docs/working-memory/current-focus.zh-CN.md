@@ -4,7 +4,7 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **Cloudflare account-side Workers Builds runtime validation**.
+Personal Publishing Framework — **Cloudflare Workers Builds staging complete / build-token hardening**.
 
 ## CURRENT_OBJECTIVE
 
@@ -49,20 +49,29 @@ Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocke
 - main production-branch trigger：真实 build PASS；
 - workers.dev endpoint：已分配。
 
-当前剩余 blocker：
+Cloudflare account-side staging 技术验证已经闭环：
 
-- main workers.dev 与 non-production preview 的 HTTP/content/runtime verification 已通过 GitHub Actions；
-- Cloudflare-managed build token 的最小权限安全审计尚未完成；
-- Custom Domain / canonical URL / GitHub Pages legacy policy 尚未决定。
+- GitHub App connection：PASS；
+- main Workers Build：PASS；
+- non-production preview：PASS；
+- main workers.dev runtime：PASS；
+- preview runtime：PASS；
+- 合并后的 main push 再次触发 Cloudflare Workers Build：PASS。
+
+当前剩余安全任务：
+
+- Cloudflare-managed default build token 的权限已经审计，确认比本项目实际需要更宽；
+- 理想长期权限为 existing Worker `Editor`，但 Workers Builds 与最新 per-Worker account-owned token model 的兼容路径仍需验证；
+- Custom Domain / canonical URL / GitHub Pages legacy policy 属于随后 cutover 阶段。
 
 ## IMMEDIATE_NEXT_ACTION
 
 1. main Workers Build 已通过 GitHub Cloudflare check 自动验证；
 2. non-production preview build 已通过 GitHub Cloudflare check 自动验证；
 3. workers.dev / preview runtime HTTP verification 已通过；
-4. 清理临时 preview probe branch；
-5. 对 Cloudflare-managed build token 做最小权限审计；
-6. account-side staging 技术验证闭环后，再进入 Custom Domain / canonical URL / Pages legacy policy。
+4. account-side staging 技术验证已闭环；
+5. 完成 build-token hardening compatibility validation；
+6. hardening 明确后，再进入 Custom Domain / canonical URL / Pages legacy policy。
 
 ## HANDOFF POINTERS
 
@@ -76,6 +85,9 @@ Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocke
 - GitHub Web validation run：`35427051858`
 - Cloudflare Build Contract run：`35427051853`
 - Runtime HTTP verification run：`35431565729`
+- Latest post-merge Cloudflare check：`105867581534`
+- Latest post-merge Cloudflare Build ID：`6eb6fb9a-34c0-4605-8670-98aea31fe2a5`
+- Build-token security audit：`docs/cloudflare-build-token-security.zh-CN.md`
 - Staging runbook：`docs/cloudflare-staging-runbook.zh-CN.md`
 - Human authorization guide：`docs/cloudflare-human-authorization.zh-CN.md`
 - Current production：GitHub Pages
