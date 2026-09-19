@@ -4,11 +4,11 @@
 
 ## CURRENT_STAGE
 
-Content Quality — **Chapter 1 review COMPLETE / Chapter 2 review next**.
+Content Quality — **Chapter 2 review ROUND 1 / validation pending**.
 
 ## CURRENT_OBJECTIVE
 
-把项目主工作重心保持在教材质量：第 1 章两轮学术、教学与引用审校已完成，下一项是第 2 章审校。
+把项目主工作重心保持在教材质量：第 1 章两轮审校已完成；当前正在做第 2 章学术、教学与引用审校 Round 1。
 
 PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge `3e36d5dc015d8224ec6e6e98a952c5d77c872eee`）；旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
 
@@ -31,7 +31,7 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## PRIMARY_BLOCKER
 
-无 infrastructure blocker，也无阻止第 1 章审校的 content blocker。
+无 infrastructure blocker，也无阻止第 2 章 Round 1 审校的 content blocker。
 
 仍存在但不阻塞书稿工作的 human clarifications：
 
@@ -40,9 +40,9 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 合并 Chapter 1 audit closure Working Memory PR；
-2. 以当前 main 为基线开始 Chapter 2 academic / pedagogical / citation audit；
-3. 第 2 章继续沿用“问题功能、论证重构、反例、citation 支持、教学层次、跨章重复度”同一检查框架；
+1. 验证 Chapter 2 Round 1 分支：Governance、canonical Web gate、Cloudflare contract/runtime、External Link Audit；
+2. 若通过，合并 Round 1；
+3. 再做一轮 Chapter 2 结构/重复度审计，重点检查怀疑论回应与反运气/风险案例是否存在不必要重复；
 4. 只有发现会改变章节功能或全书路径的结构问题，才重新进入人类 Architecture 确认。
 
 ## PPF / DELIVERY BASELINE
@@ -119,3 +119,25 @@ Chapter 1 audit conclusion：
 - 自然主义重复段落已压缩；
 - 后续章节主题已通过前瞻链接标清范围；
 - 横向比较显示第 1 章虽较长，但第 2–5 章在篇幅与三级标题数量上处于相近区间，因此当前没有足够证据建议跨章迁移大段内容。
+
+## CHAPTER 2 ROUND 1 FINDINGS
+
+本轮已直接修复：
+
+- 删除空的“三条回应路线”三级标题，改为路线地图式引导；
+- 标准问题补 Chisholm 直接来源；
+- 语境主义首轮介绍补 Cohen / DeRose / Lewis 直接文献，并把“相关可能性”与 speaker-context 标准变化区分得更清楚；
+- 把 Pritchard 的 epistemic angst 与 Sosa 的 animal / reflective knowledge 区分开，避免理论归属混合；
+- 闭合争论补 Dretske / Nozick / DeRose 文献锚点；
+- safety 首次出现补 Sosa / Pritchard，介入运气/环境运气补 Pritchard；
+- 修复彩票段落“通常敏感……所以不敏感”的自相矛盾笔误，明确开奖前基于概率的信念通常不敏感；
+- 收紧“概率化安全”表述，避免把 safety 简单等同于近邻区域真信念比例；
+- 德性认识论可靠主义/责任主义分支补 Greco / Sosa / Zagzebski；
+- 认识风险与 sensitivity/safety 系统比较补直接理论来源。
+
+结构观察（尚未授权迁移）：
+
+- 第 2 章前半先给怀疑论回应概览，后半“怎样与怀疑者交锋”再做深描，存在有意的 overview → seminar 重复；目前先保留教学层次，不直接删并；
+- 第 2 章后半将模态认识论延伸到工程鲁棒性、制度风险、人机系统，这与第 8 章存在潜在交叉；当前把它视为应用案例，不自动移动；
+- 若 Round 2 发现重复导致明显阅读负担，再提出局部压缩或跨章 Architecture proposal。
+
