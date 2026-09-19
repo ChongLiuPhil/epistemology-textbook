@@ -50,7 +50,7 @@ staging:
   github_actions_deploy_enabled: false
 
 account_side:
-  status: connected-staging-validation
+  status: connected-runtime-verified
   cloudflare_oauth_mcp: unavailable-in-current-session
   cloudflare_account: human-confirmed
   github_app: verified-via-github-checks
@@ -83,14 +83,23 @@ validation:
     version_id: "3f8a15d6-9994-4e90-839c-2144c8dc54b7"
     preview_url: "https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev"
     preview_alias_url: "https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev"
-  workers_dev_http: external-tool-unverified
+  workers_dev_http: passed-via-github-actions
   production_deployment: passed-as-cloudflare-workers-staging
-  production_http_verification: not-run
+  production_http_verification: passed-on-workers-dev-staging
+  runtime_http_verification:
+    workflow_run: 35431565729
+    main_endpoint:
+      status: passed
+      pages_checked: 5
+      local_assets_checked: 30
+    preview_endpoint:
+      status: passed
+      pages_checked: 5
+      local_assets_checked: 30
 
 cutover:
   status: blocked
   blockers:
-    - workers-dev-http-content-verification
     - build-token-security-review
     - target-canonical-url
     - redirect-or-canonical-policy
