@@ -28,6 +28,8 @@ INSTALLER = ROOT / "scripts" / "ensure_quarto.sh"
 BUILD_WRAPPER = ROOT / "scripts" / "cloudflare_build.sh"
 EXTERNAL_CI_CONTRACT = ROOT / "cloudflare-external-ci.yaml"
 EXTERNAL_CI_WORKFLOW = ROOT / ".github" / "workflows" / "cloudflare-external-ci.yml"
+HTML_WORKFLOW = ROOT / ".github" / "workflows" / "html-ci.yml"
+RUNTIME_WORKFLOW = ROOT / ".github" / "workflows" / "cloudflare-runtime-http.yml"
 WORKFLOWS = ROOT / ".github" / "workflows"
 
 
@@ -131,13 +133,16 @@ def check_workers_builds_contract() -> None:
 
 def check_publication_contract() -> None:
     for marker in (
-        "current_provider: github-pages",
-        "target_provider: cloudflare-workers",
+        "current_provider: cloudflare-workers",
+        "target_provider: null",
         "integration_mode: workers-builds-git",
         "build_contract: cloudflare-builds.yaml",
         'canonical_publish_gate: "make web-publish-check"',
         "output_directory: _book",
-        "migration_status: staged",
+        "migration_status: canonical-active-verification-pending",
+        "integration_state: PRODUCTION_ACTIVE",
+        "cutover_state: ACTIVE",
+        "legacy_url_policy: retire",
     ):
         require(PUBLISHING, marker)
 
@@ -159,7 +164,9 @@ def check_publication_contract() -> None:
         "custom_domain: not-applicable-workers-dev-canonical",
         "selected_production_profile: workers-builds-native",
         "human_risk_acceptance: accepted-broad-managed-user-token-scope",
-        "status: blocked",
+        "status: active-verification-pending",
+        "legacy_url_policy: retire",
+        "github_pages_retirement: selected-retire-pending-unpublish",
     ):
         require(READINESS, marker)
 
@@ -219,6 +226,8 @@ def check_publication_contract() -> None:
     if production_http_match.group(1) not in {
         "not-run",
         "passed-on-workers-dev-staging",
+        "pending-post-cutover",
+        "passed-post-cutover",
     }:
         fail(
             "unexpected production_http_verification state: "
@@ -245,11 +254,13 @@ def check_publication_contract() -> None:
         'workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"',
         "cloudflare_main_build: passed",
         "preview_deployment: passed",
-        "production_cutover: blocked",
+        "production_cutover: active-verification-pending",
         "production_security_profile: workers-builds-native",
-        'target_production_url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
-        "canonical_url: selected-workers-dev",
+        'current_production_url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
+        "target_production_url: null",
+        "canonical_url: active-workers-dev",
         "custom_domain: not-applicable",
+        "github_pages_retirement: selected-retire-pending-unpublish",
     ):
         require(PUBLISHING, marker)
 
@@ -341,29 +352,29 @@ def check_no_premature_github_actions_deploy() -> None:
 def check_human_readable_state_reconciliation() -> None:
     machine = READINESS.read_text(encoding="utf-8")
 
-    if "status: connected-runtime-verified" in machine:
+    if "status: connected-production-cutover" in machine:
         human = READINESS_DOC.read_text(encoding="utf-8")
         required_human_markers = (
-            "ACCOUNT-CONNECTED / MAIN+PREVIEW+RUNTIME-VERIFIED / PROFILE-A-SELECTED / CUTOVER-BLOCKED",
-            "Current canonical production: GitHub Pages.",
+            "CLOUDFLARE-CANONICAL-ACTIVE / POST-CUTOVER-VERIFICATION-PENDING / PAGES-RETIREMENT-PENDING",
+            "Current canonical identity configured in source: workers.dev.",
+            "GitHub Pages legacy policy: RETIRE / CURRENT DEPLOYMENT UNPUBLISH PENDING.",
             "candidate / validate-only PASS",
             "不是 production-tested",
-            "Cloudflare canonical production cutover: NOT DONE / BLOCKED.",
-            "human production security-profile selection：Profile A",
         )
         for marker in required_human_markers:
             if marker not in human:
                 fail(
                     "human-readable Cloudflare readiness drifted from "
-                    f"connected-runtime-verified machine state: missing {marker!r}"
+                    f"connected-production-cutover machine state: missing {marker!r}"
                 )
         for stale in (
             "ACCOUNT-SIDE-UNVERIFIED",
             "Account-side readiness: UNVERIFIED",
+            "Current canonical production: GitHub Pages.",
         ):
             if stale in human:
                 fail(
-                    "human-readable Cloudflare readiness contains stale account-side state: "
+                    "human-readable Cloudflare readiness contains stale state: "
                     f"{stale}"
                 )
 
@@ -376,7 +387,8 @@ def check_human_readable_state_reconciliation() -> None:
         "access:\n      mode: none",
         'provider_url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
         "canonical_identity:\n      type: provider-native",
-        'url: "https://chongliuphil.github.io/epistemology-textbook/"',
+        'url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
+        "legacy_url_policy: retire",
     ):
         if marker not in publishing:
             fail(f"publishing.yaml is missing adopted PPF visibility/access marker: {marker}")
@@ -388,7 +400,8 @@ def check_human_readable_state_reconciliation() -> None:
         "does **not** silently follow PPF `main`",
         "source visibility = public",
         "Web access mode = none",
-        "current canonical identity = GitHub Pages",
+        "current canonical identity = workers.dev",
+        "legacy GitHub Pages policy = retire",
         "candidate / validate-only PASS",
     ):
         if marker not in adoption:
@@ -425,6 +438,7 @@ def check_human_readable_state_reconciliation() -> None:
     for marker in (
         "D007 — 选择 Cloudflare Production Security Profile A",
         "D009 — 显式采用 PPF publication visibility / access / canonical identity 语义",
+        "D010 — GitHub Pages legacy policy = RETIRE",
         "21a5360727167bad6f399477ded073431645fa1d",
         "least_privilege: false",
         "不等于批准 canonical production cutover",
@@ -436,11 +450,12 @@ def check_human_readable_state_reconciliation() -> None:
     for marker in (
         "Profile A — Workers Builds Native",
         "least_privilege: false",
-        "target canonical URL 已选择 workers.dev",
+        "workers.dev 已写入 canonical source/config",
         "21a5360727167bad6f399477ded073431645fa1d",
         "Web publication: `authorized / public`",
         "Web access: `none`",
-        "current canonical identity: GitHub Pages",
+        "current canonical identity: workers.dev",
+        "legacy GitHub Pages policy: `retire`",
     ):
         if marker not in current_focus:
             fail(f"Current Focus is missing selected Profile A state: {marker}")
@@ -463,7 +478,8 @@ def check_human_readable_state_reconciliation() -> None:
         "production security profile selected — Profile A",
         "broad-scope risk acceptance",
         "WM-T027",
-        "Target canonical URL: `RESOLVED -> https://epistemology-textbook.philosophy-research.workers.dev/`",
+        "WM-T028",
+        "GitHub Pages legacy policy — `RETIRE`",
         "Custom Domain: `NOT_APPLICABLE`",
     ):
         if marker not in task_plan:
@@ -474,27 +490,48 @@ def check_human_readable_state_reconciliation() -> None:
         fail("security-profile blocker must be removed after human Profile A selection")
     if "target-canonical-url" in readiness_body:
         fail("target canonical URL blocker must be removed after workers.dev target selection")
-    if "redirect-or-canonical-policy" not in readiness_body:
-        fail("legacy/canonical policy blocker must remain until GitHub Pages policy is selected")
+    if "redirect-or-canonical-policy" in readiness_body:
+        fail("legacy/canonical policy blocker must be removed after RETIRE selection")
     for marker in (
         'canonical_target: "https://epistemology-textbook.philosophy-research.workers.dev/"',
+        'canonical_identity_current: "https://epistemology-textbook.philosophy-research.workers.dev/"',
         "canonical_target_selected: true",
         "custom_domain_required: false",
+        "legacy_url_policy: retire",
+        "github_pages_retirement: selected-retire-pending-unpublish",
+        "- post-cutover-runtime-verification",
+        "- github-pages-unpublish",
     ):
         if marker not in readiness_body:
-            fail(f"readiness state is missing selected workers.dev canonical target marker: {marker}")
+            fail(f"readiness state is missing cutover marker: {marker}")
 
     quarto_web = QUARTO_WEB.read_text(encoding="utf-8")
-    if 'site-url: "https://chongliuphil.github.io/epistemology-textbook/"' not in quarto_web:
-        fail(
-            "current Web site-url must remain GitHub Pages until the legacy Pages policy "
-            "and canonical migration are explicitly completed"
-        )
-    if "epistemology-textbook.philosophy-research.workers.dev" in quarto_web:
-        fail(
-            "target workers.dev canonical URL must not be promoted into _quarto-web.yml "
-            "before the legacy Pages policy is selected"
-        )
+    if 'site-url: "https://epistemology-textbook.philosophy-research.workers.dev/"' not in quarto_web:
+        fail("Web site-url must point to the active workers.dev canonical identity")
+    if "https://chongliuphil.github.io/epistemology-textbook/" in quarto_web:
+        fail("retired GitHub Pages canonical URL must not remain in _quarto-web.yml")
+
+    html_workflow = HTML_WORKFLOW.read_text(encoding="utf-8")
+    for forbidden in (
+        "actions/configure-pages",
+        "actions/upload-pages-artifact",
+        "actions/deploy-pages",
+        "pages: write",
+        "id-token: write",
+        "deploy-pages:",
+    ):
+        if forbidden in html_workflow:
+            fail(f"GitHub Pages deployment path must remain retired: found {forbidden}")
+
+    runtime_workflow = RUNTIME_WORKFLOW.read_text(encoding="utf-8")
+    for marker in (
+        "push:",
+        "branches: [main]",
+        "Verify active workers.dev canonical runtime after main push",
+        '--expect-root-marker "https://epistemology-textbook.philosophy-research.workers.dev/"',
+    ):
+        if marker not in runtime_workflow:
+            fail(f"post-cutover runtime workflow is missing marker: {marker}")
 
 
 def main() -> None:
@@ -512,8 +549,8 @@ def main() -> None:
         "gate, pinned toolchain, Wrangler static-assets config, Git integration commands, "
         "and verified Workers Builds connection state are mutually consistent; "
         "the hardened external-CI candidate is constrained to validate/manual modes; "
-        "GitHub Pages remains current production and no automatic GitHub Actions "
-        "Cloudflare cutover is active."
+        "workers.dev is the configured canonical production target; GitHub Pages "
+        "deployment is retired from normal CI and awaits provider-side unpublish."
     )
 
 
