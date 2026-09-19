@@ -109,16 +109,16 @@ Account ID 不是 deployment secret，但仍由 GitHub variable 管理，避免�
 
 在步骤 1–7 完成前：
 
-**Workers Builds Profile A 继续保留，GitHub Pages 继续是现有正式公开站点。**
+**Workers Builds Profile A 继续保留，当前 workers.dev canonical production 继续保持活动；不要重新启用 GitHub Pages，也不要让两个 CI 系统同时自动生产部署。**
 
 ## 不可逆动作
 
 不要在候选验证前：
 
 - 删除现有 Workers Builds token；
-- 关闭 GitHub Pages；
-- 绑定正式 Custom Domain；
-- 改 canonical URL；
+- 重新启用已退役的 GitHub Pages；
+- 为了 Profile B 迁移顺带引入不需要的 Custom Domain；
+- 改变当前 workers.dev canonical identity；
 - 删除现有 Worker；
 - 让两个 CI 系统同时自动生产部署。
 

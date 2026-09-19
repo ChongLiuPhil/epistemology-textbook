@@ -4,6 +4,8 @@
 **项目：** `ChongLiuPhil/epistemology-textbook`  
 **状态：** `REVIEWED / PROFILE A SELECTED / BROAD-SCOPE RISK ACCEPTED / PRODUCT-CONSTRAINT TRACKED`
 
+**当前性复核：** 2026-09-20 再次核对 Cloudflare 官方文档：Workers Builds 仍只支持 user token，account-owned token support 仍标为 coming soon；同时 Workers granular permissions 已支持 account-owned API token 按 individual Worker / Editor 授权。因此本文的 Profile A / B / C 判断保持不变。
+
 ## 1. 当前 token
 
 Cloudflare Workers Builds 当前使用 Cloudflare 自动创建/管理的：
