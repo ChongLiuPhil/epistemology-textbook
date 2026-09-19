@@ -4,24 +4,36 @@
 
 ## CURRENT_STAGE
 
-Project positioning and publication-form alignment.
+Personal Publishing Framework pilot — Phase 1 runtime validation.
 
 ## CURRENT_OBJECTIVE
 
-把作者刚明确的“学习—整合—梳理型、问题驱动哲学教材”定位持久化，并参考 `What-Remains-Human...` 建立同源多格式出版模型：HTML 自动 Pages，PDF/DOCX/EPUB 手动构建，同时把移动端章节目录等兼容的网页阅读形式移植到本项目。
+把本项目作为第一个真实 PPF downstream pilot：
+
+- 用 Quarto profiles 分离共享 canonical source 与各输出格式；
+- 保持 Web HTML continuous；
+- 把 EPUB / PDF / DOCX / LaTeX 改为单格式显式按需构建；
+- 保留现有 GitHub Pages 生产路径完成真实 PR/main runtime validation；
+- stage Cloudflare Workers Static Assets 配置，但暂不切换生产。
 
 ## PRIMARY_BLOCKER
 
-None.
+None for Phase 1.
+
+Cloudflare production cutover 的必要条件尚未完成，但不阻塞 PPF profile/runtime pilot。
 
 ## IMMEDIATE_NEXT_ACTION
 
-完成 Quarto multi-format 配置、手动 publication workflow、移动端“本章目录”、source/CI 检查更新；创建 PR 并验证 HTML 构建与治理状态。随后对 publication formats 做一次实际构建验证。
+完成 PPF metadata、validator、README/CONTRIBUTING 同步后创建 PR；让现有 GitHub Actions 在 PR 上真实执行 source validation + Web-profile render。随后分别触发 publication-format runtime builds，验证 EPUB / PDF / DOCX / LaTeX 的 profile 输出。
 
 ## HANDOFF POINTERS
 
-- Decision：`core/DECISION_LOG.zh-CN.md` D005
-- Content：`core/CONTENT_CORE.zh-CN.md`
-- Form：`core/FORM_CORE.zh-CN.md`
+- Decision：`core/DECISION_LOG.zh-CN.md` D006
+- PPF contract：`publishing.yaml`
+- Adoption note：`docs/ppf-adoption.md`
 - Release：`docs/release-status.zh-CN.md`
-- Reference publication model：`ChongLiuPhil/What-Remains-Human-Epistemic-Agency-and-Human-Value-in-the-Age-of-AI`
+- Quarto base：`_quarto.yml`
+- Web profile：`_quarto-web.yml`
+- Cloudflare staged config：`wrangler.jsonc`
+
+本轮不迁移 HARC-lite collaboration governance；该工作应独立处理。
