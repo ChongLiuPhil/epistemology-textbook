@@ -205,5 +205,5 @@
 - publication authorization、Web visibility=`public`、access mode=`none` 均不因这次 routing cutover 改变；
 - Profile A / Workers Builds Native 安全决定保持不变。
 
-**实现状态：** human-approved；repository cutover implementation in progress，legacy provider-side unpublish completion 待独立验证。
+**实现状态：** repository cutover 已完成并通过 workers.dev post-cutover verification；repository owner 于 2026-09-20 确认已执行 GitHub Pages `Unpublish site`。当前会话无法通过 Pages administration 读取接口或托管 URL probe 独立验证不可达，因此 provider-side unpublish 记录为 `human-confirmed complete`，不伪造 independent HTTP verification。
 

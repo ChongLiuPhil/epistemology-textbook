@@ -165,6 +165,12 @@ cutover:
 legacy_retirement:
   policy: retire
   url: "https://chongliuphil.github.io/epistemology-textbook/"
-  status: pending-unpublish
-  blockers:
-    - github-pages-unpublish
+  status: complete-human-confirmed
+  unpublish:
+    status: human-confirmed
+    confirmed_at: 2026-09-20
+    actor: repository-owner
+  independent_http_verification:
+    status: unavailable-current-session
+    reason: current-connectors-cannot-query-pages-admin-or-hosted-url
+  blockers: []

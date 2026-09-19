@@ -8,7 +8,7 @@
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
 - `WM-T026` — Hardened External CI candidate — `COMPLETED / VALIDATE-ONLY-PASS`
-- `WM-T028` — workers.dev canonical cutover + GitHub Pages retirement — `CANONICAL-VERIFIED / PAGES-UNPUBLISH-PENDING`
+- `WM-T028` — workers.dev canonical cutover + GitHub Pages retirement — `COMPLETED / HUMAN-CONFIRMED-UNPUBLISH`
 
 ## COMPLETED PPF TASKS
 
@@ -56,7 +56,7 @@ Production cutover:
 - [x] post-cutover production verification
 - [x] GitHub Pages legacy policy — `RETIRE`
 - [x] canonical URL migration — repository config implemented
-- [ ] GitHub Pages current deployment unpublish
+- [x] GitHub Pages current deployment unpublish — repository-owner human-confirmed
 
 ## NEXT ACTIONS
 
@@ -64,7 +64,7 @@ Production cutover:
 2. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
 2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
 3. Profile A 已由人类选择；保留 Workers Builds native / managed user token，并记录 broad-scope risk acceptance。
-4. workers.dev canonical cutover 已完成真实 post-cutover verification；现在只处理 GitHub Pages actual unpublish 与旧 URL retirement verification。
+4. workers.dev canonical cutover 已完成真实 post-cutover verification；GitHub Pages actual unpublish 已由 repository owner 确认完成。当前会话无法独立 HTTP 探测旧 URL，不再把这一工具限制当作部署 blocker。
 5. Profile B 保留为未采用 fallback，不创建 deployment token、不启用 external CI deployment。
 6. Future：Cloudflare Workers Builds 支持 account-owned per-Worker token 或 threat model 变化后，重新评估 Profile C / Profile B。
 
@@ -89,7 +89,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-- GitHub Pages legacy policy is resolved as `RETIRE`; workers.dev post-cutover verification is PASS; remaining blocker is actual provider-side unpublish.
+- GitHub Pages legacy policy is resolved as `RETIRE`; workers.dev post-cutover verification is PASS; provider-side unpublish is human-confirmed complete. No remaining cutover blocker.
 - Workers Builds currently supports user tokens only; this product constraint remains tracked, but the human has accepted Profile A for the current project.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
@@ -106,7 +106,7 @@ Fallback is not enabled while Workers Builds remains viable.
 ## RECENTLY RESOLVED / PROMOTED
 
 - workers.dev canonical cutover post-merge verification → revision `63510364ed40a97faf190c484dd80afc91971ecb`, runtime run `35453967021`, runtime check `105925881599`, Cloudflare provider check `105926103705`, build `42aa93fe-d9b6-49e4-80be-a849951a6b9d` → `PASS`.
-- CLR-003 GitHub Pages legacy policy → human decision `RETIRE`; D010 recorded; canonical config migration implemented; actual provider-side unpublish remains an execution handoff, not a policy decision.
+- CLR-003 GitHub Pages legacy policy → human decision `RETIRE`; D010 recorded; canonical config migration implemented; provider-side `Unpublish site` human-confirmed complete on 2026-09-20.
 - PPF `21a5360727167bad6f399477ded073431645fa1d` visibility/access/canonical-identity downstream adoption → Governance `35451267209`, Web `35451267208`, Cloudflare Contract `35451267235`, Hardened candidate `35451267205` → `PASS`.
 - Hardened External CI candidate `35435831128` → validate-only `PASS`; credential/preview/production deploy steps → `SKIPPED`.
 - Cloudflare Workers Builds repository contract validation → Governance `35427051865`, Web `35427051858`, Contract CI `35427051853` → `PASS`.
@@ -129,7 +129,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-workers.dev canonical cutover is implemented and verified. The only infrastructure priority is actual GitHub Pages unpublish plus old-URL retirement verification; no further routing-policy decision is pending.
+workers.dev canonical cutover is implemented and verified, and GitHub Pages unpublish is human-confirmed complete. No further routing/cutover task is active; independent old-URL HTTP probing is unavailable in the current tool session.
 
 Other project standardization work remains paused.
 
