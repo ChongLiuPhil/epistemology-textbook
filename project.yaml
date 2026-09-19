@@ -48,23 +48,24 @@ governance:
   decision_log: core/DECISION_LOG.zh-CN.md
   working_memory: docs/working-memory.zh-CN.md
   release_status: docs/release-status.zh-CN.md
+  publication_profile: docs/publication-profile.zh-CN.md
 
 publishing:
   framework: Personal-Publishing-Framework
   adopted_framework_version: v0.1.0-draft
-  adopted_framework_commit: 9326920e1920d18f0a71eac26d4068da9d6bdffe
+  adopted_framework_commit: 21a5360727167bad6f399477ded073431645fa1d
   contract: publishing.yaml
   cloudflare_readiness: docs/cloudflare-readiness.yaml
-  phase: ppf-phase-2-readiness
+  phase: production-active
   continuous_format: html
   on_demand_formats:
     - epub
     - pdf
     - docx
     - latex
-  current_web_provider: github-pages
-  target_web_provider: cloudflare-workers
-  cloudflare_cutover: blocked-on-account-prerequisites
+  current_web_provider: cloudflare-workers
+  target_web_provider: null
+  cloudflare_cutover: complete-verified
 
 website:
   metadata: website.yaml
@@ -72,14 +73,11 @@ website:
 
 notes: >
   Quarto QMD files plus references.bib remain the canonical manuscript source.
-  Personal Publishing Framework v0.1 Phase 1 is complete. The web profile is
-  the default continuous format; EPUB, PDF, DOCX, and LaTeX are explicit
-  on-demand build artifacts and all four profiles have passed real GitHub
-  Actions runtime validation. Validated HTML continues to deploy automatically
-  to the existing GitHub Pages production URL, and the Phase 1 main deployment
-  passed. Cloudflare Workers Static Assets remains a staged Phase 2 target, not
-  active production infrastructure, until a Worker target, credentials,
-  canonical URL, preview deployment, and cutover/redirect policy are confirmed.
-  Build does not imply Release Approval. The legacy textbook/ LaTeX tree remains
-  historical only. HARC-lite collaboration governance remains unchanged by the
-  publishing pilot and should be migrated separately if desired.
+  PPF v0.1.0-draft at adopted commit 21a5360727167bad6f399477ded073431645fa1d
+  defines the publication lifecycle. The web profile is the continuous public
+  format and Cloudflare Workers Builds delivers the verified workers.dev canonical
+  production site. EPUB, PDF, DOCX, and LaTeX are explicit on-demand build
+  artifacts. GitHub Pages legacy policy is RETIRE and its Unpublish site action
+  is human-confirmed complete. Build does not imply Release Approval. The legacy
+  textbook/ LaTeX tree remains historical only; HARC-lite remains the current
+  collaboration-governance profile.
