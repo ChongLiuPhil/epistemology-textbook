@@ -7,7 +7,10 @@
 - 首页与教材入口：`index.qmd`
 - 九章正文及前后置材料：`manuscript/*.qmd`
 - 参考文献：`references.bib`
-- 全书结构与 HTML 配置：`_quarto.yml`
+- 全书共享结构：`_quarto.yml`
+- Web 配置：`_quarto-web.yml`
+- 按需出版 profiles：`_quarto-epub.yml`、`_quarto-pdf.yml`、`_quarto-docx.yml`、`_quarto-latex.yml`
+- PPF publication contract：`publishing.yaml`
 - HTML 阅读样式：`book.css`
 
 `textbook/` 是迁移前的历史 LaTeX 快照，不再是正文来源，也不应继续编辑或参与构建。
@@ -98,7 +101,7 @@ make html
 # 或 make all；当前阶段二者都只生成 HTML
 ```
 
-当前日常流程仍只生成并部署 HTML。PDF、DOCX 与 EPUB 已由 `_quarto.yml` 统一配置，可通过 GitHub Actions 的手动 `Build Publication Formats` workflow 按需生成 artifact。它们继续使用同一套 canonical QMD sources，不允许形成第二套正文；构建 artifact 不自动等于正式 Release Approval。
+当前日常流程仍只生成并部署 `web` profile 的 HTML。PDF、DOCX、EPUB 与 LaTeX 使用独立 Quarto profile，通过 GitHub Actions 的手动 `Build Publication Format` workflow 一次按需生成一种 artifact。它们继续使用同一套 canonical QMD sources，不允许形成第二套正文；构建 artifact 不自动等于正式 Release Approval。
 
 ## 8. Commit 与 Pull Request
 
@@ -115,7 +118,10 @@ Pull Request 应说明改动内容、理由、是否改变章节结构或核心�
 
 ## 9. CI 与网页发布
 
-Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、bibliography integrity checks、完整 HTML render 与全站内部链接/锚点检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
+本项目当前处于 PPF Pilot Phase 1。GitHub Pages 仍是生产 Web provider；Cloudflare Workers Static Assets 配置只处于 staged 状态。不要把 `wrangler.jsonc` 的存在解释为已经完成 Cloudflare cutover。
+
+
+Pull Request 阶段只验证，不对外发布。合并到 `main` 后，GitHub Actions 会再次执行 source validation、bibliography integrity checks、`web` profile 的完整 HTML render 与全站内部链接/锚点检查；全部通过后，把同一次构建得到的 `_book/` 通过官方 GitHub Pages Actions 部署。
 
 仓库另有独立的 `External Link Audit`。相关书稿、书目、网页配置或审计脚本进入 `main` 后会自动运行，并保留每周/手动触发。它不参与正常 Pages 发布门禁；只有明确的 HTTP 404/410 会被标记为断链失败，认证、限流、服务器错误和网络异常作为 warning 留给维护者复核。
 
