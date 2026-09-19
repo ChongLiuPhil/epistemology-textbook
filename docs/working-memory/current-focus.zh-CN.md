@@ -4,27 +4,34 @@
 
 ## CURRENT_STAGE
 
-Content / Form — **PR #18 reconciliation against verified workers.dev + PPF baseline**.
+Content Quality — **PR #18 reconciliation validated / Chapter 1 review next**.
 
 ## CURRENT_OBJECTIVE
 
-收敛旧 PR #18 中仍有价值的教材定位、阅读体验与出版形式改进，同时删除其已经过时的 GitHub Pages / pre-PPF 假设；完成后把主要工作重心转回逐章学术/教学审校。
+把项目主工作重心从已经完成的 publication infrastructure 转回教材质量：从第 1 章开始逐章进行学术、教学与引用审校。
 
-当前 reconciliation 范围：
+PR #39 已在 current PPF/Workers baseline 上验证通过，旧 PR #18 的有效内容/形式改进已经完成 reconciliation：
 
 - D005 学习—整合—梳理型教材定位与问题驱动哲学学习观；
-- publication profile 文档与当前 PPF/Workers publication state 对齐；
+- current publication profile；
 - citation click detail + bibliography backlinks；
-- 章内“本章参考文献”标题；
+- “本章参考文献”；
 - math-layout source check；
-- README / CONTRIBUTING / AGENTS / project metadata 中的旧 Pages/Phase 1 漂移清理；
-- 不改变已验证的 workers.dev canonical production、Profile A 或 PPF adopted commit。
+- README / CONTRIBUTING / AGENTS / project metadata 的 Pages/Phase 1 漂移清理。
+
+第 1 章审校重点：
+
+- 是否始终围绕“知识是什么/为什么需要知识”的哲学问题推进；
+- 是否存在人物/流派罗列但没有问题功能的段落；
+- 概念区分、论证重构、反例与竞争立场是否准确、公平；
+- 学术性/历史性陈述是否有可核验文献支持；
+- citation key、书目信息与正文主张是否匹配；
+- 教学层次、案例、练习和段落路标是否服务学习目标；
+- 是否存在重复、泛化、空洞总结或不必要的小标题。
 
 ## PRIMARY_BLOCKER
 
-无 infrastructure blocker。
-
-本轮唯一执行 gate 是：reconciliation PR 必须通过当前 Governance、Web publication gate、Cloudflare contract/runtime 与必要的多格式/reader checks，不能用旧 PR 的历史 CI 代替当前验证。
+无 infrastructure blocker，也无阻止第 1 章审校的 content blocker。
 
 仍存在但不阻塞书稿工作的 human clarifications：
 
@@ -33,10 +40,10 @@ Content / Form — **PR #18 reconciliation against verified workers.dev + PPF ba
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 完成 PR #18 reconciliation branch 的 current-main CI；
-2. 若通过，合并 reconciliation PR；
-3. 将旧 PR #18 标记为 superseded/closed；
-4. 把下一阶段切换为第 1 章逐章学术/教学/引用审校。
+1. 合并已通过 current-main CI 的 PR #39；
+2. 将旧 PR #18 关闭并标记为 superseded；
+3. 以当前 main 为基线开始 Chapter 1 academic / pedagogical / citation audit；
+4. 对审校发现的问题按普通 content/refs 修订处理；只有重大 Architecture 变化才重新进入人类确认。
 
 ## PPF / DELIVERY BASELINE
 
