@@ -37,9 +37,11 @@ Cloudflare account-side prerequisites 未验证：
 ## IMMEDIATE_NEXT_ACTION
 
 1. repository-side readiness PR #22 已合并并在 `main` 验证通过；
-2. 保持 GitHub Pages production 不变；
-3. 账户侧建立 Cloudflare deployment context 后，先做 staging/preview deployment；
-4. staging PASS 后再讨论 Custom Domain 与生产 cutover。
+2. Cloudflare staging runbook 与非执行 workflow example 已准备；
+3. 保持 GitHub Pages production 不变；
+4. 账户侧建立 Cloudflare deployment context 后，先确认/创建目标 Worker；
+5. 配置最小权限 CI credential 后，通过 `workers.dev` 做 staging deployment；
+6. staging PASS 后再讨论 Custom Domain 与生产 cutover。
 
 ## HANDOFF POINTERS
 
@@ -48,6 +50,8 @@ Cloudflare account-side prerequisites 未验证：
 - Machine readiness state：`docs/cloudflare-readiness.yaml`
 - Readiness validator：`scripts/check_cloudflare_readiness.py`
 - Wrangler：`wrangler.jsonc`
+- Staging runbook：`docs/cloudflare-staging-runbook.zh-CN.md`
+- Non-executable workflow example：`docs/examples/cloudflare-staging-workflow.yml`
 - Current production：GitHub Pages
 - Target provider：Cloudflare Workers Static Assets
 - Readiness merge commit：`f0af87ea5c060a69141eeb82c5992de8126af55d`
