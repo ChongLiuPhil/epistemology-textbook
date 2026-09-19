@@ -2,7 +2,7 @@
 
 **日期：** 2026-09-19  
 **项目：** `ChongLiuPhil/epistemology-textbook`  
-**状态：** `CLOUDFLARE-CANONICAL-ACTIVE-VERIFIED / PAGES-RETIREMENT-PENDING`
+**状态：** `CLOUDFLARE-CANONICAL-ACTIVE-VERIFIED / PAGES-RETIREMENT-HUMAN-CONFIRMED`
 
 > 本文件是 `docs/cloudflare-readiness.yaml` 的人类可读解释。机器可读 readiness state 是本仓库对当前已验证 Cloudflare 状态的 durable record；本文不得与其形成第二套冲突真值。
 
@@ -24,14 +24,14 @@ GitHub main
 - main 分支不再生成新的 GitHub Pages deployment；
 - `_quarto-web.yml` 与 rendered-HTML validator 已切换到 workers.dev；
 - GitHub Pages policy = `retire`；
-- 旧 GitHub Pages deployment 尚未实际 unpublish，因此 legacy retirement 仍是 pending；
+- 仓库所有者已于 2026-09-20 确认完成 GitHub Pages `Unpublish site`；
 - post-cutover workers.dev canonical runtime verification 已由 main push 的真实 Cloudflare provider build 与 GitHub Actions runtime check 验证通过。
 
 因此当前精确状态是：
 
 ```text
 Cloudflare canonical identity = active / verified
-GitHub Pages = legacy endpoint / retirement pending
+GitHub Pages = legacy endpoint / retirement human-confirmed
 ```
 
 ## 2. Repository-side readiness
@@ -185,13 +185,13 @@ Workers Builds
 仍需完成并验证：
 
 - [x] post-cutover main Workers Build + workers.dev canonical runtime verification
-- [ ] GitHub Pages current deployment actual unpublish
+- [x] GitHub Pages current deployment actual unpublish — repository-owner human-confirmed
 
 因此：
 
 `CANONICAL CUTOVER = COMPLETE / VERIFIED`
 
-`LEGACY RETIREMENT = SELECTED / UNPUBLISH PENDING`
+`LEGACY RETIREMENT = COMPLETE / HUMAN-CONFIRMED`
 
 ## 8. 当前结论
 
@@ -201,8 +201,8 @@ Workers Builds
 
 **Cloudflare production delivery: ACTIVE / VERIFIED.**
 
-**GitHub Pages legacy policy: RETIRE / CURRENT DEPLOYMENT UNPUBLISH PENDING.**
+**GitHub Pages legacy policy: RETIRE / UNPUBLISH HUMAN-CONFIRMED.**
 
-canonical cutover 已完成；唯一尚未完成的基础设施收尾，是使用 repository admin/maintainer 权限对现存 GitHub Pages deployment 执行一次 `Unpublish site`，随后验证旧 URL 已不可用。
+canonical cutover 与 GitHub Pages provider-side unpublish 均已完成到当前可验证边界。仓库所有者已确认 `Unpublish site` 已执行；正常 main workflow 也不再包含 Pages deployment，因此不会自动重新发布。
 
-当前 GitHub connector 不暴露完成该 Pages administration 动作所需的仓库管理写权限。仓库已经停止后续 Pages deployment，因此完成一次 unpublish 后不会被正常 main workflow 自动重新发布。
+当前会话的 GitHub connector 不暴露 Pages administration 读取接口，通用网页工具也无法直接探测该托管 URL，所以这里不伪造“独立 HTTP 不可达验证”。这一限制已在 machine readiness 中记录为 `independent_http_verification: unavailable-current-session`。
