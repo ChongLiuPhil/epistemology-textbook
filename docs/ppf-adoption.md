@@ -1,6 +1,6 @@
 # PPF Adoption — epistemology-textbook
 
-**Status:** PPF pilot / Phase 1  
+**Status:** PPF pilot / Phase 1 runtime validation PASS — final merge verification  
 **Framework:** Personal Publishing Framework v0.1.0-draft  
 **Adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe`
 
@@ -80,3 +80,24 @@ No generated artifact may silently become the manuscript source.
 This pilot changes the publishing lifecycle only.
 
 The repository's current HARC-lite collaboration-governance files are intentionally left unchanged in this PR. Migration from HARC-lite to an AHICP-based project profile should be handled in a separate governance change so publishing-runtime defects and governance defects remain distinguishable.
+
+
+## Runtime validation result
+
+Phase 1 has now been validated in real GitHub Actions on PR #20.
+
+Passed:
+
+- repository governance;
+- canonical-source validation;
+- full Web-profile render and rendered-HTML checks;
+- EPUB profile;
+- DOCX profile;
+- LaTeX profile;
+- PDF profile with Noto CJK fonts and TinyTeX.
+
+The temporary PR-only matrix workflow used to validate all four on-demand formats is not part of the final architecture and is removed before merge.
+
+Detailed evidence is recorded in `docs/ppf-pilot-audit.zh-CN.md`.
+
+This completes **profile/runtime validation**, not Cloudflare production validation. GitHub Pages remains the current production provider until Phase 2.
