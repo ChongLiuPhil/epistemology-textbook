@@ -6,17 +6,15 @@ This is a Chinese-language, problem-driven epistemology textbook and learning pr
 
 ## Current stage: Web Edition Development
 
-The project is currently in **PPF Pilot Phase 1**. The Web edition remains the primary continuously published target while the same canonical source is validated for on-demand multi-format publication. GitHub Pages remains the current production Web provider. The normal workflow is:
+The Web edition is the verified canonical continuous publication. The normal delivery path is:
 
-`QMD → validation → HTML → GitHub Pages`
+`canonical QMD → make web-publish-check → Cloudflare Workers Builds → workers.dev`
 
-Whenever changes enter `main` through a Pull Request, GitHub Actions revalidates the canonical QMD sources, renders the complete HTML site, and deploys the validated `_book/` output to the public website. Therefore, changes to the manuscript, structure, and web styling should ultimately appear in the actual readable site.
+Read online: <https://epistemology-textbook.philosophy-research.workers.dev/>
 
-Read online: <https://chongliuphil.github.io/epistemology-textbook/>
+Open access and support: <https://epistemology-textbook.philosophy-research.workers.dev/manuscript/00-open-access-and-support.html>
 
-Open access and support: <https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html>
-
-PDF, DOCX, EPUB, and LaTeX are not part of day-to-day Pages CI. They are generated on demand through the manual `Build Publication Format` workflow, one explicitly selected format per run. By default these are build artifacts for review, offline reading, and publication preparation rather than approved formal releases.
+PDF, DOCX, EPUB, and LaTeX are explicit on-demand build artifacts. The manual `Build Publication Format` workflow builds one selected profile per run; a successful build is for review, offline reading, or publication preparation and does not by itself constitute formal release approval.
 
 ## Project orientation
 
@@ -43,7 +41,7 @@ The current Web Edition treats the website itself as the primary development del
 - a left-side “Book contents” navigation for moving across chapters, a desktop right-side “On this page” navigation, and a collapsible chapter table of contents near the title on narrow screens;
 - full-site search, previous/next chapter navigation, and back-to-top controls;
 - reader mode for focused reading of long chapters;
-- hover previews for citations and footnotes;
+- hover previews for citations and footnotes, plus click-through citation details and return links from chapter bibliography entries;
 - right-side “Report an issue” and “View source” entry points;
 - footer notices across the book for open access, feedback, and version status;
 - structured GitHub feedback forms that distinguish “manuscript corrections/content suggestions” from “web display/reading problems.”
@@ -87,7 +85,7 @@ For scholarly citations that require precise version tracking, in addition to au
 Python 3, GNU Make, and Quarto are required. The current development workflow does not require LaTeX/XeLaTeX.
 
 ```sh
-make check    # validate QMD, bibliography metadata, project structure, reading/feedback configuration, and HTML-only workflow
+make check    # validate QMD, math-layout risks, bibliography metadata, project structure, reading/feedback, PPF, and publication boundaries
 make preview  # launch local Quarto HTML preview
 make html     # generate the HTML reading edition
 make all      # currently equivalent to a full HTML development build
@@ -96,7 +94,7 @@ make clean    # remove _book/ and .quarto/
 
 Quarto HTML output is written to `_book/`. `make check` blocks deterministic bibliographic errors such as missing citation keys, duplicate or malformed DOIs, and invalid URLs. Bibliography entries that are not currently cited are reported as audit information rather than deleted automatically.
 
-External website availability depends on publishers, rate limits, authentication, and network state, so it is not part of the blocking gate for Pages deployment. The repository has a separate `External Link Audit`: it runs automatically when relevant manuscript, bibliography, web configuration, or audit-script changes enter `main`, and it also supports weekly and manual runs. It renders the complete site and checks the external links in the final HTML, treating only explicit HTTP 404/410 responses as broken-link failures; other network problems remain warnings.
+External website availability depends on publishers, rate limits, authentication, and network state, so it is not part of the blocking canonical Web publication gate. The publication/reading profile is documented in `docs/publication-profile.zh-CN.md`. The repository also has a separate `External Link Audit`: it runs automatically when relevant manuscript, bibliography, web configuration, or audit-script changes enter `main`, and it also supports weekly and manual runs. It renders the complete site and checks the external links in the final HTML, treating only explicit HTTP 404/410 responses as broken-link failures; other network problems remain warnings.
 
 ## On-demand publication formats
 
@@ -104,26 +102,19 @@ External website availability depends on publishers, rate limits, authentication
 
 These artifacts use the same `index.qmd`, `manuscript/*.qmd`, and `references.bib` sources as the Web edition. Web output is written to `_book/`; on-demand formats are written to `_publication/<format>/`. A successful manual build does not by itself constitute an approved formal release; release state is tracked separately in `docs/release-status.zh-CN.md`.
 
-## PPF and Cloudflare migration status
+## PPF and Cloudflare publication status
 
-This project adopts Personal Publishing Framework v0.1.0-draft for its publication lifecycle. The declarative contract is `publishing.yaml`; the adoption note is `docs/ppf-adoption.md`.
+This project adopts Personal Publishing Framework v0.1.0-draft at pinned commit `21a5360727167bad6f399477ded073431645fa1d`. The declarative contract is `publishing.yaml`; the adoption note is `docs/ppf-adoption.md`.
 
-Phase 1 keeps GitHub Pages as the existing production site while the profile-based build model is validated in real CI. `wrangler.jsonc` stages a Cloudflare Workers Static Assets target, but this **does not mean Cloudflare is currently live**. Phase 2 cutover requires a confirmed Worker target, credentials, canonical URL, preview verification, and a redirect/canonical policy for the existing Pages URL.
+Cloudflare Workers is the verified current Web provider and the workers.dev URL is the canonical publication identity. GitHub Pages has been retired under the recorded `RETIRE` legacy policy. Source visibility, publication authorization, publication visibility, access policy, and canonical identity remain separate PPF concepts; the current textbook is public with no access restriction.
 
 ## CI and deployment
 
-At the Pull Request stage:
+At the Pull Request stage, repository checks validate canonical QMD sources, bibliography metadata, PPF/Cloudflare contracts, reader-facing configuration, complete Web rendering, internal links/assets/anchors, and rendered HTML integrity.
 
-- check canonical QMD sources;
-- validate bibliography citation keys, DOI/URL metadata, and project structure;
-- verify open-reading configuration, feedback entry points, and the left/right navigation labels visible to readers;
-- install Quarto;
-- render the complete HTML site using the `web` profile;
-- validate site-wide internal links, static assets, page anchors, and duplicate HTML IDs;
-- verify that key HTML pages and important reading-interface elements exist;
-- verify that EPUB/PDF/DOCX/LaTeX files were not generated unexpectedly.
+`make web-publish-check` is the single canonical Web publication quality gate. GitHub Actions calls it for verification; Cloudflare Workers Builds calls the same gate before updating the workers.dev production site. Normal CI does not deploy GitHub Pages.
 
-After merging into `main`, and only after all of the above validation passes, the workflow deploys the `_book/` produced by that same build as a GitHub Pages artifact. Deployment does not use a script to force-push a `gh-pages` branch. External HTTP reachability is handled by the separate audit: it runs immediately when relevant content enters `main`, and also on weekly and manual schedules, so temporary failures of third-party sites do not become part of the Pages publication gate.
+External HTTP links are audited separately so temporary third-party failures do not become part of the canonical publication gate.
 
 ## Editing principles
 
