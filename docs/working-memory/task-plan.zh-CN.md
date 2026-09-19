@@ -4,8 +4,8 @@
 
 ## ACTIVE TASKS
 
-- `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `READY-TO-MERGE / CI-PASS`
-- `WM-T021` — Cloudflare account-side staging context — `WAITING-CONNECTOR-AUTHORIZATION`
+- `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
+- `WM-T021` — Cloudflare account-side staging context — `IN-PROGRESS / HTTP-AND-SECURITY-VERIFYING`
 
 ## COMPLETED PPF TASKS
 
@@ -26,17 +26,17 @@ Repository contract:
 - [x] nontechnical human authorization guide
 - [x] PR normal Web CI PASS
 - [x] PR Cloudflare Build Contract CI PASS
-- [ ] merge + main CI PASS
+- [x] merge + main CI PASS
 
 Account connection:
 - [ ] Cloudflare OAuth/MCP actually callable by current AI
-- [ ] Cloudflare GitHub App authorized for selected repository
-- [ ] repository connection verified
-- [ ] Worker `epistemology-textbook` verified/created
-- [ ] production trigger configured
-- [ ] preview trigger configured
-- [ ] build token reviewed
-- [ ] first workers.dev / preview build PASS
+- [x] Cloudflare GitHub App authorized for selected repository
+- [x] repository connection verified
+- [x] Worker `epistemology-textbook` verified/created
+- [x] production trigger configured and main build PASS
+- [x] preview trigger configured and preview build PASS
+- [ ] build token present; least-privilege review pending
+- [x] non-production preview build PASS
 
 Production cutover:
 - [ ] target canonical URL
@@ -76,7 +76,8 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-The current ChatGPT session does not expose a callable Cloudflare account/Builds MCP tool.
+- workers.dev HTTP/content verification is blocked by current ChatGPT network-fetch limitations;
+- Cloudflare-managed build-token least-privilege review remains pending.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -100,6 +101,8 @@ The current ChatGPT session does not expose a callable Cloudflare account/Builds
 - Cloudflare staging runbook + least-privilege model → `COMPLETED`.
 - Canonical Web publication gate design → promoted into `Makefile`, `scripts/check_rendered_html.py`, and CI.
 - Workers Builds machine contract → promoted into `cloudflare-builds.yaml` and `docs/cloudflare-readiness.yaml`.
+- Main Workers Build `d6bc8b62-78ba-4a9e-98ea-7a049a539858` → `PASS`.
+- Preview Workers Build `a12446a5-e341-48e4-8c22-1a184b1102c8`, Version `3f8a15d6-9994-4e90-839c-2144c8dc54b7` → `PASS`.
 
 ## CLARIFICATION COMPLETION RULE
 

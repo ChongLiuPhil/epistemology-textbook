@@ -57,14 +57,16 @@ deployment:
     migration_status: staged
     readiness:
       repository: validated
-      account_access: unverified
-      github_app: unverified
-      repository_connection: unverified
-      worker_target: unverified
-      workers_builds_triggers: unverified
-      build_token: unverified
+      account_access: connected
+      github_app: verified
+      repository_connection: verified
+      worker_target: verified
+      workers_builds_triggers: verified
+      build_token: present-security-review-pending
+      workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
       canonical_url: unresolved
-      preview_deployment: not-run
+      cloudflare_main_build: passed
+      preview_deployment: passed
       production_cutover: blocked
 
 release:

@@ -4,7 +4,7 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **Cloudflare ↔ GitHub standard integration / Workers Builds contract validation**.
+Personal Publishing Framework — **Cloudflare account-side Workers Builds runtime validation**.
 
 ## CURRENT_OBJECTIVE
 
@@ -40,26 +40,30 @@ GitHub repository
 
 ## PRIMARY_BLOCKER
 
-当前 ChatGPT 会话没有真正暴露可调用的 Cloudflare account / Workers Builds MCP tool。
+Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocker：
 
-因此尚不能从本会话直接：
+- Cloudflare account：human-confirmed；
+- GitHub App：通过 GitHub check-run 自动验证；
+- repository connection：verified；
+- Worker target：verified；
+- main production-branch trigger：真实 build PASS；
+- workers.dev endpoint：已分配。
 
-- 读取 Cloudflare account；
-- 安装/确认 GitHub App connection；
-- 创建/确认 Worker；
-- 创建 Workers Builds triggers；
-- 触发并读取首次 Cloudflare build。
+当前剩余 blocker：
 
-这不是仓库设计 blocker，而是当前会话 account connector availability blocker。
+- non-production non-production preview build 已通过；
+- 当前 ChatGPT Web/HTTP 工具无法直接抓取新 workers.dev endpoint，因此页面内容验证尚未由 AI 自动完成；
+- Cloudflare-managed build token 的最小权限安全审计尚未完成；
+- Custom Domain / canonical URL / GitHub Pages legacy policy 尚未决定。
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 普通 Web CI、Governance、Cloudflare Build Contract CI 已全部 PASS；
-2. 合并 repository standard；
-3. 继续尝试建立 Cloudflare OAuth/MCP account context；
-4. 一旦 account context 可用，由 AI 按 `cloudflare-builds.yaml` 自动完成 Git connection / Worker / triggers / preview build；
-5. 若最终仍无法在当前 AI 客户端建立 MCP，则只要求人类完成 `docs/cloudflare-human-authorization.zh-CN.md` 中的最少授权步骤；
-6. workers.dev staging PASS 前保持 GitHub Pages 为正式公开站点。
+1. main Workers Build 已通过 GitHub Cloudflare check 自动验证；
+2. non-production preview build 已通过 GitHub Cloudflare check 自动验证；
+3. 清理临时 preview probe branch；
+4. 完成 workers.dev 页面内容验证；
+5. 对 Cloudflare-managed build token 做最小权限审计；
+6. staging 全部 PASS 后再进入 Custom Domain / canonical URL / Pages legacy policy。
 
 ## HANDOFF POINTERS
 
@@ -76,5 +80,11 @@ GitHub repository
 - Human authorization guide：`docs/cloudflare-human-authorization.zh-CN.md`
 - Current production：GitHub Pages
 - Target delivery：Cloudflare Workers Static Assets via Workers Builds
+- workers.dev staging：`https://epistemology-textbook.philosophy-research.workers.dev`
+- main Cloudflare Build ID：`d6bc8b62-78ba-4a9e-98ea-7a049a539858`
+- preview probe Build ID：`a12446a5-e341-48e4-8c22-1a184b1102c8`
+- preview Version ID：`3f8a15d6-9994-4e90-839c-2144c8dc54b7`
+- preview URL：`https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev`
+- preview Alias：`https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev`
 
 当前阶段不得修改 DNS、绑定正式 Custom Domain、停用 GitHub Pages 或把 token 写入仓库。

@@ -24,18 +24,31 @@ worker:
   static_assets_directory: ./_book
 
 connection:
-  cloudflare_account: unverified
-  github_app: unverified
-  repository_connection: unverified
-  worker_target: unverified
-  production_trigger: unverified
-  preview_trigger: unverified
-  build_token: unverified
+  cloudflare_account: human-confirmed
+  github_app: verified-via-github-checks
+  repository_connection: verified
+  worker_target: verified
+  production_trigger: verified-main-build-passed
+  preview_trigger: verified-preview-build-passed
+  build_token: cloudflare-managed-present-security-review-pending
+  workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
 
 validation:
-  first_preview_build: not-run
-  workers_dev_http: not-run
-  production_trigger_activation: blocked
+  main_build:
+    status: passed
+    git_commit: "185f7c0ccedc374cf7b17f0349f6eb6add8a27e7"
+    github_check_id: 105864886964
+    cloudflare_build_id: "d6bc8b62-78ba-4a9e-98ea-7a049a539858"
+  first_preview_build:
+    status: passed
+    git_commit: "ba94fadc83f81b4504ab8a6dd8a937e2999b9397"
+    github_check_id: 105865023566
+    cloudflare_build_id: "a12446a5-e341-48e4-8c22-1a184b1102c8"
+    version_id: "3f8a15d6-9994-4e90-839c-2144c8dc54b7"
+    preview_url: "https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev"
+    preview_alias_url: "https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev"
+  workers_dev_http: external-tool-unverified
+  production_trigger_activation: staging-only
 
 security:
   credentials_in_repository: prohibited
