@@ -3,7 +3,7 @@ schema: ppf/v0.1
 framework:
   source: ChongLiuPhil/Personal-Publishing-Framework
   adopted_version: v0.1.0-draft
-  adopted_commit: 9326920e1920d18f0a71eac26d4068da9d6bdffe
+  adopted_commit: 21a5360727167bad6f399477ded073431645fa1d
 
 project:
   id: epistemology-textbook
@@ -13,6 +13,7 @@ project:
 source:
   canonical: git
   branch: main
+  visibility: public
   manuscript:
     - index.qmd
     - manuscript/
@@ -23,6 +24,12 @@ publication:
     format: html
     mode: continuous
     enabled: true
+    authorization_state: authorized
+    visibility: public
+    access:
+      mode: none
+      implementation: null
+      policy_ref: null
 
   epub:
     format: epub
@@ -54,6 +61,10 @@ deployment:
     output_directory: _book
     current_production_url: "https://chongliuphil.github.io/epistemology-textbook/"
     target_production_url: "https://epistemology-textbook.philosophy-research.workers.dev/"
+    provider_url: "https://epistemology-textbook.philosophy-research.workers.dev/"
+    canonical_identity:
+      type: provider-native
+      url: "https://chongliuphil.github.io/epistemology-textbook/"
     migration_status: staged
     readiness:
       repository: validated
