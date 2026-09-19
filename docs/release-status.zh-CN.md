@@ -79,7 +79,7 @@ MAJOR-REVISION
 手动生成 PDF / DOCX / EPUB / LaTeX build artifact：无，但不构成正式 release.
 
 PPF Web continuous publication：无内容发布 blocker；canonical config 已切换到 workers.dev。  
-Cloudflare cutover：**VERIFIED**；workers.dev 已完成 post-cutover provider build/runtime verification。GitHub Pages legacy policy 已选 `retire`，旧 deployment 仍需实际 unpublish。  
+Cloudflare cutover：**VERIFIED**；workers.dev 已完成 post-cutover provider build/runtime verification。GitHub Pages legacy policy = `retire`，旧 deployment 的 `Unpublish site` 已由 repository owner 于 2026-09-20 确认完成；当前会话无法独立 HTTP 探测旧 URL。  
 
 正式开放许可 release：受 `CLR-001` 影响.  
 包含或再分发外部参考 PDF 的任何 release：受 `CLR-002` 影响。
