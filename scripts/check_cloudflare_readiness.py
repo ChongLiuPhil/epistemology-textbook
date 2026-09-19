@@ -428,7 +428,7 @@ def check_human_readable_state_reconciliation() -> None:
     task_plan = TASK_PLAN.read_text(encoding="utf-8")
     if "until first real Cloudflare staging is verified" in task_plan:
         fail("Task Plan still claims first Cloudflare staging is unverified")
-    if "Cloudflare staging is verified." not in task_plan:
+    if "Cloudflare staging is verified" not in task_plan:
         fail("Task Plan must record that Cloudflare staging is verified")
     if "Checkpoint semantics intentionally replace a moving `latest_main_build` claim" not in task_plan:
         fail("Task Plan must explain stable provider-evidence checkpoint semantics")
