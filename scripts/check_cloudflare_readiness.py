@@ -239,6 +239,26 @@ def check_publication_contract() -> None:
         require(PUBLISHING, marker)
 
 
+def check_verified_main_build_checkpoint() -> None:
+    markers = (
+        "verified_main_build_checkpoint:",
+        'git_commit: "71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15"',
+        "github_check_id: 105904495866",
+        'cloudflare_build_id: "93823dff-1206-4282-b037-24876840f0c6"',
+        "status: passed",
+    )
+    for path in (READINESS, BUILD_CONTRACT):
+        for marker in markers:
+            require(path, marker)
+
+    readiness_body = READINESS.read_text(encoding="utf-8")
+    build_contract_body = BUILD_CONTRACT.read_text(encoding="utf-8")
+    if "latest_main_cloudflare_build:" in readiness_body:
+        fail("readiness evidence must use stable checkpoint semantics, not a moving latest build")
+    if "latest_main_build:" in build_contract_body:
+        fail("build contract evidence must use stable checkpoint semantics, not a moving latest build")
+
+
 def check_hardened_external_ci_candidate() -> None:
     contract_markers = (
         "profile: hardened-external-ci",
@@ -359,12 +379,20 @@ def check_human_readable_state_reconciliation() -> None:
     current_focus = CURRENT_FOCUS.read_text(encoding="utf-8")
     if "Profile B 已经推进到当前无新 credential 条件下的可验证极限" not in current_focus:
         fail("Current Focus does not reflect completed Profile B candidate validation")
+    for marker in (
+        "Verified post-merge Cloudflare checkpoint check：`105904495866`",
+        "93823dff-1206-4282-b037-24876840f0c6",
+    ):
+        if marker not in current_focus:
+            fail(f"Current Focus is missing verified Cloudflare checkpoint marker: {marker}")
 
     task_plan = TASK_PLAN.read_text(encoding="utf-8")
     if "until first real Cloudflare staging is verified" in task_plan:
         fail("Task Plan still claims first Cloudflare staging is unverified")
     if "Cloudflare staging is verified." not in task_plan:
         fail("Task Plan must record that Cloudflare staging is verified")
+    if "Checkpoint semantics intentionally replace a moving `latest_main_build` claim" not in task_plan:
+        fail("Task Plan must explain stable provider-evidence checkpoint semantics")
 
 
 def main() -> None:
@@ -372,6 +400,7 @@ def main() -> None:
     check_toolchain()
     check_workers_builds_contract()
     check_publication_contract()
+    check_verified_main_build_checkpoint()
     check_hardened_external_ci_candidate()
     check_no_premature_github_actions_deploy()
     check_human_readable_state_reconciliation()
