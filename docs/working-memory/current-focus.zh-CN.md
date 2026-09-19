@@ -4,55 +4,51 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **Phase 1 completed / Phase 2 readiness pending**.
+Personal Publishing Framework — **Phase 2 Cloudflare readiness**.
 
 ## CURRENT_OBJECTIVE
 
-PPF Phase 1 已正式完成：
+仓库侧 Cloudflare readiness 已实现并等待 CI 验证：
 
-- PR #20 已合并到 `main`；
-- canonical Quarto source + profile separation 已实现；
-- Governance runtime validation：PASS；
-- Web profile runtime validation：PASS；
-- EPUB / PDF / DOCX / LaTeX 四种 on-demand profile：全部真实构建 PASS；
-- PR-only format validation workflow 已删除；
-- `main` Web build：PASS；
-- `main` GitHub Pages deployment：PASS；
-- `main` External Link Audit：PASS。
+- `wrangler.jsonc` 保持纯 static-assets Worker 形态；
+- `assets.directory = ./_book`；
+- `publishing.yaml` 明确 current provider = GitHub Pages、target provider = Cloudflare Workers；
+- `docs/cloudflare-readiness.yaml` 记录账户侧未知状态；
+- `scripts/check_cloudflare_readiness.py` 防止 prerequisites 未完成时提前出现 `wrangler deploy` / Cloudflare deploy action；
+- `make check` 已纳入 readiness validator。
 
-下一发布基础设施目标是 **PPF Phase 2 / Cloudflare readiness**，但在以下条件具备前不执行生产 cutover：
+当前目标不是切换生产，而是把 repository side 固化为：
 
-- confirmed Cloudflare Worker / Static Assets target；
-- authorized deployment credentials / mechanism；
-- target canonical production URL；
-- preview/staging deployment；
-- production verification；
-- existing GitHub Pages URL 的 redirect/canonical policy。
+`REPOSITORY-READY / ACCOUNT-SIDE-UNVERIFIED / CUTOVER-BLOCKED`
 
 ## PRIMARY_BLOCKER
 
-Phase 1：`NONE — COMPLETED`
+Cloudflare account-side prerequisites 未验证：
 
-Phase 2：`WAITING-PREREQUISITES`
+- Cloudflare account / account ID；
+- Worker target；
+- GitHub Secrets 中的 deployment credentials；
+- Cloudflare-managed zone / target canonical URL；
+- preview/staging deployment；
+- GitHub Pages legacy URL policy。
 
-这不是书稿编辑或现有 GitHub Pages Web Edition 的 blocker。
+当前 ChatGPT 环境没有可用 Cloudflare account connector，因此不能把这些未知项升级成“已配置”。
 
 ## IMMEDIATE_NEXT_ACTION
 
-对 Cloudflare Phase 2 做 readiness audit，仅准备可验证的 cutover 条件与最小权限部署方案；在生产目标、凭据、canonical URL 与 redirect/canonical policy 明确前，不改变当前 Pages production path。
+1. 让本 readiness PR 通过 normal Governance/Web CI；
+2. 合并后保持 GitHub Pages production 不变；
+3. 账户侧建立 Cloudflare deployment context 后，先做 staging/preview deployment；
+4. staging PASS 后再讨论 Custom Domain 与生产 cutover。
 
 ## HANDOFF POINTERS
 
-- Decision：`core/DECISION_LOG.zh-CN.md` D006
 - PPF contract：`publishing.yaml`
-- Adoption note：`docs/ppf-adoption.md`
-- Runtime audit：`docs/ppf-pilot-audit.zh-CN.md`
-- Release：`docs/release-status.zh-CN.md`
-- Quarto base：`_quarto.yml`
-- Web profile：`_quarto-web.yml`
-- Cloudflare staged config：`wrangler.jsonc`
-- Phase 1 merge commit：`96b91691bd776136e156c384eee619d52ff2e3a4`
-- Phase 1 main Web/Pages run：`35422349914`
-- Phase 1 main link-audit run：`35422349888`
+- Cloudflare readiness audit：`docs/cloudflare-readiness.zh-CN.md`
+- Machine readiness state：`docs/cloudflare-readiness.yaml`
+- Readiness validator：`scripts/check_cloudflare_readiness.py`
+- Wrangler：`wrangler.jsonc`
+- Current production：GitHub Pages
+- Target provider：Cloudflare Workers Static Assets
 
-本轮没有迁移 HARC-lite collaboration governance；该工作仍应独立处理。
+本阶段不得添加 active Cloudflare deployment workflow，除非 account-side prerequisites 已被实际验证并持久化。
