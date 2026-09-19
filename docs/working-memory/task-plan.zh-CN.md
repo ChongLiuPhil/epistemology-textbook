@@ -4,7 +4,7 @@
 
 ## ACTIVE TASKS
 
-- `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `IN-PROGRESS / CI-PENDING`
+- `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `READY-TO-MERGE / CI-PASS`
 - `WM-T021` — Cloudflare account-side staging context — `WAITING-CONNECTOR-AUTHORIZATION`
 
 ## COMPLETED PPF TASKS
@@ -24,8 +24,8 @@ Repository contract:
 - [x] build wrapper for environments without Quarto
 - [x] non-deploying Cloudflare contract CI
 - [x] nontechnical human authorization guide
-- [ ] PR normal Web CI PASS
-- [ ] PR Cloudflare Build Contract CI PASS
+- [x] PR normal Web CI PASS
+- [x] PR Cloudflare Build Contract CI PASS
 - [ ] merge + main CI PASS
 
 Account connection:
@@ -94,6 +94,7 @@ The current ChatGPT session does not expose a callable Cloudflare account/Builds
 
 ## RECENTLY RESOLVED / PROMOTED
 
+- Cloudflare Workers Builds repository contract validation → Governance `35427051865`, Web `35427051858`, Contract CI `35427051853` → `PASS`.
 - PPF Phase 1 source/profile/runtime validation → `COMPLETED / VERIFIED`.
 - Repository-side Cloudflare readiness → `COMPLETED / PASS`.
 - Cloudflare staging runbook + least-privilege model → `COMPLETED`.
