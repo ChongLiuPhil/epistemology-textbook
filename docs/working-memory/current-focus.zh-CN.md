@@ -14,7 +14,7 @@ Personal Publishing Framework pilot — Phase 1 runtime validation completed; fi
 - Governance runtime validation 已通过；
 - Web profile runtime validation 已通过；
 - EPUB / PDF / DOCX / LaTeX 四种 on-demand profile 已真实构建通过；
-- 删除仅用于本次 pilot 的 PR-only format validation workflow；
+- PR-only format validation workflow 已在完成四格式验证后删除；
 - 让最终 PR head 只保留正式日常 workflow，并再次通过 Governance + Web checks；
 - 合并后验证 main 的 GitHub Pages deployment。
 
@@ -26,7 +26,7 @@ Cloudflare production cutover 属于 Phase 2，不阻塞本次合并。
 
 ## IMMEDIATE_NEXT_ACTION
 
-删除临时 `.github/workflows/ppf-pilot-format-validation.yml`，更新 PPF adoption note，确认最终 PR head 的正常 Governance / Web checks 全部 PASS；随后合并 PR #20 并验证 main Pages deployment。
+确认删除临时 workflow 后的最终 PR head 只运行正常 Governance / Web checks 且全部 PASS；随后合并 PR #20 并验证 main Pages deployment。
 
 ## HANDOFF POINTERS
 
