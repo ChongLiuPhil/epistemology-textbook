@@ -8,6 +8,7 @@
 
 ## COMPLETED PPF TASKS
 
+- `WM-T022` — Cloudflare staging runbook + least-privilege deployment model — `COMPLETED`
 - `WM-T020` — PPF Phase 2 Cloudflare repository readiness — `COMPLETED / PASS`
 
 - `WM-T013` — PPF profile/source separation — `COMPLETED`
@@ -28,6 +29,11 @@ Repository side:
 - [x] no active Cloudflare deploy workflow before prerequisites
 - [x] readiness PR CI PASS
 
+Prepared staging layer:
+- [x] provisioning vs continuous-deployment permissions separated
+- [x] workers.dev-first staging strategy documented
+- [x] non-executable manual staging workflow example prepared
+
 Account side:
 - [ ] Cloudflare account access verified
 - [ ] Worker target verified/created
@@ -45,9 +51,11 @@ Account side:
 1. ~~Merge repository-side readiness.~~ `COMPLETED / MAIN VERIFIED`
 2. Keep GitHub Pages as current production.
 3. Establish Cloudflare account-side access/context.
-4. Perform staging/preview deployment.
-5. Confirm canonical domain and legacy Pages policy.
-6. Only then add the active main-push Cloudflare deployment step.
+4. Confirm/create the target Worker with one-time provisioning authority.
+5. Configure an individual-Worker Editor token for ongoing CI.
+6. Perform workers.dev staging deployment.
+7. Confirm canonical domain and legacy Pages policy.
+8. Only then add the active main-push Cloudflare deployment step.
 
 ## BLOCKERS
 
