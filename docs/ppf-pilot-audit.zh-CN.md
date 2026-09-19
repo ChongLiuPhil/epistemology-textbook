@@ -7,6 +7,8 @@
 **PPF：** v0.1.0-draft @ `9326920e1920d18f0a71eac26d4068da9d6bdffe`  
 **状态：** PASS — Phase 1 completed and main deployment verified
 
+> **Historical Phase 1 audit.** 本文件保留 PPF Phase 1 当时的 source/profile/runtime/GitHub Pages 验证事实，不代表当前 Cloudflare Phase 2 状态。当前 Cloudflare readiness 以 `docs/cloudflare-readiness.yaml` 为机器可读 durable state，并由 `docs/cloudflare-readiness.zh-CN.md` 提供人类可读解释。
+
 ## 1. 审计目的
 
 本项目是 Personal Publishing Framework 的第一个真实 downstream pilot。
@@ -241,4 +243,22 @@ PR #20 已合并：
 - Cloudflare 保持 staged Phase 2 target；
 - HARC-lite collaboration governance 未被本轮 publishing migration 静默改写。
 
-下一步是 Cloudflare Phase 2 readiness，而不是直接 cutover。
+这句话是 Phase 1 结束时的历史 next step。后续 Phase 2 staging/runtime 已实际完成验证，但 canonical production cutover 仍未完成。
+
+## 12. Post-Phase-1 current-state pointer
+
+截至 2026-09-19 的后续持久状态：
+
+- Cloudflare account / GitHub App / repository connection：VERIFIED；
+- main Workers Build：PASS；
+- non-production preview：PASS；
+- main + preview workers.dev runtime：PASS；
+- Profile A：operationally verified，但 managed token 不是 per-Worker least privilege；
+- Profile B：candidate / validate-only PASS，**不是 production-tested**；
+- Profile C：当前 unavailable；
+- current canonical production：GitHub Pages；
+- Custom Domain / canonical URL migration：NOT DONE；
+- GitHub Pages legacy policy：UNRESOLVED；
+- production security profile：WAITING HUMAN DECISION。
+
+因此本 Phase 1 audit 不应被用来推断“Cloudflare account 尚未连接”，也不应把后来 staging/runtime 验证误写成 production cutover。

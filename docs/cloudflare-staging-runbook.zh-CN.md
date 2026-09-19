@@ -107,18 +107,47 @@ Cloudflare build image 没有被本项目假定为预装 Quarto，因此 build w
 
 首次账户接入应优先验证 preview / workers.dev 行为；Cloudflare 不成为正式 canonical production，直到后续 cutover gates 全部通过。
 
-## 7. Build token 安全
+## 7. Build token 安全与 production security profiles
 
-Workers Builds 可以自动生成 build token，也可以使用 custom user token。
+当前真实 pilot 已完成 build-token security review。结论不是“再找一个更窄的 Workers Builds user token”，而是明确区分三种 profile：
 
-标准策略：
+### Profile A — Workers Builds Native
 
-- 简化接入时：Cloudflare-managed token 可以用于首次验证，但必须进入 security review；
-- hardened setup：优先使用受限 user token；
+- 当前状态：`operational-verified`；
+- Cloudflare GitHub App + Workers Builds；
+- Cloudflare-managed user build token；
+- main / preview / workers.dev runtime 已验证；
+- 最少人工 secret handling；
+- 但 token scope 比纯 static Worker routine deploy 所需更宽；
+- `least_privilege: false`，不得描述为 per-Worker least privilege。
+
+### Profile B — Hardened External CI
+
+- 当前状态：`candidate / validate-only PASS`；
+- GitHub Actions + account-owned API token；
+- 目标权限：individual Worker `epistemology-textbook` + `Editor`；
+- candidate workflow 的 repository/build validation 已通过；
+- credential / preview / production deployment steps 尚未执行；
+- 尚未创建/配置 deployment credential；
+- 因此 **不是 production-tested**。
+
+只有人类明确选择 Profile B 后，才进入 credential provisioning 与 manual preview/production revalidation。Token 必须保存到受控 GitHub secret store，不得发送到聊天或写入 repository。
+
+### Profile C — Future Native Granular
+
+目标是 Workers Builds 原生 Git integration + account-owned per-Worker `Editor` token。
+
+当前 machine evidence 记录该组合受 provider product capability 阻塞，因此状态为 `unsupported-currently`。不得为了追求理论 hardening 继续在已验证稳定链路上盲测，也不得伪造为已支持。
+
+### Common credential rules
+
+无论选择 A 或 B：
+
 - token 永不进入 Git；
 - token 不写入聊天、README、machine contract；
-- GitHub App 应限制为 selected repositories only；
-- 与本项目无关的 KV / R2 / D1 / DNS 权限不应因为方便而长期保留。
+- GitHub App 限制为 selected repositories only；
+- Custom Domain / Route provisioning 与 routine deployment credential 分离；
+- production security profile 由项目责任人明确选择。
 
 ## 8. Staging 验证
 

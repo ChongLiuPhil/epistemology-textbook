@@ -66,7 +66,7 @@ Cloudflare account-side staging 技术验证已经闭环：
 - Workers Builds 当前只支持 user token，account-owned token support 尚未进入当前产品；
 - 因此“Workers Builds + per-Worker account-owned Editor token”当前被产品能力阻塞，不应继续盲测。
 
-现在需要的是生产安全 profile 决策，但在要求人类选择前先把 Profile B 推到可验证极限：
+Profile B 已经推进到当前无新 credential 条件下的可验证极限；现在需要的是生产安全 profile 的人类决定：
 
 - Profile A：保留已验证的 Workers Builds 原生链路，接受当前 managed token scope，等待 Cloudflare 原生 granular support；
 - Profile B：GitHub Actions + per-Worker account-owned Editor token。validate-only candidate 已在 GitHub Actions 实际 PASS；所有 credential/preview/production deployment steps 在 PR 场景均为 skipped。尚未创建任何新 token，也未启用自动部署。
@@ -79,7 +79,7 @@ Cloudflare account-side staging 技术验证已经闭环：
 4. account-side staging 技术验证已闭环；
 5. build-token hardening compatibility research 已完成：Workers Builds 当前 user-token-only；
 6. Profile B candidate 无凭据 validate-only CI 已通过（run `35435831128`）；
-7. 合并候选实现后，由人类选择 production security profile A 或 B；
+7. Hardened External CI candidate 已合并并通过 validate-only；由人类选择 production security profile A 或 B；
 8. profile 决定后，再进入 Custom Domain / canonical URL / Pages legacy policy。
 
 ## HANDOFF POINTERS

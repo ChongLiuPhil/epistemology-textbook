@@ -2,13 +2,13 @@
 
 **日期：** 2026-09-19  
 **项目：** `ChongLiuPhil/epistemology-textbook`  
-**状态：** `REPOSITORY-READY / ACCOUNT-SIDE-UNVERIFIED / CUTOVER-BLOCKED`
+**状态：** `ACCOUNT-CONNECTED / MAIN+PREVIEW+RUNTIME-VERIFIED / CUTOVER-BLOCKED`
 
-## 1. 目的
+> 本文件是 `docs/cloudflare-readiness.yaml` 的人类可读解释。机器可读 readiness state 是本仓库对当前已验证 Cloudflare 状态的 durable record；本文不得与其形成第二套冲突真值。
 
-本文件记录 PPF Phase 2 在**不改变当前 GitHub Pages production path** 的前提下，对 Cloudflare Workers Static Assets 迁移条件进行的 readiness 审计。
+## 1. 当前 production 与 staging 边界
 
-当前生产仍是：
+当前 canonical production 仍是：
 
 ```text
 GitHub main
@@ -18,175 +18,199 @@ GitHub main
 -> GitHub Pages
 ```
 
-目标架构仍是：
+当前 Cloudflare 状态是：
 
 ```text
-GitHub main
--> source validation
--> Quarto web profile
--> rendered HTML validation
--> Wrangler deploy
--> Cloudflare Workers Static Assets
+GitHub repository
+-> Cloudflare Workers Builds
+-> main Workers Build: PASS
+-> non-production preview: PASS
+-> main workers.dev runtime: PASS
+-> preview workers.dev runtime: PASS
 ```
 
-Cloudflare 不成为 canonical source，也不独立构建书稿。
+Cloudflare workers.dev 已完成 staging/runtime verification，但尚未完成 canonical production cutover。
 
-## 2. 仓库侧已满足条件
+因此：
 
-### Wrangler configuration
+```text
+Cloudflare production-branch build/deploy verified
+!= PPF canonical production active
+```
 
-当前 `wrangler.jsonc`：
+## 2. Repository-side readiness
 
-- Worker name：`epistemology-textbook`
-- compatibility date：已设置
-- static assets directory：`./_book`
-- 无 `main` Worker script
-- 无 assets binding
+以下仓库侧条件已验证：
 
-这符合纯 static-assets Worker 的最小形态：仓库只需要把已经验证的 `_book/` 作为静态资产交给 Workers。
+- canonical Web publication gate：`make web-publish-check`；
+- Worker config：`wrangler.jsonc`；
+- Worker name：`epistemology-textbook`；
+- static assets directory：`./_book`；
+- Workers Builds machine contract：`cloudflare-builds.yaml`；
+- Node / Wrangler / Quarto toolchain pins；
+- clean-runner Cloudflare build wrapper；
+- independent GitHub Web validation；
+- non-deploying Cloudflare Build Contract CI；
+- read-only workers.dev runtime verification；
+- Hardened External CI candidate 的 validate-only path。
 
-### PPF source/build boundary
+Repository-side readiness：**PASS**。
 
-已验证：
+## 3. Account-side observed state
 
-- canonical source：QMD + BibTeX；
-- Web output：`_book/`；
-- EPUB/PDF/DOCX/LaTeX：独立 on-demand profiles；
-- current production provider：GitHub Pages；
-- target provider：Cloudflare Workers；
-- current Cloudflare migration status：`staged`。
+根据当前 repository durable evidence：
 
-### No premature deployment path
+- Cloudflare account：human-confirmed；
+- GitHub App：verified via GitHub provider checks；
+- repository connection：VERIFIED；
+- Worker target：VERIFIED；
+- main production-branch trigger：VERIFIED / build PASS；
+- non-production preview trigger：VERIFIED / preview PASS；
+- workers.dev endpoint：assigned；
+- main workers.dev HTTP/content verification：PASS；
+- preview workers.dev HTTP/content verification：PASS；
+- latest recorded later-main Workers Build：PASS。
 
-当前 active GitHub Actions workflows 中**不应**存在：
+详细 build/check/version identifiers 保留在：
 
-- `cloudflare/wrangler-action`
-- `wrangler deploy`
-- `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
+- `docs/cloudflare-readiness.yaml`
+- `cloudflare-builds.yaml`
+- Working Memory handoff pointers
 
-只要账户、Worker target、canonical URL 与 preview verification 尚未确认，自动 Cloudflare deployment 必须保持关闭。
+本文不复制完整 identifier 列表，避免形成第二个详细 evidence source。
 
-## 3. Cloudflare 官方约束
+Account-side staging readiness：**VERIFIED**。
 
-Cloudflare Workers Static Assets 使用 Wrangler 的 `assets.directory` 指向静态输出目录。纯静态 Worker 不需要为了部署静态资产而增加 Worker script。官方文档：
+## 4. Runtime verification
 
-- https://developers.cloudflare.com/workers/static-assets/
-- https://developers.cloudflare.com/workers/static-assets/binding/
+当前 runtime verifier 已真实验证：
 
-GitHub Actions 中的非交互式 Wrangler deployment 需要：
+- HTTP 200；
+- 5 个代表性页面；
+- 最多 30 个本地 CSS / JS / image / font assets；
+- UTF-8 / 中文内容 marker；
+- main workers.dev endpoint；
+- non-production preview endpoint。
 
-- `CLOUDFLARE_ACCOUNT_ID`
-- `CLOUDFLARE_API_TOKEN`
+运行证据由 `docs/cloudflare-readiness.yaml` 的 `runtime_http_verification` 指向 GitHub Actions run。
 
-Cloudflare 官方建议 API token 按最小权限、账户/zone 范围尽量收窄，并把 token 存在 CI secret 中，而不是仓库。官方 action 示例使用 `cloudflare/wrangler-action@v3`：
+这证明 staging/runtime 可访问，不证明 canonical cutover 已完成。
 
-- https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/
+## 5. Security profiles
 
-生产域名方面，Worker Custom Domain 需要：
+### Profile A — Workers Builds Native
 
-- active Cloudflare zone；
-- existing Worker；
-- 目标 hostname 属于该 zone；
-- hostname 不能与现有 CNAME 冲突。
+当前状态：
 
-Cloudflare 会为 Custom Domain 建立相应 DNS 并处理证书：
+`operational-verified`
 
-- https://developers.cloudflare.com/workers/configuration/routing/custom-domains/
-- https://developers.cloudflare.com/workers/configuration/routing/
+特点：
 
-## 4. 当前 Pages URL 与未来 canonical URL
+- Cloudflare GitHub App + Workers Builds；
+- Cloudflare-managed user build token；
+- 最少人工 secret handling；
+- main / preview / workers.dev runtime 已在真实 pilot 验证。
 
-当前 production URL：
+安全边界：
 
-`https://chongliuphil.github.io/epistemology-textbook/`
+- 当前 managed token scope 比纯 static Worker routine deploy 所需更宽；
+- `least_privilege: false`；
+- 不得描述成 per-Worker least privilege。
 
-这个 hostname 属于 `github.io`，不是本项目可交给 Cloudflare 管理的 zone。
+### Profile B — Hardened External CI
 
-因此 Cloudflare production cutover **不能**简单把同一个 GitHub Pages hostname 变成 Worker Custom Domain。
+当前状态：
 
-Phase 2 必须明确选择：
+`candidate / validate-only PASS`
 
-1. 一个由作者控制、并由 Cloudflare 管理 DNS 的 domain/subdomain，作为新的 canonical production URL；或
-2. 在 staging 阶段使用 Workers preview / `workers.dev`，但不把它自动视为最终 canonical URL。
+已经验证：
 
-GitHub Pages 原 URL 在 cutover 后是保留为 mirror、保留为 legacy URL、还是设置页面级 redirect/canonical，需要单独决定。
+- candidate workflow 能执行 canonical Cloudflare build gate；
+- PR validate-only path：PASS；
+- credential-dependent steps：SKIPPED；
+- preview deployment step：SKIPPED；
+- production deployment step：SKIPPED。
 
-## 5. 账户侧尚未验证条件
+尚未发生：
 
-本次 ChatGPT 环境没有可用的 Cloudflare account connector，因此以下状态不能从账户侧核实：
+- account-owned per-Worker Editor token 配置；
+- GitHub deployment secret/variable 激活；
+- Profile B preview deployment；
+- Profile B production deployment。
 
-- Cloudflare account ID；
-- 是否已经存在名为 `epistemology-textbook` 的 Worker；
-- GitHub repository secrets 是否已经配置；
-- 可用 Cloudflare zone；
-- target custom domain；
-- DNS conflict；
-- certificate state；
-- preview deployment；
-- production deployment。
+因此 Profile B **不是 production-tested**。
 
-机器可读状态见：
+### Profile C — Future Native Granular
 
-`docs/cloudflare-readiness.yaml`
+目标是：
 
-这些未知项必须保持 `unverified / unresolved`，不能由 AI 猜测成已配置。
+```text
+Workers Builds
++ account-owned token
++ individual Worker
++ Editor
+```
 
-## 6. 最小权限部署方案
+当前 repository evidence 记录 provider product capability blocker：Workers Builds 当前不能使用所需 account-owned token path。
 
-详细执行手册：
+因此当前状态是：
 
-`docs/cloudflare-staging-runbook.zh-CN.md`
+`unsupported-currently`
 
-当前权限模型进一步区分：
+不得伪造为已支持。
 
-- 一次性 Worker provisioning；
-- 一次性 Custom Domain provisioning；
-- 长期 GitHub Actions 内容部署。
+## 6. PPF adoption boundary
 
-Cloudflare 当前权限规则下，创建 Worker 需要 Workers product-level `Admin`；对已存在的指定 Worker 部署只需要该 Worker 的 `Editor`；如果部署过程修改 Custom Domain/Route，则还需要目标 zone 的 `Workers Routes Write`。
+本项目当前 adopted PPF 仍是：
 
-因此推荐先由人工/临时 provisioning credential 创建并确认 Worker，再为长期 GitHub Actions 使用仅限该 Worker 的 `Editor` token。Custom Domain 也优先作为独立 provisioning 操作处理，使日常内容发布不必长期持有 zone-write 权限。
+- version：`v0.1.0-draft`
+- adopted commit：`9326920e1920d18f0a71eac26d4068da9d6bdffe`
 
-当账户侧条件具备后，推荐仍由 GitHub Actions 作为唯一 publication gate：
+上游 PPF 后续演进不自动改变本项目 adopted state。是否升级 adopted commit 必须作为独立 downstream adoption decision 和验证工作处理。
 
-1. `make check`
-2. `quarto render --profile web`
-3. `scripts/check_rendered_html.py`
-4. 只有上述全部通过后，main push 才运行 `wrangler deploy`
-5. Wrangler 从 GitHub Secrets 读取 Cloudflare account ID / API token
-6. 部署后验证 staging/production URL
+## 7. Remaining production-cutover gates
 
-不要让 Cloudflare 自己在另一个独立 Git build pipeline 中绕过当前 scholarly validation。
+已完成：
 
-## 7. Cutover gates
+- [x] repository Web/profile/runtime validation
+- [x] Workers Builds machine contract
+- [x] Cloudflare account / GitHub App / repository connection
+- [x] Worker target
+- [x] main Workers Build
+- [x] non-production preview
+- [x] main workers.dev runtime
+- [x] preview workers.dev runtime
+- [x] build-token scope review
+- [x] Profile B candidate / validate-only validation
 
-正式把 Web automatic deployment 从 GitHub Pages 切到 Cloudflare 前，必须全部满足：
+尚未完成：
 
-- [x] Quarto Web profile 已真实运行验证
-- [x] `_book/` rendered HTML integrity 已验证
-- [x] Wrangler static-assets config 已存在
-- [x] repository-side readiness validator 已存在
-- [ ] Cloudflare account access 已验证
-- [ ] Worker target 已验证/创建
-- [ ] GitHub secrets 已配置
-- [ ] staging/preview deployment PASS
-- [ ] target canonical URL 已确认
-- [ ] Cloudflare zone / Custom Domain 条件已确认
-- [ ] GitHub Pages legacy URL policy 已确认
-- [ ] production deployment PASS
-- [ ] production HTTP verification PASS
+- [ ] human production security-profile selection：A 或 B
+- [ ] target canonical URL
+- [ ] Cloudflare zone / Custom Domain eligibility
+- [ ] Custom Domain binding
+- [ ] canonical production verification after cutover
+- [ ] GitHub Pages legacy URL policy
+- [ ] canonical URL migration
 
-在所有未勾选项完成前：
+在这些条件完成前：
 
-`CUTOVER = BLOCKED`
+`PRODUCTION CUTOVER = BLOCKED`
 
 ## 8. 当前结论
 
-**Repository-side readiness: PASS.**
+**Repository readiness: PASS.**
 
-**Account-side readiness: UNVERIFIED.**
+**Cloudflare account/build/preview/runtime staging: VERIFIED.**
 
-**Production cutover: BLOCKED.**
+**Current canonical production: GitHub Pages.**
 
-下一步不是改掉 Pages workflow，而是建立/连接 Cloudflare account-side deployment context，然后先做 staging deployment。
+**Cloudflare canonical production cutover: NOT DONE / BLOCKED.**
+
+当前 blocker 不再是 account connection 或 runtime verification，而是：
+
+1. 人类 production security-profile 决定；
+2. target canonical URL / Custom Domain；
+3. GitHub Pages legacy policy。
+
+在这些决定完成前，不修改 DNS、不绑定正式 Custom Domain、不停用 GitHub Pages，也不把 workers.dev staging 描述成 canonical production。
