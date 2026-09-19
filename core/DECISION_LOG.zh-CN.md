@@ -186,3 +186,24 @@
 
 **实现状态：** human-approved downstream adoption；repository migration + CI validation in current change。
 
+---
+
+## 2026-09-19 — D010 — GitHub Pages legacy policy = RETIRE
+
+**来源：** 人类作者明确决定：在 workers.dev 正式成为 current canonical identity 时，旧 GitHub Pages URL 采用 `retire`。  
+**分类：** FORM / INFRASTRUCTURE / PUBLICATION ROUTING。  
+**决定：**
+
+- workers.dev canonical target 保持不变：`https://epistemology-textbook.philosophy-research.workers.dev/`；
+- GitHub Pages legacy URL policy 明确选择 `retire`，不采用 `mirror`、`legacy-with-canonical` 或 `redirect`；
+- canonical source/config 应切换到 workers.dev；
+- main 分支不再产生新的 GitHub Pages deployment；
+- Cloudflare Workers Builds 继续承担 continuous Web delivery；
+- cutover 后 GitHub Pages 旧 deployment 应取消发布，使旧 URL 不再作为可用 publication endpoint；
+- `retire` policy 的选择与实际 provider-side unpublish completion 必须分别记录：在 GitHub Pages 当前 deployment 尚未实际取消发布前，不得声称 legacy retirement 已完成；
+- 由于当前 GitHub connector 不暴露 Pages administration 写接口，若 repository automation 也无法安全获得所需 Administration + Pages 权限，最后的 Pages unpublish 属于一次最小 human account-owner action；
+- publication authorization、Web visibility=`public`、access mode=`none` 均不因这次 routing cutover 改变；
+- Profile A / Workers Builds Native 安全决定保持不变。
+
+**实现状态：** human-approved；repository cutover implementation in progress，legacy provider-side unpublish completion 待独立验证。
+
