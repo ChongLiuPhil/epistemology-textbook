@@ -458,7 +458,7 @@ def check_human_readable_state_reconciliation() -> None:
     for marker in (
         "Profile A — Workers Builds Native",
         "least_privilege: false",
-        "workers.dev 已写入 canonical source/config",
+        "workers.dev post-cutover provider build/runtime verification 已通过",
         "21a5360727167bad6f399477ded073431645fa1d",
         "Web publication: `authorized / public`",
         "Web access: `none`",
