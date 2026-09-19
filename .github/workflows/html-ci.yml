@@ -11,6 +11,9 @@ on:
       - "_quarto-*.yml"
       - "publishing.yaml"
       - "wrangler.jsonc"
+      - "cloudflare-builds.yaml"
+      - "package.json"
+      - ".nvmrc"
       - "docs/cloudflare-readiness.yaml"
       - "docs/cloudflare-readiness.zh-CN.md"
       - "docs/cloudflare-staging-runbook.zh-CN.md"
@@ -78,41 +81,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Check canonical Quarto sources
-        run: make check
-
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render Web profile
-        run: quarto render --profile web
-
-      - name: Validate rendered HTML
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -f _book/index.html
-          test -f _book/manuscript/00-open-access-and-support.html
-          test -f _book/manuscript/01-knowledge.html
-          test -f _book/manuscript/05-social-knowledge.html
-          test -f _book/manuscript/09-comparative.html
-          test -f _book/manuscript/study-guide.html
-          test -f _book/manuscript/research-studio.html
-          test -f _book/manuscript/glossary.html
-          test -f _book/manuscript/references.html
-
-          grep -q "本书目录" _book/index.html
-          grep -q "当前阅读版本" _book/index.html
-          grep -q "本章目录" _book/manuscript/01-knowledge.html
-          grep -q "版本、引用与来源" _book/manuscript/00-open-access-and-support.html
-          grep -q "github.com/ChongLiuPhil/epistemology-textbook" _book/manuscript/01-knowledge.html
-
-          python3 scripts/check_rendered_html.py
-
-          if find _book -type f \( -name '*.epub' -o -name '*.pdf' -o -name '*.docx' -o -name '*.tex' \) -print -quit | grep -q .; then
-            echo "Unexpected release-format artifact found in _book" >&2
-            exit 1
-          fi
+      - name: Run canonical Web publication gate
+        run: make web-publish-check
 
       - name: Configure GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
