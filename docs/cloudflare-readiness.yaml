@@ -2,8 +2,9 @@ schema_version: 2
 reviewed_at: 2026-09-19
 
 provider:
-  current: github-pages
-  target: cloudflare-workers
+  current: cloudflare-workers
+  target: null
+  previous: github-pages
 
 integration:
   preferred_mode: workers-builds-git
@@ -84,7 +85,7 @@ staging:
   github_actions_deploy_enabled: false
 
 account_side:
-  status: connected-runtime-verified
+  status: connected-production-cutover
   cloudflare_oauth_mcp: unavailable-in-current-session
   cloudflare_account: human-confirmed
   github_app: verified-via-github-checks
@@ -119,8 +120,8 @@ validation:
     preview_url: "https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev"
     preview_alias_url: "https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev"
   workers_dev_http: passed-via-github-actions
-  production_deployment: passed-as-cloudflare-workers-staging
-  production_http_verification: passed-on-workers-dev-staging
+  production_deployment: canonical-active-verification-pending
+  production_http_verification: pending-post-cutover
   verified_main_build_checkpoint:
     git_commit: "71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15"
     github_check_id: 105904495866
@@ -144,9 +145,14 @@ validation:
       local_assets_checked: 30
 
 cutover:
-  status: blocked
+  status: active-verification-pending
   canonical_target_selected: true
   canonical_target: "https://epistemology-textbook.philosophy-research.workers.dev/"
+  canonical_identity_current: "https://epistemology-textbook.philosophy-research.workers.dev/"
   custom_domain_required: false
+  legacy_url_policy: retire
+  legacy_url: "https://chongliuphil.github.io/epistemology-textbook/"
+  github_pages_retirement: selected-retire-pending-unpublish
   blockers:
-    - redirect-or-canonical-policy
+    - post-cutover-runtime-verification
+    - github-pages-unpublish
