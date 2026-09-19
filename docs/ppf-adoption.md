@@ -1,6 +1,6 @@
 # PPF Adoption — epistemology-textbook
 
-**Status:** PPF pilot / Phase 1 runtime validation PASS — final merge verification  
+**Status:** PPF pilot / Phase 1 runtime validation PASS — final normal CI verification  
 **Framework:** Personal Publishing Framework v0.1.0-draft  
 **Adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe`
 
