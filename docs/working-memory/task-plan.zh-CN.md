@@ -8,6 +8,7 @@
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
 - `WM-T026` — Hardened External CI candidate — `COMPLETED / VALIDATE-ONLY-PASS`
+- `WM-T028` — workers.dev canonical cutover + GitHub Pages retirement — `IMPLEMENTED / VERIFICATION-PENDING`
 
 ## COMPLETED PPF TASKS
 
@@ -52,9 +53,10 @@ Production cutover:
 - [x] target canonical URL — `https://epistemology-textbook.philosophy-research.workers.dev/`
 - [x] Cloudflare zone / Custom Domain eligibility — N/A for workers.dev canonical
 - [x] Custom Domain — N/A for workers.dev canonical
-- [ ] production verification
-- [ ] GitHub Pages legacy policy
-- [ ] canonical URL migration
+- [ ] post-cutover production verification
+- [x] GitHub Pages legacy policy — `RETIRE`
+- [x] canonical URL migration — repository config implemented
+- [ ] GitHub Pages current deployment unpublish
 
 ## NEXT ACTIONS
 
@@ -62,7 +64,7 @@ Production cutover:
 2. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
 2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
 3. Profile A 已由人类选择；保留 Workers Builds native / managed user token，并记录 broad-scope risk acceptance。
-4. target canonical URL 已选择 workers.dev；Custom Domain 路线 N/A；现在只处理 GitHub Pages legacy policy 与其后的 canonical migration verification。
+4. workers.dev canonical migration 已实施，GitHub Pages policy = `RETIRE`；现在只处理 post-cutover verification 与 Pages actual unpublish。
 5. Profile B 保留为未采用 fallback，不创建 deployment token、不启用 external CI deployment。
 6. Future：Cloudflare Workers Builds 支持 account-owned per-Worker token 或 threat model 变化后，重新评估 Profile C / Profile B。
 
@@ -87,7 +89,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-- GitHub Pages legacy policy remains unresolved before final cutover; target canonical URL is workers.dev and Custom Domain is N/A.
+- GitHub Pages legacy policy is resolved as `RETIRE`; remaining blocker is actual provider-side unpublish after workers.dev post-cutover verification.
 - Workers Builds currently supports user tokens only; this product constraint remains tracked, but the human has accepted Profile A for the current project.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
@@ -100,14 +102,10 @@ Fallback is not enabled while Workers Builds remains viable.
 - Status: `WAITING-HUMAN`
 - Severity: `NON-BLOCKING for manuscript work; BLOCKING for repackaging/redistribution decisions`
 
-### CLR-003 — GitHub Pages legacy policy
-- Target canonical URL: `RESOLVED -> https://epistemology-textbook.philosophy-research.workers.dev/`
-- Custom Domain: `NOT_APPLICABLE`
-- Status: `WAITING-HUMAN`
-- Severity: `BLOCKING FOR PRODUCTION CUTOVER, NOT FOR WORKERS.DEV STAGING`
 
 ## RECENTLY RESOLVED / PROMOTED
 
+- CLR-003 GitHub Pages legacy policy → human decision `RETIRE`; D010 recorded; canonical config migration implemented; actual provider-side unpublish remains an execution handoff, not a policy decision.
 - PPF `21a5360727167bad6f399477ded073431645fa1d` visibility/access/canonical-identity downstream adoption → Governance `35451267209`, Web `35451267208`, Cloudflare Contract `35451267235`, Hardened candidate `35451267205` → `PASS`.
 - Hardened External CI candidate `35435831128` → validate-only `PASS`; credential/preview/production deploy steps → `SKIPPED`.
 - Cloudflare Workers Builds repository contract validation → Governance `35427051865`, Web `35427051858`, Contract CI `35427051853` → `PASS`.
@@ -130,7 +128,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-Cloudflare staging is verified, Profile A is selected, and workers.dev is the selected target canonical URL. The GitHub Pages legacy-policy / canonical-migration line remains the only infrastructure priority until explicitly resolved.
+workers.dev canonical cutover is implemented. The only infrastructure priority is post-cutover verification plus actual GitHub Pages unpublish; no further routing-policy decision is pending.
 
 Other project standardization work remains paused.
 
