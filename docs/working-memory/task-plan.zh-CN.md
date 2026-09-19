@@ -5,10 +5,11 @@
 ## ACTIVE TASKS
 
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
-- `WM-T021` — Cloudflare account-side staging context — `IN-PROGRESS / SECURITY-VERIFYING`
+- `WM-T024` — Cloudflare build-token hardening — `IN-PROGRESS / COMPATIBILITY-VALIDATION`
 
 ## COMPLETED PPF TASKS
 
+- `WM-T021` — Cloudflare account-side staging context — `COMPLETED / STAGING-PASS`
 - `WM-T022` — Cloudflare staging runbook + least-privilege deployment model — `COMPLETED`
 - `WM-T020` — PPF Phase 2 Cloudflare repository readiness — `COMPLETED / PASS`
 - `WM-T013`–`WM-T019` — PPF Phase 1 source/profile/runtime/main Pages validation — `COMPLETED / PASS`
@@ -35,7 +36,9 @@ Account connection:
 - [x] Worker `epistemology-textbook` verified/created
 - [x] production trigger configured and main build PASS
 - [x] preview trigger configured and preview build PASS
-- [ ] build token present; least-privilege review pending
+- [x] default build token present and operationally verified
+- [x] default token permission scope reviewed
+- [ ] hardened least-privilege replacement compatibility validated
 - [x] non-production preview build PASS
 - [x] main workers.dev HTTP/content verification PASS
 - [x] preview workers.dev HTTP/content verification PASS
@@ -50,12 +53,11 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. 让普通 Web CI 与 Cloudflare Build Contract CI 全部 PASS。
-2. 合并 Workers Builds 标准化仓库契约。
-3. 继续尝试 Cloudflare OAuth/MCP account context。
-4. account context 一旦可用，由 AI 根据 `cloudflare-builds.yaml` 自动创建/验证 Worker、repo connection、production/preview triggers 与 first preview build。
-5. 若当前 AI 客户端仍无法接 Cloudflare MCP，人类只执行授权指南中的必要授权步骤。
-6. workers.dev staging PASS 前不切 production。
+1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定链路上盲目替换。
+2. 验证 Workers Builds 当前是否能使用满足 existing Worker deploy 的更小权限 custom token。
+3. 如果兼容，重新运行 main / preview / runtime verification 后迁移。
+4. 如果当前产品不兼容，则把 broad default token 作为显式 temporary risk，等待 Cloudflare Builds 对更细粒度 token 的稳定支持。
+5. hardening 结论明确后，再进入 Custom Domain / canonical URL / Pages legacy policy。
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
@@ -78,7 +80,8 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-- Cloudflare-managed build-token least-privilege review remains pending.
+- Cloudflare-managed default token is broader than required;
+- Workers Builds compatibility with the preferred per-Worker least-privilege token model still needs validation.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -105,6 +108,8 @@ Fallback is not enabled while Workers Builds remains viable.
 - Main Workers Build `d6bc8b62-78ba-4a9e-98ea-7a049a539858` → `PASS`.
 - Preview Workers Build `a12446a5-e341-48e4-8c22-1a184b1102c8`, Version `3f8a15d6-9994-4e90-839c-2144c8dc54b7` → `PASS`.
 - Runtime HTTP verification `35431565729` → main + preview, each 5 pages + 30 local assets → `PASS`.
+- Post-merge main Cloudflare Build `6eb6fb9a-34c0-4605-8670-98aea31fe2a5`, check `105867581534` → `PASS`.
+- Cloudflare-managed build token scope audit → `REVIEWED / OPERATIONAL / NOT-YET-HARDENED`.
 
 ## CLARIFICATION COMPLETION RULE
 
