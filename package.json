@@ -1,0 +1,13 @@
+{
+  "name": "epistemology-textbook-publishing",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Pinned Cloudflare publishing toolchain for the epistemology textbook.",
+  "scripts": {
+    "cloudflare:deploy": "wrangler deploy",
+    "cloudflare:preview": "wrangler versions upload"
+  },
+  "devDependencies": {
+    "wrangler": "4.135.0"
+  }
+}
