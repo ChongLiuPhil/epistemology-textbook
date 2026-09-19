@@ -142,11 +142,49 @@ def check_publication_contract() -> None:
         'cloudflare_build_id: "d6bc8b62-78ba-4a9e-98ea-7a049a539858"',
         'cloudflare_build_id: "a12446a5-e341-48e4-8c22-1a184b1102c8"',
         'version_id: "3f8a15d6-9994-4e90-839c-2144c8dc54b7"',
-        "workers_dev_http: external-tool-unverified",
         "target_canonical_url: unresolved",
         "status: blocked",
     ):
         require(READINESS, marker)
+
+    readiness_body = READINESS.read_text(encoding="utf-8")
+
+    http_match = re.search(r"^\s*workers_dev_http:\s*(\S+)\s*$", readiness_body, re.MULTILINE)
+    if not http_match:
+        fail("docs/cloudflare-readiness.yaml is missing workers_dev_http state")
+    if http_match.group(1) not in {
+        "not-run",
+        "external-tool-unverified",
+        "passed-via-github-actions",
+    }:
+        fail(f"unexpected workers_dev_http state: {http_match.group(1)}")
+
+    production_http_match = re.search(
+        r"^\s*production_http_verification:\s*(\S+)\s*$",
+        readiness_body,
+        re.MULTILINE,
+    )
+    if not production_http_match:
+        fail("docs/cloudflare-readiness.yaml is missing production_http_verification state")
+    if production_http_match.group(1) not in {
+        "not-run",
+        "passed-on-workers-dev-staging",
+    }:
+        fail(
+            "unexpected production_http_verification state: "
+            f"{production_http_match.group(1)}"
+        )
+
+    if http_match.group(1) == "passed-via-github-actions":
+        for marker in (
+            "runtime_http_verification:",
+            "workflow_run: 35431565729",
+            "pages_checked: 5",
+            "local_assets_checked: 30",
+        ):
+            require(READINESS, marker)
+        if "workers-dev-http-content-verification" in readiness_body:
+            fail("HTTP verification blocker must be removed after runtime verification passes")
 
     for marker in (
         "account_access: connected",
