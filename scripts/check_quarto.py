@@ -213,7 +213,7 @@ def check_active_build_files() -> None:
         "legacy LaTeX toolchain": r"(?i)latexmk|xelatex|pdflatex|textbook/[^\s]+\.tex",
     }
     forbidden_release_pattern = re.compile(
-        r"(?i)(quarto\s+(?:render|publish)[^\n]*(?:epub|pdf|docx)|"
+        r"(?i)(quarto\s+(?:render|publish)[^\n]*(?:epub|pdf|docx|latex)|"
         r"make\s+(?:epub|pdf|docx)|quarto-actions/publish)"
     )
     legacy_pages_pattern = re.compile(
@@ -234,7 +234,7 @@ def check_active_build_files() -> None:
             fail(f"legacy gh-pages branch deployment remains in {path.relative_to(ROOT)}")
 
     makefile = MAKEFILE.read_text(encoding="utf-8")
-    for target in ("epub", "pdf", "docx"):
+    for target in ("epub", "pdf", "docx", "latex"):
         if re.search(rf"(?m)^{target}\s*:", makefile):
             fail(f"daily release target remains in Makefile: {target}")
 
