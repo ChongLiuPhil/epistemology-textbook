@@ -54,7 +54,8 @@ publishing:
   adopted_framework_version: v0.1.0-draft
   adopted_framework_commit: 9326920e1920d18f0a71eac26d4068da9d6bdffe
   contract: publishing.yaml
-  phase: ppf-phase-1-complete
+  cloudflare_readiness: docs/cloudflare-readiness.yaml
+  phase: ppf-phase-2-readiness
   continuous_format: html
   on_demand_formats:
     - epub
@@ -63,7 +64,7 @@ publishing:
     - latex
   current_web_provider: github-pages
   target_web_provider: cloudflare-workers
-  cloudflare_cutover: phase-2-pending
+  cloudflare_cutover: blocked-on-account-prerequisites
 
 website:
   metadata: website.yaml

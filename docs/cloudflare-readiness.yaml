@@ -1,0 +1,39 @@
+schema_version: 1
+reviewed_at: 2026-09-19
+
+provider:
+  current: github-pages
+  target: cloudflare-workers
+
+repository:
+  status: ready-for-account-side-staging
+  web_profile: _quarto-web.yml
+  web_output: _book
+  wrangler_config: wrangler.jsonc
+  worker_name: epistemology-textbook
+  static_assets_directory: ./_book
+  active_cloudflare_deploy_workflow: false
+
+account_side:
+  status: unverified
+  cloudflare_account: unverified
+  worker_target: unverified
+  github_secret_CLOUDFLARE_ACCOUNT_ID: unverified
+  github_secret_CLOUDFLARE_API_TOKEN: unverified
+  cloudflare_zone: unverified
+  target_canonical_url: unresolved
+
+validation:
+  preview_deployment: not-run
+  production_deployment: not-run
+  production_http_verification: not-run
+
+cutover:
+  status: blocked
+  blockers:
+    - cloudflare-account-access
+    - worker-target
+    - deployment-credentials
+    - target-canonical-url
+    - preview-deployment
+    - redirect-or-canonical-policy
