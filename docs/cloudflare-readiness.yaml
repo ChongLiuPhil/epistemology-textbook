@@ -63,8 +63,12 @@ account_side:
   target_canonical_url: unresolved
 
 validation:
-  github_canonical_publish_gate: pending-this-pr
-  workers_builds_contract: pending-this-pr
+  repository_validation_runs:
+    governance: 35427051865
+    github_web: 35427051858
+    cloudflare_contract: 35427051853
+  github_canonical_publish_gate: passed
+  workers_builds_contract: passed
   first_preview_build: not-run
   workers_dev_http: not-run
   production_deployment: not-run
