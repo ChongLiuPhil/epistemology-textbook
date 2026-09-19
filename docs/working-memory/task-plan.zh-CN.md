@@ -42,7 +42,7 @@ Account side:
 
 ## NEXT ACTIONS
 
-1. Merge repository-side readiness.
+1. ~~Merge repository-side readiness.~~ `COMPLETED / MAIN VERIFIED`
 2. Keep GitHub Pages as current production.
 3. Establish Cloudflare account-side access/context.
 4. Perform staging/preview deployment.
@@ -71,6 +71,7 @@ Production cutover is blocked by all unchecked account-side gates.
 
 - PPF Phase 1 → `COMPLETED / VERIFIED`.
 - Cloudflare repository-side readiness architecture → `docs/cloudflare-readiness.zh-CN.md` + `docs/cloudflare-readiness.yaml`.
+- PR #22 merged at `f0af87ea5c060a69141eeb82c5992de8126af55d`; main Governance/Web/Pages/External Link checks → `PASS`.
 
 ## CLARIFICATION COMPLETION RULE
 
