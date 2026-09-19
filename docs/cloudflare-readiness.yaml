@@ -55,7 +55,7 @@ permission_model:
         token_type: cloudflare-managed-user-token
         least_privilege: false
       hardened_external_ci:
-        status: candidate-implemented-ci-validation-pending
+        status: candidate-validated-credentials-not-configured
         contract: cloudflare-external-ci.yaml
         workflow: .github/workflows/cloudflare-external-ci.yml
         activation: manual-only
@@ -123,6 +123,12 @@ validation:
     github_check_id: 105867581534
     cloudflare_build_id: "6eb6fb9a-34c0-4605-8670-98aea31fe2a5"
     status: passed
+  hardened_external_ci_candidate:
+    status: passed-validate-only
+    workflow_run: 35435831128
+    deploy_steps: skipped-on-pull-request
+    credentials_configured: false
+    automatic_deployment_enabled: false
   runtime_http_verification:
     workflow_run: 35431565729
     main_endpoint:
