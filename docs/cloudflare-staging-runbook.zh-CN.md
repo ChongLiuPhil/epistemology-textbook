@@ -113,7 +113,7 @@ Cloudflare build image 没有被本项目假定为预装 Quarto，因此 build w
 
 ### Profile A — Workers Builds Native
 
-- 当前状态：`operational-verified`；
+- 当前状态：`selected-production-profile / operational-verified`；
 - Cloudflare GitHub App + Workers Builds；
 - Cloudflare-managed user build token；
 - main / preview / workers.dev runtime 已验证；
@@ -147,7 +147,7 @@ Cloudflare build image 没有被本项目假定为预装 Quarto，因此 build w
 - token 不写入聊天、README、machine contract；
 - GitHub App 限制为 selected repositories only；
 - Custom Domain / Route provisioning 与 routine deployment credential 分离；
-- production security profile 由项目责任人明确选择。
+- production security profile 由项目责任人明确选择；当前项目已选择 Profile A。
 
 ## 8. Staging 验证
 
@@ -221,7 +221,7 @@ main + preview workers.dev runtime：
 
 build-token security：
 
-**REVIEWED / PRODUCT-CONSTRAINED / HUMAN PROFILE DECISION PENDING**
+**PROFILE A SELECTED / VERIFIED / BROAD-SCOPE RISK ACCEPTED**
 
 production cutover：
 
