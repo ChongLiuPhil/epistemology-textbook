@@ -70,7 +70,10 @@ security:
       token_type: cloudflare-managed-user-token
       least_privilege: false
     hardened_external_ci:
-      status: available-not-adopted
+      status: candidate-validated-credentials-not-configured
+      contract: cloudflare-external-ci.yaml
+      workflow: .github/workflows/cloudflare-external-ci.yml
+      activation: manual-only
       token_type: account-owned-api-token
       desired_scope: individual-worker-epistemology-textbook
       desired_role: editor
