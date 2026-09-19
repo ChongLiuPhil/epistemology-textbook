@@ -5,7 +5,8 @@
 ## ACTIVE TASKS
 
 - `WM-T029` — reconcile PR #18 content/form improvements with current PPF/Workers baseline — `COMPLETED / MAIN-MERGED`
-- `WM-T030` — Chapter 1 academic / pedagogical / citation review — `IN-PROGRESS / ROUND1-MAIN-VERIFIED / ROUND2-IMPLEMENTED / VALIDATION-PENDING`
+- `WM-T030` — Chapter 1 academic / pedagogical / citation review — `COMPLETED / ROUND2-MAIN-VERIFIED`
+- `WM-T031` — Chapter 2 academic / pedagogical / citation review — `READY / NEXT`
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
@@ -66,9 +67,9 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. Validate and merge WM-T030 Round 2.
-2. Continue Chapter 1 deep review after Round 2: Gettier original cases, repair-strategy coverage, argument reconstruction, pedagogy, and chapter load.
-3. Treat any proposal to move substantial material into Chapters 3/5/7/9 as a structural proposal requiring explicit human approval.
+1. Merge the Chapter 1 audit closure Working Memory PR.
+2. Start WM-T031 on Chapter 2: skepticism argument structure, epistemic luck, modal conditions, citation support, pedagogy, and chapter load.
+3. Escalate only genuine cross-chapter Architecture changes for explicit human approval.
 4. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
@@ -134,14 +135,15 @@ Fallback is not enabled while Workers Builds remains viable.
 ## TODO / BACKLOG
 
 - WM-T030 Round 1 → merge `62eae7d1f30f6b28eace1d51abc5433fd42ddbcb`; Governance `35471021367`, Web `35471021383`, Cloudflare Contract `35471021450`, Runtime `35471021366`, External Link Audit `35471021375` → `PASS`.
-- WM-T030 Round 2 implemented: undefeated/relevant-alternatives/discrimination/reliabilism/causal/safety/ability attribution and wording precision; validation pending.
+- WM-T030 Round 2 → merge `db1914fb248a503e6dc84424310427bfba254966`; Governance `35471217039`, Web `35471216984`, Cloudflare Contract `35471217109`, Runtime `35471217023`, External Link Audit `35471217048` → `PASS`.
+- WM-T030 Chapter 1 audit → `COMPLETED / ROUND2-MAIN-VERIFIED`; no Architecture redistribution promoted.
 - During chapter review, flag passages that catalogue thinkers/schools without a clear problem-function.
 - If a formal publisher or print specification is later chosen, add provider/channel-specific PDF layout constraints without changing canonical manuscript semantics.
 - No further routing/cutover task is active.
 
 ## STRUCTURAL WATCH
 
-- `AI-PROPOSED / NOT-AUTHORIZED` — evaluate whether advanced material currently in Chapter 1 should later be redistributed to Chapters 3/5/7/9. Do not move sections without explicit human architecture approval.
+- Chapter 1 redistribution watch → `CLOSED / NOT-PROMOTED`. Current chapter-length/subsection comparison does not justify a structural move; forward scope links are sufficient for now. Reopen only if later reading/teaching evidence shows a concrete overload or dependency problem.
 
 ## SYNC DEFECTS
 
