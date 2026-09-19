@@ -115,7 +115,8 @@ Account-side staging readiness：**VERIFIED**。
 
 - 当前 managed token scope 比纯 static Worker routine deploy 所需更宽；
 - `least_privilege: false`；
-- 不得描述成 per-Worker least privilege。
+- 不得描述成 per-Worker least privilege；
+- 人类作者已于 2026-09-19 明确选择 Profile A，并接受这一已知 broad-scope trade-off 作为当前项目的 production delivery security decision。
 
 ### Profile B — Hardened External CI
 
@@ -185,7 +186,7 @@ Workers Builds
 
 尚未完成：
 
-- [ ] human production security-profile selection：A 或 B
+- [x] human production security-profile selection：Profile A
 - [ ] target canonical URL
 - [ ] Cloudflare zone / Custom Domain eligibility
 - [ ] Custom Domain binding
