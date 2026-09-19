@@ -4,7 +4,7 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **Cloudflare staging complete / production security-profile decision**.
+Personal Publishing Framework — **Cloudflare staging complete / Profile A selected / canonical cutover planning**.
 
 ## CURRENT_OBJECTIVE
 
@@ -66,10 +66,13 @@ Cloudflare account-side staging 技术验证已经闭环：
 - Workers Builds 当前只支持 user token，account-owned token support 尚未进入当前产品；
 - 因此“Workers Builds + per-Worker account-owned Editor token”当前被产品能力阻塞，不应继续盲测。
 
-Profile B 已经推进到当前无新 credential 条件下的可验证极限；现在需要的是生产安全 profile 的人类决定：
+人类作者已选择 **Profile A — Workers Builds Native**：
 
-- Profile A：保留已验证的 Workers Builds 原生链路，接受当前 managed token scope，等待 Cloudflare 原生 granular support；
-- Profile B：GitHub Actions + per-Worker account-owned Editor token。validate-only candidate 已在 GitHub Actions 实际 PASS；所有 credential/preview/production deployment steps 在 PR 场景均为 skipped。尚未创建任何新 token，也未启用自动部署。
+- 保留已验证的 Workers Builds 原生链路；
+- 明确接受当前 Cloudflare-managed user token 的已知较宽 scope 作为当前项目安全权衡；
+- `least_privilege: false` 保持不变，不把 broad token 描述成 least privilege；
+- Profile B 继续作为未采用 fallback；
+- Profile C 继续等待 provider 原生 granular support。
 
 ## IMMEDIATE_NEXT_ACTION
 
@@ -79,8 +82,8 @@ Profile B 已经推进到当前无新 credential 条件下的可验证极限；�
 4. account-side staging 技术验证已闭环；
 5. build-token hardening compatibility research 已完成：Workers Builds 当前 user-token-only；
 6. Profile B candidate 无凭据 validate-only CI 已通过（run `35435831128`）；
-7. Hardened External CI candidate 已合并并通过 validate-only；由人类选择 production security profile A 或 B；
-8. profile 决定后，再进入 Custom Domain / canonical URL / Pages legacy policy。
+7. production security profile：Profile A 已由人类明确选择并记录；
+8. 当前进入 Custom Domain / canonical URL / Pages legacy policy 决策与验证。
 
 ## HANDOFF POINTERS
 
@@ -109,4 +112,4 @@ Profile B 已经推进到当前无新 credential 条件下的可验证极限；�
 - preview URL：`https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev`
 - preview Alias：`https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev`
 
-当前阶段不得修改 DNS、绑定正式 Custom Domain、停用 GitHub Pages 或把 token 写入仓库。
+Profile A 的选择已经解除 security-profile blocker，但不等于 canonical cutover approval。当前仍不得在 target canonical URL / Custom Domain 与 GitHub Pages legacy policy 未明确前修改 DNS、绑定正式 Custom Domain或停用 GitHub Pages；token 继续不得写入仓库。
