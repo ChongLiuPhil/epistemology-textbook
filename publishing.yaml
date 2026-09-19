@@ -62,7 +62,8 @@ deployment:
       repository_connection: verified
       worker_target: verified
       workers_builds_triggers: verified
-      build_token: reviewed-broad-scope-hardening-pending
+      build_token: reviewed-broad-scope-profile-a-accepted
+      production_security_profile: workers-builds-native
       workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
       canonical_url: unresolved
       cloudflare_main_build: passed
