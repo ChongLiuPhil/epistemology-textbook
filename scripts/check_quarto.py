@@ -177,7 +177,7 @@ def check_ppf_contract() -> None:
         "on-demand mode": "mode: on-demand",
         "current Cloudflare provider": "current_provider: cloudflare-workers",
         "resolved target provider": "target_provider: null",
-        "active canonical migration": "migration_status: canonical-active-verification-pending",
+        "verified canonical migration": "migration_status: canonical-active-verified",
         "active deployment integration": "integration_state: PRODUCTION_ACTIVE",
         "active cutover state": "cutover_state: ACTIVE",
         "retired Pages policy": "legacy_url_policy: retire",

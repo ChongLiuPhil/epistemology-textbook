@@ -85,7 +85,7 @@ staging:
   github_actions_deploy_enabled: false
 
 account_side:
-  status: connected-production-cutover
+  status: connected-production-active
   cloudflare_oauth_mcp: unavailable-in-current-session
   cloudflare_account: human-confirmed
   github_app: verified-via-github-checks
@@ -120,8 +120,8 @@ validation:
     preview_url: "https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev"
     preview_alias_url: "https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev"
   workers_dev_http: passed-via-github-actions
-  production_deployment: canonical-active-verification-pending
-  production_http_verification: pending-post-cutover
+  production_deployment: passed-canonical-production
+  production_http_verification: passed-post-cutover
   verified_main_build_checkpoint:
     git_commit: "71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15"
     github_check_id: 105904495866
@@ -144,15 +144,27 @@ validation:
       pages_checked: 5
       local_assets_checked: 30
 
+post_cutover_verification:
+  status: passed
+  git_commit: "63510364ed40a97faf190c484dd80afc91971ecb"
+  github_actions_runtime_run: 35453967021
+  github_actions_runtime_check_id: 105925881599
+  cloudflare_provider_check_id: 105926103705
+  cloudflare_build_id: "42aa93fe-d9b6-49e4-80be-a849951a6b9d"
+  canonical_url: "https://epistemology-textbook.philosophy-research.workers.dev/"
+  pages_checked: 5
+  local_assets_checked: 30
+
 cutover:
-  status: active-verification-pending
+  status: complete
   canonical_target_selected: true
   canonical_target: "https://epistemology-textbook.philosophy-research.workers.dev/"
   canonical_identity_current: "https://epistemology-textbook.philosophy-research.workers.dev/"
   custom_domain_required: false
-  legacy_url_policy: retire
-  legacy_url: "https://chongliuphil.github.io/epistemology-textbook/"
-  github_pages_retirement: selected-retire-pending-unpublish
+
+legacy_retirement:
+  policy: retire
+  url: "https://chongliuphil.github.io/epistemology-textbook/"
+  status: pending-unpublish
   blockers:
-    - post-cutover-runtime-verification
     - github-pages-unpublish

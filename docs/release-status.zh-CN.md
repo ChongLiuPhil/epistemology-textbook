@@ -19,7 +19,7 @@
 - default profile：`web`
 - 当前 Web provider：Cloudflare Workers Static Assets
 - previous / legacy Web provider：GitHub Pages（policy = `retire`）
-- migration status：`canonical-active-verification-pending`
+- migration status：`canonical-active-verified`
 - source visibility：`public`
 - Web publication authorization：`authorized`
 - Web publication visibility：`public`
@@ -79,7 +79,7 @@ MAJOR-REVISION
 手动生成 PDF / DOCX / EPUB / LaTeX build artifact：无，但不构成正式 release.
 
 PPF Web continuous publication：无内容发布 blocker；canonical config 已切换到 workers.dev。  
-Cloudflare cutover：repository migration 已实施；当前等待 post-cutover Workers/runtime verification。GitHub Pages legacy policy 已选 `retire`，旧 deployment 仍需实际 unpublish。  
+Cloudflare cutover：**VERIFIED**；workers.dev 已完成 post-cutover provider build/runtime verification。GitHub Pages legacy policy 已选 `retire`，旧 deployment 仍需实际 unpublish。  
 
 正式开放许可 release：受 `CLR-001` 影响.  
 包含或再分发外部参考 PDF 的任何 release：受 `CLR-002` 影响。

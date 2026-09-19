@@ -2,7 +2,7 @@
 
 **日期：** 2026-09-19  
 **项目：** `ChongLiuPhil/epistemology-textbook`  
-**状态：** `CLOUDFLARE-CANONICAL-ACTIVE / POST-CUTOVER-VERIFICATION-PENDING / PAGES-RETIREMENT-PENDING`
+**状态：** `CLOUDFLARE-CANONICAL-ACTIVE-VERIFIED / PAGES-RETIREMENT-PENDING`
 
 > 本文件是 `docs/cloudflare-readiness.yaml` 的人类可读解释。机器可读 readiness state 是本仓库对当前已验证 Cloudflare 状态的 durable record；本文不得与其形成第二套冲突真值。
 
@@ -25,12 +25,12 @@ GitHub main
 - `_quarto-web.yml` 与 rendered-HTML validator 已切换到 workers.dev；
 - GitHub Pages policy = `retire`；
 - 旧 GitHub Pages deployment 尚未实际 unpublish，因此 legacy retirement 仍是 pending；
-- post-cutover workers.dev canonical runtime verification 尚需在 main merge 后通过真实 provider build/runtime 证据完成。
+- post-cutover workers.dev canonical runtime verification 已由 main push 的真实 Cloudflare provider build 与 GitHub Actions runtime check 验证通过。
 
 因此当前精确状态是：
 
 ```text
-Cloudflare canonical identity = active / verification pending
+Cloudflare canonical identity = active / verified
 GitHub Pages = legacy endpoint / retirement pending
 ```
 
@@ -75,7 +75,7 @@ Repository-side readiness：**PASS**。
 
 本文不复制完整 identifier 列表，避免形成第二个详细 evidence source。
 
-Account-side Cloudflare readiness：**VERIFIED**；canonical activation 的 post-cutover verification 待本次 main merge 后完成。
+Account-side Cloudflare readiness：**VERIFIED**；canonical activation 的 post-cutover verification 已完成。
 
 ## 4. Runtime verification
 
@@ -90,7 +90,7 @@ Account-side Cloudflare readiness：**VERIFIED**；canonical activation 的 post
 
 运行证据由 `docs/cloudflare-readiness.yaml` 的 `runtime_http_verification` 指向 GitHub Actions run。
 
-这些历史 staging/runtime checks 已证明 provider endpoint 可访问。本轮还增加 main-push canonical marker verification，用于确认新的 workers.dev canonical build 在 merge 后真实生效。
+历史 staging/runtime checks 已证明 provider endpoint 可访问；cutover 后 main runtime run `35453967021` 进一步确认 workers.dev 已收敛到新的 canonical build：canonical marker 命中，5 个代表性页面与 30 个本地资源均通过。Cloudflare provider check `105926103705` / build `42aa93fe-d9b6-49e4-80be-a849951a6b9d` 同样通过。详细 evidence 仅以 machine readiness 为准。
 
 ## 5. Security profiles
 
@@ -184,12 +184,12 @@ Workers Builds
 
 仍需完成并验证：
 
-- [ ] post-cutover main Workers Build + workers.dev canonical runtime verification
+- [x] post-cutover main Workers Build + workers.dev canonical runtime verification
 - [ ] GitHub Pages current deployment actual unpublish
 
 因此：
 
-`CANONICAL CUTOVER = ACTIVE / VERIFICATION PENDING`
+`CANONICAL CUTOVER = COMPLETE / VERIFIED`
 
 `LEGACY RETIREMENT = SELECTED / UNPUBLISH PENDING`
 
@@ -197,15 +197,12 @@ Workers Builds
 
 **Repository cutover configuration: IMPLEMENTED.**
 
-**Current canonical identity configured in source: workers.dev.**
+**Current canonical identity: workers.dev.**
 
-**Cloudflare production delivery: ACTIVE / POST-CUTOVER VERIFICATION PENDING.**
+**Cloudflare production delivery: ACTIVE / VERIFIED.**
 
 **GitHub Pages legacy policy: RETIRE / CURRENT DEPLOYMENT UNPUBLISH PENDING.**
 
-当前剩余工作不再是新的架构决策，而是两项验证/收尾：
+canonical cutover 已完成；唯一尚未完成的基础设施收尾，是使用 repository admin/maintainer 权限对现存 GitHub Pages deployment 执行一次 `Unpublish site`，随后验证旧 URL 已不可用。
 
-1. main merge 后确认 Cloudflare provider build 与 workers.dev canonical runtime；
-2. 使用 repository admin/maintainer 权限对现存 GitHub Pages deployment 执行一次 `Unpublish site`。
-
-第二项不能由当前 GitHub connector 完成，因为 GitHub 官方 Pages deletion/unpublish administration 需要当前连接未暴露的管理权限。仓库已经停止后续 Pages deployment，因此完成一次 unpublish 后不会被正常 main workflow 自动重新发布。
+当前 GitHub connector 不暴露完成该 Pages administration 动作所需的仓库管理写权限。仓库已经停止后续 Pages deployment，因此完成一次 unpublish 后不会被正常 main workflow 自动重新发布。

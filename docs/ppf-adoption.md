@@ -1,6 +1,6 @@
 # PPF Adoption — epistemology-textbook
 
-**Status:** PPF adopted / workers.dev canonical cutover ACTIVE / post-cutover verification + Pages retirement PENDING  
+**Status:** PPF adopted / workers.dev canonical cutover VERIFIED / Pages retirement PENDING  
 **Framework:** Personal Publishing Framework v0.1.0-draft  
 **Adopted framework commit:** `21a5360727167bad6f399477ded073431645fa1d`  
 **Previous adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe` — superseded by explicit human adoption on 2026-09-19
@@ -59,7 +59,7 @@ Web access mode = none
 current canonical identity = workers.dev
 provider endpoint = workers.dev
 legacy GitHub Pages policy = retire
-post-cutover verification = pending
+post-cutover verification = passed
 legacy unpublish = pending
 ~~~
 
@@ -91,10 +91,17 @@ Cutover decisions and repository migration are now resolved:
 - Quarto canonical configuration = workers.dev;
 - GitHub Pages deployment workflow = retired.
 
-Remaining evidence/cleanup:
+Post-cutover evidence is now verified:
 
-1. post-cutover Cloudflare main build + canonical runtime verification;
-2. actual GitHub Pages deployment unpublish.
+- merge commit `63510364ed40a97faf190c484dd80afc91971ecb`;
+- GitHub runtime run `35453967021`: PASS;
+- Cloudflare provider check `105926103705`: PASS;
+- Cloudflare build `42aa93fe-d9b6-49e4-80be-a849951a6b9d`: PASS;
+- workers.dev canonical marker + 5 representative pages + 30 local assets: PASS.
+
+Remaining cleanup:
+
+1. actual GitHub Pages deployment unpublish.
 
 The second item is provider-side cleanup and is not silently treated as complete merely because the repository stopped deploying Pages.
 
@@ -163,7 +170,7 @@ Phase 1 was merged through PR #20.
 
 The general-purpose web reader available in this ChatGPT session could not directly fetch the GitHub Pages URL, so this record does **not** claim an independent external HTTP content fetch. Production deployment is verified from GitHub's Pages deployment job, and repository-side external-link validation also passed.
 
-Phase 2 staging/runtime verification is complete. The current cutover change promotes Cloudflare workers.dev to the canonical production provider, subject to post-cutover main verification; GitHub Pages is legacy-retirement pending.
+Phase 2 staging/runtime verification and post-cutover main verification are complete. Cloudflare workers.dev is the verified canonical production provider; GitHub Pages is legacy-retirement pending.
 
 ## Current Cloudflare security-profile evidence
 
