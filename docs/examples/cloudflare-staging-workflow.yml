@@ -1,0 +1,49 @@
+name: Cloudflare Staging Deploy Example
+
+# Documentation example only.
+# This file intentionally lives outside .github/workflows/ and does not execute.
+#
+# Move/adapt it into .github/workflows/ only after:
+# - the target Worker exists and is verified;
+# - CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN are configured as secrets;
+# - the API token is scoped to the intended Worker with the minimum required role;
+# - docs/cloudflare-readiness.yaml has been updated from unverified states.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Validate canonical sources and readiness
+        run: make check
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render Web profile
+        run: quarto render --profile web
+
+      - name: Validate rendered HTML
+        run: python3 scripts/check_rendered_html.py
+
+      - name: Deploy static assets to Cloudflare staging target
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
