@@ -14,6 +14,22 @@ repository:
   static_assets_directory: ./_book
   active_cloudflare_deploy_workflow: false
 
+permission_model:
+  provisioning:
+    create_worker: workers-product-admin-required
+    custom_domain_change: worker-editor-plus-zone-workers-routes-write
+    long_lived: false
+  continuous_deployment:
+    target_scope: individual-worker
+    role: editor
+    zone_route_write_required: false-if-domain-provisioned-separately
+
+staging:
+  strategy: target-worker-on-workers-dev-before-custom-domain
+  runbook: docs/cloudflare-staging-runbook.zh-CN.md
+  workflow_example: docs/examples/cloudflare-staging-workflow.yml
+  executable_workflow_enabled: false
+
 account_side:
   status: unverified
   cloudflare_account: unverified

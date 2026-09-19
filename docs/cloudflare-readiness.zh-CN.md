@@ -134,6 +134,20 @@ GitHub Pages 原 URL 在 cutover 后是保留为 mirror、保留为 legacy URL�
 
 ## 6. 最小权限部署方案
 
+详细执行手册：
+
+`docs/cloudflare-staging-runbook.zh-CN.md`
+
+当前权限模型进一步区分：
+
+- 一次性 Worker provisioning；
+- 一次性 Custom Domain provisioning；
+- 长期 GitHub Actions 内容部署。
+
+Cloudflare 当前权限规则下，创建 Worker 需要 Workers product-level `Admin`；对已存在的指定 Worker 部署只需要该 Worker 的 `Editor`；如果部署过程修改 Custom Domain/Route，则还需要目标 zone 的 `Workers Routes Write`。
+
+因此推荐先由人工/临时 provisioning credential 创建并确认 Worker，再为长期 GitHub Actions 使用仅限该 Worker 的 `Editor` token。Custom Domain 也优先作为独立 provisioning 操作处理，使日常内容发布不必长期持有 zone-write 权限。
+
 当账户侧条件具备后，推荐仍由 GitHub Actions 作为唯一 publication gate：
 
 1. `make check`
