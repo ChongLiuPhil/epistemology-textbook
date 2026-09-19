@@ -2,7 +2,7 @@
 
 **日期：** 2026-09-19  
 **项目：** `ChongLiuPhil/epistemology-textbook`  
-**状态：** `REPOSITORY CONTRACT READY / ACCOUNT AUTHORIZATION PENDING`
+**状态：** `ACCOUNT CONNECTED / MAIN+PREVIEW+RUNTIME VERIFIED / PRODUCTION CUTOVER PENDING`
 
 ## 1. 标准路线
 
@@ -168,15 +168,31 @@ Workers Builds 可以自动生成 build token，也可以使用 custom user toke
 
 仓库侧：
 
-**READY**
+**READY / VERIFIED**
+
+GitHub App / repository connection：
+
+**VERIFIED**
+
+Cloudflare main Workers Build：
+
+**PASS**
+
+Cloudflare non-production preview：
+
+**PASS**
+
+main + preview workers.dev runtime：
+
+**PASS**
 
 当前 ChatGPT 会话：
 
 **Cloudflare account tool unavailable**
 
-账户侧：
+build-token security：
 
-**UNVERIFIED**
+**REVIEWED / PRODUCT-CONSTRAINED / HUMAN PROFILE DECISION PENDING**
 
 production cutover：
 
