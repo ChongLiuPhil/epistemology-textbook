@@ -132,17 +132,35 @@ def check_publication_contract() -> None:
         'canonical_publish_gate: "make web-publish-check"',
         "active_github_actions_cloudflare_deploy: false",
         "cloudflare_oauth_mcp: unavailable-in-current-session",
-        "github_app: unverified",
-        "repository_connection: unverified",
-        "worker_target: unverified",
-        "production_trigger: unverified",
-        "preview_trigger: unverified",
-        "build_token: unverified",
+        "github_app: verified-via-github-checks",
+        "repository_connection: verified",
+        "worker_target: verified",
+        "production_trigger: verified-main-build-passed",
+        "preview_trigger: verified-preview-build-passed",
+        "build_token: cloudflare-managed-present-security-review-pending",
+        'workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"',
+        'cloudflare_build_id: "d6bc8b62-78ba-4a9e-98ea-7a049a539858"',
+        'cloudflare_build_id: "a12446a5-e341-48e4-8c22-1a184b1102c8"',
+        'version_id: "3f8a15d6-9994-4e90-839c-2144c8dc54b7"',
+        "workers_dev_http: external-tool-unverified",
         "target_canonical_url: unresolved",
-        "first_preview_build: not-run",
         "status: blocked",
     ):
         require(READINESS, marker)
+
+    for marker in (
+        "account_access: connected",
+        "github_app: verified",
+        "repository_connection: verified",
+        "worker_target: verified",
+        "workers_builds_triggers: verified",
+        "build_token: present-security-review-pending",
+        'workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"',
+        "cloudflare_main_build: passed",
+        "preview_deployment: passed",
+        "production_cutover: blocked",
+    ):
+        require(PUBLISHING, marker)
 
 
 def check_no_premature_github_actions_deploy() -> None:
@@ -173,8 +191,9 @@ def main() -> None:
     print(
         "Cloudflare Workers Builds contract check passed: the canonical Web publication "
         "gate, pinned toolchain, Wrangler static-assets config, Git integration commands, "
-        "and staged account-side state are mutually consistent; GitHub Pages remains "
-        "current production and no GitHub Actions Cloudflare cutover is active."
+        "and verified Workers Builds connection state are mutually consistent; "
+        "GitHub Pages remains current production, Cloudflare staging builds have passed, "
+        "and no GitHub Actions Cloudflare cutover is active."
     )
 
 
