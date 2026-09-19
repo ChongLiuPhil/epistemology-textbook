@@ -6,7 +6,7 @@ This is a Chinese-language, problem-driven epistemology textbook and learning pr
 
 ## Current stage: Web Edition Development
 
-The web edition is currently the primary development and publication target. The normal workflow is:
+The project is currently in **PPF Pilot Phase 1**. The Web edition remains the primary continuously published target while the same canonical source is validated for on-demand multi-format publication. GitHub Pages remains the current production Web provider. The normal workflow is:
 
 `QMD → validation → HTML → GitHub Pages`
 
@@ -16,7 +16,7 @@ Read online: <https://chongliuphil.github.io/epistemology-textbook/>
 
 Open access and support: <https://chongliuphil.github.io/epistemology-textbook/manuscript/00-open-access-and-support.html>
 
-PDF, DOCX, and EPUB are not part of the day-to-day Pages CI. They can now be generated on demand from the same canonical QMD sources through the manual `Build Publication Formats` workflow. By default these are build artifacts for review, offline reading, and publication preparation rather than approved formal releases.
+PDF, DOCX, EPUB, and LaTeX are not part of day-to-day Pages CI. They are generated on demand through the manual `Build Publication Format` workflow, one explicitly selected format per run. By default these are build artifacts for review, offline reading, and publication preparation rather than approved formal releases.
 
 ## Project orientation
 
@@ -32,7 +32,7 @@ The formal manuscript has only the following sources:
 - Main text and front/back matter: `manuscript/*.qmd`
 - Bibliography database: `references.bib`
 
-The book structure and HTML configuration live in `_quarto.yml`, and the website styling lives in `book.css`.
+Shared book structure lives in `_quarto.yml`; Web configuration lives in `_quarto-web.yml`; PDF, DOCX, EPUB, and LaTeX use separate profiles. Publication intent is declared in `publishing.yaml`, and website styling lives in `book.css`.
 
 `textbook/` preserves the pre-migration historical LaTeX version for auditing and version tracing only. It is not a formal manuscript source and does not participate in editing, validation, or builds. TeX/LaTeX-style syntax inside mathematical formulas is Quarto/Pandoc math syntax and does not imply a return to a LaTeX document workflow.
 
@@ -100,9 +100,15 @@ External website availability depends on publishers, rate limits, authentication
 
 ## On-demand publication formats
 
-`_quarto.yml` now declares HTML, PDF, DOCX, and EPUB from the same source. Day-to-day Pull Request and `main` workflows still render and publish HTML only. When review, offline reading, or publication preparation requires it, the manual `Build Publication Formats` workflow can generate PDF, DOCX, and EPUB artifacts.
+`_quarto.yml` now contains shared configuration and declares `web` as the default profile. Day-to-day Pull Request and `main` workflows render and publish only the HTML Web profile. When review, offline reading, or publication preparation requires it, the manual `Build Publication Format` workflow explicitly selects one of EPUB, PDF, DOCX, or LaTeX.
 
-These artifacts use the same `index.qmd`, `manuscript/*.qmd`, and `references.bib` sources as the web edition. A successful manual build does not by itself constitute an approved formal release; release state is tracked separately in `docs/release-status.zh-CN.md`.
+These artifacts use the same `index.qmd`, `manuscript/*.qmd`, and `references.bib` sources as the Web edition. Web output is written to `_book/`; on-demand formats are written to `_publication/<format>/`. A successful manual build does not by itself constitute an approved formal release; release state is tracked separately in `docs/release-status.zh-CN.md`.
+
+## PPF and Cloudflare migration status
+
+This project adopts Personal Publishing Framework v0.1.0-draft for its publication lifecycle. The declarative contract is `publishing.yaml`; the adoption note is `docs/ppf-adoption.md`.
+
+Phase 1 keeps GitHub Pages as the existing production site while the profile-based build model is validated in real CI. `wrangler.jsonc` stages a Cloudflare Workers Static Assets target, but this **does not mean Cloudflare is currently live**. Phase 2 cutover requires a confirmed Worker target, credentials, canonical URL, preview verification, and a redirect/canonical policy for the existing Pages URL.
 
 ## CI and deployment
 
@@ -112,10 +118,10 @@ At the Pull Request stage:
 - validate bibliography citation keys, DOI/URL metadata, and project structure;
 - verify open-reading configuration, feedback entry points, and the left/right navigation labels visible to readers;
 - install Quarto;
-- render the complete HTML site;
+- render the complete HTML site using the `web` profile;
 - validate site-wide internal links, static assets, page anchors, and duplicate HTML IDs;
 - verify that key HTML pages and important reading-interface elements exist;
-- verify that EPUB/PDF/DOCX files were not generated unexpectedly.
+- verify that EPUB/PDF/DOCX/LaTeX files were not generated unexpectedly.
 
 After merging into `main`, and only after all of the above validation passes, the workflow deploys the `_book/` produced by that same build as a GitHub Pages artifact. Deployment does not use a script to force-push a `gh-pages` branch. External HTTP reachability is handled by the separate audit: it runs immediately when relevant content enters `main`, and also on weekly and manual schedules, so temporary failures of third-party sites do not become part of the Pages publication gate.
 
