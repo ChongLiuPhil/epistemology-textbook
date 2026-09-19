@@ -50,3 +50,7 @@ _publication/
 ~$*.docx
 ~$*.xlsx
 ~$*.pptx
+
+# Node / Cloudflare local tooling
+node_modules/
+.wrangler/

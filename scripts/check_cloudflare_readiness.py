@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate repository-side Cloudflare Phase 2 readiness without deploying."""
+"""Validate the repository-side Cloudflare Workers Builds contract without deploying."""
 
 from __future__ import annotations
 
@@ -10,8 +10,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WRANGLER = ROOT / "wrangler.jsonc"
+PACKAGE = ROOT / "package.json"
+NODE_VERSION = ROOT / ".nvmrc"
+BUILD_CONTRACT = ROOT / "cloudflare-builds.yaml"
 PUBLISHING = ROOT / "publishing.yaml"
 READINESS = ROOT / "docs" / "cloudflare-readiness.yaml"
+INSTALLER = ROOT / "scripts" / "ensure_quarto.sh"
+BUILD_WRAPPER = ROOT / "scripts" / "cloudflare_build.sh"
 WORKFLOWS = ROOT / ".github" / "workflows"
 
 
@@ -28,12 +33,10 @@ def require(path: Path, marker: str) -> None:
 
 
 def check_wrangler() -> None:
-    if not WRANGLER.exists():
-        fail("missing wrangler.jsonc")
-
-    body = WRANGLER.read_text(encoding="utf-8")
     try:
-        data = json.loads(body)
+        data = json.loads(WRANGLER.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        fail("missing wrangler.jsonc")
     except json.JSONDecodeError as exc:
         fail(f"wrangler.jsonc must remain JSON-compatible in this project: {exc}")
 
@@ -51,37 +54,98 @@ def check_wrangler() -> None:
         fail("wrangler assets.directory must point to ./_book")
 
     if "main" in data:
-        fail("Phase 2 readiness expects a static-assets-only Worker; unexpected main script")
-
-    if "binding" in assets:
-        fail("static-assets-only readiness config should not declare an assets binding")
+        fail("reference Worker must remain static-assets-only; unexpected main script")
 
 
-def check_contract() -> None:
+def check_toolchain() -> None:
+    try:
+        package = json.loads(PACKAGE.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        fail("missing package.json")
+    except json.JSONDecodeError as exc:
+        fail(f"invalid package.json: {exc}")
+
+    wrangler = package.get("devDependencies", {}).get("wrangler")
+    if wrangler != "4.135.0":
+        fail(f"Wrangler must be pinned exactly to 4.135.0, found {wrangler!r}")
+
+    scripts = package.get("scripts", {})
+    if scripts.get("cloudflare:deploy") != "wrangler deploy":
+        fail("package.json cloudflare:deploy must be 'wrangler deploy'")
+    if scripts.get("cloudflare:preview") != "wrangler versions upload":
+        fail("package.json cloudflare:preview must be 'wrangler versions upload'")
+
+    if NODE_VERSION.read_text(encoding="utf-8").strip() != "24":
+        fail(".nvmrc must pin Node major 24")
+
+    for marker in (
+        'VERSION=',
+        '1.10.18',
+        'sha256sum --check --status',
+        'linux-amd64.tar.gz',
+        'linux-arm64.tar.gz',
+    ):
+        require(INSTALLER, marker)
+
+    for marker in (
+        'bash scripts/ensure_quarto.sh',
+        'make web-publish-check',
+    ):
+        require(BUILD_WRAPPER, marker)
+
+
+def check_workers_builds_contract() -> None:
+    markers = (
+        "mode: workers-builds-git",
+        "repository: ChongLiuPhil/epistemology-textbook",
+        "production_branch: main",
+        "non_production_branch_builds: true",
+        'build: "bash scripts/cloudflare_build.sh"',
+        'deploy: "npm run cloudflare:deploy"',
+        'preview_deploy: "npm run cloudflare:preview"',
+        'node: "24"',
+        'wrangler: "4.135.0"',
+        'quarto: "1.10.18"',
+        "name: epistemology-textbook",
+        "static_assets_directory: ./_book",
+        "credentials_in_repository: prohibited",
+        "github_app_repository_scope: selected-repositories-only",
+    )
+    for marker in markers:
+        require(BUILD_CONTRACT, marker)
+
+
+def check_publication_contract() -> None:
     for marker in (
         "current_provider: github-pages",
         "target_provider: cloudflare-workers",
+        "integration_mode: workers-builds-git",
+        "build_contract: cloudflare-builds.yaml",
+        'canonical_publish_gate: "make web-publish-check"',
         "output_directory: _book",
         "migration_status: staged",
     ):
         require(PUBLISHING, marker)
 
     for marker in (
-        "status: ready-for-account-side-staging",
-        "active_cloudflare_deploy_workflow: false",
-        "cloudflare_account: unverified",
+        "preferred_mode: workers-builds-git",
+        'canonical_publish_gate: "make web-publish-check"',
+        "active_github_actions_cloudflare_deploy: false",
+        "cloudflare_oauth_mcp: unavailable-in-current-session",
+        "github_app: unverified",
+        "repository_connection: unverified",
         "worker_target: unverified",
-        "github_secret_CLOUDFLARE_ACCOUNT_ID: unverified",
-        "github_secret_CLOUDFLARE_API_TOKEN: unverified",
+        "production_trigger: unverified",
+        "preview_trigger: unverified",
+        "build_token: unverified",
         "target_canonical_url: unresolved",
-        "preview_deployment: not-run",
-        "production_deployment: not-run",
+        "first_preview_build: not-run",
         "status: blocked",
     ):
         require(READINESS, marker)
 
 
-def check_no_premature_cloudflare_deploy() -> None:
+def check_no_premature_github_actions_deploy() -> None:
     forbidden = (
         "cloudflare/wrangler-action",
         "wrangler deploy",
@@ -94,21 +158,23 @@ def check_no_premature_cloudflare_deploy() -> None:
         for marker in forbidden:
             if marker in body:
                 fail(
-                    "Cloudflare deployment became active before readiness gates were resolved: "
-                    f"{path.relative_to(ROOT)} contains {marker}"
+                    "GitHub Actions Cloudflare deployment became active before the "
+                    f"Workers Builds path was validated: {path.relative_to(ROOT)} contains {marker}"
                 )
 
 
 def main() -> None:
     check_wrangler()
-    check_contract()
-    check_no_premature_cloudflare_deploy()
+    check_toolchain()
+    check_workers_builds_contract()
+    check_publication_contract()
+    check_no_premature_github_actions_deploy()
 
     print(
-        "Cloudflare readiness check passed: static-assets Wrangler configuration is "
-        "consistent with _book; GitHub Pages remains current production; account-side "
-        "Cloudflare prerequisites remain explicitly unverified; no active Cloudflare "
-        "deployment workflow can cut over production prematurely."
+        "Cloudflare Workers Builds contract check passed: the canonical Web publication "
+        "gate, pinned toolchain, Wrangler static-assets config, Git integration commands, "
+        "and staged account-side state are mutually consistent; GitHub Pages remains "
+        "current production and no GitHub Actions Cloudflare cutover is active."
     )
 
 

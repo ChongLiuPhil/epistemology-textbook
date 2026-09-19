@@ -109,6 +109,47 @@ def main() -> None:
     if not BOOK.is_dir():
         fail("_book/ does not exist; render HTML before running this check")
 
+    required_files = [
+        "index.html",
+        "manuscript/00-open-access-and-support.html",
+        "manuscript/01-knowledge.html",
+        "manuscript/05-social-knowledge.html",
+        "manuscript/09-comparative.html",
+        "manuscript/study-guide.html",
+        "manuscript/research-studio.html",
+        "manuscript/glossary.html",
+        "manuscript/references.html",
+    ]
+    for relative in required_files:
+        if not (BOOK / relative).is_file():
+            fail(f"missing required rendered Web artifact: {relative}")
+
+    required_text = {
+        "index.html": ("本书目录", "当前阅读版本"),
+        "manuscript/01-knowledge.html": (
+            "本章目录",
+            "github.com/ChongLiuPhil/epistemology-textbook",
+        ),
+        "manuscript/00-open-access-and-support.html": ("版本、引用与来源",),
+    }
+    for relative, markers in required_text.items():
+        body = (BOOK / relative).read_text(encoding="utf-8")
+        for marker in markers:
+            if marker not in body:
+                fail(f"{relative} is missing required rendered marker: {marker}")
+
+    unexpected_extensions = {".epub", ".pdf", ".docx", ".tex"}
+    unexpected = [
+        path.relative_to(BOOK)
+        for path in BOOK.rglob("*")
+        if path.is_file() and path.suffix.lower() in unexpected_extensions
+    ]
+    if unexpected:
+        fail(
+            "unexpected publication-format artifact(s) in _book/: "
+            + ", ".join(str(path) for path in unexpected)
+        )
+
     html_files = sorted(path.resolve() for path in BOOK.rglob("*.html"))
     if not html_files:
         fail("no rendered HTML files found under _book/")

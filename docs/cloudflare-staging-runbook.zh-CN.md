@@ -1,280 +1,183 @@
-# Cloudflare Phase 2 Staging Runbook
+# Cloudflare Workers Builds Staging Runbook
 
 **日期：** 2026-09-19  
 **项目：** `ChongLiuPhil/epistemology-textbook`  
-**状态：** `PREPARED / ACCOUNT-SIDE-EXECUTION-PENDING`
+**状态：** `REPOSITORY CONTRACT READY / ACCOUNT AUTHORIZATION PENDING`
 
-## 1. 目标
+## 1. 标准路线
 
-在不影响当前 GitHub Pages production 的前提下，把已经通过 PPF Phase 1 验证的：
-
-```text
-canonical QMD/BibTeX
--> make check
--> quarto render --profile web
--> rendered HTML validation
--> _book/
-```
-
-部署到 Cloudflare Workers Static Assets 做 staging 验证。
-
-本阶段不修改 canonical production URL，不停用 GitHub Pages，不自动修改 DNS。
-
-## 2. 关键原则
-
-### 2.1 Provisioning 与持续部署分离
-
-Cloudflare 当前权限模型区分：
-
-- **创建新 Worker**：需要 Workers product-level `Admin`；
-- **部署到已存在 Worker**：只需要该 Worker 的 `Editor`；
-- **部署时新增/修改 Route 或 Custom Domain**：除 Worker `Editor` 外，还需要对应 zone 的 `Workers Routes Write`。
-
-因此本项目采用：
+本项目现在把 Cloudflare 的默认接入方式固定为：
 
 ```text
-one-time provisioning
-    |
-    +--> create/confirm Worker
-    +--> optionally attach Custom Domain later
-    |
-long-lived GitHub Actions deployment
-    |
-    +--> individual Worker Editor only
+GitHub repository
+   |
+   +--> GitHub Actions
+   |      make web-publish-check
+   |      (independent quality check)
+   |
+   +--> Cloudflare Workers Builds
+          |
+          +--> build:
+          |      bash scripts/cloudflare_build.sh
+          |        -> pinned Quarto
+          |        -> make web-publish-check
+          |
+          +--> preview:
+          |      npm run cloudflare:preview
+          |      -> wrangler versions upload
+          |
+          +--> production:
+                 npm run cloudflare:deploy
+                 -> wrangler deploy
 ```
 
-长期 CI 不应保留为了创建 Worker 或修改 zone route 才需要的高权限。
+GitHub Actions 与 Cloudflare 不维护两套内容验证逻辑；二者最终都调用：
 
-官方参考：
+`make web-publish-check`
 
-- https://developers.cloudflare.com/workers/authorization/workers/
-- https://developers.cloudflare.com/workers/authorization/
-- https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/
+## 2. 为什么首选 Workers Builds
 
-## 3. Staging strategy
+Cloudflare Workers Builds 是 GitHub/GitLab 的原生 Git integration：
 
-### 3.1 Target Worker
+- push 可自动触发 build；
+- production branch 可触发 production deploy；
+- non-production branches 可使用 preview deploy；
+- GitHub 可显示 build status / PR context；
+- Cloudflare 管理 build environment 与 build token；
+- 不要求把 Cloudflare API token 作为默认方案复制进 GitHub Secrets。
 
-预期 Worker name：
+GitHub Actions + Wrangler token 仍保留为 fallback，不是默认范本。
 
-`epistemology-textbook`
+## 3. 机器契约
 
-当前状态仍是 `unverified`：不能假设 Cloudflare 账户中已经存在它。
+所有 account-side 配置应从：
 
-### 3.2 First staging endpoint
+`cloudflare-builds.yaml`
 
-如果该 Worker 创建/确认成功，先使用其 Cloudflare-provided `workers.dev` endpoint 做 staging。
+读取。
 
-不要在第一次 deployment 前就把正式 Custom Domain 指向 Worker。
+人类文档不是参数真值源。
 
-这使验证顺序保持：
+## 4. 工具链可重复性
 
-```text
-Pages production stays live
-        |
-        +--> target Worker on workers.dev
-                  |
-                  +--> verify full site
-                  +--> verify links/assets/navigation
-                  +--> verify deployment workflow
-                  |
-                  +--> only then consider Custom Domain
-```
+Workers Builds 会使用 `package.json` 中声明的 Wrangler。
 
-Cloudflare 官方说明 Worker 可部署到 `workers.dev` 或 Custom Domain；生产更适合 route / Custom Domain，而 `workers.dev` 可用于初始验证。
+本项目固定：
 
-参考：
+- Node 24：`.nvmrc`
+- Wrangler 4.135.0：`package.json`
+- Quarto 1.10.18：`scripts/ensure_quarto.sh`
 
-- https://developers.cloudflare.com/workers/static-assets/get-started/
-- https://developers.cloudflare.com/workers/configuration/routing/
+Cloudflare build image 没有被本项目假定为预装 Quarto，因此 build wrapper 会下载固定 Quarto release，并验证 SHA-256 后再渲染。
 
-## 4. Account-side provisioning
+## 5. Account-side 最小授权模型
 
-以下操作必须在 Cloudflare 账户上下文中完成；当前 ChatGPT 会话无法验证或执行。
+首选 Agent-native 路线需要两个一次性连接：
 
-### Step A — confirm account
+1. **AI ↔ Cloudflare OAuth/MCP**
+   - API MCP：`https://mcp.cloudflare.com/mcp`
+   - Workers Builds MCP：`https://builds.mcp.cloudflare.com/mcp`
+2. **Cloudflare ↔ GitHub App**
+   - 只授权所需 repository。
 
-记录：
+详细的人类操作说明：
 
-- Cloudflare account ID；
-- 可使用的 Cloudflare zone；
-- account owner / responsible operator；
-- 是否已有名为 `epistemology-textbook` 的 Worker。
+`docs/cloudflare-human-authorization.zh-CN.md`
 
-禁止把 account ID 或 token value 写入仓库文本。
+完成这两个授权后，应由 AI 读取 `cloudflare-builds.yaml` 配置剩余内容。
 
-### Step B — ensure Worker exists
+## 6. Workers Builds triggers
 
-如果 Worker **不存在**：
+目标配置：
 
-- 用 Cloudflare dashboard 手动创建，或
-- 用一次性/临时 provisioning credential 创建。
+### Production trigger
 
-创建 Worker 需要 product-level Workers `Admin`。
+- branch include：`main`
+- build command：`bash scripts/cloudflare_build.sh`
+- deploy command：`npm run cloudflare:deploy`
+- root：`/`
 
-创建完成后，长期 GitHub CI token 不应继续保留该 Admin 权限。
+### Preview trigger
 
-如果 Worker **已经存在**：
+- branch include：`*`
+- branch exclude：`main`
+- build command：`bash scripts/cloudflare_build.sh`
+- deploy command：`npm run cloudflare:preview`
+- root：`/`
 
-- 确认它属于正确账户；
-- 确认它可以被该 CI identity 以 individual Worker `Editor` 访问；
-- 不要仅凭名称相同假定它就是本项目目标。
+首次账户接入应优先验证 preview / workers.dev 行为；Cloudflare 不成为正式 canonical production，直到后续 cutover gates 全部通过。
 
-## 5. Long-lived CI credential
+## 7. Build token 安全
 
-Cloudflare 的 GitHub Actions / Wrangler 非交互部署需要：
+Workers Builds 可以自动生成 build token，也可以使用 custom user token。
 
-- `CLOUDFLARE_ACCOUNT_ID`
-- `CLOUDFLARE_API_TOKEN`
+标准策略：
 
-建议长期 token：
+- 简化接入时：Cloudflare-managed token 可以用于首次验证，但必须进入 security review；
+- hardened setup：优先使用受限 user token；
+- token 永不进入 Git；
+- token 不写入聊天、README、machine contract；
+- GitHub App 应限制为 selected repositories only；
+- 与本项目无关的 KV / R2 / D1 / DNS 权限不应因为方便而长期保留。
 
-- scope：individual Worker `epistemology-textbook`
-- role：`Editor`
-- 不授予 Worker delete 权限
-- 不授予其他 Worker 访问
-- 不授予 KV / R2 / D1 权限，因为本项目当前不用这些资源
-- 不授予 zone route write，除非 CI 被明确设计为管理 Custom Domain/Route
+## 8. Staging 验证
 
-GitHub repository secrets：
+首次成功后至少验证：
 
-```text
-CLOUDFLARE_ACCOUNT_ID
-CLOUDFLARE_API_TOKEN
-```
+- build 使用预期 Git commit；
+- `make web-publish-check` PASS；
+- workers.dev / preview homepage 200；
+- 代表性章节 200；
+- CSS / JS / images 正常；
+- sidebar / TOC / navigation 正常；
+- Chinese text / equations / citations 正常；
+- repository/source links 正常；
+- 没有 EPUB/PDF/DOCX/LaTeX 意外暴露进 Web artifact；
+- GitHub Pages 原站仍正常。
 
-token value 只能进入 GitHub Secrets / authorized secret store，不得提交到 Git。
+## 9. Custom Domain 与 cutover
 
-Cloudflare 官方 GitHub Actions 文档要求 CI 使用 account ID + API token，并建议把 token scope 尽量收窄。
+在 preview/staging PASS 前不绑定正式 Custom Domain。
 
-参考：
+之后仍需单独完成：
 
-- https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/
+- target canonical domain；
+- Cloudflare zone eligibility；
+- Custom Domain；
+- production verification；
+- GitHub Pages legacy policy；
+- canonical links migration。
 
-## 6. Manual staging workflow
+因此：
 
-正式启用前，workflow 应保持**手动触发**，而不是 main push 自动部署。
+`WORKERS BUILDS CONNECTED != PRODUCTION CUTOVER`
 
-建议逻辑：
+## 10. External CI fallback
 
-```text
-workflow_dispatch
--> checkout
--> Python
--> make check
--> Quarto
--> quarto render --profile web
--> python3 scripts/check_rendered_html.py
--> Wrangler deploy
--> record deployment URL
--> verify URL
-```
+如果某个环境不能使用 Workers Builds Git integration，可退回：
 
-示例文件：
+`GitHub Actions + Wrangler + scoped token`
+
+旧示例保留在：
 
 `docs/examples/cloudflare-staging-workflow.yml`
 
-它只是文档示例，不位于 `.github/workflows/`，因此不会自动执行。
+但它不再是首选标准。
 
-## 7. Staging verification checklist
+## 11. 当前状态
 
-首次 `workers.dev` staging deployment 后至少验证：
+仓库侧：
 
-- homepage 200；
-- representative chapter pages 200；
-- CSS / JS / images 正常；
-- Quarto sidebar / TOC / navigation 正常；
-- internal relative links 正常；
-- external-link audit 不出现 Cloudflare-specific regression；
-- repository/source links 正常；
-- Chinese text / equations / citations 正常；
-- no EPUB/PDF/DOCX/LaTeX exposed as unintended Web artifacts；
-- deployment came from the expected Git commit；
-- existing GitHub Pages URL 仍正常。
+**READY**
 
-只有 staging PASS 后，`docs/cloudflare-readiness.yaml.validation.preview_deployment` 才可改为 `passed`。
+当前 ChatGPT 会话：
 
-## 8. Custom Domain provisioning
+**Cloudflare account tool unavailable**
 
-生产 Custom Domain 必须属于 active Cloudflare zone。
+账户侧：
 
-Cloudflare 当前要求：
+**UNVERIFIED**
 
-- active Cloudflare zone；
-- existing Worker；
-- hostname 属于该 zone；
-- hostname 不能与现有 CNAME 冲突。
+production cutover：
 
-Cloudflare 会为 Worker Custom Domain 创建相关 DNS 并管理证书。
-
-参考：
-
-- https://developers.cloudflare.com/workers/configuration/routing/custom-domains/
-
-### Recommended permission split
-
-推荐把 Custom Domain 作为一次性 provisioning 操作：
-
-- operator / temporary provisioning credential：
-  - Worker access；
-  - 对目标 zone 的 `Workers Routes Write`；
-- ongoing GitHub CI：
-  - individual Worker `Editor`；
-  - 不管理 routes/domain。
-
-这样日常内容发布不需要长期 zone-write 权限。
-
-## 9. Canonical URL decision
-
-当前：
-
-`https://chongliuphil.github.io/epistemology-textbook/`
-
-属于 GitHub 的 `github.io` 域名，不能直接变成 Cloudflare Worker Custom Domain。
-
-正式 cutover 前必须确认一个由作者控制、并由 Cloudflare 管理的 domain/subdomain。
-
-例如逻辑上可以是：
-
-`<book-subdomain>.<owned-domain>`
-
-但实际 domain 在人类确认前保持 `unresolved`。
-
-## 10. Cutover sequence
-
-只有 staging 与 domain prerequisites 全部通过后：
-
-1. attach/verify Custom Domain；
-2. 在 Cloudflare URL 上做完整 production-like verification；
-3. 决定 GitHub Pages legacy policy；
-4. 更新 `publishing.yaml` target/canonical URL；
-5. 更新 `_quarto-web.yml` 的 `site-url` 与任何 canonical public links；
-6. 让 source/render validation 重新通过；
-7. 才把 Cloudflare deploy 加入 main-push publication gate；
-8. 先保留 Pages 直到 Cloudflare production verification 完成；
-9. 最后再根据 legacy policy 决定 mirror / redirect / retirement。
-
-## 11. GitHub Pages legacy policy
-
-正式切换前必须选择并记录：
-
-- `mirror`：Pages 继续提供相同内容；
-- `legacy-with-canonical`：Pages 保留，但页面 canonical 指向新域名；
-- `redirect`：Pages 尽可能引导到新域名；
-- `retire`：确认所有重要入口迁移后停止 Pages。
-
-目前：`UNRESOLVED`。
-
-## 12. 当前结论
-
-**Staging runbook: PREPARED.**
-
-**Cloudflare account-side access: UNAVAILABLE IN CURRENT CHATGPT SESSION.**
-
-**Worker existence: UNVERIFIED.**
-
-**GitHub Cloudflare secrets: UNVERIFIED.**
-
-**Custom Domain: UNRESOLVED.**
-
-**Production cutover: BLOCKED.**
+**BLOCKED**

@@ -4,62 +4,79 @@
 
 ## ACTIVE TASKS
 
-- `WM-T021` — Cloudflare account-side staging context — `WAITING-EXTERNAL-ACCESS`
+- `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `READY-TO-MERGE / CI-PASS`
+- `WM-T021` — Cloudflare account-side staging context — `WAITING-CONNECTOR-AUTHORIZATION`
 
 ## COMPLETED PPF TASKS
 
 - `WM-T022` — Cloudflare staging runbook + least-privilege deployment model — `COMPLETED`
 - `WM-T020` — PPF Phase 2 Cloudflare repository readiness — `COMPLETED / PASS`
+- `WM-T013`–`WM-T019` — PPF Phase 1 source/profile/runtime/main Pages validation — `COMPLETED / PASS`
 
-- `WM-T013` — PPF profile/source separation — `COMPLETED`
-- `WM-T014` — PPF publication contract + staged Cloudflare config — `COMPLETED`
-- `WM-T015` — source/CI validators for PPF model — `COMPLETED`
-- `WM-T016` — PR runtime Web-profile validation — `COMPLETED / PASS`
-- `WM-T017` — EPUB / PDF / DOCX / LaTeX runtime validation — `COMPLETED / PASS`
-- `WM-T018` — Phase 1 cleanup + normal CI — `COMPLETED / PASS`
-- `WM-T019` — Phase 1 merge + main Pages verification — `COMPLETED / PASS`
+## STANDARD INTEGRATION GATES
 
-## PHASE 2 READINESS GATES
+Repository contract:
+- [x] `wrangler.jsonc` static-assets Worker
+- [x] canonical `make web-publish-check`
+- [x] GitHub Actions uses canonical gate
+- [x] `cloudflare-builds.yaml`
+- [x] pinned Node / Wrangler / Quarto
+- [x] build wrapper for environments without Quarto
+- [x] non-deploying Cloudflare contract CI
+- [x] nontechnical human authorization guide
+- [x] PR normal Web CI PASS
+- [x] PR Cloudflare Build Contract CI PASS
+- [ ] merge + main CI PASS
 
-Repository side:
-- [x] static-assets `wrangler.jsonc`
-- [x] `_book` as deployment directory
-- [x] machine-readable readiness state
-- [x] readiness validator
-- [x] no active Cloudflare deploy workflow before prerequisites
-- [x] readiness PR CI PASS
+Account connection:
+- [ ] Cloudflare OAuth/MCP actually callable by current AI
+- [ ] Cloudflare GitHub App authorized for selected repository
+- [ ] repository connection verified
+- [ ] Worker `epistemology-textbook` verified/created
+- [ ] production trigger configured
+- [ ] preview trigger configured
+- [ ] build token reviewed
+- [ ] first workers.dev / preview build PASS
 
-Prepared staging layer:
-- [x] provisioning vs continuous-deployment permissions separated
-- [x] workers.dev-first staging strategy documented
-- [x] non-executable manual staging workflow example prepared
-
-Account side:
-- [ ] Cloudflare account access verified
-- [ ] Worker target verified/created
-- [ ] `CLOUDFLARE_ACCOUNT_ID` secret verified
-- [ ] `CLOUDFLARE_API_TOKEN` secret verified
-- [ ] staging/preview deployment PASS
-- [ ] target canonical URL confirmed
-- [ ] Cloudflare zone / Custom Domain eligibility confirmed
-- [ ] GitHub Pages legacy URL policy confirmed
-- [ ] production deployment PASS
-- [ ] production HTTP verification PASS
+Production cutover:
+- [ ] target canonical URL
+- [ ] Cloudflare zone / Custom Domain eligibility
+- [ ] Custom Domain
+- [ ] production verification
+- [ ] GitHub Pages legacy policy
+- [ ] canonical URL migration
 
 ## NEXT ACTIONS
 
-1. ~~Merge repository-side readiness.~~ `COMPLETED / MAIN VERIFIED`
-2. Keep GitHub Pages as current production.
-3. Establish Cloudflare account-side access/context.
-4. Confirm/create the target Worker with one-time provisioning authority.
-5. Configure an individual-Worker Editor token for ongoing CI.
-6. Perform workers.dev staging deployment.
-7. Confirm canonical domain and legacy Pages policy.
-8. Only then add the active main-push Cloudflare deployment step.
+1. 让普通 Web CI 与 Cloudflare Build Contract CI 全部 PASS。
+2. 合并 Workers Builds 标准化仓库契约。
+3. 继续尝试 Cloudflare OAuth/MCP account context。
+4. account context 一旦可用，由 AI 根据 `cloudflare-builds.yaml` 自动创建/验证 Worker、repo connection、production/preview triggers 与 first preview build。
+5. 若当前 AI 客户端仍无法接 Cloudflare MCP，人类只执行授权指南中的必要授权步骤。
+6. workers.dev staging PASS 前不切 production。
+
+## DEFAULT ACCOUNT-SIDE ROUTE
+
+Preferred:
+
+`Cloudflare OAuth/MCP + Cloudflare Workers Builds + GitHub App`
+
+Human should only need to authorize:
+
+1. AI ↔ Cloudflare OAuth/MCP；
+2. Cloudflare ↔ selected GitHub repository。
+
+Everything after those authorizations should be agent-executable from the machine contract where the client exposes the Cloudflare tools.
+
+Fallback:
+
+`GitHub Actions + Wrangler + scoped token`
+
+Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-Production cutover is blocked by all unchecked account-side gates.
+The current ChatGPT session does not expose a callable Cloudflare account/Builds MCP tool.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -72,14 +89,17 @@ Production cutover is blocked by all unchecked account-side gates.
 - Severity: `NON-BLOCKING for manuscript work; BLOCKING for repackaging/redistribution decisions`
 
 ### CLR-003 — Cloudflare target canonical URL / legacy Pages policy
-- Status: `WAITING-HUMAN / ACCOUNT-CONTEXT`
-- Severity: `BLOCKING FOR CLOUDFLARE PRODUCTION CUTOVER`
+- Status: `WAITING-HUMAN / AFTER-STAGING`
+- Severity: `BLOCKING FOR PRODUCTION CUTOVER, NOT FOR WORKERS.DEV STAGING`
 
 ## RECENTLY RESOLVED / PROMOTED
 
-- PPF Phase 1 → `COMPLETED / VERIFIED`.
-- Cloudflare repository-side readiness architecture → `docs/cloudflare-readiness.zh-CN.md` + `docs/cloudflare-readiness.yaml`.
-- PR #22 merged at `f0af87ea5c060a69141eeb82c5992de8126af55d`; main Governance/Web/Pages/External Link checks → `PASS`.
+- Cloudflare Workers Builds repository contract validation → Governance `35427051865`, Web `35427051858`, Contract CI `35427051853` → `PASS`.
+- PPF Phase 1 source/profile/runtime validation → `COMPLETED / VERIFIED`.
+- Repository-side Cloudflare readiness → `COMPLETED / PASS`.
+- Cloudflare staging runbook + least-privilege model → `COMPLETED`.
+- Canonical Web publication gate design → promoted into `Makefile`, `scripts/check_rendered_html.py`, and CI.
+- Workers Builds machine contract → promoted into `cloudflare-builds.yaml` and `docs/cloudflare-readiness.yaml`.
 
 ## CLARIFICATION COMPLETION RULE
 
@@ -87,9 +107,9 @@ Production cutover is blocked by all unchecked account-side gates.
 
 ## TODO / BACKLOG
 
-- HARC-lite → AHICP-based project governance migration（独立 PR）。
-- 逐章学术/教学审校。
-- 出版级 PDF typography / DOCX styles / EPUB CSS 在实际需要时继续细化。
+Cloudflare ↔ GitHub standard remains the only infrastructure priority until first real Cloudflare staging is verified.
+
+Other project standardization work is paused.
 
 ## SYNC DEFECTS
 
