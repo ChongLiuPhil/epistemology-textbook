@@ -1,6 +1,6 @@
 # PPF Adoption — epistemology-textbook
 
-**Status:** PPF pilot / Phase 1 runtime validation PASS — final normal CI verification  
+**Status:** PPF Phase 1 COMPLETE — runtime and main Pages deployment verified  
 **Framework:** Personal Publishing Framework v0.1.0-draft  
 **Adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe`
 
@@ -101,3 +101,19 @@ The temporary PR-only matrix workflow used to validate all four on-demand format
 Detailed evidence is recorded in `docs/ppf-pilot-audit.zh-CN.md`.
 
 This completes **profile/runtime validation**, not Cloudflare production validation. GitHub Pages remains the current production provider until Phase 2.
+
+
+## Phase 1 completion record
+
+Phase 1 was merged through PR #20.
+
+- merge commit: `96b91691bd776136e156c384eee619d52ff2e3a4`
+- main Governance CI: PASS
+- main Web-profile build and rendered-HTML validation: PASS
+- GitHub Pages artifact upload: PASS
+- GitHub Pages deployment: PASS
+- External Link Audit: PASS
+
+The general-purpose web reader available in this ChatGPT session could not directly fetch the GitHub Pages URL, so this record does **not** claim an independent external HTTP content fetch. Production deployment is verified from GitHub's Pages deployment job, and repository-side external-link validation also passed.
+
+Phase 2 remains intentionally separate. Cloudflare is still a staged target, not the production provider.
