@@ -18,8 +18,8 @@ summary:
   en: "A Chinese-language epistemology textbook and learning project organized through study, synthesis, and philosophical problems, covering knowledge, skepticism, justification, sources of knowledge, social and formal epistemology, epistemic value, digital and AI environments, and comparative epistemology."
 
 status:
-  zh: "PPF Pilot Phase 1：Quarto QMD 为唯一正式书稿来源；Web profile 的 HTML 经验证后继续自动部署到现有 GitHub Pages。EPUB、PDF、DOCX 与 LaTeX 使用独立 profile 按需构建，不自动成为正式 release。Cloudflare Workers Static Assets 已进入 staged configuration，但尚未切换生产。"
-  en: "PPF Pilot Phase 1: canonical Quarto QMD sources continue to publish validated Web-profile HTML automatically to the existing GitHub Pages site. EPUB, PDF, DOCX, and LaTeX use separate on-demand profiles and are not formal releases by default. Cloudflare Workers Static Assets is staged but not yet the production provider."
+  zh: "PPF Phase 1 已完成并通过真实运行验证：Quarto QMD 为唯一正式书稿来源；Web profile 的 HTML 经验证后继续自动部署到现有 GitHub Pages。EPUB、PDF、DOCX 与 LaTeX 使用独立 profile 按需构建，不自动成为正式 release。Cloudflare Workers Static Assets 属于 Phase 2 staged target，尚未切换生产。"
+  en: "PPF Phase 1 is complete and runtime-validated: canonical Quarto QMD remains the sole manuscript source, validated Web-profile HTML continues to deploy automatically to the existing GitHub Pages site, and EPUB/PDF/DOCX/LaTeX remain separate on-demand build profiles rather than formal releases by default. Cloudflare Workers Static Assets is a staged Phase 2 target, not yet the production provider."
 
 featured: false
 links:
