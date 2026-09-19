@@ -1,6 +1,6 @@
 # PPF Adoption — epistemology-textbook
 
-**Status:** PPF Phase 1 COMPLETE / Cloudflare staging+runtime VERIFIED / canonical cutover PENDING  
+**Status:** PPF adopted / workers.dev canonical cutover ACTIVE / post-cutover verification + Pages retirement PENDING  
 **Framework:** Personal Publishing Framework v0.1.0-draft  
 **Adopted framework commit:** `21a5360727167bad6f399477ded073431645fa1d`  
 **Previous adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe` — superseded by explicit human adoption on 2026-09-19
@@ -56,14 +56,16 @@ source visibility = public
 Web publication authorization = authorized
 Web publication visibility = public
 Web access mode = none
-current canonical identity = GitHub Pages
-target/provider endpoint = workers.dev
-canonical cutover = pending
+current canonical identity = workers.dev
+provider endpoint = workers.dev
+legacy GitHub Pages policy = retire
+post-cutover verification = pending
+legacy unpublish = pending
 ~~~
 
 This adoption records current reality; it does not prevent a future project from using a private source repository, restricted/private Web publication, or an authenticated access policy.
 
-The new semantics do **not** change the already selected target canonical URL. They make the migration state more precise: the workers.dev endpoint is the target/provider endpoint, while GitHub Pages remains the current canonical identity until explicit legacy-policy resolution and cutover verification.
+The repository cutover now activates the already selected workers.dev URL as the canonical identity. GitHub Pages is no longer the intended canonical publication endpoint; its selected legacy policy is `retire`, with actual unpublish tracked separately from canonical activation.
 
 ## Phase 2 — Cloudflare staging and cutover
 
@@ -80,19 +82,21 @@ Completed:
 - build-token permission scope review: COMPLETE;
 - Hardened External CI candidate: candidate / validate-only PASS.
 
-Still required before canonical production cutover:
-
-1. an explicit legacy / redirect / canonical policy for the existing GitHub Pages URL;
-2. the corresponding source/config canonical-URL migration;
-3. post-cutover production verification.
-
-Already resolved:
+Cutover decisions and repository migration are now resolved:
 
 - production security profile = Profile A / Workers Builds Native;
-- target canonical URL = `https://epistemology-textbook.philosophy-research.workers.dev/`;
-- Custom Domain = not applicable for the selected workers.dev target.
+- canonical URL = `https://epistemology-textbook.philosophy-research.workers.dev/`;
+- Custom Domain = not applicable;
+- legacy GitHub Pages policy = `retire`;
+- Quarto canonical configuration = workers.dev;
+- GitHub Pages deployment workflow = retired.
 
-GitHub Pages remains the current canonical production until those gates are completed. A successful provider production-branch build or workers.dev runtime does not itself change canonical production.
+Remaining evidence/cleanup:
+
+1. post-cutover Cloudflare main build + canonical runtime verification;
+2. actual GitHub Pages deployment unpublish.
+
+The second item is provider-side cleanup and is not silently treated as complete merely because the repository stopped deploying Pages.
 
 ## Source boundary
 
@@ -159,7 +163,7 @@ Phase 1 was merged through PR #20.
 
 The general-purpose web reader available in this ChatGPT session could not directly fetch the GitHub Pages URL, so this record does **not** claim an independent external HTTP content fetch. Production deployment is verified from GitHub's Pages deployment job, and repository-side external-link validation also passed.
 
-Phase 2 staging/runtime verification is now complete. Cloudflare remains a verified staging/runtime target, not the canonical production provider.
+Phase 2 staging/runtime verification is complete. The current cutover change promotes Cloudflare workers.dev to the canonical production provider, subject to post-cutover main verification; GitHub Pages is legacy-retirement pending.
 
 ## Current Cloudflare security-profile evidence
 

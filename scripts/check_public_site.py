@@ -67,7 +67,7 @@ def fetch(url: str, *, max_bytes: int | None = None) -> tuple[int, bytes, str]:
     raise RuntimeError(f"failed after {RETRIES} attempts: {last_error}")
 
 
-def verify_site(base_url: str) -> None:
+def verify_site(base_url: str, *, expect_root_marker: str | None = None) -> None:
     base = base_url.rstrip("/") + "/"
     print(f"Verifying {base}")
 
@@ -85,6 +85,9 @@ def verify_site(base_url: str) -> None:
 
         text = body.decode("utf-8", errors="replace")
         fetched_html[path] = text
+
+        if path == "/" and expect_root_marker and expect_root_marker not in text:
+            fail(f"{url}: missing expected root marker {expect_root_marker!r}")
 
         for marker in markers:
             if marker not in text:
@@ -132,11 +135,16 @@ def verify_site(base_url: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--expect-root-marker",
+        default=None,
+        help="Require this marker in the root HTML response.",
+    )
     parser.add_argument("base_urls", nargs="+")
     args = parser.parse_args()
 
     for base_url in args.base_urls:
-        verify_site(base_url)
+        verify_site(base_url, expect_root_marker=args.expect_root_marker)
 
 
 if __name__ == "__main__":

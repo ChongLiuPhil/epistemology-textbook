@@ -4,7 +4,7 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **PPF 21a53607 adopted / Cloudflare staging complete / Profile A selected / workers.dev canonical target selected / legacy policy pending**.
+Personal Publishing Framework — **workers.dev canonical cutover active / post-cutover verification pending / GitHub Pages RETIRE pending unpublish**.
 
 ## CURRENT_OBJECTIVE
 
@@ -80,8 +80,9 @@ Cloudflare account-side staging 技术验证已经闭环：
 - source visibility: `public`;
 - Web publication: `authorized / public`;
 - Web access: `none`;
-- current canonical identity: GitHub Pages;
-- target/provider endpoint: workers.dev;
+- current canonical identity: workers.dev;
+- provider endpoint: workers.dev;
+- legacy GitHub Pages policy: `retire`; actual unpublish pending;
 - later upstream PPF changes remain non-adopted until another explicit decision.
 
 ## IMMEDIATE_NEXT_ACTION
@@ -93,7 +94,7 @@ Cloudflare account-side staging 技术验证已经闭环：
 5. build-token hardening compatibility research 已完成：Workers Builds 当前 user-token-only；
 6. Profile B candidate 无凭据 validate-only CI 已通过（run `35435831128`）；
 7. production security profile：Profile A 已由人类明确选择并记录；
-8. target canonical URL 已选择 workers.dev；Custom Domain 路线 N/A；当前只剩 Pages legacy policy 决策与后续 migration verification。
+8. workers.dev 已写入 canonical source/config；GitHub Pages legacy policy 已选择 `retire`；当前只剩 main post-cutover verification 与 Pages deployment actual unpublish。
 
 ## HANDOFF POINTERS
 
@@ -113,8 +114,9 @@ Cloudflare account-side staging 技术验证已经闭环：
 - Build-token security audit：`docs/cloudflare-build-token-security.zh-CN.md`
 - Staging runbook：`docs/cloudflare-staging-runbook.zh-CN.md`
 - Human authorization guide：`docs/cloudflare-human-authorization.zh-CN.md`
-- Current production：GitHub Pages
-- Target delivery：Cloudflare Workers Static Assets via Workers Builds
+- Current canonical production config：Cloudflare workers.dev
+- Current delivery：Cloudflare Workers Static Assets via Workers Builds
+- Legacy delivery：GitHub Pages / RETIRE pending unpublish
 - workers.dev staging：`https://epistemology-textbook.philosophy-research.workers.dev`
 - main Cloudflare Build ID：`d6bc8b62-78ba-4a9e-98ea-7a049a539858`
 - preview probe Build ID：`a12446a5-e341-48e4-8c22-1a184b1102c8`
@@ -122,4 +124,4 @@ Cloudflare account-side staging 技术验证已经闭环：
 - preview URL：`https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev`
 - preview Alias：`https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev`
 
-Profile A 与 workers.dev target canonical URL 已选择；当前路线不需要 DNS / Custom Domain。canonical cutover 仍未批准：在 GitHub Pages legacy policy 未明确并完成 source/config migration + production verification 前，不停用 GitHub Pages；token 继续不得写入仓库。
+Profile A、workers.dev canonical URL 与 GitHub Pages `retire` policy 都已由人类确认。Repository cutover 已实施：后续 main 不再部署 Pages。当前只等待 post-cutover Cloudflare/runtime verification，以及 GitHub Pages 当前 deployment 的一次实际 unpublish；token 继续不得写入仓库。

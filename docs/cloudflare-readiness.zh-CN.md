@@ -2,40 +2,36 @@
 
 **日期：** 2026-09-19  
 **项目：** `ChongLiuPhil/epistemology-textbook`  
-**状态：** `ACCOUNT-CONNECTED / MAIN+PREVIEW+RUNTIME-VERIFIED / PROFILE-A-SELECTED / CUTOVER-BLOCKED`
+**状态：** `CLOUDFLARE-CANONICAL-ACTIVE / POST-CUTOVER-VERIFICATION-PENDING / PAGES-RETIREMENT-PENDING`
 
 > 本文件是 `docs/cloudflare-readiness.yaml` 的人类可读解释。机器可读 readiness state 是本仓库对当前已验证 Cloudflare 状态的 durable record；本文不得与其形成第二套冲突真值。
 
-## 1. 当前 production 与 staging 边界
+## 1. 当前 production 与 legacy 边界
 
-当前 canonical production 仍是：
+本轮 repository cutover 已把 canonical Web config 切换到：
 
 ```text
 GitHub main
 -> source validation
 -> Quarto web profile
 -> rendered HTML validation
--> GitHub Pages
-```
-
-当前 Cloudflare 状态是：
-
-```text
-GitHub repository
 -> Cloudflare Workers Builds
--> main Workers Build: PASS
--> non-production preview: PASS
--> main workers.dev runtime: PASS
--> preview workers.dev runtime: PASS
+-> https://epistemology-textbook.philosophy-research.workers.dev/
 ```
 
-Cloudflare workers.dev 已完成 staging/runtime verification，但尚未完成 canonical production cutover。
+同时：
 
-因此：
+- main 分支不再生成新的 GitHub Pages deployment；
+- `_quarto-web.yml` 与 rendered-HTML validator 已切换到 workers.dev；
+- GitHub Pages policy = `retire`；
+- 旧 GitHub Pages deployment 尚未实际 unpublish，因此 legacy retirement 仍是 pending；
+- post-cutover workers.dev canonical runtime verification 尚需在 main merge 后通过真实 provider build/runtime 证据完成。
+
+因此当前精确状态是：
 
 ```text
-Cloudflare production-branch build/deploy verified
-!= PPF canonical production active
+Cloudflare canonical identity = active / verification pending
+GitHub Pages = legacy endpoint / retirement pending
 ```
 
 ## 2. Repository-side readiness
@@ -79,7 +75,7 @@ Repository-side readiness：**PASS**。
 
 本文不复制完整 identifier 列表，避免形成第二个详细 evidence source。
 
-Account-side staging readiness：**VERIFIED**。
+Account-side Cloudflare readiness：**VERIFIED**；canonical activation 的 post-cutover verification 待本次 main merge 后完成。
 
 ## 4. Runtime verification
 
@@ -94,7 +90,7 @@ Account-side staging readiness：**VERIFIED**。
 
 运行证据由 `docs/cloudflare-readiness.yaml` 的 `runtime_http_verification` 指向 GitHub Actions run。
 
-这证明 staging/runtime 可访问，不证明 canonical cutover 已完成。
+这些历史 staging/runtime checks 已证明 provider endpoint 可访问。本轮还增加 main-push canonical marker verification，用于确认新的 workers.dev canonical build 在 merge 后真实生效。
 
 ## 5. Security profiles
 
@@ -162,14 +158,14 @@ Workers Builds
 
 ## 6. PPF adoption boundary
 
-本项目当前 adopted PPF 仍是：
+本项目当前 adopted PPF 是：
 
 - version：`v0.1.0-draft`
-- adopted commit：`9326920e1920d18f0a71eac26d4068da9d6bdffe`
+- adopted commit：`21a5360727167bad6f399477ded073431645fa1d`
 
-上游 PPF 后续演进不自动改变本项目 adopted state。是否升级 adopted commit 必须作为独立 downstream adoption decision 和验证工作处理。
+上游后续变化仍不会自动成为本项目 adopted state。
 
-## 7. Remaining production-cutover gates
+## 7. Remaining cutover verification / retirement gates
 
 已完成：
 
@@ -179,38 +175,37 @@ Workers Builds
 - [x] Worker target
 - [x] main Workers Build
 - [x] non-production preview
-- [x] main workers.dev runtime
-- [x] preview workers.dev runtime
-- [x] build-token scope review
-- [x] Profile B candidate / validate-only validation
+- [x] main + preview workers.dev runtime
+- [x] production security profile = Profile A
+- [x] target canonical URL = workers.dev
+- [x] GitHub Pages legacy policy = `retire`
+- [x] canonical source/config migration to workers.dev
+- [x] future GitHub Pages deploy path removed from main workflow
 
-尚未完成：
+仍需完成并验证：
 
-- [x] human production security-profile selection：Profile A
-- [x] target canonical URL：`https://epistemology-textbook.philosophy-research.workers.dev/`
-- [x] Cloudflare zone / Custom Domain eligibility：N/A（选择 workers.dev canonical）
-- [x] Custom Domain binding：N/A（选择 workers.dev canonical）
-- [ ] canonical production verification after cutover
-- [ ] GitHub Pages legacy URL policy
-- [ ] canonical URL migration
+- [ ] post-cutover main Workers Build + workers.dev canonical runtime verification
+- [ ] GitHub Pages current deployment actual unpublish
 
-在这些条件完成前：
+因此：
 
-`PRODUCTION CUTOVER = BLOCKED`
+`CANONICAL CUTOVER = ACTIVE / VERIFICATION PENDING`
+
+`LEGACY RETIREMENT = SELECTED / UNPUBLISH PENDING`
 
 ## 8. 当前结论
 
-**Repository readiness: PASS.**
+**Repository cutover configuration: IMPLEMENTED.**
 
-**Cloudflare account/build/preview/runtime staging: VERIFIED.**
+**Current canonical identity configured in source: workers.dev.**
 
-**Current canonical production: GitHub Pages.**
+**Cloudflare production delivery: ACTIVE / POST-CUTOVER VERIFICATION PENDING.**
 
-**Cloudflare canonical production cutover: NOT DONE / BLOCKED.**
+**GitHub Pages legacy policy: RETIRE / CURRENT DEPLOYMENT UNPUBLISH PENDING.**
 
-当前 blocker 不再是 account connection、runtime verification、security-profile decision 或 target canonical URL，而是：
+当前剩余工作不再是新的架构决策，而是两项验证/收尾：
 
-1. GitHub Pages legacy policy；
-2. legacy policy 确认后的 canonical URL migration / production verification。
+1. main merge 后确认 Cloudflare provider build 与 workers.dev canonical runtime；
+2. 使用 repository admin/maintainer 权限对现存 GitHub Pages deployment 执行一次 `Unpublish site`。
 
-Profile A 与 target workers.dev canonical URL 都已选定，但这**不等于** production cutover approval。因为当前路线不使用 Custom Domain，所以无需 DNS/zone binding；在 GitHub Pages legacy policy 明确并完成相应 source/config migration 与 production verification 前，不停用 GitHub Pages，也不把 workers.dev staging 描述成 canonical production。
+第二项不能由当前 GitHub connector 完成，因为 GitHub 官方 Pages deletion/unpublish administration 需要当前连接未暴露的管理权限。仓库已经停止后续 Pages deployment，因此完成一次 unpublish 后不会被正常 main workflow 自动重新发布。

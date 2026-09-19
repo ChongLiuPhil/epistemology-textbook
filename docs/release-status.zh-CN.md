@@ -7,7 +7,7 @@
 - 状态：`AUTHOR-PUBLISHED / CONTINUOUSLY-REVISED`
 - canonical source：`index.qmd`、`manuscript/*.qmd`、`references.bib`
 - active artifact：HTML Web Edition
-- 当前生产发布机制：经 main 的 source/bibliography/rendered-HTML checks 后自动部署到 GitHub Pages
+- 当前生产发布机制：经 main 的 canonical Web gate 后由 Cloudflare Workers Builds 自动部署到 workers.dev
 - 责任主体：作者 Chong Liu
 
 采用 HARC-lite 不追溯把已经公开的 Web Edition 降级为 provisional。
@@ -17,15 +17,15 @@
 - Framework：Personal Publishing Framework v0.1.0-draft @ `21a5360727167bad6f399477ded073431645fa1d`
 - contract：`publishing.yaml`
 - default profile：`web`
-- 当前 Web provider：GitHub Pages
-- 目标 Web provider：Cloudflare Workers Static Assets
-- migration status：`staged`
+- 当前 Web provider：Cloudflare Workers Static Assets
+- previous / legacy Web provider：GitHub Pages（policy = `retire`）
+- migration status：`canonical-active-verification-pending`
 - source visibility：`public`
 - Web publication authorization：`authorized`
 - Web publication visibility：`public`
 - Web access policy：`none`
-- current canonical identity：GitHub Pages
-- target/provider endpoint：workers.dev
+- current canonical identity：`https://epistemology-textbook.philosophy-research.workers.dev/`
+- provider endpoint：workers.dev
 - Cloudflare cutover 必须作为独立发布基础设施变更验证。
 
 ## 按需生成的电子出版格式
@@ -78,8 +78,8 @@ MAJOR-REVISION
 正常 Web Edition 修订：无。  
 手动生成 PDF / DOCX / EPUB / LaTeX build artifact：无，但不构成正式 release.
 
-PPF Phase 1 Web：无 blocker；生产仍为 GitHub Pages。  
-Cloudflare cutover：Worker/account/preview/runtime 已验证，Profile A 与 workers.dev target canonical URL 已选择；当前仍等待 GitHub Pages legacy policy、canonical source/config migration 与 post-cutover production verification。这些条件不阻塞现有 GitHub Pages Web 发布。  
+PPF Web continuous publication：无内容发布 blocker；canonical config 已切换到 workers.dev。  
+Cloudflare cutover：repository migration 已实施；当前等待 post-cutover Workers/runtime verification。GitHub Pages legacy policy 已选 `retire`，旧 deployment 仍需实际 unpublish。  
 
 正式开放许可 release：受 `CLR-001` 影响.  
 包含或再分发外部参考 PDF 的任何 release：受 `CLR-002` 影响。

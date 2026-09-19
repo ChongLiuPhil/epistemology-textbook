@@ -53,19 +53,22 @@ publication:
 
 deployment:
   web:
-    current_provider: github-pages
-    target_provider: cloudflare-workers
+    current_provider: cloudflare-workers
+    target_provider: null
     integration_mode: workers-builds-git
     build_contract: cloudflare-builds.yaml
     canonical_publish_gate: "make web-publish-check"
     output_directory: _book
-    current_production_url: "https://chongliuphil.github.io/epistemology-textbook/"
-    target_production_url: "https://epistemology-textbook.philosophy-research.workers.dev/"
+    current_production_url: "https://epistemology-textbook.philosophy-research.workers.dev/"
+    target_production_url: null
     provider_url: "https://epistemology-textbook.philosophy-research.workers.dev/"
     canonical_identity:
       type: provider-native
-      url: "https://chongliuphil.github.io/epistemology-textbook/"
-    migration_status: staged
+      url: "https://epistemology-textbook.philosophy-research.workers.dev/"
+    migration_status: canonical-active-verification-pending
+    integration_state: PRODUCTION_ACTIVE
+    cutover_state: ACTIVE
+    legacy_url_policy: retire
     readiness:
       repository: validated
       account_access: connected
@@ -76,11 +79,12 @@ deployment:
       build_token: reviewed-broad-scope-profile-a-accepted
       production_security_profile: workers-builds-native
       workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
-      canonical_url: selected-workers-dev
+      canonical_url: active-workers-dev
       custom_domain: not-applicable
       cloudflare_main_build: passed
       preview_deployment: passed
-      production_cutover: blocked
+      production_cutover: active-verification-pending
+      github_pages_retirement: selected-retire-pending-unpublish
 
 release:
   require_explicit_release: true
