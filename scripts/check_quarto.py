@@ -245,18 +245,27 @@ def check_active_build_files() -> None:
 def check_pages_deployment() -> None:
     workflow = PAGES_WORKFLOW.read_text(encoding="utf-8")
     required_markers = {
-        "Web-profile daily render": "quarto render --profile web",
+        "canonical Web publication gate": "make web-publish-check",
         "official Pages configuration": "actions/configure-pages@",
         "Pages artifact upload": "actions/upload-pages-artifact@",
         "Pages deployment": "actions/deploy-pages@",
         "rendered _book deployment source": "path: _book",
-        "rendered HTML integrity check": "python3 scripts/check_rendered_html.py",
         "GitHub Pages environment": "name: github-pages",
         "main-only deployment guard": "github.ref == 'refs/heads/main'",
     }
     for label, marker in required_markers.items():
         if marker not in workflow:
             fail(f"{label} is missing from {PAGES_WORKFLOW.relative_to(ROOT)}")
+
+    makefile = MAKEFILE.read_text(encoding="utf-8")
+    gate_markers = {
+        "web-publish-check target": "web-publish-check:",
+        "Web-profile render inside canonical gate": "$(QUARTO) render --profile web",
+        "rendered HTML validation inside canonical gate": "python3 scripts/check_rendered_html.py",
+    }
+    for label, marker in gate_markers.items():
+        if marker not in makefile:
+            fail(f"{label} is missing from Makefile")
 
     for output_format in ("pdf", "docx", "epub"):
         if re.search(rf"(?i)quarto\s+render[^\n]*--to\s+{output_format}\b", workflow):
