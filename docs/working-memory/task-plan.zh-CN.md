@@ -6,7 +6,7 @@
 
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
-- `WM-T025` — Cloudflare production security profile — `WAITING-HUMAN-AFTER-CANDIDATE-VALIDATION`
+- `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
 - `WM-T026` — Hardened External CI candidate — `COMPLETED / VALIDATE-ONLY-PASS`
 
 ## COMPLETED PPF TASKS
@@ -42,7 +42,7 @@ Account connection:
 - [x] default token permission scope reviewed
 - [x] Workers Builds account-owned/per-Worker token incompatibility documented
 - [x] hardened external-CI validate-only candidate PASS
-- [ ] production security profile selected
+- [x] production security profile selected — Profile A
 - [x] non-production preview build PASS
 - [x] main workers.dev HTTP/content verification PASS
 - [x] preview workers.dev HTTP/content verification PASS
@@ -59,12 +59,10 @@ Production cutover:
 
 1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
 2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
-3. Hardened External CI candidate 已合并并完成 validate-only 验证；现在由人类选择 production security profile：
-   - A：Workers Builds native / managed user token；
-   - B：GitHub Actions external CI / per-Worker account-owned Editor token。
-4. 如果选 A：记录 risk acceptance，进入 Custom Domain / canonical URL / Pages legacy policy。
-5. 如果选 B：只需创建 per-Worker account-owned Editor token + GitHub secret/variable，然后运行 manual preview/production revalidation。
-6. Future：Cloudflare Workers Builds 支持 account-owned token 后，重新评估 Profile C。
+3. Profile A 已由人类选择；保留 Workers Builds native / managed user token，并记录 broad-scope risk acceptance。
+4. 进入 target canonical URL / Cloudflare Custom Domain / GitHub Pages legacy policy 决策与验证。
+5. Profile B 保留为未采用 fallback，不创建 deployment token、不启用 external CI deployment。
+6. Future：Cloudflare Workers Builds 支持 account-owned per-Worker token 或 threat model 变化后，重新评估 Profile C / Profile B。
 
 ## DEFAULT ACCOUNT-SIDE ROUTE
 
@@ -87,8 +85,8 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-- Production security profile requires human choice before final cutover.
-- Workers Builds currently supports user tokens only; the desired per-Worker account-owned token is therefore not available on the preferred native path.
+- Target canonical URL / Custom Domain and GitHub Pages legacy policy remain unresolved before final cutover.
+- Workers Builds currently supports user tokens only; this product constraint remains tracked, but the human has accepted Profile A for the current project.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -118,7 +116,7 @@ Fallback is not enabled while Workers Builds remains viable.
 - Runtime HTTP verification `35431565729` → main + preview, each 5 pages + 30 local assets → `PASS`.
 - Verified post-merge main Cloudflare checkpoint: project revision `71ad7c5cdfd9cb8cebdf9f4a3ac6a247959e0b15`, Cloudflare Build `93823dff-1206-4282-b037-24876840f0c6`, check `105904495866` → `PASS`.
 - Checkpoint semantics intentionally replace a moving `latest_main_build` claim: later main pushes may create newer provider builds without invalidating this verified evidence checkpoint.
-- Cloudflare-managed build token scope audit → `REVIEWED / OPERATIONAL / BROAD-SCOPE`.
+- Cloudflare-managed build token scope audit → `REVIEWED / OPERATIONAL / BROAD-SCOPE`; human risk acceptance recorded under Profile A.
 - Workers Builds hardening compatibility research → `COMPLETE / PRODUCT-CONSTRAINT`: account-owned/per-Worker token cannot currently be used by Workers Builds.
 
 ## CLARIFICATION COMPLETION RULE
@@ -127,7 +125,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-Cloudflare staging is verified. The production security-profile / canonical-cutover decision line remains the only infrastructure priority until it is explicitly resolved.
+Cloudflare staging is verified and Profile A is selected. The canonical URL / Custom Domain / legacy Pages cutover line remains the only infrastructure priority until explicitly resolved.
 
 Other project standardization work remains paused.
 
