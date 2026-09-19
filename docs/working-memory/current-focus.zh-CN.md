@@ -54,8 +54,8 @@ GitHub repository
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 让本分支通过普通 Web CI + Cloudflare Build Contract CI；
-2. 若 CI PASS，合并 repository standard；
+1. 普通 Web CI、Governance、Cloudflare Build Contract CI 已全部 PASS；
+2. 合并 repository standard；
 3. 继续尝试建立 Cloudflare OAuth/MCP account context；
 4. 一旦 account context 可用，由 AI 按 `cloudflare-builds.yaml` 自动完成 Git connection / Worker / triggers / preview build；
 5. 若最终仍无法在当前 AI 客户端建立 MCP，则只要求人类完成 `docs/cloudflare-human-authorization.zh-CN.md` 中的最少授权步骤；
@@ -69,6 +69,9 @@ GitHub repository
 - Pinned Quarto installer：`scripts/ensure_quarto.sh`
 - Wrangler：`wrangler.jsonc`
 - Machine readiness state：`docs/cloudflare-readiness.yaml`
+- Governance validation run：`35427051865`
+- GitHub Web validation run：`35427051858`
+- Cloudflare Build Contract run：`35427051853`
 - Staging runbook：`docs/cloudflare-staging-runbook.zh-CN.md`
 - Human authorization guide：`docs/cloudflare-human-authorization.zh-CN.md`
 - Current production：GitHub Pages
