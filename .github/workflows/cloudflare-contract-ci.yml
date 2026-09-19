@@ -22,6 +22,10 @@ on:
       - "scripts/check_cloudflare_readiness.py"
       - "scripts/check_rendered_html.py"
       - "Makefile"
+      - ".github/workflows/html-ci.yml"
+      - ".github/workflows/cloudflare-runtime-http.yml"
+      - ".github/workflows/html-ci.yml"
+      - ".github/workflows/cloudflare-runtime-http.yml"
       - ".github/workflows/cloudflare-contract-ci.yml"
   push:
     branches: [main]
