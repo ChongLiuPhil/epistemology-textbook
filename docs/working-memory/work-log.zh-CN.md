@@ -41,3 +41,24 @@ HARC-lite 现已成为后续协作的仓库级控制层；上游 HARC 后续变�
 - 本轮没有修改九章正文、`references.bib`、Quarto book config 或 CSS。
 
 HARC-lite profile version 现为 `0.1.1`。
+
+
+---
+
+## 2026-09-19 — PPF Pilot Phase 1 runtime validation
+
+完成第一个 Personal Publishing Framework downstream runtime pilot。
+
+关键结果：
+- 初次 PR CI 因 Working Memory 缺少既有 `CLARIFICATION COMPLETION RULE` marker 失败；恢复治理不变量后 Governance PASS。
+- Web profile：真实 Quarto render + rendered HTML integrity PASS。
+- EPUB：PASS。
+- DOCX：PASS。
+- LaTeX：PASS。
+- PDF：PASS；Noto CJK fonts、TinyTeX、完整 PDF render 与 artifact verification 均成功。
+- 真实运行表明 PDF 构建显著重于其他格式，进一步支持“continuous Web 与 on-demand publication formats 分离”的 PPF 设计。
+- Cloudflare 仍为 staged target；本轮未进行 production cutover。
+
+完整审计：`docs/ppf-pilot-audit.zh-CN.md`。
+
+下一步：删除临时格式验证 workflow，最终 PR head 仅运行正式 Governance/Web checks；合并后验证 main Pages deployment。
