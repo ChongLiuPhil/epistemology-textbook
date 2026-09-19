@@ -1,8 +1,9 @@
 # PPF Adoption — epistemology-textbook
 
-**Status:** PPF Phase 1 COMPLETE — runtime and main Pages deployment verified  
+**Status:** PPF Phase 1 COMPLETE / Cloudflare staging+runtime VERIFIED / canonical cutover PENDING  
 **Framework:** Personal Publishing Framework v0.1.0-draft  
-**Adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe`
+**Adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe`  
+**Observed upstream PPF main during 2026-09-19 reconciliation:** `b9140e1abb116ba27e73c0c7873955078be9593b` — **NOT ADOPTED**
 
 ## Purpose
 
@@ -36,20 +37,30 @@ It introduces:
 
 GitHub Pages remains the production provider during this phase so runtime validation can occur without changing the public canonical URL.
 
-## Phase 2 — Cloudflare cutover
+## Phase 2 — Cloudflare staging and cutover
 
-Cloudflare activation is a separate change.
+Cloudflare staging is now real and verified, while canonical cutover remains a separate change.
 
-It requires, at minimum:
+Completed:
 
-1. a confirmed Worker / Static Assets deployment target;
-2. GitHub deployment credentials or another authorized deployment mechanism;
-3. a confirmed canonical production URL;
-4. a successful preview/staging deployment;
-5. production verification;
-6. an explicit decision about redirect/canonical handling for the existing GitHub Pages URL.
+- Cloudflare account / GitHub App / repository connection: VERIFIED;
+- Worker target: VERIFIED;
+- main Workers Build: PASS;
+- non-production preview: PASS;
+- main workers.dev runtime: PASS;
+- preview workers.dev runtime: PASS;
+- build-token permission scope review: COMPLETE;
+- Hardened External CI candidate: candidate / validate-only PASS.
 
-Only after those conditions are satisfied should the main Web workflow change from GitHub Pages deployment to automatic Cloudflare deployment.
+Still required before canonical production cutover:
+
+1. explicit human production-security-profile selection;
+2. a confirmed canonical production URL;
+3. Cloudflare zone / Custom Domain eligibility and binding;
+4. post-cutover production verification;
+5. an explicit legacy / redirect / canonical policy for the existing GitHub Pages URL.
+
+GitHub Pages remains the current canonical production until those gates are completed. A successful provider production-branch build or workers.dev runtime does not itself change canonical production.
 
 ## Source boundary
 
@@ -116,4 +127,18 @@ Phase 1 was merged through PR #20.
 
 The general-purpose web reader available in this ChatGPT session could not directly fetch the GitHub Pages URL, so this record does **not** claim an independent external HTTP content fetch. Production deployment is verified from GitHub's Pages deployment job, and repository-side external-link validation also passed.
 
-Phase 2 remains intentionally separate. Cloudflare is still a staged target, not the production provider.
+Phase 2 staging/runtime verification is now complete. Cloudflare remains a verified staging/runtime target, not the canonical production provider.
+
+## Current Cloudflare security-profile evidence
+
+- **Profile A — Workers Builds Native:** operationally verified; managed user-token scope is broader than a pure static Worker needs and is not per-Worker least privilege.
+- **Profile B — Hardened External CI:** candidate / validate-only PASS; no deployment credential is configured and preview/production deployment steps have not run, so it is not production-tested.
+- **Profile C — Future Native Granular:** currently unavailable because the required account-owned-token combination is not supported by the recorded Workers Builds product path.
+
+The production security profile is a human-governed decision and has not been selected in this adoption record.
+
+## Upstream adoption rule
+
+This repository does **not** silently follow PPF `main`.
+
+The durable adopted framework state remains the version/commit recorded above. Later upstream PPF changes, including provider-integration semantic work completed after the original pilot adoption, are informative until a separate downstream adoption decision updates `publishing.yaml` and this file after applicable validation.
