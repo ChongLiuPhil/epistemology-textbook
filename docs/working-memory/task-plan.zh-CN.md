@@ -53,6 +53,7 @@ Account connection:
 Production cutover:
 
 > Stable baseline: workers.dev canonical cutover is implemented and verified.
+> Security baseline: production security profile selected — Profile A; broad-scope risk acceptance remains recorded; `least_privilege: false` remains explicit.
 
 - [x] target canonical URL — `https://epistemology-textbook.philosophy-research.workers.dev/`
 - [x] Cloudflare zone / Custom Domain eligibility — N/A for workers.dev canonical
