@@ -5,7 +5,7 @@
 ## ACTIVE TASKS
 
 - `WM-T029` — reconcile PR #18 content/form improvements with current PPF/Workers baseline — `COMPLETED / MAIN-MERGED`
-- `WM-T030` — Chapter 1 academic / pedagogical / citation review — `IN-PROGRESS / ROUND1-IMPLEMENTED / VALIDATION-PENDING`
+- `WM-T030` — Chapter 1 academic / pedagogical / citation review — `IN-PROGRESS / ROUND1-MAIN-VERIFIED / ROUND2-IMPLEMENTED / VALIDATION-PENDING`
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
@@ -66,8 +66,8 @@ Production cutover:
 
 ## NEXT ACTIONS
 
-1. Validate and merge WM-T030 Round 1.
-2. Continue Chapter 1 deep review after Round 1: JTB/Gettier accuracy, argument reconstruction, citation support, pedagogy, and chapter load.
+1. Validate and merge WM-T030 Round 2.
+2. Continue Chapter 1 deep review after Round 2: Gettier original cases, repair-strategy coverage, argument reconstruction, pedagogy, and chapter load.
 3. Treat any proposal to move substantial material into Chapters 3/5/7/9 as a structural proposal requiring explicit human approval.
 4. Keep Profile A / Workers Builds stable; revisit Profile B/C only if provider capability or threat model materially changes.
 
@@ -133,7 +133,8 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-- WM-T030 Round 1 implemented: experimental-philosophy nuance/citations, JTB-history source, permissivism source, epistemic-value citations, cross-chapter scope cues, and naturalism de-duplication; validation pending.
+- WM-T030 Round 1 → merge `62eae7d1f30f6b28eace1d51abc5433fd42ddbcb`; Governance `35471021367`, Web `35471021383`, Cloudflare Contract `35471021450`, Runtime `35471021366`, External Link Audit `35471021375` → `PASS`.
+- WM-T030 Round 2 implemented: undefeated/relevant-alternatives/discrimination/reliabilism/causal/safety/ability attribution and wording precision; validation pending.
 - During chapter review, flag passages that catalogue thinkers/schools without a clear problem-function.
 - If a formal publisher or print specification is later chosen, add provider/channel-specific PDF layout constraints without changing canonical manuscript semantics.
 - No further routing/cutover task is active.
