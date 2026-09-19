@@ -1,13 +1,17 @@
-.PHONY: check governance-check preview html all clean help
+QUARTO ?= quarto
+
+.PHONY: check governance-check preview html web-publish-check cloudflare-build all clean help
 
 help:
 	@echo "Available targets:"
-	@echo "  make governance-check - validate repository-backed collaboration state"
-	@echo "  make check            - validate governance, Quarto sources, bibliography, PPF, and Cloudflare readiness"
-	@echo "  make preview          - start the local Quarto HTML preview"
-	@echo "  make html             - render the HTML reading edition"
-	@echo "  make all              - run the complete HTML development build"
-	@echo "  make clean            - remove Quarto build output"
+	@echo "  make governance-check   - validate repository-backed collaboration state"
+	@echo "  make check              - validate governance, Quarto sources, bibliography, PPF, and Cloudflare contract"
+	@echo "  make preview            - start the local Quarto Web preview"
+	@echo "  make html               - render the Web reading edition"
+	@echo "  make web-publish-check  - canonical source -> Web render -> rendered artifact validation"
+	@echo "  make cloudflare-build   - install pinned Quarto if needed, then run web-publish-check"
+	@echo "  make all                - run the complete Web publication check"
+	@echo "  make clean              - remove generated output"
 
 governance-check:
 	python3 scripts/check_repository_state.py
@@ -18,12 +22,19 @@ check: governance-check
 	python3 scripts/check_cloudflare_readiness.py
 
 preview: check
-	quarto preview --profile web
+	$(QUARTO) preview --profile web
 
 html: check
-	quarto render --profile web
+	$(QUARTO) render --profile web
 
-all: html
+web-publish-check: check
+	$(QUARTO) render --profile web
+	python3 scripts/check_rendered_html.py
+
+cloudflare-build:
+	bash scripts/cloudflare_build.sh
+
+all: web-publish-check
 
 clean:
 	rm -rf _book _publication .quarto
