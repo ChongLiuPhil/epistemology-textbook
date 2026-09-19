@@ -107,10 +107,10 @@ def require_project_structure() -> None:
 
 
 def check_quarto_config(config: str) -> None:
-    if not re.search(r"(?m)^project:\\s*\\n(?:.*\\n)*?\\s{2}type:\\s*book\\s*$", config):
+    if not re.search(r"(?m)^project:\s*\n(?:.*\n)*?\s{2}type:\s*book\s*$", config):
         fail("_quarto.yml is not configured as a Quarto book")
 
-    if not re.search(r"(?ms)^profile:\\s*\\n\\s{2}default:\\s*web\\s*$", config):
+    if not re.search(r"(?ms)^profile:\s*\n\s{2}default:\s*web\s*$", config):
         fail("_quarto.yml does not declare web as the default profile")
 
     required_base_markers = {
@@ -161,7 +161,7 @@ def check_quarto_config(config: str) -> None:
             fail(f"{profile} profile does not configure its expected format")
 
     combined = config + "\n" + web
-    if re.search(r"(?mi)^\\s*downloads:\\s*", combined):
+    if re.search(r"(?mi)^\s*downloads:\s*", combined):
         fail("automatic download links are not enabled during continuous Web Edition development")
 
 
@@ -182,7 +182,7 @@ def check_ppf_contract() -> None:
             fail(f"{label} is missing from publishing.yaml")
 
     for profile in ("epub", "pdf", "docx", "latex"):
-        pattern = rf"(?ms)^  {profile}:.*?mode:\\s*on-demand"
+        pattern = rf"(?ms)^  {profile}:.*?mode:\s*on-demand"
         if not re.search(pattern, publishing):
             fail(f"publishing.yaml does not declare {profile} as on-demand")
 
