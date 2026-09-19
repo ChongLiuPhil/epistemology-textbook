@@ -93,9 +93,10 @@ account_side:
   production_trigger: verified-main-build-passed
   preview_trigger: verified-preview-build-passed
   build_token: cloudflare-managed-default-reviewed-broad-scope-profile-a-accepted
-  cloudflare_zone: unverified
+  cloudflare_zone: not-required-workers-dev-canonical
   workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
-  target_canonical_url: unresolved
+  target_canonical_url: "https://epistemology-textbook.philosophy-research.workers.dev/"
+  custom_domain: not-applicable-workers-dev-canonical
 
 validation:
   repository_validation_runs:
@@ -144,6 +145,8 @@ validation:
 
 cutover:
   status: blocked
+  canonical_target_selected: true
+  canonical_target: "https://epistemology-textbook.philosophy-research.workers.dev/"
+  custom_domain_required: false
   blockers:
-    - target-canonical-url
     - redirect-or-canonical-policy
