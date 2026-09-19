@@ -48,9 +48,9 @@ Account connection:
 - [x] preview workers.dev HTTP/content verification PASS
 
 Production cutover:
-- [ ] target canonical URL
-- [ ] Cloudflare zone / Custom Domain eligibility
-- [ ] Custom Domain
+- [x] target canonical URL — `https://epistemology-textbook.philosophy-research.workers.dev/`
+- [x] Cloudflare zone / Custom Domain eligibility — N/A for workers.dev canonical
+- [x] Custom Domain — N/A for workers.dev canonical
 - [ ] production verification
 - [ ] GitHub Pages legacy policy
 - [ ] canonical URL migration
@@ -60,7 +60,7 @@ Production cutover:
 1. 保持已经验证通过的 Cloudflare-managed build token，不在稳定 staging 链路上继续盲测。
 2. Profile B candidate 已验证：PR validate-only PASS，不需要 Cloudflare secret，不部署。
 3. Profile A 已由人类选择；保留 Workers Builds native / managed user token，并记录 broad-scope risk acceptance。
-4. 进入 target canonical URL / Cloudflare Custom Domain / GitHub Pages legacy policy 决策与验证。
+4. target canonical URL 已选择 workers.dev；Custom Domain 路线 N/A；现在只处理 GitHub Pages legacy policy 与其后的 canonical migration verification。
 5. Profile B 保留为未采用 fallback，不创建 deployment token、不启用 external CI deployment。
 6. Future：Cloudflare Workers Builds 支持 account-owned per-Worker token 或 threat model 变化后，重新评估 Profile C / Profile B。
 
@@ -85,7 +85,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## BLOCKERS
 
-- Target canonical URL / Custom Domain and GitHub Pages legacy policy remain unresolved before final cutover.
+- GitHub Pages legacy policy remains unresolved before final cutover; target canonical URL is workers.dev and Custom Domain is N/A.
 - Workers Builds currently supports user tokens only; this product constraint remains tracked, but the human has accepted Profile A for the current project.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
@@ -98,8 +98,10 @@ Fallback is not enabled while Workers Builds remains viable.
 - Status: `WAITING-HUMAN`
 - Severity: `NON-BLOCKING for manuscript work; BLOCKING for repackaging/redistribution decisions`
 
-### CLR-003 — Cloudflare target canonical URL / legacy Pages policy
-- Status: `WAITING-HUMAN / AFTER-STAGING`
+### CLR-003 — GitHub Pages legacy policy
+- Target canonical URL: `RESOLVED -> https://epistemology-textbook.philosophy-research.workers.dev/`
+- Custom Domain: `NOT_APPLICABLE`
+- Status: `WAITING-HUMAN`
 - Severity: `BLOCKING FOR PRODUCTION CUTOVER, NOT FOR WORKERS.DEV STAGING`
 
 ## RECENTLY RESOLVED / PROMOTED
@@ -125,7 +127,7 @@ Fallback is not enabled while Workers Builds remains viable.
 
 ## TODO / BACKLOG
 
-Cloudflare staging is verified and Profile A is selected. The canonical URL / Custom Domain / legacy Pages cutover line remains the only infrastructure priority until explicitly resolved.
+Cloudflare staging is verified, Profile A is selected, and workers.dev is the selected target canonical URL. The GitHub Pages legacy-policy / canonical-migration line remains the only infrastructure priority until explicitly resolved.
 
 Other project standardization work remains paused.
 
