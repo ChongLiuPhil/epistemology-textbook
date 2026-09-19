@@ -4,11 +4,11 @@
 
 ## CURRENT_STAGE
 
-Personal Publishing Framework — **Phase 2 Cloudflare readiness**.
+Personal Publishing Framework — **Phase 2 repository readiness complete / account-side staging pending**.
 
 ## CURRENT_OBJECTIVE
 
-仓库侧 Cloudflare readiness 已实现并等待 CI 验证：
+仓库侧 Cloudflare readiness 已实现并通过 CI 验证：
 
 - `wrangler.jsonc` 保持纯 static-assets Worker 形态；
 - `assets.directory = ./_book`；
@@ -36,8 +36,8 @@ Cloudflare account-side prerequisites 未验证：
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 让本 readiness PR 通过 normal Governance/Web CI；
-2. 合并后保持 GitHub Pages production 不变；
+1. 合并 repository-side readiness PR；
+2. 保持 GitHub Pages production 不变；
 3. 账户侧建立 Cloudflare deployment context 后，先做 staging/preview deployment；
 4. staging PASS 后再讨论 Custom Domain 与生产 cutover。
 
