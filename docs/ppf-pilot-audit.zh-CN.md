@@ -173,7 +173,7 @@ Cloudflare cutover 属于 Phase 2。
 
 ## 8. 临时验证基础设施处理
 
-PR-only format validation workflow 在本审计完成后应删除。
+PR-only format validation workflow 已在四格式 runtime validation 完成后删除。
 
 最终进入 `main` 的正常语义仍是：
 
@@ -186,8 +186,8 @@ PR-only format validation workflow 在本审计完成后应删除。
 
 合并前剩余操作：
 
-1. 删除临时 PR-only format validation workflow；
-2. 更新 Working Memory / adoption note 为 validation-complete；
+1. ~~删除临时 PR-only format validation workflow；~~ `COMPLETED`
+2. ~~更新 Working Memory / adoption note 为 validation-complete；~~ `COMPLETED`
 3. 让最终 PR head 再通过正常 Governance + Web checks；
 4. 合并后验证 `main` GitHub Pages deployment 成功。
 
