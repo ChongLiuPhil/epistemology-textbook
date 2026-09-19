@@ -30,7 +30,7 @@ connection:
   worker_target: verified
   production_trigger: verified-main-build-passed
   preview_trigger: verified-preview-build-passed
-  build_token: cloudflare-managed-present-security-review-pending
+  build_token: cloudflare-managed-default-reviewed-broad-scope
   workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
 
 validation:
@@ -47,11 +47,24 @@ validation:
     version_id: "3f8a15d6-9994-4e90-839c-2144c8dc54b7"
     preview_url: "https://3f8a15d6-epistemology-textbook.philosophy-research.workers.dev"
     preview_alias_url: "https://cloudflare-preview-probe-epistemology-textbook.philosophy-research.workers.dev"
-  workers_dev_http: external-tool-unverified
+  workers_dev_http: passed-via-github-actions
+  runtime_http_verification:
+    workflow_run: 35431565729
+    main_endpoint: passed
+    preview_endpoint: passed
+  latest_main_build:
+    status: passed
+    git_commit: "f79e202c46eccf6868debf585e2d8ba2dfb9eb51"
+    github_check_id: 105867581534
+    cloudflare_build_id: "6eb6fb9a-34c0-4605-8670-98aea31fe2a5"
   production_trigger_activation: staging-only
 
 security:
   credentials_in_repository: prohibited
   github_app_repository_scope: selected-repositories-only
-  build_token_policy: restricted-token-preferred
-  broad_default_token_requires_review: true
+  build_token_policy: cloudflare-managed-default-reviewed-broad-scope
+  broad_default_token_requires_review: false
+  hardening:
+    desired_scope: individual-worker-epistemology-textbook
+    desired_role: editor
+    status: compatibility-validation-pending
