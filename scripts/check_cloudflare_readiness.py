@@ -17,6 +17,8 @@ PUBLISHING = ROOT / "publishing.yaml"
 READINESS = ROOT / "docs" / "cloudflare-readiness.yaml"
 INSTALLER = ROOT / "scripts" / "ensure_quarto.sh"
 BUILD_WRAPPER = ROOT / "scripts" / "cloudflare_build.sh"
+EXTERNAL_CI_CONTRACT = ROOT / "cloudflare-external-ci.yaml"
+EXTERNAL_CI_WORKFLOW = ROOT / ".github" / "workflows" / "cloudflare-external-ci.yml"
 WORKFLOWS = ROOT / ".github" / "workflows"
 
 
@@ -231,6 +233,50 @@ def check_publication_contract() -> None:
         require(PUBLISHING, marker)
 
 
+def check_hardened_external_ci_candidate() -> None:
+    contract_markers = (
+        "profile: hardened-external-ci",
+        "status: candidate-validate-only",
+        "token_type: account-owned-api-token",
+        "resource: epistemology-textbook",
+        "role: editor",
+        "token_secret: CLOUDFLARE_API_TOKEN",
+        "account_id_variable: CLOUDFLARE_ACCOUNT_ID",
+        "automatic_production_deploy: false",
+        "automatic_preview_deploy: false",
+        "production_requires_main: true",
+        "disable_workers_builds_before_external_ci_becomes_authoritative: required",
+    )
+    for marker in contract_markers:
+        require(EXTERNAL_CI_CONTRACT, marker)
+
+    workflow = EXTERNAL_CI_WORKFLOW.read_text(encoding="utf-8")
+    required_workflow_markers = (
+        "pull_request:",
+        "workflow_dispatch:",
+        "default: validate",
+        "make cloudflare-build",
+        "github.event_name == 'workflow_dispatch' && inputs.mode != 'validate'",
+        "github.event_name == 'workflow_dispatch' && inputs.mode == 'preview'",
+        "github.event_name == 'workflow_dispatch' && inputs.mode == 'production'",
+        'test "$GITHUB_REF" = "refs/heads/main"',
+        "secrets.CLOUDFLARE_API_TOKEN",
+        "vars.CLOUDFLARE_ACCOUNT_ID",
+        "wrangler versions upload --preview-alias",
+        "npm run cloudflare:deploy",
+    )
+    for marker in required_workflow_markers:
+        if marker not in workflow:
+            fail(f"hardened external-CI candidate is missing safety marker: {marker}")
+
+    for forbidden_trigger in ("  push:", "  schedule:"):
+        if forbidden_trigger in workflow:
+            fail(
+                "hardened external-CI candidate must remain manual for deployment; "
+                f"unexpected trigger {forbidden_trigger.strip()}"
+            )
+
+
 def check_no_premature_github_actions_deploy() -> None:
     forbidden = (
         "cloudflare/wrangler-action",
@@ -240,12 +286,14 @@ def check_no_premature_github_actions_deploy() -> None:
     )
 
     for path in sorted(WORKFLOWS.glob("*.yml")) + sorted(WORKFLOWS.glob("*.yaml")):
+        if path == EXTERNAL_CI_WORKFLOW:
+            continue
         body = path.read_text(encoding="utf-8")
         for marker in forbidden:
             if marker in body:
                 fail(
-                    "GitHub Actions Cloudflare deployment became active before the "
-                    f"Workers Builds path was validated: {path.relative_to(ROOT)} contains {marker}"
+                    "Cloudflare deployment credential/command appeared outside the "
+                    f"explicit hardened candidate workflow: {path.relative_to(ROOT)} contains {marker}"
                 )
 
 
@@ -254,14 +302,16 @@ def main() -> None:
     check_toolchain()
     check_workers_builds_contract()
     check_publication_contract()
+    check_hardened_external_ci_candidate()
     check_no_premature_github_actions_deploy()
 
     print(
         "Cloudflare Workers Builds contract check passed: the canonical Web publication "
         "gate, pinned toolchain, Wrangler static-assets config, Git integration commands, "
         "and verified Workers Builds connection state are mutually consistent; "
-        "GitHub Pages remains current production, Cloudflare staging builds have passed, "
-        "and no GitHub Actions Cloudflare cutover is active."
+        "the hardened external-CI candidate is constrained to validate/manual modes; "
+        "GitHub Pages remains current production and no automatic GitHub Actions "
+        "Cloudflare cutover is active."
     )
 
 
