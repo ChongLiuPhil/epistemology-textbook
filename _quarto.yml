@@ -37,4 +37,5 @@ book:
         - manuscript/references.qmd
 
 bibliography: references.bib
+reference-section-title: "本章参考文献"
 lang: zh-CN
