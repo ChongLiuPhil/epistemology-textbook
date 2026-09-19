@@ -51,8 +51,7 @@ Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocke
 
 当前剩余 blocker：
 
-- non-production non-production preview build 已通过；
-- 当前 ChatGPT Web/HTTP 工具无法直接抓取新 workers.dev endpoint，因此页面内容验证尚未由 AI 自动完成；
+- main workers.dev 与 non-production preview 的 HTTP/content/runtime verification 已通过 GitHub Actions；
 - Cloudflare-managed build token 的最小权限安全审计尚未完成；
 - Custom Domain / canonical URL / GitHub Pages legacy policy 尚未决定。
 
@@ -60,10 +59,10 @@ Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocke
 
 1. main Workers Build 已通过 GitHub Cloudflare check 自动验证；
 2. non-production preview build 已通过 GitHub Cloudflare check 自动验证；
-3. 清理临时 preview probe branch；
-4. 完成 workers.dev 页面内容验证；
+3. workers.dev / preview runtime HTTP verification 已通过；
+4. 清理临时 preview probe branch；
 5. 对 Cloudflare-managed build token 做最小权限审计；
-6. staging 全部 PASS 后再进入 Custom Domain / canonical URL / Pages legacy policy。
+6. account-side staging 技术验证闭环后，再进入 Custom Domain / canonical URL / Pages legacy policy。
 
 ## HANDOFF POINTERS
 
@@ -76,6 +75,7 @@ Cloudflare ↔ GitHub account-side connection 已实际建立，不再是 blocke
 - Governance validation run：`35427051865`
 - GitHub Web validation run：`35427051858`
 - Cloudflare Build Contract run：`35427051853`
+- Runtime HTTP verification run：`35431565729`
 - Staging runbook：`docs/cloudflare-staging-runbook.zh-CN.md`
 - Human authorization guide：`docs/cloudflare-human-authorization.zh-CN.md`
 - Current production：GitHub Pages
