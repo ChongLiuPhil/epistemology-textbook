@@ -4,24 +4,25 @@
 
 ## ACTIVE TASKS
 
-- `WM-T009` — 持久化学习—整合—梳理型教材定位与问题驱动哲学教育原则 — IN-PROGRESS
-- `WM-T010` — 配置 HTML/PDF/DOCX/EPUB 同源输出与手动 publication workflow — IN-PROGRESS
-- `WM-T011` — 移植兼容的网页阅读形式：移动端“本章目录”与相关样式 — IN-PROGRESS
-- `WM-T012` — 更新 source/CI checks，验证 PR/main 与 publication-format build — TODO
+- `WM-T013` — PPF profile/source separation — IN-PROGRESS
+- `WM-T014` — PPF publication contract + staged Cloudflare config — IN-PROGRESS
+- `WM-T015` — update source/CI validators for PPF model — IN-PROGRESS
+- `WM-T016` — PR runtime Web-profile validation — TODO
+- `WM-T017` — on-demand EPUB / PDF / DOCX / LaTeX runtime validation — TODO
 
 ## NEXT ACTIONS
 
-1. 修改 `_quarto.yml` 声明多格式输出。
-2. 新增手动 publication-format workflow。
-3. 加入移动端章节 TOC include 与 CSS。
-4. 调整 `scripts/check_quarto.py`：允许手动 release build，但继续禁止日常 CI 生成/部署非 HTML。
-5. 更新 README / CONTRIBUTING。
-6. PR 验证；必要时执行一次性 publication-format 构建测试。
-7. 合并 main 并更新 Working Memory。
+1. 同步 README / CONTRIBUTING / project metadata / release status。
+2. 创建 Pull Request，检查 HTML/governance CI。
+3. 修复任何 profile merge、validator 或 rendered HTML defect。
+4. PR Web runtime validation 通过后，手动验证四种 on-demand profiles。
+5. 记录 PPF pilot audit。
+6. Phase 1 验证完成后再决定是否合并。
+7. Cloudflare cutover 独立进入 Phase 2，不与本 PR 混合。
 
 ## BLOCKERS
 
-- None for this implementation.
+- None for Phase 1.
 
 ## PENDING HUMAN DECISIONS / CLARIFICATIONS
 
@@ -37,16 +38,14 @@
 
 ## RECENTLY RESOLVED / PROMOTED
 
-- Human project-positioning / publication-form instruction → D005 → Content Core / Form Core / Release Status — `RESOLVED / PROMOTED`.
-
-## CLARIFICATION COMPLETION RULE
-
-`WAITING-HUMAN -> human resolution -> Decision Log -> appropriate Core / Architecture / Form / Release state -> RESOLVED / PROMOTED -> leave active clarification queue`
+- PPF adoption / two-phase migration model → D006 → `publishing.yaml` / Release Status / project metadata — `RESOLVED / PROMOTED`.
 
 ## TODO / BACKLOG
 
+- Cloudflare Phase 2 cutover：Worker target、credentials、canonical URL、preview verification、redirect/canonical policy。
+- HARC-lite → AHICP-based project governance migration（独立 PR）。
 - 逐章学术/教学审校。
-- 出版级 PDF typography / DOCX styles / EPUB CSS 在实际需要时继续细化，不把工具默认值提前升级为作者永久偏好。
+- 出版级 PDF typography / DOCX styles / EPUB CSS 在实际需要时继续细化。
 - 若协作者增多，再评估 main ruleset / required checks。
 
 ## SYNC DEFECTS
