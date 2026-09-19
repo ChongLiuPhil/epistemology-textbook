@@ -480,7 +480,7 @@ def check_human_readable_state_reconciliation() -> None:
         "WM-T027",
         "WM-T028",
         "GitHub Pages legacy policy — `RETIRE`",
-        "Custom Domain: `NOT_APPLICABLE`",
+        "Custom Domain — N/A for workers.dev canonical",
     ):
         if marker not in task_plan:
             fail(f"Task Plan is missing Profile A completion marker: {marker}")
