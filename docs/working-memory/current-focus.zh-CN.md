@@ -4,7 +4,7 @@
 
 ## CURRENT_STAGE
 
-Content Quality — **Chapter 1 review / Round 1 implemented / validation pending**.
+Content Quality — **Chapter 1 review / Round 1 main-verified / Round 2 implemented / validation pending**.
 
 ## CURRENT_OBJECTIVE
 
@@ -40,9 +40,9 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## IMMEDIATE_NEXT_ACTION
 
-1. 验证 Chapter 1 Round 1：书目 integrity、Quarto render、citation/backlink、Web/Cloudflare contract；
-2. 若 PR 全绿，合并 Round 1；
-3. 继续 Chapter 1 深层审校：JTB/Gettier 论证准确性、章节负载与后续章节重复度；
+1. 验证 Chapter 1 Round 2：理论归属 citation、Quarto render、Web/Cloudflare contract；
+2. 若 PR 全绿，合并 Round 2；
+3. 继续 Chapter 1 深层审校：Gettier 原始案例、修补路线覆盖范围、教学负载与后续章节重复度；
 4. 若需要把大段内容迁移到第 3/5/7/9 章，先把它作为结构性提议提交人类确认，不在普通 content PR 中静默重排。
 
 ## PPF / DELIVERY BASELINE
@@ -79,3 +79,23 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 - 第 1 章仍然承担部分认识规范、分歧、认识价值、实验/比较方法与知识优先内容；
 - 是否进一步移动这些高级材料属于跨章 Architecture 问题，暂不在 Round 1 中处理。
+
+
+## CHAPTER 1 ROUND 2 FINDINGS
+
+Round 1 main verification：
+
+- Governance `35471021367` → PASS;
+- Quarto HTML `35471021383` → PASS;
+- Cloudflare Build Contract `35471021450` → PASS;
+- Cloudflare Runtime HTTP `35471021366` → PASS;
+- External Link Audit `35471021375` → PASS.
+
+Round 2 已实施：
+
+- undefeated JTB 就地关联 Lehrer / Paxson；
+- relevant alternatives 与 discrimination 明确区分，并分别关联 Dretske / Goldman；
+- process reliabilism 从“固定真信念比例”改为更准确的“稳定倾向产生真信念”；
+- 因果理论补 Goldman 原始来源；
+- safety 与 virtue/ability 路线分开表述，并关联 Sosa / Greco / Pritchard；
+- 增加到第二章的范围提示，避免第 1 章把怀疑论/反运气后续讨论伪装成完整处理。
