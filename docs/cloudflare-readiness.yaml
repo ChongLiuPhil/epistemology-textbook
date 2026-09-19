@@ -49,13 +49,15 @@ permission_model:
         user:
           - user-details-read
           - memberships-read
+    selected_production_profile: workers-builds-native
+    human_risk_acceptance: accepted-broad-managed-user-token-scope
     security_profiles:
       workers_builds_native:
-        status: operational-verified
+        status: selected-production-profile
         token_type: cloudflare-managed-user-token
         least_privilege: false
       hardened_external_ci:
-        status: candidate-validated-credentials-not-configured
+        status: candidate-validated-not-adopted
         contract: cloudflare-external-ci.yaml
         workflow: .github/workflows/cloudflare-external-ci.yml
         activation: manual-only
@@ -90,7 +92,7 @@ account_side:
   worker_target: verified
   production_trigger: verified-main-build-passed
   preview_trigger: verified-preview-build-passed
-  build_token: cloudflare-managed-default-reviewed-broad-scope
+  build_token: cloudflare-managed-default-reviewed-broad-scope-profile-a-accepted
   cloudflare_zone: unverified
   workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
   target_canonical_url: unresolved
@@ -143,6 +145,5 @@ validation:
 cutover:
   status: blocked
   blockers:
-    - human-security-profile-decision
     - target-canonical-url
     - redirect-or-canonical-policy
