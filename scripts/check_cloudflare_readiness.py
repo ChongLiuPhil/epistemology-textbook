@@ -23,6 +23,7 @@ SECURITY_AUDIT = ROOT / "docs" / "cloudflare-build-token-security.zh-CN.md"
 DECISION_LOG = ROOT / "core" / "DECISION_LOG.zh-CN.md"
 CURRENT_FOCUS = ROOT / "docs" / "working-memory" / "current-focus.zh-CN.md"
 TASK_PLAN = ROOT / "docs" / "working-memory" / "task-plan.zh-CN.md"
+QUARTO_WEB = ROOT / "_quarto-web.yml"
 INSTALLER = ROOT / "scripts" / "ensure_quarto.sh"
 BUILD_WRAPPER = ROOT / "scripts" / "cloudflare_build.sh"
 EXTERNAL_CI_CONTRACT = ROOT / "cloudflare-external-ci.yaml"
@@ -154,7 +155,8 @@ def check_publication_contract() -> None:
         'cloudflare_build_id: "d6bc8b62-78ba-4a9e-98ea-7a049a539858"',
         'cloudflare_build_id: "a12446a5-e341-48e4-8c22-1a184b1102c8"',
         'version_id: "3f8a15d6-9994-4e90-839c-2144c8dc54b7"',
-        "target_canonical_url: unresolved",
+        'target_canonical_url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
+        "custom_domain: not-applicable-workers-dev-canonical",
         "selected_production_profile: workers-builds-native",
         "human_risk_acceptance: accepted-broad-managed-user-token-scope",
         "status: blocked",
@@ -245,6 +247,9 @@ def check_publication_contract() -> None:
         "preview_deployment: passed",
         "production_cutover: blocked",
         "production_security_profile: workers-builds-native",
+        'target_production_url: "https://epistemology-textbook.philosophy-research.workers.dev/"',
+        "canonical_url: selected-workers-dev",
+        "custom_domain: not-applicable",
     ):
         require(PUBLISHING, marker)
 
@@ -414,7 +419,7 @@ def check_human_readable_state_reconciliation() -> None:
     for marker in (
         "Profile A — Workers Builds Native",
         "least_privilege: false",
-        "当前进入 Custom Domain / canonical URL / Pages legacy policy 决策与验证",
+        "target canonical URL 已选择 workers.dev",
     ):
         if marker not in current_focus:
             fail(f"Current Focus is missing selected Profile A state: {marker}")
@@ -436,6 +441,8 @@ def check_human_readable_state_reconciliation() -> None:
         "COMPLETED / PROFILE-A-SELECTED",
         "production security profile selected — Profile A",
         "broad-scope risk acceptance",
+        "Target canonical URL: `RESOLVED -> https://epistemology-textbook.philosophy-research.workers.dev/`",
+        "Custom Domain: `NOT_APPLICABLE`",
     ):
         if marker not in task_plan:
             fail(f"Task Plan is missing Profile A completion marker: {marker}")
@@ -443,8 +450,29 @@ def check_human_readable_state_reconciliation() -> None:
     readiness_body = READINESS.read_text(encoding="utf-8")
     if "human-security-profile-decision" in readiness_body:
         fail("security-profile blocker must be removed after human Profile A selection")
-    if "target-canonical-url" not in readiness_body or "redirect-or-canonical-policy" not in readiness_body:
-        fail("canonical URL and legacy/canonical policy blockers must remain after Profile A selection")
+    if "target-canonical-url" in readiness_body:
+        fail("target canonical URL blocker must be removed after workers.dev target selection")
+    if "redirect-or-canonical-policy" not in readiness_body:
+        fail("legacy/canonical policy blocker must remain until GitHub Pages policy is selected")
+    for marker in (
+        'canonical_target: "https://epistemology-textbook.philosophy-research.workers.dev/"',
+        "canonical_target_selected: true",
+        "custom_domain_required: false",
+    ):
+        if marker not in readiness_body:
+            fail(f"readiness state is missing selected workers.dev canonical target marker: {marker}")
+
+    quarto_web = QUARTO_WEB.read_text(encoding="utf-8")
+    if 'site-url: "https://chongliuphil.github.io/epistemology-textbook/"' not in quarto_web:
+        fail(
+            "current Web site-url must remain GitHub Pages until the legacy Pages policy "
+            "and canonical migration are explicitly completed"
+        )
+    if "epistemology-textbook.philosophy-research.workers.dev" in quarto_web:
+        fail(
+            "target workers.dev canonical URL must not be promoted into _quarto-web.yml "
+            "before the legacy Pages policy is selected"
+        )
 
 
 def main() -> None:

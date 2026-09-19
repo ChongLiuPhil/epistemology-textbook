@@ -53,7 +53,7 @@ deployment:
     canonical_publish_gate: "make web-publish-check"
     output_directory: _book
     current_production_url: "https://chongliuphil.github.io/epistemology-textbook/"
-    target_production_url: null
+    target_production_url: "https://epistemology-textbook.philosophy-research.workers.dev/"
     migration_status: staged
     readiness:
       repository: validated
@@ -65,7 +65,8 @@ deployment:
       build_token: reviewed-broad-scope-profile-a-accepted
       production_security_profile: workers-builds-native
       workers_dev_url: "https://epistemology-textbook.philosophy-research.workers.dev"
-      canonical_url: unresolved
+      canonical_url: selected-workers-dev
+      custom_domain: not-applicable
       cloudflare_main_build: passed
       preview_deployment: passed
       production_cutover: blocked

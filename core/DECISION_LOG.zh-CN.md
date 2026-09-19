@@ -144,3 +144,22 @@
 
 **实现状态：** human-approved；本轮 repository migration 负责把该选择传播到 machine readiness、security audit、Working Memory 与 validators。
 
+---
+
+## 2026-09-19 — D008 — 选择 workers.dev 作为目标 canonical URL
+
+**来源：** 人类作者明确选择选项 `2`。  
+**分类：** FORM / INFRASTRUCTURE / PUBLICATION ROUTING。  
+**决定：**
+
+- 本项目选择 `https://epistemology-textbook.philosophy-research.workers.dev/` 作为 **target canonical URL**；
+- 该选择使用已经真实验证的 Cloudflare Workers `workers.dev` endpoint，不需要额外 Custom Domain；
+- 因此 Cloudflare zone / Custom Domain eligibility 与 Custom Domain binding 对当前路线标记为 `NOT_APPLICABLE`，不再作为 cutover blocker；
+- 本决定只确定**目标 canonical URL**，不自动把 Cloudflare 标记为 canonical production active；
+- 当前 `_quarto-web.yml`、GitHub Pages publication URL 与 reader-facing absolute links 暂不修改，因为 GitHub Pages legacy policy 尚未决定；
+- 在 legacy policy 决定和相应 migration 验证前，GitHub Pages 继续是 current canonical production；
+- 下一个人类 cutover decision 是 GitHub Pages legacy URL policy；
+- canonical URL migration 只有在 legacy policy 明确、相关 source/config 更新并通过 runtime verification 后才算完成。
+
+**实现状态：** human-approved target intent；本轮 repository migration 只写入 target URL 与 N/A Custom Domain 状态，不执行 canonical cutover。
+
