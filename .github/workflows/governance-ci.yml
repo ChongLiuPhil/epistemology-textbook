@@ -99,7 +99,5 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install stack validation dependency
-        run: python -m pip install "PyYAML==6.0.3"
       - name: Validate repository collaboration and stack state
         run: make governance-check
