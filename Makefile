@@ -4,7 +4,9 @@ QUARTO ?= quarto
 
 help:
 	@echo "Available targets:"
-	@echo "  make governance-check   - validate repository-backed collaboration and stack state"\n	@echo "  make stack-check        - validate AHICP/PPF/Vault-interface cross-contract consistency"\n	@echo "  make check              - validate governance, Quarto sources, math layout, bibliography, PPF, and Cloudflare contract"
+	@echo "  make governance-check   - validate repository-backed collaboration and stack state"
+	@echo "  make stack-check        - validate AHICP/PPF/Vault-interface cross-contract consistency"
+	@echo "  make check              - validate governance, Quarto sources, math layout, bibliography, PPF, and Cloudflare contract"
 	@echo "  make preview            - start the local Quarto Web preview"
 	@echo "  make html               - render the Web reading edition"
 	@echo "  make web-publish-check  - canonical source -> Web render -> rendered artifact validation"
