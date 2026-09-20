@@ -58,10 +58,11 @@ for label,value in (
     if value != pid:
         fail(f"{label} project id {value!r} != stack id {pid!r}")
 
-ppf_commit=stack.get("components.publishing.adopted_commit")
-if project.get("publishing.adopted_framework_commit") != ppf_commit:
+ppf_template_commit=stack.get("components.publishing.template_source_commit")
+ppf_project_commit=stack.get("components.publishing.project_adopted_commit")
+if project.get("publishing.adopted_framework_commit") != ppf_project_commit:
     fail("project.yaml PPF adopted commit differs from project-stack")
-if publishing.get("framework.adopted_commit") != ppf_commit:
+if publishing.get("framework.adopted_commit") != ppf_project_commit:
     fail("publishing.yaml PPF adopted commit differs from project-stack")
 
 if project.get("governance.profile") != stack.get("components.governance.project_native.profile"):
@@ -71,7 +72,7 @@ if project.get("governance.adopted_protocol_commit") != stack.get("components.go
 
 for key, expected in (
     ("resolved.ahicp",stack.get("components.governance.adopted_commit")),
-    ("resolved.ppf",ppf_commit),
+    ("resolved.ppf",ppf_template_commit),
     ("resolved.vault_interface",stack.get("components.portfolio_interface.adopted_commit")),
     ("resolved.starter",stack.get("starter.adopted_commit")),
 ):
