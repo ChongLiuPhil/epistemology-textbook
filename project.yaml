@@ -53,7 +53,7 @@ governance:
 publishing:
   framework: Personal-Publishing-Framework
   adopted_framework_version: v0.1.0-draft
-  adopted_framework_commit: 4dcc23efb165cabc8c259103409c86708c355451
+  adopted_framework_commit: 21a5360727167bad6f399477ded073431645fa1d
   contract: publishing.yaml
   cloudflare_readiness: docs/cloudflare-readiness.yaml
   phase: production-active
@@ -77,7 +77,7 @@ website:
 
 notes: >
   Quarto QMD files plus references.bib remain the canonical manuscript source.
-  PPF v0.1.0-draft at adopted commit 4dcc23efb165cabc8c259103409c86708c355451
+  PPF v0.1.0-draft at adopted commit 21a5360727167bad6f399477ded073431645fa1d
   defines the publication lifecycle. The web profile is the continuous public
   format and Cloudflare Workers Builds delivers the verified workers.dev canonical
   production site. EPUB, PDF, DOCX, and LaTeX are explicit on-demand build
