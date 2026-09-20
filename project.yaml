@@ -67,6 +67,10 @@ publishing:
   target_web_provider: null
   cloudflare_cutover: complete-verified
 
+stack:
+  manifest: project-stack.yaml
+  lock: project-stack.lock.yaml
+
 website:
   metadata: website.yaml
   default_publish: true
@@ -79,5 +83,6 @@ notes: >
   production site. EPUB, PDF, DOCX, and LaTeX are explicit on-demand build
   artifacts. GitHub Pages legacy policy is RETIRE and its Unpublish site action
   is human-confirmed complete. Build does not imply Release Approval. The legacy
-  textbook/ LaTeX tree remains historical only; HARC-lite remains the current
-  collaboration-governance profile.
+  textbook/ LaTeX tree remains historical only. The existing HARC-lite repository
+  layout remains project-native and is functionally mapped into the current AHICP
+  compatibility profile rather than duplicated as a second governance truth source.

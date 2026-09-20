@@ -16,7 +16,6 @@ on:
       - "docs/release-status.zh-CN.md"
       - "docs/ppf-adoption.md"
       - "docs/publication-profile.zh-CN.md"
-      - "docs/publication-profile.zh-CN.md"
       - "docs/cloudflare-readiness.yaml"
       - "docs/cloudflare-readiness.zh-CN.md"
       - "docs/cloudflare-staging-runbook.zh-CN.md"
@@ -27,7 +26,11 @@ on:
       - "README.zh-CN.md"
       - "CONTRIBUTING.md"
       - "project.yaml"
+      - "project-stack.yaml"
+      - "project-stack.lock.yaml"
+      - "website.yaml"
       - "publishing.yaml"
+      - "Makefile"
       - "wrangler.jsonc"
       - "_quarto.yml"
       - "_quarto-*.yml"
@@ -36,6 +39,7 @@ on:
       - "website/**"
       - ".github/PULL_REQUEST_TEMPLATE.md"
       - "scripts/check_repository_state.py"
+      - "scripts/check_stack_consistency.py"
       - "scripts/check_cloudflare_readiness.py"
       - ".github/workflows/governance-ci.yml"
   push:
@@ -53,6 +57,7 @@ on:
       - "docs/framework-status.zh-CN.md"
       - "docs/release-status.zh-CN.md"
       - "docs/ppf-adoption.md"
+      - "docs/publication-profile.zh-CN.md"
       - "docs/cloudflare-readiness.yaml"
       - "docs/cloudflare-readiness.zh-CN.md"
       - "docs/cloudflare-staging-runbook.zh-CN.md"
@@ -63,7 +68,11 @@ on:
       - "README.zh-CN.md"
       - "CONTRIBUTING.md"
       - "project.yaml"
+      - "project-stack.yaml"
+      - "project-stack.lock.yaml"
+      - "website.yaml"
       - "publishing.yaml"
+      - "Makefile"
       - "wrangler.jsonc"
       - "_quarto.yml"
       - "_quarto-*.yml"
@@ -72,6 +81,7 @@ on:
       - "website/**"
       - ".github/PULL_REQUEST_TEMPLATE.md"
       - "scripts/check_repository_state.py"
+      - "scripts/check_stack_consistency.py"
       - "scripts/check_cloudflare_readiness.py"
       - ".github/workflows/governance-ci.yml"
 
@@ -89,5 +99,5 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate repository collaboration state
-        run: python3 scripts/check_repository_state.py
+      - name: Validate repository collaboration and stack state
+        run: make governance-check
