@@ -1,11 +1,10 @@
 QUARTO ?= quarto
 
-.PHONY: check governance-check preview html web-publish-check cloudflare-build all clean help
+.PHONY: check governance-check stack-check preview html web-publish-check cloudflare-build all clean help
 
 help:
 	@echo "Available targets:"
-	@echo "  make governance-check   - validate repository-backed collaboration state"
-	@echo "  make check              - validate governance, Quarto sources, math layout, bibliography, PPF, and Cloudflare contract"
+	@echo "  make governance-check   - validate repository-backed collaboration and stack state"\n	@echo "  make stack-check        - validate AHICP/PPF/Vault-interface cross-contract consistency"\n	@echo "  make check              - validate governance, Quarto sources, math layout, bibliography, PPF, and Cloudflare contract"
 	@echo "  make preview            - start the local Quarto Web preview"
 	@echo "  make html               - render the Web reading edition"
 	@echo "  make web-publish-check  - canonical source -> Web render -> rendered artifact validation"
@@ -15,6 +14,10 @@ help:
 
 governance-check:
 	python3 scripts/check_repository_state.py
+	python3 scripts/check_stack_consistency.py
+
+stack-check:
+	python3 scripts/check_stack_consistency.py
 
 check: governance-check
 	python3 scripts/check_quarto.py

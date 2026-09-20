@@ -1,5 +1,6 @@
 schema_version: 1
 publish: true
+project_id: epistemology-textbook
 
 language:
   default: auto
@@ -18,9 +19,9 @@ summary:
   en: "A Chinese-language epistemology textbook and learning project organized through study, synthesis, and philosophical problems, covering knowledge, skepticism, justification, sources of knowledge, social and formal epistemology, epistemic value, digital and AI environments, and comparative epistemology."
 
 status:
-  zh: "PPF Phase 1 已完成并通过真实运行验证：Quarto QMD 为唯一正式书稿来源；Web profile 的 HTML 经验证后继续自动部署到现有 GitHub Pages。EPUB、PDF、DOCX 与 LaTeX 使用独立 profile 按需构建，不自动成为正式 release。Cloudflare Workers Static Assets 属于 Phase 2 staged target，尚未切换生产。"
-  en: "PPF Phase 1 is complete and runtime-validated: canonical Quarto QMD remains the sole manuscript source, validated Web-profile HTML continues to deploy automatically to the existing GitHub Pages site, and EPUB/PDF/DOCX/LaTeX remain separate on-demand build profiles rather than formal releases by default. Cloudflare Workers Static Assets is a staged Phase 2 target, not yet the production provider."
+  zh: "PPF Web 持续出版已切换并验证为 Cloudflare Workers Builds：Quarto QMD 仍是唯一正式书稿来源，workers.dev 是当前 canonical production。EPUB、PDF、DOCX 与 LaTeX 继续按需构建且不自动成为正式 release；旧 GitHub Pages 站点已按 RETIRE 策略完成 Unpublish。"
+  en: "PPF continuous Web publication is now verified on Cloudflare Workers Builds: canonical Quarto QMD remains the sole manuscript source and workers.dev is the current canonical production. EPUB/PDF/DOCX/LaTeX remain on-demand artifacts rather than formal releases by default; the legacy GitHub Pages site has been unpublished under the RETIRE policy."
 
 featured: false
 links:
-  - https://chongliuphil.github.io/epistemology-textbook/
+  - https://epistemology-textbook.philosophy-research.workers.dev/

@@ -26,8 +26,7 @@ on:
       - "README.md"
       - "README.zh-CN.md"
       - "CONTRIBUTING.md"
-      - "project.yaml"
-      - "publishing.yaml"
+      - "project.yaml"\n      - "project-stack.yaml"\n      - "project-stack.lock.yaml"\n      - "website.yaml"\n      - "Makefile"\n      - "publishing.yaml"
       - "wrangler.jsonc"
       - "_quarto.yml"
       - "_quarto-*.yml"
@@ -35,8 +34,7 @@ on:
       - "textbook/README.md"
       - "website/**"
       - ".github/PULL_REQUEST_TEMPLATE.md"
-      - "scripts/check_repository_state.py"
-      - "scripts/check_cloudflare_readiness.py"
+      - "scripts/check_repository_state.py"\n      - "scripts/check_stack_consistency.py"\n      - "scripts/check_cloudflare_readiness.py"
       - ".github/workflows/governance-ci.yml"
   push:
     branches: [main]
@@ -89,5 +87,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate repository collaboration state
-        run: python3 scripts/check_repository_state.py
+      - name: Install stack validation dependency
+        run: python -m pip install "PyYAML==6.0.3"
+      - name: Validate repository collaboration and stack state
+        run: make governance-check
