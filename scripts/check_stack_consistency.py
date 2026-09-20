@@ -32,7 +32,6 @@ def scalars(text):
         out[path] = value
     return out
 
-
 def fail(msg):
     print("ERROR:", msg, file=sys.stderr)
     raise SystemExit(1)
@@ -49,6 +48,11 @@ publishing=scalars(publishing_text)
 stack=scalars(stack_text)
 lock=scalars(lock_text)
 
+if stack.get("schema") != "inquiry-publishing-stack/v2":
+    fail("project stack must use v2")
+if lock.get("schema") != "inquiry-publishing-stack-lock/v2":
+    fail("project stack lock must use v2")
+
 pid=stack.get("project.id")
 for label,value in (
     ("project.yaml",project.get("id")),
@@ -57,6 +61,10 @@ for label,value in (
 ):
     if value != pid:
         fail(f"{label} project id {value!r} != stack id {pid!r}")
+
+for role in ("governance","publishing","portfolio_interface"):
+    if stack.get(f"components.{role}.adoption_state") != "active":
+        fail(f"{role} must remain active in full-research-publication")
 
 ppf_template_commit=stack.get("components.publishing.template_source_commit")
 ppf_project_commit=stack.get("components.publishing.project_adopted_commit")
@@ -71,9 +79,9 @@ if project.get("governance.adopted_protocol_commit") != stack.get("components.go
     fail("project-native governance commit differs from stack functional mapping")
 
 for key, expected in (
-    ("resolved.ahicp",stack.get("components.governance.adopted_commit")),
+    ("resolved.ahicp",stack.get("components.governance.template_source_commit")),
     ("resolved.ppf",ppf_template_commit),
-    ("resolved.vault_interface",stack.get("components.portfolio_interface.adopted_commit")),
+    ("resolved.vault_interface",stack.get("components.portfolio_interface.template_source_commit")),
     ("resolved.starter",stack.get("starter.adopted_commit")),
 ):
     if lock.get(key) != expected:
@@ -95,4 +103,4 @@ if publishing.get("deployment.web.legacy_url_policy") == "retire":
 if "staged Phase 2" in website_text or "尚未切换生产" in website_text:
     fail("website.yaml contains stale pre-cutover Cloudflare status")
 
-print("Project stack consistency passed: IDs, PPF revision, legacy governance mapping, lock, canonical URL, and retired-provider boundary agree.")
+print("Project stack v2 consistency passed: IDs, template/project PPF revisions, legacy governance mapping, lock, canonical URL, and retired-provider boundary agree.")
