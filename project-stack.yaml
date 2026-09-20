@@ -17,7 +17,8 @@ components:
     framework: ppf
     source: ChongLiuPhil/Personal-Publishing-Framework
     profile: quarto-book-cloudflare
-    adopted_commit: 4dcc23efb165cabc8c259103409c86708c355451
+    template_source_commit: 4dcc23efb165cabc8c259103409c86708c355451
+    project_adopted_commit: 21a5360727167bad6f399477ded073431645fa1d
   portfolio_interface:
     framework: vault-interface
     source: ChongLiuPhil/Vault-interface
