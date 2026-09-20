@@ -3,7 +3,7 @@ schema: ppf/v0.1
 framework:
   source: ChongLiuPhil/Personal-Publishing-Framework
   adopted_version: v0.1.0-draft
-  adopted_commit: 4dcc23efb165cabc8c259103409c86708c355451
+  adopted_commit: 21a5360727167bad6f399477ded073431645fa1d
 
 project:
   id: epistemology-textbook
