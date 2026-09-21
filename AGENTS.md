@@ -1,6 +1,6 @@
-# AGENTS.md — 《我们如何知道？》HARC-lite 协作契约
+# AGENTS.md — 《我们如何知道？》AHICP / HARC-lite 协作契约
 
-本仓库采用项目化的 HARC-lite 协作方式。目标不是增加流程负担，而是确保新的人类协作者或 AI Agent 不依赖旧聊天也能安全续接。
+本仓库以 current AHICP 作为当前协议入口，并保留项目化 HARC-lite 作为历史与 project-native 治理层。目标不是增加流程负担，而是确保新的人类协作者或 AI Agent 不依赖旧聊天也能安全续接。
 
 ## 1. 权威状态
 
@@ -72,7 +72,7 @@
 - 教材正文及内部治理以中文为主要规范语言。
 - README 继续维护中文和英文公共入口。
 - HARC-lite 内部治理文件不要求逐份英文镜像，除非作者以后明确改变规则。
-- 不要因为上游 HARC 以后更新就自动改变本项目治理；采用版本由 `HARC_MANIFEST.yaml` 固定。
+- 不要因为上游 AHICP/HARC 以后更新就自动改变本项目治理；current AHICP pin 由 `AHICP_MANIFEST.yaml` 固定，HARC-lite 历史 pin 继续由 `HARC_MANIFEST.yaml` 保存。
 
 ## 8. Working Memory 与 Clarification 生命周期
 

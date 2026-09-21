@@ -10,13 +10,15 @@
 
 ## 最小读取顺序
 
-1. `HARC_MANIFEST.yaml`
-2. `HARC_CONTEXT_INTERFACE.yaml`
-3. `AGENTS.md`
-4. `docs/working-memory.zh-CN.md`
-5. `docs/working-memory/current-focus.zh-CN.md`
-6. `docs/working-memory/task-plan.zh-CN.md`
-7. `core/DECISION_LOG.zh-CN.md`
+1. `AHICP_MANIFEST.yaml`
+2. `AHICP_CONTEXT_INTERFACE.yaml`
+3. `START_HERE.zh-CN.md`
+4. `SESSION_CONTEXT_BOOTSTRAP.zh-CN.md`
+5. `AGENTS.md`
+6. `docs/working-memory.zh-CN.md`
+7. `docs/working-memory/current-focus.zh-CN.md`
+8. `docs/working-memory/task-plan.zh-CN.md`
+9. `core/DECISION_LOG.zh-CN.md`
 8. 根据当前任务选择性读取：
    - CONTENT：`core/CONTENT_CORE.zh-CN.md`、`docs/book-architecture.zh-CN.md`、`docs/framework-status.zh-CN.md`、相关 QMD 与文献；
    - FORM：`core/FORM_CORE.zh-CN.md`、`_quarto.yml`、`book.css`；
@@ -25,9 +27,9 @@
 
 `docs/working-memory/work-log.zh-CN.md` 主要用于历史回顾，默认不属于接管必读项。
 
-## HARC-lite 的项目化规则
+## Current AHICP / HARC-lite 的项目化规则
 
-本项目采用 HARC 的仓库持久化、任务路由、决策追踪和 fresh-fetch 原则，但不机械复制完整 HARC 仓库：
+本项目以 current AHICP 作为当前协议入口，并保留 HARC-lite 的仓库持久化、任务路由、决策追踪和 fresh-fetch 历史规则；不机械复制第二套治理真值：
 
 - 教材治理文件以中文为 canonical，不强制为每份内部文档维护英文镜像；
 - 公共入口 README 继续维护中英版本；
@@ -49,3 +51,12 @@
 - 修改后应运行哪些检查、何时才算完成？
 
 如果无法回答，先修复仓库状态或提出 clarification，不要用旧聊天填空。
+
+
+## 当前 Stack baseline
+
+- AHICP: `0.3.0-draft @ ed5a60b1016497472072db108072ace59bcdb65d`
+- PPF: `0.1.1-draft @ e660b48fb216c28c8faa1f0fe2d0816401e1de2c`
+- Vault Interface: `79d64b12275a5cc7c09236b144bf4213fa7afc5e`
+- Starter: `4889739d448a9bf68bedb42ce3182315eda0caeb`
+- production/security baseline：Workers Builds Native / Profile A / workers.dev canonical / GitHub Pages retired，全部保持不变。

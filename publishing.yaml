@@ -2,8 +2,8 @@ schema: ppf/v0.1
 
 framework:
   source: ChongLiuPhil/Personal-Publishing-Framework
-  adopted_version: v0.1.0-draft
-  adopted_commit: 21a5360727167bad6f399477ded073431645fa1d
+  adopted_version: 0.1.1-draft
+  adopted_commit: e660b48fb216c28c8faa1f0fe2d0816401e1de2c
 
 project:
   id: epistemology-textbook
@@ -53,6 +53,9 @@ publication:
 
 deployment:
   web:
+    provider: cloudflare-workers
+    enabled: true
+    status: active-public-production
     current_provider: cloudflare-workers
     target_provider: null
     integration_mode: workers-builds-git
@@ -67,6 +70,7 @@ deployment:
       url: "https://epistemology-textbook.philosophy-research.workers.dev/"
     migration_status: canonical-active-verified
     integration_state: PRODUCTION_ACTIVE
+    authorization_state: AUTHORIZED
     cutover_state: ACTIVE
     legacy_url_policy: retire
     readiness:

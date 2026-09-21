@@ -8,6 +8,7 @@
 - `WM-T030` — Chapter 1 academic / pedagogical / citation review — `COMPLETED / ROUND2-MAIN-VERIFIED`
 - `WM-T031` — Chapter 2 academic / pedagogical / citation review — `COMPLETED / ROUND2-MAIN-VERIFIED`
 - `WM-T032` — Chapter 3 academic / pedagogical / citation review — `READY / NEXT`
+- `WM-T033` — current AHICP / PPF / Vault / Starter revision upgrade — `VALIDATED / PR #52`; if this file is on `main`, completed
 - `WM-T023` — Cloudflare ↔ GitHub reusable Workers Builds standard — `COMPLETED / MAIN-VERIFIED`
 - `WM-T024` — Cloudflare build-token hardening research — `COMPLETED / PRODUCT-CONSTRAINT`
 - `WM-T025` — Cloudflare production security profile — `COMPLETED / PROFILE-A-SELECTED`
