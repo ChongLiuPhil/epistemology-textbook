@@ -14,7 +14,7 @@
 
 ## PPF Pilot 状态
 
-- Framework：Personal Publishing Framework v0.1.0-draft @ `21a5360727167bad6f399477ded073431645fa1d`
+- Framework：Personal Publishing Framework 0.1.1-draft @ `e660b48fb216c28c8faa1f0fe2d0816401e1de2c`
 - contract：`publishing.yaml`
 - default profile：`web`
 - 当前 Web provider：Cloudflare Workers Static Assets
