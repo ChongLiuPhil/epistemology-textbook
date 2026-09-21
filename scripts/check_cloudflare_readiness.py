@@ -393,7 +393,7 @@ def check_human_readable_state_reconciliation() -> None:
                     f"{stale}"
                 )
 
-    require(PUBLISHING, "adopted_commit: 21a5360727167bad6f399477ded073431645fa1d")
+    require(PUBLISHING, "adopted_commit: e660b48fb216c28c8faa1f0fe2d0816401e1de2c")
     publishing = PUBLISHING.read_text(encoding="utf-8")
     for marker in (
         "source:\n  canonical: git\n  branch: main\n  visibility: public",
@@ -410,6 +410,7 @@ def check_human_readable_state_reconciliation() -> None:
 
     adoption = ADOPTION_DOC.read_text(encoding="utf-8")
     for marker in (
+        "e660b48fb216c28c8faa1f0fe2d0816401e1de2c",
         "21a5360727167bad6f399477ded073431645fa1d",
         "Previous adopted framework commit",
         "does **not** silently follow PPF `main`",
