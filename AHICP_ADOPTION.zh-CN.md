@@ -2,12 +2,14 @@
 
 本项目保留 HARC-lite 作为 project-native 历史治理层，并采用 current AHICP 作为当前协议入口。
 
-## Current pins
+## Current Stack revisions
 
-- AHICP: `0.3.0-draft @ ed5a60b1016497472072db108072ace59bcdb65d`
-- PPF: `0.1.1-draft @ e660b48fb216c28c8faa1f0fe2d0816401e1de2c`
-- Vault Interface: `79d64b12275a5cc7c09236b144bf4213fa7afc5e`
-- Starter: `4889739d448a9bf68bedb42ce3182315eda0caeb`
+Stack v2 distinguishes the stable composition/template revision from the semantic framework revision adopted by this project.
+
+- AHICP template: `02d0b3c02ca23073c760b6e0f761a468e0235a1c`; project adopted: `ed5a60b1016497472072db108072ace59bcdb65d`
+- PPF template: `9a6005de85f032095e36eea03fda317e73126538`; project adopted: `e660b48fb216c28c8faa1f0fe2d0816401e1de2c`
+- Vault template: `592c6e2e938f995b7b3e7df07a72f7f1e2c50c5a`; project adopted: `79d64b12275a5cc7c09236b144bf4213fa7afc5e`
+- Starter source revision: `05857086e240cbd269eae91af8419ea0921c01fa`
 
 ## Functional mapping
 
