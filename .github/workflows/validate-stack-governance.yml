@@ -1,0 +1,35 @@
+name: Validate current Stack governance
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - "AHICP_*"
+      - "SESSION_CONTEXT_BOOTSTRAP*"
+      - "START_HERE*"
+      - "AGENTS*"
+      - "project-stack*.yaml"
+      - "project.yaml"
+      - "publishing.yaml"
+      - "website.yaml"
+      - "core/DECISION_LOG*"
+      - "docs/working-memory/**"
+      - "docs/release-status*"
+      - "scripts/check_stack_consistency.py"
+      - ".github/workflows/validate-stack-governance.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate Stack pins and publication boundary
+        run: python3 scripts/check_stack_consistency.py
