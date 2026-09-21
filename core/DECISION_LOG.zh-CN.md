@@ -207,3 +207,18 @@
 
 **实现状态：** repository cutover 已完成并通过 workers.dev post-cutover verification；repository owner 于 2026-09-20 确认已执行 GitHub Pages `Unpublish site`。当前会话无法通过 Pages administration 读取接口或托管 URL probe 独立验证不可达，因此 provider-side unpublish 记录为 `human-confirmed complete`，不伪造 independent HTTP verification。
 
+
+
+## 2026-09-21 — D011 — 升级到 current Inquiry Publishing Stack revisions
+
+**来源：** 人类作者明确授权 AI 审核并执行账号级 Stack 升级。  
+**分类：** PROTOCOL / FORM。  
+**决定：**
+
+- current AHICP `0.3.0-draft @ ed5a60b1016497472072db108072ace59bcdb65d` 成为当前协议入口；HARC-lite 继续作为 project-native 历史治理层；
+- PPF 升级到 `0.1.1-draft @ e660b48fb216c28c8faa1f0fe2d0816401e1de2c`；
+- Vault Interface 与 Starter 同步到当前 pinned revisions；
+- 保持现有 Cloudflare Workers Builds Native / Profile A、workers.dev canonical identity、public authorization、GitHub Pages RETIRE 与 on-demand release semantics 不变；
+- 本次升级不修改教材正文、Chapter 3 审校计划、Cloudflare token 权限选择、provider 或 Release Approval。
+
+**实现状态：** in progress; merge only after Stack / Cloudflare contract / repository CI pass.
