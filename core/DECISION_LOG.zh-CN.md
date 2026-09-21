@@ -221,4 +221,4 @@
 - 保持现有 Cloudflare Workers Builds Native / Profile A、workers.dev canonical identity、public authorization、GitHub Pages RETIRE 与 on-demand release semantics 不变；
 - 本次升级不修改教材正文、Chapter 3 审校计划、Cloudflare token 权限选择、provider 或 Release Approval。
 
-**实现状态：** in progress; merge only after Stack / Cloudflare contract / repository CI pass.
+**实现状态：** validated in PR #52; all repository, Stack, Quarto, Cloudflare contract/runtime and hardened-candidate gates passed. If this record is read from `main`, the upgrade is implemented.
