@@ -1,0 +1,74 @@
+ahicp_context_interface:
+  version: "0.1-draft"
+  mode: "repository-backed-legacy-functional-mapping"
+  authoritative_store: "github"
+  canonical_language: "zh-CN"
+
+  control_plane:
+    manifest: "AHICP_MANIFEST.yaml"
+    context_interface: "AHICP_CONTEXT_INTERFACE.yaml"
+    legacy_manifest: "HARC_MANIFEST.yaml"
+    legacy_context_interface: "HARC_CONTEXT_INTERFACE.yaml"
+    start_here: "START_HERE.zh-CN.md"
+    onboarding_check: "ONBOARDING_CHECK.zh-CN.md"
+    agent_contract: "AGENTS.md"
+    authoritative_session_copy: false
+
+  context_policy:
+    retrieval: "selective-on-demand"
+    working_memory_first: true
+    cache_authority: "none"
+    read_latest_before_high_impact_action: true
+    read_latest_before_write: true
+    invalidate_touched_cache_after_write: true
+    write_through_repository: true
+
+  working_memory:
+    index: "docs/working-memory.zh-CN.md"
+    current_focus: "docs/working-memory/current-focus.zh-CN.md"
+    task_plan: "docs/working-memory/task-plan.zh-CN.md"
+    work_log: "docs/working-memory/work-log.zh-CN.md"
+    default_reads:
+      - "docs/working-memory/current-focus.zh-CN.md"
+      - "docs/working-memory/task-plan.zh-CN.md"
+    work_log_default_read: false
+
+  task_routes:
+    CONTENT:
+      required:
+        - "core/CONTENT_CORE.zh-CN.md"
+        - "core/DECISION_LOG.zh-CN.md"
+        - "docs/book-architecture.zh-CN.md"
+        - "docs/framework-status.zh-CN.md"
+      optional:
+        - "references.bib"
+        - "index.qmd"
+        - "manuscript/"
+    FORM:
+      required:
+        - "core/FORM_CORE.zh-CN.md"
+        - "core/DECISION_LOG.zh-CN.md"
+        - "docs/publication-profile.zh-CN.md"
+    PROTOCOL:
+      required:
+        - "AHICP_MANIFEST.yaml"
+        - "AHICP_CONTEXT_INTERFACE.yaml"
+        - "core/DECISION_LOG.zh-CN.md"
+        - "docs/working-memory/current-focus.zh-CN.md"
+        - "docs/working-memory/task-plan.zh-CN.md"
+    PUBLICATION:
+      required:
+        - "publishing.yaml"
+        - "docs/publication-profile.zh-CN.md"
+        - "docs/release-status.zh-CN.md"
+        - "docs/cloudflare-readiness.yaml"
+        - "cloudflare-builds.yaml"
+        - "website.yaml"
+
+  failure_states:
+    - "WORKING-MEMORY-STALE"
+    - "CONTEXT-STALE"
+    - "REVISION-CONFLICT"
+    - "MANIFEST-MISMATCH"
+    - "PUBLICATION-STATE-DRIFT"
+    - "PROVIDER-ACTUAL-STATE-UNCLEAR"
