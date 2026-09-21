@@ -204,7 +204,7 @@ Chapter 2 audit conclusion：
 
 ## CURRENT STACK UPGRADE
 
-- status: IN REVIEW / PR validation pending
+- status: VALIDATED / PR #52; Repository Governance #147 + Stack #5 + Quarto #155 + Cloudflare Contract #92 + Runtime #53 + Hardened Candidate #38 SUCCESS. If this file is on `main`, the upgrade is merged.
 - AHICP: current `0.3.0-draft`; HARC-lite history retained
 - PPF: current `0.1.1-draft`; provider/security semantics unchanged
 - Vault Interface / Starter: current pins refreshed
