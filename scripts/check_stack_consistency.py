@@ -72,13 +72,13 @@ ppf_template_commit=stack.get("components.publishing.template_source_commit")
 ppf_project_commit=stack.get("components.publishing.project_adopted_commit")
 
 for label, actual, expected in (
-    ("AHICP template", stack.get("components.governance.template_source_commit"), "ed5a60b1016497472072db108072ace59bcdb65d"),
+    ("AHICP template", stack.get("components.governance.template_source_commit"), "02d0b3c02ca23073c760b6e0f761a468e0235a1c"),
     ("AHICP adopted", stack.get("components.governance.project_adopted_commit"), "ed5a60b1016497472072db108072ace59bcdb65d"),
-    ("PPF template", ppf_template_commit, "e660b48fb216c28c8faa1f0fe2d0816401e1de2c"),
+    ("PPF template", ppf_template_commit, "9a6005de85f032095e36eea03fda317e73126538"),
     ("PPF adopted", ppf_project_commit, "e660b48fb216c28c8faa1f0fe2d0816401e1de2c"),
-    ("Vault template", stack.get("components.portfolio_interface.template_source_commit"), "79d64b12275a5cc7c09236b144bf4213fa7afc5e"),
+    ("Vault template", stack.get("components.portfolio_interface.template_source_commit"), "592c6e2e938f995b7b3e7df07a72f7f1e2c50c5a"),
     ("Vault adopted", stack.get("components.portfolio_interface.project_adopted_commit"), "79d64b12275a5cc7c09236b144bf4213fa7afc5e"),
-    ("Starter", stack.get("starter.adopted_commit"), "4889739d448a9bf68bedb42ce3182315eda0caeb"),
+    ("Starter", stack.get("starter.adopted_commit"), "05857086e240cbd269eae91af8419ea0921c01fa"),
 ):
     if actual != expected:
         fail(f"unexpected current {label} pin: {actual}")
