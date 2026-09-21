@@ -1,7 +1,7 @@
 schema: inquiry-publishing-stack-lock/v2
 generated: true
 resolved:
-  ahicp: 9cf59f9bf90248274f912bdb9e95253d8557a74a
-  ppf: 4dcc23efb165cabc8c259103409c86708c355451
-  vault_interface: b7db7e32719f24fdb369294304a946e7ff65328e
-  starter: 900efc682803e37229fcb6dc2f0f3300a153ad55
+  ahicp: ed5a60b1016497472072db108072ace59bcdb65d
+  ppf: e660b48fb216c28c8faa1f0fe2d0816401e1de2c
+  vault_interface: 79d64b12275a5cc7c09236b144bf4213fa7afc5e
+  starter: 4889739d448a9bf68bedb42ce3182315eda0caeb
