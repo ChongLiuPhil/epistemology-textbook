@@ -1,9 +1,9 @@
 # PPF Adoption — epistemology-textbook
 
 **Status:** PPF adopted / workers.dev canonical cutover VERIFIED / Pages retirement HUMAN-CONFIRMED  
-**Framework:** Personal Publishing Framework v0.1.0-draft  
-**Adopted framework commit:** `21a5360727167bad6f399477ded073431645fa1d`  
-**Previous adopted framework commit:** `9326920e1920d18f0a71eac26d4068da9d6bdffe` — superseded by explicit human adoption on 2026-09-19
+**Framework:** Personal Publishing Framework 0.1.1-draft  
+**Adopted framework commit:** `e660b48fb216c28c8faa1f0fe2d0816401e1de2c`  
+**Previous adopted framework commit:** `21a5360727167bad6f399477ded073431645fa1d` — superseded by the current Stack revision upgrade on 2026-09-21. Earlier pilot baseline: `9326920e1920d18f0a71eac26d4068da9d6bdffe`.
 
 ## Purpose
 
@@ -39,7 +39,7 @@ GitHub Pages remains the production provider during this phase so runtime valida
 
 ## 2026-09-19 semantic adoption update
 
-The project owner explicitly adopted PPF `v0.1.0-draft @ 21a5360727167bad6f399477ded073431645fa1d`.
+The project owner previously adopted PPF `v0.1.0-draft @ 21a5360727167bad6f399477ded073431645fa1d`; the current Stack revision upgrade adopts `0.1.1-draft @ e660b48fb216c28c8faa1f0fe2d0816401e1de2c` without changing the established publication/provider state.
 
 This revision adds provider-neutral semantics for:
 
@@ -185,8 +185,8 @@ The production security profile is human-governed and has been selected as **Pro
 
 This repository does **not** silently follow PPF `main`.
 
-The durable adopted framework state is the version/commit recorded above: `21a5360727167bad6f399477ded073431645fa1d`.
+The durable adopted framework state is the version/commit recorded above: `e660b48fb216c28c8faa1f0fe2d0816401e1de2c`.
 
-The earlier adoption `9326920e1920d18f0a71eac26d4068da9d6bdffe` has been superseded only because the human project owner explicitly approved this downstream adoption and the project migrated its publication contract accordingly.
+The previous semantic adoption `21a5360727167bad6f399477ded073431645fa1d` and the earlier pilot baseline `9326920e1920d18f0a71eac26d4068da9d6bdffe` remain historical evidence; the current revision was adopted only through an explicit project-level Stack upgrade.
 
 Any later upstream PPF changes remain informative until another explicit downstream adoption decision updates `publishing.yaml` and this file after applicable validation.
