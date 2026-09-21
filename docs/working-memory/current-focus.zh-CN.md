@@ -47,7 +47,7 @@ PR #39 已在 current PPF/Workers baseline 上验证并合并到 `main`（merge 
 
 ## PPF / DELIVERY BASELINE
 
-- adopted PPF: `v0.1.0-draft @ 21a5360727167bad6f399477ded073431645fa1d`;
+- adopted PPF: `0.1.1-draft @ e660b48fb216c28c8faa1f0fe2d0816401e1de2c`;
 - production security profile: **Profile A — Workers Builds Native**;
 - `least_privilege: false` remains explicit for the managed build token;
 - Web publication: `authorized / public`;
@@ -201,3 +201,13 @@ Chapter 2 audit conclusion：
 - 与 Chapter 8 的人机/工程案例交叉暂不构成跨章迁移理由；
 - 当前没有 Architecture redistribution proposal 被提升。若真实教学或阅读反馈显示负载问题，再重新打开结构 watch。
 
+
+## CURRENT STACK UPGRADE
+
+- status: IN REVIEW / PR validation pending
+- AHICP: current `0.3.0-draft`; HARC-lite history retained
+- PPF: current `0.1.1-draft`; provider/security semantics unchanged
+- Vault Interface / Starter: current pins refreshed
+- production baseline: Cloudflare Workers Builds Native / Profile A / workers.dev canonical / public authorized
+- GitHub Pages: RETIRE remains complete
+- Chapter 3 audit remains the next content task after this control-plane upgrade
