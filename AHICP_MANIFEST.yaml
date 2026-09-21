@@ -1,0 +1,62 @@
+ahicp:
+  protocol_name: "AI-Assisted Human Inquiry and Creation Protocol"
+  adopted_protocol_version: "0.3.0-draft"
+  adopted_protocol_commit: "ed5a60b1016497472072db108072ace59bcdb65d"
+  profile: "research-standard-book-functional-mapping"
+  repository: "ChongLiuPhil/epistemology-textbook"
+  canonical_language: "zh-CN"
+  english_mirror_policy: "public-entry-only"
+
+  compatibility:
+    project_native_framework: "HARC-lite"
+    legacy_manifest: "HARC_MANIFEST.yaml"
+    legacy_context_interface: "HARC_CONTEXT_INTERFACE.yaml"
+    legacy_adopted_commit: "e741c43c5cd158c43910e3832c7d757226717a97"
+    legacy_paths_retained: true
+    rule: "Current AHICP entry is additive; HARC-lite history, D001-D010, and project-native authority remain intact."
+
+  bootstrap:
+    start_here: "START_HERE.zh-CN.md"
+    onboarding_check: "ONBOARDING_CHECK.zh-CN.md"
+    session_context_bootstrap: "SESSION_CONTEXT_BOOTSTRAP.zh-CN.md"
+    context_interface: "AHICP_CONTEXT_INTERFACE.yaml"
+    agent_contract: "AGENTS.md"
+
+  state:
+    content_core: "core/CONTENT_CORE.zh-CN.md"
+    form_core: "core/FORM_CORE.zh-CN.md"
+    decision_log: "core/DECISION_LOG.zh-CN.md"
+    working_memory_index: "docs/working-memory.zh-CN.md"
+    working_memory_current_focus: "docs/working-memory/current-focus.zh-CN.md"
+    working_memory_task_plan: "docs/working-memory/task-plan.zh-CN.md"
+    working_memory_work_log: "docs/working-memory/work-log.zh-CN.md"
+    book_architecture: "docs/book-architecture.zh-CN.md"
+    framework_status: "docs/framework-status.zh-CN.md"
+    release_status: "docs/release-status.zh-CN.md"
+    publication_profile: "docs/publication-profile.zh-CN.md"
+    canonical_home: "index.qmd"
+    canonical_manuscript: "manuscript/"
+    bibliography: "references.bib"
+
+  required_read_order:
+    - "AHICP_MANIFEST.yaml"
+    - "AHICP_CONTEXT_INTERFACE.yaml"
+    - "START_HERE.zh-CN.md"
+    - "SESSION_CONTEXT_BOOTSTRAP.zh-CN.md"
+    - "AGENTS.md"
+    - "docs/working-memory.zh-CN.md"
+    - "docs/working-memory/current-focus.zh-CN.md"
+    - "docs/working-memory/task-plan.zh-CN.md"
+    - "core/DECISION_LOG.zh-CN.md"
+
+  invariants:
+    - "Repository state outranks chat or model memory."
+    - "AI proposals are not human commitments."
+    - "The human author remains the responsibility bearer for project purpose, problem framing, source selection, interpretive/editorial judgment, major architecture authorization, and public release decisions."
+    - "Quarto QMD plus references.bib remain the canonical manuscript sources."
+    - "Working/Architecture approval and Release Approval remain distinct."
+    - "Current Web canonical identity remains workers.dev unless explicitly changed."
+    - "Cloudflare Profile A security decision remains in force."
+    - "GitHub Pages legacy provider remains retired."
+    - "Internal governance remains Chinese-canonical; full bilingual mirroring is not required."
+    - "HARC-lite historical decisions are not rewritten by AHICP adoption."
