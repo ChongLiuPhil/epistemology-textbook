@@ -468,7 +468,7 @@ def check_human_readable_state_reconciliation() -> None:
         "Profile A — Workers Builds Native",
         "least_privilege: false",
         "workers.dev post-cutover provider build/runtime verification 已通过",
-        "21a5360727167bad6f399477ded073431645fa1d",
+        "e660b48fb216c28c8faa1f0fe2d0816401e1de2c",
         "Web publication: `authorized / public`",
         "Web access: `none`",
         "current canonical identity: workers.dev",
