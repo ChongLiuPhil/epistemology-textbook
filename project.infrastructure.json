@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "id": "epistemology-textbook",
+    "slug": "epistemology-textbook"
+  },
+  "github": {
+    "owner": "ChongLiuPhil",
+    "repository": "epistemology-textbook",
+    "repositoryVisibility": "public",
+    "productionBranch": "main"
+  },
+  "cloudflare": {
+    "platform": "workers",
+    "worker": "epistemology-textbook",
+    "applicationVisibility": "private",
+    "previewVisibility": "private",
+    "accessMode": "account-wide-access",
+    "publicBypass": false,
+    "customDomain": null
+  },
+  "deployment": {
+    "provider": "cloudflare-workers-builds",
+    "productionBranch": "main",
+    "previewDeployments": false,
+    "previewProtection": true
+  },
+  "release": {
+    "state": "public",
+    "openSource": true
+  },
+  "policy": {
+    "privateByDefault": true,
+    "paidServicesAllowed": false,
+    "requiresApprovedPublicTransition": true
+  }
+}
